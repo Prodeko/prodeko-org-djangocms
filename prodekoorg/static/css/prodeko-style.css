@@ -1,0 +1,116 @@
+/*
+Theme Name: Prodeko.org v2.0
+Author: Webbitiimi
+Description: Django CMS theme for prodeko.org
+Version: 0.0.1
+Tags: bootstrap
+*/
+
+/* 
+Prodekon sininen: #13202b
+*/
+
+
+body {
+	font-family: Roboto, Helvetica, sans-serif;
+	color: black;
+	min-height: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: "Roboto Slab", Helvetica, serif;
+}
+
+h1 {
+	font-size: 3.5rem;
+}
+
+/* HEADER */
+
+.prodeko-navbar {
+	text-transform: uppercase;
+}
+
+.prodeko-navbar a {
+	color: white;
+}
+
+.prodeko-navbar, .prodeko-footer, .prodeko-navbar .dropdown-menu {
+	background-color: #13202b;
+	color: white;
+	font-family: Montserrat, Helvetica, sans-serif;
+}
+
+.prodeko-navbar .dropdown-menu {
+	
+}
+
+.prodeko-navbar .dropdown-menu li {
+	list-style: none;
+}
+
+#prodeko-logo {
+	background-image: url('/static/images/prodeko-logo-white.png');
+	background-size: contain;
+	background-repeat: no-repeat;
+	height: 50px;
+	width: 200px;
+}
+
+/* CONTENT PAGE */
+
+.content-page-jumbotron {
+	background-image: url('/static/images/content-page-bg.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	height: 30vh;
+
+	margin-bottom: 0;
+}
+
+.page-container {
+	padding: 2em 2em 2em 2em;
+}
+
+.page-navigation-menu {
+	font-family: Montserrat, Helvetica, sans-serif;
+	padding-left: 0;
+}
+
+.page-navigation-menu li {
+	list-style: none;
+}
+
+/* FRONTPAGE */
+
+.frontpage-jumbotron {
+	background-image: url('/static/images/frontpage-cover.jpg');
+	background-size: cover;
+	height: 70vh;
+	padding-bottom: 0;
+	margin-bottom: 0;
+}
+
+.frontpage-category-squarerow {
+	height: 30vh;
+}
+
+.frontpage-category-squarerow .col-md {
+	background-size: cover;
+	color: white;
+	height: 100%;
+	display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+/* FOOTER */
+
+.prodeko-footer {
+	padding: 3em 0 3em 0;
+}
+
+.prodeko-footer .col-sm {
+	padding: 1em 0 1em 0;
+}

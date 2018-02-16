@@ -1,0 +1,40 @@
+{% load menu_tags %}
+
+<nav class="navbar navbar-expand-md sticky-top prodeko-navbar">
+
+	<a class="navbar-brand" id="prodeko-logo" href="#"></a>
+	
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" aria-controls="collapsibleNavbar" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	
+	<div class="collapse navbar-collapse" id="collapsibleNavbar">
+		<ul class="navbar-nav">
+				{% for child in children %}
+			<!-- no child pages  -->
+					{% if child.is_leaf_node %}
+						<li class="nav-item"><a class="nav-link" href="{{ child.get_absolute_url }}">{{child.get_menu_title }}</a></li>
+					{% endif %}
+			<!-- /no child pages  -->
+			<!-- has child pages  -->
+					{% if not child.is_leaf_node or child.ancestor %}
+						<li class="nav-item dropdown">
+							<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+							{{child.get_menu_title }}<b class="caret"></b></a>
+							<div class="dropdown-menu">
+								{% if child.get_descendants %}
+									{% for kid in child.get_descendants %}
+											<a class="dropdown-item" href="{{ kid.get_absolute_url }}">
+												{{kid.get_menu_title }}
+											</a>
+									{% endfor %}
+								{% endif %}
+							</div>
+						</li>
+					{% endif %}
+			<!-- /has child pages  -->
+				{% endfor %} 
+			<!-- /end for child -->
+		</ul>
+	</div>
+</nav>

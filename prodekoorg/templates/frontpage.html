@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load cms_tags staticfiles %}
+
+{% block title %}{% page_attribute "page_title" %}{% endblock title %}
+
+{% block content %}
+
+ <div id="frontpage-carousel" class="carousel slide" data-ride="carousel">
+  <ul class="carousel-indicators">
+    <li data-target="#frontpage-carousel" data-slide-to="0" class="active"></li>
+    <li data-target="#frontpage-carousel" data-slide-to="1"></li>
+    <li data-target="#frontpage-carousel" data-slide-to="2"></li>
+  </ul>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="http://via.placeholder.com/1920x550" alt="Yks" width="1920" height="550">
+      <div class="carousel-caption">
+        <h3>Yksii</h3>
+        <p>asd</p>
+      </div>   
+    </div>
+    <div class="carousel-item">
+      <img src="http://via.placeholder.com/1920x550" alt="Kaks" width="1920" height="550">
+      <div class="carousel-caption">
+        <h3>Kaksii</h3>
+        <p>qwerty</p>
+      </div>   
+    </div>
+    <div class="carousel-item">
+      <img src="http://via.placeholder.com/1920x550" alt="Kol" width="1920" height="550">
+      <div class="carousel-caption">
+        <h3>Kolmee</h3>
+        <p>123</p>
+      </div>   
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#frontpage-carousel" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+  <a class="carousel-control-next" href="#frontpage-carousel" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
+</div>
+
+<div class="container-fluid">
+  <div class="row frontpage-category-squarerow">
+	<div class="col-md" style="background-image: url({% static 'images/frontpage-square.jpg' %})">
+		<h2>Kilta</h2>
+  </div>
+	<div class="col-md" style="background-image: url({% static 'images/frontpage-square.jpg' %})">
+		<h2>Fuksit</h2>
+  </div>
+	<div class="col-md" style="background-image: url({% static 'images/frontpage-square.jpg' %})">
+		<h2>Abit</h2>
+  </div>
+	<div class="col-md" style="background-image: url({% static 'images/frontpage-square.jpg' %})">
+	 <h2>Yrityssuhteet</h2>
+  </div>
+	<div class="col-md" style="background-image: url({% static 'images/frontpage-square.jpg' %})">
+	 <h2>International</h2>
+  </div>
+	<div class="col-md" style="background-image: url({% static 'images/frontpage-square.jpg' %})">
+	 <h2>Alumni</h2>
+	</div>
+</div>
+</div>
+
+{% endblock content %}
