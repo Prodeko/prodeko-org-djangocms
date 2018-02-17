@@ -25,6 +25,14 @@ h1 {
 	font-size: 3.5rem;
 }
 
+.font-montserrat {
+	font-family: Montserrat, Helvetica, sans-serif;
+}
+
+.uppercase {
+	text-transform: uppercase;
+}
+
 /* HEADER */
 
 .prodeko-navbar {
@@ -41,12 +49,12 @@ h1 {
 	font-family: Montserrat, Helvetica, sans-serif;
 }
 
-.prodeko-navbar .dropdown-menu {
-	
+.prodeko-navbar #collapsibleNavbar a.nav-link {
+	color: white;
 }
 
-.prodeko-navbar .dropdown-menu li {
-	list-style: none;
+.prodeko-navbar #collapsibleNavbar.collapse.show ul {
+	padding-top: 1em;
 }
 
 #prodeko-logo {
@@ -69,7 +77,29 @@ h1 {
 }
 
 .page-container {
-	padding: 2em 2em 2em 2em;
+	padding: 2.5em 2em 2.5em 2em;
+}
+
+.page-container h2 {
+	margin-bottom: 0.8em;
+}
+
+.page-container h3 {
+	margin-top: 0.6em;
+	margin-bottom: 0.6em;
+}
+
+.page-breadcrumb {
+	list-style-type: none;
+	padding-left: 0;
+}
+
+.page-breadcrumb li {
+	display: inline;
+}
+
+.page-breadcrumb li a {
+	color: #13202b;
 }
 
 .page-navigation-menu {
@@ -89,6 +119,14 @@ h1 {
 	height: 70vh;
 	padding-bottom: 0;
 	margin-bottom: 0;
+}
+
+.frontpage-container {
+	padding: 3em 2em 3em 2em;
+}
+
+.frontpage-container h2 {
+	margin-bottom: 0.8em;
 }
 
 .frontpage-category-squarerow {
@@ -111,6 +149,20 @@ h1 {
 	padding: 3em 0 3em 0;
 }
 
-.prodeko-footer .col-sm {
+.prodeko-footer .col-md {
 	padding: 1em 0 1em 0;
 }
+
+.prodeko-footer h2 {
+	margin-bottom: 1.5em;
+}
+
+.prodeko-footer .footer-lrow h2 {
+	padding-top: 2.2em;
+}
+
+.prodeko-footer a {
+	color: white;
+	font-weight: bold;
+}
+

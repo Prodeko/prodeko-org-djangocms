@@ -168,6 +168,8 @@ CMS_TEMPLATES = (
     ## Customize this
     ('content-page.html', 'Content page'),
     ('frontpage.html', 'Frontpage'),
+    ('content-page-twocol6-6.html', 'Content page with 1:1 split'),
+    ('content-page-twocol8-4.html', 'Content page with 2:1 split'),
 )
 
 CMS_PERMISSION = True
