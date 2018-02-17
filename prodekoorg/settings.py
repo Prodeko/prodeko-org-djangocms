@@ -136,7 +136,6 @@ INSTALLED_APPS = (
     'djangocms_picture',
     'djangocms_style',
     'djangocms_snippet',
-    'djangocms_googlemap',
     'djangocms_video',
     'prodekoorg'
 )
@@ -178,13 +177,12 @@ CMS_PLACEHOLDER_CONF = {}
 
 DATABASES = {
     'default': {
-        'CONN_MAX_AGE': 0,
-        'ENGINE': 'django.db.backends.sqlite3',
-        'HOST': 'localhost',
-        'NAME': 'project.db',
-        'PASSWORD': '',
-        'PORT': '',
-        'USER': ''
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'prodekoorg',                      # Or path to database file if using sqlite3.
+        'USER': 'prodekoorg',                      # Not used with sqlite3.
+        'PASSWORD': 'prodekoorg',                  # Not used with sqlite3.
+        'HOST': '',                                # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '',                                # Set to empty string for default. Not used with sqlite3.
     }
 }
 
