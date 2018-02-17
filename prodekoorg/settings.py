@@ -137,7 +137,6 @@ INSTALLED_APPS = (
     'djangocms_style',
     'djangocms_snippet',
     'djangocms_video',
-    'prodekoorg'
 )
 
 LANGUAGES = (
