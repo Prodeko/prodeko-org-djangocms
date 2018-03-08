@@ -12,21 +12,21 @@ Prodekon sininen: #13202b
 
 
 body {
-	font-family: Roboto, Helvetica, sans-serif;
+	font-family: Raleway, Helvetica, sans-serif;
 	color: black;
 	min-height: 100%;
 }
 
 h1, h2, h3, h4, h5, h6 {
-	font-family: "Roboto Slab", Helvetica, serif;
+	font-family: Raleway, Helvetica, sans-serif;
 }
 
 h1 {
 	font-size: 3.5rem;
 }
 
-.font-montserrat {
-	font-family: Montserrat, Helvetica, sans-serif;
+.font-raleway {
+	font-family: Raleway, Helvetica, sans-serif;
 }
 
 .uppercase {
@@ -46,7 +46,7 @@ h1 {
 .prodeko-navbar, .prodeko-footer, .prodeko-navbar .dropdown-menu {
 	background-color: #13202b;
 	color: white;
-	font-family: Montserrat, Helvetica, sans-serif;
+	font-family: Raleway, Helvetica, sans-serif;
 }
 
 .prodeko-navbar #collapsibleNavbar a.nav-link {
@@ -76,6 +76,10 @@ h1 {
 	margin-bottom: 0;
 }
 
+.content-page-jumbotron h1 {
+	color: white;
+}
+
 .page-container {
 	padding: 2.5em 2em 2.5em 2em;
 }
@@ -103,7 +107,7 @@ h1 {
 }
 
 .page-navigation-menu {
-	font-family: Montserrat, Helvetica, sans-serif;
+	font-family: Raleway, Helvetica, sans-serif;
 	padding-left: 0;
 }
 
