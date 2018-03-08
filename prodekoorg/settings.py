@@ -19,11 +19,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.dirname(os.path.dirname(__file__))
 
 config = configparser.ConfigParser()
-config.read('production_variables.ini')
+config.read('variables.txt')
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config['DJANGO']['SECRET']
-DEBUG = config['DEBUG']['TRUE']
+DEBUG = config['DEBUG']['MODE']
 ALLOWED_HOSTS = ['djangocms.prodeko.org', 'prodeko.org']
 DB_NAME = config['DB']['NAME']
 DB_USER = config['DB']['USER']
@@ -124,6 +124,7 @@ INSTALLED_APPS = (
     'prodekoorg'
 )
 
+gettext = lambda s: s
 LANGUAGES = (
     ('fi', gettext('fi')),
 )
