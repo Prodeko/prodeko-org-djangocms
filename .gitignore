@@ -73,3 +73,4 @@ media/
 venv/
 
 *.db
+production_variables.ini

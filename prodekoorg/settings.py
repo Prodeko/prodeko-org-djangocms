@@ -1,6 +1,7 @@
-import os  # isort:skip
-gettext = lambda s: s
-DATA_DIR = os.path.dirname(os.path.dirname(__file__))
+import configparser
+import os
+
+
 """
 Django settings for prodekoorg project.
 
@@ -13,52 +14,42 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
-import os
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DATA_DIR = os.path.dirname(os.path.dirname(__file__))
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
+config = configparser.ConfigParser()
+config.read('production_variables.ini')
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '0kjeag41v2t(_3x6u92$(cpi7v23o#)l__7c#4rxt4cltgwb#z'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
+SECRET_KEY = config['DJANGO']['SECRET']
+DEBUG = config['DEBUG']['TRUE']
+ALLOWED_HOSTS = ['djangocms.prodeko.org', 'prodeko.org']
+DB_NAME = config['DB']['NAME']
+DB_USER = config['DB']['USER']
+DB_PSWD = config['DB']['PASSWORD']
 
 
 # Application definition
-
 ROOT_URLCONF = 'prodekoorg.urls'
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
-
 LANGUAGE_CODE = 'fi'
-
 TIME_ZONE = 'Etc/UTC'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
-
-STATIC_URL = '/prodekoorg/static/'
-MEDIA_URL = '/prodekoorg/media/'
+STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(DATA_DIR, 'media')
-STATIC_ROOT = os.path.join(DATA_DIR, 'static')
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'prodekoorg', 'static')
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'prodekoorg', 'static'),
+    os.path.join(BASE_DIR, 'prodekoorg', 'collected-static'),
 )
 SITE_ID = 1
 
@@ -66,7 +57,7 @@ SITE_ID = 1
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'prodekoorg', 'templates'),],
+        'DIRS': [os.path.join(BASE_DIR, 'prodekoorg', 'templates'), ],
         'OPTIONS': {
             'context_processors': [
                 'django.contrib.auth.context_processors.auth',
@@ -134,12 +125,10 @@ INSTALLED_APPS = (
 )
 
 LANGUAGES = (
-    ## Customize this
     ('fi', gettext('fi')),
 )
 
 CMS_LANGUAGES = {
-    ## Customize this
     'default': {
         'public': True,
         'hide_untranslated': False,
@@ -157,7 +146,6 @@ CMS_LANGUAGES = {
 }
 
 CMS_TEMPLATES = (
-    ## Customize this
     ('content-page.html', 'Content page'),
     ('frontpage.html', 'Frontpage'),
     ('content-page-twocol6-6.html', 'Content page with 1:1 split'),
@@ -171,9 +159,9 @@ CMS_PLACEHOLDER_CONF = {}
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'prodekoorg',                      # Or path to database file if using sqlite3.
-        'USER': 'prodekoorg',                      # Not used with sqlite3.
-        'PASSWORD': 'prodekoorg',                  # Not used with sqlite3.
+        'NAME': DB_NAME,                      # Or path to database file if using sqlite3.
+        'USER': DB_USER,                      # Not used with sqlite3.
+        'PASSWORD': DB_PSWD,                  # Not used with sqlite3.
         'HOST': '',                                # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                                # Set to empty string for default. Not used with sqlite3.
     }
