@@ -51,15 +51,18 @@ apt-get install -y mysql-server-5.7 libmysqlclient-dev
 # create database
 mysql -uroot -pvagrant -e "CREATE USER 'prodekoorg'@'localhost' IDENTIFIED BY 'prodekoorg';"
 mysql -uroot -pvagrant -e "GRANT ALL PRIVILEGES on *.* TO 'prodekoorg'@'localhost';"
-mysql -uroot -pvagrant -e "CREATE DATABASE prodekoorg;"
+mysql -uroot -pvagrant -e "DROP DATABASE prodekoorg; CREATE DATABASE prodekoorg;"
 
 
 # --- Required python modules ---
 pip3 install -r /vagrant/requirements.txt
 
 # tasks
-cd /vagrant && python3 manage.py syncdb --noinput
+cd /vagrant && python3 manage.py makemigrations --noinput
 cd /vagrant && python3 manage.py migrate
+
+# Creating an admin user
+echo "from django.contrib.auth.models import User; User.objects.filter(email='webbitiimi@prodeko.org').delete(); User.objects.create_superuser('admin', 'webbitiimi@prodeko.org', 'kananugetti')" | python manage.py shell
 
 # Run server and static file watcher in screen
 su - ubuntu -c "cd /vagrant && screen -S server -d -m python3 manage.py runserver 0.0.0.0:8000"
