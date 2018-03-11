@@ -1,7 +1,3 @@
-import configparser
-import os
-
-
 """
 Django settings for prodekoorg project.
 
@@ -14,9 +10,13 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
+import configparser
+import os
+
+SITE_ID = 1
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DATA_DIR = os.path.dirname(os.path.dirname(__file__))
 
 config = configparser.ConfigParser()
 config.read(os.path.join(BASE_DIR, 'prodekoorg/variables.txt'))
@@ -24,7 +24,7 @@ config.read(os.path.join(BASE_DIR, 'prodekoorg/variables.txt'))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config['DJANGO']['SECRET']
 DEBUG = config['DEBUG']['MODE']
-ALLOWED_HOSTS = ['djangocms.prodeko.org', 'prodeko.org']
+ALLOWED_HOSTS = ['djangocms.prodeko.org', 'prodeko.org', 'localhost']
 DB_NAME = config['DB']['NAME']
 DB_USER = config['DB']['USER']
 DB_PSWD = config['DB']['PASSWORD']
@@ -45,14 +45,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(DATA_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'prodekoorg', 'media')
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'prodekoorg', 'collected-static')
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'prodekoorg', 'static'),
-)
-SITE_ID = 1
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'prodekoorg', 'static'),)
 
 
 TEMPLATES = [

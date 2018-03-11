@@ -69,7 +69,7 @@ target/
 
 *.DS_Store
 initialise.sh
-media/
 venv/
+prodekoorg/collected-static
 
 *.db
