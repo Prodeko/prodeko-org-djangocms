@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import configparser
 import os
+from django.utils.translation import gettext_lazy as _
 
 SITE_ID = 1
 
@@ -122,9 +123,9 @@ INSTALLED_APPS = (
     'prodekoorg'
 )
 
-gettext = lambda s: s
 LANGUAGES = (
-    ('fi', gettext('fi')),
+    ('fi', _('Finnish')),
+    ('en', _('English')),
 )
 
 CMS_LANGUAGES = {
@@ -138,7 +139,14 @@ CMS_LANGUAGES = {
             'public': True,
             'code': 'fi',
             'hide_untranslated': False,
-            'name': gettext('fi'),
+            'name': _('Finnish'),
+            'redirect_on_fallback': True,
+        },
+        {
+            'public': True,
+            'code': 'en',
+            'hide_untranslated': False,
+            'name': _('English'),
             'redirect_on_fallback': True,
         },
     ],
@@ -158,11 +166,11 @@ CMS_PLACEHOLDER_CONF = {}
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': DB_NAME,                      # Or path to database file if using sqlite3.
-        'USER': DB_USER,                      # Not used with sqlite3.
-        'PASSWORD': DB_PSWD,                  # Not used with sqlite3.
-        'HOST': '',                                # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                                # Set to empty string for default. Not used with sqlite3.
+        'NAME': DB_NAME,
+        'USER': DB_USER,
+        'PASSWORD': DB_PSWD,
+        'HOST': '',
+        'PORT': '',
     }
 }
 

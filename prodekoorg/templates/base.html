@@ -4,19 +4,19 @@
 	<head>
 		<title>{% block title %}Tuotantotalouden kilta Prodeko ry{% endblock title %}</title>
 		<meta name="viewport" content="width=device-width,initial-scale=1">
-	 
+
 		{% render_block "css" %}
 		{% render_block "custom-css" %}
 		{% render_block "custom-js" %}
 	</head>
 	<body>
-	
+
 		{% cms_toolbar %}
 
 		{% show_menu 0 100 100 100 "navbar.html" %}
 		{% block content %}{% endblock content %}
 		{% include 'footer.html' %}
-		
+
 		{% render_block "js" %}
 	</body>
 </html>

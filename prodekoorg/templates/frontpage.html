@@ -10,28 +10,44 @@
     <li data-target="#frontpage-carousel" data-slide-to="0" class="active"></li>
     <li data-target="#frontpage-carousel" data-slide-to="1"></li>
     <li data-target="#frontpage-carousel" data-slide-to="2"></li>
+    <li data-target="#frontpage-carousel" data-slide-to="4"></li>
+    <li data-target="#frontpage-carousel" data-slide-to="5"></li>
   </ul>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="http://via.placeholder.com/1920x550" class="d-block w-100" alt="Yks">
+      <img src="{% static 'images/values/arvo_be_a_good_person.jpg' %}" class="d-block w-100" alt="Be a Good Person">
       <div class="carousel-caption d-none d-md-block">
-        <h3>Yksii</h3>
-        <p>asd</p>
-      </div>   
+        <h3>1</h3>
+        <p>1</p>
+      </div>
     </div>
     <div class="carousel-item">
-      <img src="http://via.placeholder.com/1920x550" class="d-block w-100" alt="Kaks">
+      <img src="{% static 'images/values/arvo_get_things_done.jpg' %}" class="d-block w-100" alt="Get Things Done">
       <div class="carousel-caption d-none d-md-block">
-        <h3>Kaksii</h3>
-        <p>qwerty</p>
-      </div>   
+        <h3>2</h3>
+        <p>2</p>
+      </div>
     </div>
     <div class="carousel-item">
-      <img src="http://via.placeholder.com/1920x550" class="d-block w-100" alt="Kol">
+      <img src="{% static 'images/values/arvo_give_back.jpg' %}" class="d-block w-100" alt="give Back">
       <div class="carousel-caption d-none d-md-block">
-        <h3>Kolmee</h3>
-        <p>123</p>
-      </div>   
+        <h3>3</h3>
+        <p>3</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'images/values/arvo_learn_and_grow.jpg' %}" class="d-block w-100" alt="Learn and Grow">
+      <div class="carousel-caption d-none d-md-block">
+        <h3>4</h3>
+        <p>4</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'images/values/arvo_think_big.jpg' %}" class="d-block w-100" alt="Think Big">
+      <div class="carousel-caption d-none d-md-block">
+        <h3>5</h3>
+        <p>5</p>
+      </div>
     </div>
   </div>
   <a class="carousel-control-prev" href="#frontpage-carousel" data-slide="prev" role="button">
@@ -47,16 +63,15 @@
 <div class="container frontpage-container">
 	<div class="row">
 		<div class="col-md-8">
-			{% placeholder "content" %}	
+			{% placeholder "content" %}
 		</div>
 		<div class="col-md-4">
-			{% placeholder "sidecontent" %}	
+			{% placeholder "sidecontent" %}
 		</div>
 	</div>
-	
+
 </div>
 
-<!--
 <div class="container-fluid">
   <div class="row frontpage-category-squarerow">
 	<div class="col-md" style="background-image: url({% static 'images/frontpage-square.jpg' %})">
@@ -79,6 +94,5 @@
 	</div>
 </div>
 </div>
--->
 
 {% endblock content %}
