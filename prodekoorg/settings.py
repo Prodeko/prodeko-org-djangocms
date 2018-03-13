@@ -52,7 +52,6 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'prodekoorg', 'collected-static')
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'prodekoorg', 'static'),)
 
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -153,10 +152,10 @@ CMS_LANGUAGES = {
 }
 
 CMS_TEMPLATES = (
-    ('content-page.html', 'Content page'),
+    ('contentpage/content-page.html', 'Content page'),
     ('frontpage.html', 'Frontpage'),
-    ('content-page-twocol6-6.html', 'Content page with 1:1 split'),
-    ('content-page-twocol8-4.html', 'Content page with 2:1 split'),
+    ('contentpage/content-page-twocol6-6.html', 'Content page with 1:1 split'),
+    ('contentpage/content-page-twocol8-4.html', 'Content page with 2:1 split'),
 )
 
 CMS_PERMISSION = True

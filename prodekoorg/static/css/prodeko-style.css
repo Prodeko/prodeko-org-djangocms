@@ -117,12 +117,13 @@ h1 {
 
 /* FRONTPAGE */
 
-.frontpage-jumbotron {
-	background-image: url('/static/images/frontpage-cover.jpg');
-	background-size: cover;
-	height: 70vh;
-	padding-bottom: 0;
-	margin-bottom: 0;
+.carousel .carousel-item {
+  height: 40vh;
+}
+
+.carousel-item img {
+	height: 40vh;
+	object-fit: contain;
 }
 
 .frontpage-container {
@@ -134,7 +135,7 @@ h1 {
 }
 
 .frontpage-category-squarerow {
-	height: 30vh;
+	height: 10vh;
 }
 
 .frontpage-category-squarerow .col-md {
@@ -169,3 +170,18 @@ h1 {
 	color: white;
 	font-weight: bold;
 }
+
+/* Smaller than standard 960 (devices and browsers) */
+@media only screen and (max-width: 959px) {}
+
+/* Tablet Portrait size to standard 960 (devices and browsers) */
+@media only screen and (min-width: 768px) and (max-width: 959px) {}
+
+/* All Mobile Sizes (devices and browser) */
+@media only screen and (max-width: 767px) {}
+
+/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
+@media only screen and (min-width: 480px) and (max-width: 767px) {}
+
+/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+@media only screen and (max-width: 479px) {}
