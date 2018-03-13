@@ -6,8 +6,8 @@ Version: 0.0.1
 Tags: bootstrap
 */
 
-/* 
-Prodekon sininen: #13202b
+/*
+Prodekon sininen: #002851
 */
 
 
@@ -44,7 +44,7 @@ h1 {
 }
 
 .prodeko-navbar, .prodeko-footer, .prodeko-navbar .dropdown-menu {
-	background-color: #13202b;
+	background-color: #002851;
 	color: white;
 	font-family: Raleway, Helvetica, sans-serif;
 }
@@ -103,7 +103,7 @@ h1 {
 }
 
 .page-breadcrumb li a {
-	color: #13202b;
+	color: #002851;
 }
 
 .page-navigation-menu {
@@ -169,4 +169,3 @@ h1 {
 	color: white;
 	font-weight: bold;
 }
-
