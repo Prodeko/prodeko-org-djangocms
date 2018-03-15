@@ -1,0 +1,30 @@
+@import 'variables.scss';
+
+.control-button {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 1.5rem;
+  background-color: $sidebar-bg;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+}
+
+#menu-control-closed {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+}
+
+#menu-control {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+}
+
+#scroll-control {
+  position: fixed;
+  bottom: 90px;
+  right: 30px;
+}

@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+
+{% load custom_template_tags %}
+
+{% block body %}
+
+
+	<nav id="top-menu" class="navbar navbar-default navbar-fixed-top hidden" hoe-color-type="lpanel-bg3">
+		<span id="nav-button" class="hoe-sidebar-toggle"><a href="#"></a></span>
+	</nav>
+	<span id="menu-button" class="hoe-sidebar-toggle"><a href="#"></a></span>
+
+    <div id="hoeapp-wrapper" class="hoe-lpanel" hoe-device-type="desktop">
+        <div id="hoeapp-container" hoe-color-type="lpanel-bg3" hoe-lpanel-effect="shrink">
+            <aside id="hoe-left-panel" hoe-position-type="fixed">
+                <ul class="nav panel-list">
+                    {% if user.is_authenticated %}
+          						<li>Kirjautunut: {{ user }}</li>
+                      <li><a href="/cp/">Control Panel</a></li>
+          						<li><a href="/logout/">Kirjaudu ulos</a></li>
+                    {% endif %}
+                      <li><a class="contents-text" href="#">Sisältö</a></li>
+                    {% for c in categories %}
+      					      <li class="nav-level">{{ c.title }}</li>
+          						{% for m in c.visible_messages %}
+          						<li>
+          							<a class="page-scroll" href="#{{ m.pk }}">
+          								<span id="nav{{ m.pk }}" class="menu-text">
+          									{{ m.header }}
+          									{% if m.is_new %}
+          										<span class="glyphicon glyphicon-flag"></span>
+          									{% endif %}
+          									{% if m.deadline_date|is_past and m.show_deadline %}
+          										<span class="glyphicon glyphicon-time"></span>
+          									{% endif %}
+          								</span>
+          								<span class="selected"></span>
+          							</a>
+          						</li>
+          						{% endfor %}
+          					{% endfor %}
+      				    </ul>
+              </aside>
+
+            <section id="main-content">
+      				<div class="inner-content">
+                          <div class="panel theme-panel">
+      						<div class="panel-body">
+      								<div class="row clearfix">
+      									<div class="col col-sm-12">
+      										<h1>Sisältö</h1>
+      										<table class="table table-contents">
+      											<span class="glyphicon glyphicon-flag"></span> = julkaistu alle 7 päivää sitten
+      											<br>
+      											<span class="glyphicon glyphicon-time"></span> = deadline mennyt
+      											<tbody>
+      												{% for c in categories %}
+      													<tr>
+      														<th>{{ c.title }}</th>
+      													</tr>
+      													{% for m in c.visible_messages %}
+      														<tr>
+      															<td>
+      																<a class="page-scroll contents-text" id="con{{ m.pk }}" href="#{{ m.pk }}">{{ m.header }}</a>
+      																{% if m.is_new %}
+      																	<span class="glyphicon glyphicon-flag"></span>
+      																{% endif %}
+      																{% if m.deadline_date|is_past and m.show_deadline %}
+      																	<span class="glyphicon glyphicon-time"></span>
+      																{% endif %}
+      															</td>
+      														</tr>
+      													{% endfor %}
+      												{% endfor %}
+      											</tbody>
+      										</table>
+      									</div>
+      								</div>
+      						</div>
+      					</div>
+      				</div>
+
+              <div class="col-md-12 column">
+              {% for c in categories %}
+
+                    {% for m in c.visible_messages %}
+                      <div id="{{ m.pk }}" class="inner-content">
+                        <div class="panel theme-panel">
+                          <div class="panel-body">
+                            <div class="row clearfix">
+
+                                {% if user.is_authenticated %}
+                                  <h6><a href="/editor/{{ m.pk }}">Muokkaa</a></h6>
+                                {% endif %}
+                                  <h6>{{ c.title }}</h6>
+                                {% if m.show_deadline %}
+                                  <h6 class="date">DL {{ m.deadline_date }}</h6>
+                                {% endif %}
+                                <h3 class="message-header">{{ m.header }}</h3>
+                                <div class="message-content">
+                                {% autoescape off %}{{ m.content|emailaddress }}{% endautoescape %}
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      {% endfor %}
+                {% endfor %}
+              </div>
+
+              <div class="footer">
+      					<div class="container">
+      						<span class="copyright">&copy; Prodeko ry</span>
+      					</div>
+      				</div>
+
+            </section>
+        </div>
+    </div>
+
+{% endblock %}

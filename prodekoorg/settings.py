@@ -25,7 +25,7 @@ config.read(os.path.join(BASE_DIR, 'prodekoorg/variables.txt'))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config['DJANGO']['SECRET']
 DEBUG = config['DEBUG']['MODE']
-ALLOWED_HOSTS = ['djangocms.prodeko.org', 'prodeko.org', 'localhost']
+ALLOWED_HOSTS = ['djangocms.prodeko.org', 'prodeko.org', '.prodeko.org', 'localhost']
 DB_NAME = config['DB']['NAME']
 DB_USER = config['DB']['USER']
 DB_PSWD = config['DB']['PASSWORD']
@@ -50,12 +50,20 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'prodekoorg', 'media')
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'prodekoorg', 'collected-static')
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'prodekoorg', 'static'),)
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'prodekoorg', 'static'),
+    # tiedotteet.prodeko.org
+    os.path.join(BASE_DIR, 'tiedotteet/info', 'static'),
+    os.path.join(BASE_DIR, 'tiedotteet', 'public'),
+]
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'prodekoorg', 'templates'), ],
+        'DIRS': [os.path.join(BASE_DIR, 'prodekoorg', 'templates'),
+                 os.path.join(BASE_DIR, 'tiedotteet/info', 'templates'),
+                 os.path.join(BASE_DIR, 'tiedotteet', 'public')],
         'OPTIONS': {
             'context_processors': [
                 'django.contrib.auth.context_processors.auth',
@@ -92,7 +100,9 @@ MIDDLEWARE = (
     'cms.middleware.user.CurrentUserMiddleware',
     'cms.middleware.page.CurrentPageMiddleware',
     'cms.middleware.toolbar.ToolbarMiddleware',
-    'cms.middleware.language.LanguageCookieMiddleware'
+    'cms.middleware.language.LanguageCookieMiddleware',
+    # tiedotteet.prodeko.org
+    'corsheaders.middleware.CorsMiddleware',
 )
 
 INSTALLED_APPS = (
@@ -119,13 +129,21 @@ INSTALLED_APPS = (
     'djangocms_style',
     'djangocms_snippet',
     'djangocms_video',
-    'prodekoorg'
+    'prodekoorg',
+    # tiedotteet.prodeko.org
+    'tiedotteet',
+    'django_wysiwyg',
+    'ckeditor',
+    'rest_framework',
+    'corsheaders',
 )
 
 LANGUAGES = (
     ('fi', _('Finnish')),
     ('en', _('English')),
 )
+
+LANGUAGE_FALLBACK = None
 
 CMS_LANGUAGES = {
     'default': {
@@ -183,3 +201,24 @@ THUMBNAIL_PROCESSORS = (
     'filer.thumbnail_processors.scale_and_crop_with_subject_location',
     'easy_thumbnails.processors.filters'
 )
+
+# tiedotteet.prodeko.org
+
+SESSION_SAVE_EVERY_REQUEST = True
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False
+SESSION_COOKIE_AGE = 60 * 60 * 24 * 30  # 30 days
+
+LOGIN_URL = '/login/'
+
+CKEDITOR_UPLOAD_PATH = "tiedotteet/uploads/"
+
+DJANGO_WYSIWYG_FLAVOR = "ckeditor"
+
+CORS_ORIGIN_ALLOW_ALL = True
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    )
+}

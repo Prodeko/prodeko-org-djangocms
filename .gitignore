@@ -73,3 +73,9 @@ venv/
 prodekoorg/collected-static
 
 *.db
+
+tiedotteet/public
+node_modules/
+yarn.lock
+dist/
+.idea/

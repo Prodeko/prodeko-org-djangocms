@@ -1,0 +1,60 @@
+{% extends "control/base.html" %}
+
+{% block body %}
+<div id="page-wrapper">
+    <div class="container-fluid">
+
+      <!-- Page Heading -->
+      <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">
+                Tagit
+                <small>Muokkaa tageja</small>
+            </h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-10">
+          <div>
+            <form method="post" class="form-inline">
+              {% csrf_token %}
+              <div class="form-group">
+                <label>{{ form.title.label }}</label>
+                {{form.title}}
+                {% if form.title.errors %}
+                <div class="alert alert-danger">
+                  {{ form.title.errors }}
+                </div>
+                {% endif %}
+              </div>
+              <button class="btn btn-success" type="submit">Tallenna</button>
+            </form>
+          </div>
+          <div>
+            <hr>
+            {% if tags.count == 0 %}
+              <p>Ei tageja</p>
+            {% else %}
+            <ul class="list-group">
+              {% for tag in tags %}
+                <li class="list-group-item">
+                  {{tag}}
+                  <div class="pull-right">
+                    <form action="/cp/tags/{{ tag.pk }}/delete/" method="post">
+                      {% csrf_token %}
+                      <button type="submit" class="btn btn-danger btn-xs delete-button">
+                        Poista <i class="fa fa-times"></i>
+                      </button>
+                    </form>
+                  </div>
+                </li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+          </div>
+        </div>
+    </div>
+    <!-- /.container-fluid -->
+</div>
+<!-- /#page-wrapper -->
+{% endblock %}

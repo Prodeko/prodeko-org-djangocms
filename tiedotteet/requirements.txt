@@ -1,0 +1,8 @@
+Django==1.8
+futures==2.1.6
+django-wysiwyg
+django-ckeditor==4.5.1
+djangorestframework==3.6
+markdown
+django-filter
+django-cors-headers

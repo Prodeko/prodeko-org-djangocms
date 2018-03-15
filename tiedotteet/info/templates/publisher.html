@@ -1,0 +1,207 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<body id="page-top" data-spy="scroll" data-target=".sidebar-nav-fixed">
+
+{% load wysiwyg %}
+{% wysiwyg_setup %}
+
+<p><a href="/">Etusivu</a></p>
+
+<div class="row">
+    <div class="col-lg-12">
+	<div class="container">
+	<form role="form" action="/publish/" method="post" >
+		<div class="form-group col-md-12">
+			<label>{{ form.header.label }}</label>
+			{{ form.header }}
+			{% if form.header.errors %}
+			<div class="alert alert-danger">
+				{{ form.header.errors }}
+			</div>
+			{% endif %}
+		</div>
+		<div class="form-group">
+			<label>{{ form.category.label }}</label>
+			{{ form.category }}
+			{% if form.category.errors %}
+			<div class="alert alert-danger">
+				{{ form.category.errors }}
+			</div>
+			{% endif %}
+		</div>
+		<div class="form-group">
+			<label>{{ form.start_date.label }}</label>
+			{{ form.start_date }}
+			{% if form.start_date.errors %}
+			<div class="alert alert-danger">
+				{{ form.start_date.errors }}
+			</div>
+			{% endif %}
+		</div>
+		<div class="form-group">
+			<label>{{ form.end_date.label }}</label>
+			{{ form.end_date }}
+			{% if form.end_date.errors %}
+			<div class="alert alert-danger">
+				{{ form.end_date.errors }}
+			</div>
+			{% endif %}
+		</div>
+		<div class="form-group">
+			<label>{{ form.deadline_date.label }}</label>
+			{{ form.deadline_date }}
+			{% if form.deadline_date.errors %}
+			<div class="alert alert-danger">
+				{{ form.deadline_date.errors }}
+			</div>
+			{% endif %}
+		</div>
+		<div class="form-group">
+			<label>{{ form.show_deadline.label }}</label>
+			{{ form.show_deadline }}
+			{% if form.show_deadline.errors %}
+			<div class="alert alert-danger">
+				{{ form.show_deadline.errors }}
+			</div>
+			{% endif %}
+		</div>
+		<div class="form-group">
+			<label>{{ form.visible.label }}</label>
+			{{ form.visible }}
+			{% if form.visible.errors %}
+			<div class="alert alert-danger">
+				{{ form.visible.errors }}
+			</div>
+			{% endif %}
+		</div>
+		<div class="form-group">
+			<label>{{ form.content.label }}</label>
+			{{ form.content }}
+			{% if form.content.errors %}
+			<div class="alert alert-danger">
+				{{ form.content.errors }}
+			</div>
+			{% endif %}
+		</div>
+		<input type="submit" name="submit" id="submit" value="Submit" class="btn btn-success pull-right">
+		{{ form.form_valid_message }}
+		{{ form.form_invalid_message }}
+		{% csrf_token %}
+	</form>
+	</div>
+    </div>
+</div>
+
+{% wysiwyg_editor "foo" %}
+
+<div class="row">
+	<div class="col col-sm-12">
+		<div class="container">
+			<h3>Tulevat tiedotteet</h3>
+			<table class="table">
+			<thead>
+				<th>nro</th>
+				<th>Aihe</th>
+				<th>Kategoria</th>
+				<th>Alkaa</th>
+				<th>Loppuu</th>
+				<th>Deadline</th>
+				<th>Uusi</th>
+				<th>Näytetään</th>
+				<th>Muokkaa</th>
+				<th>Poista</th>
+			</thead>
+			<tbody>
+			{% for m in upcoming_messages %}
+			<tr {% if m.is_active %}class="success"{% else %}class="danger"{% endif %}>
+				<td>{{ m.pk }}</td>
+				<td>{{ m.header }}</td>
+				<td>{{ m.category }}</td>
+				<td>{{ m.start_date|date:"d.m.y" }}</td>
+				<td>{{ m.end_date|date:"d.m.y" }}</td>
+				<td>{{ m.deadline_date|date:"d.m.y" }}</td>
+				<td>{{ m.is_new }}</td>
+				<td>{{ m.is_active }}</td>
+				<td><a href="/editor/{{ m.pk }}"><button class="btn btn-info"><span class="glyphicon glyphicon-edit"></span></button></a></td>
+				<td><a href="/delete/{{ m.pk }}"><button class="btn btn-danger confirm"><span class="glyphicon glyphicon-remove"></span></button></a></td>
+			</tr>
+			{% endfor %}
+			</tbody>
+			</table>
+			
+			<h3>Nykyiset tiedotteet</h3>
+			<table class="table">
+			<thead>
+				<th>nro</th>
+				<th>Aihe</th>
+				<th>Kategoria</th>
+				<th>Alkaa</th>
+				<th>Loppuu</th>
+				<th>Deadline</th>
+				<th>Uusi</th>
+				<th>Näytetään</th>
+				<th>Muokkaa</th>
+				<th>Poista</th>
+			</thead>
+			<tbody>
+			{% for m in messages %}
+			{% if m.is_current %}
+			<tr {% if m.is_active %}class="success"{% else %}class="danger"{% endif %}>
+				<td>{{ m.pk }}</td>
+				<td>{{ m.header }}</td>
+				<td>{{ m.category }}</td>
+				<td>{{ m.start_date|date:"d.m.y" }}</td>
+				<td>{{ m.end_date|date:"d.m.y" }}</td>
+				<td>{{ m.deadline_date|date:"d.m.y" }}</td>
+				<td>{{ m.is_new }}</td>
+				<td>{{ m.is_active }}</td>
+				<td><a href="/editor/{{ m.pk }}"><button class="btn btn-info"><span class="glyphicon glyphicon-edit"></span></button></a></td>
+				<td><a href="/delete/{{ m.pk }}"><button class="btn btn-danger confirm"><span class="glyphicon glyphicon-remove"></span></button></a></td>
+			</tr>
+			{% endif %}
+			{% endfor %}
+			</tbody>
+			</table>
+			
+			<h3>Vanhat tiedotteet</h3>
+			<table class="table">
+			<thead>
+				<th>nro</th>
+				<th>Aihe</th>
+				<th>Kategoria</th>
+				<th>Alkaa</th>
+				<th>Loppuu</th>
+				<th>Deadline</th>
+				<th>Uusi</th>
+				<th>Näytetään</th>
+				<th>Muokkaa</th>
+				<th>Poista</th>
+			</thead>
+			<tbody>
+			{% for m in old_messages %}
+			<tr {% if m.is_active %}class="success"{% else %}class="danger"{% endif %}>
+				<td>{{ m.pk }}</td>
+				<td>{{ m.header }}</td>
+				<td>{{ m.category }}</td>
+				<td>{{ m.start_date|date:"d.m.y" }}</td>
+				<td>{{ m.end_date|date:"d.m.y" }}</td>
+				<td>{{ m.deadline_date|date:"d.m.y" }}</td>
+				<td>{{ m.is_new }}</td>
+				<td>{{ m.is_active }}</td>
+				<td><a href="/editor/{{ m.pk }}"><button class="btn btn-info"><span class="glyphicon glyphicon-edit"></span></button></a></td>
+				<td><a href="/delete/{{ m.pk }}"><button class="btn btn-danger confirm"><span class="glyphicon glyphicon-remove"></span></button></a></td>
+			</tr>
+			{% endfor %}
+			</tbody>
+			</table>
+			
+		</div>
+	</div>
+</div>
+
+</body>
+	
+
+{% endblock %}

@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+
+{% load custom_template_tags %}
+
+{% block body %}
+
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="navbar-header">
+    <a id="menu-toggle" class="navbar-toggle" data-toggle=".container">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </a>
+    <a class="navbar-brand" href="#">
+      Prodeko tiedotteet
+    </a>
+  </div>
+</nav>
+
+<div class="container">
+    <div id="sidebar">
+        <ul>
+          {% for c in categories %}
+            <li class="header">
+              <p>{{ c.title }}</p>
+            </li>
+            {% for m in c.visible_messages %}
+              <li>
+                <a href="#{{ m.pk }}">
+                  {% if m.is_new %}
+                    <span class="badge">N</span>
+                  {% endif %}
+                  {{ m.header }}
+                </a>
+              </li>
+            {% endfor %}
+          {% endfor %}
+        </ul>
+    </div>
+    <div class="main-content">
+        <div class="swipe-area"></div>
+        <a href="#" data-toggle=".container" id="sidebar-toggle">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </a>
+        <div class="content">
+
+          <div class="row">
+            <div class="col col-lg-10">
+              <div class="well">
+                <p>
+                  Työpaikkailmoitukset löytyvät Prodekon Forumilta. Mikäli sinulla ei ole tunnuksia Prodekon nettisivuille, ota yhteyttä mediakeisariin: mediakeisari@prodeko.org.
+                </p>
+                <p>
+                  Job advertisements can be found on Prodeko’s Forum. If you don’t have an account, please contact the Minister of Media and Information Technology: mediakeisari@prodeko.org.
+                </p>
+              </div>
+              <div>
+                <p>
+                  <span class="badge">N</span> = julkaistu alle 7 päivää sitten / posted under 7 days ago
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col col-lg-10">
+              <div class="category-divider" category="Sisältö / Content"></div>
+              <h3>Sisältö / Content</h3>
+              <ul class="list-group">
+                {% for c in categories %}
+                  <li class="list-group-item header">{{ c.title }}</li>
+                  {% for m in c.visible_messages %}
+                    <li class="list-group-item">
+                      <a href="#{{ m.pk }}">
+                        <p>
+                          {% if m.is_new %}
+                          <span class="badge">N</span>
+                          {% endif %}
+                          {{ m.header }}
+                          {% if m.deadline_date|is_past and m.show_deadline %}
+                            <i class="text-muted" style="font-size:0.8em;">(DL passed)</i>
+                          {% endif %}
+                        </p>
+                      </a>
+                    </li>
+                  {% endfor %}
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col col-lg-10">
+              {% for c in categories %}
+                <div class="category-divider" category="{{ c.title }}"></div>
+                {% for m in c.visible_messages %}
+                <div id="{{ m.pk }}" class="message-item">
+                  {% if user.is_authenticated %}
+                    <h6><a href="{% url 'tiedotteet:edit' m.pk %}">Muokkaa</a></h6>
+                  {% endif %}
+
+                  <h4 class="message-header">
+                    {{ m.header }}
+                    {% if m.deadline_date|is_past and m.show_deadline %}
+                      <i class="text-muted" style="font-size:0.7em;">(DL passed)</i>
+                    {% endif %}
+                  </h4>
+
+                  {% if m.show_deadline %}
+                    <h6 class="date">DL {{ m.deadline_date|date:"d.m.Y" }}</h6>
+                  {% endif %}
+
+                  <div class="message-content">
+                    {% autoescape off %}{{ m.content|emailaddress }}{% endautoescape %}
+                  </div>
+                </div>
+                {% endfor %}
+              {% endfor %}
+            </div>
+          </div>
+
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

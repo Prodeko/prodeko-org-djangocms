@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+
+{% load custom_template_tags %}
+
+{% block body %}
+
+
+	<nav id="top-menu" class="navbar navbar-default navbar-fixed-top hidden" hoe-color-type="lpanel-bg3">
+		<span id="nav-button" class="hoe-sidebar-toggle"><a href="#"></a></span>
+	</nav>
+	<span id="menu-button" class="hoe-sidebar-toggle"><a href="#"></a></span>
+
+    <div id="hoeapp-wrapper" class="hoe-lpanel" hoe-device-type="desktop">
+        <div id="hoeapp-container" hoe-color-type="lpanel-bg3" hoe-lpanel-effect="shrink">
+            <aside id="hoe-left-panel" hoe-position-type="fixed">
+                <ul class="nav panel-list">
+                    {% if user.is_authenticated %}
+          						<li>Kirjautunut: {{ user }}</li>
+                      <li><a href="/publisher/">Hallinta</a></li>
+          						<li><a href="/logout/">Kirjaudu ulos</a></li>
+                    {% endif %}
+                      <li><a class="contents-text" href="#">Sisältö</a></li>
+          						{% for m in old_messages %}
+          						<li>
+          							<a class="page-scroll" href="#{{ m.pk }}">
+          								<span id="nav{{ m.pk }}" class="menu-text">
+          									{{ m.header }}
+          									{% if m.is_new %}
+          										<span class="glyphicon glyphicon-flag"></span>
+          									{% endif %}
+          									{% if m.deadline_date|is_past and m.show_deadline %}
+          										<span class="glyphicon glyphicon-time"></span>
+          									{% endif %}
+          								</span>
+          								<span class="selected"></span>
+          							</a>
+          						</li>
+          						{% endfor %}
+      				    </ul>
+              </aside>
+
+            <section id="main-content">
+      				<div class="inner-content">
+                          <div class="panel theme-panel">
+      						<div class="panel-body">
+
+      								<div class="row clearfix">
+      									<div class="col col-sm-12">
+                          <h4><a href="/">Etusivu</a></h4>
+
+                          <h5>
+                              <div class="pagination">
+                                  <span class="step-links">
+                                      {% if old_messages.has_previous %}
+                                          <a href="?{{queries.urlencode}}&amp;page={{ old_messages.previous_page_number }}">edellinen</a>
+                                      {% endif %}
+                                      <span class="current">
+                                          Sivu {{ old_messages.number }}/{{ old_messages.paginator.num_pages }}.
+                                      </span>
+                                      {% if old_messages.has_next %}
+                                          <a href="?{{queries.urlencode}}&amp;page={{ old_messages.next_page_number }}">seuraava</a>
+                                      {% endif %}
+                                  </span>
+                              </div>
+                          </h5>
+
+      										<table class="table table-contents">
+                            <thead>
+                              <th>Otsikko</th>
+                              <th>Kategoria</th>
+                              <th class="hidden-xs">Alkanut</th>
+                              <th class="hidden-xs">Poistunut</th>
+                            </thead>
+                            <tbody>
+      													{% for m in old_messages %}
+      														<tr>
+      															<td>
+      																<a class="page-scroll contents-text" id="con{{ m.pk }}" href="#{{ m.pk }}">{{ m.header }}</a>
+      															</td>
+                                    <td>
+      																{{ m.category }}
+      															</td>
+                                    <td class="hidden-xs">
+      																{{ m.start_date|date:"d.m.Y" }}
+      															</td>
+                                    <td class="hidden-xs">
+      																{{ m.end_date|date:"d.m.Y" }}
+      															</td>
+      														</tr>
+      													{% endfor %}
+      											</tbody>
+      										</table>
+      									</div>
+      								</div>
+      						</div>
+      					</div>
+      				</div>
+      				{% for m in old_messages %}
+      					<div id="{{ m.pk }}" class="inner-content">
+      						<div class="panel theme-panel">
+      							<div class="panel-body">
+      								<div class="row clearfix">
+      									<div class="col-md-12 column">
+      										{% if user.is_authenticated %}
+      											<h6><a href="/editor/{{ m.pk }}">Muokkaa</a></h6>
+      										{% endif %}
+      										<h6 class="date">Poistunut tiedotteesta {{ m.end_date }}</h6>
+                          <h4 class="">{{ m.category }}</h4>
+                          <h3 class="message-header">{{ m.header }}</h3>
+      										<div class="message-content">
+      										{% autoescape off %}{{ m.content|emailaddress }}{% endautoescape %}
+      										</div>
+      									</div>
+      								</div>
+      							</div>
+      						</div>
+      					</div>
+                {% endfor %}
+
+              <div class="footer">
+      					<div class="container">
+      						<span class="copyright">&copy; Prodeko ry</span>
+      					</div>
+      				</div>
+
+            </section>
+        </div>
+    </div>
+
+{% endblock %}

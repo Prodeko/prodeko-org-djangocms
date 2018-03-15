@@ -117,15 +117,6 @@ h1 {
 
 /* FRONTPAGE */
 
-.carousel .carousel-item {
-  height: 40vh;
-}
-
-.carousel-item img {
-	height: 40vh;
-	object-fit: contain;
-}
-
 .frontpage-container {
 	padding: 3em 2em 3em 2em;
 }

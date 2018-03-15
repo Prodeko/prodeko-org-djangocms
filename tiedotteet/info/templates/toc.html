@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html lang="fi">
+    <head>
+        <title>Tiedotteet</title>
+    </head>
+    <body>
+        {% for c in categories %}
+        <ul>
+            <li>{{c.title}}</li>
+            <ul>
+                {% for m in c.visible_messages %}
+                <li><a href="../#{{m.id}}">{{ m.header }} {% if m.is_new %}(new){% endif %}</a></li>
+                {% endfor %}
+            </ul>
+        </ul>
+        {% endfor %}
+    </body>
+
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-67979916-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+    <script>
+      document.querySelectorAll('a').forEach(function(a) {
+        a.addEventListener('click', function(e) {
+          e.preventDefault();
+          var html = e.currentTarget.innerHTML || '';
+          var href = e.currentTarget.href || '';
+          ga('send', 'event', 'toc', 'click', html);
+          window.location.href = href;
+        }, false);
+      });
+    </script>
+</html>
+
+

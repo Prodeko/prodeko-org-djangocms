@@ -19,8 +19,13 @@ urlpatterns = [
 
 urlpatterns += i18n_patterns(
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^', include('cms.urls')),
+    url(r'^main', include('cms.urls'))
 )
+
+# ==== tiedotteet.prodeko.org URLS ==== #
+urlpatterns += [
+    url(r'^tiedotteet/', include('tiedotteet.Tiedotteet.urls', namespace='tiedotteet')),
+]
 
 # This is only needed when using runserver.
 if settings.DEBUG:

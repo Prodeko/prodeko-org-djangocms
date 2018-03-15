@@ -1,0 +1,23 @@
+@import 'variables.scss';
+
+#header {
+  height: 8em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3em;
+  /* The image used */
+  background-image: url('../assets/banner.png');
+
+  /* Full height and width */
+  width: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#header span {
+  font-size: 2em;
+}

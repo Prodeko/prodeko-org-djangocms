@@ -1,0 +1,10 @@
+@import 'variables.scss';
+
+.control-button {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  width: 1rem;
+  height: 3rem;
+  background-color: $sidebar-bg;
+}
