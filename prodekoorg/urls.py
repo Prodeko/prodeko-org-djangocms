@@ -8,6 +8,7 @@ from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 from django.contrib.sitemaps.views import sitemap
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.views.generic.base import RedirectView
 from django.views.static import serve
 
 admin.autodiscover()
@@ -15,6 +16,8 @@ admin.autodiscover()
 urlpatterns = [
     url(r'^sitemap\.xml$', sitemap,
         {'sitemaps': {'cmspages': CMSSitemap}}),
+    # Redirects to 'fi/main'
+    url(r'^$', RedirectView.as_view(url='fi/main', permanent=False), name='index')
 ]
 
 urlpatterns += i18n_patterns(
