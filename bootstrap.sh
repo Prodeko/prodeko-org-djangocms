@@ -59,7 +59,6 @@ pip3 install -r /vagrant/requirements.txt
 
 # tasks
 cd /vagrant && python3 manage.py makemigrations --noinput
-cd /vagrant && python3 manage.py makemigrations auth_prodeko --noinput
 cd /vagrant && python3 manage.py migrate
 
 # Creating an admin user
