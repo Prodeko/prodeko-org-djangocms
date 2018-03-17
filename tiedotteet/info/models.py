@@ -52,13 +52,10 @@ class Message(models.Model):
     content = models.TextField()
     pub_date = models.DateTimeField(default=timezone.now)
     category = models.ForeignKey(Category, related_name='messages', null=True)
-    tags = models.ManyToManyField(
-        Tag, related_name='messages', null=True, blank=True)
+    tags = models.ManyToManyField(Tag, related_name='messages', null=True, blank=True)
     start_date = models.DateField(default=timezone.now)
-    end_date = models.DateField(
-        default=timezone.now().date() + timedelta(days=7))
-    deadline_date = models.DateField(default=timezone.now(
-    ).date() + timedelta(days=7), blank=True, null=True)
+    end_date = models.DateField(default=timezone.now().date() + timedelta(days=7))
+    deadline_date = models.DateField(default=timezone.now().date() + timedelta(days=7), blank=True, null=True)
     show_deadline = models.BooleanField(default=False)
     visible = models.BooleanField(default=True)
 

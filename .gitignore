@@ -74,7 +74,7 @@ prodekoorg/collected-static
 
 *.db
 
-tiedotteet/public
+tiedotteet/static/
 node_modules/
 yarn.lock
 dist/

@@ -11,6 +11,8 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.views.generic.base import RedirectView
 from django.views.static import serve
 
+from prodekoorg import views
+
 admin.autodiscover()
 
 urlpatterns = [
@@ -28,6 +30,8 @@ urlpatterns += i18n_patterns(
 # ==== tiedotteet.prodeko.org URLS ==== #
 urlpatterns += [
     url(r'^tiedotteet/', include('tiedotteet.Tiedotteet.urls', namespace='tiedotteet')),
+    url(r'^', include('django.contrib.auth.urls')),
+    url(r'^accounts/profile', views.profile, name='profile'),
 ]
 
 # This is only needed when using runserver.

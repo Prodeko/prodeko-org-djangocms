@@ -1,0 +1,33 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="fi">
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+    <title>Tiedotteet</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1e3553">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="manifest" href="{% static 'manifest.json'%}">
+    <link rel="icon" href="{% static 'assets/icon72.png'%}">
+    <link rel="icon" href="{% static 'assets/icon72.png'%}">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,600" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'style_rh3mp9.css'%}">
+    <script>
+      window.csrfToken = "{{csrf_token}}";
+      window.user = "{{user}}";
+      window.isAdmin = "{{user.is_superuser}}" === "True";
+    </script>
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-67979916-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+  </head>
+  <body>
+    <noscript>This site requires JavaScript turned on</noscript>
+    <div id="root"></div>
+    <script type="text/javascript" src="{% static 'app.bundle_rh3mp9.js' %}"></script>
+  </body>
+</html>

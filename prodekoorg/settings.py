@@ -34,6 +34,9 @@ DB_PSWD = config['DB']['PASSWORD']
 # Application definition
 ROOT_URLCONF = 'prodekoorg.urls'
 
+# Django moel used for authentication
+AUTH_USER_MODEL = 'auth_prodeko.User'
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 LANGUAGE_CODE = 'fi'
@@ -115,6 +118,8 @@ INSTALLED_APPS = (
     'django.contrib.sitemaps',
     'django.contrib.staticfiles',
     'django.contrib.messages',
+    # auth_prodeko needs to be above 'cms'
+    'auth_prodeko',
     'cms',
     'menus',
     'sekizai',

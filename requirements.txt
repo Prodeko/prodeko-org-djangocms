@@ -27,7 +27,7 @@ mysqlclient
 # tiedotteet.prodeko.org requirements
 futures==2.1.6
 django-wysiwyg
-django-ckeditor==4.5.1
+django-ckeditor
 djangorestframework==3.6
 markdown
 django-filter
