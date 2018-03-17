@@ -49,10 +49,12 @@ echo mysql-server mysql-server/root_password_again select "vagrant" | debconf-se
 apt-get install -y mysql-server-5.7 libmysqlclient-dev
 
 # create database
-mysql -uroot -pvagrant -e "DROP USER 'prodekoorg'@'localhost'; FLUSH PRIVILEGES; CREATE USER 'prodekoorg'@'localhost' IDENTIFIED BY 'prodekoorg';"
+mysql -uroot -pvagrant -e "DROP USER IF EXISTS 'prodekoorg'@'localhost';"
+mysql -uroot -pvagrant -e "FLUSH PRIVILEGES;"
+mysql -uroot -pvagrant -e "CREATE USER 'prodekoorg'@'localhost' IDENTIFIED BY 'prodekoorg';"
 mysql -uroot -pvagrant -e "GRANT ALL PRIVILEGES on *.* TO 'prodekoorg'@'localhost';"
-mysql -uroot -pvagrant -e "DROP DATABASE prodekoorg; CREATE DATABASE prodekoorg;"
-
+mysql -uroot -pvagrant -e "DROP DATABASE IF EXISTS prodekoorg;"
+mysql -uroot -pvagrant -e "CREATE DATABASE prodekoorg;"
 
 # --- Required python modules ---
 pip3 install -r /vagrant/requirements.txt
