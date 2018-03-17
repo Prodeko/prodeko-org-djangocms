@@ -1,4 +1,5 @@
 {% load i18n menu_tags %}
+{% get_current_language as LANGUAGE_CODE %}
 
 <nav class="navbar navbar-dark navbar-expand-md sticky-top prodeko-navbar">
 <div class="container">
@@ -39,9 +40,9 @@
 		<ul class="navbar-nav ml-auto">
 			<li class="nav-item">
 					{# The template variable LANGUAGES is a list of tuples: [('FI', 'FINNISH'), ('EN', 'ENGLISH')]#}
-					<a class="" href="{% page_language_url LANGUAGES.0.0 %}">{{ LANGUAGES.0.0 }}</a>
+					<a class="{% if LANGUAGE_CODE == 'fi' %}lang{% endif %}" href="{% page_language_url LANGUAGES.0.0 %}">{{ LANGUAGES.0.0 }}</a>
 					<span>/</span>
-					<a class="" href="{% page_language_url LANGUAGES.1.0 %}">{{ LANGUAGES.1.0 }}</a>
+					<a class="{% if LANGUAGE_CODE == 'en' %}lang{% endif %}" href="{% page_language_url LANGUAGES.1.0 %}">{{ LANGUAGES.1.0 }}</a>
 			</li>
 		</ul>
 	</div>

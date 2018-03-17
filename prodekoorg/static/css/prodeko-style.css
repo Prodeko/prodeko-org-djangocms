@@ -57,6 +57,10 @@ h1 {
 	padding-top: 1em;
 }
 
+.lang {
+  text-decoration: underline;
+}
+
 #prodeko-logo {
 	background-image: url('/static/images/prodeko-logo-white.png');
 	background-size: contain;
