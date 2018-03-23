@@ -3,16 +3,11 @@
 {% load menu_tags %}
 {% block content %}
 
-<div class="jumbotron jumbotron-fluid content-page-jumbotron">
-	<div class="container d-flex h-100 align-items-center">
-		<h1 class="display-3">{% block title %}{% page_attribute "page_title" %}{% endblock title %}</h1>
-	</div>
-</div>
-
+{% include "layout-components/jumbotron.html" %}
 
 <div class="container page-container">
 
-{% include "contentpage/breadcrumb.html" %}
+{% include "layout-components/breadcrumb.html" %}
 
 	<div class="row">
 		<div class="col-md-6">

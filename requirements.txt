@@ -32,3 +32,6 @@ djangorestframework==3.6
 markdown
 django-filter
 django-cors-headers
+
+# Galleria
+imagestore

@@ -25,6 +25,10 @@ h1 {
 	font-size: 3.5rem;
 }
 
+.display-block {
+	display: block !important;
+}
+
 .font-raleway {
 	font-family: Raleway, Helvetica, sans-serif;
 }
@@ -76,7 +80,6 @@ h1 {
 	background-size: cover;
 	background-repeat: no-repeat;
 	height: 30vh;
-
 	margin-bottom: 0;
 }
 
@@ -189,4 +192,71 @@ h1 {
 	.network-img-container img {
 		width: 6em;
 	}
+}
+
+
+/* GALLERY */
+
+.gallery-page-jumbotron {
+	background-image: url('/static/images/content-page-bg-blue.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	margin-bottom: 0;
+}
+
+.gallery-page-jumbotron h1 {
+	color: white;
+}
+
+.gallery-container {
+	padding: 1em 1em 2.5em 1em;
+}
+
+.gallery-container h1 {
+	font-size: xx-large;
+}
+
+.gallery-container h2 {
+	font-size: x-large;
+}
+
+.gallery-container h3 {
+	font-size: large;
+}
+
+.gallery-content {
+	text-align: center;
+}
+
+.gallery-content #image-thumbnails {
+	margin-top: 1.8em;
+}
+
+.gallery-content > h1, .gallery-content > h2 {
+	display: none;
+}
+
+.gallery-content #image-view {
+	margin-right: 0;
+	margin-bottom: 2em;
+}
+
+.gallery-content #image-view .preview {
+	max-height: 40vh;
+}
+
+.gallery-content .upload-image {
+	margin-top: 2em;
+}
+
+.gallery-content-related .tagging, .gallery-content-related #tag-cloud {
+	display: none;
+}
+
+.gallery-content-related .user-info {
+	display: none;
+}
+
+.gallery-content-related #controls {
+	margin-top: 3em;
 }
