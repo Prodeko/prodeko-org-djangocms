@@ -8,13 +8,17 @@
 		{% render_block "css" %}
 		{% render_block "custom-css" %}
 		{% render_block "custom-js" %}
+		
+		{% block head %}
+		{% endblock head %}
 	</head>
 	<body>
 
 		{% cms_toolbar %}
 
 		{% show_menu 0 100 100 100 "layout-components/navbar.html" %}
-		{% block content %}{% endblock content %}
+		{% block gallery-content %}
+		{% endblock gallery-content %}
 		{% include "layout-components/footer.html" %}
 
 		{% render_block "js" %}
@@ -34,4 +38,5 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<script type="text/javascript" src="{% static 'js/gallery-custom.js' %}"></script>
 {% endaddtoblock %}
