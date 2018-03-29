@@ -24,7 +24,7 @@ urlpatterns = [
 
 urlpatterns += i18n_patterns(
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^main', include('cms.urls'))
+    url(r'^main/', include('cms.urls'))
 )
 
 # ==== tiedotteet.prodeko.org URLS ==== #
