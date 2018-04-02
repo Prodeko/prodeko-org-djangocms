@@ -34,10 +34,6 @@ urlpatterns += [
     url(r'^accounts/profile', views.profile, name='profile'),
 ]
 
-# Galleria
-urlpatterns += [
-    url(r'^gallery/', include('imagestore.urls', namespace='imagestore')),
-]
 
 # This is only needed when using runserver.
 if settings.DEBUG:

@@ -80,7 +80,6 @@ TEMPLATES = [
                 'sekizai.context_processors.sekizai',
                 'django.template.context_processors.static',
                 'cms.context_processors.cms_settings',
-                'imagestore.context_processors.imagestore_processor',
             ],
             'loaders': [
                 'django.template.loaders.filesystem.Loader',
@@ -142,10 +141,6 @@ INSTALLED_APPS = (
     'ckeditor',
     'rest_framework',
     'corsheaders',
-    # galleria
-    'imagestore',
-    'sorl.thumbnail',
-    'tagging',
 )
 
 LANGUAGES = (
@@ -232,9 +227,3 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
     )
 }
-
-# Galleria
-
-IMAGESTORE_TEMPLATE = "gallery/gallery.html"
-IMAGESTORE_SHOW_USER = False
-IMAGESTORE_LOAD_CSS = True

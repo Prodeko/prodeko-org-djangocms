@@ -34,4 +34,7 @@ django-filter
 django-cors-headers
 
 # Galleria
-imagestore
+# imagestore
+
+# Galleria 2
+# django-photologue
