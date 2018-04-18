@@ -109,6 +109,7 @@ MIDDLEWARE = (
 )
 
 INSTALLED_APPS = (
+    # Django defaults
     'djangocms_admin_style',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -118,8 +119,10 @@ INSTALLED_APPS = (
     'django.contrib.sitemaps',
     'django.contrib.staticfiles',
     'django.contrib.messages',
+    # ------------------------
     # auth_prodeko needs to be above 'cms'
     'auth_prodeko',
+    # ------------------------
     'cms',
     'menus',
     'sekizai',
@@ -127,6 +130,7 @@ INSTALLED_APPS = (
     'djangocms_text_ckeditor',
     'filer',
     'easy_thumbnails',
+    # Django CMS plugins
     'djangocms_column',
     'djangocms_file',
     'djangocms_link',
@@ -135,13 +139,17 @@ INSTALLED_APPS = (
     'djangocms_snippet',
     'djangocms_video',
     'prodekoorg',
+    # ------------------------
     # tiedotteet.prodeko.org
     'tiedotteet',
     'django_wysiwyg',
     'ckeditor',
     'rest_framework',
     'corsheaders',
+    # ------------------------
 )
+
+'''Language settings'''
 
 LANGUAGES = (
     ('fi', _('Finnish')),
@@ -173,6 +181,8 @@ CMS_LANGUAGES = {
         },
     ],
 }
+
+'''CMS template registration'''
 
 CMS_TEMPLATES = (
     ('contentpage/content-page.html', 'Content page'),
@@ -207,20 +217,40 @@ THUMBNAIL_PROCESSORS = (
     'easy_thumbnails.processors.filters'
 )
 
-# tiedotteet.prodeko.org
+'''Django filer settings'''
+
+FILER_STORAGES = {
+    'public': {
+        'main': {
+            'ENGINE': 'filer.storage.PublicFileSystemStorage',
+            'OPTIONS': {
+                'location': os.path.join(BASE_DIR, 'prodekoorg/media/filer'),
+                'base_url': '/media/filer/',
+            },
+            'UPLOAD_TO': 'filer.utils.generate_filename.by_date',
+            'UPLOAD_TO_PREFIX': 'filer_public',
+        },
+        'thumbnails': {
+            'ENGINE': 'filer.storage.PublicFileSystemStorage',
+            'OPTIONS': {
+                'location': os.path.join(BASE_DIR, 'prodekoorg/media/filer_thumbnails'),
+                'base_url': '/media/filer_thumbnails/',
+            },
+        },
+    },
+}
+
+
+'''tiedotteet.prodeko.org settings'''
 
 SESSION_SAVE_EVERY_REQUEST = True
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False
 SESSION_COOKIE_AGE = 60 * 60 * 24 * 30  # 30 days
 
 LOGIN_URL = '/login/'
-
 CKEDITOR_UPLOAD_PATH = "tiedotteet/uploads/"
-
 DJANGO_WYSIWYG_FLAVOR = "ckeditor"
-
 CORS_ORIGIN_ALLOW_ALL = True
-
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.BasicAuthentication',

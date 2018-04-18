@@ -22,12 +22,13 @@ urlpatterns = [
     url(r'^$', RedirectView.as_view(url='fi/main', permanent=False), name='index')
 ]
 
+# ==== Localization and internationalization ==== #
 urlpatterns += i18n_patterns(
     url(r'^admin/', include(admin.site.urls)),
     url(r'^main/', include('cms.urls'))
 )
 
-# ==== tiedotteet.prodeko.org URLS ==== #
+# ==== tiedotteet.prodeko.org ==== #
 urlpatterns += [
     url(r'^tiedotteet/', include('tiedotteet.Tiedotteet.urls', namespace='tiedotteet')),
     url(r'^', include('django.contrib.auth.urls')),

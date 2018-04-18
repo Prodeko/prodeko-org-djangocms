@@ -11,7 +11,7 @@
 		</button>
 
 		<div class="collapse navbar-collapse" id="collapsibleNavbar">
-			<ul class="navbar-nav">
+			<ul class="navbar-nav mr-auto">
 					{% for child in children %}
 				<!-- no child pages  -->
 						{% if child.is_leaf_node %}
@@ -38,19 +38,32 @@
 					{% endfor %}
 				<!-- /end for child -->
 			</ul>
-			<ul class="navbar-nav ml-auto">
-				<li class="nav-item">
-					<form class="navbar-nav form-inline mr-4">
-				    <div class="input-group">
-							<input class="form-control search" type="search" placeholder="{% if LANGUAGE_CODE == 'fi' %}Hae{% else %}Search{% endif %}" aria-label="Search">
-							<div class="input-group-append">
-								<span class="input-group-text"><i class="fas fa-search"></i></span>
-				  		</div>
-				    </div>
-					</form>
-				</li>
+			<ul class="navbar-nav py-2">
+				<li class="nav-item dropdown">
+					<button class="btn btn-light dropdown-toggle mr-4" type="button" data-toggle="dropdown">
+							{% if LANGUAGE_CODE == 'fi' %}
+								Kirjaudu
+							{% else %}
+								Login
+							{% endif %}
+					<span class="caret"></span>
+					</button>
+					<ul class="login-dropdown dropdown-menu dropdown-menu-right p-3">
+						<form class="form" role="form" method="post" action="login" accept-charset="UTF-8">
+							<div class="form-group">
+								 <input type="email" class="form-control" id="email" placeholder="{% if LANGUAGE_CODE == 'fi' %}Sähköposti{% else %}Email address{% endif %}" required>
+							</div>
+							<div class="form-group">
+								 <input type="password" class="form-control" id="password" placeholder="{% if LANGUAGE_CODE == 'fi' %}Salasana{% else %}Password{% endif %}" required>
+	               <div class="form-text text-left forgot-password"><a href="">{% if LANGUAGE_CODE == 'fi' %}Unohditko salasanan?{% else %}Forgot the password?{% endif %}</a></div>
+							</div>
+							<div class= "form-group">
+								 <button type="submit" class="btn btn-success btn-block">{% if LANGUAGE_CODE == 'fi' %}Kirjaudu{% else %}Sign in{% endif %}</button>
+							</div>
+					 </form>
+				</ul>
 			</ul>
-			<ul class="navbar-nav">
+			<ul class="navbar-nav py-2">
 				<li class="nav-item nav-lang">
 					{# The template variable LANGUAGES is a list of tuples: [('FI', 'FINNISH'), ('EN', 'ENGLISH')]#}
 					<a class="{% if LANGUAGE_CODE == 'fi' %}lang{% endif %} no-animation" href="{% page_language_url LANGUAGES.0.0 %}">{{ LANGUAGES.0.0 }}</a>
