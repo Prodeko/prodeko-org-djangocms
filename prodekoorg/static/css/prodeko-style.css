@@ -10,7 +10,6 @@ Tags: bootstrap
 Prodekon vaaleansininen: #0053a0
 Prodeokn keskisininen: #002e7d
 Prodekon tummansininen: #002851
-
 */
 
 
@@ -89,7 +88,7 @@ Credits: http://tobiasahlin.com/blog/css-trick-animating-link-underlines/
 /* End animated underlines*/
 
 
-/* Keep FI / EN in the same row */
+/* Keep 'FI/EN' in the same row */
 .prodeko-navbar #collapsibleNavbar .nav-lang {
 	white-space: nowrap;
 }
@@ -114,6 +113,10 @@ Credits: http://tobiasahlin.com/blog/css-trick-animating-link-underlines/
 	border-radius: 20px;
 }
 
+/*for prettify look*/
+body {
+    padding: 1em;
+}
 
 #prodeko-logo {
 	background-image: url('/static/images/prodeko-logo-white.png');
@@ -194,6 +197,23 @@ Credits: http://tobiasahlin.com/blog/css-trick-animating-link-underlines/
   justify-content: center;
   flex-direction: column;
   text-align: center;
+}
+
+/* DOCUMENTS PAGE */
+
+#documents-container a.btn {
+	font-size: 1.5em;
+	background-color: #002e7d;
+	border-color: grey;
+}
+
+#documents-container .fa-chevron-down {
+  transition: all 0.3s ease-in-out;
+}
+
+#documents-container .collapsed .fa-chevron-down  {
+	transform:rotate(-90deg);
+  transition: all 0.4s ease-in-out;
 }
 
 /* FOOTER */

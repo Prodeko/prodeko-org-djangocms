@@ -28,6 +28,11 @@ urlpatterns += i18n_patterns(
     url(r'^main/', include('cms.urls'))
 )
 
+# ==== Django filer ==== #
+urlpatterns += [
+    url(r'^', include('filer.server.urls')),
+]
+
 # ==== tiedotteet.prodeko.org ==== #
 urlpatterns += [
     url(r'^tiedotteet/', include('tiedotteet.Tiedotteet.urls', namespace='tiedotteet')),
@@ -35,6 +40,10 @@ urlpatterns += [
     url(r'^accounts/profile', views.profile, name='profile'),
 ]
 
+# ==== app_poytakirjat ==== #
+urlpatterns += [
+    url(r'^', include('prodekoorg.app_poytakirjat.urls', namespace='app_poytakirjat')),
+]
 
 # This is only needed when using runserver.
 if settings.DEBUG:
