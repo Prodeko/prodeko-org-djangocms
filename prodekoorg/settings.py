@@ -76,7 +76,8 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'prodekoorg', 'templates'),
                  os.path.join(BASE_DIR, 'tiedotteet/info', 'templates'),
-                 os.path.join(BASE_DIR, 'tiedotteet', 'public')],
+                 os.path.join(BASE_DIR, 'tiedotteet', 'public'),
+                 os.path.join(BASE_DIR, 'prodekoorg/app_toimarit', 'templates')],
         'OPTIONS': {
             'context_processors': [
                 'django.contrib.auth.context_processors.auth',
@@ -158,6 +159,7 @@ INSTALLED_APPS = (
     'corsheaders',
     # ------------------------
     'prodekoorg.app_poytakirjat',
+    'prodekoorg.app_toimarit',
 )
 
 '''Language settings'''

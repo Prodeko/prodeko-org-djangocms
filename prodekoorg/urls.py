@@ -8,10 +8,11 @@ from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 from django.contrib.sitemaps.views import sitemap
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-from django.views.generic.base import RedirectView
+from django.views.generic.base import RedirectView, TemplateView
 from django.views.static import serve
 
 from prodekoorg import views
+from prodekoorg.app_toimarit.views import *
 
 admin.autodiscover()
 
@@ -21,6 +22,13 @@ urlpatterns = [
     # Redirects to 'fi/main'
     url(r'^$', RedirectView.as_view(url='fi/main', permanent=False), name='index')
 ]
+
+# ==== app_toimarit ==== #
+urlpatterns += [
+    #Must be before admin urls
+   url(r'^admin/toimarit/csvupload$', TemplateView.as_view(template_name='admin/uploadcsv.html'), name='uploadcsv'),
+   url(r'^admin/toimarit/postcsv$', postcsv, name='postcsv'),
+ ]
 
 # ==== Localization and internationalization ==== #
 urlpatterns += i18n_patterns(
