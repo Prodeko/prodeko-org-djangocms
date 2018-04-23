@@ -1,17 +1,17 @@
-from django.http import HttpResponse
-from .models import Toimari
-from django.conf.urls import url
-from django.contrib import admin, messages
-from django.core.files import File
-from django.shortcuts import redirect
-from django.urls import reverse
-from django.contrib.admin.views.decorators import staff_member_required
 import csv
 import io
 
+from django.conf.urls import url
+from django.contrib import admin, messages
+from django.contrib.admin.views.decorators import staff_member_required
+from django.core.files import File
+from django.http import HttpResponse
+from django.shortcuts import redirect
+from django.urls import reverse
 from prodekoorg.app_toimarit.models import *
 
-# Create your views here.
+from .models import Toimari
+
 
 @staff_member_required
 def postcsv(request):
@@ -25,7 +25,7 @@ def postcsv(request):
             nextRow.sukunimi = line[1]
             nextRow.virka = line[2]
             nextRow.jaosto = line[3]
-            #Hallituskohtaiset
+            # Hallituskohtaiset
             nextRow.virka_eng = line[4]
             nextRow.puhelin = line[5]
             nextRow.sahkoposti = line[6]

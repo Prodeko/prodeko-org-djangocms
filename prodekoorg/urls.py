@@ -10,7 +10,6 @@ from django.contrib.sitemaps.views import sitemap
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.views.generic.base import RedirectView, TemplateView
 from django.views.static import serve
-
 from prodekoorg import views
 from prodekoorg.app_toimarit.views import *
 
@@ -25,10 +24,10 @@ urlpatterns = [
 
 # ==== app_toimarit ==== #
 urlpatterns += [
-    #Must be before admin urls
-   url(r'^admin/toimarit/csvupload$', TemplateView.as_view(template_name='admin/uploadcsv.html'), name='uploadcsv'),
-   url(r'^admin/toimarit/postcsv$', postcsv, name='postcsv'),
- ]
+    # Must be before admin urls
+    url(r'^admin/toimarit/csvupload$', TemplateView.as_view(template_name='admin/uploadcsv.html'), name='uploadcsv'),
+    url(r'^admin/toimarit/postcsv$', postcsv, name='postcsv'),
+]
 
 # ==== Localization and internationalization ==== #
 urlpatterns += i18n_patterns(
@@ -58,4 +57,4 @@ if settings.DEBUG:
     urlpatterns = [
         url(r'^media/(?P<path>.*)$', serve,
             {'document_root': settings.MEDIA_ROOT, 'show_indexes': True}),
-        ] + staticfiles_urlpatterns() + urlpatterns
+    ] + staticfiles_urlpatterns() + urlpatterns
