@@ -12,6 +12,9 @@ ln -sf /usr/bin/python3.5 /usr/bin/python
 # install pip
 apt-get install -y python3-pip
 
+# fixes pip 'locale.Error: unsupported locale setting' error
+export LC_ALL=C
+
 # --- apache ---
 
 # install packages
