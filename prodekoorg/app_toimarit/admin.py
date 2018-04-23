@@ -13,7 +13,6 @@ from prodekoorg.app_toimarit.models import *
 from .models import Toimari
 
 
-
 @admin.register(Toimari)
 class ToimariAdmin(admin.ModelAdmin):
     list_display = ('etunimi', 'sukunimi', 'virka', 'virka_eng', 'jaosto', 'puhelin', 'sahkoposti')

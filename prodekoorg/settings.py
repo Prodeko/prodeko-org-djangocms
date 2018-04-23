@@ -63,7 +63,6 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'prodekoorg', 'collected-static')
 
 
-
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'prodekoorg', 'static'),
     # tiedotteet.prodeko.org
@@ -77,7 +76,8 @@ TEMPLATES = [
         'DIRS': [os.path.join(BASE_DIR, 'prodekoorg', 'templates'),
                  os.path.join(BASE_DIR, 'tiedotteet/info', 'templates'),
                  os.path.join(BASE_DIR, 'tiedotteet', 'public'),
-                 os.path.join(BASE_DIR, 'prodekoorg/app_toimarit', 'templates')],
+                 os.path.join(BASE_DIR, 'prodekoorg/app_toimarit', 'templates'),
+                 os.path.join(BASE_DIR, 'prodekoorg/app_kulukorvaus', 'templates'),],
         'OPTIONS': {
             'context_processors': [
                 'django.contrib.auth.context_processors.auth',
@@ -160,6 +160,7 @@ INSTALLED_APPS = (
     # ------------------------
     'prodekoorg.app_poytakirjat',
     'prodekoorg.app_toimarit',
+    'prodekoorg.app_kulukorvaus'
 )
 
 '''Language settings'''
