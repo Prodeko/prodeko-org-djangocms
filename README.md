@@ -26,5 +26,5 @@ $ ls
 
 Komento `vagrant up` käynnistää lokaalin serverin osoitteeseen localhost:9000 (sama kuin 127.0.0.1:9000). Lisäksi bootstrap.sh luo automaattisesti Django superuserin kirjautumista varten.
 
-- Käyttäjä: **admin**
+- Käyttäjä: **webbitiimi@prodeko.rog**
 - Salasana: **kananugetti**
