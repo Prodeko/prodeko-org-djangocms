@@ -1,7 +1,6 @@
 from django.db import models
-from datetime import datetime, timedelta
+from datetime import datetime
 from django.utils import timezone
-from django.utils.encoding import smart_str
 from django.utils.translation import ugettext_lazy as _
 
 

@@ -1,7 +1,7 @@
 from django.contrib import admin
+from django.contrib.admin import SimpleListFilter
 from prodekoorg.app_poytakirjat.models import Dokumentti
 
-from django.contrib.admin import SimpleListFilter
 
 class YearFilter(SimpleListFilter):
     title = 'vuosi'
@@ -16,8 +16,6 @@ class YearFilter(SimpleListFilter):
             return queryset.filter(date__year=self.value())
         else:
             return queryset
-
-
 
 
 class DokumenttiAdmin(admin.ModelAdmin):
