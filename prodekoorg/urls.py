@@ -52,6 +52,11 @@ urlpatterns += [
     url(r'^', include('prodekoorg.app_poytakirjat.urls', namespace='app_poytakirjat')),
 ]
 
+# ==== app_kulukorvaus ==== #
+urlpatterns += [
+    url(r'^', include('prodekoorg.app_kulukorvaus.urls', namespace='app_kulukorvaus')),
+]
+
 # This is only needed when using runserver.
 if settings.DEBUG:
     urlpatterns = [

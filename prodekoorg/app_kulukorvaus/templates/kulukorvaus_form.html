@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load cms_tags %}
+{% block content %}
+
+{% include "layout-components/jumbotron.html" %}
+
+<div class="container kulukorvaus-container">
+
+	{% include "layout-components/breadcrumb.html" %}
+	{% placeholder "content" %}
+
+  <form>
+    {{ form.as_table }}
+    <button type="submit" class="btn btn-primary my-4">Lähetä</button>
+  </form>
+
+</div>
+{% endblock content %}
