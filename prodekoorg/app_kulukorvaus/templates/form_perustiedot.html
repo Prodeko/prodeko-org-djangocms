@@ -1,0 +1,99 @@
+{% load add_class %}
+<h3>Perustiedot</h3>
+<div id="form-perustiedot-wrapper">
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label" for="{{ form_perustiedot.created_by.id_for_label }}">{{ form_perustiedot.created_by.label }}</label>
+    <div class="col-sm-6">
+      {% if not form_perustiedot.created_by.errors and request.POST %}
+        {{ form_perustiedot.created_by|add_class:"is-valid" }}
+      {% else %}
+        {{ form_perustiedot.created_by }}
+      {% endif %}
+    </div>
+    <div class="col-sm-3">
+      {% if form_perustiedot.created_by.errors %}
+        <small class="form-text text-danger">{{ form_perustiedot.created_by.errors.as_text }}</small>
+      {% endif %}
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label" for="{{ form_perustiedot.email.id_for_label }}">{{ form_perustiedot.email.label }}</label>
+    <div class="col-sm-6">
+      {% if not form_perustiedot.email.errors and request.POST %}
+        {{ form_perustiedot.email|add_class:"is-valid" }}
+      {% else %}
+        {{ form_perustiedot.email }}
+      {% endif %}
+    </div>
+    <div class="col-sm-3">
+      {% if form_perustiedot.email.errors %}
+        <small class="form-text text-danger">{{ form_perustiedot.email.errors.as_text }}</small>
+      {% endif %}
+    </div>
+  </div>
+  <fieldset class="form-group">
+    <div class="row">
+      <legend class="col-form-label col-sm-3 pt-0">{{ form_perustiedot.position_in_guild.label }}</legend>
+      <div class="col-sm-6">
+        {% for choice in form_perustiedot.position_in_guild %}
+        <div class="form-check">
+          {{ choice.tag|add_class:'form-check-input' }}
+          <label class="form-check-label" for="{{ form_perustiedot.position_in_guild.auto_id }}_{{ forloop.counter0 }}">
+            {{ choice.choice_label }}
+          </label>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="col-sm-3">
+        {% if form.position_in_guild.errors %}
+          <small class="form-text text-danger">{{ form.position_in_guild.errors.as_text }}</small>
+        {% endif %}
+      </div>
+    </div>
+  </fieldset>
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label" for="{{ form_perustiedot.phone_number.id_for_label }}">{{ form_perustiedot.phone_number.label }}</label>
+    <div class="col-sm-6">
+      {% if not form_perustiedot.phone_number.errors and request.POST %}
+        {{ form_perustiedot.phone_number|add_class:"is-valid" }}
+      {% else %}
+        {{ form_perustiedot.phone_number }}
+      {% endif %}
+    </div>
+    <div class="col-sm-3">
+      {% if form_perustiedot.phone_number.errors %}
+        <small class="form-text text-danger">{{ form_perustiedot.phone_number.errors.as_text }}</small>
+      {% endif %}
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label" for="{{ form_perustiedot.bank_number.id_for_label }}">{{ form_perustiedot.bank_number.label }}</label>
+    <div class="col-sm-6">
+      {% if not form_perustiedot.bank_number.errors and request.POST %}
+        {{ form_perustiedot.bank_number|add_class:"is-valid" }}
+      {% else %}
+        {{ form_perustiedot.bank_number }}
+      {% endif %}
+    </div>
+    <div class="col-sm-3">
+      {% if form_perustiedot.bank_number.errors %}
+        <small class="form-text text-danger">{{ form_perustiedot.bank_number.errors.as_text }}</small>
+      {% endif %}
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label" for="{{ form_perustiedot.bic.id_for_label }}">{{ form_perustiedot.bic.label }}</label>
+    <div class="col-sm-6">
+      {% if not form_perustiedot.bic.errors and request.POST %}
+        {{ form_perustiedot.bic|add_class:"is-valid" }}
+      {% else %}
+        {{ form_perustiedot.bic }}
+      {% endif %}
+    </div>
+    <div class="col-sm-3">
+      {% if form_perustiedot.bic.errors %}
+        <small class="form-text text-danger">{{ form_perustiedot.bic.errors.as_text }}</small>
+      {% endif %}
+    </div>
+  </div>
+</div>

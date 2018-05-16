@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load cms_tags sekizai_tags %}
+{% block content %}
+
+{% include "layout-components/jumbotron.html" %}
+
+<div class="container kulukorvaus-container">
+
+	{% include "layout-components/breadcrumb.html" %}
+	{% placeholder "content" %}
+
+  <form method="POST" novalidate enctype="multipart/form-data" id="form_kulu">
+		{% csrf_token %}
+		{% include "form_empty_and_management.html" %}
+
+		<div class="forms">
+			{% include "form_perustiedot.html" %}
+			{% include "form_kulukorvaus.html" with form=formset_kulu %}
+		</div>
+
+		<div class="my-4">
+			<button type="button" data-formset-add-form class="add-kulukorvaus btn btn-default">
+				<span class="mr-1 fa fa-plus"></span>
+				Lisää
+			</button>
+		</div>
+		<h3 class="mt-3">Yhteensä</h3>
+	  <div class="form-group row">
+	    <div class="col-sm-10">
+	      <button type="submit" class="btn btn-primary my-2">Lähetä</button>
+	    </div>
+	  </div>
+	</form>
+</div>
+
+{% addtoblock "js" %}
+<script src="/static/js/kulukorvaus-custom.js"></script>
+{% endaddtoblock %}
+
+{% endblock content %}

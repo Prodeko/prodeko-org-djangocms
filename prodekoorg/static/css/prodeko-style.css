@@ -266,6 +266,14 @@ body {
 	}
 }
 
+/* KULUKORVAUS */
+.kulukorvaus-container .fa-plus {
+    color: green;
+}
+
+.kulukorvaus-container .fa-minus {
+    color: red;
+}
 
 /* GALLERY */
 

@@ -1,0 +1,10 @@
+{{ formset_kulu.management_form }}
+<fieldset disabled class="empty-form d-none">
+  <fieldset>
+    {% include "form_kulukorvaus.html" with form=empty_form %}
+    <button type="button" data-formset-remove-form class="del-kulukorvaus btn btn-default">
+      <span class="mr-1 fa fa-minus"></span>
+      Poista
+    </button>
+  </fieldset>
+</fieldset>

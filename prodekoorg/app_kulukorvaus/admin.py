@@ -20,7 +20,7 @@ class YearFilter(SimpleListFilter):
 
 
 class KulukorvausAdmin(admin.ModelAdmin):
-    list_display = ('created_at', 'created_by', 'explanation')
+    list_display = ('created_at', 'explanation')
     # list_filter = (YearFilter,)
 
 

@@ -1,13 +1,9 @@
-
 # download the package lists from the repositories
 apt-get update
 
-
 # --- python ---
-
 # set default python version to 3.5
 ln -sf /usr/bin/python3.5 /usr/bin/python
-
 
 # install pip
 apt-get install -y python3-pip
@@ -16,7 +12,6 @@ apt-get install -y python3-pip
 export LC_ALL=C
 
 # --- apache ---
-
 # install packages
 apt-get install -y apache2 libapache2-mod-wsgi
 
