@@ -1,5 +1,7 @@
 from django.forms import ModelForm, RadioSelect, Textarea
+
 from .models import Kulukorvaus, KulukorvausPerustiedot
+
 
 class KulukorvausPerustiedotForm(ModelForm):
 
@@ -21,6 +23,7 @@ class KulukorvausPerustiedotForm(ModelForm):
     class Meta:
         model = KulukorvausPerustiedot
         exclude = ['created_by_user']
+        # Override Textarea default height
         widgets = {
             'explanation': Textarea(attrs={'rows': 1, 'cols': 1}),
             'additional_info': Textarea(attrs={'rows': 1, 'cols': 1}),
@@ -38,7 +41,6 @@ class KulukorvausForm(ModelForm):
         self.empty_permitted = False
 
         for visible in self.visible_fields():
-            #visible.field.required = False
             visible.field.widget.attrs['class'] = 'form-control'
 
     class Meta:

@@ -24,12 +24,15 @@
 				Lisää
 			</button>
 		</div>
-		<h3 class="mt-3">Yhteensä</h3>
-	  <div class="form-group row">
-	    <div class="col-sm-10">
-	      <button type="submit" class="btn btn-primary my-2">Lähetä</button>
-	    </div>
-	  </div>
+
+		{% include "form_summary.html"  %}
+
+		<div class="form-group row">
+		  <div class="col-sm-10">
+		    <button type="submit" class="btn btn-primary my-2">Lähetä</button>
+		  </div>
+		</div>
+
 	</form>
 </div>
 

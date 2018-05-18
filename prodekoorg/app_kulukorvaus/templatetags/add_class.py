@@ -1,6 +1,7 @@
 import re
-from django.utils.safestring import mark_safe
+
 from django import template
+from django.utils.safestring import mark_safe
 
 register = template.Library()
 
@@ -14,7 +15,7 @@ def add_class(value, css_class):
     if match:
         m = re.search(r'^%s$|^%s\s|\s%s\s|\s%s$' % (css_class, css_class,
                                                     css_class, css_class),
-                                                    match.group(1))
+                      match.group(1))
         if not m:
             return mark_safe(class_re.sub(match.group(1) + " " + css_class,
                                           string))

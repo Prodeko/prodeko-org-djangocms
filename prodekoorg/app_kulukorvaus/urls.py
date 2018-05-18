@@ -1,7 +1,8 @@
 from django.conf.urls import url
-from .views import render_kulukorvaus
+
+from .views import main_form
 
 app_name = 'app_kulukorvaus'
 urlpatterns = [
-    url(r'kulukorvaus/$', render_kulukorvaus, name='kulukorvaus'),
+    url(r'kulukorvaus/$', main_form, name='kulukorvaus'),
 ]

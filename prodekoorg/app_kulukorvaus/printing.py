@@ -62,7 +62,6 @@ class KulukorvausPDF:
 
         # Model
         #created_by_user = model.created_by_user
-        #created_at = model_perustiedot.created_at
         created_by = model_perustiedot.created_by
         email = model_perustiedot.email
         position_in_guild = model_perustiedot.position_in_guild
@@ -124,7 +123,7 @@ class KulukorvausPDF:
 
         doc.build(elements)
 
-        # Get the value of the BytesIO buffer and write it to the response.
+        # Get the value of the BytesIO buffer
         pdf = buffer.getvalue()
         buffer.close()
         return pdf

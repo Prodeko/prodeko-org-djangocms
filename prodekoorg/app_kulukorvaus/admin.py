@@ -1,11 +1,13 @@
 from django.contrib import admin
-from prodekoorg.app_kulukorvaus.models import Kulukorvaus
-
 from django.contrib.admin import SimpleListFilter
+from django.db import models
+from django.forms import Textarea
+from prodekoorg.app_kulukorvaus.models import (Kulukorvaus,
+                                               KulukorvausPerustiedot)
 
 
 class YearFilter(SimpleListFilter):
-    title = 'vuosi'
+    title = 'Vuosi'
     parameter_name = 'vuosi'
 
     def lookups(self, request, model_admin):
@@ -21,7 +23,15 @@ class YearFilter(SimpleListFilter):
 
 class KulukorvausAdmin(admin.ModelAdmin):
     list_display = ('created_at', 'explanation')
-    # list_filter = (YearFilter,)
+    list_filter = (YearFilter,)
+
+
+class KulukorvausPerustiedotAdmin(admin.ModelAdmin):
+    # Override Textarea default height
+    formfield_overrides = {
+        models.TextField: {'widget': Textarea(attrs={'rows': 1, 'cols': 1})},
+    }
 
 
 admin.site.register(Kulukorvaus, KulukorvausAdmin)
+admin.site.register(KulukorvausPerustiedot, KulukorvausPerustiedotAdmin)

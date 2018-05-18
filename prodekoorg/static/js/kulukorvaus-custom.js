@@ -55,7 +55,7 @@ $(document).ready(function() {
     }
 
     function renumberForm(form, oldValue, newValue) {
-      var matchValue = prefix + oldValue.toString()
+      var matchValue = prefix + oldValue.toString();
       var match = new RegExp(matchValue);
       var replace = prefix + newValue.toString();
 
