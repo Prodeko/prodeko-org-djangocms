@@ -218,19 +218,7 @@ body {
 /* FOOTER */
 
 .prodeko-footer {
-	padding: 3em 0 3em 0;
-}
-
-.prodeko-footer .col-md {
-	padding: 1em 0 1em 0;
-}
-
-.prodeko-footer h2 {
-	margin-bottom: 1.5em;
-}
-
-.prodeko-footer .footer-lrow h2 {
-	padding-top: 2.2em;
+	padding: 2em 0 2em 0;
 }
 
 .prodeko-footer a {
@@ -238,37 +226,103 @@ body {
 	font-weight: bold;
 }
 
-.network-img-container img {
-	width: 7.5em;
+.prodeko-footer a.fab {
+
 }
 
+.prodeko-footer a:hover {
+	color: grey;
+	-webkit-transition: 0.3s ease-out;
+  -moz-transition: 0.3s ease-out;
+  -o-transition: 0.3s ease-out;
+  transition: 0.3s ease-out;
+}
 
-/* Smaller than standard 960 (devices and browsers) */
-@media only screen and (max-width: 959px) {
+.prodeko-footer .network-img-container .network-div {
+	flex: 1 0 20%;
+	margin: 5px;
+	height: 100px;
+}
+
+.prodeko-footer .network-img-container img {
+	max-width: 9em;
+	height: 100%;
+	padding: 1em 0 1em 0;
+}
+
+.prodeko-footer .social-row {
+	width: 25%;
 }
 
 /* Tablet Portrait size to standard 960 (devices and browsers) */
 @media only screen and (min-width: 768px) and (max-width: 959px) {
-}
+	.network-img-container img {
+		max-width: 6em;
+		height: 100%;
+	}
 
-/* All Mobile Sizes (devices and browser) */
-@media only screen and (max-width: 767px) {
-
+	.prodeko-footer h2, p {
+		font-size: 0.9em;
+	}
 }
 
 /* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
-@media only screen and (min-width: 480px) and (max-width: 767px) {}
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+	.network-img-container img {
+		max-width: 4em;
+		height: 100%;
+	}
+
+	.prodeko-footer h2, p {
+		font-size: 0.9em;
+	}
+
+	.prodeko-footer .social-row {
+		width: 50%;
+	}
+
+}
 
 /* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
 @media only screen and (max-width: 479px) {
 	.network-img-container img {
-		width: 6em;
+		max-width: 6em;
+		max-height: 100%
+	}
+
+	.prodeko-footer h2, p {
+		font-size: 0.7em;
 	}
 }
 
 /* KULUKORVAUS */
 .kulukorvaus-container .fa-plus {
     color: green;
+}
+
+.kulukorvaus-container .fa-minus {
+    color: red;
+}
+
+/* VAALIT */
+
+.tab-content .card-title {
+	font-size: 0.9em;
+}
+
+.tab-content .card-body {
+	font-size: 0.8em;
+}
+.tab-content .card-body .no-applicants {
+	color: #b22525;
+}
+
+.tab-content .card-footer {
+	text-align: center;
+}
+
+.tab-content .card-footer span a {
+	display: inline-block;
 }
 
 .kulukorvaus-container .fa-minus {
