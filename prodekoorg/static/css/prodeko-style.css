@@ -240,18 +240,18 @@ body {
 
 .prodeko-footer .network-img-container .network-div {
 	flex: 1 0 20%;
-	margin: 5px;
-	height: 100px;
+	margin: 10px;
+	height: 50px;
 }
 
 .prodeko-footer .network-img-container img {
-	max-width: 9em;
+	max-width: 7em;
 	height: 100%;
-	padding: 1em 0 1em 0;
 }
 
-.prodeko-footer .social-row {
-	width: 25%;
+
+.prodeko-footer .social-row a {
+	padding: 1em;
 }
 
 /* Tablet Portrait size to standard 960 (devices and browsers) */
