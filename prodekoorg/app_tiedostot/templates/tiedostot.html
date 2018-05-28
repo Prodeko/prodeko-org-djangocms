@@ -9,12 +9,23 @@
 	{% include "layout-components/breadcrumb.html" %}
 	{% placeholder "content" %}
 
-  {% for tiedosto in tiedosto %}
+  <h1>Tiedostot</h1>
+
+  {% for tiedosto in tiedostot %}
   <div class="col-md-3">
-    <h3>{{ tiedosto.file_name }}</h3>
-    <p>{{ tiedosto.description }}</p>
+
+    <div class="card" style="width: 100%;">
+      <img class="card-img-top" src="" alt="{{ tiedosto.file_name }}">
+      <div class="card-body">
+        <h5 class="card-title">{{ tiedosto.file_name }}</h5>
+        <p class="card-text">{{ tiedosto.description }}</p>
+        <a href="{% url 'app_tiedostot:download' tiedosto.id %}" class="btn btn-primary">Lataa</a>
+      </div>
+    </div>
   </div>
   {% endfor %}
+
+  <br>
 </div>
 
 {% addtoblock "js" %}
