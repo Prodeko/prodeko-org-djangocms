@@ -27,6 +27,17 @@ h1 {
 	font-size: 3.5rem;
 }
 
+h5 {
+	font-weight: 600;
+	padding: 0px;
+  margin: 0px;
+}
+
+.description {
+	font-size: 0.8rem;
+	color: grey;
+}
+
 .display-block {
 	display: block !important;
 }
@@ -129,6 +140,20 @@ body {
 	width: 60px;
 }
 
+/* GENERAL */
+.full-width {
+	width: 100%;
+}
+
+.thumbnail_image {
+	width: 100%;
+	height: 200px;
+	background-size: cover;
+}
+
+.card {
+	margin: 15px 0px;
+}
 
 /* CONTENT PAGE */
 
@@ -279,6 +304,14 @@ body {
 .kulukorvaus-container .fa-minus {
     color: red;
 }
+
+/* TIEDOSTOT */
+
+.card-title {
+	margin-bottom: 0px;
+}
+
+
 
 /* GALLERY */
 
