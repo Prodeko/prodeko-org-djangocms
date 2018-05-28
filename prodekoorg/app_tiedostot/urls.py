@@ -1,8 +1,8 @@
 from django.conf.urls import url
-import views
+from .views import main, download
 
 app_name = 'app_tiedostot'
 urlpatterns = [
-    url(r'tiedostot/$', 'views.main', name='tiedostot'),
-    url(r'tiedostot/download/(?P<file_name>.+)$', 'views.download'),
+    url(r'tiedostot/$', main, name='tiedostot'),
+    url(r'tiedostot/download/(?P<file_name>.+)$', download),
 ]

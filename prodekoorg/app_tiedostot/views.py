@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.files.storage import FileSystemStorage
+from .models import Tiedosto
 
 
 def main(request):
@@ -12,7 +13,7 @@ def main(request):
 def download(request, file_name):
     file_object = Tiedosto.objects.get(file_name = 'file_name')
     file_path = file_object.actual_file.path
-    
+
     file_wrapper = FileWrapper(file(file_path,'rb'))
     file_mimetype = mimetypes.guess_type(file_path)
     response = HttpResponse(file_wrapper, content_type=file_mimetype )
