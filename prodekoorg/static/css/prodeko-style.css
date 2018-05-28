@@ -45,6 +45,10 @@ h1 {
 	font-family: Raleway, Helvetica, sans-serif;
 }
 
+.prodeko-navbar .dropdown-menu a.dropdown-item:hover {
+	color: #002851;
+}
+
 /* HEADER */
 
 .prodeko-navbar{
@@ -124,6 +128,7 @@ body {
 	height: 60px;
 	width: 60px;
 }
+
 
 /* CONTENT PAGE */
 

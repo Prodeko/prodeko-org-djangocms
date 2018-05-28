@@ -3,74 +3,72 @@
 
 <nav class="navbar navbar-dark navbar-expand-lg prodeko-navbar">
 
-	<div class="container">
-		<a class="navbar-brand ml-lg-5" id="prodeko-logo" href="/"></a>
+	<a class="navbar-brand ml-lg-5" id="prodeko-logo" href="/"></a>
 
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" aria-controls="collapsibleNavbar" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" aria-controls="collapsibleNavbar" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
 
-		<div class="collapse navbar-collapse" id="collapsibleNavbar">
-			<ul class="navbar-nav mr-auto">
-					{% for child in children %}
-				<!-- no child pages  -->
-						{% if child.is_leaf_node %}
-							<li class="nav-item"><a class="nav-link nav-top" href="{{ child.get_absolute_url }}">{{child.get_menu_title }}</a></li>
+	<div class="collapse navbar-collapse" id="collapsibleNavbar">
+		<ul class="navbar-nav mr-auto">
+				{% for child in children %}
+			<!-- no child pages  -->
+					{% if child.is_leaf_node %}
+						<li class="nav-item"><a class="nav-link nav-top" href="{{ child.get_absolute_url }}">{{child.get_menu_title }}</a></li>
+					{% endif %}
+			<!-- /no child pages  -->
+			<!-- has child pages  -->
+					{% if not child.is_leaf_node or child.ancestor %}
+						<li class="nav-item dropdown">
+							<a href="#" class="nav-link nav-top dropdown-toggle" data-toggle="dropdown">
+							{{child.get_menu_title }}<b class="caret"></b></a>
+							<div class="dropdown-menu">
+								{% if child.get_descendants %}
+									{% for kid in child.get_descendants %}
+											<a class="dropdown-item" href="{{ kid.get_absolute_url }}">
+												{{kid.get_menu_title }}
+											</a>
+									{% endfor %}
+								{% endif %}
+							</div>
+						</li>
+					{% endif %}
+			<!-- /has child pages  -->
+				{% endfor %}
+			<!-- /end for child -->
+		</ul>
+		<ul class="navbar-nav py-2">
+			<li class="nav-item dropdown">
+				<button class="btn btn-light dropdown-toggle mr-4" type="button" data-toggle="dropdown">
+						{% if LANGUAGE_CODE == 'fi' %}
+							Kirjaudu
+						{% else %}
+							Login
 						{% endif %}
-				<!-- /no child pages  -->
-				<!-- has child pages  -->
-						{% if not child.is_leaf_node or child.ancestor %}
-							<li class="nav-item dropdown">
-								<a href="#" class="nav-link nav-top dropdown-toggle" data-toggle="dropdown">
-								{{child.get_menu_title }}<b class="caret"></b></a>
-								<div class="dropdown-menu">
-									{% if child.get_descendants %}
-										{% for kid in child.get_descendants %}
-												<a class="dropdown-item" href="{{ kid.get_absolute_url }}">
-													{{kid.get_menu_title }}
-												</a>
-										{% endfor %}
-									{% endif %}
-								</div>
-							</li>
-						{% endif %}
-				<!-- /has child pages  -->
-					{% endfor %}
-				<!-- /end for child -->
+				<span class="caret"></span>
+				</button>
+				<ul class="login-dropdown dropdown-menu dropdown-menu-right p-4">
+					<form class="form" role="form" method="post" action="login" accept-charset="UTF-8">
+						<div class="form-group">
+							 <input type="email" class="form-control" id="email" placeholder="{% if LANGUAGE_CODE == 'fi' %}Sähköposti{% else %}Email address{% endif %}" required>
+						</div>
+						<div class="form-group">
+							 <input type="password" class="form-control" id="password" placeholder="{% if LANGUAGE_CODE == 'fi' %}Salasana{% else %}Password{% endif %}" required>
+			   <div class="form-text text-left forgot-password"><a href="">{% if LANGUAGE_CODE == 'fi' %}Unohditko salasanan?{% else %}Forgot the password?{% endif %}</a></div>
+						</div>
+						<div class= "form-group">
+							 <button type="submit" class="btn btn-success btn-block">{% if LANGUAGE_CODE == 'fi' %}Kirjaudu{% else %}Sign in{% endif %}</button>
+						</div>
+				 </form>
 			</ul>
-			<ul class="navbar-nav py-2">
-				<li class="nav-item dropdown">
-					<button class="btn btn-light dropdown-toggle mr-4" type="button" data-toggle="dropdown">
-							{% if LANGUAGE_CODE == 'fi' %}
-								Kirjaudu
-							{% else %}
-								Login
-							{% endif %}
-					<span class="caret"></span>
-					</button>
-					<ul class="login-dropdown dropdown-menu dropdown-menu-right p-4">
-						<form class="form" role="form" method="post" action="login" accept-charset="UTF-8">
-							<div class="form-group">
-								 <input type="email" class="form-control" id="email" placeholder="{% if LANGUAGE_CODE == 'fi' %}Sähköposti{% else %}Email address{% endif %}" required>
-							</div>
-							<div class="form-group">
-								 <input type="password" class="form-control" id="password" placeholder="{% if LANGUAGE_CODE == 'fi' %}Salasana{% else %}Password{% endif %}" required>
-	               <div class="form-text text-left forgot-password"><a href="">{% if LANGUAGE_CODE == 'fi' %}Unohditko salasanan?{% else %}Forgot the password?{% endif %}</a></div>
-							</div>
-							<div class= "form-group">
-								 <button type="submit" class="btn btn-success btn-block">{% if LANGUAGE_CODE == 'fi' %}Kirjaudu{% else %}Sign in{% endif %}</button>
-							</div>
-					 </form>
-				</ul>
-			</ul>
-			<ul class="navbar-nav py-2">
-				<li class="nav-item nav-lang">
-					{# The template variable LANGUAGES is a list of tuples: [('FI', 'FINNISH'), ('EN', 'ENGLISH')]#}
-					<a class="{% if LANGUAGE_CODE == 'fi' %}lang{% endif %} no-animation" href="{% page_language_url LANGUAGES.0.0 %}">{{ LANGUAGES.0.0 }}</a>
-					<span>/</span>
-					<a class="{% if LANGUAGE_CODE == 'en' %}lang{% endif %} no-animation" href="{% page_language_url LANGUAGES.1.0 %}">{{ LANGUAGES.1.0 }}</a>
-				</li>
-			</ul>
-		</div>
+		</ul>
+		<ul class="navbar-nav py-2">
+			<li class="nav-item nav-lang">
+				{# The template variable LANGUAGES is a list of tuples: [('FI', 'FINNISH'), ('EN', 'ENGLISH')]#}
+				<a class="{% if LANGUAGE_CODE == 'fi' %}lang{% endif %} no-animation" href="{% page_language_url LANGUAGES.0.0 %}">{{ LANGUAGES.0.0 }}</a>
+				<span>/</span>
+				<a class="{% if LANGUAGE_CODE == 'en' %}lang{% endif %} no-animation" href="{% page_language_url LANGUAGES.1.0 %}">{{ LANGUAGES.1.0 }}</a>
+			</li>
+		</ul>
 	</div>
 </nav>
