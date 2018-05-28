@@ -19,7 +19,7 @@ urlpatterns = [
     url(r'^sitemap\.xml$', sitemap,
         {'sitemaps': {'cmspages': CMSSitemap}}),
     # Redirects to 'fi/main'
-    url(r'^$', RedirectView.as_view(url='fi/main', permanent=False), name='index')
+    #url(r'^$', RedirectView.as_view(url='fi/main', permanent=False), name='index')
 ]
 
 # ==== app_toimarit ==== #
@@ -32,7 +32,7 @@ urlpatterns += [
 # ==== Localization and internationalization ==== #
 urlpatterns += i18n_patterns(
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^main/', include('cms.urls'))
+    url(r'^', include('cms.urls'))
 )
 
 # ==== Django filer ==== #
