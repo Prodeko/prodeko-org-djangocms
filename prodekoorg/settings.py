@@ -160,11 +160,11 @@ INSTALLED_APPS = (
     # ------------------------
     'prodekoorg.app_poytakirjat',
     'prodekoorg.app_toimarit',
-    'prodekoorg.app_kulukorvaus'
+    'prodekoorg.app_kulukorvaus',
+    'prodekoorg.app_vaalit'
 )
 
-'''Language settings'''
-
+"""Language settings"""
 LANGUAGES = (
     ('fi', _('Finnish')),
     ('en', _('English')),
@@ -196,8 +196,7 @@ CMS_LANGUAGES = {
     ],
 }
 
-'''CMS template registration'''
-
+"""CMS template registration"""
 CMS_TEMPLATES = (
     ('contentpage/content-page.html', 'Content page'),
     ('frontpage.html', 'Frontpage'),
@@ -214,8 +213,7 @@ THUMBNAIL_PROCESSORS = (
     'easy_thumbnails.processors.filters'
 )
 
-'''Django filer settings'''
-
+"""Django filer settings"""
 FILER_STORAGES = {
     'public': {
         'main': {
@@ -255,8 +253,27 @@ FILER_STORAGES = {
     },
 }
 
-''' tiedotteet.prodeko.org settings '''
+"""CKEditor"""
+CKEDITOR_CONFIGS = {
+    'vaalit_ckeditor': {
+        'toolbar': [["Format", "Bold", "Italic", "Underline", "Strike"],
+                    ["NumberedList", 'BulletedList', "Indent", "Outdent", "JustifyLeft", "JustifyCenter",
+                    "JustifyRight", "JustifyBlock"],
+                    ["Table", "Link", "Unlink", "Anchor", "SectionLink", "Subscript", "Superscript"], ["Undo", "Redo"], ["Source"],
+                    ["Maximize"]],
+        'width': "auto",
+        'height': "auto"
+    },
+}
+"""Email"""
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'localhost'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+EMAIL_PORT = 25
+EMAIL_USE_TLS = True
 
+"""tiedotteet.prodeko.org settings"""
 SESSION_SAVE_EVERY_REQUEST = True
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False
 SESSION_COOKIE_AGE = 60 * 60 * 24 * 30  # 30 days
