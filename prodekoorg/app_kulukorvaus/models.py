@@ -76,10 +76,10 @@ class Kulukorvaus(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Luotu')
     info = models.ForeignKey(KulukorvausPerustiedot, models.SET_NULL, blank=True, null=True)
     target = models.CharField(max_length=50, verbose_name='Kulun selite')
-    explanation = models.TextField(verbose_name='Tapahtuma / kulun kohde')
+    explanation = models.CharField(max_length=100, verbose_name='Tapahtuma / kulun kohde')
     sum_euros = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Summa (euroa)')
     additional_info = models.TextField(blank=True, verbose_name='Lisätietoja, kulujen perusteita')
-    receipt = models.FileField(upload_to='kulukorvaukset/%Y-%m', verbose_name='PDF',
+    receipt = models.FileField(upload_to='kulukorvaukset/%Y-%m', verbose_name='Kuitti',
                                validators=[FileExtensionValidator(['png', 'jpg', 'jpeg'])])
 
     def __str__(self):

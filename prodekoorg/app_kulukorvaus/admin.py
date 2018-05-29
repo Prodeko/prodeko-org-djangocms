@@ -25,6 +25,12 @@ class KulukorvausAdmin(admin.ModelAdmin):
     list_display = ('created_at', 'explanation')
     list_filter = (YearFilter,)
 
+    # Override Textarea default height
+    formfield_overrides = {
+        models.TextField: {'widget': Textarea(attrs={'rows': 1, 'cols': 1})},
+    }
+
+
 
 class KulukorvausPerustiedotAdmin(admin.ModelAdmin):
     # Override Textarea default height

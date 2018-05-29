@@ -9,10 +9,6 @@ class KulukorvausPerustiedotForm(ModelForm):
         exclude = kwargs.pop('exclude', None)
         super(KulukorvausPerustiedotForm, self).__init__(*args, **kwargs)
 
-        if exclude:
-            for field_name in exclude:
-                if field_name in self.fields:
-                    del self.fields[field_name]
         if 'position_in_guild' in self.fields:
             self.fields['position_in_guild'].widget = RadioSelect(
                 choices=KulukorvausPerustiedot.POSITION_CHOICES)
@@ -47,7 +43,6 @@ class KulukorvausForm(ModelForm):
         model = Kulukorvaus
         exclude = ['created_by_user']
         widgets = {
-            'explanation': Textarea(attrs={'rows': 1, 'cols': 1}),
             'additional_info': Textarea(attrs={'rows': 1, 'cols': 1}),
         }
         help_texts = {

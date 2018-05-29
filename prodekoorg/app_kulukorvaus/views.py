@@ -1,5 +1,5 @@
-import json
 from io import BytesIO
+from time import strftime, localtime
 
 from django.conf import settings
 from django.core.files.base import ContentFile
@@ -15,8 +15,10 @@ from .printing import KulukorvausPDF
 
 def generate_kulukorvaus_pdf(model_perustiedot, models_kulukorvaukset):
     # Create the HttpResponse object with the appropriate PDF headers.
+    time = strftime("%Y-%m-%d", localtime())
+    filename = '{}_kulukorvaus_{}.pdf'.format(time, model_perustiedot.created_by.replace(" ", "_"))
     response = HttpResponse(content_type='application/pdf')
-    response['Content-Disposition'] = 'attachment; filename="kulukorvaus.pdf"'
+    response['Content-Disposition'] = 'attachment; filename="' + filename + '"'
 
     # Buffer to hold the pdf
     buffer = BytesIO()
@@ -66,7 +68,6 @@ def main_form(request):
 
             return generate_kulukorvaus_pdf(model_perustiedot, models_kulukorvaukset)
         else:
-            print("here")
             return render(request, 'kulukorvaus.html', {'form_perustiedot': form_perustiedot,
                                                         'formset_kulu': formset
                                                         })
