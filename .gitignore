@@ -74,6 +74,7 @@ prodekoorg/collected-static
 
 *.db
 
+# tiedotteet.prodeko.org
 tiedotteet/static/
 node_modules/
 yarn.lock
