@@ -21,6 +21,7 @@ Pillow>=3.0
 django-sekizai>=0.9
 six
 reportlab
+django-tinymce>=2.7
 
 PyMySQL
 mysqlclient
