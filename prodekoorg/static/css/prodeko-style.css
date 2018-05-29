@@ -27,6 +27,17 @@ h1 {
 	font-size: 3.5rem;
 }
 
+h5 {
+	font-weight: 600;
+	padding: 0px;
+  margin: 0px;
+}
+
+.description {
+	font-size: 0.8rem;
+	color: grey;
+}
+
 .display-block {
 	display: block !important;
 }
@@ -43,6 +54,10 @@ h1 {
 	background-color: #002851;
 	color: white;
 	font-family: Raleway, Helvetica, sans-serif;
+}
+
+.prodeko-navbar .dropdown-menu a.dropdown-item:hover {
+	color: #002851;
 }
 
 /* HEADER */
@@ -123,6 +138,21 @@ body {
 	background-repeat: no-repeat;
 	height: 60px;
 	width: 60px;
+}
+
+/* GENERAL */
+.full-width {
+	width: 100%;
+}
+
+.thumbnail_image {
+	width: 100%;
+	height: 200px;
+	background-size: cover;
+}
+
+.card {
+	margin: 15px 0px;
 }
 
 /* CONTENT PAGE */
@@ -404,6 +434,12 @@ body {
 
 #vaaliWrapperForm {
   display: none;
+}
+
+/* TIEDOSTOT */
+
+.card-title {
+	margin-bottom: 0px;
 }
 
 /* GALLERY */

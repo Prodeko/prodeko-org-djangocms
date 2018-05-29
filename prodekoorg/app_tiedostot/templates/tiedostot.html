@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load cms_tags sekizai_tags %}
+{% block content %}
+
+{% include "layout-components/jumbotron.html" %}
+
+<div class="container">
+
+	{% include "layout-components/breadcrumb.html" %}
+	{% placeholder "content" %}
+
+  <h1>Tiedostot</h1>
+
+  {% for tiedosto in tiedostot %}
+  <div class="col-md-3">
+    <div class="card full-width">
+      {% if tiedosto.thumbnail_image %}
+        <img class="card-img-top thumbnail_image" style="background-image: url('{{ tiedosto.get_thumbnail_image }}');" >
+      {% endif %}
+      <div class="card-body">
+        <h5 class="card-title">{{ tiedosto.file_name }}</h5>
+        <span class="description">Tiedostotyyppi: {{ tiedosto.file_extension }}</span>
+        <hr>
+        <p class="card-text">{{ tiedosto.description }}</p>
+        <a href="{% url 'app_tiedostot:download' tiedosto.id %}" class="btn btn-primary full-width">Lataa</a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+
+  <br>
+</div>
+
+{% addtoblock "js" %}
+<script src="/static/js/kulukorvaus-custom.js"></script>
+{% endaddtoblock %}
+
+{% endblock content %}

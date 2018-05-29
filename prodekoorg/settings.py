@@ -161,7 +161,8 @@ INSTALLED_APPS = (
     'prodekoorg.app_poytakirjat',
     'prodekoorg.app_toimarit',
     'prodekoorg.app_kulukorvaus',
-    'prodekoorg.app_vaalit'
+    'prodekoorg.app_vaalit',
+    'prodekoorg.app_tiedostot',
 )
 
 """Language settings"""

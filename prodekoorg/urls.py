@@ -19,7 +19,7 @@ urlpatterns = [
     url(r'^sitemap\.xml$', sitemap,
         {'sitemaps': {'cmspages': CMSSitemap}}),
     # Redirects to 'fi/main'
-    url(r'^$', RedirectView.as_view(url='fi/main', permanent=False), name='index')
+    #url(r'^$', RedirectView.as_view(url='fi/main', permanent=False), name='index')
 ]
 
 # ==== app_toimarit ==== #
@@ -32,7 +32,7 @@ urlpatterns += [
 # ==== Localization and internationalization ==== #
 urlpatterns += i18n_patterns(
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^main/', include('cms.urls'))
+    url(r'^', include('cms.urls'))
 )
 
 # ==== Django filer ==== #
@@ -57,9 +57,15 @@ urlpatterns += [
     url(r'^', include('prodekoorg.app_kulukorvaus.urls', namespace='app_kulukorvaus')),
 ]
 
+<<<<<<< HEAD
 # ==== app_vaalit ==== #
 urlpatterns += [
     url(r'^', include('prodekoorg.app_vaalit.urls', namespace='app_vaalit')),
+=======
+# ==== app_tiedostot ==== #
+urlpatterns += [
+    url(r'^', include('prodekoorg.app_tiedostot.urls', namespace='app_tiedostot')),
+>>>>>>> 0e02bd2744a7de0059603b7b008bd8ef52f67441
 ]
 
 # This is only needed when using runserver.
