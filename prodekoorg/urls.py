@@ -57,15 +57,14 @@ urlpatterns += [
     url(r'^', include('prodekoorg.app_kulukorvaus.urls', namespace='app_kulukorvaus')),
 ]
 
-<<<<<<< HEAD
 # ==== app_vaalit ==== #
 urlpatterns += [
     url(r'^', include('prodekoorg.app_vaalit.urls', namespace='app_vaalit')),
-=======
+]
+
 # ==== app_tiedostot ==== #
 urlpatterns += [
     url(r'^', include('prodekoorg.app_tiedostot.urls', namespace='app_tiedostot')),
->>>>>>> 0e02bd2744a7de0059603b7b008bd8ef52f67441
 ]
 
 # This is only needed when using runserver.
