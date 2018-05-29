@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load cms_tags sekizai_tags %}
+
+{% block extra_head %}
+<script src="/static/js/vaalit-custom.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cropper/4.0.0/cropper.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/cropper/4.0.0/cropper.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid vaali-container">
+
+	{% include "layout-components/breadcrumb.html" %}
+	{% placeholder "content" %}
+
+	<div class="row">
+	  <div class="col-md-4 col-12 mt-5">
+			{% include "vaalit_sidenav.html" %}
+		</div>
+		<div class="col-md-8 col-12">
+			<h3>Prodeko Forum</h3>
+			{% include "vaalit_content.html" %}
+		</div>
+	</div>
+</div>
+
+{% endblock content %}

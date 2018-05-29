@@ -1,0 +1,27 @@
+<!-- Modal to crop the image -->
+<div class="modal fade" id="modalCrop">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">
+        </button>
+        <h4 class="modal-title">Rajaa kuva</h4>
+      </div>
+      <div class="modal-body">
+        <img src="" id="image" style="max-width: 100%;">
+      </div>
+      <div class="modal-footer">
+        <div class="btn-group pull-left" role="group">
+          <button type="button" class="btn btn-default js-zoom-in">
+            <i class="fas fa-search-plus"></i>
+          </button>
+          <button type="button" class="btn btn-default js-zoom-out">
+            <i class="fas fa-search-minus"></i>
+          </button>
+        </div>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Sulje</button>
+        <button type="button" class="btn btn-primary js-crop-and-upload">Crop and upload</button>
+      </div>
+    </div>
+  </div>
+</div>

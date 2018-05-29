@@ -1,0 +1,45 @@
+<div class="vaali-content" id="vaaliWrapperContentAndForm">
+  <h2 id="header"></h2>
+  <div id="vaaliWrapperContent">
+    <div class="my-4">
+      <button type="button" id="btnHaeVirkaan" class="btn btn-default d-none">
+        Hae virkaan
+        <span class="mr-1 fas fa-chevron-right"></span>
+      </button>
+    </div>
+    <div id="vaalitKysymysForm" class="d-none">
+      <form action="" method="POST" id="vaalitKysymysForm">
+        {% csrf_token %}
+        <div class="form-group">
+          <textarea type="email" class="form-control" id="kysymys" rows="3"></textarea>
+          <small class="form-text text-muted">Esitä kysymys</small>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary my-2">Lähetä kysymys</button>
+        </div>
+      </form>
+    </div>
+    <div class="tab-content">
+      {% for virka in context.virat %}
+      <div id="_{{ forloop.counter }}" class="tab-pane fade" role="tabpanel">
+        <h3>Ehdokkaat</h3>
+        <div class="d-flex flex-wrap">
+        {% for ehdokas in virka.ehdokkaat.all %}
+          <div class="vaali-div">
+            <div class="img-container mx-auto">
+              <img src="{{ ehdokas.pic.url }}" alt="{{ ehdokas.name }}">
+            </div>
+            <p class="text-center">{{ ehdokas.name }}</p>
+          </div>
+        {% empty %}
+          <p>Ei hakijoita</p>
+        {% endfor %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% include "vaalit_apply_form.html" %}
+</div>
+
+{% include "vaalit_modal_photocrop.html" %}

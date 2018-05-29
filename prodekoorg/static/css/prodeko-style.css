@@ -211,7 +211,7 @@ body {
 }
 
 #documents-container .collapsed .fa-chevron-down  {
-	transform:rotate(-90deg);
+	transform: rotate(-90deg);
   transition: all 0.4s ease-in-out;
 }
 
@@ -226,10 +226,6 @@ body {
 	font-weight: bold;
 }
 
-.prodeko-footer a.fab {
-
-}
-
 .prodeko-footer a:hover {
 	color: grey;
 	-webkit-transition: 0.3s ease-out;
@@ -238,17 +234,16 @@ body {
   transition: 0.3s ease-out;
 }
 
-.prodeko-footer .network-img-container .network-div {
+.prodeko-footer .network-div {
 	flex: 1 0 20%;
 	margin: 10px;
 	height: 50px;
 }
 
-.prodeko-footer .network-img-container img {
+.prodeko-footer img {
 	max-width: 7em;
 	height: 100%;
 }
-
 
 .prodeko-footer .social-row a {
 	padding: 1em;
@@ -269,8 +264,8 @@ body {
 /* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
 @media only screen and (min-width: 480px) and (max-width: 767px) {
 	.network-img-container img {
-		max-width: 4em;
-		height: 100%;
+		width: 6em;
+		max-height: 100%
 	}
 
 	.prodeko-footer h2, p {
@@ -286,7 +281,7 @@ body {
 /* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
 @media only screen and (max-width: 479px) {
 	.network-img-container img {
-		max-width: 6em;
+		width: 4.5em;
 		max-height: 100%
 	}
 
@@ -306,27 +301,109 @@ body {
 
 /* VAALIT */
 
-.tab-content .card-title {
-	font-size: 0.9em;
+/* https://stackoverflow.com/questions/29063244/consistent-styling-for-nested-lists-with-bootstrap */
+
+.list-group.list-group-root {
+    padding: 0;
+    overflow: hidden;
 }
 
-.tab-content .card-body {
-	font-size: 0.8em;
-}
-.tab-content .card-body .no-applicants {
-	color: #b22525;
+.list-group.list-group-root .list-group {
+    margin-bottom: 0;
 }
 
-.tab-content .card-footer {
-	text-align: center;
+.list-group.list-group-root .list-group-item {
+    border-radius: 0;
+    border-width: 1px 0 0 0;
 }
 
-.tab-content .card-footer span a {
-	display: inline-block;
+.list-group.list-group-root > .list-group-item:first-child {
+    border-top-width: 0;
 }
 
-.kulukorvaus-container .fa-minus {
-    color: red;
+.list-group.list-group-root > .list-group > .list-group-item {
+    padding-left: 30px;
+}
+
+.list-group.list-group-root > .list-group > .list-group > .list-group-item {
+    padding-left: 45px;
+}
+
+.list-group-root .list-group-item .fa {
+    margin-right: 5px;
+}
+
+.collapse {
+  display: none;
+  &.show {
+    display: block;
+  }
+}
+
+.list-group-root .fa-chevron-down {
+  transition: all 0.3s ease-in-out;
+}
+
+.list-group-root .collapsed .fa-chevron-down  {
+	transform: rotate(-90deg);
+  transition: all 0.4s ease-in-out;
+}
+
+
+.list-group-root .list-group-item.active {
+    background-color: #0053a0 !important;
+		border-color: #0053a0 !important;
+}
+
+.vaali-content .vaali-div {
+	flex: 0 0 20%;
+	margin: 1em;
+}
+
+.vaali-content .vaali-div p {
+	font-size: 1.2em;
+}
+
+.vaali-content .img-container {
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	position: relative;
+  overflow: hidden;
+}
+
+.vaali-content img {
+	display: inline;
+	margin: 0 auto;
+	height: 100%;
+	width: auto;
+}
+
+.vaali-content .fa-plus {
+    color: green;
+}
+
+.vaali-container .modal-lg {
+  max-width: 70%;
+}
+
+#vaaliWrapperContentAndForm {
+	position: relative;
+	min-height: 700px;
+	display: block;
+}
+
+#vaaliWrapperContentAndForm .btn {
+	width: 140px;
+}
+
+#vaaliWrapperForm, #vaaliWrapperContent {
+	width: 100%;
+	position: absolute;
+}
+
+#vaaliWrapperForm {
+  display: none;
 }
 
 /* GALLERY */
