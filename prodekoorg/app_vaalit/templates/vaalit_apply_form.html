@@ -1,18 +1,11 @@
-<div id="vaaliWrapperForm">
-  <h2 id="header"></h2>
-  <div class="my-4">
-    <button type="button" id="btnEtusivu" class="btn btn-default">
-      <span class="mr-1 fas fa-chevron-left"></span>
-      Etusivu
-    </button>
-  </div>
-  <form action="" method="POST" id="form-create-ehdokas">
+<div id="vaaliWrapperApplyForm">
+  <form action="" method="POST" enctype="multipart/form-data" id="form-create-ehdokas">
     {% csrf_token %}
     {{ context.form_ehdokas.media }}
-    <div class="container">
+    <div class="container-fluid">
       <div class="form-group row">
-        <label class="col-sm-1 col-form-label" for="{{ context.form_ehdokas.name.id_for_label }}">{{ context.form_ehdokas.name.label }}</label>
-        <div class="col-sm-3">
+        <div class="col-sm-6 pl-0">
+          <label class="col-form-label" for="{{ context.form_ehdokas.name.id_for_label }}">{{ context.form_ehdokas.name.label }}</label>
           {{ context.form_ehdokas.name }}
         </div>
         <div class="col-sm-3">
@@ -22,32 +15,40 @@
         </div>
       </div>
       <div class="form-group row">
-        <label class="col-sm-1 col-form-label" for="{{ context.form_ehdokas.introduction.id_for_label }}">Esittely</label>
-        <div class="col-sm-9">
+        <div class="col-sm-12 px-0">
+          <label class="col-form-label" for="{{ context.form_ehdokas.introduction.id_for_label }}">Esittely</label>
           {{ context.form_ehdokas.introduction }}
-        </div>
-        <div class="col-sm-3">
           {% if context.form_ehdokas.introduction.errors %}
             <small class="form-text text-danger">{{ context.form_ehdokas.introduction.errors.as_text }}</small>
           {% endif %}
         </div>
       </div>
       <div class="form-group row">
-        <label class="col-sm-1 col-form-label" for="{{ context.form_photo.pic.id_for_label }}">Kuva</label>
-        <div class="col-sm-9">
-          {{ context.form_photo.pic }}
+        <div class="col-sm-9 pl-0">
+          <label class="col-form-label" for="{{ context.form_photo.pic.id_for_label }}">Kuva</label>
+          {{ context.form_ehdokas.pic }}
         </div>
         <div class="col-sm-3">
-          {% if context.form_photo.pic.errors %}
-            <small class="form-text text-danger">{{ context.form_photo.pic.errors.as_text }}</small>
+          {% if context.form_ehdokas.pic.errors %}
+            <small class="form-text text-danger">{{ context.form_ehdokas.pic.errors.as_text }}</small>
           {% endif %}
         </div>
       </div>
       <div class="form-group row">
+        <img id="crop-preview">
+      </div>
+      </div>
+      <div class="form-group row">
         <div class="col-sm-10">
-          <button type="submit" class="btn btn-primary my-2">Lähetä</button>
+          <button type="submit" class="btn btn-primary my-2">Hae virkaan</button>
+          <small class="form-text text-muted">Huom! Voit muokata hakemustasi myöhemmin.</small>
         </div>
       </div>
+      <input type="hidden" id="input-virka" name="hidden-input-virka" value="{{context.virat.0.name}}"/>
+      <input type="hidden" id="x" name="hidden-crop-x" />
+      <input type="hidden" id="y" name="hidden-crop-y" />
+      <input type="hidden" id="w" name="hidden-crop-w" />
+      <input type="hidden" id="h" name="hidden-crop-h" />
     </div>
   </form>
 </div>

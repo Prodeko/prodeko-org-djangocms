@@ -38,13 +38,13 @@ class Ehdokas(models.Model):
     auth_prodeko_user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, null=True)
     name = models.CharField(max_length=50, verbose_name='Nimi')
     introduction = RichTextField(config_name='vaalit_ckeditor')
-    virka = models.ForeignKey(Virka, on_delete=models.CASCADE, related_name='ehdokkaat')
+    virka = models.ManyToManyField(Virka, related_name='ehdokkaat')
     pic = models.ImageField(blank=True, verbose_name='Kuva')
 
     def __str__(self):
-        virka = self.virka
+        v = self.virka
         nimi = self.name
-        return '{}, {}'.format(virka, nimi)
+        return '{}, {}'.format(v, nimi)
 
     class Meta:
         # Correct spelling in Django admin

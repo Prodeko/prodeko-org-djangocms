@@ -1,47 +1,30 @@
 $(document).ready(function() {
 
   $('.list-group-root div.list-group > a').on('click', function(e) {
+    // Handle updating the header text, trim is needed
+    var virka = $(e.target).first().text().trim();
+    $('#vaalitKysymysForm small').html(virka + ' - Esitä kysymys');
+    $('#header').html(virka);
+    // Set hidden input field
+    $('#input-virka').attr('value', virka);
 
-    if(!$('#vaaliWrapperContent').is(':visible')) {
-      // Handle pressing sidenav while "Hae virkaan" view is active
-      $('#vaaliWrapperForm').fadeOut(300);
-      $('#vaaliWrapperContent').delay(100).fadeIn(300);
-    } else {
-      // Handle updating the form text
-      $('#vaalitKysymysForm').removeClass('d-none');
-      $('#btnHaeVirkaan').removeClass('d-none');
-      var virka = $(e.target).first().text();
-      $('#vaalitKysymysForm small').html(virka + ' - Esitä kysymys');
-      $('#header').html(virka);
-
-      // Handle nested list group deactivation
-      var listType = $(e.delegateTarget).closest('div').attr('id');
-      if (listType == 'hallitusList') {
-        $('#toimaritList > a.active').removeClass('active');
-      } else if (listType == 'toimaritList') {
-        $('#hallitusList > a.active').removeClass('active');
-      }
+    // Handle nested list group deactivation
+    var listType = $(e.delegateTarget).closest('div').attr('id');
+    if (listType == 'hallitusList') {
+      $('#toimaritList > a.active').removeClass('active');
+    } else if (listType == 'toimaritList') {
+      $('#hallitusList > a.active').removeClass('active');
     }
   });
 
   $('#btnHaeVirkaan').click(function () {
-    $('#header').html("Hae virkaan");
-    $('#vaaliWrapperForm').fadeIn(300);
-    $('#vaaliWrapperContent').fadeOut(300);
+    $('#btnHaeVirkaan').toggleClass('animate-chevron');
+    $('#vaaliWrapperApplyForm').slideToggle();
   });
-
-  $('#btnEtusivu').click(function () {
-    // Get the current active sidenav selection. For example 'Puheenjohtaja', 'Mediakeisari' etc.
-    const header = $('.list-group-root a.active > span:visible').html();
-    $('#header').html(header);
-    $('#vaaliWrapperContent').fadeIn(300);
-    $('#vaaliWrapperForm').fadeOut(300);
-  });
-
 
   $(function() {
 
-    /* SCRIPT TO OPEN THE MODAL WITH THE PREVIEW */
+    /* Open cropper modal with preview */
     $("#id_pic").change(function() {
       if (this.files && this.files[0]) {
         var reader = new FileReader();
@@ -53,13 +36,13 @@ $(document).ready(function() {
       }
     });
 
-    /* SCRIPTS TO HANDLE THE CROPPER BOX */
+    /* Create the cropper and handle zooming, closing and displaying a preview */
     var $image = $("#image");
     var cropBoxData;
     var canvasData;
     $("#modalCrop").on("shown.bs.modal", function() {
       $image.cropper({
-        viewMode: 3,
+        viewMode: 2,
         aspectRatio: 1 / 1,
         minCropBoxWidth: 100,
         minCropBoxHeight: 100,
@@ -69,6 +52,7 @@ $(document).ready(function() {
         },
       });
     }).on("hidden.bs.modal", function() {
+      // Destroy previous cropper on modal hide
       cropBoxData = $image.cropper("getCropBoxData");
       canvasData = $image.cropper("getCanvasData");
       $image.cropper("destroy");
@@ -82,19 +66,17 @@ $(document).ready(function() {
       $image.cropper("zoom", -0.1);
     });
 
-    /* SCRIPT TO COLLECT THE DATA AND POST TO THE SERVER */
+    /* Handle cropped modal data */
     $(".js-crop-and-upload").click(function() {
       var cropData = $image.cropper("getData");
-
       var cropDataURL = $image.cropper('getCroppedCanvas').toDataURL();
-      $("#id_x").val(cropData.x);
-      $("#id_y").val(cropData.y);
-      $("#id_height").val(cropData.height);
-      $("#id_width").val(cropData.width);
-      var fu = $("#id_pic");
-      fu.fileupload('option', 'url', cropDataURL);
-      $("#formUpload").submit();
+      $("#x").val(cropData.x);
+      $("#y").val(cropData.y);
+      $("#h").val(cropData.height);
+      $("#w").val(cropData.width);
+      $('#crop-preview').height('100px');
+      $('#crop-preview').attr('src', cropDataURL);
+      $('#modalCrop').modal('hide');
     });
-
   });
 });

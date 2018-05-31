@@ -8,7 +8,7 @@ class VirkaAdmin(admin.ModelAdmin):
 
 
 class EhdokasAdmin(admin.ModelAdmin):
-    list_display = ('virka', 'name')
+    list_display = ('name', )
 
 
 class KysymysAdmin(admin.ModelAdmin):

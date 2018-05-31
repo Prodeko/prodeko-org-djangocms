@@ -386,8 +386,8 @@ body {
 }
 
 .vaali-content .vaali-div {
-	flex: 0 0 20%;
-	margin: 1em;
+	flex: 0 0 10%;
+	margin: 0.8em;
 }
 
 .vaali-content .vaali-div p {
@@ -395,45 +395,67 @@ body {
 }
 
 .vaali-content .img-container {
-	width: 150px;
-	height: 150px;
+	width: 100px;
+	height: 100px;
 	border-radius: 50%;
 	position: relative;
   overflow: hidden;
 }
 
-.vaali-content img {
+.vaali-content .img-container img {
 	display: inline;
 	margin: 0 auto;
 	height: 100%;
 	width: auto;
 }
 
-.vaali-content .fa-plus {
-    color: green;
-}
-
 .vaali-container .modal-lg {
   max-width: 70%;
-}
-
-#vaaliWrapperContentAndForm {
-	position: relative;
-	min-height: 700px;
-	display: block;
 }
 
 #vaaliWrapperContentAndForm .btn {
 	width: 140px;
 }
 
-#vaaliWrapperForm, #vaaliWrapperContent {
-	width: 100%;
-	position: absolute;
+#vaaliWrapperContentAndForm .tab-content p {
+	font-size: 0.8em;
+	font-weight: bold;
 }
 
-#vaaliWrapperForm {
+#vaaliWrapperApplyForm, #vaaliWrapperContent {
+	width: 100%;
+}
+
+#vaalitKysymysForm a {
+	background-color: #e7e7e7;
+}
+
+#vaalitKysymysForm .fa-chevron-down {
+  transition: all 0.3s ease-in-out;
+}
+
+#vaalitKysymysForm #btnHaeVirkaan.animate-chevron .fa-chevron-down {
+	transform: rotate(-179.9deg); /* For some reason there is a small wiggle with if the rotation is 180 */
+  transition: all 0.3s ease-in-out;
+}
+
+#vaaliWrapperApplyForm .django-ckeditor-widget {
+	width: 100%;
+}
+
+#vaaliWrapperApplyForm {
   display: none;
+}
+
+#modalCrop .img-container img {
+	max-width: 100%;
+}
+
+#vaaliWrapperApplyForm #crop-preview {
+	height: 0;
+	width: 100px;
+	border-radius: 50%;
+	overflow: hidden;
 }
 
 /* TIEDOSTOT */
