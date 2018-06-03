@@ -58,7 +58,7 @@ class Kysymys(models.Model):
 
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Luotu')
     to_applicant = models.ForeignKey(Virka, on_delete=models.CASCADE, related_name='kysymykset')
-    question = models.TextField(blank=True, verbose_name='Kysymys')
+    question = models.TextField(blank=False, verbose_name='Kysymys')
 
     def __str__(self):
         to_applicant = self.to_applicant

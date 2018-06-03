@@ -7,7 +7,7 @@ from django.db.models import Count
 from django.shortcuts import redirect, render
 from PIL import Image
 
-from .forms import EhdokasForm
+from .forms import EhdokasForm, KysymysForm
 from .models import Ehdokas, Kysymys, Virka
 
 
@@ -67,3 +67,26 @@ def main_view(request):
     else:
         context['form_ehdokas'] = EhdokasForm()
     return render(request, 'vaalit.html', {'context': context})
+
+
+def question_form(request):
+    if request.method == 'POST':
+        print(request.POST)
+        form_kysymys = KysymysForm(request.POST)
+        hidden_virka = request.POST.get("hidden-input-virka")
+        if form_kysymys.is_valid():
+            kysymys = form_kysymys.save(commit=False)
+
+            v1 = Virka.objects.get(name=hidden_virka)
+            # Saving here is mandatory to make the .add() method work.
+            kysymys.save()
+            kysymys.virka.add(v1)
+            kysymys.save()
+
+            return redirect('vaalit')
+        else:
+            print("here")
+            # Return form with error messages and reder vaalit main page
+            return render(request, 'vaalit.html', {'context': form_kysymys})
+    else:
+        return redirect('/vaalit')

@@ -6,7 +6,7 @@ $(document).ready(function() {
     $('#vaalitKysymysForm small').html(virka + ' - Esitä kysymys');
     $('#header').html(virka);
     // Set hidden input field
-    $('#input-virka').attr('value', virka);
+    $('.input-virka').attr('value', virka);
 
     // Handle nested list group deactivation
     var listType = $(e.delegateTarget).closest('div').attr('id');
