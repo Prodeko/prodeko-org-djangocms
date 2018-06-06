@@ -8,15 +8,16 @@ Tags: bootstrap
 
 /*
 Prodekon vaaleansininen: #0053a0
-Prodeokn keskisininen: #002e7d
+Prodekon keskisininen: #002e7d
 Prodekon tummansininen: #002851
 */
 
 
 body {
 	font-family: Raleway, Helvetica, sans-serif;
-	color: black;
+	color: #002851;
 	min-height: 100%;
+	padding-top: 1em;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -30,7 +31,7 @@ h1 {
 h5 {
 	font-weight: 600;
 	padding: 0px;
-  margin: 0px;
+	margin: 0px;
 }
 
 .description {
@@ -51,23 +52,18 @@ h5 {
 }
 
 .prodeko-navbar, .prodeko-footer, .prodeko-navbar .dropdown-menu {
-	background-color: #002851;
-	color: white;
 	font-family: Raleway, Helvetica, sans-serif;
-}
-
-.prodeko-navbar .dropdown-menu a.dropdown-item:hover {
-	color: #002851;
 }
 
 /* HEADER */
 
 .prodeko-navbar{
 	text-transform: uppercase;
+	padding-left: 0;
 }
 
 .prodeko-navbar a:not(.btn) {
-	color: white;
+	color: #002851;
 }
 
 /* Start animated underlines
@@ -75,7 +71,6 @@ h5 {
 Credits: http://tobiasahlin.com/blog/css-trick-animating-link-underlines/
 */
 .prodeko-navbar #collapsibleNavbar a.nav-top {
-	color: white;
 	position: relative;
 	text-decoration: none;
 }
@@ -127,17 +122,14 @@ Credits: http://tobiasahlin.com/blog/css-trick-animating-link-underlines/
 	border-radius: 20px;
 }
 
-/*for prettify look*/
-body {
-    padding: 1em;
-}
-
 #prodeko-logo {
-	background-image: url('/static/images/prodeko-logo-white.png');
+	background-image: url('/static/images/prodeko-logo-text-blue.png');
 	background-size: contain;
 	background-repeat: no-repeat;
-	height: 60px;
-	width: 60px;
+	height: 80px;
+	width: 300px;
+	margin-left: 0 !important;
+	padding-left: 0;
 }
 
 /* GENERAL */
@@ -182,6 +174,14 @@ body {
 	margin-bottom: 0.6em;
 }
 
+.page-container h1, .page-container h2, .page-container h3, .page-container h4, .page-container h5 {
+	text-transform: uppercase;
+}
+
+.page-container p {
+	padding-left: 1em;
+}
+
 .page-breadcrumb {
 	list-style-type: none;
 	padding-left: 0;
@@ -204,7 +204,39 @@ body {
 	list-style: none;
 }
 
+/* SIDENAVI */
+
+#sidenavi {
+	list-style-type: none;
+	background-color: #002851;
+	padding: 1em;
+	min-height: 20em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#sidenavi a {
+	color: lightgrey;
+	text-transform: uppercase;
+}
+
+#sidenavi .sidemenu-collapsable {
+	padding-left: 0;
+}
+
+#sidenavi .sidenavi-highlink {
+	font-weight: bold;
+}
+
 /* FRONTPAGE */
+
+h1.frontpage-welcometext {
+	text-transform: uppercase;
+	font-size: 2.5rem;
+	font-weight: bold;
+	margin-top: 0.5em;
+}
 
 .frontpage-container {
 	padding: 3em 2em 3em 2em;
@@ -214,18 +246,28 @@ body {
 	margin-bottom: 0.8em;
 }
 
-.frontpage-category-squarerow {
-	height: 10vh;
+.frontpage-squarerow {
+	padding-top: 1.5vh;
+	padding-left: 15px;
+	padding-right: 15px;
+	height: 20vh;
+	min-height: 200px;
 }
 
-.frontpage-category-squarerow .col-md {
+.frontpage-square {
+	background-image: url('/static/images/frontpage-square.jpg');
 	background-size: cover;
+	background-repeat: no-repeat;
 	color: white;
 	height: 100%;
-	display: flex;
-  justify-content: center;
-  flex-direction: column;
-  text-align: center;
+}
+
+.frontpage-squarerow .frontpage-square:nth-child(2) {
+	margin-left: 10px;
+	margin-right: 10px;	
+}
+.frontpage-squarerow .frontpage-square:nth-child(3) {
+	margin-right: 10px;	
 }
 
 /* DOCUMENTS PAGE */
@@ -248,7 +290,9 @@ body {
 /* FOOTER */
 
 .prodeko-footer {
-	padding: 2em 0 2em 0;
+	padding: 3em 0 2em 0;
+	background-color: #002851;
+	color: white;
 }
 
 .prodeko-footer a {
