@@ -4,8 +4,7 @@ djangocms-admin-style>=1.2,<1.3
 django-treebeard>=4.0,<5.0
 
 #djangocms-text-ckeditor>=3.6.0
-https://github.com/divio/djangocms-text-ckeditor.git@175a1a4
-#https://github.com/divio/djangocms-text-ckeditor/archive/master.zip?1518805203.42
+https://github.com/divio/djangocms-text-ckeditor/archive/master.zip
 https://github.com/divio/djangocms-file/archive/master.zip?1518805203.42
 https://github.com/divio/djangocms-link/archive/master.zip?1518805203.42
 https://github.com/divio/djangocms-style/archive/master.zip?1518805203.42
