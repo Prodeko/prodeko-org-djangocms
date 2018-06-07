@@ -17,9 +17,8 @@ $(document).ready(function() {
     }
   });
 
-  $('#btnHaeVirkaan').click(function () {
-    $('#btnHaeVirkaan').toggleClass('animate-chevron');
-    $('#vaaliWrapperApplyForm').slideToggle();
+  $('#btnVastaaKysymykseen').click(function () {
+    $('#vaalitWrapperAnswerForm').toggle();
   });
 
   $(function() {
@@ -31,7 +30,7 @@ $(document).ready(function() {
         reader.onload = function(e) {
           $("#image").attr("src", e.target.result);
           $("#modalCrop").modal("show");
-        }
+        };
         reader.readAsDataURL(this.files[0]);
       }
     });

@@ -6,7 +6,6 @@ from .models import Kulukorvaus, KulukorvausPerustiedot
 class KulukorvausPerustiedotForm(ModelForm):
 
     def __init__(self, *args, **kwargs):
-        exclude = kwargs.pop('exclude', None)
         super(KulukorvausPerustiedotForm, self).__init__(*args, **kwargs)
 
         if 'position_in_guild' in self.fields:
