@@ -1,0 +1,31 @@
+{% load i18n menu_tags %}
+{% get_current_language as LANGUAGE_CODE %}
+
+
+<ul class="nav flex-column" id="sidenavi">
+{% for child in children %}
+	<!-- no child pages  -->
+			{% if child.is_leaf_node %}
+				<li class="nav-item sidenavi-highlink {% if child.selected %} active{% endif %}"><a class="nav-link" href="{{ child.get_absolute_url }}">{{child.get_menu_title }}</a></li>
+			{% endif %}
+	<!-- /no child pages  -->
+	<!-- has child pages  -->
+			{% if not child.is_leaf_node or child.ancestor %}
+				<li class="nav-item{% if child.ancestor %} active{% endif %}">
+					<a href="#" class="nav-link sidenavi-highlink" data-toggle="collapse" aria-expanded="false" data-target="#sidemenu-collapsable-{{child.get_menu_title}}" aria-controls="sidemenu-collapsable-{{child.get_menu_title}}">
+					{{child.get_menu_title }}<b class="caret"></b></a>
+					<ul id="sidemenu-collapsable-{{child.get_menu_title}}" class="collapse sidemenu-collapsable{% if child.ancestor %} show{% endif %}">
+						{% if child.get_descendants %}
+							{% for kid in child.get_descendants %}
+									<li class="nav-item{% if child.ancestor %} active{% endif %}">
+										<a href="{{ kid.get_absolute_url }}" class="nav-link">{{kid.get_menu_title }}</a>
+									</li>
+							{% endfor %}
+						{% endif %}
+					</ul>
+				</li>
+			{% endif %}
+	<!-- /has child pages  -->
+		{% endfor %}
+	<!-- /end for child -->
+</ul>
