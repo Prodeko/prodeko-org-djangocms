@@ -3,6 +3,7 @@ from datetime import datetime
 
 from ckeditor.fields import RichTextField
 from django.conf import settings
+from django.contrib.auth.models import User
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
@@ -55,6 +56,7 @@ class Kysymys(models.Model):
     """
 
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Luotu')
+    created_by = models.ForeignKey(settings.AUTH_USER_MODEL)
     to_virka = models.ForeignKey(Virka, related_name='kysymykset')
     question = models.TextField(blank=False, verbose_name='Kysymys')
 

@@ -457,7 +457,7 @@ h1.frontpage-welcometext {
   max-width: 70%;
 }
 
-#vaaliWrapperContentAndForm .btn {
+#vaaliWrapperContentAndForm #vaalitKysymysForm .btn {
 	width: 140px;
 }
 

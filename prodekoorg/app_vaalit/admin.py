@@ -12,6 +12,11 @@ class EhdokasAdmin(admin.ModelAdmin):
 
 
 class KysymysAdmin(admin.ModelAdmin):
+
+    def save_model(self, request, obj, form, change):
+        obj.created_by = request.user
+        obj.save()
+
     list_display = ('to_virka', 'created_at')
 
 

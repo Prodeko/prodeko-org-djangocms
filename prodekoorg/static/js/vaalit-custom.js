@@ -21,6 +21,10 @@ $(document).ready(function() {
     $('#vaalitWrapperAnswerForm').toggle();
   });
 
+  $('#btnHaeVirkaan').click(function () {
+    $('#vaaliWrapperApplyForm').slideToggle();
+  });
+
   $(function() {
 
     /* Open cropper modal with preview */

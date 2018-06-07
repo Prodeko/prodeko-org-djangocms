@@ -5,11 +5,21 @@
       <li class="list-group-item flex-column align-items-start mb-3">
         <div class="d-flex w-100 justify-content-between">
           <p class="mb-1"><em>Teemu Teekkari</em></p>
-          <small>{{ kysymys.created_at }}</small>
-          <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#vaalitAnswerForm_{{ forloop.counter }}">
-            <i class="mr-2 fa fa-reply"></i>
-            Vastaa
-          </button>
+          <small>{{ kysymys.created_at|timesince }}</small>
+          {% for ehdokas in virka.ehdokkaat.all %}
+            {% if request.user == ehdokas.auth_prodeko_user %}
+            <button type="button" class="btn btn-default my-1" data-toggle="collapse" data-target="#vaalitAnswerForm_{{ forloop.parentloop.counter }}">
+              <i class="mr-2 fa fa-reply"></i>
+              Vastaa
+            </button>
+            {% endif %}
+          {% endfor %}
+          {% if request.user == kysymys.created_by %}
+          <form method="POST" action="{% url 'app_vaalit:delete_kysymys' id=kysymys.id %}">
+             {% csrf_token %}
+             <button type="submit" class="btn btn-danger my-1"><i class="fas fa-times mr-2"></i>Poista</button>
+          </form>
+          {% endif %}
         </div>
         <p class="mb-1">{{ kysymys.question }}</p>
       </li>
@@ -21,7 +31,7 @@
         <li class="list-group-item list-group-item-action flex-column align-items-start">
           <div class="d-flex w-100 justify-content-between">
             <p class="mb-1"><em>Teemu Teekkari</em></p>
-            <small>{{ vastaus.created_at }}</small>
+            <small>{{ vastaus.created_at|timesince }}</small>
           </div>
           <p class="mb-1">{{ vastaus.answer }}</p>
         </li>
