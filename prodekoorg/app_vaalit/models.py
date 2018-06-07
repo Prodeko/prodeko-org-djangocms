@@ -1,7 +1,7 @@
 import os
-from ckeditor.fields import RichTextField
 from datetime import datetime
 
+from ckeditor.fields import RichTextField
 from django.conf import settings
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
@@ -20,8 +20,6 @@ class Virka(models.Model):
         return '{}'.format(nimi)
 
     def get_ehdokkaat(self):
-        print(self.ehdokkaat)
-        print(self.name)
         return self.ehdokkaat
 
     class Meta:
@@ -57,14 +55,33 @@ class Kysymys(models.Model):
     """
 
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Luotu')
-    to_applicant = models.ForeignKey(Virka, on_delete=models.CASCADE, related_name='kysymykset')
+    to_virka = models.ForeignKey(Virka, related_name='kysymykset')
     question = models.TextField(blank=False, verbose_name='Kysymys')
 
     def __str__(self):
-        to_applicant = self.to_applicant
-        return '{}'.format(to_applicant)
+        tv = self.to_virka
+        return '{}'.format(tv)
 
     class Meta:
         # Correct spelling in Django admin
         verbose_name = _('kysymys')
         verbose_name_plural = _('Kysymykset')
+
+
+class Vastaus(models.Model):
+    """ Answer to a spesific question by a specific candidate.
+    """
+
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Luotu')
+    by_ehdokas = models.ForeignKey(Ehdokas, blank=True, on_delete=models.CASCADE, related_name='vastaaja')
+    to_question = models.ForeignKey(Kysymys, blank=True, on_delete=models.CASCADE, related_name='vastaukset')
+    answer = models.TextField(blank=False, verbose_name='Vastaus')
+
+    def __str__(self):
+        be = self.by_ehdokas
+        return '{}'.format(be)
+
+    class Meta:
+        # Correct spelling in Django admin
+        verbose_name = _('vastaus')
+        verbose_name_plural = _('Vastaukset')

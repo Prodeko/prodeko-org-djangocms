@@ -1,0 +1,20 @@
+<form action="" method="POST" id="vaalitKysymysForm">
+  {% csrf_token %}
+  <div class="form-group row">
+    <div class="col-lg-6 col-sm-12">
+      <textarea name="question" rows="3" id="id_question" class="form-control" required=""></textarea>
+      {% if context.form_kysymys.question.errors %}
+        <small class="form-text text-danger">{{ context.form_kysymys.question.errors.as_text }}</small>
+      {% endif %}
+      <small class="form-text text-muted">Esitä kysymys</small>
+    </div>
+  </div>
+  <div class="form-group">
+    <input type="hidden" class="input-virka" name="hidden-input-virka" value="{{context.virat.0.name}}"/>
+    <button name="submitKysymys" type="submit" class="btn btn-primary my-2">Lähetä kysymys</button>
+    <a role="button" id="btnHaeVirkaan" class="btn btn-default">
+      Hae virkaan
+      <span class="mr-1 fas fa-chevron-down rotate-fa"></span>
+    </a>
+  </div>
+</form>

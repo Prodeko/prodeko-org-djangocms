@@ -1,0 +1,16 @@
+<form action="" method="POST" class="collapse" id="vaalitAnswerForm_{{ forloop.counter }}">
+  {% csrf_token %}
+  <div class="form-group row">
+    <div class="col-lg-6 col-sm-12">
+      <textarea name="question" rows="3" id="id_question" class="form-control" required=""></textarea>
+      {% if context.form_kysymys.question.errors %}
+        <small class="form-text text-danger">{{ context.form_kysymys.question.errors.as_text }}</small>
+      {% endif %}
+      <small class="form-text text-muted">Vastaa kysymykseen</small>
+    </div>
+  </div>
+  <div class="form-group">
+    <input type="hidden" class="input-question" name="hidden-input-kysymys" value="{{context.virat.0.name}}"/>
+    <button name="submitVastaus" type="submit" class="btn btn-primary my-1">Lähetä vastaus</button>
+  </div>
+</form>

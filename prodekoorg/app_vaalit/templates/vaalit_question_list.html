@@ -1,0 +1,34 @@
+<div id="vaalitWrapperQuestions">
+  <h3>Kysymykset</h3>
+  <div class="list-group list-group-root">
+    {% for kysymys in virka.kysymykset.all %}
+      <li class="list-group-item flex-column align-items-start mb-3">
+        <div class="d-flex w-100 justify-content-between">
+          <p class="mb-1"><em>Teemu Teekkari</em></p>
+          <small>{{ kysymys.created_at }}</small>
+          <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#vaalitAnswerForm_{{ forloop.counter }}">
+            <i class="mr-2 fa fa-reply"></i>
+            Vastaa
+          </button>
+        </div>
+        <p class="mb-1">{{ kysymys.question }}</p>
+      </li>
+      <div id="vaalitWrapperAnswerForm">
+        {% include "vaalit_answer_form.html" %}
+      </div>
+      <div class="list-group">
+        {% for vastaus in kysymys.vastaukset.all %}
+        <li class="list-group-item list-group-item-action flex-column align-items-start">
+          <div class="d-flex w-100 justify-content-between">
+            <p class="mb-1"><em>Teemu Teekkari</em></p>
+            <small>{{ vastaus.created_at }}</small>
+          </div>
+          <p class="mb-1">{{ vastaus.answer }}</p>
+        </li>
+        {% endfor %}
+      </div>
+    {% empty %}
+      <p>Ei kysymyksiä</p>
+    {% endfor %}
+  </div>
+</div>

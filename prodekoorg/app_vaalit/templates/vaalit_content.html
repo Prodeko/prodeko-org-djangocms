@@ -1,26 +1,12 @@
 <div class="vaali-content" id="vaaliWrapperContentAndForm">
   <h2 class="py-4" id="header">{{ context.virat.0.name }}</h2>
   <div id="vaaliWrapperContent">
-    <div id="vaalitKysymysForm">
-      <form action="{% url 'app_vaalit:question_form' %}" method="POST" id="vaalitKysymysForm">
-        {% csrf_token %}
-        <div class="form-group row">
-          <div class="col-lg-6 col-sm-12">
-            <textarea type="email" class="form-control" id="kysymys" rows="3"></textarea>
-            <small class="form-text text-muted">Esitä kysymys</small>
-          </div>
-        </div>
-        <div class="form-group">
-          <input type="hidden" class="input-virka" name="hidden-input-virka" value="{{context.virat.0.name}}"/>
-          <button type="submit" class="btn btn-primary my-2">Lähetä kysymys</button>
-          <a role="button" id="btnHaeVirkaan" class="btn btn-default">
-            Hae virkaan
-            <span class="mr-1 fas fa-chevron-down rotate-fa"></span>
-          </a>
-        </div>
-      </form>
+    <div id="vaaliWrapperKysymysForm">
+      {% include "vaalit_question_form.html" %}
     </div>
-    {% include "vaalit_apply_form.html" %}
+    <div id="vaaliWrapperApplyForm" style="{{context.style_vaaliWrapperApplyForm}}">
+      {% include "vaalit_apply_form.html" %}
+    </div>
     <div class="tab-content">
       {% for virka in context.virat %}
       <div id="_{{ forloop.counter }}" class="tab-pane fade pt-4 {% if forloop.first %} active show{% endif %}" role="tabpanel">
@@ -29,7 +15,7 @@
         {% for ehdokas in virka.ehdokkaat.all %}
           <div class="vaali-div text-center">
             <div class="img-container mx-auto">
-              <img src="{{ ehdokas.pic.url }}" alt="{{ ehdokas.name }}">
+              <img src="{{ ehdokas.pic.url }}" alt="{{ ehdokas.name }}" />
             </div>
             <p>{{ ehdokas.name }}</p>
           </div>
@@ -37,11 +23,11 @@
           <p>Ei hakijoita</p>
         {% endfor %}
         </div>
+        {% include "vaalit_question_list.html" %}
       </div>
       {% endfor %}
     </div>
   </div>
-
 </div>
 
 {% include "vaalit_modal_photocrop.html" %}
