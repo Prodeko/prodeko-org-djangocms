@@ -226,6 +226,7 @@ Credits: http://tobiasahlin.com/blog/css-trick-animating-link-underlines/
 	background-color: #002851;
 	padding: 1em;
 	min-height: 20em;
+	min-width: 15em;
 	display: flex;
 	justify-content: center;
 	align-items: center;
