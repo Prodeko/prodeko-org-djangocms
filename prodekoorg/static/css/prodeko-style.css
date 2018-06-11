@@ -186,13 +186,13 @@ Credits: http://tobiasahlin.com/blog/css-trick-animating-link-underlines/
 	padding-left: 1em;
 }
 
-.page-container ul:not(.page-breadcrumb) {
+.page-container ul:not(.page-breadcrumb):not(#sidenavi) {
 	list-style-type: none;
-	padding: 0;
+	padding: 0 0 0 1.5em;
 	margin: 0;
 }
 
-.page-container ul:not(.page-breadcrumb) li::before {
+.page-container ul:not(.page-breadcrumb):not(#sidenavi) li::before {
 	content: "–";
 	padding-right: 1em;
 }
