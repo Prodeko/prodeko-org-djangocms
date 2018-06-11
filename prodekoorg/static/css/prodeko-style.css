@@ -66,6 +66,10 @@ h5 {
 	color: #002851;
 }
 
+.prodeko-navbar li.active-menu-item a {
+	font-weight: bold;	
+}
+
 /* Start animated underlines
 
 Credits: http://tobiasahlin.com/blog/css-trick-animating-link-underlines/
@@ -82,7 +86,7 @@ Credits: http://tobiasahlin.com/blog/css-trick-animating-link-underlines/
   height: 1px;
   bottom: 0;
   left: 0;
-  background-color: white;
+  background-color: #002851;
   visibility: hidden;
   -webkit-transform: scaleX(0);
   transform: scaleX(0);
@@ -123,7 +127,7 @@ Credits: http://tobiasahlin.com/blog/css-trick-animating-link-underlines/
 }
 
 #prodeko-logo {
-	background-image: url('/static/images/logos/prodeko-logo-white.png');
+	background-image: url('/static/images/logos/prodeko-logo-text-blue-shadow.png');
 	background-size: contain;
 	background-repeat: no-repeat;
 	height: 80px;
@@ -180,6 +184,17 @@ Credits: http://tobiasahlin.com/blog/css-trick-animating-link-underlines/
 
 .page-container p {
 	padding-left: 1em;
+}
+
+.page-container ul:not(.page-breadcrumb) {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+.page-container ul:not(.page-breadcrumb) li::before {
+	content: "–";
+	padding-right: 1em;
 }
 
 .page-breadcrumb {
@@ -255,7 +270,7 @@ h1.frontpage-welcometext {
 }
 
 .frontpage-square {
-	background-image: url('/static/images/frontpage-square.jpg');
+	background-image: url('/static/images/backgrounds/frontpage-square.jpg');
 	background-size: cover;
 	background-repeat: no-repeat;
 	color: white;
