@@ -12,6 +12,8 @@ Prodekon keskisininen: #002e7d
 Prodekon tummansininen: #002851
 */
 
+@import 'bs_overrides.css';
+
 
 body {
 	font-family: Raleway, Helvetica, sans-serif;
@@ -116,10 +118,6 @@ Credits: http://tobiasahlin.com/blog/css-trick-animating-link-underlines/
 
 .prodeko-navbar .login-dropdown {
 	background-color: #002e7d;
-}
-
-.prodeko-navbar .btn {
-	border-radius: 20px;
 }
 
 #prodeko-logo {
@@ -453,16 +451,30 @@ h1.frontpage-welcometext {
 	width: auto;
 }
 
+.vaali-content .btn {
+	font-weight: 200;
+}
+
 .vaali-container .modal-lg {
   max-width: 70%;
 }
 
-#vaaliWrapperContentAndForm #vaalitKysymysForm .btn {
-	width: 140px;
+.vaali-container .btn-round-xs {
+	border-radius: 20px;
+	padding-left: 10px;
+	padding-right: 10px;
+	width: 100%;
+	font-size: 0.7em;
 }
 
-#vaaliWrapperContentAndForm .tab-content p {
-	font-size: 0.8em;
+.vaali-container p.ehdokas-name {
+	font-weight: 600;
+	font-size: 1.3em;
+	margin-bottom: 0;
+}
+
+#vaaliWrapperContentAndForm #vaalitKysymysForm .btn {
+	width: 140px;
 }
 
 #vaaliWrapperApplyForm, #vaaliWrapperContent {

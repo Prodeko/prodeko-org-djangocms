@@ -1,0 +1,46 @@
+/*
+Overriding bootstrap default stlyes.
+*/
+
+/*
+Prodekon vaaleansininen: #0053a0
+Prodekon keskisininen: #002e7d
+Prodekon tummansininen: #002851
+*/
+
+.btn {
+    border-radius: 0;
+}
+
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:visited,
+.btn-primary:focus {
+    background-color: #002e7d;
+    border-color: #002e7d;
+}
+
+.btn-danger,
+.btn-danger:hover,
+.btn-danger:active,
+.btn-danger:visited,
+.btn-danger:focus {
+    background-color: #b12321;
+    border-color: #b12321;
+}
+
+.btn-success,
+.btn-success:hover,
+.btn-success:active,
+.btn-success:visited,
+.btn-success:focus {
+    background-color: #5a8246;
+    border-color: #5a8246;
+}
+
+.form-control{
+  -webkit-border-radius: 0;
+     -moz-border-radius: 0;
+          border-radius: 0;
+}
