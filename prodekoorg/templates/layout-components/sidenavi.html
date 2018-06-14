@@ -2,7 +2,8 @@
 {% get_current_language as LANGUAGE_CODE %}
 
 
-<ul class="nav flex-column" id="sidenavi">
+{% if children %}
+<ul class="nav flex-column d-none d-lg-flex" id="sidenavi">
 {% for child in children %}
 	<!-- no child pages  -->
 			{% if child.is_leaf_node %}
@@ -29,3 +30,4 @@
 		{% endfor %}
 	<!-- /end for child -->
 </ul>
+{% endif %}
