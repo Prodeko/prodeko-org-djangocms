@@ -36,6 +36,10 @@ DATABASES = {
         'PASSWORD': DB_PSWD,
         'HOST': '',
         'PORT': '',
+    },
+    'TEST': {
+        'CHARSET': 'utf8',
+        'COLLATION': 'utf8_general_ci',
     }
 }
 
@@ -77,7 +81,7 @@ TEMPLATES = [
                  os.path.join(BASE_DIR, 'tiedotteet/info', 'templates'),
                  os.path.join(BASE_DIR, 'tiedotteet', 'public'),
                  os.path.join(BASE_DIR, 'prodekoorg/app_toimarit', 'templates'),
-                 os.path.join(BASE_DIR, 'prodekoorg/app_kulukorvaus', 'templates'),],
+                 os.path.join(BASE_DIR, 'prodekoorg/app_kulukorvaus', 'templates'), ],
         'OPTIONS': {
             'context_processors': [
                 'django.contrib.auth.context_processors.auth',
