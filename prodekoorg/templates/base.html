@@ -15,17 +15,28 @@
 
 		{% cms_toolbar %}
 
+		{% if messages %}
+		<div class="aler-container">
+			{% for message in messages %}
+				<div class="alert alert-{{ message.tags }} alert-dismissable fade show" role="alert">{{ message }}
+					<button type="button" class="close" data-dismiss="alert"><i class="fas fa-times"></i></button>
+				</div>
+			{% endfor %}
+		</div>
+		{% endif %}
+
 		{% show_menu 0 0 100 100 "layout-components/navbar.html" %}
 		{% block content %}{% endblock content %}
 		{% include "layout-components/footer.html" %}
 
+		{% comment %} Javascript included in separate apps {% endcomment %}
 		{% render_block "js" %}
 	</body>
 </html>
 
 
 {% addtoblock "custom-css" %}
-<link href="https://fonts.googleapis.com/css?family=Raleway:400,600,800" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Raleway:200,400,600,800" rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <link href="{% static 'css/prodeko-style.css' %}" rel="stylesheet" type="text/css">
 <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">

@@ -1,30 +1,87 @@
+function updateTexts(virka) {
+  $('#vaalitKysymysForm small').html(virka + ' - Esitä kysymys');
+  $('#header').html(virka);
+  // Set hidden input field
+  $('.input-virka').attr('value', virka);
+}
+
+selectedTab_id = localStorage.getItem('selectedTab_id');
+selectedVirka = localStorage.getItem('selectedVirka');
+
 $(document).ready(function() {
 
-  $('.list-group-root div.list-group > a').on('click', function(e) {
-    // Handle updating the header text, trim is needed
-    var virka = $(e.target).first().text().trim();
-    $('#vaalitKysymysForm small').html(virka + ' - Esitä kysymys');
-    $('#header').html(virka);
-    // Set hidden input field
-    $('.input-virka').attr('value', virka);
+  /* START stay on same navigation tab with reload */
+  var elem;
+  var virka;
 
-    // Handle nested list group deactivation
-    var listType = $(e.delegateTarget).closest('div').attr('id');
-    if (listType == 'hallitusList') {
-      $('#toimaritList > a.active').removeClass('active');
-    } else if (listType == 'toimaritList') {
-      $('#hallitusList > a.active').removeClass('active');
+  /* Use localStorage to display the tab that was open
+  *  before the latest refresh.
+  */
+  if ($('#vaalitNav').length > 0) {
+    if (selectedTab_id != null) {
+      elem = $('.list-group-root a[data-toggle="tab"][href="' + selectedTab_id + '"]');
+
+      virka = elem.text().trim();
+      updateTexts(virka);
+      checkBtnHaeVirkaanVisibility(virka);  // Defined in 'vaalit_question_form.html'
+
+      elem.addClass('.active');
+      elem.tab('show');
+    } else {
+      // No tab saved in localStorage
+      elem = $('.list-group-root a[data-toggle="tab"][href="#_1"]');
+
+      virka = elem.text().trim();
+      checkBtnHaeVirkaanVisibility(virka);
+      updateTexts(virka);
+
+      elem.addClass('.active');
+      elem.tab('show');
     }
+  }
+
+
+
+  $('.list-group-root a[data-toggle="tab"]').click(function (e) {
+      var id = $(e.delegateTarget).attr("href");
+      var virka = $('.list-group-root a[data-toggle="tab"][href="' + id + '"]').text().trim();
+      checkBtnHaeVirkaanVisibility(virka);
+
+      localStorage.setItem('selectedTab_id', id);
+      localStorage.setItem('selectedVirka', virka);
+
+      updateTexts(virka);
+
+      var listType = $(e.delegateTarget).closest('div').attr('id');
+      if (listType == 'hallitusList') {
+        $('#toimaritList > a.active').removeClass('active');
+      } else if (listType == 'toimaritList') {
+        $('#hallitusList > a.active').removeClass('active');
+      }
+  });
+  /* END stay on same navigation tab with reload */
+
+  /* Ehdokas object delete confirmation in modal */
+  $(".showDeleteEhdokasModal").click(function(e) {
+    e.preventDefault();
+    var ehdokasId = $(e.target).attr('ehdokas-id');
+    $('#formDeleteEhdokas').attr('action', '/vaalit/delete-ehdokas/' + ehdokasId + '/');
+    $('#confirmDeleteEhdokasModal').modal('toggle');
   });
 
+  /* Display answer form */
   $('#btnVastaaKysymykseen').click(function () {
     $('#vaalitWrapperAnswerForm').toggle();
   });
 
+  /* Display apply form */
   $('#btnHaeVirkaan').click(function () {
+    $('#btnHaeVirkaan').toggleClass('animate-chevron');
     $('#vaaliWrapperApplyForm').slideToggle();
   });
 
+
+  /* Ehdokas picture cropping */
   $(function() {
 
     /* Open cropper modal with preview */
@@ -77,8 +134,8 @@ $(document).ready(function() {
       $("#y").val(cropData.y);
       $("#h").val(cropData.height);
       $("#w").val(cropData.width);
-      $('#crop-preview').height('100px');
-      $('#crop-preview').attr('src', cropDataURL);
+      $('.crop-preview').height('100px');
+      $('.crop-preview').attr('src', cropDataURL);
       $('#modalCrop').modal('hide');
     });
   });

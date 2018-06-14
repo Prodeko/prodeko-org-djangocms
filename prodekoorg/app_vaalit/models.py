@@ -13,15 +13,14 @@ class Virka(models.Model):
     """
 
     is_hallitus = models.BooleanField(default=False, verbose_name='Hallitus')
-    section = models.CharField(max_length=50, verbose_name='Jaos', blank=True)
-    name = models.CharField(max_length=50, verbose_name='Virka')
+    name = models.CharField(max_length=50, unique=True, verbose_name='Virka')
 
     def __str__(self):
         nimi = self.name
         return '{}'.format(nimi)
 
-    def get_ehdokkaat(self):
-        return self.ehdokkaat
+    def natural_key(self):
+        return self.name
 
     class Meta:
         # Correct spelling in Django admin
@@ -37,8 +36,11 @@ class Ehdokas(models.Model):
     auth_prodeko_user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, null=True)
     name = models.CharField(max_length=50, verbose_name='Nimi')
     introduction = RichTextField(config_name='vaalit_ckeditor')
-    virka = models.ManyToManyField(Virka, related_name='ehdokkaat')
+    virka = models.ForeignKey(Virka, related_name='ehdokkaat')
     pic = models.ImageField(blank=True, verbose_name='Kuva')
+
+    def natural_key(self):
+        return self.auth_prodeko_user
 
     def __str__(self):
         v = self.virka
@@ -49,6 +51,7 @@ class Ehdokas(models.Model):
         # Correct spelling in Django admin
         verbose_name = _('ehdokas')
         verbose_name_plural = _('Ehdokkaat')
+        unique_together = ('auth_prodeko_user', 'virka',)
 
 
 class Kysymys(models.Model):

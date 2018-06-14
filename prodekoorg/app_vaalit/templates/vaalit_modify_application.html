@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load cms_tags sekizai_tags %}
+
+{% block extra_head %}
+<script src="/static/js/vaalit-custom.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cropper/4.0.0/cropper.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/cropper/4.0.0/cropper.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid vaali-container">
+
+	{% include "layout-components/breadcrumb.html" %}
+	{% placeholder "content" %}
+	<div class="row">
+		<div class="col-12">
+      <form id="vaalitModifyApplyForm" novalidate action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.media }}
+        <div class="container-fluid">
+          <div class="form-group row">
+            <div class="col-sm-6 pl-0">
+              <label class="col-form-label" for="{{ form.name.id_for_label }}">{{ form.name.label }}</label>
+              {{ form.name }}
+            </div>
+            <div class="col-sm-3">
+              {% if form.name.errors %}
+                <small class="form-text text-danger">{{ form.name.errors.as_text }}</small>
+              {% endif %}
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-sm-12 px-0">
+              <label class="col-form-label" for="{{ form.introduction.id_for_label }}">Esittely</label>
+              {{ form.introduction }}
+              {% if form.introduction.errors %}
+                <small class="form-text text-danger">{{ form.introduction.errors.as_text }}</small>
+              {% endif %}
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-sm-9 pl-0">
+              <label class="col-form-label" for="{{ form_photo.pic.id_for_label }}">Kuva</label>
+							<img class="img-preview" src={{ form.instance.pic.url }}/>
+              {{ form.pic }}
+            </div>
+            <div class="col-sm-3">
+              {% if form.pic.errors %}
+                <small class="form-text text-danger">{{ form.pic.errors.as_text }}</small>
+              {% endif %}
+            </div>
+          </div>
+          <div class="form-group row">
+            <img class="crop-preview">
+          </div>
+          <div class="form-group row">
+            <div class="col-sm-10">
+              <button name="submitVirka" type="submit" class="btn btn-primary my-2">Muokkaa hakemusta</button>
+            </div>
+          </div>
+          {% comment %}  {% endcomment %}
+          <input type="hidden" name="submitVirka" value=""/>
+          <input type="hidden" class="input-virka" name="hidden-input-virka" value="{{form.instance.virka}}"/>
+          <input type="hidden" id="x" name="hidden-crop-x" value="0"/>
+          <input type="hidden" id="y" name="hidden-crop-y" value="0"/>
+          <input type="hidden" id="w" name="hidden-crop-w" value="100"/>
+          <input type="hidden" id="h" name="hidden-crop-h" value="100"/>
+        </div>
+      </form>
+		</div>
+	</div>
+</div>
+{% include "vaalit_modal_photocrop.html" %}
+{% endblock content %}

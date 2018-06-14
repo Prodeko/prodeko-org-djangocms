@@ -13,6 +13,7 @@ Prodekon tummansininen: #002851
 */
 
 @import 'bs_overrides.css';
+@import 'messages_animation.css';
 
 
 body {
@@ -459,8 +460,8 @@ h1.frontpage-welcometext {
   max-width: 70%;
 }
 
-.vaali-container .btn-round-xs {
-	border-radius: 20px;
+.vaali-container .btn-xs {
+	border-radius: 0;
 	padding-left: 10px;
 	padding-right: 10px;
 	width: 100%;
@@ -506,8 +507,19 @@ h1.frontpage-welcometext {
 	max-width: 100%;
 }
 
-#vaaliWrapperApplyForm #crop-preview {
+.crop-preview {
 	height: 0;
+	width: 100px;
+	border-radius: 50%;
+	overflow: hidden;
+}
+
+#confirmDeleteEhdokasModal .btn {
+	width: 90px;
+}
+
+#vaalitModifyApplyForm .img-preview {
+	height: 100px;
 	width: 100px;
 	border-radius: 50%;
 	overflow: hidden;

@@ -1,4 +1,5 @@
-<form action="" method="POST" id="vaalitKysymysForm">
+{% load sekizai_tags %}
+<form action="" novalidate method="POST" id="vaalitKysymysForm">
   {% csrf_token %}
   <div class="form-group row">
     <div class="col-lg-6 col-sm-12">
@@ -10,7 +11,7 @@
     </div>
   </div>
   <div class="form-group">
-    <input type="hidden" class="input-virka" name="hidden-input-virka" value="{{context.virat.0.name}}"/>
+    <input type="hidden" id="input-virka" name="hidden-input-virka" value="{{context.virat.0.name}}"/>
     <button name="submitKysymys" type="submit" class="btn btn-primary my-2">Lähetä kysymys</button>
     <a role="button" id="btnHaeVirkaan" class="btn btn-default">
       Hae virkaan
@@ -18,3 +19,32 @@
     </a>
   </div>
 </form>
+
+{% addtoblock "js" %}
+<script type="text/javascript">
+var user = "{{request.user}}";
+var ehdokkaatJSON = JSON.parse('{{ context.ehdokkaat_json|safe }}');
+var firstVirka = "{{context.virat.0}}";
+// Need to check the first virka when the site renders
+selectedVirka = localStorage.getItem('selectedVirka');
+checkBtnHaeVirkaanVisibility(selectedVirka);
+
+function checkBtnHaeVirkaanVisibility(virka) {
+  var virka = virka;
+
+  ehdokkaatForVirka = $.grep(ehdokkaatJSON, function(e, i) {
+    return e.virka == virka;
+  });
+  // If the current user is already an ehdokas for this virka...
+  if (ehdokkaatForVirka.some(item => item.auth_prodeko_user[0] == user)) {
+    // ... don't display the "Hae virkaan" button
+    $('#btnHaeVirkaan').hide();
+    // and hide the apply form if it was visible
+    $('#vaaliWrapperApplyForm').hide();
+  } else {
+    // ... otherwise show the button
+    $('#btnHaeVirkaan').show();
+  }
+}
+</script>
+{% endaddtoblock %}

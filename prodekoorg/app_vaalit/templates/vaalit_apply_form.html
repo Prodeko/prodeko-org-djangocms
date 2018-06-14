@@ -1,4 +1,4 @@
-<form action="" method="POST" enctype="multipart/form-data">
+<form id="vaalitApplyForm" novalidate action="" method="POST" enctype="multipart/form-data">
   {% csrf_token %}
   {{ context.form_ehdokas.media }}
   <div class="container-fluid">
@@ -34,7 +34,7 @@
       </div>
     </div>
     <div class="form-group row">
-      <img id="crop-preview">
+      <img class="crop-preview">
     </div>
     <div class="form-group row">
       <div class="col-sm-10">
@@ -42,6 +42,8 @@
         <small class="form-text text-muted">Huom! Voit muokata hakemustasi myöhemmin.</small>
       </div>
     </div>
+    {% comment %}  {% endcomment %}
+    <input type="hidden" name="submitVirka" value=""/>
     <input type="hidden" class="input-virka" name="hidden-input-virka" value="{{context.virat.0.name}}"/>
     <input type="hidden" id="x" name="hidden-crop-x" value="0"/>
     <input type="hidden" id="y" name="hidden-crop-y" value="0"/>

@@ -17,7 +17,13 @@
             <div class="img-container mx-auto">
               <img src="{{ ehdokas.pic.url }}" alt="{{ ehdokas.name }}" />
             </div>
-            <p>{{ ehdokas.name }}</p>
+            <p class="ehdokas-name">{{ ehdokas.name }}</p>
+
+            {% if request.user == ehdokas.auth_prodeko_user %}
+              <button ehdokas-id="{{ehdokas.id}}" class="showDeleteEhdokasModal btn btn-outline-danger btn-xs btn-sm my-1"><i class="fas fa-times mr-2"></i>Poista</button>
+              <a href="{% url 'app_vaalit:update_ehdokas' pk=ehdokas.id %}" class="btn btn-outline-success btn-xs btn-sm my-1"><i class="far fa-edit mr-2"></i>Muokkaa</a>
+            {% endif %}
+
           </div>
         {% empty %}
           <p>Ei hakijoita</p>
@@ -30,4 +36,5 @@
   </div>
 </div>
 
+{% include "vaalit_modal_delete_ehdokas.html" %}
 {% include "vaalit_modal_photocrop.html" %}
