@@ -84,7 +84,7 @@ h5 {
 }
 
 .prodeko-navbar li.active-menu-item a {
-	font-weight: bold;	
+	font-weight: bold;
 }
 
 /* Start animated underlines
@@ -156,8 +156,11 @@ Credits: http://tobiasahlin.com/blog/css-trick-animating-link-underlines/
 
 .thumbnail_image {
 	width: 100%;
-	height: 200px;
-	background-size: cover;
+	height: 150px;
+	background-size: contain;
+	background-color: white;
+	background-repeat: no-repeat;
+	background-position: center center;
 }
 
 .card {
@@ -597,6 +600,11 @@ Credits: http://tobiasahlin.com/blog/css-trick-animating-link-underlines/
 
 .card-title {
 	margin-bottom: 0px;
+}
+
+.tiedostot-list {
+	padding-left: 0px;
+	font-size: 0.8rem;
 }
 
 /* GALLERY */
