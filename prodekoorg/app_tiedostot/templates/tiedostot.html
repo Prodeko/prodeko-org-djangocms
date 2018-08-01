@@ -14,15 +14,14 @@
   {% for tiedosto in tiedostot %}
   <div class="col-md-3">
     <div class="card full-width">
-      {% if tiedosto.thumbnail_image %}
-        <img class="card-img-top thumbnail_image" style="background-image: url('{{ tiedosto.get_thumbnail_image }}');" >
-      {% endif %}
+      <img class="card-img-top thumbnail_image" style="background-image: url('{{ tiedosto.get_thumbnail_image }}');" >
       <div class="card-body">
-        <h5 class="card-title">{{ tiedosto.file_name }}</h5>
-        <span class="description">Tiedostotyyppi: {{ tiedosto.file_extension }}</span>
+        <h4 class="card-title">{{ tiedosto.title }}</h4>
+				<p class="card-text description">{{ tiedosto.description }}</p>
         <hr>
-        <p class="card-text">{{ tiedosto.description }}</p>
-        <a href="{% url 'app_tiedostot:download' tiedosto.id %}" class="btn btn-primary full-width">Lataa</a>
+				{% for version in tiedosto.versions.all %}
+					<ul class="tiedostot-list"><a href="{% url 'app_tiedostot:download' version.id %}">{{ version.file_name }}{{ version.file_extension }} (lataa)</a></ul>
+				{% endfor %}
       </div>
     </div>
   </div>
@@ -30,9 +29,5 @@
 
   <br>
 </div>
-
-{% addtoblock "js" %}
-<script src="/static/js/kulukorvaus-custom.js"></script>
-{% endaddtoblock %}
 
 {% endblock content %}
