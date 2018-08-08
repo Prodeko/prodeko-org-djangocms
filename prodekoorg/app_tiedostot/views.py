@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.files.storage import FileSystemStorage
-from .models import Tiedosto
+from .models import Tiedosto, TiedostoVersio
 from wsgiref.util import FileWrapper
 import mimetypes
 import os
@@ -15,7 +15,7 @@ def main(request):
     })
 
 def download(request, pk):
-    file_object = Tiedosto.objects.get(pk = pk)
+    file_object = TiedostoVersio.objects.get(pk = pk)
     file_path = file_object.file.path
 
     file_wrapper = FileWrapper(open(file_path,'rb'))

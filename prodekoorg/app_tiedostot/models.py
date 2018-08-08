@@ -1,19 +1,33 @@
 from django.db import models
 from django.conf import settings
-
-from django.core.files.storage import FileSystemStorage
 import os
-
-destination = FileSystemStorage(location='/files')
 
 # Create your models here.
 
 class Tiedosto(models.Model):
-    file = models.FileField(unique=True, upload_to = "files")
-    thumbnail_image = models.ImageField(upload_to = "file_thumbnail_images", null=True)
+    title = models.CharField(max_length=255, default="", unique=True, null=False, blank=False)
+    thumbnail_image = models.ImageField(upload_to = "file_thumbnail_images", null=True, blank=True)
     description = models.TextField(blank=True)
+
+    def __str__(self):
+        return self.title
+
+    def get_thumbnail_image(self):
+        #return '{}{}'.format(settings.MEDIA_ROOT, str(self.thumbnail_image.url).split("media", 1)[1])
+        if self.thumbnail_image:
+            return '{}'.format(self.thumbnail_image.url)
+        else:
+            return "{}{}".format(settings.STATIC_ROOT, "default_thumbnail.jpg")
+
+    class Meta:
+        verbose_name_plural = "Tiedostot"
+
+
+class TiedostoVersio(models.Model):
+    tiedosto = models.ForeignKey(Tiedosto, related_name = "versions", on_delete = models.CASCADE)
     created_date = models.DateField(auto_now_add=True, auto_now=False)
     modified_date = models.DateField(auto_now=True)
+    file = models.FileField(unique=True, upload_to = "files")
 
     def file_name(self):
         basename, extension = os.path.splitext(os.path.basename(self.file.name))
@@ -23,5 +37,8 @@ class Tiedosto(models.Model):
         basename, extension = os.path.splitext(os.path.basename(self.file.name))
         return extension
 
-    def get_thumbnail_image(self):
-        return self.thumbnail_image.url
+    def __str__(self):
+        return "{}: {}".format(self.tiedosto.title, self.file_extension())
+
+    class Meta:
+        verbose_name_plural = "Tiedostoversiot"

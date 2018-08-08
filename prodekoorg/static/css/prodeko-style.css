@@ -25,10 +25,10 @@ body {
 	padding-top: 1em;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6, display-1, display-2, display-3, display-4, display-5, display-6 {
 	font-family: Raleway, Helvetica, sans-serif;
 	text-transform: uppercase;
-	font-weight: bold;
+	font-weight: semi-bold;
 }
 
 h1 {
@@ -52,6 +52,7 @@ h5 {
 	text-transform: none;
 	font-weight: 600;
 }
+
 
 .description {
 	font-size: 0.8rem;
@@ -81,9 +82,7 @@ h5 {
 	padding-left: 0;
 }
 
-.prodeko-navbar a:not(.btn) {
-	color: #002851;
-}
+
 
 .prodeko-navbar li.active-menu-item a {
 	font-weight: bold;
@@ -130,7 +129,7 @@ Credits: http://tobiasahlin.com/blog/css-trick-animating-link-underlines/
 }
 
 .prodeko-navbar #collapsibleNavbar form {
-  width: 200px;
+  width: 100%;
 }
 
 .prodeko-navbar .forgot-password {
@@ -138,7 +137,7 @@ Credits: http://tobiasahlin.com/blog/css-trick-animating-link-underlines/
 }
 
 .prodeko-navbar .login-dropdown {
-	background-color: #002e7d;
+	background-color: #002851;
 }
 
 #prodeko-logo {
@@ -158,8 +157,11 @@ Credits: http://tobiasahlin.com/blog/css-trick-animating-link-underlines/
 
 .thumbnail_image {
 	width: 100%;
-	height: 200px;
-	background-size: cover;
+	height: 150px;
+	background-size: contain;
+	background-color: white;
+	background-repeat: no-repeat;
+	background-position: center center;
 }
 
 /* CONTENT PAGE */
@@ -180,10 +182,10 @@ Credits: http://tobiasahlin.com/blog/css-trick-animating-link-underlines/
 	padding: 2.5em 2em 2.5em 2em;
 }
 
-.page-container h1, h1.frontpage-welcometext {
+.page-container h1, h1.display-1 {
 	text-transform: uppercase;
 	font-size: 2.5rem;
-	font-weight: bold;
+	font-weight: normal;
 	margin-top: 0.5em;
 }
 
@@ -290,13 +292,18 @@ Credits: http://tobiasahlin.com/blog/css-trick-animating-link-underlines/
 
 #sidenavi .sidemenu-collapsable {
 	padding-left: 0;
+	line-height: 50%;
+	justify-content: center;
 }
 
 #sidenavi .sidenavi-highlink {
 	font-weight: bold;
+	line-height: 200%;
 }
 
+
 /* FRONTPAGE */
+
 
 .frontpage-container {
 	padding: 3em 2em 3em 2em;
@@ -315,33 +322,86 @@ Credits: http://tobiasahlin.com/blog/css-trick-animating-link-underlines/
 	padding-top: 1.5vh;
 	padding-left: 15px;
 	padding-right: 15px;
-	height: 20vh;
 	min-height: 200px;
 }
 
+/* Frontpage squares + hover effect */
+
 .frontpage-square {
-	background-image: url('/static/images/backgrounds/frontpage-square.jpg');
-	background-size: cover;
-	background-repeat: no-repeat;
-	color: white;
-	height: 100%;
+	padding: 1rem 0.5rem 1rem 0.5rem;
+	shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-.frontpage-squarerow .frontpage-square:nth-child(2) {
-	margin-left: 10px;
-	margin-right: 10px;
+.frontpage-square:after {
+  z-index: -1;
+  top: 0;
+  left: 0;
+  shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.5), 0 10px 30px 0 rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
-.frontpage-squarerow .frontpage-square:nth-child(3) {
-	margin-right: 10px;
+
+.frontpage-square:hover {
+  -webkit-transform: scale(1.05, 1.05);
+  transform: scale(1.05, 1.05);
+}
+
+.frontpage-square:hover::after {
+    opacity: 1;
+}
+
+.frontpage-square img {
+	width: 100%;
+}
+
+.frontpage-square-caption h3 {
+	color: white;
+	font-size: 2.5rem;
+	letter-spacing: 2px;
+	shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+}
+
+.frontpage-square-caption {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.carousel {
+	shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+/*
+Forces image to be 100% width and not max width of 100%
+*/
+.carousel-item .img-fluid {
+  width:100%;
+}
+
+/*
+anchors are inline so you need ot make them block to go full width
+*/
+.carousel-item a {
+  display: block;
+  width:100%;
 }
 
 /* FOOTER */
 
 .prodeko-footer {
-	padding: 3em 0 2em 0;
+	padding-left: 0;
+	padding-right: 0;
+	padding-top: 3em;
+	padding-bottom: 2em;
 	background-color: #002851;
 	color: white;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
 
 .prodeko-footer a {
 	color: white;
@@ -363,7 +423,7 @@ Credits: http://tobiasahlin.com/blog/css-trick-animating-link-underlines/
 }
 
 .prodeko-footer img {
-	max-width: 7em;
+	max-width: 5em;
 	height: 100%;
 }
 
@@ -389,36 +449,40 @@ Credits: http://tobiasahlin.com/blog/css-trick-animating-link-underlines/
 
 /* MEDIA QUERIES */
 
-/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
-@media only screen and (max-width: 479px) {
-	.network-img-container img {
-		width: 4.5em;
-		max-height: 100%
+/* Small devices (landscape phones, 544px and up) */
+@media (min-width: 544px) {
+	.page-container h1, h1.display-1 {
+		font-size: 3.0rem;
 	}
-
-	.prodeko-footer h2, p {
-		font-size: 0.7em;
-	}
-
-}
-
-/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
-@media only screen and (min-width: 480px) and (max-width: 767px) {
-	.network-img-container img {
-		width: 6em;
-		max-height: 100%
-	}
-
-	.prodeko-footer h2, p {
-		font-size: 0.9em;
-	}
-
-	.prodeko-footer .social-row {
-		width: 50%;
+	.frontpage-square-caption h1.display-2 {
+		font-size: 2.0rem;
 	}
 
 }
 
+/* Medium devices (tablets, 768px and up)
+The navbar toggle appears at this breakpoint */
+@media (min-width: 768px) {
+	.page-container h1, h1.display-1 {
+		font-size: 4.5rem;
+	}
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+	.prodeko-footer img {
+		max-width: 8em;
+		height: 100%;
+
+	.prodeko-navbar #collapsibleNavbar form {
+	  width: 0px;
+	}
+	.img.cms-plugin.cms-plugin-7 {
+		max-height: 400px;
+		background-size: cover;
+		display: block;
+	}
+}
 
 /* Tablet Portrait size to standard 960 (devices and browsers) */
 @media only screen and (min-width: 768px) and (max-width: 959px) {
@@ -430,4 +494,248 @@ Credits: http://tobiasahlin.com/blog/css-trick-animating-link-underlines/
 	.prodeko-footer h2, p {
 		font-size: 0.9em;
 	}
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+
+}
+
+/* KULUKORVAUS */
+.kulukorvaus-container .fa-plus {
+    color: green;
+}
+
+.kulukorvaus-container .fa-minus {
+    color: red;
+}
+
+/* VAALIT */
+
+/* https://stackoverflow.com/questions/29063244/consistent-styling-for-nested-lists-with-bootstrap */
+
+.list-group.list-group-root {
+    padding: 0;
+    overflow: hidden;
+}
+
+.list-group.list-group-root .list-group {
+    margin-bottom: 0;
+}
+
+.list-group.list-group-root .list-group-item {
+    border-radius: 0;
+    border-width: 1px 0 0 0;
+}
+
+.list-group.list-group-root > .list-group-item:first-child {
+    border-top-width: 0;
+}
+
+.list-group.list-group-root > .list-group > .list-group-item {
+    padding-left: 30px;
+}
+
+.list-group.list-group-root > .list-group > .list-group > .list-group-item {
+    padding-left: 45px;
+}
+
+.list-group-root .list-group-item .fa {
+    margin-right: 5px;
+}
+
+.collapse {
+  display: none;
+  &.show {
+    display: block;
+  }
+}
+
+.list-group-root .fa-chevron-down {
+  transition: all 0.3s ease-in-out;
+}
+
+.list-group-root .collapsed .fa-chevron-down  {
+	transform: rotate(-90deg);
+  transition: all 0.4s ease-in-out;
+}
+
+
+.list-group-root .list-group-item.active {
+    background-color: #0053a0 !important;
+		border-color: #0053a0 !important;
+}
+
+.vaali-content .vaali-div {
+	flex: 0 0 10%;
+	margin: 0.8em;
+}
+
+.vaali-content .vaali-div p {
+	font-size: 1.2em;
+}
+
+.vaali-content .vaali-div .img-container {
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	position: relative;
+  overflow: hidden;
+}
+
+.vaali-content .img-container img {
+	display: inline;
+	margin: 0 auto;
+	height: 100%;
+	width: auto;
+}
+
+.vaali-content .btn {
+	font-weight: 200;
+}
+
+.vaali-container .modal-lg {
+  max-width: 70%;
+}
+
+.vaali-container .btn-xs {
+	border-radius: 0;
+	padding-left: 10px;
+	padding-right: 10px;
+	width: 100%;
+	font-size: 0.7em;
+}
+
+.vaali-container p.ehdokas-name {
+	font-weight: 600;
+	font-size: 1.3em;
+	margin-bottom: 0;
+}
+
+#vaaliWrapperContentAndForm #vaalitKysymysForm .btn {
+	width: 140px;
+}
+
+#vaaliWrapperApplyForm, #vaaliWrapperContent {
+	width: 100%;
+}
+
+#vaalitKysymysForm a {
+	background-color: #e7e7e7;
+}
+
+#vaalitKysymysForm .fa-chevron-down {
+  transition: all 0.3s ease-in-out;
+}
+
+#vaalitKysymysForm #btnHaeVirkaan.animate-chevron .fa-chevron-down {
+	transform: rotate(-179.9deg); /* For some reason there is a small wiggle if the rotation is 180 degrees */
+  transition: all 0.3s ease-in-out;
+}
+
+#vaaliWrapperApplyForm .django-ckeditor-widget {
+	width: 100%;
+}
+
+#vaaliWrapperApplyForm {
+  display: none;
+}
+
+#modalCrop .img-container img {
+	max-width: 100%;
+}
+
+.crop-preview {
+	height: 0;
+	width: 100px;
+	border-radius: 50%;
+	overflow: hidden;
+}
+
+#confirmDeleteEhdokasModal .btn {
+	width: 90px;
+}
+
+#vaalitModifyApplyForm .img-preview {
+	height: 100px;
+	width: 100px;
+	border-radius: 50%;
+	overflow: hidden;
+}
+
+/* TIEDOSTOT */
+
+.card-title {
+	margin-bottom: 0px;
+}
+
+.tiedostot-list {
+	padding-left: 0px;
+	font-size: 0.8rem;
+}
+
+/* GALLERY */
+
+.gallery-page-jumbotron {
+	background-image: url('/static/images/content-page-bg-blue.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	margin-bottom: 0;
+}
+
+.gallery-page-jumbotron h1 {
+	color: white;
+}
+
+.gallery-container {
+	padding: 1em 1em 2.5em 1em;
+}
+
+.gallery-container h1 {
+	font-size: xx-large;
+}
+
+.gallery-container h2 {
+	font-size: x-large;
+}
+
+.gallery-container h3 {
+	font-size: large;
+}
+
+.gallery-content {
+	text-align: center;
+}
+
+.gallery-content #image-thumbnails {
+	margin-top: 1.8em;
+}
+
+.gallery-content > h1, .gallery-content > h2 {
+	display: none;
+}
+
+.gallery-content #image-view {
+	margin-right: 0;
+	margin-bottom: 2em;
+}
+
+.gallery-content #image-view .preview {
+	max-height: 40vh;
+}
+
+.gallery-content .upload-image {
+	margin-top: 2em;
+}
+
+.gallery-content-related .tagging, .gallery-content-related #tag-cloud {
+	display: none;
+}
+
+.gallery-content-related .user-info {
+	display: none;
+}
+
+.gallery-content-related #controls {
+	margin-top: 3em;
 }
