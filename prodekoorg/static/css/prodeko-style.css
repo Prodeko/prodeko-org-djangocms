@@ -136,6 +136,7 @@ Credits: http://tobiasahlin.com/blog/css-trick-animating-link-underlines/
 
 .prodeko-navbar .login-dropdown {
 	background-color: #002851;
+	min-width: 30rem
 }
 
 #prodeko-logo {
@@ -465,6 +466,10 @@ The navbar toggle appears at this breakpoint */
 @media (min-width: 768px) {
 	.page-container h1, h1.display-1 {
 		font-size: 4.5rem;
+	}
+	.prodeko-navbar .login-dropdown {
+		background-color: #002851;
+		min-width: 22rem
 	}
 }
 
