@@ -16,7 +16,7 @@
 		{% cms_toolbar %}
 
 		{% if messages %}
-		<div class="aler-container">
+		<div id="message-container">
 			{% for message in messages %}
 				<div class="alert alert-{{ message.tags }} alert-dismissable fade show" role="alert">{{ message }}
 					<button type="button" class="close" data-dismiss="alert"><i class="fas fa-times"></i></button>
