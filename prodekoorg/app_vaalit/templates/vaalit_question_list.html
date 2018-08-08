@@ -1,44 +1,13 @@
-<div id="vaalitWrapperQuestions">
-  <h3>Kysymykset</h3>
-  <div class="list-group list-group-root">
+<div class="vaalitQuestions">
+  <h3 class="mt-4">Kysymykset</h3>
+  <div class="vaalitKysymysList list-group list-group-root">
     {% for kysymys in virka.kysymykset.all %}
-      <li class="list-group-item flex-column align-items-start mb-3">
-        <div class="d-flex w-100 justify-content-between">
-          <p class="mb-1"><em>Teemu Teekkari</em></p>
-          <small>{{ kysymys.created_at|timesince }}</small>
-          {% for ehdokas in virka.ehdokkaat.all %}
-            {% if request.user == ehdokas.auth_prodeko_user %}
-            <button type="button" class="btn btn-default my-1" data-toggle="collapse" data-target="#vaalitAnswerForm_{{ forloop.parentloop.counter }}">
-              <i class="mr-2 fa fa-reply"></i>
-              Vastaa
-            </button>
-            {% endif %}
-          {% endfor %}
-          {% if request.user == kysymys.created_by %}
-          <form method="POST" action="{% url 'app_vaalit:delete_kysymys' pk=kysymys.id %}">
-             {% csrf_token %}
-             <button type="submit" class="btn btn-danger btn-sm btn-round-xs my-1"><i class="fas fa-times mr-2"></i>Poista</button>
-          </form>
-          {% endif %}
-        </div>
-        <p class="mb-1">{{ kysymys.question }}</p>
-      </li>
-      <div id="vaalitWrapperAnswerForm">
-        {% include "vaalit_answer_form.html" %}
-      </div>
+      {% include "vaalit_question.html" %}
       <div class="list-group">
         {% for vastaus in kysymys.vastaukset.all %}
-        <li class="list-group-item list-group-item-action flex-column align-items-start">
-          <div class="d-flex w-100 justify-content-between">
-            <p class="mb-1"><em>Teemu Teekkari</em></p>
-            <small>{{ vastaus.created_at|timesince }}</small>
-          </div>
-          <p class="mb-1">{{ vastaus.answer }}</p>
-        </li>
+          {% include "vaalit_answer.html" %}
         {% endfor %}
       </div>
-    {% empty %}
-      <p>Ei kysymyksiä</p>
     {% endfor %}
   </div>
 </div>

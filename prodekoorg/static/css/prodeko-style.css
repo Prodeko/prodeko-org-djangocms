@@ -12,6 +12,8 @@ Prodekon keskisininen: #002e7d
 Prodekon tummansininen: #002851
 */
 
+@import 'app_vaalit.css';
+@import 'app_poytakirjat.css';
 @import 'bs_overrides.css';
 @import 'messages_animation.css';
 
@@ -161,10 +163,6 @@ Credits: http://tobiasahlin.com/blog/css-trick-animating-link-underlines/
 	background-color: white;
 	background-repeat: no-repeat;
 	background-position: center center;
-}
-
-.card {
-	margin: 15px 0px;
 }
 
 /* CONTENT PAGE */
@@ -393,23 +391,6 @@ anchors are inline so you need ot make them block to go full width
   width:100%;
 }
 
-/* DOCUMENTS PAGE */
-
-#documents-container a.btn {
-	font-size: 1.5em;
-	background-color: #002e7d;
-	border-color: grey;
-}
-
-#documents-container .fa-chevron-down {
-  transition: all 0.3s ease-in-out;
-}
-
-#documents-container .collapsed .fa-chevron-down  {
-	transform: rotate(-90deg);
-  transition: all 0.4s ease-in-out;
-}
-
 /* FOOTER */
 
 .prodeko-footer {
@@ -451,6 +432,24 @@ anchors are inline so you need ot make them block to go full width
 	padding: 1em;
 }
 
+/* KULUKORVAUS */
+.kulukorvaus-container .fa-plus {
+    color: green;
+}
+
+.kulukorvaus-container .fa-minus {
+    color: red;
+}
+
+
+/* TIEDOSTOT */
+
+.card-title {
+	margin-bottom: 0px;
+}
+
+/* MEDIA QUERIES */
+
 /* Small devices (landscape phones, 544px and up) */
 @media (min-width: 544px) {
 	.page-container h1, h1.display-1 {
@@ -459,6 +458,7 @@ anchors are inline so you need ot make them block to go full width
 	.frontpage-square-caption h1.display-2 {
 		font-size: 2.0rem;
 	}
+
 }
 
 /* Medium devices (tablets, 768px and up)
@@ -486,6 +486,18 @@ The navbar toggle appears at this breakpoint */
 		max-height: 400px;
 		background-size: cover;
 		display: block;
+	}
+}
+
+/* Tablet Portrait size to standard 960 (devices and browsers) */
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+	.network-img-container img {
+		max-width: 6em;
+		height: 100%;
+	}
+
+	.prodeko-footer h2, p {
+		font-size: 0.9em;
 	}
 }
 

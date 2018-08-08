@@ -40,6 +40,14 @@ class Ehdokas(models.Model):
     pic = models.ImageField(blank=True, verbose_name='Kuva')
 
     def natural_key(self):
+        """ String based representation of this object when accessed through
+        foreign keys.
+
+        In views.py get_ehdokkaat_json() method the serialize has
+        use_natural_foreign_keys=True and as a result the foreign key virka
+        field is example.user@prodeko.org as opposed to an integer value as
+        it is in the database.
+        """
         return self.auth_prodeko_user
 
     def __str__(self):
@@ -59,7 +67,7 @@ class Kysymys(models.Model):
     """
 
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Luotu')
-    created_by = models.ForeignKey(settings.AUTH_USER_MODEL)
+    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, blank=True, null=True)
     to_virka = models.ForeignKey(Virka, related_name='kysymykset')
     question = models.TextField(blank=False, verbose_name='Kysymys')
 
@@ -71,6 +79,8 @@ class Kysymys(models.Model):
         # Correct spelling in Django admin
         verbose_name = _('kysymys')
         verbose_name_plural = _('Kysymykset')
+        # Order by most recently created first
+        ordering = ['-created_at']
 
 
 class Vastaus(models.Model):
@@ -90,3 +100,5 @@ class Vastaus(models.Model):
         # Correct spelling in Django admin
         verbose_name = _('vastaus')
         verbose_name_plural = _('Vastaukset')
+        # Order by most recently created first
+        ordering = ['-created_at']

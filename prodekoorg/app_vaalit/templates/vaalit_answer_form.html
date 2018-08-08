@@ -3,9 +3,6 @@
   <div class="form-group row">
     <div class="col-lg-6 col-sm-12">
       <textarea name="answer" rows="3" id="id_answer" class="form-control" required=""></textarea>
-      {% if context.form_kysymys.question.errors %}
-        <small class="form-text text-danger">{{ context.form_kysymys.question.errors.as_text }}</small>
-      {% endif %}
     </div>
   </div>
   <div class="form-group">
