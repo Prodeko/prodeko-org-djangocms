@@ -12,6 +12,8 @@ Prodekon keskisininen: #002e7d
 Prodekon tummansininen: #002851
 */
 
+@import 'app_vaalit.css';
+@import 'app_poytakirjat.css';
 @import 'bs_overrides.css';
 @import 'messages_animation.css';
 
@@ -84,7 +86,7 @@ h5 {
 }
 
 .prodeko-navbar li.active-menu-item a {
-	font-weight: bold;	
+	font-weight: bold;
 }
 
 /* Start animated underlines
@@ -158,10 +160,6 @@ Credits: http://tobiasahlin.com/blog/css-trick-animating-link-underlines/
 	width: 100%;
 	height: 200px;
 	background-size: cover;
-}
-
-.card {
-	margin: 15px 0px;
 }
 
 /* CONTENT PAGE */
@@ -337,23 +335,6 @@ Credits: http://tobiasahlin.com/blog/css-trick-animating-link-underlines/
 	margin-right: 10px;
 }
 
-/* DOCUMENTS PAGE */
-
-#documents-container a.btn {
-	font-size: 1.5em;
-	background-color: #002e7d;
-	border-color: grey;
-}
-
-#documents-container .fa-chevron-down {
-  transition: all 0.3s ease-in-out;
-}
-
-#documents-container .collapsed .fa-chevron-down  {
-	transform: rotate(-90deg);
-  transition: all 0.4s ease-in-out;
-}
-
 /* FOOTER */
 
 .prodeko-footer {
@@ -390,16 +371,35 @@ Credits: http://tobiasahlin.com/blog/css-trick-animating-link-underlines/
 	padding: 1em;
 }
 
-/* Tablet Portrait size to standard 960 (devices and browsers) */
-@media only screen and (min-width: 768px) and (max-width: 959px) {
+/* KULUKORVAUS */
+.kulukorvaus-container .fa-plus {
+    color: green;
+}
+
+.kulukorvaus-container .fa-minus {
+    color: red;
+}
+
+
+/* TIEDOSTOT */
+
+.card-title {
+	margin-bottom: 0px;
+}
+
+/* MEDIA QUERIES */
+
+/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+@media only screen and (max-width: 479px) {
 	.network-img-container img {
-		max-width: 6em;
-		height: 100%;
+		width: 4.5em;
+		max-height: 100%
 	}
 
 	.prodeko-footer h2, p {
-		font-size: 0.9em;
+		font-size: 0.7em;
 	}
+
 }
 
 /* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
@@ -419,248 +419,15 @@ Credits: http://tobiasahlin.com/blog/css-trick-animating-link-underlines/
 
 }
 
-/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
-@media only screen and (max-width: 479px) {
+
+/* Tablet Portrait size to standard 960 (devices and browsers) */
+@media only screen and (min-width: 768px) and (max-width: 959px) {
 	.network-img-container img {
-		width: 4.5em;
-		max-height: 100%
+		max-width: 6em;
+		height: 100%;
 	}
 
 	.prodeko-footer h2, p {
-		font-size: 0.7em;
+		font-size: 0.9em;
 	}
-}
-
-/* KULUKORVAUS */
-.kulukorvaus-container .fa-plus {
-    color: green;
-}
-
-.kulukorvaus-container .fa-minus {
-    color: red;
-}
-
-/* VAALIT */
-
-/* https://stackoverflow.com/questions/29063244/consistent-styling-for-nested-lists-with-bootstrap */
-
-.list-group.list-group-root {
-    padding: 0;
-    overflow: hidden;
-}
-
-.list-group.list-group-root .list-group {
-    margin-bottom: 0;
-}
-
-.list-group.list-group-root .list-group-item {
-    border-radius: 0;
-    border-width: 1px 0 0 0;
-}
-
-.list-group.list-group-root > .list-group-item:first-child {
-    border-top-width: 0;
-}
-
-.list-group.list-group-root > .list-group > .list-group-item {
-    padding-left: 30px;
-}
-
-.list-group.list-group-root > .list-group > .list-group > .list-group-item {
-    padding-left: 45px;
-}
-
-.list-group-root .list-group-item .fa {
-    margin-right: 5px;
-}
-
-.collapse {
-  display: none;
-  &.show {
-    display: block;
-  }
-}
-
-.list-group-root .fa-chevron-down {
-  transition: all 0.3s ease-in-out;
-}
-
-.list-group-root .collapsed .fa-chevron-down  {
-	transform: rotate(-90deg);
-  transition: all 0.4s ease-in-out;
-}
-
-
-.list-group-root .list-group-item.active {
-    background-color: #0053a0 !important;
-		border-color: #0053a0 !important;
-}
-
-.vaali-content .vaali-div {
-	flex: 0 0 10%;
-	margin: 0.8em;
-}
-
-.vaali-content .vaali-div p {
-	font-size: 1.2em;
-}
-
-.vaali-content .vaali-div .img-container {
-	width: 100px;
-	height: 100px;
-	border-radius: 50%;
-	position: relative;
-  overflow: hidden;
-}
-
-.vaali-content .img-container img {
-	display: inline;
-	margin: 0 auto;
-	height: 100%;
-	width: auto;
-}
-
-.vaali-content .btn {
-	font-weight: 200;
-}
-
-.vaali-container .modal-lg {
-  max-width: 70%;
-}
-
-.vaali-container .btn-xs {
-	border-radius: 0;
-	padding-left: 10px;
-	padding-right: 10px;
-	width: 100%;
-	font-size: 0.7em;
-}
-
-.vaali-container p.ehdokas-name {
-	font-weight: 600;
-	font-size: 1.3em;
-	margin-bottom: 0;
-}
-
-#vaaliWrapperContentAndForm #vaalitKysymysForm .btn {
-	width: 140px;
-}
-
-#vaaliWrapperApplyForm, #vaaliWrapperContent {
-	width: 100%;
-}
-
-#vaalitKysymysForm a {
-	background-color: #e7e7e7;
-}
-
-#vaalitKysymysForm .fa-chevron-down {
-  transition: all 0.3s ease-in-out;
-}
-
-#vaalitKysymysForm #btnHaeVirkaan.animate-chevron .fa-chevron-down {
-	transform: rotate(-179.9deg); /* For some reason there is a small wiggle if the rotation is 180 degrees */
-  transition: all 0.3s ease-in-out;
-}
-
-#vaaliWrapperApplyForm .django-ckeditor-widget {
-	width: 100%;
-}
-
-#vaaliWrapperApplyForm {
-  display: none;
-}
-
-#modalCrop .img-container img {
-	max-width: 100%;
-}
-
-.crop-preview {
-	height: 0;
-	width: 100px;
-	border-radius: 50%;
-	overflow: hidden;
-}
-
-#confirmDeleteEhdokasModal .btn {
-	width: 90px;
-}
-
-#vaalitModifyApplyForm .img-preview {
-	height: 100px;
-	width: 100px;
-	border-radius: 50%;
-	overflow: hidden;
-}
-
-/* TIEDOSTOT */
-
-.card-title {
-	margin-bottom: 0px;
-}
-
-/* GALLERY */
-
-.gallery-page-jumbotron {
-	background-image: url('/static/images/content-page-bg-blue.jpg');
-	background-size: cover;
-	background-repeat: no-repeat;
-	margin-bottom: 0;
-}
-
-.gallery-page-jumbotron h1 {
-	color: white;
-}
-
-.gallery-container {
-	padding: 1em 1em 2.5em 1em;
-}
-
-.gallery-container h1 {
-	font-size: xx-large;
-}
-
-.gallery-container h2 {
-	font-size: x-large;
-}
-
-.gallery-container h3 {
-	font-size: large;
-}
-
-.gallery-content {
-	text-align: center;
-}
-
-.gallery-content #image-thumbnails {
-	margin-top: 1.8em;
-}
-
-.gallery-content > h1, .gallery-content > h2 {
-	display: none;
-}
-
-.gallery-content #image-view {
-	margin-right: 0;
-	margin-bottom: 2em;
-}
-
-.gallery-content #image-view .preview {
-	max-height: 40vh;
-}
-
-.gallery-content .upload-image {
-	margin-top: 2em;
-}
-
-.gallery-content-related .tagging, .gallery-content-related #tag-cloud {
-	display: none;
-}
-
-.gallery-content-related .user-info {
-	display: none;
-}
-
-.gallery-content-related #controls {
-	margin-top: 3em;
 }
