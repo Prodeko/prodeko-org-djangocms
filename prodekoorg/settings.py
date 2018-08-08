@@ -155,6 +155,24 @@ INSTALLED_APPS = (
     'djangocms_video',
     'prodekoorg',
     # ------------------------
+    # Django CMS bootstrap4
+    'djangocms_icon',
+    'djangocms_bootstrap4',
+    'djangocms_bootstrap4.contrib.bootstrap4_alerts',
+    'djangocms_bootstrap4.contrib.bootstrap4_badge',
+    'djangocms_bootstrap4.contrib.bootstrap4_card',
+    'djangocms_bootstrap4.contrib.bootstrap4_carousel',
+    'djangocms_bootstrap4.contrib.bootstrap4_collapse',
+    'djangocms_bootstrap4.contrib.bootstrap4_content',
+    'djangocms_bootstrap4.contrib.bootstrap4_grid',
+    'djangocms_bootstrap4.contrib.bootstrap4_jumbotron',
+    'djangocms_bootstrap4.contrib.bootstrap4_link',
+    'djangocms_bootstrap4.contrib.bootstrap4_listgroup',
+    'djangocms_bootstrap4.contrib.bootstrap4_media',
+    'djangocms_bootstrap4.contrib.bootstrap4_picture',
+    'djangocms_bootstrap4.contrib.bootstrap4_tabs',
+    'djangocms_bootstrap4.contrib.bootstrap4_utilities',
+    # ------------------------
     # tiedotteet.prodeko.org
     'tiedotteet',
     'django_wysiwyg',
@@ -267,7 +285,8 @@ CKEDITOR_CONFIGS = {
                     ["Table", "Link", "Unlink", "Anchor", "SectionLink", "Subscript", "Superscript"], ["Undo", "Redo"], ["Source"],
                     ["Maximize"]],
         'width': "auto",
-        'height': "auto"
+        'height': "auto",
+        'skin': "moono-lisa",
     },
 }
 """Email"""

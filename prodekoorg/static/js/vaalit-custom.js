@@ -1,12 +1,26 @@
+function csrfSafeMethod(method) {
+  // these HTTP methods do not require CSRF protection
+  return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+
+$.ajaxSetup({
+  beforeSend: function(xhr, settings) {
+    if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+      xhr.setRequestHeader("X-CSRFToken", csrftoken);
+    }
+  }
+});
+
 function updateTexts(virka) {
   $('#vaalitKysymysForm small').html(virka + ' - Esitä kysymys');
   $('#header').html(virka);
   // Set hidden input field
-  $('.input-virka').attr('value', virka);
+  $('.input-virka').val(virka);
 }
 
-selectedTab_id = localStorage.getItem('selectedTab_id');
-selectedVirka = localStorage.getItem('selectedVirka');
+var selectedTab_id = localStorage.getItem('selectedTab_id');
+var selectedVirka = localStorage.getItem('selectedVirka');
+var csrftoken = $("[name=csrfmiddlewaretoken]").val();
 
 $(document).ready(function() {
 
@@ -40,8 +54,6 @@ $(document).ready(function() {
     }
   }
 
-
-
   $('.list-group-root a[data-toggle="tab"]').click(function (e) {
       var id = $(e.delegateTarget).attr("href");
       var virka = $('.list-group-root a[data-toggle="tab"][href="' + id + '"]').text().trim();
@@ -69,16 +81,65 @@ $(document).ready(function() {
     $('#confirmDeleteEhdokasModal').modal('toggle');
   });
 
-  /* Display answer form */
-  $('#btnVastaaKysymykseen').click(function () {
-    $('#vaalitWrapperAnswerForm').toggle();
-  });
-
   /* Display apply form */
   $('#btnHaeVirkaan').click(function () {
     $('#btnHaeVirkaan').toggleClass('animate-chevron');
-    $('#vaaliWrapperApplyForm').slideToggle();
+    $('#vaaliApplyForm').slideToggle();
   });
+
+  /* AJAX creation of kysymys objects */
+  $("#vaalitKysymysForm").submit(function (e) {
+    e.preventDefault();
+    var formData = $(this).serialize();
+    $.ajax({
+      url : "vaalit/",
+      type : "POST",
+      // Add 'submitKysymys' to the POST data
+      // to have correct handling in the views.py main view
+      data : formData + '&submitKysymys=',
+      success: createKysymysSuccess,
+      error: createKysymysError,
+    });
+  });
+
+  function createKysymysSuccess(data, textStatus, jqXHR) {
+    $('#vaaliContent .tab-pane.active .vaalitKysymysList').prepend(data);
+    $("#vaaliContent .tab-pane.active .vaalitDeleteKysymysForm button").first().click(ajaxDeleteKysymys);
+  }
+
+  function createKysymysError(jqXHR, textStatus, errorThrown) {
+    console.log(jqXHR);
+    console.log(textStatus);
+    console.log(errorThrown);
+  }
+
+  /* AJAX deletion of Kysymys objects */
+  $(".vaalitDeleteKysymysForm button").click(ajaxDeleteKysymys);
+  function ajaxDeleteKysymys(e) {
+    e.preventDefault();
+    $(this).prop("disabled", true);  // Disallow the button so it can't be clicked twice
+    var formData = $(this).parent().serialize();
+    var kysymysId = $(this).siblings('input[name=hidden-kysymys-id]').val();
+    $.ajax({
+      url : "/vaalit/delete-kysymys/" + kysymysId + '/',
+      type : "POST",
+      // Add 'submitKysymys' to the POST data
+      // to have correct handling in the views.py main view
+      data : formData,
+      success: deleteKysymysSuccess,
+      error: deleteKysymysError,
+    });
+  }
+
+  function deleteKysymysSuccess(data, textStatus, jqXHR) {
+    $('#kysymys_' + data.delete_kysymys_id).fadeOut(300, function() { $(this).remove(); });
+  }
+
+  function deleteKysymysError(jqXHR, textStatus, errorThrown) {
+    console.log(jqXHR);
+    console.log(textStatus);
+    console.log(errorThrown);
+  }
 
 
   /* Ehdokas picture cropping */
@@ -89,7 +150,7 @@ $(document).ready(function() {
       if (this.files && this.files[0]) {
         var reader = new FileReader();
         reader.onload = function(e) {
-          $("#image").attr("src", e.target.result);
+          $("#modalCrop #image").attr("src", e.target.result);
           $("#modalCrop").modal("show");
         };
         reader.readAsDataURL(this.files[0]);
@@ -97,7 +158,7 @@ $(document).ready(function() {
     });
 
     /* Create the cropper and handle zooming, closing and displaying a preview */
-    var $image = $("#image");
+    var $image = $("#modalCrop #image");
     var cropBoxData;
     var canvasData;
     $("#modalCrop").on("shown.bs.modal", function() {
@@ -118,16 +179,16 @@ $(document).ready(function() {
       $image.cropper("destroy");
     });
 
-    $(".js-zoom-in").click(function() {
+    $("#modalCrop .js-zoom-in").click(function() {
       $image.cropper("zoom", 0.1);
     });
 
-    $(".js-zoom-out").click(function() {
+    $("#modalCrop .js-zoom-out").click(function() {
       $image.cropper("zoom", -0.1);
     });
 
     /* Handle cropped modal data */
-    $(".js-crop-and-upload").click(function() {
+    $("#modalCrop .js-crop-and-upload").click(function() {
       var cropData = $image.cropper("getData");
       var cropDataURL = $image.cropper('getCroppedCanvas').toDataURL();
       $("#x").val(cropData.x);
