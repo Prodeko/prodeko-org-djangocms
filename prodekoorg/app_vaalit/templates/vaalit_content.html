@@ -1,39 +1,24 @@
-<div class="vaali-content" id="vaaliWrapperContentAndForm">
-  <h2 class="py-4" id="header">{{ context.virat.0.name }}</h2>
-  <div id="vaaliWrapperContent">
-    <div id="vaaliWrapperKysymysForm">
-      {% include "vaalit_question_form.html" %}
+<h2 class="py-3" id="header">{{ virat.0.name }}</h2>
+<div id="vaaliKysymysForm">
+  {% include "vaalit_question_form.html" %}
+</div>
+<div id="vaaliApplyForm" style="{{style_vaaliApplyForm}}">
+  {% include "vaalit_apply_form.html" %}
+</div>
+<div id="vaaliContent" class="tab-content">
+  {% for virka in virat %}
+  <div id="_{{ forloop.counter }}" class="tab-pane fade{% if forloop.first %} active show{% endif %}" role="tabpanel">
+    <h3>Ehdokkaat</h3>
+    <div class="card-group">
+    {% for ehdokas in virka.ehdokkaat.all %}
+      {% include "vaalit_ehdokas_card.html" %}
+    {% empty %}
+      <p>Ei hakijoita</p>
+    {% endfor %}
     </div>
-    <div id="vaaliWrapperApplyForm" style="{{context.style_vaaliWrapperApplyForm}}">
-      {% include "vaalit_apply_form.html" %}
-    </div>
-    <div class="tab-content">
-      {% for virka in context.virat %}
-      <div id="_{{ forloop.counter }}" class="tab-pane fade pt-4 {% if forloop.first %} active show{% endif %}" role="tabpanel">
-        <h3>Ehdokkaat</h3>
-        <div class="d-flex flex-wrap">
-        {% for ehdokas in virka.ehdokkaat.all %}
-          <div class="vaali-div text-center">
-            <div class="img-container mx-auto">
-              <img src="{{ ehdokas.pic.url }}" alt="{{ ehdokas.name }}" />
-            </div>
-            <p class="ehdokas-name">{{ ehdokas.name }}</p>
-
-            {% if request.user == ehdokas.auth_prodeko_user %}
-              <button ehdokas-id="{{ehdokas.id}}" class="showDeleteEhdokasModal btn btn-outline-danger btn-xs btn-sm my-1"><i class="fas fa-times mr-2"></i>Poista</button>
-              <a href="{% url 'app_vaalit:update_ehdokas' pk=ehdokas.id %}" class="btn btn-outline-success btn-xs btn-sm my-1"><i class="far fa-edit mr-2"></i>Muokkaa</a>
-            {% endif %}
-
-          </div>
-        {% empty %}
-          <p>Ei hakijoita</p>
-        {% endfor %}
-        </div>
-        {% include "vaalit_question_list.html" %}
-      </div>
-      {% endfor %}
-    </div>
+    {% include "vaalit_question_list.html" %}
   </div>
+  {% endfor %}
 </div>
 
 {% include "vaalit_modal_delete_ehdokas.html" %}

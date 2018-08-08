@@ -9,13 +9,13 @@
 
 {% block content %}
 
-<div class="container-fluid vaali-container">
+<div id="vaaliContainer" class="container-fluid">
 
 	{% include "layout-components/breadcrumb.html" %}
 	{% placeholder "content" %}
 
 	<div class="row">
-	  <div id="vaalitNav" class="col-md-4 col-12">
+	  <div id="vaalitNav" class="col-md-3 col-12">
 			{% include "vaalit_sidenav.html" %}
 		</div>
 		<div class="col-md-8 col-12">

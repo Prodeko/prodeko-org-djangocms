@@ -1,0 +1,16 @@
+<div class="card mr-3 rounded col-md-6">
+  <div class="img-container mx-auto mt-3">
+    <img src="{{ ehdokas.pic.url }}" alt="{{ ehdokas.name }}" />
+  </div>
+  <p class="card-text text-center">{{ ehdokas.name }}</p>
+  <div class="card-body p-1">
+    {% autoescape off %}{{ ehdokas.introduction }}{% endautoescape %}
+    {% if request.user == ehdokas.auth_prodeko_user %}
+    <hr class="mb-3" />
+    <div class="d-flex justify-content-center">
+      <button ehdokas-id="{{ehdokas.id}}" class="showDeleteEhdokasModal btn btn-outline-danger btn-xs mr-1 my-1"><i class="fas fa-times mr-2"></i>Poista</button>
+      <a href="{% url 'app_vaalit:update_ehdokas' pk=ehdokas.id %}" class="btn btn-outline-success btn-xs my-1"><i class="far fa-edit mr-2"></i>Muokkaa</a>
+    </div>
+    {% endif %}
+  </div>
+</div>
