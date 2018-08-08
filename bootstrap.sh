@@ -61,10 +61,10 @@ pip3 install -r /vagrant/requirements.txt
 cd /vagrant && python3 manage.py makemigrations --noinput
 cd /vagrant && python3 manage.py migrate
 
-# Creating an admin user
+# creating an admin user
 echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.filter(email='webbitiimi@prodeko.org').delete(); User.objects.create_superuser('webbitiimi@prodeko.org', 'kananugetti')" | python manage.py shell
 
-# Run server and static file watcher in screen
+# run server and static file watcher in screen
 su - ubuntu -c "cd /vagrant && screen -S server -d -m python3 manage.py runserver 0.0.0.0:8000"
 su - ubuntu -c "cd /vagrant && screen -S watcher -d -m python3 manage.py watchstatic"
 
