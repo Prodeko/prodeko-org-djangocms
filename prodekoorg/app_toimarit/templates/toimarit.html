@@ -1,0 +1,42 @@
+{% extends "contentpage/content-page.html" %}
+{% load cms_tags menu_tags %}
+
+{% block content %}
+<div class="container page-container">
+	<div class="row">
+		<div class="col-md-9">
+		{% include "layout-components/breadcrumb.html" %}
+
+		<!-- BEGIN LIST  -->
+		<!-- Toteutus vähän kankea, sillä nyt toimarit-lista käydään jokaista jaostoa kohti läpi uudestaan. Saa parantaa -->
+		{% for j in jaostot %}
+			<div class="row">
+				<div>
+					<h2>{{ j }}</h2>
+					<div class="row">
+					{% for t in toimarit %}
+						{% if t.jaosto == j %}
+							<div class="toimari">
+									 {{ t.renderImage }}
+								<div class="toimariDescription">
+										<strong>{{ t.name }}</strong>
+										<br />
+										{{ t.virka }}
+								</div>
+							</div>
+						{% endif %}
+					{% endfor %}
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+		<!-- END LIST -->
+
+		</div>
+		<div class="col-md-3">
+			{% show_sub_menu 2 1 100 "layout-components/sidenavi.html" %}
+		</div>
+	</div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,59 @@
+{% extends "contentpage/content-page.html" %}
+{% load cms_tags menu_tags %}
+
+{% block content %}
+
+<!-- WORK IN PROGRESS -->
+
+<style>
+div.boardMember {
+	margin: 5px;
+    border: 1px solid #cccccc;
+    float: left;
+    width: 300px;
+}
+
+</style>
+<div class="container page-container">
+
+	<div class="row">
+		<div class="col-md-9">
+		
+		{% include "layout-components/breadcrumb.html" %}
+
+		<!-- BEGIN LIST  -->
+		<div class="hallituskuva">
+			<center>
+				<img src="https://www.prodeko.org/wp-content/uploads/2018/02/hallituskuva_kaikki.jpeg"/>
+			</center>
+		</div>
+			<div class="row">
+				<div>
+					<h2>Hallituksen jäsenet</h2>
+					<div class="row">
+					{% for t in toimarit %}
+							<div class="boardMember">
+								<img src="https://www.prodeko.org/wp-content/uploads/2018/02/hallituskuva_timo.jpeg">
+								<div class="toimariDescription">
+										<strong>{{ t.name }}</strong><br />
+										{{ t.virka }}<br />
+										{{ t.virka_eng }}<br />
+										{{ t.puhelin }}<br />
+										{{ t.sahkoposti }}<br />
+								</div>
+							</div>
+
+					{% endfor %}
+					</div>
+				</div>
+			</div>
+		<!-- END LIST -->
+
+		</div>
+		<div class="col-md-3">
+			{% show_sub_menu 2 1 100 "layout-components/sidenavi.html" %}
+		</div>
+	</div>
+</div>
+
+{% endblock content %}

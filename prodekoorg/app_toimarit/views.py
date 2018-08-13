@@ -6,9 +6,11 @@ from django.contrib import admin, messages
 from django.contrib.admin.views.decorators import staff_member_required
 from django.core.files import File
 from django.http import HttpResponse
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 from django.urls import reverse
 from prodekoorg.app_toimarit.models import *
+from django.http import JsonResponse
+from django.core import serializers
 
 from .models import Toimari
 
@@ -34,3 +36,16 @@ def postcsv(request):
     except:
         messages.add_message(request, messages.ERROR, 'Virhe tiedostoa ladattaessa')
     return redirect('../../admin/')
+
+def list_toimarit(request):
+    toimarit = Toimari.objects.filter(sahkoposti="")    #Laiska tapa erotella hallituslaiset toimareista, saa parantaa
+    jaostot = Toimari.objects.order_by().values_list('jaosto', flat=True).distinct()
+    context = {'toimarit': toimarit, 'jaostot': jaostot}
+    #return HttpResponse(data, content_type="application/json")
+    return render(request, 'toimarit.html', context)
+
+def list_hallitus(request):
+    toimarit = Toimari.objects.exclude(sahkoposti="")   #Laiska tapa erotella hallituslaiset toimareista, saa parantaa
+    jaostot = Toimari.objects.order_by().values_list('jaosto', flat=True).distinct()
+    context = {'toimarit': toimarit, 'jaostot': jaostot}
+    return render(request, 'hallitus.html', context)
