@@ -31,15 +31,15 @@ div.boardMember {
 				<div>
 					<h2>Hallituksen jäsenet</h2>
 					<div class="row">
-					{% for t in toimarit %}
+					{% for h in hallituslaiset %}
 							<div class="boardMember">
 								<img src="https://www.prodeko.org/wp-content/uploads/2018/02/hallituskuva_timo.jpeg">
 								<div class="toimariDescription">
-										<strong>{{ t.name }}</strong><br />
-										{{ t.virka }}<br />
-										{{ t.virka_eng }}<br />
-										{{ t.puhelin }}<br />
-										{{ t.sahkoposti }}<br />
+										<strong>{{ h.name }}</strong><br />
+										{{ h.virka }}<br />
+										{{ h.virka_eng }}<br />
+										{{ h.puhelin }}<br />
+										{{ h.sahkoposti }}<br />
 								</div>
 							</div>
 

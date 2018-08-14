@@ -11,7 +11,7 @@ from prodekoorg.app_toimarit import views
 from prodekoorg.app_toimarit.models import *
 import csv
 
-from .models import Toimari
+from .models import Toimari, HallituksenJasen
 
 
 def exportcsv(modeladmin, request, queryset):
@@ -31,6 +31,12 @@ def exportcsv(modeladmin, request, queryset):
 
 @admin.register(Toimari)
 class ToimariAdmin(admin.ModelAdmin):
+    list_display = ('etunimi', 'sukunimi', 'virka')
+    actions = [exportcsv]
+    exportcsv.short_description="Export selected as CSV"
+
+@admin.register(HallituksenJasen)
+class HallituksenJasenAdmin(admin.ModelAdmin):
     list_display = ('etunimi', 'sukunimi', 'virka', 'virka_eng', 'jaosto', 'puhelin', 'sahkoposti')
     actions = [exportcsv]
     exportcsv.short_description="Export selected as CSV"

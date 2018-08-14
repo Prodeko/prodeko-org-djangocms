@@ -12,7 +12,7 @@ from prodekoorg.app_toimarit.models import *
 from django.http import JsonResponse
 from django.core import serializers
 
-from .models import Toimari
+from .models import Toimari, HallituksenJasen
 
 
 @staff_member_required
@@ -38,14 +38,12 @@ def postcsv(request):
     return redirect('../../admin/')
 
 def list_toimarit(request):
-    toimarit = Toimari.objects.filter(sahkoposti="")    #Laiska tapa erotella hallituslaiset toimareista, saa parantaa
+    toimarit = Toimari.objects.all()
     jaostot = Toimari.objects.order_by().values_list('jaosto', flat=True).distinct()
     context = {'toimarit': toimarit, 'jaostot': jaostot}
-    #return HttpResponse(data, content_type="application/json")
     return render(request, 'toimarit.html', context)
 
 def list_hallitus(request):
-    toimarit = Toimari.objects.exclude(sahkoposti="")   #Laiska tapa erotella hallituslaiset toimareista, saa parantaa
-    jaostot = Toimari.objects.order_by().values_list('jaosto', flat=True).distinct()
-    context = {'toimarit': toimarit, 'jaostot': jaostot}
+    hallituslaiset = HallituksenJasen.objects.all()
+    context = {'hallituslaiset': hallituslaiset}
     return render(request, 'hallitus.html', context)
