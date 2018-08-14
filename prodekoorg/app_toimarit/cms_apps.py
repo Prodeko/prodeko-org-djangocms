@@ -6,7 +6,7 @@ from prodekoorg.app_toimarit.views import list_toimarit, list_hallitus
 
 @apphook_pool.register
 class ToimaritApphook(CMSApp):
-	app_name = "toimarit"
+	app_name = "app_toimarit"
 	name = _("Toimarit")
 
 	def get_urls(self, page=None, language=None, **kwargs):
@@ -16,7 +16,7 @@ class ToimaritApphook(CMSApp):
 
 @apphook_pool.register
 class HallitusApphook(CMSApp):
-	app_name = "hallitus"
+	app_name = "app_toimarit"
 	name = _("Hallitus")
 
 	def get_urls(self, page=None, language=None, **kwargs):
