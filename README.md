@@ -42,6 +42,7 @@ $ python3 manage.py runserver 0.0.0.0:8000
 1. Virtualenv päälle `source venv/bin/activate`
 2. Collectaa staattiset tiedostot `python3 manage.py collectstatic`
 3. Käynnistä apache uudestaan `sudo service apache2 restart`
+4. Tarkista näyttävätkö sivut toimivan [djangocms.prodeko.org](https://djangocms.prodeko.org)
 
 Jos törmäät "ImportError: Couldn't import Django..." erroriin, vaihda käyttäjä roottiin ja tee kohdat 2. ja 3. uudestaan.
 
@@ -59,7 +60,7 @@ Jos törmäät "ImportError: Couldn't import Django..." erroriin, vaihda käytt�
     ├── prodekoorg            # Projektin pääkansio
     │   │── app_kulukorvaus   # Sähköinen kulukorvauslomake
     │   │   └── ...  
-    │   │── app_poytakirjat   # Pöytäkirjojen automaattinen haku G Suiten Drivestä, enkryptointi ja
+    │   │── app_poytakirjat   # Pöytäkirjojen automaattinen haku G Suiten Drivestä ja lisäys DjangoCMS:ään
     │   │   └── ...  
     │   │── app_tiedostot     # Prodekon brändiin liittyviä tiedostoja
     │   │   └── ...  
@@ -71,7 +72,7 @@ Jos törmäät "ImportError: Couldn't import Django..." erroriin, vaihda käytt�
     │   │   └── ...  
     │   │── collected-static  # `python3 manage.py collectstatic` kerää tiedostot tänne
     │   │   └── ...  
-    │   │── static            # Staattiset assetit
+    │   │── static            # Staattiset tiedostot
     │   │   ├── css
     │   │   ├── fonts
     │   │   ├── images
