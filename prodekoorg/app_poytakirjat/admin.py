@@ -21,6 +21,7 @@ class YearFilter(SimpleListFilter):
 class DokumenttiAdmin(admin.ModelAdmin):
     list_display = ('name', 'date')
     list_filter = (YearFilter,)
+    exclude = ('gdrive_id',)
 
 
 admin.site.register(Dokumentti, DokumenttiAdmin)

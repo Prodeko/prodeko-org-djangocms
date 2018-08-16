@@ -25,6 +25,7 @@ class Dokumentti(models.Model):
     The model is used for proceedings (pöytäkirja) uploads.
     """
 
+    gdrive_id = models.CharField(max_length=99)
     name = models.CharField(max_length=50)
     number = models.PositiveSmallIntegerField()
     date = models.DateField()
