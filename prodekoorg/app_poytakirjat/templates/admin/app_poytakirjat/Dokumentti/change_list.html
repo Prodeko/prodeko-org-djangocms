@@ -18,7 +18,11 @@
   {% endif %}
   <style>
   .tooltip-inner {
-    max-width: 500px;
+    max-width: 700px;
+    text-align: left;
+  }
+  .object-tools > li {
+    float: left !important;
   }
   </style>
 {% endblock %}
@@ -26,7 +30,22 @@
 {% block extrahead %}
 <script>
 $(function () {
-  $('[data-toggle="tooltip"]').tooltip()
+  $('[data-toggle="tooltip"]').tooltip({
+    html: true,
+    title: "<span> \
+              HUOM! JOS LATAAT USEITA PÖYTÄKIRJOJA LATAUKSESSA SAATTAA KESTÄÄ JOPA MINUUTTI! <br /><br /> \
+              Kirjoita ensin Kokouskansion folderId. 1. Mene Driven kokoukset kansioon 2. Kopioi urlin FOLDERID (drive/u/1/folders/<FOLDERID>). \
+              Vuoden 2018 kansion id on jo kentässä valmiina - pyydä mediakeisaria vaihtamaan se mikäli tarve vaatii. <br /><br /> \
+              Klikkaamalla 'Lataa pöytäkirjat Drivestä' 'Kokoukset'-kansiossa olevat pöytäkirjat latautuvat Driven API:n avulla. \
+              Vain pöytäkirjat joita ei ole alla olevassa listassa ladataan. Pöytäkirjojen manuaalinen lisäys onnistuu painamalla 'Lisää pöytäkirja'.<br /><br /> \
+              Pöytäkirjan tulee olla Driven kansiossa, joka on nimetty seuraavasti: <järjestysnumero>_<pp.kk.yyyy> \
+              (esim. 12_19.3.2018 tai 35_12.10.2018 - huom! Kuukaudessa ei saa olla edessä 0).<br /><br /> \
+              Pöytäkirjan tulee olla Google Docs muodossa (ei .docx tai .pdf) ja nimetty alkaen 'Pöytäkirja' (esim. Pöytäkirja_04).\
+              Liitteet tulee nimetä alkaen 'LIITE' (esim. LIITE-1_laskuliite, LIITE-2_esitys-x). Liitteitä voi olla useita.<br /><br /> \
+              LIITE-sanan jälkeen tuleva järjestysnumero määrää missä järjestyksessä liitteet lisätään lopulliseen pdf-tiedostoon.\
+              Pöytäkirja ja liitteet ladataan ja yhdistetään yhdeksi pdf-tiedostoksi ja ne tulevat automaattisesti sivustolle /dokumentit näkyviin. \
+            </span>"
+  });
 })
 </script>
 {{ block.super }}
@@ -55,13 +74,19 @@ $(function () {
             {% if has_add_permission %}
             <!-- PÖYTÄKIRJOJEN LATAAMINEN -->
             <li>
-              <a href="{% url 'download_docs_from_gsuite' %}" style="color: white !important; background-color: green !important;border: 1px solid green !important; border-radius: 15px !important">
-                Lataa pöytäkirjat G Drivestä
+              <form id="folderIdForm" method="POST" action="{% url 'download_docs_from_gsuite' %}" style="padding: 0 !important; margin: 0 !important; background-color: transparent !important;">
+                {% csrf_token %}
+                <input name="folderID" type="text" class="form-control" value ="1RD-AIF6GuB08wDSFKxNxRZgBu2BtPEli">
+              </form>
+            </li>
+            <li>
+              <a type="submit" onclick="document.getElementById('folderIdForm').submit()" href="#" style="color: white !important; background-color: green !important;border: 1px solid green !important; border-radius: 15px !important">
+                Lataa pöytäkirjat Drivestä
                 <i class="ml-2 fas fa-download"></i>
               </a>
             </li>
             <li>
-              <a href="#" data-toggle="tooltip" data-placement="bottom" title="HUOM! JOS LATAAT USEITA PÖYTÄKIRJOJA LATAUKSESSA SAATTAA KESTÄÄ JOPA MINUUTTI! Klikkaamalla 'Lataa pöytäkirjat G Drivestä' 'Kokoukset'-kansiossa olevat pöytäkirjat latautuvat G Drive API:n avulla. Vain pöytäkirjat joita ei ole alla olevassa listassa ladataan. Pöytäkirjojen manuaalinen lisäys onnistuu painamalla 'Lisää pöytäkirja'. Pöytäkirja tulee olla G Driven kansiossa, joka on nimetty seuraavasti: <järjestysnumero>_<pp.kk.yyyy> (esim. 12_19.3.2018 tai 35_12.10.2018 - huom! Kuukaudessa ei saa olla edessä 0). Pöytäkirja tulee olla Google Docs muodossa (ei .docx tai .pdf) ja nimetty alkaen 'Pöytäkirja' (esim. Pöytäkirja_04), liitteet tulee nimetä alkaen 'LIITE' (esim. LIITE-1_laskuliite, LIITE-2_esitys-x). Liitteitä voi olla useita. LIITE-sanan jälkeen tuleva järjestysnumero määrää missä järjestyksessä liitteet lisätään lopulliseen pdf-tiedostoon. Pöytäkirja ja liitteet ladataan ja yhdistetään yhdeksi pdf-tiedostoksi ja ne tulevat automaattisesti sivustolle /dokumentit näkyviin." style="color: white !important; background-color: #626262 !important;border: 1px solid #626262 !important; border-radius: 15px !important">
+              <a href="#" data-toggle="tooltip" data-placement="bottom" style="color: white !important; background-color: #626262 !important;border: 1px solid #626262 !important; border-radius: 15px !important">
                 Miten lataaminen toimii
                 <i class="ml-2 fas fa-question"></i>
               </a  >

@@ -27,11 +27,12 @@ Prodeko.org + G Drive integraatio pöytäkirjojen lisäämiseksi automaattisesti
 
 Pöytäkirjojen lataaminen tapahtuu admin-consolesta osoitteesta /fi/admin/app_poytakirjat/dokumentti.
 
-- Klikkaamalla 'Lataa pöytäkirjat G Drivestä' 'Kokoukset'-kansiossa olevat pöytäkirjat latautuvat G Drive API:n avulla. Vain pöytäkirjat joita ei ole admin consolen listassa ladataan.
-- Pöytäkirjojen manuaalinen lisäys onnistuu painamalla 'Lisää pöytäkirja'.
-- Pöytäkirja tulee olla G Driven kansiossa, joka on nimetty seuraavasti: <järjestysnumero>\_<pp.kk.yyyy> (esim. 12_19.3.2018 tai 35_12.10.2018 - huom! Kuukaudessa ei saa olla edessä 0).
-- Pöytäkirja tulee olla Google Docs muodossa (ei .docx tai .pdf) ja nimetty alkaen 'Pöytäkirja' (esim. Pöytäkirja_04), liitteet tulee nimetä alkaen 'LIITE' (esim. LIITE-1_laskuliite, LIITE-2_esitys-x).
-- Liitteitä voi olla useita.
+- HUOM! JOS LATAAT USEITA PÖYTÄKIRJOJA LATAUKSESSA SAATTAA KESTÄÄ JOPA MINUUTTI!
+- Kirjoita ensin Kokouskansion folderId. 1. Mene Driven kokoukset kansioon 2. Kopioi urlin FOLDERID (drive/u/1/folders/<FOLDERID>).
+- Klikkaamalla 'Lataa pöytäkirjat Drivestä' 'Kokoukset'-kansiossa olevat pöytäkirjat latautuvat Driven API:n avulla.
+- Vain pöytäkirjat joita ei ole admin paneelin listassa ladataan. Pöytäkirjojen manuaalinen lisäys onnistuu painamalla 'Lisää pöytäkirja'
+- Pöytäkirjan tulee olla Driven kansiossa, joka on nimetty seuraavasti: <järjestysnumero>\_<pp.kk.yyyy> (esim. 12_19.3.2018 tai 35_12.10.2018 - huom! Kuukaudessa ei saa olla edessä 0).<br /><br />
+- Pöytäkirjan tulee olla Google Docs muodossa (ei .docx tai .pdf) ja nimetty alkaen 'Pöytäkirja' (esim. Pöytäkirja_04) Liitteet tulee nimetä alkaen 'LIITE' (esim. LIITE-1_laskuliite, LIITE-2_esitys-x). Liitteitä voi olla useita.
 - LIITE-sanan jälkeen tuleva järjestysnumero määrää missä järjestyksessä liitteet lisätään lopulliseen pdf-tiedostoon.
 - Pöytäkirja ja liitteet ladataan ja yhdistetään yhdeksi pdf-tiedostoksi ja ne tulevat automaattisesti sivustolle /dokumentit näkyviin.
 

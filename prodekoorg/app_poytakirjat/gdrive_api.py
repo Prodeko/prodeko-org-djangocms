@@ -212,13 +212,13 @@ def run_app_poytakirjat(request):
     request: http request object that we don't actually need.
     """
     # Id of the 'Kokoukset' folder iside 'Hallituksen sisäinen Team Drive
-    folder_id = '1RD-AIF6GuB08wDSFKxNxRZgBu2BtPEli'
-    service = initialize_service()
-    # Returns a dict of folders inside the folder_id above
-    folders_dict = get_gdrive_folders_dict(service, folder_id)
+    folder_id = request.POST['folderID']
     try:
+        service = initialize_service()
+        # Returns a dict of folders inside the folder_id above
+        folders_dict = get_gdrive_folders_dict(service, folder_id)
         success_count = create_models_from_folders(service, request, folders_dict)
-        messages.add_message(request, messages.INFO, 'Ladattu {} pöytäkirjaa G Drivestä onnistuneesti.'.format(success_count))
+        messages.add_message(request, messages.INFO, 'Ladattu {} pöytäkirjaa G Drivestä.'.format(success_count))
     except Exception as e:
         messages.add_message(request, messages.ERROR, 'Virhe pöytäkirjoja ladattaessa: {}'.format(e))
     return redirect('/fi/admin/app_poytakirjat/dokumentti/')
