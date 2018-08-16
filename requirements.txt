@@ -26,13 +26,14 @@ six
 reportlab
 django-tinymce>=2.7
 djangocms-bootstrap4
+PyPDF2
 
 PyMySQL
 mysqlclient
 
 # Google drive integration
-google-api-python-client
-oauth2client
+google-api-python-client>=1.7.4
+pycrypto
 
 # tiedotteet.prodeko.org requirements
 futures==2.1.6
