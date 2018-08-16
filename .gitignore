@@ -73,6 +73,7 @@ venv/
 prodekoorg/collected-static
 
 *.db
+*.json
 
 # tiedotteet.prodeko.org
 tiedotteet/static/

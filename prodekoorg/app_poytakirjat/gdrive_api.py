@@ -27,7 +27,7 @@ def initialize_service():
     """Initialize a Drive API service instance.
     """
 
-    SERVICE_ACCOUNT_FILE = os.path.join(settings.BASE_DIR, 'prodekoorg/app_poytakirjat/service_account.json')
+    SERVICE_ACCOUNT_FILE = os.path.join(settings.BASE_DIR, 'prodekoorg/app_poytakirjat/service-account.json')
 
     # mimeType of Google Drive folder
     FOLDER = 'application/vnd.google-apps.folder'
