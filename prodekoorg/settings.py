@@ -7,6 +7,7 @@ Author: Webbitiimi
 import configparser
 import os
 from django.utils.translation import gettext_lazy as _
+from django.contrib.messages import constants as messages
 # Change the line below to 'prodekoorg.settings_prod' in production
 from prodekoorg.settings_dev import *
 
@@ -80,8 +81,9 @@ TEMPLATES = [
         'DIRS': [os.path.join(BASE_DIR, 'prodekoorg', 'templates'),
                  os.path.join(BASE_DIR, 'tiedotteet/info', 'templates'),
                  os.path.join(BASE_DIR, 'tiedotteet', 'public'),
-                 os.path.join(BASE_DIR, 'prodekoorg/app_toimarit', 'templates'),
-                 os.path.join(BASE_DIR, 'prodekoorg/app_kulukorvaus', 'templates'), ],
+                 os.path.join(BASE_DIR, 'prodekoorg/app_kulukorvaus', 'templates'),
+                 os.path.join(BASE_DIR, 'prodekoorg/app_poytakirjat', 'templates'),
+                 os.path.join(BASE_DIR, 'prodekoorg/app_toimarit', 'templates'), ],
         'OPTIONS': {
             'context_processors': [
                 'django.contrib.auth.context_processors.auth',
@@ -288,6 +290,11 @@ CKEDITOR_CONFIGS = {
         'height': "auto",
         'skin': "moono-lisa",
     },
+}
+
+"""Configure Django messages framework to work with bootstrap"""
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger'
 }
 """Email"""
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
