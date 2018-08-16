@@ -1,5 +1,5 @@
 # download the package lists from the repositories
-apt-get update
+apt-get update && apt-get install build-essential libssl-dev libffi-dev python3-dev
 
 # --- python ---
 # set default python version to 3.5
