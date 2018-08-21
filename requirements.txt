@@ -27,6 +27,7 @@ reportlab
 django-tinymce>=2.7
 djangocms-bootstrap4
 PyPDF2
+requests
 
 PyMySQL
 mysqlclient
