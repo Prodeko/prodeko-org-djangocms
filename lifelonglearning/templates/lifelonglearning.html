@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="navbar-header">
+    <a class="navbar-brand" href="#">
+      Lifelong Learning Project
+    </a>
+  </div>
+</nav>
+
+<div class="banner">
+
+
+</div>
+
+<div class="container">
+  {% for course in courses %}
+  <div class="col-md-6 course">
+    <div class="course-banner" style="background-image: url('{{ course.banner }}')"></div>
+    <h1>{{ course.name }}</h1>
+    <p class="addition">{{ course.coaches }}</p>
+    <p>{{ course.description }}</p>
+    <a class="btn">{{ course.registration }}</a>
+    <hr>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+body {
+  font-family: 'Raleway', sans-serif;
+  color: #666;
+  max-width: 100%;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #000;
+}
+
+
+.course {
+  background-color: green;
+}
+
+.banner {
+  width: 100%;
+  height: 500px;
+}
+
+
+.course-banner {
+  width: 100%;
+  height: 300px;
+}
