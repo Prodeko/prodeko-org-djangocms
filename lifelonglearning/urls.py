@@ -1,7 +1,8 @@
 from django.conf.urls import url
 from .views import *
 
+app_name = 'lifelonglearning'
 urlpatterns = [
     url(r'^$', index, name='index'),
-    url(r'^lifelonglearning/(?P<pk>\d+)/$', coursepage, name='coursepage'),
+    url(r'^(?P<pk>\d+)/$', coursepage, name='coursepage'),
 ]
