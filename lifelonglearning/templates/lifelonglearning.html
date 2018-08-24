@@ -53,16 +53,21 @@
       yrityksissä erittäin tärkeissä asemissa, on useilla meistä myös velvollisuus ylläpitää ja kehittää omaa osaamistaan. Lifelong Learning -projekti
       käynnistettiin juuri tätä varten: mahdollistamaan prodekolaisten elinikäistä oppimista.
     </p>
+    <br>
 
+
+    <h2>Tämän hetkiset kurssit</h2>
     {% for course in courses %}
     <a id="courses" href="{% url 'lifelonglearning:coursepage' course.id %}">
-      <div class="col-md-6 course">
-        <div class="course-banner" style="background-image: url('{{ course.banner }}')"></div>
-        <div class="course-text">
-          <h3>{{ course.name }}</h3>
-          <p class="addition">Valmentajat: <span class="black">{{ course.coaches }}</span></p>
-          <p>{{ course.description | truncatechars:400 }}</p>
-          <a class="btn btn-success btn-block registration" href="{{ course.registration }}">Ilmoittaudu</a>
+      <div class="col-md-6">
+        <div class="course">
+          <div class="course-banner" style="background-image: url('{{ course.banner }}')"></div>
+          <div class="course-text">
+            <h3>{{ course.name }}</h3>
+            <p class="addition">Valmentajat: <span class="black">{{ course.coaches }}</span></p>
+            <p>{{ course.description | truncatechars:400 }}</p>
+            <a class="btn btn-success btn-block registration" href="{{ course.registration }}">Ilmoittaudu</a>
+          </div>
         </div>
       </div>
     </a>
@@ -72,35 +77,24 @@
   <hr>
 
   <section class="section">
-    <h2>Miten pääsen mukaan?</h2>
-    <div class="center">
-      <h4>1. Tee päätös</h4>
-      <p>Asennoidu niin, että pyrit kehittämään itseäsi hieman joka päivä</p>
-
-      <h4>2. Itsenäinen toiminta</h4>
-      <p>Lue kirjoja, katso dokumentteja, reflektoi onnistumisiasi ja epäonnistumisiasi</p>
-
-      <h4>3. Osallistu</h4>
-      <p>Lähde mukaan <a href="https://lifelonglearning.prodeko.org/#vertais">vertaisryhmätoimintaan</a></p>
-
-      <h4>4. Co-create</h4>
-      <p>Fasilitoi vertaisryhmiä ja jaa oppimaasi muille</p>
-    </div>
-  </section>
-
-  <hr>
-
-  <section class="section">
-    <h2>Ajankohtaista</h2>
-    <h4 id="vertais">Afterwork groups</h4>
-
-    <p>Syksyllä käynnistetään kaksi kappaletta afterwork groupien pilotteja Risto Siilasmaan ja Juha Äkräksen fasilitoimina. Näissä samassa asemassa tai samanlaisissa
-       työtehtävissä toimivat alumnit kokoontuvat keskutelemaan jostakin heille keskeisestä aiheesta ja oppimaan toisiltaan.
-       Alla olevan linkin kautta voi osoittaa kiinnostuksensa ryhmiä kohtaan ja esittää käsiteltäväksi toivomiaan aihealueita. Kiinnostuksen perusteella päätetään tarkat aiheet, jonka jälkeen kaikille sähköpostin jättäneille ilmoitetaan tarkemmin ryhmien käytännön järjestelyistä ja siitä, miten ryhmiin voi ilmottautua sitovasti!
-    </p>
-    <br>
-    <div class="center">
-      <a class="button" href="https://goo.gl/forms/9f95lozW4nwg92U53">Lähde mukaan</a>
+    <h2 class="center">Periaatteet</h2>
+    <div class="row center">
+      <div class="col-md-3">
+        <h4>1. Tee päätös</h4>
+        <p>Asennoidu niin, että pyrit kehittämään itseäsi hieman joka päivä</p>
+      </div>
+      <div class="col-md-3">
+        <h4>2. Itsenäinen toiminta</h4>
+        <p>Lue kirjoja, katso dokumentteja, reflektoi onnistumisiasi ja epäonnistumisiasi</p>
+      </div>
+      <div class="col-md-3">
+        <h4>3. Osallistu</h4>
+        <p>Lähde mukaan <a href="https://lifelonglearning.prodeko.org/#vertais">vertaisryhmätoimintaan</a></p>
+      </div>
+      <div class="col-md-3">
+        <h4>4. Co-create</h4>
+        <p>Fasilitoi vertaisryhmiä ja jaa oppimaasi muille</p>
+      </div>
     </div>
   </section>
 
@@ -151,7 +145,7 @@
 
 <footer>
   <div class="social">
-
+    <h1 class="center">FOOTER</h1>
   </div>
 </footer>
 
