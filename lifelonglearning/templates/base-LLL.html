@@ -39,6 +39,10 @@
 <script>
   $(document).ready( function() {
 
+		$("#content").on('click', function() {
+			if ($(window).width() < 800 && $("#content").hasClass("blur")) $(".navbar-toggle").trigger("click");
+		});
+
 		$(".navbar-toggle").on("click", function() {
 			if ($("#content").hasClass("blur")) {
 				$("#content").removeClass("blur");
@@ -47,7 +51,13 @@
 			}
     });
 
+		// Setup by device and scroll
 		if ($(window).width() < 800) $("#myNavbar").css('opacity', '1');
+		if ($(window).scrollTop() > 50) {
+			$("#navbar").css('background-position', 'left 0px');
+			$("#scrollToTop").css('opacity', '1');
+			$("#myNavbar").css('opacity', '1');
+		}
 
 		$(window).scroll( function() {
 	    if($(this).scrollTop() > 50 || $(document).scrollTop() > 50) {
@@ -69,25 +79,18 @@
 		});
 
 		// Select all links with hashes
-		$('a[href*="#"]')
-		  // Remove links that don't actually link to anything
-		  .not('[href="#"]')
-		  .not('[href="#0"]')
-		  .click(function(event) {
-		    // On-page links
-				if ($(window).width() < 800) $(".navbar-toggle").click();
-		    if (
-		      location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '')
-		      &&
-		      location.hostname == this.hostname
-		    ) {
-		      // Figure out element to scroll to
+		$(document).on("click", "a[href*='#']", function () {
+				if ($(window).width() < 800 && $("#content").hasClass("blur")) $(".navbar-toggle").trigger("click");
+		    if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '')
+		      	&&
+		      	location.hostname == this.hostname) {
+
 		      var target = $(this.hash);
 		      target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
 		      if (target.length) {
 		        event.preventDefault();
 		        $('html, body').animate({
-		          scrollTop: target.offset().top - 50
+		          scrollTop: target.offset().top - 100
 		        }, 1000, function() { });
 		      }
 		    }

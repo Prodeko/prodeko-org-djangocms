@@ -2,14 +2,14 @@
 {% load staticfiles %}
 
 {% block body %}
-
+<div id="root"></div>
 <nav id="navbar">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <i class="fas fa-bars white"></i>
       </button>
-      <a class="navbar-brand" href="#"><img id="logo" src="{% static 'img/headerlogo.png' %}" alt="Prodeko logo"></a>
+      <a class="navbar-brand" href="#root"><img id="logo" src="{% static 'img/headerlogo.png' %}" alt="Prodeko logo"></a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
@@ -56,7 +56,9 @@
         yrityksissä erittäin tärkeissä asemissa, on useilla meistä myös velvollisuus ylläpitää ja kehittää omaa osaamistaan. Lifelong Learning -projekti
         käynnistettiin juuri tätä varten: mahdollistamaan prodekolaisten elinikäistä oppimista.
       </p>
-
+      <br>
+      <hr>
+      <h2 id="courses" class="center">Avoimet kurssit</h2>
       {% for course in courses %}
       <a href="{% url 'lifelonglearning:coursepage' course.id %}">
         <div class="col-md-6">

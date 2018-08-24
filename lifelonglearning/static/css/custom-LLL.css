@@ -141,11 +141,10 @@ hr {
 }
 
 
-.navbar-nav, .navbar-header, .navbar-brand {
-  text-align: center;
+.nav, .navbar-nav, .navbar-header, .navbar-brand {
   float: none;
+  text-align: center;
   display: block !important;
-  margin: 0 auto !important;
 }
 
 #myNavbar {
@@ -154,7 +153,6 @@ hr {
 }
 
 #logo {
-  float: left;
   width: 300px;
   max-width: 300px;
   display: block;
@@ -164,6 +162,11 @@ hr {
 .nav>li>a:focus, .nav>li>a:hover {
   background: inherit;
   color: lightgrey;
+}
+
+.nav>li {
+  display: inline-block;
+  float: none;
 }
 
 #scrollToTop {
@@ -176,7 +179,7 @@ hr {
 
   border-radius: 200px;
   padding: 10px 23px;
-  color: lightsmoke;
+  color: lightgrey;
   background-color: white;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   font-size: 2em;
@@ -301,5 +304,9 @@ and (max-device-width : 768px) {
     width: 80%;
     display: block;
     margin: 0 auto;
+  }
+  .nav>li {
+    display: block;
+    float: none;
   }
 }
