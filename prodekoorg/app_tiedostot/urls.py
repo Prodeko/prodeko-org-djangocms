@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from .views import main, download
+from .views import *
 
 app_name = 'app_tiedostot'
 urlpatterns = [

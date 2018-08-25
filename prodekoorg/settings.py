@@ -73,6 +73,8 @@ STATICFILES_DIRS = [
     # tiedotteet.prodeko.org
     os.path.join(BASE_DIR, 'tiedotteet/info', 'static'),
     os.path.join(BASE_DIR, 'tiedotteet', 'public'),
+    # tiedotteet.prodeko.org
+    os.path.join(BASE_DIR, 'lifelonglearning', 'static'),
 ]
 
 TEMPLATES = [
@@ -81,6 +83,7 @@ TEMPLATES = [
         'DIRS': [os.path.join(BASE_DIR, 'prodekoorg', 'templates'),
                  os.path.join(BASE_DIR, 'tiedotteet/info', 'templates'),
                  os.path.join(BASE_DIR, 'tiedotteet', 'public'),
+                 os.path.join(BASE_DIR, 'lifelonglearning', 'templates'),
                  os.path.join(BASE_DIR, 'prodekoorg/app_kulukorvaus', 'templates'),
                  os.path.join(BASE_DIR, 'prodekoorg/app_poytakirjat', 'templates'),
                  os.path.join(BASE_DIR, 'prodekoorg/app_toimarit', 'templates'), ],
@@ -182,11 +185,14 @@ INSTALLED_APPS = (
     'rest_framework',
     'corsheaders',
     # ------------------------
+    'lifelonglearning',
+    # ------------------------
     'prodekoorg.app_poytakirjat',
     'prodekoorg.app_toimarit',
     'prodekoorg.app_kulukorvaus',
     'prodekoorg.app_vaalit',
     'prodekoorg.app_tiedostot',
+    # ------------------------
 )
 
 """Language settings"""

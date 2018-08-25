@@ -1,0 +1,167 @@
+{% extends "base-LLL.html" %}
+{% load staticfiles %}
+
+{% block body %}
+<div id="root"></div>
+<nav id="navbar">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <i class="fas fa-bars white"></i>
+      </button>
+      <a class="navbar-brand" href="#root"><img id="logo" src="{% static 'img/headerlogo.png' %}" alt="Prodeko logo"></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><a href="#1">Ilmoittaudu</a></li>
+        <li><a href="#2">Ideologia</a></li>
+        <li><a href="#3">Lukuvinkkejä ja linkkejä</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div id="scrollToTop">
+  <i class="fas fa-angle-double-up"></i>
+</div>
+
+
+<div id="content">
+  <div class="banner">
+    <div class="bottom-gradient"></div>
+    <div class="banner-text">
+      <h1 class="white ok-spacing">Lifelong Learning</h1>
+      <h4 class="lightgrey no-top">by Prodeko</h4>
+      <h5 class="white">
+        Maailma muuttuu koko ajan kiihtyvällä tahdilla. Vaikka tällä hetkellä muutos tuntuu äärimmäisen nopealta, todellisuudessa
+        <b>se ei ikinä enää tule olemaan niin hidasta, kuin se on nyt</b>. Tehostamalla omaa oppimistamme mahdollistamme sen, että voimme
+        tulevaisuudessakin olla viemässä Suomea ja suomalaisia yrityksiä eteenpäin kehityksen kärjessä.
+      </h5>
+      <br>
+      <a class="btn btn-success registration center" href="#courses">Ilmoittaudu sessioihin</a>
+    </div>
+
+  </div>
+
+
+
+  <div class="container">
+    <div id="1" class="section row">
+      <h2>Liity oppimaan</h2>
+      <p>
+        Oppimista tulee jatkaa myös tutkinnon valmistuttua läpi koko elämän. Tämä ei välttämättä tarkoita palaamista koulunpenkille, vaan
+        uudenlaisen asenteen omaksumista. Siirrymme koulutksesta oppimiseen ja työelämän ja opintojen välillä valitsemisesta näiden yhdistämiseen.
+        <br>
+        Prodeko-yhteisönä meillä on mahdollisuus kehittää omaa osaamistamme yhdessä hyödyntäen uniikkia yhteisöämme. Koska Prodekolaiset ovat monissa
+        yrityksissä erittäin tärkeissä asemissa, on useilla meistä myös velvollisuus ylläpitää ja kehittää omaa osaamistaan. Lifelong Learning -projekti
+        käynnistettiin juuri tätä varten: mahdollistamaan prodekolaisten elinikäistä oppimista.
+      </p>
+      <br>
+      <hr>
+      <h2 id="courses" class="center">Avoimet kurssit</h2>
+      {% for course in courses %}
+      <a href="{% url 'lifelonglearning:coursepage' course.id %}">
+        <div class="col-md-6">
+          <div class="course">
+            <div class="course-banner" style="background-image: url('{{ course.banner }}')">
+              <div class="bottom-gradient"></div>
+            </div>
+            <div class="course-text">
+              <h3>{{ course.name }}</h3>
+              <p class="addition">Valmentajat: <span class="black">{{ course.coaches }}</span></p>
+              <p class="addition">Ajankohta: <span class="black">{{ course.timing }}</span></p>
+              <hr>
+              <p>{{ course.description | truncatechars:400 }}</p>
+              <a class="btn btn-success btn-block registration" href="{{ course.registration }}">Ilmoittaudu</a>
+            </div>
+          </div>
+        </div>
+      </a>
+    {% endfor %}
+    </div>
+
+    <hr>
+
+    <div id="2" class="section row">
+      <h2 class="center">Ideologia</h2>
+      <div class="row center">
+        <div class="col-md-3">
+          <i class="fas fa-child principles"></i>
+          <h4>1. Tee päätös</h4>
+          <p>Asennoidu niin, että pyrit kehittämään itseäsi hieman joka päivä</p>
+        </div>
+        <div class="col-md-3">
+          <i class="fab fa-leanpub principles"></i>
+          <h4>2. Itsenäinen toiminta</h4>
+          <p>Lue kirjoja, katso dokumentteja, reflektoi onnistumisiasi ja epäonnistumisiasi</p>
+        </div>
+        <div class="col-md-3">
+          <i class="fas fa-users principles"></i>
+          <h4>3. Osallistu</h4>
+          <p>Lähde mukaan <a href="https://lifelonglearning.prodeko.org/#vertais">vertaisryhmätoimintaan</a></p>
+        </div>
+        <div class="col-md-3">
+          <i class="fas fa-handshake principles"></i>
+          <h4>4. Co-create</h4>
+          <p>Fasilitoi vertaisryhmiä ja jaa oppimaasi muille</p>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+    <div id="3" class="section row">
+      <h2>Lukuvinkkejä ja linkkejä</h2>
+      <p>Kirjoja</p>
+
+      <ul>
+      	<li>The Hard Thing About Hard Things (Ben Horowitz)</li>
+      	<li>The Google Story (David A. Vise, Mark Malseed)</li>
+      	<li>Shoe Dog (Phil Knight)</li>
+        <li>Peak: Secrets from the New Science of Expertise (Anders Ericsson, Robert Pool)</li>
+        <li>5 Elements of Effective Thinking (Edward B. Burger, Michael Starbird)</li>
+        <li>A More Beautiful Question: The Power of Inquiry to Spark Breakthrough Ideas (Warren Berger)</li>
+        <li>The 10X Rule: The Only Difference Between Success and Failure (Grant Cardone)</li>
+        <li>Flow: The Psychology of Optimal Experience (Mihaly Csikszentmihalyi)</li>
+        <li>How Will You Measure Your Life? (Clayton M. Christensen)</li>
+        <li>The Oxford Handbook of Lifelong Learning (Manuel London)</li>
+        <li>Hacking Your Education: Ditch the Lectures, Save Tens of Thousands, and Learn More Than Your Peers Ever Will (Dale J. Stephens)</li>
+        <li>The Education of Millionaires: It’s Not What You Think and It’s Not Too Late (Michael Ellsberg)</li>
+      </ul>
+
+      <p>Hyviä äänikirjatiivistelmiä löytyy palvelusta <a href="https://www.blinkist.com/">Blinkist</a></p>
+      <div id="links">
+        <p>Dokumenttifilmejä</p>
+        <ul>
+          <li><a class="link" href="https://youtu.be/quYDkuD4dMU">The Future of Learning, Networked Society - Ericsson</a></li>
+          <li><a class="link" href="https://vimeo.com/119101747">Collaboration - On the Edge of a New Paradigm?</a></li>
+          <li><a class="link" href="https://vimeo.com/34608191">PressPausePlay - Opportunities of creativity</a></li>
+          <li><a class="link" href="https://vimeo.com/4489849">Us Now</a></li>
+          <li><a class="link" href="https://youtu.be/_wqm6G5DjaI">The Networked Society, On the Brink</a></li>
+        </ul>
+
+        <p>TED-talkeja</p>
+        <ul>
+          <li><a class="link" href="https://www.ted.com/talks/john_green_the_nerd_s_guide_to_learning_everything_online">The nerd's guide to learning everything online</a></li>
+          <li><a class="link" href="https://www.ted.com/talks/ben_dunlap_talks_about_a_passionate_life">The life-long learner</a></li>
+          <li><a class="link" href="https://www.ted.com/talks/daphne_koller_what_we_re_learning_from_online_education">What we're learning from online education</a></li>
+          <li><a class="link" href="https://www.ted.com/talks/kathryn_schulz_on_being_wrong">On being wrong</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="social">
+      <h1 class="center">FOOTER</h1>
+    </div>
+  </footer>
+
+</div>
+
+
+
+
+{% endblock %}

@@ -49,6 +49,11 @@ urlpatterns += [
     url(r'^accounts/profile', views.profile, name='profile'),
 ]
 
+# ==== lifelonglearning.prodeko.org ==== #
+urlpatterns += [
+    url(r'^lifelonglearning/', include('lifelonglearning.urls', namespace='lifelonglearning')),
+]
+
 # ==== app_poytakirjat ==== #
 urlpatterns += [
     url(r'^', include('prodekoorg.app_poytakirjat.urls', namespace='app_poytakirjat')),
