@@ -10,8 +10,13 @@ div.boardMember {
 	margin: 5px;
     border: 1px solid #cccccc;
     float: left;
-    width: 300px;
+    width: 350px;
 }
+
+div.boardMemberDescription {
+	margin: 10px;
+}
+
 
 </style>
 <div class="container page-container">
@@ -32,17 +37,18 @@ div.boardMember {
 					<h2>Hallituksen jäsenet</h2>
 					<div class="row">
 					{% for h in hallituslaiset %}
-							<div class="boardMember">
-								<img src="https://www.prodeko.org/wp-content/uploads/2018/02/hallituskuva_timo.jpeg">
-								<div class="toimariDescription">
+						<div class="col-md-12 col-lg-6">
+								<div class="boardMember">
+										<img src="https://www.prodeko.org/wp-content/uploads/2018/02/hallituskuva_timo.jpeg" />
+										<div class="boardMemberDescription">
 										<strong>{{ h.name }}</strong><br />
 										{{ h.virka }}<br />
 										{{ h.virka_eng }}<br />
 										{{ h.puhelin }}<br />
 										{{ h.sahkoposti }}<br />
+									</div>
 								</div>
-							</div>
-
+						</div>
 					{% endfor %}
 					</div>
 				</div>
