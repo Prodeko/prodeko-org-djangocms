@@ -1,0 +1,29 @@
+
+div.toimari {
+    margin: 5px;
+    border: 1px solid #cccccc;
+    float: left;
+    width: 150px;
+}
+
+
+div.toimari img {
+    width: 100%;
+    height: auto;
+}
+
+div.toimariDescription {
+    padding: 7px;
+    text-align: center;
+}
+
+div.boardMember {
+	margin: 5px;
+    border: 1px solid #cccccc;
+    float: left;
+    width: 350px;
+}
+
+div.boardMemberDescription {
+	margin: 10px;
+}

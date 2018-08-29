@@ -14,6 +14,7 @@ Prodekon tummansininen: #002851
 
 @import 'app_vaalit.css';
 @import 'app_poytakirjat.css';
+@import 'app_toimarit.css';
 @import 'bs_overrides.css';
 @import 'messages_animation.css';
 
@@ -743,24 +744,4 @@ The navbar toggle appears at this breakpoint */
 
 .gallery-content-related #controls {
 	margin-top: 3em;
-}
-
-/* TOIMARIT */
-
-div.toimari {
-    margin: 5px;
-    border: 1px solid #cccccc;
-    float: left;
-    width: 150px;
-}
-
-
-div.toimari img {
-    width: 100%;
-    height: auto;
-}
-
-div.toimariDescription {
-    padding: 7px;
-    text-align: center;
 }
