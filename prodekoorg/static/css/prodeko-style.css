@@ -22,7 +22,6 @@ body {
 	font-family: Raleway, Helvetica, sans-serif;
 	color: #002851;
 	min-height: 100%;
-	padding-top: 1em;
 }
 
 h1, h2, h3, h4, h5, h6, display-1, display-2, display-3, display-4, display-5, display-6 {
@@ -458,16 +457,34 @@ anchors are inline so you need ot make them block to go full width
 }
 
 /* MEDIA QUERIES */
+@media (max-width: 543px) {
+	.frontpage-headercontainer h1.display-1 {
+		font-size: 1.5rem;
+	}
+
+	.carousel-caption h1 {
+		font-size: 1rem;
+	}
+
+	.frontpage-square {
+		padding: 5px;
+	}
+
+	.frontpage-square-caption h3 {
+		font-size: 1rem;
+	}
+}
+
 
 /* Small devices (landscape phones, 544px and up) */
 @media (min-width: 544px) {
 	.page-container h1, h1.display-1 {
 		font-size: 3.0rem;
 	}
-	.frontpage-square-caption h1.display-2 {
-		font-size: 2.0rem;
-	}
 
+	.frontpage-square-caption h3 {
+		font-size: 1.5rem;
+	}
 }
 
 /* Medium devices (tablets, 768px and up)
@@ -522,159 +539,6 @@ The navbar toggle appears at this breakpoint */
 
 .kulukorvaus-container .fa-minus {
     color: red;
-}
-
-/* VAALIT */
-
-/* https://stackoverflow.com/questions/29063244/consistent-styling-for-nested-lists-with-bootstrap */
-
-.list-group.list-group-root {
-    padding: 0;
-    overflow: hidden;
-}
-
-.list-group.list-group-root .list-group {
-    margin-bottom: 0;
-}
-
-.list-group.list-group-root .list-group-item {
-    border-radius: 0;
-    border-width: 1px 0 0 0;
-}
-
-.list-group.list-group-root > .list-group-item:first-child {
-    border-top-width: 0;
-}
-
-.list-group.list-group-root > .list-group > .list-group-item {
-    padding-left: 30px;
-}
-
-.list-group.list-group-root > .list-group > .list-group > .list-group-item {
-    padding-left: 45px;
-}
-
-.list-group-root .list-group-item .fa {
-    margin-right: 5px;
-}
-
-.collapse {
-  display: none;
-  &.show {
-    display: block;
-  }
-}
-
-.list-group-root .fa-chevron-down {
-  transition: all 0.3s ease-in-out;
-}
-
-.list-group-root .collapsed .fa-chevron-down  {
-	transform: rotate(-90deg);
-  transition: all 0.4s ease-in-out;
-}
-
-
-.list-group-root .list-group-item.active {
-    background-color: #0053a0 !important;
-		border-color: #0053a0 !important;
-}
-
-.vaali-content .vaali-div {
-	flex: 0 0 10%;
-	margin: 0.8em;
-}
-
-.vaali-content .vaali-div p {
-	font-size: 1.2em;
-}
-
-.vaali-content .vaali-div .img-container {
-	width: 100px;
-	height: 100px;
-	border-radius: 50%;
-	position: relative;
-  overflow: hidden;
-}
-
-.vaali-content .img-container img {
-	display: inline;
-	margin: 0 auto;
-	height: 100%;
-	width: auto;
-}
-
-.vaali-content .btn {
-	font-weight: 200;
-}
-
-.vaali-container .modal-lg {
-  max-width: 70%;
-}
-
-.vaali-container .btn-xs {
-	border-radius: 0;
-	padding-left: 10px;
-	padding-right: 10px;
-	width: 100%;
-	font-size: 0.7em;
-}
-
-.vaali-container p.ehdokas-name {
-	font-weight: 600;
-	font-size: 1.3em;
-	margin-bottom: 0;
-}
-
-#vaaliWrapperContentAndForm #vaalitKysymysForm .btn {
-	width: 140px;
-}
-
-#vaaliWrapperApplyForm, #vaaliWrapperContent {
-	width: 100%;
-}
-
-#vaalitKysymysForm a {
-	background-color: #e7e7e7;
-}
-
-#vaalitKysymysForm .fa-chevron-down {
-  transition: all 0.3s ease-in-out;
-}
-
-#vaalitKysymysForm #btnHaeVirkaan.animate-chevron .fa-chevron-down {
-	transform: rotate(-179.9deg); /* For some reason there is a small wiggle if the rotation is 180 degrees */
-  transition: all 0.3s ease-in-out;
-}
-
-#vaaliWrapperApplyForm .django-ckeditor-widget {
-	width: 100%;
-}
-
-#vaaliWrapperApplyForm {
-  display: none;
-}
-
-#modalCrop .img-container img {
-	max-width: 100%;
-}
-
-.crop-preview {
-	height: 0;
-	width: 100px;
-	border-radius: 50%;
-	overflow: hidden;
-}
-
-#confirmDeleteEhdokasModal .btn {
-	width: 90px;
-}
-
-#vaalitModifyApplyForm .img-preview {
-	height: 100px;
-	width: 100px;
-	border-radius: 50%;
-	overflow: hidden;
 }
 
 /* TIEDOSTOT */
