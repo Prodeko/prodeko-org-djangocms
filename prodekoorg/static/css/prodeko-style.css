@@ -617,28 +617,4 @@ The navbar toggle appears at this breakpoint */
 
 .gallery-content-related #controls {
 	margin-top: 3em;
-<<<<<<< HEAD
 }
-
-/* TOIMARIT */
-
-div.toimari {
-    margin: 5px;
-    border: 1px solid #cccccc;
-    float: left;
-    width: 150px;
-}
-
-
-div.toimari img {
-    width: 100%;
-    height: auto;
-}
-
-div.toimariDescription {
-    padding: 7px;
-    text-align: center;
-}
-=======
-}
->>>>>>> 306126471f4cff45b891b58a12fc898b5c504325
