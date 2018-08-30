@@ -1,22 +1,44 @@
 <h2 class="py-3" id="header">{{ virat.0.name }}</h2>
 <div id="vaaliKysymysForm">
-  {% include "vaalit_question_form.html" %}
+  {% include "forms/vaalit_question_form.html" %}
 </div>
 <div id="vaaliApplyForm" style="{{style_vaaliApplyForm}}">
-  {% include "vaalit_apply_form.html" %}
+  {% include "forms/vaalit_apply_form.html" %}
 </div>
 <div id="vaaliContent" class="tab-content">
   {% for virka in virat %}
   <div id="_{{ forloop.counter }}" class="tab-pane fade{% if forloop.first %} active show{% endif %}" role="tabpanel">
+
+    {# EHDOKKAAT #}
     <h3>Ehdokkaat</h3>
     <div class="card-group">
     {% for ehdokas in virka.ehdokkaat.all %}
-      {% include "vaalit_ehdokas_card.html" %}
+      {% include "vaalit_ehdokas.html" %}
     {% empty %}
       <p>Ei hakijoita</p>
     {% endfor %}
     </div>
-    {% include "vaalit_question_list.html" %}
+
+    {# KYSYMYKSET #}
+    <div class="vaalitQuestions">
+      <h3 class="mt-4">Kysymykset</h3>
+      <div class="vaalitKysymysList list-group list-group-root">
+        {% for kysymys in virka.kysymykset.all %}
+          {% include "vaalit_question.html" %}
+
+          {# VASTAUKSET #}
+          <div class="list-group">
+            {% for vastaus in kysymys.vastaukset.all %}
+              {% include "vaalit_answer.html" %}
+            {% endfor %}
+          </div>
+
+        {% empty %}
+          <p>Ei kysymyksiä</p>
+        {% endfor %}
+      </div>
+    </div>
+
   </div>
   {% endfor %}
 </div>

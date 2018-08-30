@@ -1,0 +1,3 @@
+echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.filter(email='user1@prodeko.org').delete(); User.objects.create_superuser('user1@prodeko.org', 'user1')" | python manage.py shell
+echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.filter(email='user2@prodeko.org').delete(); User.objects.create_superuser('user2@prodeko.org', 'user1')" | python manage.py shell
+echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.filter(email='user3@prodeko.org').delete(); User.objects.create_superuser('user3@prodeko.org', 'user1')" | python manage.py shell

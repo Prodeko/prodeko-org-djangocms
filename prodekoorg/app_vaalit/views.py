@@ -58,7 +58,7 @@ class EhdokasUpdateView(UpdateView):
     model = Ehdokas
     form_class = EhdokasForm
     success_url = reverse_lazy('app_vaalit:vaalit')
-    template_name = 'vaalit_modify_application.html'
+    template_name = 'forms/vaalit_modify_application_form.html'
 
     def get_object(self, *args, **kwargs):
         """Allows updating the object only if request.user created the application."""
