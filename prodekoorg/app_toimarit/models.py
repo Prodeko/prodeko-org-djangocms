@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.html import *
+import os.path
 
 
 class Toimari(models.Model):
@@ -14,8 +15,8 @@ class Toimari(models.Model):
     def name(self):
         return '%s %s' % (self.etunimi, self.sukunimi)
 
-    def renderImage(self):
-        return format_html("<img src={} />", "https://www.prodeko.org/wp-content/uploads/2017/12/anonyyyymi-uniseksi-maskulinoitu-150x150.jpg")
+    def photoExists(self):
+        return os.path.isfile("prodekoorg/static/images/toimari_photos/" + self.etunimi + "_" + self.sukunimi + ".jpg")
 
     def __str__(self):
         return self.name + ", " + self.virka
@@ -45,4 +46,3 @@ class HallituksenJasen(models.Model):
 
     class Meta:
         verbose_name_plural = "hallituksen jäsenet"
-
