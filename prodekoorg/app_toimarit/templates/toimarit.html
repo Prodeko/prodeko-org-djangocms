@@ -20,9 +20,9 @@
 						{% if t.jaosto == j %}
 							<div class="toimari">
 								{% if t.photoExists %}
-									<img src="{{ baseUrl }}/images/toimari_photos/{{t.etunimi}}_{{t.sukunimi}}.jpg"></img>
+									<img src="{{ baseUrl }}/images/toimari_photos/{{t.etunimi}}_{{t.sukunimi}}.jpg" />
 								{% else %}
-									<img src="{% static "images/toimari_photos/anonyymi_uniseksi_maskulinoitu.jpg" %}">
+									<img src="{% static "images/toimari_photos/anonyymi_uniseksi_maskulinoitu.jpg" %}" />
 								{% endif %}
 								<div class="toimariDescription">
 									<strong>{{ t.name }}</strong><br />

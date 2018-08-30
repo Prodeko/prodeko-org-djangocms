@@ -23,9 +23,9 @@
 						<div class="col-md-12 col-lg-6">
 								<div class="boardMember">
 									{% if h.photoExists %}
-										<img src="{{ baseUrl }}/images/hallitus_photos/{{h.etunimi}}_{{h.sukunimi}}.jpg"></img>
+										<img src="{{ baseUrl }}/images/hallitus_photos/{{h.etunimi}}_{{h.sukunimi}}.jpg" />
 									{% else %}
-										<img src="{% static "images/hallitus_photos/placeholder.jpg" %}">
+										<img src="{% static "images/hallitus_photos/placeholder.jpg" %}" />
 									{% endif %}
 										<div class="boardMemberDescription">
 										<strong>{{ h.name }}</strong><br />
