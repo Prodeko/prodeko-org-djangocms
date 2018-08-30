@@ -1,7 +1,8 @@
 {% extends "contentpage/content-page.html" %}
-{% load cms_tags menu_tags %}
-
+{% load cms_tags menu_tags static %}
 {% block content %}
+{% static "" as baseUrl %}
+
 <div class="container page-container">
 	<div class="row">
 		<div class="col-md-9">
@@ -9,8 +10,6 @@
 
 		<!-- BEGIN LIST  -->
 		<!-- Toteutus vähän kankea, sillä nyt toimarit-lista käydään jokaista jaostoa kohti läpi uudestaan. Saa parantaa -->
-		{% load static %}
-		{% static "" as baseUrl %}
 
 		{% for j in jaostot %}
 			<div class="row">
@@ -23,7 +22,7 @@
 								{% if t.photoExists %}
 									<img src="{{ baseUrl }}/images/toimari_photos/{{t.etunimi}}_{{t.sukunimi}}.jpg"></img>
 								{% else %}
-									<img src="{% static "images/toimari_photos/anonyymi_uniseksi_maskulinoitu.jpg" %}" alt="My image">
+									<img src="{% static "images/toimari_photos/anonyymi_uniseksi_maskulinoitu.jpg" %}">
 								{% endif %}
 								<div class="toimariDescription">
 									<strong>{{ t.name }}</strong><br />
