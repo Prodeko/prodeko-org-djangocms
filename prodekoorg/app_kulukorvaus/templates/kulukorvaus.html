@@ -1,10 +1,11 @@
 {% extends "base.html" %}
 {% load cms_tags sekizai_tags %}
-{% block content %}
 
 {% block extra_head %}
 <script src="/static/js/kulukorvaus-custom.js"></script>
 {% endblock %}
+
+{% block content %}
 
 {% include "layout-components/jumbotron.html" %}
 
@@ -19,7 +20,9 @@
 
 		<div class="forms">
 			{% include "form_perustiedot.html" %}
-			{% include "form_kulukorvaus.html" with form=formset_kulu %}
+			{% for form1 in formset_kulu %}
+				{% include "form_kulukorvaus.html" with form=form1 %}
+			{% endfor %}
 		</div>
 
 		<div class="my-4">
