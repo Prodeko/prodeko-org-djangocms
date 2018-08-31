@@ -16,7 +16,7 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
   font-weight: bold;
   text-transform: uppercase;
-  font-size: 4rem;
+  font-size: 4em;
   margin: 0px;
   padding: 0px;
 }
@@ -26,15 +26,15 @@ h2 {
   font-weight: 800;
   letter-spacing: 4px;
   text-transform: uppercase;
-  font-size: 2.5rem;
+  font-size: 2.5em;
   margin: 0px;
-  padding: 20px 0px;
+  padding: 20px 0px 15px;
 }
 
 h3 {
   font-weight: 800;
   text-transform: uppercase;
-  font-size: 2rem;
+  font-size: 2em;
   margin: 0px;
   padding: 0px;
 }
@@ -43,13 +43,13 @@ h4 {
   font-weight: 600;
   margin: 10px;
   padding: 10px;
-  font-size: 1.5rem;
+  font-size: 1.5em;
 }
 
 h5 {
   margin: 0px;
   padding: 10px;
-  font-size: 1.2rem;
+  font-size: 1.2em;
   line-height: 25px;
 }
 
@@ -234,19 +234,48 @@ hr {
 .course {
   position: relative;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  border-radius: 10px;
   margin-bottom: 20px;
+}
+
+.coursepage-card {
+  display: block;
+  margin: -170px auto 100px;
+  max-width: 800px;
+  position: relative;
+  z-index: 10;
+  padding: 20px 20px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  background-color: white;
 }
 
 .course-banner {
   position: relative;
+  background-position: center center;
+  background-size: cover;
   background-color: blue;
   width: 100%;
   height: 150px;
 }
 
+.coursepage-banner {
+  position: relative;
+  background-position: center center;
+  background-size: cover;
+  background-color: blue;
+  width: 100%;
+  height: 300px;
+}
+
 .course-text {
   padding: 20px;
+}
+
+.course-specs {
+  padding: 5px 0px 15px;
+}
+
+.course-description {
+  padding: 15px 0px;
 }
 
 .registration {
@@ -256,7 +285,7 @@ hr {
 
 
 .principles {
-  font-size: 6rem;
+  font-size: 6em;
 }
 
 /* === FOOTER === */
@@ -266,6 +295,25 @@ footer {
   width: 100%;
   height: 200px;
   background-color: #002851;
+}
+
+.social {
+  padding-top: 40px;
+}
+
+.social > hr {
+  display: block;
+  max-width: 300px;
+  width: 80%;
+  margin: 20px auto;
+}
+
+.social > h3 {
+  color: white;
+}
+
+.social > p, .social > a {
+  font-size: 0.8em;
 }
 
 
@@ -287,7 +335,9 @@ footer {
 
 .btn {
   font-weight: 600;
-  font-size: 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1em;
   border-radius: 0;
 }
 
@@ -297,7 +347,7 @@ footer {
 @media only screen
 and (max-device-width : 768px) {
   html, body {
-    font-size: 0.95rem;
+    font-size: 0.95em;
   }
   #logo {
     float: left;

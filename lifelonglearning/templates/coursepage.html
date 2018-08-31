@@ -1,5 +1,33 @@
-{{ course.name }}
-{{ course.coaches }}
-{{ course.description }}
-{{ course.banner }}
-{{ course.registration }}
+{% extends "base-LLL.html" %}
+{% load staticfiles %}
+
+{% block body %}
+<nav id="navbar">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="{% url 'lifelonglearning:index' %}"><img id="logo" src="{% static 'img/headerlogo.png' %}" alt="Prodeko logo"></a>
+    </div>
+  </div>
+</nav>
+
+
+<div class="coursepage-banner" style="background-image: url('{{ course.banner }}')">
+  <div class="bottom-gradient"></div>
+</div>
+
+<div class="container">
+  <div class="coursepage-card">
+    <h2>{{ course.name }}</h2>
+    <div class="course-specs">
+      <p class="addition">Valmentajat: <span class="black">{{ course.coaches }}</span></p>
+      <p class="addition">Ajankohta: <span class="black">{{ course.timing }}</span></p>
+    </div>
+    <hr>
+    <div class="course-description">
+      <p>{{ course.description }}</p>
+    </div>
+    <a class="btn btn-success btn-block registration" href="{{ course.registration }}">Ilmoittaudu</a>
+  </div>
+</div>
+
+  {% endblock %}
