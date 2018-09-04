@@ -29,9 +29,13 @@ def exportcsv(modeladmin, request, queryset):
         writer.writerow([getattr(obj, field) for field in field_names])
     return response
 
+@admin.register(Jaosto)
+class JaostoAdmin(admin.ModelAdmin):
+    list_display = ('nimi', )
+
 @admin.register(Toimari)
 class ToimariAdmin(admin.ModelAdmin):
-    list_display = ('etunimi', 'sukunimi', 'virka')
+    list_display = ('etunimi', 'sukunimi', 'jaosto', 'virka')
     actions = [exportcsv]
     exportcsv.short_description="Export selected as CSV"
 

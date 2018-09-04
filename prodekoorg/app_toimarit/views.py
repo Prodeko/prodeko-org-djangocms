@@ -12,7 +12,7 @@ from prodekoorg.app_toimarit.models import *
 from django.http import JsonResponse
 from django.core import serializers
 
-from .models import Toimari, HallituksenJasen
+from .models import Toimari, HallituksenJasen, Jaosto
 
 
 @staff_member_required
@@ -26,11 +26,7 @@ def postcsv(request):
             nextRow.etunimi = line[0]
             nextRow.sukunimi = line[1]
             nextRow.virka = line[2]
-            nextRow.jaosto = line[3]
-            # Hallituskohtaiset
-            nextRow.virka_eng = line[4]
-            nextRow.puhelin = line[5]
-            nextRow.sahkoposti = line[6]
+            nextRow.jaosto = Jaosto.objects.get(nimi=line[3])   #HUOM! Kaikkien Jaostojen täytyy olla jo luotu ennen CSV-tietojen lataamista
             nextRow.save()
         messages.add_message(request, messages.SUCCESS, 'CSV-tiedosto ladattu onnistuneesti')
     except:
@@ -39,7 +35,7 @@ def postcsv(request):
 
 def list_toimarit(request):
     toimarit = Toimari.objects.all()
-    jaostot = Toimari.objects.order_by().values_list('jaosto', flat=True).distinct()
+    jaostot = Jaosto.objects.all()
     context = {'toimarit': toimarit, 'jaostot': jaostot}
     return render(request, 'toimarit.html', context)
 
