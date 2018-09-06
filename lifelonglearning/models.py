@@ -4,7 +4,6 @@ import os
 
 class Course(models.Model):
 
-    # Toimareille ja hallituslaisille
     name = models.CharField(max_length=255, default="", blank=False)
     coaches = models.CharField(max_length=255, default="", blank=False)
     description = models.TextField(blank=False)
