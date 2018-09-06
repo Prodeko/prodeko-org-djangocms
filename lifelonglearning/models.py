@@ -11,7 +11,8 @@ class Course(models.Model):
     registration = models.URLField(max_length=255)
     banner = models.ImageField(upload_to = "", null=True, blank=True)
     groupsize = models.IntegerField(blank=True)
-    date = models.CharField(max_length=255)
+    timing = models.CharField(max_length=255)
+    open = models.BooleanField()
 
     def __str__(self):
         return self.name
@@ -20,7 +21,7 @@ class Course(models.Model):
         if self.banner:
             return '{}'.format(self.banner.url)
         else:
-            return "{}{}".format(settings.STATIC_ROOT, "default_thumbnail.jpg")
+            return "{}{}".format(settings.STATIC_URL, "img/default_thumbnail.jpg")
 
     class Meta:
         verbose_name_plural = "Courses"

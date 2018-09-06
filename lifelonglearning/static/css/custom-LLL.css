@@ -67,7 +67,7 @@ i {
 }
 
 i:hover {
-  color: lightgrey;
+  color: black;
 }
 
 
@@ -106,13 +106,19 @@ i:hover {
 }
 
 .addition {
-  display: inline-block;
+  float: left;
+  /*display: inline-block;*/
   margin: 5px 0px;
   margin-right: 50px;
   padding: 0px 0px;
 }
 
+.clear {
+  clear: both;
+}
+
 hr {
+  clear: both;
   margin: 10px;
 }
 
@@ -229,6 +235,8 @@ hr {
 }
 
 
+
+
 /* === COURSE FEED === */
 
 .course {
@@ -239,7 +247,7 @@ hr {
 
 .coursepage-card {
   display: block;
-  margin: -170px auto 100px;
+  margin: -170px auto 50px;
   max-width: 800px;
   position: relative;
   z-index: 10;
@@ -275,7 +283,32 @@ hr {
 }
 
 .course-description {
-  padding: 15px 0px;
+  position: relative;
+  min-height: 160px;
+}
+
+.read-more {
+  position: absolute;
+  width: 100%;
+  height: 200px;
+  max-height: 70%;
+  bottom: 0;
+  z-index: 5;
+  background-image: linear-gradient(to top, rgba(255,255,255,1), rgba(255,255,255,0));
+  text-align: center;
+  color: grey;
+}
+
+.read-more-text {
+  position: absolute;
+  bottom: -10px;
+  width: 100%;
+  text-align: center;
+  transition: all 0.3s;
+}
+
+.course:hover .read-more-text {
+  color: black;
 }
 
 .registration {
@@ -284,6 +317,8 @@ hr {
 
 
 
+/* === OTHER PAGE CONTENT === */
+
 .principles {
   font-size: 6em;
 }
@@ -291,9 +326,12 @@ hr {
 /* === FOOTER === */
 
 footer {
+  clear: both;
+  position: relative;
+  bottom: 0;
   margin-top: 100px;
   width: 100%;
-  height: 200px;
+  height: 230px;
   background-color: #002851;
 }
 

@@ -11,7 +11,7 @@
 </nav>
 
 
-<div class="coursepage-banner" style="background-image: url('{{ course.banner }}')">
+<div class="coursepage-banner" style="background-image: url('{{ course.get_banner_image }}')">
   <div class="bottom-gradient"></div>
 </div>
 
@@ -19,8 +19,9 @@
   <div class="coursepage-card">
     <h2>{{ course.name }}</h2>
     <div class="course-specs">
-      <p class="addition">Valmentajat: <span class="black">{{ course.coaches }}</span></p>
-      <p class="addition">Ajankohta: <span class="black">{{ course.timing }}</span></p>
+      <p class="addition clear">Valmentajat: <span class="black">{{ course.coaches }}</span></p>
+      <p class="addition">Kurssikoko: <span class="black">{{ course.groupsize }}</span></p>
+      <p class="addition">Kurssi alkaa: <span class="black">{{ course.timing }}</span></p>
     </div>
     <hr>
     <div class="course-description">
@@ -29,5 +30,19 @@
     <a class="btn btn-success btn-block registration" href="{{ course.registration }}">Ilmoittaudu</a>
   </div>
 </div>
+
+<footer>
+  <div class="social center white">
+    <h3 class="center ok-spacing">
+      <a href="https://www.facebook.com/prodeko/"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.instagram.com/prodeko/"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.linkedin.com/company/prodeko-guild-of-industrial-engineering-and-management/"><i class="fab fa-linkedin"></i></a>
+    </h3>
+    <hr>
+    <a href="www.prodeko.org"><p>Tuotantotalouden Kilta Prodeko</p></a>
+    <a href="alumni.prodeko.org"><p>Prodekon Alumni</p></a>
+    <p>Aalto-yliopiston tuotantotalouden laitos</p>
+  </div>
+</footer>
 
   {% endblock %}

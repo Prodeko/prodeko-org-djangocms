@@ -3,7 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from .models import Course
 
 def index(request):
-    courses = Course.objects.all()
+    courses = Course.objects.filter(open=True)
     return render(request, 'lifelonglearning.html', {
         'courses': courses,
     })

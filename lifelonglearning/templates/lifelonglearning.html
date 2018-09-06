@@ -58,15 +58,21 @@
       <a href="{% url 'lifelonglearning:coursepage' course.id %}">
         <div class="col-md-6">
           <div class="course">
-            <div class="course-banner" style="background-image: url('{{ course.banner }}')">
+            <div class="course-banner" style="background-image: url('{{ course.get_banner_image }}')">
               <div class="bottom-gradient"></div>
             </div>
             <div class="course-text">
               <h3>{{ course.name }}</h3>
-              <p class="addition">Valmentajat: <span class="black">{{ course.coaches }}</span></p>
+              <p class="addition clear">Valmentajat: <span class="black">{{ course.coaches }}</span></p>
+              <p class="addition">Kurssikoko: <span class="black">{{ course.groupsize }}</span></p>
               <p class="addition">Ajankohta: <span class="black">{{ course.timing }}</span></p>
               <hr>
-              <p>{{ course.description | truncatechars:400 }}</p>
+              <div class="course-description">
+                <p>{{ course.description | truncatechars:400 }}</p>
+                <div class="read-more">
+                  <p class="read-more-text">Lue lisää...</p>
+                </div>
+              </div>
               <a class="btn btn-success btn-block registration" href="{{ course.registration }}">Ilmoittaudu</a>
             </div>
           </div>
