@@ -67,7 +67,7 @@ i {
 }
 
 i:hover {
-  color: black;
+  color: lightgrey;
 }
 
 
@@ -214,14 +214,16 @@ hr {
 #banner-video {
   position: absolute;
   left: 0;
-  bottom: -50%;
+  bottom: auto;
   z-index: -100;
   min-height: 100%;
   min-width: 100%;
   width: auto;
   height: auto;
-  background-size: cover;
-  overflow: hidden;
+  object-position: center bottom !important;
+  top: 50%;
+  transform: translateY(-50%);
+  object-fit: cover;
 }
 
 .banner-text {
@@ -234,7 +236,7 @@ hr {
   height: auto;
   z-index: 10;
   color: white;
-  text-shadow: 0px 2px 10px #000;
+  text-shadow: 0px 3px 5px black;
   text-align: center;
 }
 
@@ -304,6 +306,7 @@ hr {
 .course-description {
   position: relative;
   min-height: 160px;
+  margin-bottom: 20px;
 }
 
 .read-more {
@@ -320,7 +323,7 @@ hr {
 
 .read-more-text {
   position: absolute;
-  bottom: -10px;
+  bottom: -30px;
   width: 100%;
   text-align: center;
   transition: all 0.3s;
@@ -393,7 +396,7 @@ footer {
 .btn {
   font-weight: 600;
   max-width: 800px;
-  margin: 0 auto;
+  margin: 50px auto 0;
   font-size: 1em;
   border-radius: 0;
 }
