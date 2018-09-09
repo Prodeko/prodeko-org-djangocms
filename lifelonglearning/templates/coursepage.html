@@ -19,9 +19,9 @@
   <div class="coursepage-card">
     <h2>{{ course.name }}</h2>
     <div class="course-specs">
-      <p class="addition clear">Valmentajat: <span class="black">{{ course.coaches }}</span></p>
-      <p class="addition">Kurssikoko: <span class="black">{{ course.groupsize }}</span></p>
-      <p class="addition">Kurssi alkaa: <span class="black">{{ course.timing }}</span></p>
+      {% if course.coaches %}<p class="addition clear">Valmentajat: <span class="black">{{ course.coaches }}</span></p>{% endif %}
+      {% if course.groupsize %}<p class="addition">Kurssikoko: <span class="black">{{ course.groupsize }}</span></p>{% endif %}
+      {% if course.timing %}<p class="addition">Kurssi alkaa: <span class="black">{{ course.timing }}</span></p>{% endif %}
     </div>
     <hr>
     <div class="course-description">

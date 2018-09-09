@@ -5,12 +5,12 @@ import os
 class Course(models.Model):
 
     name = models.CharField(max_length=255, default="", blank=False)
-    coaches = models.CharField(max_length=255, default="", blank=False)
+    coaches = models.CharField(max_length=255, default="", blank=True)
     description = models.TextField(blank=False)
     registration = models.URLField(max_length=255)
     banner = models.ImageField(upload_to = "", null=True, blank=True)
-    groupsize = models.IntegerField(blank=True)
-    timing = models.CharField(max_length=255)
+    groupsize = models.IntegerField(blank=True, null=True)
+    timing = models.CharField(max_length=255, blank=True, null=True)
     open = models.BooleanField()
 
     def __str__(self):

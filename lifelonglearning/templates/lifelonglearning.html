@@ -21,23 +21,26 @@
 </nav>
 
 <div id="content">
-  <div class="banner" style="background-image: url('{% static 'img/default_thumbnail.jpg' %}'); background-size: cover; background-position: center center;">
-    <video autoplay muted loop id="banner-video">
-      <source src="{% static 'video_banner_720p.mp4' %}" type="video/mp4">
-    </video>
-    <div class="bottom-gradient"></div>
-    <div class="banner-text">
-      <h1 class="white ok-spacing">Lifelong Learning</h1>
-      <h4 class="lightgrey no-top">by Prodeko</h4>
-      <h5 class="white">
-        Maailma muuttuu koko ajan kiihtyvällä tahdilla. Vaikka tällä hetkellä muutos tuntuu äärimmäisen nopealta, todellisuudessa
-        <b>se ei ikinä enää tule olemaan niin hidasta, kuin se on nyt</b>. Tehostamalla omaa oppimistamme mahdollistamme sen, että voimme
-        tulevaisuudessakin olla viemässä Suomea ja suomalaisia yrityksiä eteenpäin kehityksen kärjessä.
-      </h5>
-      <br>
-      <a class="btn btn-success registration center" href="#courses">Ilmoittaudu sessioihin</a>
+  <div class="banner">
+    <div class="banner-background" style="background-image: url('{% static 'img/default_thumbnail.jpg' %}'); background-size: cover; background-position: center center;">
+      <video autoplay muted loop id="banner-video">
+        <source src="{% static 'video_banner_720p.webm' %}" type="video/webm">
+      </video>
+      <div class="bottom-gradient"></div>
     </div>
-
+    <div class="banner-content">
+      <div class="banner-text">
+        <h1 class="white ok-spacing">Lifelong Learning</h1>
+        <h4 class="lightgrey no-top">by Prodeko</h4>
+        <h5 class="white">
+          Maailma muuttuu koko ajan kiihtyvällä tahdilla. Vaikka tällä hetkellä muutos tuntuu äärimmäisen nopealta, todellisuudessa
+          <b>se ei ikinä enää tule olemaan niin hidasta, kuin se on nyt</b>. Tehostamalla omaa oppimistamme mahdollistamme sen, että voimme
+          tulevaisuudessakin olla viemässä Suomea ja suomalaisia yrityksiä eteenpäin kehityksen kärjessä.
+        </h5>
+        <br>
+        <a class="btn btn-success registration center" href="#courses">Ilmoittaudu sessioihin</a>
+      </div>
+    </div>
   </div>
 
 
@@ -55,7 +58,7 @@
         </p>
         <br>
         <hr>
-        <h2 id="courses" class="center">Avoimet kurssit</h2>
+        {% if courses %}<h2 id="courses" class="center">Avoimet kurssit</h2>{% endif %}
         {% for course in courses %}
         <a href="{% url 'lifelonglearning:coursepage' course.id %}">
           <div class="col-md-6">
@@ -65,9 +68,9 @@
               </div>
               <div class="course-text">
                 <h3>{{ course.name }}</h3>
-                <p class="addition clear">Valmentajat: <span class="black">{{ course.coaches }}</span></p>
-                <p class="addition">Kurssikoko: <span class="black">{{ course.groupsize }}</span></p>
-                <p class="addition">Ajankohta: <span class="black">{{ course.timing }}</span></p>
+                {% if course.coaches %}<p class="addition clear">Valmentajat: <span class="black">{{ course.coaches }}</span></p>{% endif %}
+                {% if course.groupsize %}<p class="addition">Kurssikoko: <span class="black">{{ course.groupsize }}</span></p>{% endif %}
+                {% if course.timing %}<p class="addition">Ajankohta: <span class="black">{{ course.timing }}</span></p>{% endif %}
                 <hr>
                 <div class="course-description">
                   <p>{{ course.description | truncatechars:400 }}</p>
@@ -165,9 +168,9 @@
         <a href="https://www.linkedin.com/company/prodeko-guild-of-industrial-engineering-and-management/"><i class="fab fa-linkedin"></i></a>
       </h3>
       <hr>
-      <a href="www.prodeko.org"><p>Tuotantotalouden Kilta Prodeko</p></a>
-      <a href="alumni.prodeko.org"><p>Prodekon Alumni</p></a>
-      <p>Aalto-yliopiston tuotantotalouden laitos</p>
+      <a href="https://www.prodeko.org"><p>Tuotantotalouden Kilta Prodeko</p></a>
+      <a href="https://alumni.prodeko.org"><p>Prodekon Alumni</p></a>
+      <a href="http://tuta.aalto.fi"><p>Aalto-yliopiston tuotantotalouden laitos</p></a>
     </div>
   </footer>
 
