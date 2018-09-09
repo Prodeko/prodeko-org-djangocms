@@ -1,6 +1,8 @@
-from django.db import models
-from django.conf import settings
 import os
+
+from django.conf import settings
+from django.db import models
+
 
 class Course(models.Model):
 
@@ -8,7 +10,7 @@ class Course(models.Model):
     coaches = models.CharField(max_length=255, default="", blank=True)
     description = models.TextField(blank=False)
     registration = models.URLField(max_length=255)
-    banner = models.ImageField(upload_to = "", null=True, blank=True)
+    banner = models.ImageField(upload_to="", null=True, blank=True)
     groupsize = models.IntegerField(blank=True, null=True)
     timing = models.CharField(max_length=255, blank=True, null=True)
     open = models.BooleanField()

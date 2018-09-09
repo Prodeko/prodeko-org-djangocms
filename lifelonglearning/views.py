@@ -1,6 +1,8 @@
-from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render
+
 from .models import Course
+
 
 def index(request):
     courses = Course.objects.filter(open=True)
@@ -8,8 +10,9 @@ def index(request):
         'courses': courses,
     })
 
+
 def coursepage(request, pk):
-    course = Course.objects.get(pk = pk)
+    course = Course.objects.get(pk=pk)
     return render(request, 'coursepage.html', {
         'course': course,
     })
