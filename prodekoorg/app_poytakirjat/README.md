@@ -38,6 +38,15 @@ Pöytäkirjojen lataaminen tapahtuu admin-consolesta osoitteesta /fi/admin/app_p
 
 ![Käyttöesimerkki](docs/how-to-use.png)
 
+## Bugit
+
+- Drive muistaa poistetut tiedostot 30 päivän ajan ja vaikka ne eivät olisi kansiossa näkyvissä, niin ne ovat API:n kautta ladattavissa. Näin ollen, mikäli poistat ja lataat liitteitä useita kertoja, saattaa tiedoston lataus adminin kautta epäonnistua tai liite tulla useita kertoja lopulliseen pdf-tiedostoon. Ongelma on mahdollista korjata poistamalla tiedostot Driven roskakorista pysyvästi.
+- Google Slideilla luodut PDF:ät eivät jostain syystä ole PyPDF2 kirjaston kanssa yhteensopivia. Ongelma korjaantuu seuraavasti:
+    1. Lataa pöytäkirjan .pptx muodossa Google Slidesista
+    2. Exporttaa .pptx .pdf:ksi PowerPointilla
+    3. Lataa uusi PowerPointilla muodostettu pdf driveen
+    4. Kokeile latausta uudelleen django-administa
+
 ## Rakennuspalikat
 
 * [Google Drive API v3](https://developers.google.com/drive/api/v3/reference/) - Yhdistäminen G Suiten Driveen pöytäkirjojen lataamiseksi.

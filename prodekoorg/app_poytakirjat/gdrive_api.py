@@ -48,8 +48,9 @@ def merge_liitteet_to_doc(pdfs):
     """
     merger = PdfFileMerger()
     for pdf in pdfs:
-        merger.append(PdfFileReader(pdf))
-        pdf.close()
+        if(pdf):
+            merger.append(PdfFileReader(pdf))
+            pdf.close()
 
     fh = BytesIO()
     merger.write(fh)
