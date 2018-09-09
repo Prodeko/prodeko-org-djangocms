@@ -33,12 +33,6 @@ $(document).ready(function() {
       newForm.querySelector('[data-formset-remove-form]').addEventListener('click', removeForm);
       // Append the new form to the formsList.
       formsList.insertAdjacentElement('beforeend', newForm);
-      element.dispatchEvent(new CustomEvent('add-form.formset', {
-        detail: {
-          form: newForm,
-          formset: formset
-        }
-      }));
       // Update the totalForms.value
       totalForms.value = Number(totalForms.value) + 1;
     }
@@ -64,15 +58,6 @@ $(document).ready(function() {
           el.setAttribute(attr, el.getAttribute(attr).replace(match, replace));
         });
       });
-
-      element.dispatchEvent(new CustomEvent('renumber-form.formset', {
-        detail: {
-          form: form,
-          oldValue: oldValue,
-          newValue: newValue,
-          formset: formset
-        }
-      }));
     }
 
     function removeForm(event) {
@@ -89,24 +74,12 @@ $(document).ready(function() {
       }
       // Remove this row.
       formToRemove.remove();
-      element.dispatchEvent(new CustomEvent('remove-form.formset', {
-        detail: {
-          form: formToRemove,
-          formset: formset
-        }
-      }));
       // Decrement the management form's count.
       totalForms.value = Number(totalForms.value) - 1;
     }
 
     element.querySelector('[data-formset-add-form]').addEventListener('click', addForm);
     element.formset = this;
-
-    element.dispatchEvent(new CustomEvent('init.formset', {
-      detail: {
-        formset: this
-      }
-    }));
 
     this.addForm = addForm;
   }

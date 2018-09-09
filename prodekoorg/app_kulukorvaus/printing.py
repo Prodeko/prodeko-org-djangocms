@@ -81,7 +81,7 @@ class KulukorvausPDF:
         for model in self.models_kulukorvaukset:
             fields = model._meta.get_fields()
             for field in fields:
-                if field.name != "id" and field.name != "created_at":
+                if field.name != "id" and field.name != "created_at" and field.name != "info":
                     verbose_name = field.verbose_name
                     value = getattr(model, field.name)
                     if field.name == "receipt":

@@ -21,7 +21,7 @@
 		<div class="forms">
 			{% include "form_perustiedot.html" %}
 			{% for form1 in formset_kulu %}
-				{% include "form_kulukorvaus.html" with form=form1 %}
+				{% include "form_kulukorvaus_kulu.html" with form=form1 %}
 			{% endfor %}
 		</div>
 
