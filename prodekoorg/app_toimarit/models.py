@@ -1,6 +1,8 @@
+import os.path
+
 from django.db import models
 from django.utils.html import *
-import os.path
+
 
 class Jaosto(models.Model):
     nimi = models.CharField(max_length=50)
@@ -10,6 +12,7 @@ class Jaosto(models.Model):
 
     class Meta:
         verbose_name_plural = "jaostot"
+
 
 class Toimari(models.Model):
 
@@ -31,6 +34,7 @@ class Toimari(models.Model):
 
     class Meta:
         verbose_name_plural = "toimarit"
+
 
 class HallituksenJasen(models.Model):
 

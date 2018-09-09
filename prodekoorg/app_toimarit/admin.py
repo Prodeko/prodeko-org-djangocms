@@ -1,3 +1,4 @@
+import csv
 from functools import update_wrapper
 
 from django import forms
@@ -9,13 +10,12 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from prodekoorg.app_toimarit import views
 from prodekoorg.app_toimarit.models import *
-import csv
 
-from .models import Toimari, HallituksenJasen
+from .models import HallituksenJasen, Toimari
 
 
 def exportcsv(modeladmin, request, queryset):
-    if not request.user.is_staff:	
+    if not request.user.is_staff:
         raise PermissionDenied
     opts = queryset.model._meta
     model = queryset.model
@@ -29,18 +29,21 @@ def exportcsv(modeladmin, request, queryset):
         writer.writerow([getattr(obj, field) for field in field_names])
     return response
 
+
 @admin.register(Jaosto)
 class JaostoAdmin(admin.ModelAdmin):
     list_display = ('nimi', )
+
 
 @admin.register(Toimari)
 class ToimariAdmin(admin.ModelAdmin):
     list_display = ('etunimi', 'sukunimi', 'jaosto', 'virka')
     actions = [exportcsv]
-    exportcsv.short_description="Export selected as CSV"
+    exportcsv.short_description = "Export selected as CSV"
+
 
 @admin.register(HallituksenJasen)
 class HallituksenJasenAdmin(admin.ModelAdmin):
     list_display = ('etunimi', 'sukunimi', 'virka', 'virka_eng', 'jaosto', 'puhelin', 'sahkoposti')
     actions = [exportcsv]
-    exportcsv.short_description="Export selected as CSV"
+    exportcsv.short_description = "Export selected as CSV"
