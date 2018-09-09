@@ -2,13 +2,14 @@ import os
 
 from django.conf import settings
 from django.db import models
+from ckeditor.fields import RichTextField
 
 
 class Course(models.Model):
 
     name = models.CharField(max_length=255, default="", blank=False)
     coaches = models.CharField(max_length=255, default="", blank=True)
-    description = models.TextField(blank=False)
+    description = RichTextField(config_name='vaalit_ckeditor', blank=True)
     registration = models.URLField(max_length=255)
     banner = models.ImageField(upload_to="", null=True, blank=True)
     groupsize = models.IntegerField(blank=True, null=True)
