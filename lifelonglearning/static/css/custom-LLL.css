@@ -354,6 +354,7 @@ hr {
 .read-more-text {
   position: absolute;
   bottom: -30px;
+  left: 0;
   width: 100%;
   text-align: center;
   transition: all 0.3s;
