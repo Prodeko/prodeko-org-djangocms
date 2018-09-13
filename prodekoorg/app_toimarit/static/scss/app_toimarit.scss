@@ -12,6 +12,12 @@
     .description {
         padding: 7px;
         text-align: center;
+        font-size: 0.85rem;
+    }
+
+    strong {
+        color: #002851;
+        font-size: 1rem;
     }
 }
 
@@ -23,5 +29,11 @@
 
     .description {
         margin: 10px;
+        font-size: 0.9rem;
+    }
+
+    strong {
+        color: #002851;
+        font-size: 1.1rem;
     }
 }
