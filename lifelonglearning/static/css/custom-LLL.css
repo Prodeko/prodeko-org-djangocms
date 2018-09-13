@@ -57,6 +57,15 @@ p {
 
 }
 
+#first, #third {
+  margin: auto auto;
+  max-width: 800px;
+}
+
+#first {
+  margin-top: 30px;
+}
+
 a, a:hover {
   text-decoration: none;
   color: inherit;
@@ -119,7 +128,7 @@ i:hover {
 
 hr {
   clear: both;
-  margin: 10px;
+  margin: 30px 0;
 }
 
 
@@ -179,17 +188,16 @@ hr {
   position: fixed;
   z-index: 999;
   bottom: 20px;
-  right: 20px;
+  right: 30px;
   opacity: 0;
   transition: all 0.5s ease;
 
-  border-radius: 200px;
-  padding: 10px 23px;
   color: lightgrey;
-  background-color: white;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  font-size: 2em;
+  text-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  font-size: 3em;
 }
+
+
 
 
 .container, .white-block {
@@ -210,6 +218,11 @@ hr {
 }
 
 .banner-background {
+  width: 100%;
+  height: 100%;
+  background-image: url('../img/default_thumbnail.jpg');
+  background-position: center center;
+  background-size: cover;
   z-index: -100;
 }
 
@@ -226,6 +239,9 @@ hr {
   top: 50%;
   transform: translateY(-50%);
   object-fit: cover;
+  background-image: url('../img/default_thumbnail.jpg');
+  background-position: center center;
+  background-size: cover;
 }
 
 .banner-text {
@@ -244,7 +260,7 @@ hr {
 }
 
 .section {
-  margin: 50px 0;
+  margin: 10px 0;
   height: auto !important;
 }
 
@@ -307,10 +323,20 @@ hr {
 }
 
 .course-description {
+  margin: 50px 0 20px;
+}
+
+.course-description a {
+  color: #33ccff;
+}
+
+.course-ingress {
   position: relative;
   min-height: 160px;
   margin-bottom: 20px;
 }
+
+
 
 .read-more {
   position: absolute;
@@ -318,6 +344,7 @@ hr {
   height: 200px;
   max-height: 70%;
   bottom: 0;
+  left: 0;
   z-index: 5;
   background-image: linear-gradient(to top, rgba(255,255,255,1), rgba(255,255,255,0));
   text-align: center;
@@ -327,6 +354,7 @@ hr {
 .read-more-text {
   position: absolute;
   bottom: -30px;
+  left: 0;
   width: 100%;
   text-align: center;
   transition: all 0.3s;
