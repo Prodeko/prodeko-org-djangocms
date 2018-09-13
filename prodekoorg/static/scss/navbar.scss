@@ -1,0 +1,82 @@
+.prodeko-navbar {
+    text-transform: uppercase;
+    padding-left: 0;
+
+    #collapsibleNavbar {
+        .lang {
+            text-decoration: underline;
+        }
+
+        /* Keep 'FI/EN' in the same row */
+        .nav-lang {
+            white-space: nowrap;
+        }
+
+        form {
+            width: 100%;
+        }
+    }
+
+    .forgot-password {
+        font-size: 0.7em;
+    }
+
+    .login-dropdown {
+        background-color: #002851;
+        min-width: 30rem
+    }
+    
+    li.active-menu-item a {
+        font-weight: bold;
+    }
+
+    /* Start animated underlines
+
+    Credits: http://tobiasahlin.com/blog/css-trick-animating-link-underlines/
+    */
+    a.nav-top {
+        position: relative;
+	    text-decoration: none;
+    }
+
+    .prodeko-navbar #collapsibleNavbar a.nav-top {
+        position: relative;
+        text-decoration: none;
+    }
+    
+    a.nav-top:not(.no-animation):before {
+        content: "";
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      bottom: 0;
+      left: 0;
+      background-color: #002851;
+      visibility: hidden;
+      -webkit-transform: scaleX(0);
+      transform: scaleX(0);
+      -webkit-transition: all 0.3s ease-in-out 0s;
+      transition: all 0.3s ease-in-out 0s;
+    }
+    
+    a.nav-top:not(.no-animation):hover:before {
+        visibility: visible;
+      -webkit-transform: scaleX(1);
+      transform: scaleX(1);
+    }
+    /* End animated underlines*/
+}
+
+#prodeko-logo {
+	background-image: url('/static/images/logos/prodeko-logo-darkblue.png');
+	background-size: contain;
+	background-repeat: no-repeat;
+	height: 100px;
+	width: 300px;
+	margin-left: 0 !important;
+    padding-left: 0;
+
+    @include tablet {
+        background-image: url('/static/images/logos/prodeko-logo-text-blue.png');
+    }
+}
