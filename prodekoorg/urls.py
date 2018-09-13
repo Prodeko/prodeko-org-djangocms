@@ -12,7 +12,7 @@ from django.views.generic.base import RedirectView, TemplateView
 from django.views.static import serve
 from prodekoorg import views
 from prodekoorg.app_poytakirjat.gdrive_api import run_app_poytakirjat
-from prodekoorg.app_toimarit.views import *
+from prodekoorg.app_toimarit.views import postcsv
 
 admin.autodiscover()
 
@@ -23,7 +23,7 @@ urlpatterns = [
     #url(r'^$', RedirectView.as_view(url='fi/main', permanent=False), name='index')
 ]
 
-# ==== app_toimarit ==== #
+# ==== app_toimarit & app_poytakirjat ==== #
 urlpatterns += [
     # Must be before admin urls
     url(r'^admin/toimarit/csvupload$', TemplateView.as_view(template_name='admin/uploadcsv.html'), name='uploadcsv'),

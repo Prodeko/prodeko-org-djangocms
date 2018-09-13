@@ -12,9 +12,6 @@ Prodekon keskisininen: #002e7d
 Prodekon tummansininen: #002851
 */
 
-@import 'app_vaalit.css';
-@import 'app_poytakirjat.css';
-@import 'app_toimarit.css';
 @import 'bs_overrides.css';
 @import 'messages_animation.css';
 
@@ -441,21 +438,6 @@ anchors are inline so you need ot make them block to go full width
 	padding: 1em;
 }
 
-/* KULUKORVAUS */
-.kulukorvaus-container .fa-plus {
-    color: green;
-}
-
-.kulukorvaus-container .fa-minus {
-    color: red;
-}
-
-
-/* TIEDOSTOT */
-
-.card-title {
-	margin-bottom: 0px;
-}
 
 /* MEDIA QUERIES */
 @media (max-width: 543px) {
@@ -531,91 +513,4 @@ The navbar toggle appears at this breakpoint */
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
 
-}
-
-/* KULUKORVAUS */
-.kulukorvaus-container .fa-plus {
-    color: green;
-}
-
-.kulukorvaus-container .fa-minus {
-    color: red;
-}
-
-/* TIEDOSTOT */
-
-.card-title {
-	margin-bottom: 0px;
-}
-
-.tiedostot-list {
-	padding-left: 0
-	px;
-	font-size: 0.8rem;
-}
-
-/* GALLERY */
-
-.gallery-page-jumbotron {
-	background-image: url('/static/images/content-page-bg-blue.jpg');
-	background-size: cover;
-	background-repeat: no-repeat;
-	margin-bottom: 0;
-}
-
-.gallery-page-jumbotron h1 {
-	color: white;
-}
-
-.gallery-container {
-	padding: 1em 1em 2.5em 1em;
-}
-
-.gallery-container h1 {
-	font-size: xx-large;
-}
-
-.gallery-container h2 {
-	font-size: x-large;
-}
-
-.gallery-container h3 {
-	font-size: large;
-}
-
-.gallery-content {
-	text-align: center;
-}
-
-.gallery-content #image-thumbnails {
-	margin-top: 1.8em;
-}
-
-.gallery-content > h1, .gallery-content > h2 {
-	display: none;
-}
-
-.gallery-content #image-view {
-	margin-right: 0;
-	margin-bottom: 2em;
-}
-
-.gallery-content #image-view .preview {
-	max-height: 40vh;
-}
-
-.gallery-content .upload-image {
-	margin-top: 2em;
-}
-
-.gallery-content-related .tagging, .gallery-content-related #tag-cloud {
-	display: none;
-}
-
-.gallery-content-related .user-info {
-	display: none;
-}
-
-.gallery-content-related #controls {
-	margin-top: 3em;
 }

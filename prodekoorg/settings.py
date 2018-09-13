@@ -24,7 +24,7 @@ config.read(os.path.join(BASE_DIR, 'prodekoorg/variables.txt'))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config['DJANGO']['SECRET']
 DEBUG = config['DEBUG']['MODE']
-ALLOWED_HOSTS = ['djangocms.prodeko.org', 'prodeko.org', '.prodeko.org', 'localhost']
+ALLOWED_HOSTS = ['new.prodeko.org', 'prodeko.org', '.prodeko.org', 'localhost']
 DB_NAME = config['DB']['NAME']
 DB_USER = config['DB']['USER']
 DB_PSWD = config['DB']['PASSWORD']
@@ -70,12 +70,26 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'prodekoorg', 'collected-static')
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'prodekoorg', 'static'),
+    os.path.join(BASE_DIR, 'prodekoorg/app_kulukorvaus', 'static'),
+    os.path.join(BASE_DIR, 'prodekoorg/app_poytakirjat', 'static'),
+    os.path.join(BASE_DIR, 'prodekoorg/app_tiedostot', 'static'),
+    os.path.join(BASE_DIR, 'prodekoorg/app_toimarit', 'static'),
+    os.path.join(BASE_DIR, 'prodekoorg/app_vaalit', 'static'),
     # tiedotteet.prodeko.org
     os.path.join(BASE_DIR, 'tiedotteet/info', 'static'),
     os.path.join(BASE_DIR, 'tiedotteet', 'public'),
     # tiedotteet.prodeko.org
     os.path.join(BASE_DIR, 'lifelonglearning', 'static'),
 ]
+
+# SASS config
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'sass_processor.finders.CssFinder',
+]
+
+SASS_PRECISION = 8
 
 TEMPLATES = [
     {
@@ -86,7 +100,7 @@ TEMPLATES = [
                  os.path.join(BASE_DIR, 'lifelonglearning', 'templates'),
                  os.path.join(BASE_DIR, 'prodekoorg/app_kulukorvaus', 'templates'),
                  os.path.join(BASE_DIR, 'prodekoorg/app_poytakirjat', 'templates'),
-                 os.path.join(BASE_DIR, 'prodekoorg/app_toimarit', 'templates'), ],
+                 os.path.join(BASE_DIR, 'prodekoorg/app_toimarit', 'templates')],
         'OPTIONS': {
             'context_processors': [
                 'django.contrib.auth.context_processors.auth',
@@ -158,6 +172,10 @@ INSTALLED_APPS = (
     'djangocms_style',
     'djangocms_snippet',
     'djangocms_video',
+    # SASS
+    'sass_processor',
+    # ------------------------
+    # prodeko.org
     'prodekoorg',
     # ------------------------
     # Django CMS bootstrap4
@@ -185,6 +203,7 @@ INSTALLED_APPS = (
     'rest_framework',
     'corsheaders',
     # ------------------------
+    # lifelonglearning.prodeko.org
     'lifelonglearning',
     # ------------------------
     'prodekoorg.app_poytakirjat',

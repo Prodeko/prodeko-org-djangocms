@@ -1,21 +1,24 @@
 /* VAALIT */
 
-#vaaliContainer .btn {
-	font-weight: 200;
-	width: 140px;
+#vaaliContainer {
+    .btn {
+        font-weight: 200;
+	    width: 140px;
+    }
+
+    .btn-xs {
+        width: 90px;
+	    font-size: 0.7em;
+    }
+
+    .modal-lg {
+        max-width: 70%;
+    }
 }
+
 
 #vaaliContainer #confirmDeleteEhdokasModal .btn, #vaaliContainer .vaalitQuestions .btn {
 	width: 85px;
-}
-
-#vaaliContainer .btn-xs {
-	width: 90px;
-	font-size: 0.7em;
-}
-
-#vaaliContainer .modal-lg {
-  max-width: 70%;
 }
 
 #vaaliContainer .card .img-container, #vaalitModifyApplyForm .img-preview  {

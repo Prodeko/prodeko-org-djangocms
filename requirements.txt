@@ -3,8 +3,6 @@ django-cms>=3.5.2,<3.6
 djangocms-admin-style>=1.2,<1.3
 django-treebeard>=4.0,<5.0
 
-#djangocms-text-ckeditor>=3.6.0
-#https://github.com/divio/djangocms-text-ckeditor/archive/master.zip
 https://github.com/divio/djangocms-text-ckeditor/archive/master.zip?1518805203.42
 https://github.com/divio/djangocms-file/archive/master.zip?1518805203.42
 https://github.com/divio/djangocms-link/archive/master.zip?1518805203.42
@@ -35,6 +33,11 @@ mysqlclient
 # Google drive integration
 google-api-python-client>=1.7.4
 pycrypto
+
+# SASS
+libsass
+django-compressor
+django-sass-processor
 
 # tiedotteet.prodeko.org requirements
 futures==2.1.6

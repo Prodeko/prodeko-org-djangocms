@@ -1,5 +1,10 @@
 {% extends "contentpage/content-page.html" %}
-{% load cms_tags menu_tags static %}
+{% load cms_tags menu_tags static sekizai_tags sass_tags %}
+
+{% block extra_head %}
+<link href="{% sass_src 'scss/app_toimarit.scss' %}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
 {% block content %}
 {% static "" as baseUrl %}
 
@@ -27,7 +32,7 @@
 									{% else %}
 										<img src="{% static "images/hallitus_photos/placeholder.jpg" %}" />
 									{% endif %}
-										<div class="boardMemberDescription">
+										<div class="description">
 										<strong>{{ h.name }}</strong><br />
 										{{ h.virka }}<br />
 										{{ h.virka_eng }}<br />

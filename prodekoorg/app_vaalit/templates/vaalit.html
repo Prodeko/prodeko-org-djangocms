@@ -1,10 +1,11 @@
 {% extends "base.html" %}
-{% load cms_tags sekizai_tags %}
+{% load cms_tags sekizai_tags sass_tags %}
 
 {% block extra_head %}
 <script src="/static/js/vaalit-custom.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/cropper/4.0.0/cropper.min.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/cropper/4.0.0/cropper.min.css" rel="stylesheet">
+<link href="{% sass_src 'scss/app_vaalit.scss' %}" rel="stylesheet" type="text/css" />
 {% endblock %}
 
 {% block content %}

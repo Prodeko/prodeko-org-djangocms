@@ -1,5 +1,10 @@
 {% extends "contentpage/content-page.html" %}
-{% load cms_tags menu_tags static %}
+{% load cms_tags menu_tags static sekizai_tags sass_tags %}
+
+{% block extra_head %}
+<link href="{% sass_src 'scss/app_toimarit.scss' %}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
 {% block content %}
 {% static "" as baseUrl %}
 
@@ -24,7 +29,7 @@
 								{% else %}
 									<img src="{% static "images/toimari_photos/anonyymi_uniseksi_maskulinoitu.jpg" %}" />
 								{% endif %}
-								<div class="toimariDescription">
+								<div class="description">
 									<strong>{{ t.name }}</strong><br />
 									{{ t.virka }}
 								</div>
