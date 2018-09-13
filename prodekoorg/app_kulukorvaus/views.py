@@ -1,15 +1,12 @@
 from io import BytesIO
 from time import strftime, localtime
 
-from django.conf import settings
 from django.core.files.base import ContentFile
-from django.core.files.storage import FileSystemStorage
 from django.forms import formset_factory
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse
 from django.shortcuts import render
 
 from .forms import KulukorvausForm, KulukorvausPerustiedotForm
-from .models import Kulukorvaus
 from .printing import KulukorvausPDF
 
 
@@ -35,18 +32,6 @@ def generate_kulukorvaus_pdf(model_perustiedot, models_kulukorvaukset):
     # Write pdf to response
     response.write(pdf)
     return response
-
-
-def show_kulukorvaus_pdf(request):
-    fs = FileSystemStorage()
-    # filename = '{}-{}-{}'.format(today.strftime('%Y-%m-%d'), form.created_by, form.target)
-    if fs.exists(filename):
-        with fs.open(filename) as pdf:
-            response = HttpResponse(pdf, content_type='application/pdf')
-            response['Content-Disposition'] = 'attachment; filename="mypdf.pdf"'
-            return response
-    else:
-        return HttpResponseNotFound('Kulukorvaus '.format(request))
 
 
 def main_form(request):

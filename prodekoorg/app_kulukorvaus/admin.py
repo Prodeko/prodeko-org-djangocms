@@ -31,7 +31,6 @@ class KulukorvausAdmin(admin.ModelAdmin):
     }
 
 
-
 class KulukorvausPerustiedotAdmin(admin.ModelAdmin):
     # Override Textarea default height
     formfield_overrides = {

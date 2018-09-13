@@ -1,5 +1,4 @@
 import os
-from datetime import datetime
 
 from django.conf import settings
 from django.core.exceptions import ValidationError
@@ -85,7 +84,7 @@ class Kulukorvaus(models.Model):
     def __str__(self):
         time = self.created_at.strftime('%Y-%m-%d %H:%M:%S')
         explanation = self.explanation
-        return '{}'.format(time)
+        return '{}-{}'.format(time, explanation)
 
     class Meta:
         # Correct spelling in Django admin

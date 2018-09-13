@@ -1,5 +1,4 @@
 import io
-import locale
 import time
 
 from django.conf import settings
@@ -10,12 +9,9 @@ from reportlab.lib.units import cm
 from reportlab.lib.utils import ImageReader
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
-from reportlab.pdfgen import canvas
 from reportlab.platypus import (Image, Paragraph, SimpleDocTemplate, Spacer,
                                 Table, TableStyle)
 from reportlab.platypus.flowables import HRFlowable
-
-from .models import Kulukorvaus
 
 
 class KulukorvausPDF:
@@ -28,8 +24,10 @@ class KulukorvausPDF:
         self.models_kulukorvaukset = models_kulukorvaukset
 
     def register_fonts(self):
-        pdfmetrics.registerFont(TTFont('Raleway Bold', settings.STATIC_ROOT + '/fonts/Raleway/Raleway-Bold.ttf'))
-        pdfmetrics.registerFont(TTFont('Raleway Medium', settings.STATIC_ROOT + '/fonts/Raleway/Raleway-Medium.ttf'))
+        pdfmetrics.registerFont(TTFont(
+            'Raleway Bold', settings.STATIC_ROOT + '/fonts/Raleway/Raleway-Bold.ttf'))
+        pdfmetrics.registerFont(TTFont(
+            'Raleway Medium', settings.STATIC_ROOT + '/fonts/Raleway/Raleway-Medium.ttf'))
 
     def handle_receipt(self, img_receipt):
         img = Image(io.BytesIO(img_receipt))
@@ -61,7 +59,6 @@ class KulukorvausPDF:
         model_perustiedot = self.model_perustiedot
 
         # Model
-        #created_by_user = model.created_by_user
         created_by = model_perustiedot.created_by
         email = model_perustiedot.email
         position_in_guild = model_perustiedot.position_in_guild
@@ -94,10 +91,11 @@ class KulukorvausPDF:
                    ('TEXTCOLOR', (0, 0), (0, -1), colors.gray),
                    ('VALIGN', (0, 0), (0, -1), 'TOP')]
 
-        I = self.get_image(settings.STATIC_ROOT + '/images/prodeko-logo-text-blue.png', width=10 * cm)
-        s1cm = Spacer(width=0, height=1 * cm)
+        Img = self.get_image(settings.STATIC_ROOT +
+                             '/images/prodeko-logo-text-blue.png', width=10 * cm)
         s05cm = Spacer(width=0, height=0.5 * cm)
-        ptime = "<font name='Raleway Medium' size=8>{}</font>".format(formatted_time)
+        ptime = "<font name='Raleway Medium' size=8>{}</font>".format(
+            formatted_time)
         PTIME = Paragraph(ptime, styles['Center'])
 
         ptext = """<font name='Raleway Medium' size=10>Kulukorvauksesi on vastaanotettu. Hakemus käsitellään seuraavassa hallituksen kokouksessa
@@ -113,7 +111,7 @@ class KulukorvausPDF:
         T.setStyle(TableStyle(t_style))
 
         elements.append(PTIME)
-        elements.append(I)
+        elements.append(Img)
         elements.append(s05cm)
         elements.append(HRFlowable(width=20 * cm))
         elements.append(s05cm)
