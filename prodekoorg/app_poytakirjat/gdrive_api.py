@@ -1,26 +1,19 @@
 import os
-import time
 from datetime import datetime
 from io import BytesIO
 from re import match
 
-import google.auth.transport.requests
-from apiclient import errors
 from apiclient.discovery import build
 from apiclient.http import MediaIoBaseDownload
-from google.auth import jwt
-from google.oauth2 import service_account
-from httplib2 import Http
-
 from django.conf import settings
-from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib import messages
+from django.contrib.admin.views.decorators import staff_member_required
 from django.core.files.base import ContentFile
 from django.shortcuts import redirect
+from google.oauth2 import service_account
+from PyPDF2 import PdfFileMerger, PdfFileReader
 
 from .models import Dokumentti
-
-from PyPDF2 import PdfFileMerger, PdfFileReader
 
 
 def initialize_service():
@@ -30,7 +23,6 @@ def initialize_service():
     SERVICE_ACCOUNT_FILE = os.path.join(settings.BASE_DIR, 'prodekoorg/app_poytakirjat/service-account.json')
 
     # mimeType of Google Drive folder
-    FOLDER = 'application/vnd.google-apps.folder'
     SCOPES = ['https://www.googleapis.com/auth/drive']
 
     credentials = service_account.Credentials.from_service_account_file(SERVICE_ACCOUNT_FILE, scopes=SCOPES)
@@ -55,9 +47,29 @@ def merge_liitteet_to_doc(pdfs):
     fh = BytesIO()
     merger.write(fh)
     ret = fh.getvalue()
+    
     fh.close()
 
     return ret
+
+
+# TODO compress pdf using something. Now they ~7MB and 
+# can be reduced to ~500kb without visible changes
+def compress_pdf(fh_pdf):
+    import ghostscript
+
+    args = [
+        "ghostscript",  # actual value doesn't matter
+        "-dNOPAUSE", "-dBATCH", "-dSAFER", "dQUIET",
+        "-sDEVICE=pdfwrite",
+        "-dCompatibilityLevel=1.4",
+        "-dPDFSETTINGS=/printer",
+        "-sOutputFile=test.pdf",
+        "-c", ".setpdfwrite",
+        "-f", fh_pdf
+    ]
+
+    ghostscript.Ghostscript(*args)
 
 
 def get_gdrive_folders_dict(service, folder_id):
