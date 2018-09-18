@@ -1,4 +1,4 @@
-{% load i18n menu_tags %}
+{% load i18n menu_tags static %}
 {% get_current_language as LANGUAGE_CODE %}
 
 
@@ -13,35 +13,46 @@
 
 		<div class="collapse navbar-collapse" id="collapsibleNavbar">
 			<ul class="navbar-nav mr-auto">
-					{% for child in children %}
-					<li class="nav-item{% if child.selected %} active-menu-item{% endif %}"><a class="nav-link nav-top" href="{{ child.get_absolute_url }}">{{child.get_menu_title }}</a></li>
-					{% endfor %}
+				{% for child in children %}
+				<li class="nav-item{% if child.selected %} active-menu-item{% endif %}"><a class="nav-link nav-top" href="{{ child.get_absolute_url }}">{{child.get_menu_title }}</a></li>
+				{% endfor %}
 				<!-- /end for child -->
 			</ul>
 			<ul class="navbar-nav py-2">
 				<li class="nav-item dropdown">
 					<button class="btn btn-light dropdown-toggle mr-4" type="button" data-toggle="dropdown">
-							{% if LANGUAGE_CODE == 'fi' %}
-								Kirjaudu
-							{% else %}
-								Login
-							{% endif %}
-					<span class="caret"></span>
+						{% if LANGUAGE_CODE == 'fi' %}
+							Kirjaudu
+						{% else %}
+							Login
+						{% endif %}
+						<span class="caret"></span>
 					</button>
 					<ul class="login-dropdown dropdown-menu dropdown-menu-right p-4">
 						<form class="form" role="form" method="post" action="login" accept-charset="UTF-8">
 							<div class="form-group">
-								 <input type="email" class="form-control" id="email" placeholder="{% if LANGUAGE_CODE == 'fi' %}Sähköposti{% else %}Email address{% endif %}" required>
+								<input type="email" class="form-control" id="email" placeholder="{% if LANGUAGE_CODE == 'fi' %}Sähköposti{% else %}Email address{% endif %}" required>
 							</div>
 							<div class="form-group">
 								 <input type="password" class="form-control" id="password" placeholder="{% if LANGUAGE_CODE == 'fi' %}Salasana{% else %}Password{% endif %}" required>
-				   <div class="form-text text-left forgot-password"><a href="">{% if LANGUAGE_CODE == 'fi' %}Unohditko salasanan?{% else %}Forgot the password?{% endif %}</a></div>
+				   			<div class="form-text text-left forgot-password">
+								<a href="">{% if LANGUAGE_CODE == 'fi' %}Unohditko salasanan?{% else %}Forgot the password?{% endif %}</a>
 							</div>
 							<div class= "form-group">
-								 <button type="submit" class="btn btn-success btn-block">{% if LANGUAGE_CODE == 'fi' %}Kirjaudu{% else %}Sign in{% endif %}</button>
+								<button type="submit" class="btn btn-success btn-block">{% if LANGUAGE_CODE == 'fi' %}Kirjaudu{% else %}Sign in{% endif %}</button>
 							</div>
-					 </form>
-				</ul>
+					 	</form>
+					</ul>
+				</li>
+				<li>
+						<a href="{% static 'apply' %}" class="btn btn-primary mr-4">
+							{% if LANGUAGE_CODE == 'fi' %}
+								Hae Jäsenyyttä
+							{% else %}
+								Apply for a membership
+							{% endif %}
+						</a>
+					</li>
 			</ul>
 			<ul class="navbar-nav py-2">
 				<li class="nav-item nav-lang">
