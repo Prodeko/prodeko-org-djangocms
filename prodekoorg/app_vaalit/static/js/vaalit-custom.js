@@ -4,7 +4,7 @@ function csrfSafeMethod(method) {
 }
 
 $.ajaxSetup({
-  beforeSend: function(xhr, settings) {
+  beforeSend: function (xhr, settings) {
     if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
       xhr.setRequestHeader("X-CSRFToken", csrftoken);
     }
@@ -22,22 +22,22 @@ var selectedTab_id = localStorage.getItem('selectedTab_id');
 var selectedVirka = localStorage.getItem('selectedVirka');
 var csrftoken = $("[name=csrfmiddlewaretoken]").val();
 
-$(document).ready(function() {
+$(document).ready(function () {
 
   /* START stay on same navigation tab with reload */
   var elem;
   var virka;
 
   /* Use localStorage to display the tab that was open
-  *  before the latest refresh.
-  */
+   *  before the latest refresh.
+   */
   if ($('#vaalitNav').length > 0) {
     if (selectedTab_id != null) {
       elem = $('.list-group-root a[data-toggle="tab"][href="' + selectedTab_id + '"]');
 
       virka = elem.text().trim();
       updateTexts(virka);
-      checkBtnHaeVirkaanVisibility(virka);  // Defined in 'vaalit_question_form.html'
+      checkBtnHaeVirkaanVisibility(virka); // Defined in 'vaalit_question_form.html'
 
       elem.addClass('.active');
       elem.tab('show');
@@ -55,26 +55,26 @@ $(document).ready(function() {
   }
 
   $('.list-group-root a[data-toggle="tab"]').click(function (e) {
-      var id = $(e.delegateTarget).attr("href");
-      var virka = $('.list-group-root a[data-toggle="tab"][href="' + id + '"]').text().trim();
-      checkBtnHaeVirkaanVisibility(virka);
+    var id = $(e.delegateTarget).attr("href");
+    var virka = $('.list-group-root a[data-toggle="tab"][href="' + id + '"]').text().trim();
+    checkBtnHaeVirkaanVisibility(virka);
 
-      localStorage.setItem('selectedTab_id', id);
-      localStorage.setItem('selectedVirka', virka);
+    localStorage.setItem('selectedTab_id', id);
+    localStorage.setItem('selectedVirka', virka);
 
-      updateTexts(virka);
+    updateTexts(virka);
 
-      var listType = $(e.delegateTarget).closest('div').attr('id');
-      if (listType == 'hallitusList') {
-        $('#toimaritList > a.active').removeClass('active');
-      } else if (listType == 'toimaritList') {
-        $('#hallitusList > a.active').removeClass('active');
-      }
+    var listType = $(e.delegateTarget).closest('div').attr('id');
+    if (listType == 'hallitusList') {
+      $('#toimaritList > a.active').removeClass('active');
+    } else if (listType == 'toimaritList') {
+      $('#hallitusList > a.active').removeClass('active');
+    }
   });
   /* END stay on same navigation tab with reload */
 
   /* Ehdokas object delete confirmation in modal */
-  $(".showDeleteEhdokasModal").click(function(e) {
+  $(".showDeleteEhdokasModal").click(function (e) {
     e.preventDefault();
     var ehdokasId = $(e.target).attr('ehdokas-id');
     $('#formDeleteEhdokas').attr('action', '/vaalit/delete-ehdokas/' + ehdokasId + '/');
@@ -92,11 +92,11 @@ $(document).ready(function() {
     e.preventDefault();
     var formData = $(this).serialize();
     $.ajax({
-      url : "vaalit/",
-      type : "POST",
+      url: "vaalit/",
+      type: "POST",
       // Add 'submitKysymys' to the POST data
       // to have correct handling in the views.py main view
-      data : formData + '&submitKysymys=',
+      data: formData + '&submitKysymys=',
       success: createKysymysSuccess,
       error: createKysymysError,
     });
@@ -115,24 +115,27 @@ $(document).ready(function() {
 
   /* AJAX deletion of Kysymys objects */
   $(".vaalitDeleteKysymysForm button").click(ajaxDeleteKysymys);
+
   function ajaxDeleteKysymys(e) {
     e.preventDefault();
-    $(this).prop("disabled", true);  // Disallow the button so it can't be clicked twice
+    $(this).prop("disabled", true); // Disallow the button so it can't be clicked twice
     var formData = $(this).parent().serialize();
     var kysymysId = $(this).siblings('input[name=hidden-kysymys-id]').val();
     $.ajax({
-      url : "/vaalit/delete-kysymys/" + kysymysId + '/',
-      type : "POST",
+      url: "/vaalit/delete-kysymys/" + kysymysId + '/',
+      type: "POST",
       // Add 'submitKysymys' to the POST data
       // to have correct handling in the views.py main view
-      data : formData,
+      data: formData,
       success: deleteKysymysSuccess,
       error: deleteKysymysError,
     });
   }
 
   function deleteKysymysSuccess(data, textStatus, jqXHR) {
-    $('#kysymys_' + data.delete_kysymys_id).fadeOut(300, function() { $(this).remove(); });
+    $('#kysymys_' + data.delete_kysymys_id).fadeOut(300, function () {
+      $(this).remove();
+    });
   }
 
   function deleteKysymysError(jqXHR, textStatus, errorThrown) {
@@ -143,13 +146,13 @@ $(document).ready(function() {
 
 
   /* Ehdokas picture cropping */
-  $(function() {
+  $(function () {
 
     /* Open cropper modal with preview */
-    $("#id_pic").change(function() {
+    $("#id_pic").change(function () {
       if (this.files && this.files[0]) {
         var reader = new FileReader();
-        reader.onload = function(e) {
+        reader.onload = function (e) {
           $("#modalCrop #image").attr("src", e.target.result);
           $("#modalCrop").modal("show");
         };
@@ -161,34 +164,34 @@ $(document).ready(function() {
     var $image = $("#modalCrop #image");
     var cropBoxData;
     var canvasData;
-    $("#modalCrop").on("shown.bs.modal", function() {
+    $("#modalCrop").on("shown.bs.modal", function () {
       $image.cropper({
         viewMode: 2,
         aspectRatio: 1 / 1,
         minCropBoxWidth: 100,
         minCropBoxHeight: 100,
-        ready: function() {
+        ready: function () {
           $image.cropper("setCanvasData", canvasData);
           $image.cropper("setCropBoxData", cropBoxData);
         },
       });
-    }).on("hidden.bs.modal", function() {
+    }).on("hidden.bs.modal", function () {
       // Destroy previous cropper on modal hide
       cropBoxData = $image.cropper("getCropBoxData");
       canvasData = $image.cropper("getCanvasData");
       $image.cropper("destroy");
     });
 
-    $("#modalCrop .js-zoom-in").click(function() {
+    $("#modalCrop .js-zoom-in").click(function () {
       $image.cropper("zoom", 0.1);
     });
 
-    $("#modalCrop .js-zoom-out").click(function() {
+    $("#modalCrop .js-zoom-out").click(function () {
       $image.cropper("zoom", -0.1);
     });
 
     /* Handle cropped modal data */
-    $("#modalCrop .js-crop-and-upload").click(function() {
+    $("#modalCrop .js-crop-and-upload").click(function () {
       var cropData = $image.cropper("getData");
       var cropDataURL = $image.cropper('getCroppedCanvas').toDataURL();
       $("#x").val(cropData.x);

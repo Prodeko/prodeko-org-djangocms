@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
   function Formset(element) {
     /*
@@ -53,8 +53,8 @@ $(document).ready(function() {
       var match = new RegExp(matchValue);
       var replace = prefix + newValue.toString();
 
-      ['name', 'id', 'for'].forEach(function(attr) {
-        form.querySelectorAll('[' + attr + '*=' + matchValue + ']').forEach(function(el) {
+      ['name', 'id', 'for'].forEach(function (attr) {
+        form.querySelectorAll('[' + attr + '*=' + matchValue + ']').forEach(function (el) {
           el.setAttribute(attr, el.getAttribute(attr).replace(match, replace));
         });
       });
