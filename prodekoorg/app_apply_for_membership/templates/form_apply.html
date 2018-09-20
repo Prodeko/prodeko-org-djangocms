@@ -1,10 +1,10 @@
 {% load add_class %}
-<div class="form-apply-wrapper">
+<div id="form-apply-wrapper">
   <h3 class="mt-3">Hae jäseneksi</h3>
   <div class="form-group row">
     <label class="col-sm-3 col-form-label" for="{{ form.name.id_for_label }}">{{ form.name.label }}</label>
     <div class="col-sm-6">
-      {% if not form.name.errors and request.POST %}
+      {% if not form.name.errors and request.body %}
         {{ form.name|add_class:"is-valid" }}
       {% else %}
         {{ form.name }}
@@ -22,7 +22,7 @@
   <div class="form-group row">
     <label class="col-sm-3 col-form-label" for="{{ form.hometown.id_for_label }}">{{ form.hometown.label }}</label>
     <div class="col-sm-6">
-      {% if not form.hometown.errors and request.POST %}
+      {% if not form.hometown.errors and request.body %}
         {{ form.hometown|add_class:"is-valid" }}
       {% else %}
         {{ form.hometown }}
@@ -40,7 +40,7 @@
   <div class="form-group row">
     <label class="col-sm-3 col-form-label" for="{{ form.field_of_study.id_for_label }}">{{ form.field_of_study.label }}</label>
     <div class="col-sm-6">
-      {% if not form.field_of_study.errors and request.POST %}
+      {% if not form.field_of_study.errors and request.body %}
         {{ form.field_of_study|add_class:"is-valid" }}
       {% else %}
         {{ form.field_of_study }}
@@ -55,7 +55,7 @@
   <div class="form-group row">
     <label class="col-sm-3 col-form-label" for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
     <div class="col-sm-6">
-      {% if not form.email.errors and request.POST %}
+      {% if not form.email.errors and request.body %}
         {{ form.email|add_class:"is-valid" }}
       {% else %}
         {{ form.email }}
@@ -70,7 +70,7 @@
   <div class="form-group row">
     <label class="col-sm-3 col-form-label" for="{{ form.start_year.id_for_label }}">{{ form.start_year.label }}</label>
     <div class="col-sm-6">
-      {% if not form.start_year.errors and request.POST %}
+      {% if not form.start_year.errors and request.body %}
         {{ form.start_year|add_class:"is-valid" }}
       {% else %}
         {{ form.start_year }}
@@ -105,7 +105,7 @@
   <div class="form-group row">
     <label class="col-sm-3 col-form-label" for="{{ form.additional_info.id_for_label }}">{{ form.additional_info.label }}</label>
     <div class="col-sm-6">
-      {% if not form.additional_info.errors and request.POST %}
+      {% if not form.additional_info.errors and request.body %}
         {{ form.additional_info|add_class:"is-valid" }}
       {% else %}
         {{ form.additional_info }}
@@ -140,7 +140,7 @@
   <div class="form-group row">
     <label class="col-sm-3 col-form-label" for="{{ form.receipt.id_for_label }}">{{ form.receipt.label }}</label>
     <div class="col-sm-6">
-      {% if not form.receipt.errors and request.POST %}
+      {% if not form.receipt.errors and request.body %}
         {{ form.receipt|add_class:"is-valid" }}
       {% else %}
         {{ form.receipt }}

@@ -15,18 +15,9 @@
 	{% include "layout-components/breadcrumb.html" %}
 	{% placeholder "content" %}
 
-  <form method="POST" novalidate enctype="multipart/form-data" id="form_apply">
-		{% csrf_token %}
-
-		{% include "form_apply.html" %}
-
-		<div class="form-group row">
-		  <div class="col-sm-10">
-		    <button type="submit" class="btn btn-primary my-2">Lähetä</button>
-		  </div>
-		</div>
-
-	</form>
+  <div>
+      <p>Hakemus vastaanotettu!</p>
+  </div>
 </div>
 
 {% endblock content %}

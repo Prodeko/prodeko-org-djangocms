@@ -12,7 +12,7 @@ class PendingUser(models.Model):
     """
 
     MEMBERSHIP_TYPE_CHOICES = (
-        ('Varsinainen jäsen', 'Varsinainen jäsen'),
+        ('Varsinainen', 'Varsinainen jäsen'),
         ('Alumni', 'Alumni'),
         ('Ulkojäsen', 'Ulkojäsen'),
     )
