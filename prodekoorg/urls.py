@@ -74,6 +74,11 @@ urlpatterns += [
     url(r'^', include('prodekoorg.app_tiedostot.urls', namespace='app_tiedostot')),
 ]
 
+# ==== app_apply_for_membership ==== #
+urlpatterns += [
+    url(r'^', include('prodekoorg.app_apply_for_membership.urls', namespace='app_apply_for_membership')),
+]
+
 # This is only needed when using runserver.
 if settings.DEBUG:
     urlpatterns = [

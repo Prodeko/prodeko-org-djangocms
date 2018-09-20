@@ -78,7 +78,7 @@ STATICFILES_DIRS = [
     # tiedotteet.prodeko.org
     os.path.join(BASE_DIR, 'tiedotteet/info', 'static'),
     os.path.join(BASE_DIR, 'tiedotteet', 'public'),
-    # tiedotteet.prodeko.org
+    # lifelonglearning.prodeko.org
     os.path.join(BASE_DIR, 'lifelonglearning', 'static'),
 ]
 
@@ -211,6 +211,7 @@ INSTALLED_APPS = (
     'prodekoorg.app_kulukorvaus',
     'prodekoorg.app_vaalit',
     'prodekoorg.app_tiedostot',
+    'prodekoorg.app_apply_for_membership',
     # ------------------------
 )
 

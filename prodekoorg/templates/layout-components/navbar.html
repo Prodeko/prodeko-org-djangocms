@@ -45,14 +45,14 @@
 					</ul>
 				</li>
 				<li>
-						<a href="{% static 'apply' %}" class="btn btn-primary mr-4">
-							{% if LANGUAGE_CODE == 'fi' %}
-								Hae Jäsenyyttä
-							{% else %}
-								Apply for a membership
-							{% endif %}
-						</a>
-					</li>
+					<a href="{% url 'app_apply_for_membership:apply' %}" class="btn btn-primary mr-4">
+						{% if LANGUAGE_CODE == 'fi' %}
+							Hae Jäsenyyttä
+						{% else %}
+							Apply for a membership
+						{% endif %}
+					</a>
+				</li>
 			</ul>
 			<ul class="navbar-nav py-2">
 				<li class="nav-item nav-lang">
