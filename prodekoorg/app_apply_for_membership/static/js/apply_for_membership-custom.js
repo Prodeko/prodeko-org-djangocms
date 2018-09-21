@@ -18,7 +18,6 @@ $(document).ready(function () {
     formApply.on("submit", function (e) {
         e.preventDefault();
         formData = JSON.stringify(formApply.serializeArray());
-        console.log(formData)
 
         $.ajax({
             url: "apply/",
@@ -26,15 +25,17 @@ $(document).ready(function () {
             data: formData,
             contentType: false, // Indicates 'multipart/form-data'
             success: function (data) {
-                $("#form-apply-wrapper").replaceWith("Success!");
                 console.log(data);
                 console.log("success");
+                document.write(data);
             },
 
             // Re-renders the same page with error texts.
             error: function (xhr, errmsg, err) {
                 console.log(xhr)
-                $("#form-apply-wrapper").replaceWith(xhr.responseText);
+                if(xhr.status === 599) {
+                    $("#form-apply-wrapper").replaceWith(xhr.responseText);
+                }
             }
         });
     });

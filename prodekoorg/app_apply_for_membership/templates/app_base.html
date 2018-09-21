@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load cms_tags sekizai_tags sass_tags %}
+
+{% block extra_head %}
+<script src="/static/js/apply_for_membership-custom.js"></script>
+<link href="{% sass_src 'scss/app_apply_for_membership.scss' %}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block content %}
+
+{% include "layout-components/jumbotron.html" %}
+
+<div class="container kulukorvaus-container">
+
+	{% include "layout-components/breadcrumb.html" %}
+	{% placeholder "content" %}
+
+	{% if done %}
+		{% include "application_complete.html" %}
+	{% else %}
+		<form method="POST" novalidate enctype="multipart/form-data" id="form_apply">
+			{% csrf_token %}
+
+			{% include "form_apply.html" %}
+
+			<div class="form-group row">
+				<div class="col-sm-10">
+					<button type="submit" class="btn btn-primary my-2">Lähetä</button>
+				</div>
+			</div>
+
+		</form>
+	{% endif %}
+
+
+</div>
+
+{% endblock content %}
