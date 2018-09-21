@@ -1,0 +1,39 @@
+@import '../../../prodekoorg/static/scss/breakpoints_mixin.scss';
+
+#login-form {
+    max-width: 60%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    
+    label {
+        display: block;
+      }
+
+    input {
+        display: block;
+    }    
+}
+
+.card {
+    margin: 7em auto;
+    float: none;
+    width: 50%;
+
+    @include phone {
+        margin: 1em auto;
+        width: 98%;
+    }
+
+    @include tablet {
+        margin: 4em auto;
+        width: 80%;
+    }
+}
+
+#login-logo {
+    height: 150px; 
+    width: 150px;
+    padding: 10px;
+    margin: 0 auto;
+}

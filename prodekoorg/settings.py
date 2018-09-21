@@ -70,6 +70,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'prodekoorg', 'collected-static')
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'prodekoorg', 'static'),
+    os.path.join(BASE_DIR, 'auth_prodeko', 'static'),
     os.path.join(BASE_DIR, 'prodekoorg/app_kulukorvaus', 'static'),
     os.path.join(BASE_DIR, 'prodekoorg/app_poytakirjat', 'static'),
     os.path.join(BASE_DIR, 'prodekoorg/app_tiedostot', 'static'),

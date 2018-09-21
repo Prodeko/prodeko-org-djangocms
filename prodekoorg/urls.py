@@ -42,10 +42,14 @@ urlpatterns += [
     url(r'^', include('filer.server.urls')),
 ]
 
+# ==== auth_prodeko ==== #
+urlpatterns += [
+    url(r'^', include('auth_prodeko.urls', namespace='auth_prodeko')),
+]
+
 # ==== tiedotteet.prodeko.org ==== #
 urlpatterns += [
     url(r'^tiedotteet/', include('tiedotteet.Tiedotteet.urls', namespace='tiedotteet')),
-    url(r'^', include('django.contrib.auth.urls')),
     url(r'^accounts/profile', views.profile, name='profile'),
 ]
 

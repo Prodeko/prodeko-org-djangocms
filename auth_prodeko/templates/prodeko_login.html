@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load cms_tags sekizai_tags sass_tags staticfiles %}
+
+{% block extra_head %}
+<link href="{% sass_src 'scss/auth_prodeko.scss' %}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block content %}
+
+<div class="container"> 
+    <div class="card">
+        <div class="card-body">
+            <form id="login-form" method="post" action="">  
+                    {% csrf_token %}
+            
+                    {{ form }}
+            
+                    <div class="form-group row">
+                        <div class="col-sm-10">
+                            <button type="submit" class="btn btn-primary my-2">Lähetä</button>
+                        </div>
+                    </div>
+                </form>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
