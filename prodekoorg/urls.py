@@ -31,20 +31,20 @@ urlpatterns += [
     url(r'^admin/poytakirjat/download$', run_app_poytakirjat, name='download_docs_from_gsuite'),
 ]
 
+# ==== auth_prodeko ==== #
+urlpatterns += i18n_patterns(
+    url(r'^', include('auth_prodeko.urls', namespace='auth_prodeko')),
+)
+
 # ==== Localization and internationalization ==== #
 urlpatterns += i18n_patterns(
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^', include('cms.urls'))
+    url(r'^', include('cms.urls')),
 )
 
 # ==== Django filer ==== #
 urlpatterns += [
     url(r'^', include('filer.server.urls')),
-]
-
-# ==== auth_prodeko ==== #
-urlpatterns += [
-    url(r'^', include('auth_prodeko.urls', namespace='auth_prodeko')),
 ]
 
 # ==== tiedotteet.prodeko.org ==== #

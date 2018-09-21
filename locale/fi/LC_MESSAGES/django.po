@@ -1,0 +1,596 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-09-26 13:08+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: auth_prodeko/admin.py:14
+msgid "Personal info"
+msgstr "Henkilökohtainen tieto"
+
+#: auth_prodeko/admin.py:15
+msgid "Permissions"
+msgstr "Oikeudet"
+
+#: auth_prodeko/admin.py:17
+msgid "Important dates"
+msgstr "Tärkeitä päivämääriä"
+
+#: auth_prodeko/forms.py:33
+msgid "The two password fields didn't match."
+msgstr "Salasanat eivät täsmää."
+
+#: auth_prodeko/forms.py:41
+msgid "Password"
+msgstr "Salasana"
+
+#: auth_prodeko/forms.py:46
+msgid "Password confirmation"
+msgstr "Vahvista salasana"
+
+#: auth_prodeko/forms.py:49
+msgid "Enter the same password as before, for verification."
+msgstr "Vahvista antamalla sama salasana."
+
+#: auth_prodeko/forms.py:89
+msgid "Your old password was entered incorrectly. Please enter it again."
+msgstr "Salasana on väärä. Yritä uudestaan."
+
+#: auth_prodeko/forms.py:92
+msgid "Old password"
+msgstr "Vanha salasana"
+
+#: auth_prodeko/forms.py:97
+msgid "New password"
+msgstr "Uusi salasana"
+
+#: auth_prodeko/forms.py:102
+msgid "New password confirmation"
+msgstr "Uusi salsana - vahvistus"
+
+#: auth_prodeko/models.py:44
+msgid "email address"
+msgstr "sähköposti"
+
+#: auth_prodeko/templates/prodeko_login.html:10
+#: prodekoorg/app_apply_for_membership/templates/app_base.html:11
+#: prodekoorg/app_kulukorvaus/templates/kulukorvaus.html:12
+msgid "Submit"
+msgstr "Lähetä"
+
+#: auth_prodeko/templates/prodeko_login.html:11
+#: prodekoorg/templates/layout-components/navbar.html:4
+msgid "Password forgotten?"
+msgstr "Salasana unohtunut?"
+
+#: auth_prodeko/templates/prodeko_login.html:12
+msgid "The email and password didn't match. Try again."
+msgstr "Sähköposti ja salasana eivät täsmänneet. Yritä uudestaan."
+
+#: prodekoorg/app_apply_for_membership/models.py:15
+msgid "True member"
+msgstr "Varsinainen jäsen"
+
+#: prodekoorg/app_apply_for_membership/models.py:16
+msgid "Alumn"
+msgstr "Alumni"
+
+#: prodekoorg/app_apply_for_membership/models.py:17
+msgid "External member"
+msgstr "Ulkojäsen"
+
+#: prodekoorg/app_apply_for_membership/models.py:21
+msgid "Yes"
+msgstr "Kyllä"
+
+#: prodekoorg/app_apply_for_membership/models.py:22
+msgid "No"
+msgstr "Ei"
+
+#: prodekoorg/app_apply_for_membership/models.py:30
+#: prodekoorg/app_kulukorvaus/models.py:43 prodekoorg/app_vaalit/models.py:33
+msgid "Name"
+msgstr "Nimi"
+
+#: prodekoorg/app_apply_for_membership/models.py:31
+msgid "Hometown"
+msgstr "Kotikaupunki"
+
+#: prodekoorg/app_apply_for_membership/models.py:32
+msgid "Field of study"
+msgstr "Opiskeluala"
+
+#: prodekoorg/app_apply_for_membership/models.py:33
+msgid "Email"
+msgstr "Sähköposti"
+
+#: prodekoorg/app_apply_for_membership/models.py:34
+msgid "Year"
+msgstr "Vuosi"
+
+#: prodekoorg/app_apply_for_membership/models.py:35
+msgid "Membership type"
+msgstr "Jäsentyyppi"
+
+#: prodekoorg/app_apply_for_membership/models.py:36
+msgid "Why do you want to become a member?"
+msgstr "Miksi haluat jäseneksi?"
+
+#: prodekoorg/app_apply_for_membership/models.py:37
+msgid "Are you an AYY (Aalto University Student Union) member?"
+msgstr "Oletko AYY:n jäsen?"
+
+#: prodekoorg/app_apply_for_membership/models.py:38
+msgid "Receipt of the membership payment"
+msgstr "Kuitti jäsenmaksusta"
+
+#: prodekoorg/app_apply_for_membership/models.py:48
+msgid "membership application"
+msgstr "jäsenhakemus"
+
+#: prodekoorg/app_apply_for_membership/models.py:49
+msgid "Membership applications"
+msgstr "Jäsenhakemukset"
+
+#: prodekoorg/app_kulukorvaus/models.py:45
+msgid "Position in guild"
+msgstr "Virka"
+
+#: prodekoorg/app_kulukorvaus/models.py:46
+msgid "Phone number"
+msgstr "Puhelinnumero"
+
+#: prodekoorg/app_kulukorvaus/models.py:49
+msgid "Account number (IBAN)"
+msgstr "Tilinumero (IBAN)"
+
+#: prodekoorg/app_kulukorvaus/models.py:52
+msgid "Total reimbursement (in €)"
+msgstr "Korvaussumma yhteensä (euroissa)"
+
+#: prodekoorg/app_kulukorvaus/models.py:53
+msgid "Additional information"
+msgstr "Lisätietoja, kulujen perusteita"
+
+#: prodekoorg/app_kulukorvaus/models.py:65
+msgid "reimbursement basic information"
+msgstr "kulukorvaus perustiedot"
+
+#: prodekoorg/app_kulukorvaus/models.py:66
+msgid "Reimbursement basic information"
+msgstr "Kulukorvaus perustiedot"
+
+#: prodekoorg/app_kulukorvaus/models.py:75 prodekoorg/app_vaalit/models.py:65
+#: prodekoorg/app_vaalit/models.py:86
+msgid "Created at"
+msgstr "Luotu"
+
+#: prodekoorg/app_kulukorvaus/models.py:77
+msgid "Expense explanation"
+msgstr "Kulun selite"
+
+#: prodekoorg/app_kulukorvaus/models.py:78
+msgid "Event / expense target"
+msgstr "Tapahtuma / kulun kohde"
+
+#: prodekoorg/app_kulukorvaus/models.py:79
+msgid "Sum (in €)"
+msgstr "Summa (euroissa)"
+
+#: prodekoorg/app_kulukorvaus/models.py:80
+msgid "Additional info"
+msgstr "Lisätietoja, kulujen perusteita"
+
+#: prodekoorg/app_kulukorvaus/models.py:81
+msgid "Receipt"
+msgstr "Kuitti"
+
+#: prodekoorg/app_kulukorvaus/models.py:91
+msgid "reimbursement"
+msgstr "kulukorvaus"
+
+#: prodekoorg/app_kulukorvaus/models.py:92
+msgid "Reimbursements"
+msgstr "Kulukorvaukset"
+
+#: prodekoorg/app_kulukorvaus/templates/form_empty_and_management.html:7
+#, fuzzy
+#| msgid "reimbursement"
+msgid "Remove reimbursement"
+msgstr "kulukorvaus"
+
+#: prodekoorg/app_kulukorvaus/templates/form_kulukorvaus_kulu.html:1
+#, fuzzy
+#| msgid "Reimbursements"
+msgid "Reimbursement"
+msgstr "Kulukorvaukset"
+
+#: prodekoorg/app_kulukorvaus/templates/form_perustiedot.html:1
+#, fuzzy
+#| msgid "reimbursement basic information"
+msgid "Basic information"
+msgstr "kulukorvaus perustiedot"
+
+#: prodekoorg/app_kulukorvaus/templates/form_summary.html:1
+msgid "Overall"
+msgstr "Yhteensä"
+
+#: prodekoorg/app_kulukorvaus/templates/kulukorvaus.html:11
+msgid "Add reimbursement"
+msgstr "Lisää kulu"
+
+#: prodekoorg/app_poytakirjat/models.py:37
+msgid "minutes"
+msgstr "pöytäkirja"
+
+#: prodekoorg/app_poytakirjat/models.py:38
+msgid "Minutes"
+msgstr "Pöytäkirjat"
+
+#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/dokumentti/change_list.html:76
+#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:31
+#: prodekoorg/app_toimarit/templates/admin/base.html:56
+msgid "Home"
+msgstr "Kotisivu"
+
+#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/dokumentti/change_list.html:114
+#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:49
+#, python-format
+msgid "Add %(name)s"
+msgstr "Lisää %(name)s"
+
+#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/dokumentti/change_list.html:123
+#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:65
+msgid "Please correct the error below."
+msgstr "Korjaa allaolevat virheet."
+
+#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/dokumentti/change_list.html:123
+#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:65
+msgid "Please correct the errors below."
+msgstr "Korjaa allaolevat virheet."
+
+#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/dokumentti/change_list.html:134
+#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:76
+msgid "Filter"
+msgstr "Filtteri"
+
+#: prodekoorg/app_tiedostot/models.py:26
+msgid "Files"
+msgstr "Tiedostot"
+
+#: prodekoorg/app_tiedostot/models.py:50
+msgid "file version"
+msgstr "tiedostoversio"
+
+#: prodekoorg/app_tiedostot/models.py:51
+msgid "File versions"
+msgstr "Tiedostoversiot"
+
+#: prodekoorg/app_toimarit/admin.py:35 prodekoorg/app_toimarit/admin.py:43
+msgid "Export selected as CSV"
+msgstr "Vie valitut CSV:hen"
+
+#: prodekoorg/app_toimarit/cms_apps.py:11
+#: prodekoorg/app_vaalit/templates/vaalit_nav.html:4
+msgid "Officials"
+msgstr "Toimarit"
+
+#: prodekoorg/app_toimarit/cms_apps.py:22 prodekoorg/app_vaalit/models.py:11
+#: prodekoorg/app_vaalit/templates/vaalit_nav.html:3
+msgid "Board"
+msgstr "Hallitus"
+
+#: prodekoorg/app_toimarit/models.py:15
+msgid "section"
+msgstr "jaosto"
+
+#: prodekoorg/app_toimarit/models.py:16
+msgid "sections"
+msgstr "jaostot"
+
+#: prodekoorg/app_toimarit/models.py:38
+msgid "guild official"
+msgstr "toimari"
+
+#: prodekoorg/app_toimarit/models.py:39
+msgid "guild officials"
+msgstr "toimarit"
+
+#: prodekoorg/app_toimarit/models.py:63
+msgid "board member"
+msgstr "hallituksen jäsen"
+
+#: prodekoorg/app_toimarit/models.py:64
+msgid "board members"
+msgstr "hallituksen jäsenet"
+
+#: prodekoorg/app_toimarit/templates/admin/base.html:30
+msgid "Welcome,"
+msgstr "Tervetuloa,"
+
+#: prodekoorg/app_toimarit/templates/admin/base.html:35
+msgid "View site"
+msgstr "Mene sivustolle"
+
+#: prodekoorg/app_toimarit/templates/admin/base.html:40
+#: prodekoorg/templates/admin/inc/branding.html:16
+msgid "Documentation"
+msgstr "Dokumentaatio"
+
+#: prodekoorg/app_toimarit/templates/admin/base.html:44
+#: prodekoorg/templates/admin/inc/branding.html:23
+msgid "Change password"
+msgstr "Vaihda salasana"
+
+#: prodekoorg/app_toimarit/templates/admin/base.html:46
+#: prodekoorg/templates/admin/inc/branding.html:29
+msgid "Log out"
+msgstr "Kirjaudu ulos"
+
+#: prodekoorg/app_vaalit/models.py:12
+msgid "Position"
+msgstr "Virka"
+
+#: prodekoorg/app_vaalit/models.py:23
+msgid "position"
+msgstr "virka"
+
+#: prodekoorg/app_vaalit/models.py:24
+#, fuzzy
+#| msgid "Permissions"
+msgid "Positions"
+msgstr "Virat"
+
+#: prodekoorg/app_vaalit/models.py:36
+#: prodekoorg/app_vaalit/templates/forms/vaalit_apply_form.html:4
+msgid "Picture"
+msgstr "Kuva"
+
+#: prodekoorg/app_vaalit/models.py:56
+msgid "applicant"
+msgstr "hakija"
+
+#: prodekoorg/app_vaalit/models.py:57
+#: prodekoorg/app_vaalit/templates/vaalit_content.html:3
+msgid "Applicants"
+msgstr "Hakijat"
+
+#: prodekoorg/app_vaalit/models.py:67
+msgid "questions"
+msgstr "kysymykset"
+
+#: prodekoorg/app_vaalit/models.py:68
+msgid "Question"
+msgstr "Kysymys"
+
+#: prodekoorg/app_vaalit/models.py:76
+msgid "question"
+msgstr "kysymys"
+
+#: prodekoorg/app_vaalit/models.py:77
+#: prodekoorg/app_vaalit/templates/vaalit_content.html:6
+msgid "Questions"
+msgstr "Kysymykset"
+
+#: prodekoorg/app_vaalit/models.py:87
+msgid "answered_by"
+msgstr "vastaaja"
+
+#: prodekoorg/app_vaalit/models.py:88
+msgid "answers"
+msgstr "vastaukset"
+
+#: prodekoorg/app_vaalit/models.py:89
+#: prodekoorg/app_vaalit/templates/vaalit_question.html:3
+msgid "Answer"
+msgstr "Vastaus"
+
+#: prodekoorg/app_vaalit/models.py:97
+msgid "answer"
+msgstr "vastaus"
+
+#: prodekoorg/app_vaalit/models.py:98
+msgid "Answers"
+msgstr "Vastaukset"
+
+#: prodekoorg/app_vaalit/templates/forms/vaalit_answer_form.html:3
+#, fuzzy
+#| msgid "Submit"
+msgid "Submit answer"
+msgstr "Lähetä"
+
+#: prodekoorg/app_vaalit/templates/forms/vaalit_apply_form.html:3
+#: prodekoorg/app_vaalit/templates/forms/vaalit_modify_application_form.html:13
+msgid "Introduction"
+msgstr "esittely"
+
+#: prodekoorg/app_vaalit/templates/forms/vaalit_apply_form.html:5
+#: prodekoorg/app_vaalit/templates/forms/vaalit_question_form.html:5
+msgid "Apply"
+msgstr "Hae virkaan"
+
+#: prodekoorg/app_vaalit/templates/forms/vaalit_apply_form.html:6
+msgid "Note! You can modify your application later."
+msgstr "Huom! Voit muokata hakemustasi myöhemmin."
+
+#: prodekoorg/app_vaalit/templates/forms/vaalit_modify_application_form.html:12
+#, fuzzy
+#| msgid "Membership applications"
+msgid "Modify application"
+msgstr "Jäsenhakemukset"
+
+#: prodekoorg/app_vaalit/templates/forms/vaalit_question_form.html:3
+#: prodekoorg/app_vaalit/templates/forms/vaalit_question_form.html:4
+msgid "Ask a question"
+msgstr "Lähetä kysymys"
+
+#: prodekoorg/app_vaalit/templates/vaalit_answer.html:3
+msgid "since"
+msgstr "sitten"
+
+#: prodekoorg/app_vaalit/templates/vaalit_content.html:4
+#: prodekoorg/app_vaalit/templates/vaalit_content.html:33
+#, fuzzy
+#| msgid "applicant"
+msgid "No applicants"
+msgstr "hakija"
+
+#: prodekoorg/app_vaalit/templates/vaalit_content.html:7
+#, fuzzy
+#| msgid "questions"
+msgid "No questions"
+msgstr "kysymykset"
+
+#: prodekoorg/app_vaalit/templates/vaalit_ehdokas.html:3
+#: prodekoorg/app_vaalit/templates/vaalit_modal_delete_ehdokas.html:5
+msgid "Delete"
+msgstr "Poista"
+
+#: prodekoorg/app_vaalit/templates/vaalit_ehdokas.html:4
+msgid "Modify"
+msgstr "Muokkaa"
+
+#: prodekoorg/app_vaalit/templates/vaalit_modal_delete_ehdokas.html:3
+msgid "Are you sure you want to remove your application?"
+msgstr "Haluatko varmasti poistaa hakemuksesi?"
+
+#: prodekoorg/app_vaalit/templates/vaalit_modal_delete_ehdokas.html:4
+#: prodekoorg/app_vaalit/templates/vaalit_modal_photocrop.html:4
+msgid "Close"
+msgstr "Sulje"
+
+#: prodekoorg/app_vaalit/templates/vaalit_modal_photocrop.html:3
+msgid "Crop image"
+msgstr ""
+
+#: prodekoorg/app_vaalit/templates/vaalit_modal_photocrop.html:5
+msgid "Crop"
+msgstr "Rajaa"
+
+#: prodekoorg/app_vaalit/templates/vaalit_question.html:4
+msgid "Remove"
+msgstr "Poista"
+
+#: prodekoorg/app_vaalit/templates/vaalit_question.html:5
+msgid "Edit"
+msgstr "Muokkaa"
+
+#: prodekoorg/settings.py:69 prodekoorg/settings.py:86
+msgid "Finnish"
+msgstr "Suomi"
+
+#: prodekoorg/settings.py:70 prodekoorg/settings.py:93
+msgid "English"
+msgstr "Englanti"
+
+#: prodekoorg/templates/admin/inc/branding.html:10
+msgid "Django Administration"
+msgstr "Django - hallintapaneeli"
+
+#: prodekoorg/templates/admin/inc/branding.html:37
+msgid "Open"
+msgstr "Auki"
+
+#: prodekoorg/templates/layout-components/navbar.html:3
+msgid "Login"
+msgstr "Kirjaudu"
+
+#: prodekoorg/templates/layout-components/navbar.html:5
+msgid "Apply for a membership"
+msgstr "Hae jäsenyyttä"
+
+#: tiedotteet/info/forms.py:13 tiedotteet/info/forms.py:42
+msgid "Otsikko"
+msgstr ""
+
+#: tiedotteet/info/forms.py:14
+msgid "Sisältö"
+msgstr ""
+
+#: tiedotteet/info/forms.py:15 tiedotteet/info/forms.py:44
+#: tiedotteet/info/forms.py:69
+msgid "Kategoria"
+msgstr ""
+
+#: tiedotteet/info/forms.py:16 tiedotteet/info/forms.py:45
+msgid "Tagit"
+msgstr ""
+
+#: tiedotteet/info/forms.py:17 tiedotteet/info/forms.py:46
+msgid "Alkaa"
+msgstr ""
+
+#: tiedotteet/info/forms.py:18 tiedotteet/info/forms.py:47
+msgid "Loppuu"
+msgstr ""
+
+#: tiedotteet/info/forms.py:19 tiedotteet/info/forms.py:48
+msgid "Deadline"
+msgstr ""
+
+#: tiedotteet/info/forms.py:20 tiedotteet/info/forms.py:49
+msgid "Näytä deadline"
+msgstr ""
+
+#: tiedotteet/info/forms.py:21 tiedotteet/info/forms.py:50
+msgid "Näytetään"
+msgstr ""
+
+#: tiedotteet/info/forms.py:43
+msgid "Content"
+msgstr ""
+
+#: tiedotteet/info/forms.py:70
+msgid "Järjestys"
+msgstr ""
+
+#: tiedotteet/info/forms.py:71
+msgid "Näkyvyys"
+msgstr ""
+
+#: tiedotteet/info/forms.py:84
+msgid "Uusi tagi"
+msgstr ""
+
+#: tiedotteet/info/forms.py:96
+msgid "Palvelin (host)"
+msgstr ""
+
+#: tiedotteet/info/forms.py:97
+msgid "Portti"
+msgstr ""
+
+#: tiedotteet/info/forms.py:98
+msgid "Käyttäjätunnus (sähköpostiosoite)"
+msgstr ""
+
+#: tiedotteet/info/forms.py:99
+msgid "Salasana"
+msgstr ""
+
+#: tiedotteet/info/forms.py:100
+msgid "TLS salaus päällä"
+msgstr ""
+
+#~ msgid "Heading"
+#~ msgstr "Otsikko"
+
+#~ msgid "year"
+#~ msgstr "vuosi"
+
+#~ msgid "kirjaudu/"
+#~ msgstr "login/"

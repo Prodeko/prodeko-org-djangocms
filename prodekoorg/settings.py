@@ -49,6 +49,7 @@ ROOT_URLCONF = 'prodekoorg.urls'
 
 # Django moel used for authentication
 AUTH_USER_MODEL = 'auth_prodeko.User'
+LOGIN_REDIRECT_URL = '/accounts'
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
@@ -58,6 +59,42 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
+# Store translations here
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'locale'),
+]
+
+"""Language settings"""
+LANGUAGES = (
+    ('fi', _('Finnish')),
+    ('en', _('English')),
+)
+
+LANGUAGE_FALLBACK = None
+
+CMS_LANGUAGES = {
+    'default': {
+        'public': True,
+        'hide_untranslated': False,
+        'redirect_on_fallback': True,
+    },
+    1: [
+        {
+            'public': True,
+            'code': 'fi',
+            'hide_untranslated': False,
+            'name': _('Finnish'),
+            'redirect_on_fallback': True,
+        },
+        {
+            'public': True,
+            'code': 'en',
+            'hide_untranslated': False,
+            'name': _('English'),
+            'redirect_on_fallback': True,
+        },
+    ],
+}
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
@@ -99,8 +136,10 @@ TEMPLATES = [
                  os.path.join(BASE_DIR, 'tiedotteet/info', 'templates'),
                  os.path.join(BASE_DIR, 'tiedotteet', 'public'),
                  os.path.join(BASE_DIR, 'lifelonglearning', 'templates'),
-                 os.path.join(BASE_DIR, 'prodekoorg/app_kulukorvaus', 'templates'),
-                 os.path.join(BASE_DIR, 'prodekoorg/app_poytakirjat', 'templates'),
+                 os.path.join(
+                     BASE_DIR, 'prodekoorg/app_kulukorvaus', 'templates'),
+                 os.path.join(
+                     BASE_DIR, 'prodekoorg/app_poytakirjat', 'templates'),
                  os.path.join(BASE_DIR, 'prodekoorg/app_toimarit', 'templates')],
         'OPTIONS': {
             'context_processors': [
@@ -125,6 +164,12 @@ TEMPLATES = [
     },
 ]
 
+# Common templatetags across apps
+OPTIONS = {
+    'libraries': {
+        'common_tags': os.path.join(BASE_DIR, 'prodekoorg', 'templatetags/common_tags'),
+    },
+}
 
 MIDDLEWARE = (
     'cms.middleware.utils.ApphookReloadMiddleware',
@@ -138,7 +183,6 @@ MIDDLEWARE = (
     'cms.middleware.user.CurrentUserMiddleware',
     'cms.middleware.page.CurrentPageMiddleware',
     'cms.middleware.toolbar.ToolbarMiddleware',
-    'cms.middleware.language.LanguageCookieMiddleware',
     # tiedotteet.prodeko.org
     'corsheaders.middleware.CorsMiddleware',
 )
@@ -216,38 +260,6 @@ INSTALLED_APPS = (
     # ------------------------
 )
 
-"""Language settings"""
-LANGUAGES = (
-    ('fi', _('Finnish')),
-    ('en', _('English')),
-)
-
-LANGUAGE_FALLBACK = None
-
-CMS_LANGUAGES = {
-    'default': {
-        'public': True,
-        'hide_untranslated': False,
-        'redirect_on_fallback': True,
-    },
-    1: [
-        {
-            'public': True,
-            'code': 'fi',
-            'hide_untranslated': False,
-            'name': _('Finnish'),
-            'redirect_on_fallback': True,
-        },
-        {
-            'public': True,
-            'code': 'en',
-            'hide_untranslated': False,
-            'name': _('English'),
-            'redirect_on_fallback': True,
-        },
-    ],
-}
-
 """CMS template registration"""
 CMS_TEMPLATES = (
     ('contentpage/content-page.html', 'Content page'),
@@ -310,8 +322,9 @@ CKEDITOR_CONFIGS = {
     'vaalit_ckeditor': {
         'toolbar': [["Format", "Bold", "Italic", "Underline", "Strike"],
                     ["NumberedList", 'BulletedList', "Indent", "Outdent", "JustifyLeft", "JustifyCenter",
-                    "JustifyRight", "JustifyBlock"],
-                    ["Table", "Link", "Unlink", "Anchor", "SectionLink", "Subscript", "Superscript"], ["Undo", "Redo"], ["Source"],
+                     "JustifyRight", "JustifyBlock"],
+                    ["Table", "Link", "Unlink", "Anchor", "SectionLink",
+                        "Subscript", "Superscript"], ["Undo", "Redo"], ["Source"],
                     ["Maximize"]],
         'width': "auto",
         'height': "auto",
