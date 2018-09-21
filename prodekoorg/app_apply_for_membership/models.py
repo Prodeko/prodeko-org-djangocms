@@ -23,7 +23,7 @@ class PendingUser(models.Model):
     )
 
     YEAR_CHOICES = []
-    for r in range(1966, (datetime.datetime.now().year)):
+    for r in reversed(range(1966, (datetime.datetime.now().year + 1))):
         YEAR_CHOICES.append((r, r))
 
     id = models.AutoField(primary_key=True)
