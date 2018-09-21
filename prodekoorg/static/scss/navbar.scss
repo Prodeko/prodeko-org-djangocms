@@ -68,15 +68,25 @@
 }
 
 #prodeko-logo {
-	background-image: url('/static/images/logos/prodeko-logo-darkblue.png');
 	background-size: contain;
-	background-repeat: no-repeat;
-	height: 100px;
-	width: 300px;
+    background-repeat: no-repeat;
 	margin-left: 0 !important;
     padding-left: 0;
+    flex-grow: 1;
+    display: block;
+
+    @include phone {
+        height: 60px;
+        background-image: url('/static/images/logos/prodeko-logo-text-blue.png');
+    }
 
     @include tablet {
+        height: 60px;
         background-image: url('/static/images/logos/prodeko-logo-text-blue.png');
+    }
+
+    @include desktop {
+        height: 100px;
+        background-image: url('/static/images/logos/prodeko-logo-darkblue.png');
     }
 }
