@@ -1,7 +1,12 @@
+{% load i18n %}
+
+{% trans "Board" as board %}
+{% trans "Officials" as officials %}
+
 <div id="vaalitNav" class="list-group list-group-root">
   <a href="#hallitusList" class="list-group-item list-group-item-action" data-toggle="collapse">
     <i class="fa fa-fw fa-chevron-down"></i>
-    <strong>Hallitus</strong>
+    <strong>{% trans board %}</strong>
     <span class="badge badge-primary badge-pill">{{ count_ehdokkaat_hallitus }}</span>
   </a>
   <div class="list-group collapse show" id="hallitusList" role="tablist">
@@ -16,7 +21,7 @@
   </div>
   <a href="#toimaritList" class="list-group-item list-group-item-action" data-toggle="collapse">
     <i class="fa fa-fw fa-chevron-down"></i>
-    <strong>Toimarit</strong>
+    <strong>{% trans officials %}</strong>
     <span class="badge badge-primary badge-pill">{{ count_ehdokkaat_toimarit }}</span>
   </a>
   <div class="list-group collapse show" id="toimaritList" role="tablist">

@@ -1,3 +1,9 @@
+{% load i18n %}
+
+{% trans "Ask a question" as question_ask %}
+{% trans "Ask a question" as question_submit %}
+{% trans "Apply" as apply %}
+
 {% load sekizai_tags %}
 <form novalidate method="POST" id="vaalitKysymysForm">
   {% csrf_token %}
@@ -7,14 +13,14 @@
       {% if form_kysymys.question.errors %}
         <small class="form-text text-danger">{{ form_kysymys.question.errors.as_text }}</small>
       {% endif %}
-      <small class="form-text text-muted">Esitä kysymys</small>
+      <small class="form-text text-muted">{% trans question_ask %}</small>
     </div>
   </div>
   <div class="form-group">
     <input type="hidden" class="input-virka" name="hidden-input-virka" value="{{virat.0.name}}"/>
-    <button name="submitKysymys" type="submit" class="btn btn-primary my-2">Lähetä kysymys</button>
+    <button name="submitKysymys" type="submit" class="btn btn-primary my-2">{% trans question_submit %}</button>
     <a role="button" id="btnHaeVirkaan" class="btn btn-default">
-      Hae virkaan
+      {% trans apply %}
       <span class="mr-1 fas fa-chevron-down rotate-fa"></span>
     </a>
   </div>

@@ -1,3 +1,7 @@
+{% load i18n %}
+
+{% trans "Submit answer" as submit_answer %}
+
 <form action="" method="POST" class="collapse" id="vaalitAnswerForm_{{ forloop.counter }}">
   {% csrf_token %}
   <div class="form-group row">
@@ -7,6 +11,6 @@
   </div>
   <div class="form-group">
     <input type="hidden" class="input-question" name="hidden-input-kysymys" value="{{kysymys.id}}"/>
-    <button name="submitVastaus" type="submit" class="btn btn-primary my-1">Lähetä vastaus</button>
+    <button name="submitVastaus" type="submit" class="btn btn-primary my-1">{% trans submit_answer %}</button>
   </div>
 </form>

@@ -1,3 +1,10 @@
+{% load i18n %}
+
+{% trans "Introduction" as introduction %}
+{% trans "Picture" as picture %}
+{% trans "Apply" as apply %}
+{% trans "Note! You can modify your application later." as apply_note %}
+
 <form id="vaalitApplyForm" novalidate action="" method="POST" enctype="multipart/form-data">
   {% csrf_token %}
   {{ form_ehdokas.media }}
@@ -15,7 +22,7 @@
     </div>
     <div class="form-group row">
       <div class="col-lg-8 col-sm-12 px-0">
-        <label class="col-form-label" for="{{ form_ehdokas.introduction.id_for_label }}">Esittely</label>
+        <label class="col-form-label" for="{{ form_ehdokas.introduction.id_for_label }}">{% trans introduction %}</label>
         {{ form_ehdokas.introduction }}
         {% if form_ehdokas.introduction.errors %}
           <small class="form-text text-danger">{{ form_ehdokas.introduction.errors.as_text }}</small>
@@ -24,7 +31,7 @@
     </div>
     <div class="form-group row">
       <div class="col-lg-8 col-sm-12 pl-0">
-        <label class="col-form-label" for="{{ form_photo.pic.id_for_label }}">Kuva</label>
+        <label class="col-form-label" for="{{ form_photo.pic.id_for_label }}">{% trans picture %}</label>
         {{ form_ehdokas.pic }}
       </div>
       <div class="col-sm-3">
@@ -38,8 +45,8 @@
     </div>
     <div class="form-group row">
       <div class="col-sm-10 pl-0">
-        <button name="submitVirka" type="submit" class="btn btn-primary my-2">Hae virkaan</button>
-        <small class="form-text text-muted">Huom! Voit muokata hakemustasi myöhemmin.</small>
+        <button name="submitVirka" type="submit" class="btn btn-primary my-2">{% trans picture %}</button>
+        <small class="form-text text-muted">{% trans apply_note %}</small>
       </div>
     </div>
     {% comment %}

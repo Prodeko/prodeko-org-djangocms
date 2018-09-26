@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load cms_tags sekizai_tags %}
+{% load cms_tags sekizai_tags i18n %}
 
 {% block extra_head %}
 <script src="/static/js/vaalit-custom.js"></script>
@@ -8,6 +8,9 @@
 {% endblock %}
 
 {% block content %}
+
+{% trans "Modify application" as modify %}
+{% trans "Introduction" as introduction %}
 
 <div class="container">
 
@@ -32,7 +35,7 @@
           </div>
           <div class="form-group row">
             <div class="col-sm-12 px-0">
-              <label class="col-form-label" for="{{ form.introduction.id_for_label }}">Esittely</label>
+              <label class="col-form-label" for="{{ form.introduction.id_for_label }}">{% trans introduction %}</label>
               {{ form.introduction }}
               {% if form.introduction.errors %}
                 <small class="form-text text-danger">{{ form.introduction.errors.as_text }}</small>
@@ -56,10 +59,13 @@
           </div>
           <div class="form-group row">
             <div class="col-sm-10 pl-0">
-              <button name="submitVirka" type="submit" class="btn btn-primary my-2">Muokkaa hakemusta</button>
+              <button name="submitVirka" type="submit" class="btn btn-primary my-2">{% trans modify %}</button>
             </div>
           </div>
-          {% comment %}  {% endcomment %}
+          {% comment %}
+            Hidden values used to crop the image and set the correct
+            virka foreign key on the submitted ehdokas object
+          {% endcomment %}
           <input type="hidden" name="submitVirka" value=""/>
           <input type="hidden" class="input-virka" name="hidden-input-virka" value="{{form.instance.virka}}"/>
           <input type="hidden" id="x" name="hidden-crop-x" value="0"/>

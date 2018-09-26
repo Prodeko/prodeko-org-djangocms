@@ -1,3 +1,9 @@
+{% load i18n %}
+
+{% trans "Answer" as answer %}
+{% trans "Remove" as remove %}
+{% trans "Edit" as edit %}
+
 {% load sekizai_tags %}
 <li id="kysymys_{{ kysymys.pk }}" class="list-group-item align-items-start mb-2">
   <div class="row">
@@ -8,7 +14,7 @@
           {% if request.user == ehdokas.auth_prodeko_user %}
           <button type="button" class="btn btn-default btn-sm btn-xs my-2 mr-2" data-toggle="collapse" data-target="#vaalitAnswerForm_{{ forloop.parentloop.counter }}">
             <i class="mr-2 fa fa-reply"></i>
-            Vastaa
+            {% trans answer %}
           </button>
           {% endif %}
         {% endfor %}
@@ -16,9 +22,9 @@
         <form class="vaalitDeleteKysymysForm" novalidate method="POST">
            {% csrf_token %}
            <input type="hidden" name="hidden-kysymys-id" value="{{ kysymys.pk }}"/>
-           <button type="submit" class="btn btn-outline-danger btn-xs mt-2 mr-2"><i class="fas fa-times mr-2"></i>Poista</button>
+           <button type="submit" class="btn btn-outline-danger btn-xs mt-2 mr-2"><i class="fas fa-times mr-2"></i>{% trans remove %}</button>
         </form>
-        <a href="{% url 'app_vaalit:update_kysymys' pk=kysymys.id %}" class="btn btn-outline-success btn-xs my-2"><i class="far fa-edit mr-2"></i>Muokkaa</a>
+        <a href="{% url 'app_vaalit:update_kysymys' pk=kysymys.id %}" class="btn btn-outline-success btn-xs my-2"><i class="far fa-edit mr-2"></i>{% trans edit %}</a>
         {% endif %}
       </div>
     </div>

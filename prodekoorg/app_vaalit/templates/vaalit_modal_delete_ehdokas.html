@@ -1,15 +1,21 @@
+{% load i18n %}
+
+{% trans "Are you sure you want to remove your application?" as confirm_delete %}
+{% trans "Close" as close %}
+{% trans "Delete" as delete %}
+
 <!-- Confirm delete Ehdokas modal -->
 <div class="modal fade" id="confirmDeleteEhdokasModal" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
     <div class="modal-content">
       <div class="modal-body text-center pb-0">
-        <p><strong>Haluatko varmasti poistaa hakemuksesi?</strong></p>
+        <p><strong>{% trans confirm_delete %}</strong></p>
       </div>
       <div class="modal-footer m-auto">
-        <button type="button" class="btn btn-outline-secondary btn-sm" data-dismiss="modal">Sulje</button>
+        <button type="button" class="btn btn-outline-secondary btn-sm" data-dismiss="modal">{% trans close %}</button>
         <form id="formDeleteEhdokas" method="post">
           {% csrf_token %}
-          <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-times mr-2"></i>Poista</button>
+          <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-times mr-2"></i>{% trans delete %}</button>
         </form>
       </div>
     </div>

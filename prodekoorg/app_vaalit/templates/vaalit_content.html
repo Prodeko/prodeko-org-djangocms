@@ -1,3 +1,11 @@
+{% load i18n %}
+
+{% trans "Applicants" as applicants %}
+{% trans "No applicants" as no_applicant %}
+
+{% trans "Questions" as questions %}
+{% trans "No questions" as no_questions %}
+
 <h2 class="py-3" id="header">{{ virat.0.name }}</h2>
 <div id="vaaliKysymysForm">
   {% include "forms/vaalit_question_form.html" %}
@@ -10,18 +18,19 @@
   <div id="_{{ forloop.counter }}" class="tab-pane fade{% if forloop.first %} active show{% endif %}" role="tabpanel">
 
     {# EHDOKKAAT #}
-    <h3>Ehdokkaat</h3>
+    <h3>{% trans applicants %}</h3>
     <div class="card-group">
     {% for ehdokas in virka.ehdokkaat.all %}
       {% include "vaalit_ehdokas.html" %}
     {% empty %}
-      <p>Ei hakijoita</p>
+      <p>{% trans no_applicants %}</p>
     {% endfor %}
     </div>
 
     {# KYSYMYKSET #}
     <div class="vaalitQuestions">
-      <h3 class="mt-4">Kysymykset</h3>
+      <h3 class="mt-4">{% trans questions %}
+          {% trans "No applicants" as no_applicant %}</h3>
       <div class="vaalitKysymysList list-group list-group-root">
         {% for kysymys in virka.kysymykset.all %}
           {% include "vaalit_question.html" %}
@@ -34,7 +43,7 @@
           </div>
 
         {% empty %}
-          <p>Ei kysymyksiä</p>
+          <p>{% trans no_questions %}</p>
         {% endfor %}
       </div>
     </div>
