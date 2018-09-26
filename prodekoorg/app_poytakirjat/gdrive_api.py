@@ -47,13 +47,13 @@ def merge_liitteet_to_doc(pdfs):
     fh = BytesIO()
     merger.write(fh)
     ret = fh.getvalue()
-    
+
     fh.close()
 
     return ret
 
 
-# TODO compress pdf using something. Now they ~7MB and 
+# TODO compress pdf using something. Now they ~7MB and
 # can be reduced to ~500kb without visible changes
 def compress_pdf(fh_pdf):
     import ghostscript
