@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load cms_tags sekizai_tags sass_tags staticfiles %}
+{% load cms_tags sekizai_tags sass_tags common_tags i18n staticfiles %}
 
 {% block extra_head %}
 <link href="{% sass_src 'scss/auth_prodeko.scss' %}" rel="stylesheet" type="text/css" />
@@ -7,20 +7,82 @@
 
 {% block content %}
 
-<div class="container"> 
+{% trans "Submit" as submit_button %}
+{% trans "Password forgotten?" as password_forgotten %}
+{% trans "The email and password didn't match. Try again." as error_login %}
+
+<div class="container">
     <div class="card">
         <div class="card-body">
-            <form id="login-form" method="post" action="">  
-                    {% csrf_token %}
-            
-                    {{ form }}
-            
-                    <div class="form-group row">
-                        <div class="col-sm-10">
-                            <button type="submit" class="btn btn-primary my-2">Lähetä</button>
-                        </div>
+            <form id="login-form" method="post" action="{% url 'auth_prodeko:login' %}" novalidate>
+                {% csrf_token %}
+                <div class="form-group row">
+                    <label class="col-sm-12 col-form-label" for="{{ form.username.id_for_label }}">
+                        {{form.username.label }}
+                    </label>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-12">
+                        {% if not form.username.errors and request.post %}
+                            {{ form.username|add_class:"is-valid" }}
+                        {% else %}
+                            {{ form.username }}
+                        {% endif %}
+                        {% if form.username.help_text %}
+                            <small class="form-text text-muted">{{ form.username.help_text }}</small>
+                        {% endif %}
                     </div>
-                </form>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        {% if form.username.errors %}
+                            <small class="form-text text-danger">{{ form.username.errors.as_text }}</small>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-12 col-form-label" for="{{ form.password.id_for_label }}">
+                        {{form.password.label }}
+                    </label>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-12">
+                        {% if not form.password.errors and request.post %}
+                            {{ form.password|add_class:"is-valid" }}
+                        {% else %}
+                            {{ form.password }}
+                        {% endif %}
+                        {% if form.password.help_text %}
+                            <small class="form-text text-muted">{{ form.password.help_text }}</small>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        {% if form.password.errors %}
+                            <small class="form-text text-danger">{{ form.password.errors.as_text }}</small>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        {% if form.errors %}
+                            <small class="form-text text-danger">{% trans error_login %}.</small>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="form-group row mt-3">
+                    <div class="col-sm-12">
+                        <button type="submit" class="btn btn-primary">{% trans submit_button %}</button>
+                    </div>
+                </div>
+                <div class="form-group row mt-3">
+                    <div class="col-sm-12">
+                        <a href="{% url 'auth_prodeko:password_reset' %}">{% trans password_forgotten %}</a>
+                    </div>
+                </div>
+                <input type="hidden" name="next" value="{{ next }}">
+            </form>
         </div>
     </div>
 </div>

@@ -8,11 +8,30 @@
     
     label {
         display: block;
+        width: 100%;
       }
 
     input {
         display: block;
+        width: 100%;
     }    
+
+    button {
+        display: block;
+        width: 100%;
+    }   
+
+    .form-group {
+        margin-bottom: 0;
+    }
+
+    @include phone {
+        max-width: 98%;
+    }
+
+    @include tablet {
+        max-width: 70%;
+    }
 }
 
 .card {
@@ -29,11 +48,4 @@
         margin: 4em auto;
         width: 80%;
     }
-}
-
-#login-logo {
-    height: 150px; 
-    width: 150px;
-    padding: 10px;
-    margin: 0 auto;
 }
