@@ -2,6 +2,7 @@ import os.path
 
 from django.db import models
 from django.utils.html import *
+from django.utils.translation import ugettext_lazy as _
 
 
 class Jaosto(models.Model):
@@ -11,7 +12,8 @@ class Jaosto(models.Model):
         return self.nimi
 
     class Meta:
-        verbose_name_plural = "jaostot"
+        verbose_name = _('section')
+        verbose_name_plural = _('sections')
 
 
 class Toimari(models.Model):
@@ -33,7 +35,8 @@ class Toimari(models.Model):
         return self.name + ", " + self.virka
 
     class Meta:
-        verbose_name_plural = "toimarit"
+        verbose_name = _('guild official')
+        verbose_name_plural = _('guild officials')
 
 
 class HallituksenJasen(models.Model):
@@ -57,4 +60,5 @@ class HallituksenJasen(models.Model):
         return self.name + ", " + self.virka
 
     class Meta:
-        verbose_name_plural = "hallituksen jäsenet"
+        verbose_name = _('board member')
+        verbose_name_plural = _('board members')

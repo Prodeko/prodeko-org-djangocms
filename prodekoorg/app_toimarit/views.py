@@ -1,15 +1,9 @@
 import csv
 import io
 
-from django.conf.urls import url
-from django.contrib import admin, messages
+from django.contrib import messages
 from django.contrib.admin.views.decorators import staff_member_required
-from django.core import serializers
-from django.core.files import File
-from django.http import HttpResponse, JsonResponse
 from django.shortcuts import redirect, render
-from django.urls import reverse
-from prodekoorg.app_toimarit.models import *
 
 from .models import HallituksenJasen, Jaosto, Toimari
 

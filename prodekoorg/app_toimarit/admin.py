@@ -1,24 +1,17 @@
 import csv
-from functools import update_wrapper
 
-from django import forms
-from django.conf.urls import url
 from django.contrib import admin
-from django.contrib.admin import AdminSite
+from django.core.exceptions import PermissionDenied
 from django.http import HttpResponse
-from django.shortcuts import render_to_response
-from django.template import RequestContext
-from prodekoorg.app_toimarit import views
-from prodekoorg.app_toimarit.models import *
+from django.utils.translation import ugettext_lazy as _
 
-from .models import HallituksenJasen, Toimari
+from .models import HallituksenJasen, Jaosto, Toimari
 
 
 def exportcsv(modeladmin, request, queryset):
     if not request.user.is_staff:
         raise PermissionDenied
     opts = queryset.model._meta
-    model = queryset.model
     response = HttpResponse(content_type='text/csv')
     response['Content-Disposition'] = 'attachment;filename=toimarit.csv'
     writer = csv.writer(response, delimiter=';')
@@ -39,11 +32,12 @@ class JaostoAdmin(admin.ModelAdmin):
 class ToimariAdmin(admin.ModelAdmin):
     list_display = ('etunimi', 'sukunimi', 'jaosto', 'virka')
     actions = [exportcsv]
-    exportcsv.short_description = "Export selected as CSV"
+    exportcsv.short_description = _('Export selected as CSV')
 
 
 @admin.register(HallituksenJasen)
 class HallituksenJasenAdmin(admin.ModelAdmin):
-    list_display = ('etunimi', 'sukunimi', 'virka', 'virka_eng', 'jaosto', 'puhelin', 'sahkoposti')
+    list_display = ('etunimi', 'sukunimi', 'virka', 'virka_eng',
+                    'jaosto', 'puhelin', 'sahkoposti')
     actions = [exportcsv]
-    exportcsv.short_description = "Export selected as CSV"
+    exportcsv.short_description = _('Export selected as CSV')
