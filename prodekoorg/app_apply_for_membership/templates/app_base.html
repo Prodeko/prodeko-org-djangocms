@@ -8,6 +8,8 @@
 
 {% block content %}
 
+{% trans "Submit" as submit %}
+
 {% include "layout-components/jumbotron.html" %}
 
 <div class="container kulukorvaus-container">
@@ -25,7 +27,7 @@
 
 			<div class="form-group row">
 				<div class="col-sm-10">
-					<button type="submit" class="btn btn-primary my-2">Lähetä</button>
+					<button type="submit" class="btn btn-primary my-2">{% trans submit %}</button>
 				</div>
 			</div>
 

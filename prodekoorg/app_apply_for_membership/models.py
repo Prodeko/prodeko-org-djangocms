@@ -12,14 +12,14 @@ class PendingUser(models.Model):
     """
 
     MEMBERSHIP_TYPE_CHOICES = (
-        ('Varsinainen', 'Varsinainen jäsen'),
-        ('Alumni', 'Alumni'),
-        ('Ulkojäsen', 'Ulkojäsen'),
+        ('1', _('True member')),
+        ('2', _('Alumn')),
+        ('3', _('External member')),
     )
 
     AYY_MEMBER_CHOICES = (
-        ('Kyllä', 'Kyllä'),
-        ('Ei', 'Ei'),
+        ('Kyllä', _('Yes')),
+        ('Ei', _('No')),
     )
 
     YEAR_CHOICES = []
@@ -27,15 +27,15 @@ class PendingUser(models.Model):
         YEAR_CHOICES.append((r, r))
 
     id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=50, verbose_name='Nimi')
-    hometown = models.CharField(max_length=50, verbose_name='Kotipaikka')
-    field_of_study = models.CharField(max_length=50, verbose_name='Opiskeluala')
-    email = models.EmailField(verbose_name='Sähköposti')
-    start_year = models.IntegerField(_('year'), choices=YEAR_CHOICES, default=datetime.datetime.now().year)
-    membership_type = models.CharField(max_length=50, choices=MEMBERSHIP_TYPE_CHOICES, verbose_name='Jäsentyyppi')
-    additional_info = models.TextField(blank=True, verbose_name='Miksi haluat jäseneksi?')
-    is_ayy_member = models.CharField(max_length=12, choices=AYY_MEMBER_CHOICES, verbose_name='Oletko AYY:n jäsen?')
-    receipt = models.FileField(blank=True, null=True, upload_to='jäsenhakemukset/%Y-%m', verbose_name='Kuitti jäsenmaksusta',
+    name = models.CharField(max_length=50, verbose_name=_('Name'))
+    hometown = models.CharField(max_length=50, verbose_name=_('Hometown'))
+    field_of_study = models.CharField(max_length=50, verbose_name=_('Field of study'))
+    email = models.EmailField(verbose_name=_('Email'))
+    start_year = models.IntegerField(verbose_name=_('Year'), choices=YEAR_CHOICES, default=datetime.datetime.now().year)
+    membership_type = models.CharField(max_length=50, choices=MEMBERSHIP_TYPE_CHOICES, verbose_name=_('Membership type'))
+    additional_info = models.TextField(blank=True, verbose_name=_('Why do you want to become a member?'))
+    is_ayy_member = models.CharField(max_length=12, choices=AYY_MEMBER_CHOICES, verbose_name=_('Are you an AYY (Aalto University Student Union) member?'))
+    receipt = models.FileField(blank=True, null=True, upload_to='jäsenhakemukset/%Y-%m', verbose_name=_('Receipt of the membership payment'),
                                validators=[FileExtensionValidator(['jpg', 'png', 'jpeg'])])
 
     def __str__(self):
@@ -45,5 +45,5 @@ class PendingUser(models.Model):
 
     class Meta:
         # Correct spelling in Django admin
-        verbose_name = _('jäsenhakemus')
-        verbose_name_plural = _('Jäsenhakemukset')
+        verbose_name = _('membership application')
+        verbose_name_plural = _('Membership applications')
