@@ -1,6 +1,8 @@
 {% load i18n menu_tags static %}
-{% get_current_language as LANGUAGE_CODE %}
 
+{% trans "Login" as login %}
+{% trans "Password forgotten?" as salasana_unohtunut %}
+{% trans "Apply for a membership" as apply %}
 
 <div class="container">
 	<nav class="navbar navbar-expand-lg navbar-light prodeko-navbar">
@@ -21,11 +23,7 @@
 			<ul class="navbar-nav py-2">
 				<li class="nav-item dropdown">
 					<button class="btn btn-light dropdown-toggle mr-4" type="button" data-toggle="dropdown">
-						{% if LANGUAGE_CODE == 'fi' %}
-							Kirjaudu
-						{% else %}
-							Login
-						{% endif %}
+						{% trans login %}
 						<span class="caret"></span>
 					</button>
 					<ul class="login-dropdown dropdown-menu dropdown-menu-right p-4">
@@ -36,7 +34,7 @@
 							<div class="form-group">
 								 <input type="password" class="form-control" id="password" placeholder="{% if LANGUAGE_CODE == 'fi' %}Salasana{% else %}Password{% endif %}" required>
 				   			<div class="form-text text-left forgot-password">
-								<a href="">{% if LANGUAGE_CODE == 'fi' %}Unohditko salasanan?{% else %}Forgot the password?{% endif %}</a>
+								<a href="">{% trans salasana_unohtunut %}</a>
 							</div>
 							<div class= "form-group">
 								<button type="submit" class="btn btn-success btn-block">{% if LANGUAGE_CODE == 'fi' %}Kirjaudu{% else %}Sign in{% endif %}</button>
@@ -46,11 +44,7 @@
 				</li>
 				<li>
 					<a href="{% url 'app_apply_for_membership:apply' %}" class="btn btn-primary mr-4">
-						{% if LANGUAGE_CODE == 'fi' %}
-							Hae Jäsenyyttä
-						{% else %}
-							Apply for a membership
-						{% endif %}
+						{% trans apply %}
 					</a>
 				</li>
 			</ul>
