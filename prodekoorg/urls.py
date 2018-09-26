@@ -23,25 +23,6 @@ urlpatterns = [
     #url(r'^$', RedirectView.as_view(url='fi/main', permanent=False), name='index')
 ]
 
-# ==== app_toimarit & app_poytakirjat ==== #
-urlpatterns += [
-    # Must be before admin urls
-    url(r'^admin/toimarit/csvupload$', TemplateView.as_view(template_name='admin/uploadcsv.html'), name='uploadcsv'),
-    url(r'^admin/toimarit/postcsv$', postcsv, name='postcsv'),
-    url(r'^admin/poytakirjat/download$', run_app_poytakirjat, name='download_docs_from_gsuite'),
-]
-
-# ==== auth_prodeko ==== #
-urlpatterns += i18n_patterns(
-    url(r'^', include('auth_prodeko.urls', namespace='auth_prodeko')),
-)
-
-# ==== Localization and internationalization ==== #
-urlpatterns += i18n_patterns(
-    url(r'^admin/', include(admin.site.urls)),
-    url(r'^', include('cms.urls')),
-)
-
 # ==== Django filer ==== #
 urlpatterns += [
     url(r'^', include('filer.server.urls')),
@@ -58,30 +39,32 @@ urlpatterns += [
     url(r'^lifelonglearning/', include('lifelonglearning.urls', namespace='lifelonglearning')),
 ]
 
-# ==== app_poytakirjat ==== #
-urlpatterns += [
-    url(r'^', include('prodekoorg.app_poytakirjat.urls', namespace='app_poytakirjat')),
-]
+urlpatterns += i18n_patterns(
+    # ==== app_toimarit & app_poytakirjat ==== #
+    # Must be before admin urls
+    url(r'^admin/toimarit/csvupload$', TemplateView.as_view(template_name='admin/uploadcsv.html'), name='uploadcsv'),
+    url(r'^admin/toimarit/postcsv$', postcsv, name='postcsv'),
+    url(r'^admin/poytakirjat/download$', run_app_poytakirjat, name='download_docs_from_gsuite'),
 
-# ==== app_kulukorvaus ==== #
-urlpatterns += [
-    url(r'^', include('prodekoorg.app_kulukorvaus.urls', namespace='app_kulukorvaus')),
-]
-
-# ==== app_vaalit ==== #
-urlpatterns += [
-    url(r'^', include('prodekoorg.app_vaalit.urls', namespace='app_vaalit')),
-]
-
-# ==== app_tiedostot ==== #
-urlpatterns += [
-    url(r'^', include('prodekoorg.app_tiedostot.urls', namespace='app_tiedostot')),
-]
-
-# ==== app_apply_for_membership ==== #
-urlpatterns += [
+    # ==== auth_prodeko ==== #
+    url(r'^', include('auth_prodeko.urls', namespace='auth_prodeko')),
+    # ==== app_apply_for_membership ==== #
     url(r'^', include('prodekoorg.app_apply_for_membership.urls', namespace='app_apply_for_membership')),
-]
+    # ==== app_kulukorvaus ==== #
+    url(r'^', include('prodekoorg.app_kulukorvaus.urls', namespace='app_kulukorvaus')),
+    # ==== app_poytakirjat ==== #
+    url(r'^', include('prodekoorg.app_poytakirjat.urls', namespace='app_poytakirjat')),
+    # ==== app_tiedostot ==== #
+    url(r'^', include('prodekoorg.app_tiedostot.urls', namespace='app_tiedostot')),
+    # ==== app_vaalit ==== #
+    url(r'^', include('prodekoorg.app_vaalit.urls', namespace='app_vaalit')),
+)
+
+# ==== Localization and internationalization ==== #
+urlpatterns += i18n_patterns(
+    url(r'^admin/', include(admin.site.urls)),
+    url(r'^', include('cms.urls')),
+)
 
 # This is only needed when using runserver.
 if settings.DEBUG:

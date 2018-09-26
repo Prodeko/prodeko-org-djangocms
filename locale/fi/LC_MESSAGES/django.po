@@ -416,7 +416,7 @@ msgstr "Lähetä"
 #: prodekoorg/app_vaalit/templates/forms/vaalit_apply_form.html:3
 #: prodekoorg/app_vaalit/templates/forms/vaalit_modify_application_form.html:13
 msgid "Introduction"
-msgstr "esittely"
+msgstr "Esittely"
 
 #: prodekoorg/app_vaalit/templates/forms/vaalit_apply_form.html:5
 #: prodekoorg/app_vaalit/templates/forms/vaalit_question_form.html:5
