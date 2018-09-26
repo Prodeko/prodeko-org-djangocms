@@ -1,5 +1,7 @@
-{% load add_class %}
-<h3>Perustiedot</h3>
+{% trans "Basic information" as basic_info%}
+
+{% load common_tags %}
+<h3>{% trans basic_info %}</h3>
 <div id="form-perustiedot-wrapper">
   <div class="form-group row">
     <label class="col-sm-3 col-form-label" for="{{ form_perustiedot.created_by.id_for_label }}">{{ form_perustiedot.created_by.label }}</label>
