@@ -34,8 +34,8 @@ class Dokumentti(models.Model):
 
     class Meta:
         # Correct spelling in Django admin
-        verbose_name = _('pöytäkirja')
-        verbose_name_plural = _('Pöytäkirjat')
+        verbose_name = _('minutes')
+        verbose_name_plural = _('Minutes')
         ordering = ['-date', '-number']
 
     def get_absolute_url(self):
