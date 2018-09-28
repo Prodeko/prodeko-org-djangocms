@@ -20,11 +20,11 @@ def main_form(request):
 
         if is_valid_form:
             pending_user = form_apply.save()
-            #send_email(pending_user)
+            # send_email(pending_user)
 
             return render(request, 'app_base.html', {'done': True})
         else:
-            # The http status code is captured as an error in javascript 
+            # The http status code is captured as an error in javascript
             return render(request, 'form_apply.html', {'form': form_apply}, status=599)
     else:
         form_apply = PendingUserForm()

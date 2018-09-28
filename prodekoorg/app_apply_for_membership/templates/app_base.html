@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load cms_tags sekizai_tags sass_tags %}
+{% load cms_tags sekizai_tags sass_tags i18n %}
 
 {% block extra_head %}
 <script src="/static/js/apply_for_membership-custom.js"></script>
@@ -8,9 +8,9 @@
 
 {% block content %}
 
-{% trans "Submit" as submit %}
-
 {% include "layout-components/jumbotron.html" %}
+
+{% trans "Submit" as submit %}
 
 <div class="container kulukorvaus-container">
 

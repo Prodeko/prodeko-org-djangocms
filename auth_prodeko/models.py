@@ -1,6 +1,10 @@
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.db import models
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 from django.utils.translation import ugettext_lazy as _
+
+from prodekoorg.app_apply_for_membership.models import PendingUser
 
 
 class UserManager(BaseUserManager):
@@ -45,5 +49,16 @@ class User(AbstractUser):
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
+
+    @receiver(post_save, sender=PendingUser)
+    def create_user_profile(sender, instance, created, **kwargs):
+        print(instance)
+        if created:
+            password = User.objects.make_random_password(length=14)
+            User.objects.create_user(email=instance.email, password=password)
+
+    @receiver(post_save, sender=PendingUser)
+    def save_user_profile(sender, instance, **kwargs):
+        instance.profile.save()
 
     objects = UserManager()

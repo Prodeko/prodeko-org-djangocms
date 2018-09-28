@@ -1,8 +1,9 @@
 import datetime
 
+from django.conf import settings
 from django.core.validators import FileExtensionValidator
 from django.db import models
-from django.utils.translation import ugettext_lazy as _ 
+from django.utils.translation import ugettext_lazy as _
 
 
 class PendingUser(models.Model):
@@ -18,8 +19,8 @@ class PendingUser(models.Model):
     )
 
     AYY_MEMBER_CHOICES = (
-        ('Kyllä', _('Yes')),
-        ('Ei', _('No')),
+        ('Y', _('Yes')),
+        ('N', _('No')),
     )
 
     YEAR_CHOICES = []
@@ -27,6 +28,7 @@ class PendingUser(models.Model):
         YEAR_CHOICES.append((r, r))
 
     id = models.AutoField(primary_key=True)
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     name = models.CharField(max_length=50, verbose_name=_('Name'))
     hometown = models.CharField(max_length=50, verbose_name=_('Hometown'))
     field_of_study = models.CharField(max_length=50, verbose_name=_('Field of study'))
