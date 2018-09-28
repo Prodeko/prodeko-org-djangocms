@@ -29,7 +29,7 @@ class Toimari(models.Model):
         return '%s %s' % (self.etunimi, self.sukunimi)
 
     def photoExists(self):
-        return os.path.isfile("prodekoorg/static/images/toimari_photos/" + self.etunimi + "_" + self.sukunimi + ".jpg")
+        return os.path.isfile("prodekoorg/app/toimarit/static/images/toimari_photos/" + self.etunimi + "_" + self.sukunimi + ".jpg")
 
     def __str__(self):
         return self.name + ", " + self.virka
@@ -54,7 +54,7 @@ class HallituksenJasen(models.Model):
         return '%s %s' % (self.etunimi, self.sukunimi)
 
     def photoExists(self):
-        return os.path.isfile("prodekoorg/static/images/hallitus_photos/" + self.etunimi + "_" + self.sukunimi + ".jpg")
+        return os.path.isfile("prodekoorg/app_toimarit/static/images/hallitus_photos/" + self.etunimi + "_" + self.sukunimi + ".jpg")
 
     def __str__(self):
         return self.name + ", " + self.virka
