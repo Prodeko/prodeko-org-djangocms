@@ -25,14 +25,15 @@ config.read(os.path.join(BASE_DIR, 'prodekoorg/variables.txt'))
 SECRET_KEY = config['DJANGO']['SECRET']
 DEBUG = config['DEBUG']['MODE']
 ALLOWED_HOSTS = ['new.prodeko.org', 'prodeko.org', '.prodeko.org', 'localhost']
-DB_NAME = config['DB']['NAME']
+DB_NAME_DEFAULT = config['DB']['NAME_DEFAULT']
+DB_NAME_AUTH = config['DB']['NAME_AUTH']
 DB_USER = config['DB']['USER']
 DB_PSWD = config['DB']['PASSWORD']
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': DB_NAME,
+        'NAME': DB_NAME_DEFAULT,
         'USER': DB_USER,
         'PASSWORD': DB_PSWD,
         'HOST': '',
@@ -43,6 +44,14 @@ DATABASES = {
         'COLLATION': 'utf8_general_ci',
     }
 }
+
+"""'auth_prodeko': {
+        'NAME': DB_NAME_AUTH,
+        'ENGINE': 'django.db.backends.mysql',
+        'USER': DB_USER,
+        'PASSWORD': DB_PSWD,
+    },"""
+#DATABASE_ROUTERS = ['prodekoorg.routers.AuthRouter']
 
 # Application definition
 ROOT_URLCONF = 'prodekoorg.urls'

@@ -53,6 +53,8 @@ mysql -uroot -pvagrant -e "CREATE USER 'prodekoorg'@'localhost' IDENTIFIED BY 'p
 mysql -uroot -pvagrant -e "GRANT ALL PRIVILEGES on *.* TO 'prodekoorg'@'localhost';"
 mysql -uroot -pvagrant -e "DROP DATABASE IF EXISTS prodekoorg;"
 mysql -uroot -pvagrant -e "CREATE DATABASE prodekoorg;"
+mysql -uroot -pvagrant -e "DROP DATABASE IF EXISTS auth_prodeko;"
+mysql -uroot -pvagrant -e "CREATE DATABASE auth_prodeko;"
 
 # --- Required python modules ---
 pip3 install -r /vagrant/requirements.txt
