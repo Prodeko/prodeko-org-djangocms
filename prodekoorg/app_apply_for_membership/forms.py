@@ -23,7 +23,7 @@ class PendingUserForm(ModelForm):
         model = PendingUser
         exclude = ['created_by_user']
         widgets = {
-            'additional_info': Textarea(attrs={'rows': 1, 'cols': 1}),
+            'additional_info': Textarea(attrs={'rows': 4, 'cols': 1}),
         }
         help_texts = {
             'target': 'esim. "Ruokakulut", "Kahvia kiltikselle" tai "Kilometrikorvaus" ',

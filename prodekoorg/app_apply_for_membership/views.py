@@ -20,6 +20,7 @@ def main_form(request):
 
         if is_valid_form:
             pending_user = form_apply.save()
+            print(pending_user)
             # send_email(pending_user)
 
             return render(request, 'app_base.html', {'done': True})

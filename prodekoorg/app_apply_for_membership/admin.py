@@ -5,7 +5,7 @@ from prodekoorg.app_apply_for_membership.models import (PendingUser)
 
 
 class PendingUserAdmin(admin.ModelAdmin):
-    list_display = ('name', 'hometown')
+    list_display = ('first_name', 'last_name', 'hometown')
 
     # Override Textarea default height
     formfield_overrides = {

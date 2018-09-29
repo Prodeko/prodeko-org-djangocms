@@ -28,8 +28,9 @@ class PendingUser(models.Model):
         YEAR_CHOICES.append((r, r))
 
     id = models.AutoField(primary_key=True)
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    name = models.CharField(max_length=50, verbose_name=_('Name'))
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, null=True, blank=True, on_delete=models.CASCADE)
+    first_name = models.CharField(max_length=50, verbose_name=_('First name'))
+    last_name = models.CharField(max_length=50, verbose_name=_('Last name'))
     hometown = models.CharField(max_length=50, verbose_name=_('Hometown'))
     field_of_study = models.CharField(max_length=50, verbose_name=_('Field of study'))
     email = models.EmailField(verbose_name=_('Email'))
@@ -41,9 +42,10 @@ class PendingUser(models.Model):
                                validators=[FileExtensionValidator(['jpg', 'png', 'jpeg'])])
 
     def __str__(self):
-        name = self.name
+        first_name = self.first_name
+        last_name = self.last_name
         field_of_study = self.field_of_study
-        return '{} - {}'.format(name, field_of_study)
+        return '{} {} - {}'.format(first_name, last_name, field_of_study)
 
     class Meta:
         # Correct spelling in Django admin
