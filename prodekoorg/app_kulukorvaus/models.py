@@ -25,16 +25,16 @@ class KulukorvausPerustiedot(models.Model):
     """
 
     POSITION_CHOICES = (
-        ('Hallitus', 'Hallitus'),
-        ('Toimihenkilö', 'Toimihenkilö'),
+        ('H', 'Hallitus'),
+        ('T', 'Toimihenkilö'),
     )
 
     BIC_CHOICES = (
-        ('OKOYFIHH', 'OKOYFIHH'),
-        ('NDEAFIHH', 'NDEAFIHH'),
-        ('SBANFIHH', 'SBANFIHH'),
-        ('DABAFIHH', 'DABAFIHH'),
-        ('HANDFIHH', 'HANDFIHH'),
+        ('OP', 'OKOYFIHH'),
+        ('NORDEA', 'NDEAFIHH'),
+        ('SPANKKI', 'SBANFIHH'),
+        ('DANSKE', 'DABAFIHH'),
+        ('HANDELS', 'HANDFIHH'),
     )
 
     id = models.AutoField(primary_key=True)
@@ -69,7 +69,7 @@ class KulukorvausPerustiedot(models.Model):
 class Kulukorvaus(models.Model):
     """ Kulukorvaus model
 
-    Basic information about the person
+    Basic information about the reimbursement
     """
 
     created_at = models.DateTimeField(auto_now_add=True, verbose_name=_('Created at'))
