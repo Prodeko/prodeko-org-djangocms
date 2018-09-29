@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-26 13:08+0000\n"
+"POT-Creation-Date: 2018-09-29 13:08+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -62,18 +62,18 @@ msgstr "Uusi salasana"
 msgid "New password confirmation"
 msgstr "Uusi salsana - vahvistus"
 
-#: auth_prodeko/models.py:44
+#: auth_prodeko/models.py:48
 msgid "email address"
 msgstr "sähköposti"
 
 #: auth_prodeko/templates/prodeko_login.html:10
-#: prodekoorg/app_apply_for_membership/templates/app_base.html:11
+#: prodekoorg/app_apply_for_membership/templates/app_base.html:13
 #: prodekoorg/app_kulukorvaus/templates/kulukorvaus.html:12
 msgid "Submit"
 msgstr "Lähetä"
 
 #: auth_prodeko/templates/prodeko_login.html:11
-#: prodekoorg/templates/layout-components/navbar.html:4
+#: prodekoorg/templates/layout-components/navbar.html:5
 msgid "Password forgotten?"
 msgstr "Salasana unohtunut?"
 
@@ -81,70 +81,77 @@ msgstr "Salasana unohtunut?"
 msgid "The email and password didn't match. Try again."
 msgstr "Sähköposti ja salasana eivät täsmänneet. Yritä uudestaan."
 
-#: prodekoorg/app_apply_for_membership/models.py:15
+#: prodekoorg/app_apply_for_membership/models.py:16
 msgid "True member"
 msgstr "Varsinainen jäsen"
 
-#: prodekoorg/app_apply_for_membership/models.py:16
+#: prodekoorg/app_apply_for_membership/models.py:17
 msgid "Alumn"
 msgstr "Alumni"
 
-#: prodekoorg/app_apply_for_membership/models.py:17
+#: prodekoorg/app_apply_for_membership/models.py:18
 msgid "External member"
 msgstr "Ulkojäsen"
 
-#: prodekoorg/app_apply_for_membership/models.py:21
+#: prodekoorg/app_apply_for_membership/models.py:22
 msgid "Yes"
 msgstr "Kyllä"
 
-#: prodekoorg/app_apply_for_membership/models.py:22
+#: prodekoorg/app_apply_for_membership/models.py:23
 msgid "No"
 msgstr "Ei"
 
-#: prodekoorg/app_apply_for_membership/models.py:30
-#: prodekoorg/app_kulukorvaus/models.py:43 prodekoorg/app_vaalit/models.py:33
-msgid "Name"
-msgstr "Nimi"
+#: prodekoorg/app_apply_for_membership/models.py:32
+msgid "First name"
+msgstr "Etunimi"
 
-#: prodekoorg/app_apply_for_membership/models.py:31
+#: prodekoorg/app_apply_for_membership/models.py:33
+msgid "Last name"
+msgstr "Sukunimi"
+
+#: prodekoorg/app_apply_for_membership/models.py:34
 msgid "Hometown"
 msgstr "Kotikaupunki"
 
-#: prodekoorg/app_apply_for_membership/models.py:32
+#: prodekoorg/app_apply_for_membership/models.py:35
 msgid "Field of study"
 msgstr "Opiskeluala"
 
-#: prodekoorg/app_apply_for_membership/models.py:33
+#: prodekoorg/app_apply_for_membership/models.py:36
 msgid "Email"
 msgstr "Sähköposti"
 
-#: prodekoorg/app_apply_for_membership/models.py:34
+#: prodekoorg/app_apply_for_membership/models.py:37
 msgid "Year"
 msgstr "Vuosi"
 
-#: prodekoorg/app_apply_for_membership/models.py:35
+#: prodekoorg/app_apply_for_membership/models.py:38
 msgid "Membership type"
 msgstr "Jäsentyyppi"
 
-#: prodekoorg/app_apply_for_membership/models.py:36
+#: prodekoorg/app_apply_for_membership/models.py:39
 msgid "Why do you want to become a member?"
 msgstr "Miksi haluat jäseneksi?"
 
-#: prodekoorg/app_apply_for_membership/models.py:37
+#: prodekoorg/app_apply_for_membership/models.py:40
 msgid "Are you an AYY (Aalto University Student Union) member?"
 msgstr "Oletko AYY:n jäsen?"
 
-#: prodekoorg/app_apply_for_membership/models.py:38
+#: prodekoorg/app_apply_for_membership/models.py:41
 msgid "Receipt of the membership payment"
 msgstr "Kuitti jäsenmaksusta"
 
-#: prodekoorg/app_apply_for_membership/models.py:48
+#: prodekoorg/app_apply_for_membership/models.py:52
 msgid "membership application"
 msgstr "jäsenhakemus"
 
-#: prodekoorg/app_apply_for_membership/models.py:49
+#: prodekoorg/app_apply_for_membership/models.py:53
 msgid "Membership applications"
 msgstr "Jäsenhakemukset"
+
+#: prodekoorg/app_kulukorvaus/models.py:43 prodekoorg/app_vaalit/models.py:33
+msgid "Name"
+msgstr "Nimi"
 
 #: prodekoorg/app_kulukorvaus/models.py:45
 msgid "Position in guild"
@@ -509,7 +516,11 @@ msgstr "Auki"
 msgid "Login"
 msgstr "Kirjaudu"
 
-#: prodekoorg/templates/layout-components/navbar.html:5
+#: prodekoorg/templates/layout-components/navbar.html:4
+msgid "Sign in"
+msgstr ""
+
+#: prodekoorg/templates/layout-components/navbar.html:6
 msgid "Apply for a membership"
 msgstr "Hae jäsenyyttä"
 
