@@ -55,10 +55,7 @@ class User(AbstractUser):
         print(instance)
         if created:
             password = User.objects.make_random_password(length=14)
-            User.objects.create_user(email=instance.email, password=password)
-
-    @receiver(post_save, sender=PendingUser)
-    def save_user_profile(sender, instance, **kwargs):
-        instance.profile.save()
+            User.objects.create_user(
+                email=instance.email, password=password, is_active=False, first_name=instance.first_name, last_name=instance.last_name)
 
     objects = UserManager()
