@@ -1,9 +1,14 @@
 import datetime
 
 from django.conf import settings
+from django.contrib import messages
 from django.core.validators import FileExtensionValidator
 from django.db import models
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from django.shortcuts import redirect
 from django.utils.translation import ugettext_lazy as _
+#from auth_prodeko.models import User
 
 
 class PendingUser(models.Model):
@@ -41,6 +46,25 @@ class PendingUser(models.Model):
     receipt = models.FileField(blank=True, null=True, upload_to='jäsenhakemukset/%Y-%m', verbose_name=_('Receipt of the membership payment'),
                                validators=[FileExtensionValidator(['jpg', 'png', 'jpeg'])])
 
+   # @receiver(post_save, sender=User)
+   # def create_user_profile(sender, instance, created, **kwargs):
+   #     if created:
+   #         PendingUser.objects.create(user=instance)
+
+
+    def acceptMembership(self, request, account_id, *args, **kwargs):
+        #TODO: send email?
+        self.user.is_active = True
+        self.user.save()
+        messages.success(request, 'Membership application accepted.')
+        self.delete()
+
+    def rejectMembership(self, request, account_id, *args, **kwargs):
+        #TODO: send email?
+        messages.success(request, 'Membership application rejected.')
+        self.user.delete()
+        self.delete()
+
     def __str__(self):
         first_name = self.first_name
         last_name = self.last_name
@@ -51,3 +75,5 @@ class PendingUser(models.Model):
         # Correct spelling in Django admin
         verbose_name = _('membership application')
         verbose_name_plural = _('Membership applications')
+
+

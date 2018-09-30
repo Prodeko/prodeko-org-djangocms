@@ -9,7 +9,7 @@ from django.utils.html import format_html
 from prodekoorg.app_apply_for_membership.models import (PendingUser)
 
 class PendingUserAdmin(admin.ModelAdmin):
-    list_display = ('first_name', 'last_name', 'hometown', 'application_actions')
+    list_display = ('first_name', 'last_name', 'user', 'hometown', 'application_actions')
 
     # Override Textarea default height
     formfield_overrides = {
@@ -30,9 +30,9 @@ class PendingUserAdmin(admin.ModelAdmin):
                 name='application-accept',
             ),
             url(
-                r'^(?P<account_id>.+)/decline/$',
-                self.admin_site.admin_view(declineApplication),
-                name='application-decline',
+                r'^(?P<account_id>.+)/reject/$',
+                self.admin_site.admin_view(rejectApplication),
+                name='application-reject',
             ),
         ]
         return custom_urls + urls
@@ -41,10 +41,10 @@ class PendingUserAdmin(admin.ModelAdmin):
     	return format_html(
     		'<a class="button" href="{}">View</a>&nbsp;'
             '<a class="button" href="{}">Accept</a>&nbsp;'
-            '<a class="button" href="{}">Decline</a>',
+            '<a class="button" href="{}">Reject</a>',
             reverse('admin:application-view', args=[obj.pk]),
             reverse('admin:application-accept', args=[obj.pk]),
-            reverse('admin:application-decline', args=[obj.pk]),
+            reverse('admin:application-reject', args=[obj.pk]),
         )
     application_actions.short_description = 'Application actions'
     application_actions.allow_tags = True
@@ -60,9 +60,13 @@ def viewApplication(request, account_id, *args, **kwargs):
 def acceptApplication(request, account_id, *args, **kwargs):
 	if not request.user.is_staff:
 		raise PermissionDenied
-	return redirect("../../../")
+	user = PendingUser.objects.get(pk=account_id)
+	user.acceptMembership(request, args, kwargs)
+	return redirect("../../")
 
-def declineApplication(request, account_id, *args, **kwargs):
+def rejectApplication(request, account_id, *args, **kwargs):
     if not request.user.is_staff:
     	raise PermissionDenied
-    return redirect("../")
+    user = PendingUser.objects.get(pk=account_id)
+    user.rejectMembership(request, args, kwargs)
+    return redirect("../../")

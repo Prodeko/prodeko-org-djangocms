@@ -6,8 +6,8 @@
 {{block.super}}
 
 <div class="submit-row" align="left">
-	<p class="deletelink-box" style="padding-right: 10px;"><a href="{% url 'admin:application-accept' original.id %}" class="btn btn-primary">Accept application</a></p>
-	<p class="deletelink-box"><a href="{% url 'admin:application-decline' original.id %}" class="btn">Decline application</a></p>
+	<p class="deletelink-box" style="padding-right: 10px;"><a href="{% url 'admin:application-accept' original.id %}" class="btn">Accept application</a></p>
+	<p class="deletelink-box"><a href="{% url 'admin:application-reject' original.id %}" class="btn">Reject application</a></p>
 </div>
 
  
