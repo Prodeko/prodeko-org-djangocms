@@ -55,7 +55,9 @@ class User(AbstractUser):
         print(instance)
         if created:
             password = User.objects.make_random_password(length=14)
-            User.objects.create_user(
+            usermodel = User.objects.create_user(
                 email=instance.email, password=password, is_active=False, first_name=instance.first_name, last_name=instance.last_name)
+            instance.user = usermodel
+            instance.save()
 
     objects = UserManager()
