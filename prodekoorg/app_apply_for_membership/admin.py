@@ -60,7 +60,7 @@ def viewApplication(request, account_id, *args, **kwargs):
 def acceptApplication(request, account_id, *args, **kwargs):
 	if not request.user.is_staff:
 		raise PermissionDenied
-	return redirect("../")
+	return redirect("../../../")
 
 def declineApplication(request, account_id, *args, **kwargs):
     if not request.user.is_staff:
