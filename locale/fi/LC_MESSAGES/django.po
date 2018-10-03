@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-29 13:08+0000\n"
+"POT-Creation-Date: 2018-10-03 11:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -149,6 +149,10 @@ msgstr "jäsenhakemus"
 msgid "Membership applications"
 msgstr "Jäsenhakemukset"
 
+#: prodekoorg/app_apply_for_membership/urls.py:8
+msgid "apply/"
+msgstr "hae-jäseneksi/"
+
 #: prodekoorg/app_kulukorvaus/models.py:43 prodekoorg/app_vaalit/models.py:33
 msgid "Name"
 msgstr "Nimi"
@@ -240,6 +244,12 @@ msgstr "Yhteensä"
 msgid "Add reimbursement"
 msgstr "Lisää kulu"
 
+#: prodekoorg/app_kulukorvaus/urls.py:8
+#, fuzzy
+#| msgid "reimbursement"
+msgid "reimbursement/"
+msgstr "kulukorvaus"
+
 #: prodekoorg/app_poytakirjat/models.py:37
 msgid "minutes"
 msgstr "pöytäkirja"
@@ -275,6 +285,10 @@ msgstr "Korjaa allaolevat virheet."
 msgid "Filter"
 msgstr "Filtteri"
 
+#: prodekoorg/app_poytakirjat/urls.py:8
+msgid "^documents/"
+msgstr "^dokumentit/"
+
 #: prodekoorg/app_tiedostot/models.py:26
 msgid "Files"
 msgstr "Tiedostot"
@@ -286,6 +300,16 @@ msgstr "tiedostoversio"
 #: prodekoorg/app_tiedostot/models.py:51
 msgid "File versions"
 msgstr "Tiedostoversiot"
+
+#: prodekoorg/app_tiedostot/urls.py:8
+#, fuzzy
+#| msgid "Files"
+msgid "files/"
+msgstr "Tiedostot"
+
+#: prodekoorg/app_tiedostot/urls.py:9
+msgid "files/download/(?P<pk>\\d+)/"
+msgstr "tiedostot/download/(?P<pk>\\d+)/"
 
 #: prodekoorg/app_toimarit/admin.py:35 prodekoorg/app_toimarit/admin.py:43
 msgid "Export selected as CSV"
@@ -357,8 +381,6 @@ msgid "position"
 msgstr "virka"
 
 #: prodekoorg/app_vaalit/models.py:24
-#, fuzzy
-#| msgid "Permissions"
 msgid "Positions"
 msgstr "Virat"
 
@@ -435,10 +457,8 @@ msgid "Note! You can modify your application later."
 msgstr "Huom! Voit muokata hakemustasi myöhemmin."
 
 #: prodekoorg/app_vaalit/templates/forms/vaalit_modify_application_form.html:12
-#, fuzzy
-#| msgid "Membership applications"
 msgid "Modify application"
-msgstr "Jäsenhakemukset"
+msgstr "Muokkaa hakemusta"
 
 #: prodekoorg/app_vaalit/templates/forms/vaalit_question_form.html:3
 #: prodekoorg/app_vaalit/templates/forms/vaalit_question_form.html:4
@@ -451,16 +471,12 @@ msgstr "sitten"
 
 #: prodekoorg/app_vaalit/templates/vaalit_content.html:4
 #: prodekoorg/app_vaalit/templates/vaalit_content.html:33
-#, fuzzy
-#| msgid "applicant"
 msgid "No applicants"
-msgstr "hakija"
+msgstr "Ei hakijoita"
 
 #: prodekoorg/app_vaalit/templates/vaalit_content.html:7
-#, fuzzy
-#| msgid "questions"
 msgid "No questions"
-msgstr "kysymykset"
+msgstr "Ei kysymyksiä"
 
 #: prodekoorg/app_vaalit/templates/vaalit_ehdokas.html:3
 #: prodekoorg/app_vaalit/templates/vaalit_modal_delete_ehdokas.html:5
@@ -482,7 +498,7 @@ msgstr "Sulje"
 
 #: prodekoorg/app_vaalit/templates/vaalit_modal_photocrop.html:3
 msgid "Crop image"
-msgstr ""
+msgstr "Rajaa kuva"
 
 #: prodekoorg/app_vaalit/templates/vaalit_modal_photocrop.html:5
 msgid "Crop"
@@ -496,11 +512,31 @@ msgstr "Poista"
 msgid "Edit"
 msgstr "Muokkaa"
 
-#: prodekoorg/settings.py:69 prodekoorg/settings.py:86
+#: prodekoorg/app_vaalit/urls.py:10
+msgid "^elections/"
+msgstr "^vaalit/"
+
+#: prodekoorg/app_vaalit/urls.py:11
+msgid "^elections/delete-question/(?P<pk>\\d+)/"
+msgstr "^vaalit/poista-kysymys/(?P<pk>\\d+)/"
+
+#: prodekoorg/app_vaalit/urls.py:12
+msgid "^elections/update-question/(?P<pk>\\d+)/"
+msgstr "^vaalit/päivitä-kyymys/(?P<pk>\\d+)/"
+
+#: prodekoorg/app_vaalit/urls.py:13
+msgid "^elections/delete-nominee/(?P<pk>\\d+)/"
+msgstr "^vaalit/poista-ehdokas/(?P<pk>\\d+)/"
+
+#: prodekoorg/app_vaalit/urls.py:14
+msgid "^elections/update-nominee/(?P<pk>\\d+)/"
+msgstr "^vaalit/päivitä-ehdokas/(?P<pk>\\d+)/"
+
+#: prodekoorg/settings.py:78 prodekoorg/settings.py:95
 msgid "Finnish"
 msgstr "Suomi"
 
-#: prodekoorg/settings.py:70 prodekoorg/settings.py:93
+#: prodekoorg/settings.py:79 prodekoorg/settings.py:102
 msgid "English"
 msgstr "Englanti"
 
@@ -518,11 +554,19 @@ msgstr "Kirjaudu"
 
 #: prodekoorg/templates/layout-components/navbar.html:4
 msgid "Sign in"
-msgstr ""
+msgstr "Kirjaudu sisään"
 
 #: prodekoorg/templates/layout-components/navbar.html:6
 msgid "Apply for a membership"
 msgstr "Hae jäsenyyttä"
+
+#: prodekoorg/urls.py:34
+msgid "^weekly-bulletin/"
+msgstr "^tiedotteet/"
+
+#: prodekoorg/urls.py:35
+msgid "^accounts/profile/"
+msgstr "^käyttäjät/profiili/"
 
 #: tiedotteet/info/forms.py:13 tiedotteet/info/forms.py:42
 msgid "Otsikko"

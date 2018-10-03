@@ -8,6 +8,7 @@ from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 from django.contrib.sitemaps.views import sitemap
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.utils.translation import ugettext_lazy as _
 from django.views.generic.base import RedirectView, TemplateView
 from django.views.static import serve
 from prodekoorg import views
@@ -30,8 +31,8 @@ urlpatterns += [
 
 # ==== tiedotteet.prodeko.org ==== #
 urlpatterns += [
-    url(r'^tiedotteet/', include('tiedotteet.Tiedotteet.urls', namespace='tiedotteet')),
-    url(r'^accounts/profile', views.profile, name='profile'),
+    url(_(r'^weekly-bulletin/'), include('tiedotteet.Tiedotteet.urls', namespace='tiedotteet')),
+    url(_(r'^accounts/profile/'), views.profile, name='profile'),
 ]
 
 # ==== lifelonglearning.prodeko.org ==== #
@@ -39,6 +40,7 @@ urlpatterns += [
     url(r'^lifelonglearning/', include('lifelonglearning.urls', namespace='lifelonglearning')),
 ]
 
+# ==== Localization and internationalization ==== #
 urlpatterns += i18n_patterns(
     # ==== app_toimarit & app_poytakirjat ==== #
     # Must be before admin urls
@@ -58,12 +60,11 @@ urlpatterns += i18n_patterns(
     url(r'^', include('prodekoorg.app_tiedostot.urls', namespace='app_tiedostot')),
     # ==== app_vaalit ==== #
     url(r'^', include('prodekoorg.app_vaalit.urls', namespace='app_vaalit')),
-)
 
-# ==== Localization and internationalization ==== #
-urlpatterns += i18n_patterns(
     url(r'^admin/', include(admin.site.urls)),
     url(r'^', include('cms.urls')),
+
+    prefix_default_language=False
 )
 
 # This is only needed when using runserver.
