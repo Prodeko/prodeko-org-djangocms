@@ -58,7 +58,8 @@ ROOT_URLCONF = 'prodekoorg.urls'
 
 # Django moel used for authentication
 AUTH_USER_MODEL = 'auth_prodeko.User'
-LOGIN_REDIRECT_URL = '/accounts'
+LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = 'login'
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
@@ -142,6 +143,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'prodekoorg', 'templates'),
+                 os.path.join(BASE_DIR, 'prodekoorg', 'templates', 'accounts'),
                  os.path.join(BASE_DIR, 'tiedotteet/info', 'templates'),
                  os.path.join(BASE_DIR, 'tiedotteet', 'public'),
                  os.path.join(BASE_DIR, 'lifelonglearning', 'templates'),

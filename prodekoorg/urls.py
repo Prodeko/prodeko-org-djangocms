@@ -32,7 +32,6 @@ urlpatterns += [
 # ==== tiedotteet.prodeko.org ==== #
 urlpatterns += [
     url(_(r'^weekly-bulletin/'), include('tiedotteet.Tiedotteet.urls', namespace='tiedotteet')),
-    url(_(r'^accounts/profile/'), views.profile, name='profile'),
 ]
 
 # ==== lifelonglearning.prodeko.org ==== #
