@@ -11,7 +11,7 @@ from django.utils.translation import ugettext_lazy as _
 class LoginForm(AuthenticationForm):
     """A form for logging a user in."""
     username = forms.CharField(
-        widget=forms.EmailInput(attrs={'class': 'form-shiiiet'}),
+        widget=forms.EmailInput(attrs={'class': 'form-control'}),
         label='Email',
         required=True
     )
