@@ -1,14 +1,12 @@
 {% load i18n menu_tags static %}
 
 {% trans "Login" as login %}
-{% trans "Sign in" as sign_in %}
-{% trans "Password forgotten?" as salasana_unohtunut %}
 {% trans "Apply for a membership" as apply %}
 
-<div class="container">
+<div class="container-fluid p-0">
 	<nav class="navbar navbar-expand-lg navbar-light prodeko-navbar">
 
-		<a class="navbar-brand lg-5" id="prodeko-logo" href="/"></a>
+		<a class="navbar-brand" id="prodeko-logo" href="/"></a>
 		
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" aria-controls="collapsibleNavbar" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
@@ -21,27 +19,12 @@
 				{% endfor %}
 				<!-- /end for child -->
 			</ul>
-			<ul class="navbar-nav py-2">
-				<li class="nav-item dropdown">
-					<button class="btn btn-light dropdown-toggle mr-4" type="button" data-toggle="dropdown">
+			{% if not user.is_authenticated %}
+			<ul class="navbar-nav">
+				<li>
+					<a href="{% url 'auth_prodeko:login' %}" class="btn btn-light mr-2">
 						{% trans login %}
-						<span class="caret"></span>
-					</button>
-					<ul class="login-dropdown dropdown-menu dropdown-menu-right p-4">
-						<form class="form" role="form" method="post" action="login" accept-charset="UTF-8">
-							<div class="form-group">
-								<input type="email" class="form-control" id="email" placeholder="{% if LANGUAGE_CODE == 'fi' %}Sähköposti{% else %}Email address{% endif %}" required>
-							</div>
-							<div class="form-group">
-								 <input type="password" class="form-control" id="password" placeholder="{% if LANGUAGE_CODE == 'fi' %}Salasana{% else %}Password{% endif %}" required>
-				   			<div class="form-text text-left forgot-password">
-								<a href="">{% trans salasana_unohtunut %}</a>
-							</div>
-							<div class= "form-group">
-								<button type="submit" class="btn btn-success btn-block">{% trans sign_in %}</button>
-							</div>
-					 	</form>
-					</ul>
+					</a>
 				</li>
 				<li>
 					<a href="{% url 'app_apply_for_membership:apply' %}" class="btn btn-primary mr-4">
@@ -49,7 +32,8 @@
 					</a>
 				</li>
 			</ul>
-			<ul class="navbar-nav py-2">
+			{% endif %}
+			<ul class="navbar-nav">
 				<li class="nav-item nav-lang">
 					{# The template variable LANGUAGES is a list of tuples: [('FI', 'FINNISH'), ('EN', 'ENGLISH')]#}
 					<a class="{% if LANGUAGE_CODE == 'fi' %}lang{% endif %} no-animation" href="{% page_language_url LANGUAGES.0.0 %}">{{ LANGUAGES.0.0 }}</a>
