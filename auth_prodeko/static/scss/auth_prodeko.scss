@@ -34,18 +34,33 @@
     }
 }
 
+.header-logo {
+    width: 50%;
+    margin: 5em 0 2em 0;
+
+    @include phone {
+        width: 98%;
+        margin: 1em 0 1em 0;
+    }
+
+    @include tablet {
+        width: 80%;
+    }
+
+    img {
+        display: block;
+        margin: auto;
+    }
+}
+
 .card {
-    margin: 7em auto;
-    float: none;
     width: 50%;
 
     @include phone {
-        margin: 1em auto;
         width: 98%;
     }
 
     @include tablet {
-        margin: 4em auto;
         width: 80%;
     }
 }

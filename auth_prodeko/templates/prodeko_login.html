@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "login_base.html" %}
 {% load cms_tags sekizai_tags sass_tags common_tags i18n staticfiles %}
 
 {% block extra_head %}
@@ -12,7 +12,10 @@
 {% trans "The email and password didn't match. Try again." as error_login %}
 
 <div class="container">
-    <div class="card">
+    <div class="header-logo mx-auto">
+        <img src="{% static 'images/logos/prodeko-logo-darkblue.png' %}" alt="Prodeko logo" height="120" width="120" hspace="10"/>
+    </div>
+    <div class="card mx-auto">
         <div class="card-body">
             <form id="login-form" method="post" action="{% url 'auth_prodeko:login' %}" novalidate>
                 {% csrf_token %}
