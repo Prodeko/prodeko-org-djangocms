@@ -16,6 +16,7 @@ Prodekon tummansininen: #002851
 @import 'messages_animation.scss';
 @import 'breakpoints_mixin.scss';
 @import 'navbar.scss';
+@import 'footer.scss';
 @import 'typography.scss';
 
 
@@ -34,7 +35,7 @@ body {
 	display: block !important;
 }
 
-.prodeko-navbar, .prodeko-footer, .prodeko-navbar .dropdown-menu {
+.prodeko-navbar, .prodeko-navbar .dropdown-menu {
 	font-family: Raleway, Helvetica, sans-serif;
 }
 
@@ -287,47 +288,6 @@ anchors are inline so you need ot make them block to go full width
   width:100%;
 }
 
-/* FOOTER */
-
-.prodeko-footer {
-	padding-left: 0;
-	padding-right: 0;
-	padding-top: 3em;
-	padding-bottom: 2em;
-	background-color: #002851;
-	color: white;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-
-.prodeko-footer a {
-	color: white;
-	font-weight: bold;
-}
-
-.prodeko-footer a:hover {
-	color: grey;
-	-webkit-transition: 0.3s ease-out;
-  	-moz-transition: 0.3s ease-out;
-  	-o-transition: 0.3s ease-out;
-  	transition: 0.3s ease-out;
-}
-
-.prodeko-footer .network-div {
-	flex: 1 0 20%;
-	margin: 10px;
-	height: 50px;
-}
-
-.prodeko-footer img {
-	max-width: 5em;
-	height: 100%;
-}
-
-.prodeko-footer .social-row a {
-	padding: 1em;
-}
-
 
 /* MEDIA QUERIES */
 @media (max-width: 543px) {
@@ -372,13 +332,8 @@ The navbar toggle appears at this breakpoint */
 	}
 }
 
-/* Large devices (desktops, 992px and up) */
+/* Large devices (desktop	s, 992px and up) */
 @media (min-width: 992px) {
-	.prodeko-footer img {
-		max-width: 8em;
-		height: 100%;
-	}
-
 	.prodeko-navbar #collapsibleNavbar form {
 	  width: 0px;
 	}
@@ -394,9 +349,5 @@ The navbar toggle appears at this breakpoint */
 	.network-img-container img {
 		max-width: 6em;
 		height: 100%;
-	}
-
-	.prodeko-footer h2, p {
-		font-size: 0.9em;
 	}
 }
