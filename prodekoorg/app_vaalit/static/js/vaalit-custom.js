@@ -77,7 +77,7 @@ $(document).ready(function () {
   $(".showDeleteEhdokasModal").click(function (e) {
     e.preventDefault();
     var ehdokasId = $(e.target).attr('ehdokas-id');
-    $('#formDeleteEhdokas').attr('action', '/vaalit/delete-ehdokas/' + ehdokasId + '/');
+    $('#formDeleteEhdokas').attr('action', '/vaalit/delete-nominee/' + ehdokasId + '/');
     $('#confirmDeleteEhdokasModal').modal('toggle');
   });
 
@@ -122,7 +122,7 @@ $(document).ready(function () {
     var formData = $(this).parent().serialize();
     var kysymysId = $(this).siblings('input[name=hidden-kysymys-id]').val();
     $.ajax({
-      url: "/vaalit/delete-kysymys/" + kysymysId + '/',
+      url: "/vaalit/delete-question/" + kysymysId + '/',
       type: "POST",
       // Add 'submitKysymys' to the POST data
       // to have correct handling in the views.py main view
