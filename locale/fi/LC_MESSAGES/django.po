@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-04 11:27+0000\n"
+"POT-Creation-Date: 2018-10-09 16:22+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -66,6 +66,37 @@ msgstr "Uusi salsana - vahvistus"
 msgid "email address"
 msgstr "sähköposti"
 
+#: auth_prodeko/templates/password_reset_complete.html:10
+msgid "Your password has been set. You may go ahead and Sign in now."
+msgstr ""
+
+#: auth_prodeko/templates/password_reset_confirm.html:10
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used. Please request a new password reset."
+msgstr ""
+
+#: auth_prodeko/templates/password_reset_confirm.html:11
+msgid "Go back to the website"
+msgstr ""
+
+#: auth_prodeko/templates/password_reset_done.html:10
+msgid ""
+"We've emailed you instructions for setting your password, if an account "
+"exists with the email you entered. You should receive them shortly."
+msgstr ""
+
+#: auth_prodeko/templates/password_reset_done.html:11
+msgid ""
+"If you don't receive an email, please make sure you've entered the address "
+"you registered with, and check your spam folder."
+msgstr ""
+
+#: auth_prodeko/templates/password_reset_done.html:12
+msgid "Go back to login"
+msgstr ""
+
+#: auth_prodeko/templates/password_reset_form.html:10
 #: auth_prodeko/templates/prodeko_login.html:10
 #: prodekoorg/app_apply_for_membership/templates/app_base.html:13
 #: prodekoorg/app_kulukorvaus/templates/kulukorvaus.html:12
@@ -501,26 +532,6 @@ msgstr "Poista"
 msgid "Edit"
 msgstr "Muokkaa"
 
-#: prodekoorg/app_vaalit/urls.py:10
-msgid "^elections/"
-msgstr "^vaalit/"
-
-#: prodekoorg/app_vaalit/urls.py:11
-msgid "^elections/delete-question/(?P<pk>\\d+)/"
-msgstr "^vaalit/poista-kysymys/(?P<pk>\\d+)/"
-
-#: prodekoorg/app_vaalit/urls.py:12
-msgid "^elections/update-question/(?P<pk>\\d+)/"
-msgstr "^vaalit/päivitä-kyymys/(?P<pk>\\d+)/"
-
-#: prodekoorg/app_vaalit/urls.py:13
-msgid "^elections/delete-nominee/(?P<pk>\\d+)/"
-msgstr "^vaalit/poista-ehdokas/(?P<pk>\\d+)/"
-
-#: prodekoorg/app_vaalit/urls.py:14
-msgid "^elections/update-nominee/(?P<pk>\\d+)/"
-msgstr "^vaalit/päivitä-ehdokas/(?P<pk>\\d+)/"
-
 #: prodekoorg/settings.py:79 prodekoorg/settings.py:96
 msgid "Finnish"
 msgstr "Suomi"
@@ -564,6 +575,14 @@ msgstr "Alumneille"
 #: prodekoorg/templates/frontpage.html:14
 msgid "For businesses"
 msgstr "Yrityksille"
+
+#: prodekoorg/templates/layout-components/footer.html:13
+msgid "/privacy"
+msgstr "/tietosuoja"
+
+#: prodekoorg/templates/layout-components/footer.html:13
+msgid "Privacy policy"
+msgstr "Tietosuoja"
 
 #: prodekoorg/templates/layout-components/navbar.html:3
 msgid "Login"
