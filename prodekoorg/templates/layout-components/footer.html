@@ -1,4 +1,4 @@
-{% load cms_tags staticfiles %}
+{% load cms_tags i18n staticfiles %}
 
 	<footer class="footer prodeko-footer container shadow">
 		<div class="container network-img-container">
@@ -10,6 +10,7 @@
 					<p><b>Käyntiosoite:</b><br>TUAS-talo<br>Maarintie 8<br>02150 Espoo</p>
 					<p><u><a href="https://docs.google.com/forms/d/e/1FAIpQLSc1ptM75jx9IUgMr6kD8puTKe4cOfrzwKO3Ae9s4nqYf17z9Q/viewform">Yhteydenottolomake</a></u></p>
 					<p><u><a href="{% url 'app_kulukorvaus:kulukorvaus' %}">Laskut</a></u></p>
+					<p><u><a href="{% trans '/privacy' %}">{% trans "Privacy policy" %}</a></u></p>
 				</div>
 				<div class="col-md-8 col-sm-7 ml-1">
 					<div class="row">
