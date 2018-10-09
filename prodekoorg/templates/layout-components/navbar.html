@@ -15,7 +15,7 @@
 		<div class="collapse navbar-collapse" id="collapsibleNavbar">
 			<ul class="navbar-nav mr-auto">
 				{% for child in children %}
-				<li class="nav-item{% if child.selected %} active-menu-item{% endif %}"><a class="nav-link nav-top" href="{{ child.get_absolute_url }}">{{child.get_menu_title }}</a></li>
+				<li class="nav-item{% if child.selected %} active-menu-item{% endif %} mr-2"><a class="nav-link nav-top" href="{{ child.get_absolute_url }}">{{child.get_menu_title }}</a></li>
 				{% endfor %}
 				<!-- /end for child -->
 			</ul>
