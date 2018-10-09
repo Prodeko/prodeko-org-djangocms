@@ -68,6 +68,8 @@ echo "from django.contrib.auth import get_user_model; User = get_user_model(); U
 
 # run server and static file watcher in screen
 su - ubuntu -c "cd /vagrant && screen -S server -d -m python3 manage.py runserver 0.0.0.0:8000"
+su - ubuntu -c "cd /vagrant && screen -S watcher -d -m python3 manage.py collectstatic"
+su - ubuntu -c "cd /vagrant && screen -S watcher -d -m python3 manage.py compilemessages"
 su - ubuntu -c "cd /vagrant && screen -S watcher -d -m python3 manage.py watchstatic"
 
 # --- restart apache ---
