@@ -1,7 +1,8 @@
 import io
-import time
 
 from django.conf import settings
+from django.utils import timezone
+from django.utils.dateformat import format
 from reportlab.lib import colors
 from reportlab.lib.enums import TA_CENTER, TA_JUSTIFY
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
@@ -55,7 +56,7 @@ class KulukorvausPDF:
         styles.add(ParagraphStyle(name="Center", alignment=TA_CENTER))
 
         # General
-        formatted_time = time.ctime()
+        formatted_time = format(timezone.now(), 'D, j M Y H:i:s')
         model_perustiedot = self.model_perustiedot
 
         # Model
@@ -98,7 +99,7 @@ class KulukorvausPDF:
             formatted_time)
         PTIME = Paragraph(ptime, styles['Center'])
 
-        ptext = """<font name='Raleway Medium' size=10>Kulukorvauksesi on vastaanotettu. Hakemus käsitellään seuraavassa hallituksen kokouksessa
+        ptext = """<font name='Raleway Medium' size=10>Kulukorvauksesi on vastaanotettu. Hakemus käsitellään seuraavassa hallituksen kokouksessa.
 
         <br />
         <br />

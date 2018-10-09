@@ -1,4 +1,5 @@
 from django.forms import ModelForm, RadioSelect, Textarea
+from django.utils.translation import ugettext_lazy as _
 
 from .models import Kulukorvaus, KulukorvausPerustiedot
 
@@ -18,14 +19,10 @@ class KulukorvausPerustiedotForm(ModelForm):
     class Meta:
         model = KulukorvausPerustiedot
         exclude = ['created_by_user']
+        localized_fields = ('sum_overall',)
         # Override Textarea default height
         widgets = {
-            'explanation': Textarea(attrs={'rows': 1, 'cols': 1}),
             'additional_info': Textarea(attrs={'rows': 1, 'cols': 1}),
-        }
-        help_texts = {
-            'target': 'esim. "Ruokakulut", "Kahvia kiltikselle" tai "Kilometrikorvaus" ',
-            'explanation': 'esim. "Syyssitsit", "Fuksiryhmätapaaminen" tai "Kiltahuoneen uudistaminen"',
         }
 
 
@@ -40,11 +37,15 @@ class KulukorvausForm(ModelForm):
 
     class Meta:
         model = Kulukorvaus
-        exclude = ['created_by_user']
+        fields = '__all__'
+        localized_fields = ('sum_euros',)
+        # Override Textarea default height
         widgets = {
             'additional_info': Textarea(attrs={'rows': 1, 'cols': 1}),
         }
+        # 'esim. "Ruokakulut", "Kahvia kiltikselle" tai "Kilometrikorvaus"'
+        # 'esim. "Syyssitsit", "Fuksiryhmätapaaminen" tai "Kiltahuoneen uudistaminen"'
         help_texts = {
-            'target': 'esim. "Ruokakulut", "Kahvia kiltikselle" tai "Kilometrikorvaus" ',
-            'explanation': 'esim. "Syyssitsit", "Fuksiryhmätapaaminen" tai "Kiltahuoneen uudistaminen"',
+            'target': _('e.g. "Food expenses", "Coffee to the guildroom" or "Mileage allowance"'),
+            'explanation': _('e.g. "Fall sitz", "Freshmen meetup" or "Guildroom renovations"'),
         }

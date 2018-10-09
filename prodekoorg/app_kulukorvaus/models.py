@@ -41,7 +41,7 @@ class KulukorvausPerustiedot(models.Model):
     # Used to track which User created the kulukorvaus
     created_by_user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, null=True)
     created_by = models.CharField(max_length=50, verbose_name=_('Name'))
-    email = models.EmailField(verbose_name='Sähköposti')
+    email = models.EmailField(verbose_name=_('Email'))
     position_in_guild = models.CharField(max_length=12, choices=POSITION_CHOICES, verbose_name=_('Position in guild'))
     phone_number = models.CharField(max_length=15, verbose_name=_('Phone number'))
     # Finnish IBAN numbers are 18 chars, Saint Lucia is 32
