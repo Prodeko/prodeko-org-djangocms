@@ -16,15 +16,15 @@ Lataa vagrant ja virtualbox:
 
 ### Vagrantin käyttö
 ```
-$ vagrant up    # Virtuaalikoneen käynnistys (Vagrantfile & bootstrap.sh)
-$ vagrant ssh   # SSH yhteys virtuaalikoneeseen
-$ cd /vagrant   # Jaettu kansio
-$ ls
+$ vagrant up         # Virtuaalikoneen käynnistys (Vagrantfile & bootstrap.sh)
+$ vagrant provision  # Ajaa bootstrap.sh tiedoston komennot virtuaalikoneen sisällä.
+$ vagrant ssh        # SSH yhteys virtuaalikoneeseen
+$ cd /vagrant        # Jaettu kansio
 ```
 
 ### Kehittäminen
 
-Komento `vagrant up` käynnistää lokaalin serverin osoitteeseen localhost:9000 (sama kuin 127.0.0.1:9000). Lisäksi bootstrap.sh luo automaattisesti Django superuserin kirjautumista varten.
+Komento `vagrant up` käynnistää lokaalin serverin osoitteeseen localhost:9000 (sama kuin 127.0.0.1:9000). Lisäksi bootstrap.sh luo automaattisesti Django superuserin kirjautumista varten. Komento `vagrant provision` ajaa bootstrap.sh tiedoston komennot. 
 
 Jos vagrantin sisällä oleva serveri pysähtyy jostain syystä, sen saa uudestaan päälle esimerkiksi seuraavilla komennoilla
 
@@ -55,29 +55,35 @@ Jos törmäät "ImportError: Couldn't import Django..." erroriin, vaihda käytt�
 ## Rakenne
     .
     ├── ...
-    ├── auth_prodeko          # Autentikaatio
+    ├── auth_prodeko                   # Autentikaatio
     │   └── ...  
-    ├── prodekoorg            # Projektin pääkansio
-    │   │── app_kulukorvaus   # Sähköinen kulukorvauslomake
+    ├── lifelonglearning               # lifelonglearning.prodeko.org
+    │   └── ...  
+    ├── locale                         # Käännökset
+    │   └── ...  
+    ├── prodekoorg                     # Projektin pääkansio
+    │   │── app_apply_for_membership   # Jäseneksi liittyminen -lomake
     │   │   └── ...  
-    │   │── app_poytakirjat   # Pöytäkirjojen automaattinen haku G Suiten Drivestä ja lisäys DjangoCMS:ään
+    │   │── app_kulukorvaus            # Sähköinen kulukorvauslomake
     │   │   └── ...  
-    │   │── app_tiedostot     # Prodekon brändiin liittyviä tiedostoja
+    │   │── app_poytakirjat            # Pöytäkirjojen automaattinen haku G Suiten Drivestä ja lisäys DjangoCMS:ään
     │   │   └── ...  
-    │   │── app_toimarit      # .csv toimarilistan uploadaus muodostaa automaattisesti templaten jossa on listattuna prodekon toimarit kuvineen
+    │   │── app_tiedostot              # Prodekon brändiin liittyviä tiedostoja
     │   │   └── ...  
-    │   │── app_vaalit        # Vaaliplatform
+    │   │── app_toimarit               # .csv toimarilistan uploadaus muodostaa automaattisesti templaten jossa on listattuna prodekon toimarit kuvineen
     │   │   └── ...  
-    │   │── media             # Django CMS kautta lähetetyt tiedostot kerääntyvät tänne
+    │   │── app_vaalit                 # Vaaliplatform
     │   │   └── ...  
-    │   │── collected-static  # `python3 manage.py collectstatic` kerää tiedostot tänne
+    │   │── collected-static           # `python3 manage.py collectstatic` kerää tiedostot tänne
     │   │   └── ...  
-    │   │── static            # Staattiset tiedostot
-    │   │   ├── css
+    │   │── media                      # Django CMS kautta lähetetyt tiedostot kerääntyvät tänne
+    │   │   └── ...  
+    │   │── static                     # Staattiset tiedostot
     │   │   ├── fonts
     │   │   ├── images
-    │   │   └── js
-    │   │──templates          # Suurin osa .html tiedostoista - appeilla (app_kulukorvaus jne.) on omat templatensa
+    │   │   ├── js
+    │   │   └── scss
+    │   │──templates          # Suurin osa .html tiedostoista - appeilla (app_kulukorvaus jne.) on omat templatensa ja staattiset tiedostonsa (js, scss, kuvat)
     │   │   └── ...  
     │   └── ...  
     ├── tiedotteet            # tiedotteet.prodeko.org verkkosivu
@@ -85,6 +91,26 @@ Jos törmäät "ImportError: Couldn't import Django..." erroriin, vaihda käytt�
     ├── README.md             # README
     ├── bootstrap.sh.md       # Vagrant konfiguraatio, jonka komennot käydään läpi `vagrant up` komennon seurauksesta
     └── ...
+
+## Muuta
+
+### Printtaaminen konsoliin
+- Mikäli haluat printata jotain konsoliin, kommentoi `su - ubuntu -c "cd /vagrant && screen -S server -d -m python3 manage.py runserver 0.0.0.0:8000"` rivi pois bootstrap.sh tiedostosta ja aja `vagrant provision`. Vaihtoehtoisesti tapa runserver prosessi ajamalla virtuaalikoneen sisällä `sudo netstat -plten |grep python` ja `sudo kill $PID` ($PID tilalle laita netstatin kertoma prosessinumero).
+- Suomenkielisten käännösten tekeminen onnistuu seuraavasti: 
+
+
+### Kääntäminen eri kielille
+1. importtaa ugettext_lazy: `from django.utils.translation import ugettext_lazy as _`. Käytä koodissa näin: _("First name")
+2. `python3 manage.py makemessages -l fi`. locale/ kansioon .po tiedostoon muodostuu käännettävä sana, esimerkin tapauksessa "First name".
+3. Käännä suomeksi .po tiedostossa ja aja `python3 manage.py compilemessages`. 
+
+.po tiedosto näyttää tältä: 
+#: prodekoorg/app_apply_for_membership/models.py:37
+msgid "First name"
+msgstr "Etunimi"
+
+### Jos scss ei meinaa toimia
+Scss pitäisi compilaa silloin kun tiedosto tallennetaan ja sen aikaleima muuttuu. Tämä ei aina toimi. Workaround: poista tidostosta esim. yksi '{', jotta se on epäpätevä -> muodostuu error, jonka jälkeen compilaus toimii.
 
 ## Kehittäjät
 
