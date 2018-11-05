@@ -37,7 +37,7 @@ $ python3 manage.py runserver 0.0.0.0:8000
 - Salasana: **kananugetti**
 
 
-### Käyttöönotto
+### Deployas palvelimelle
 
 1. Virtualenv päälle `source venv/bin/activate`
 2. Collectaa staattiset tiedostot `python3 manage.py collectstatic`
