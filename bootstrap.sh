@@ -9,7 +9,8 @@ ln -sf /usr/bin/python3.5 /usr/bin/python
 apt-get install -y python3-pip
 
 # fixes pip 'locale.Error: unsupported locale setting' error
-export LC_ALL=C
+export LC_ALL="en_US.UTF-8"
+export LC_CTYPE="en_US.UTF-8"
 
 # --- apache ---
 # install packages
@@ -53,14 +54,15 @@ mysql -uroot -pvagrant -e "CREATE USER 'prodekoorg'@'localhost' IDENTIFIED BY 'p
 mysql -uroot -pvagrant -e "GRANT ALL PRIVILEGES on *.* TO 'prodekoorg'@'localhost';"
 mysql -uroot -pvagrant -e "DROP DATABASE IF EXISTS prodekoorg;"
 mysql -uroot -pvagrant -e "CREATE DATABASE prodekoorg;"
-mysql -uroot -pvagrant -e "DROP DATABASE IF EXISTS auth_prodeko;"
-mysql -uroot -pvagrant -e "CREATE DATABASE auth_prodeko;"
+mysql -uroot -pvagrant -e "DROP DATABASE IF EXISTS auth_db;"
+mysql -uroot -pvagrant -e "CREATE DATABASE auth_db;"
 
 # --- Required python modules ---
 pip3 install -r /vagrant/requirements.txt
 
 # tasks
 cd /vagrant && python3 manage.py makemigrations --noinput
+#cd /vagrant && python3 manage.py migrate auth_prodeko --database=auth_db
 cd /vagrant && python3 manage.py migrate
 
 # creating an admin user
@@ -69,7 +71,6 @@ echo "from django.contrib.auth import get_user_model; User = get_user_model(); U
 # run server and static file watcher in screen
 su - ubuntu -c "cd /vagrant && screen -S server -d -m python3 manage.py runserver 0.0.0.0:8000"
 su - ubuntu -c "cd /vagrant && screen -S watcher -d -m python3 manage.py collectstatic"
-su - ubuntu -c "cd /vagrant && screen -S watcher -d -m python3 manage.py compilescss"
 su - ubuntu -c "cd /vagrant && screen -S watcher -d -m python3 manage.py watchstatic"
 
 # --- restart apache ---
