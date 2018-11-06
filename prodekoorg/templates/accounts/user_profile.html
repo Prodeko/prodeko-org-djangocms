@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load cms_tags sekizai_tags sass_tags %}
+
+{% block extra_head %}
+<link href="{% sass_src 'scss/profile.scss' %}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block content %}
+
+{% include "layout-components/jumbotron.html" %}
+
+<div class="container">
+
+  <h1>Profiili</h1>
+
+  <p>Toimiiko template?</p>
+  {{ user.email }}
+  {{ user.first_name }} 
+  {{ user.last_name }} 
+
+</div>
+
+{% endblock content %}
