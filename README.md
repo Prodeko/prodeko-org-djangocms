@@ -89,7 +89,7 @@ Jos törmäät "ImportError: Couldn't import Django..." erroriin, vaihda käytt�
     ├── tiedotteet            # tiedotteet.prodeko.org verkkosivu
     │   └── ...  
     ├── README.md             # README
-    ├── bootstrap.sh.md       # Vagrant konfiguraatio, jonka komennot käydään läpi `vagrant up` komennon seurauksesta
+    ├── bootstrap.sh          # Vagrant konfiguraatio, jonka komennot käydään läpi `vagrant up` komennon seurauksesta
     └── ...
 
 ## Muuta
@@ -103,6 +103,8 @@ Jos törmäät "ImportError: Couldn't import Django..." erroriin, vaihda käytt�
 1. importtaa ugettext_lazy: `from django.utils.translation import ugettext_lazy as _`. Käytä koodissa näin: _("First name")
 2. `python3 manage.py makemessages -l fi`. locale/ kansioon .po tiedostoon muodostuu käännettävä sana, esimerkin tapauksessa "First name".
 3. Käännä suomeksi .po tiedostossa ja aja `python3 manage.py compilemessages`. 
+
+Jos törmäät "CommandError: Can't find msgfmt. Make sure you have GNU gettext tools 0.15 or newer installed." virheeseen, aja sudo `apt-get install gettext` vagrantissa.
 
 .po tiedosto näyttää tältä: 
 #: prodekoorg/app_apply_for_membership/models.py:37
