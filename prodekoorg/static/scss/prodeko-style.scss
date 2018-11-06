@@ -218,7 +218,6 @@ body {
 
 .frontpage-square {
 	padding: 1rem 0.5rem 1rem 0.5rem;
-	shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
   transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
@@ -227,7 +226,6 @@ body {
   z-index: -1;
   top: 0;
   left: 0;
-  shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.5), 0 10px 30px 0 rgba(0, 0, 0, 0.25);
   opacity: 0;
   -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
   transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
@@ -259,10 +257,6 @@ body {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-}
-
-.carousel {
-	shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .carousel-caption h1 {
