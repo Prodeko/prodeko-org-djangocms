@@ -3,7 +3,7 @@ SECRET = f9a6s5442hzHYv4f7TcYHdirQRzQeqJdE6MRLninfCcLB3Y8xo
 
 [DB]
 NAME_DEFAULT = prodekoorg
-NAME_AUTH = auth_prodeko
+NAME_AUTH = auth_db
 USER = prodekoorg
 PASSWORD = prodekoorg
 

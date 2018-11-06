@@ -39,18 +39,18 @@ DATABASES = {
         'HOST': '',
         'PORT': '',
     },
+    'auth_db': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': DB_NAME_AUTH,
+        'USER': DB_USER,
+        'PASSWORD': DB_PSWD,
+    },
     'TEST': {
         'CHARSET': 'utf8',
         'COLLATION': 'utf8_general_ci',
     }
 }
 
-"""'auth_prodeko': {
-        'NAME': DB_NAME_AUTH,
-        'ENGINE': 'django.db.backends.mysql',
-        'USER': DB_USER,
-        'PASSWORD': DB_PSWD,
-    },"""
 #DATABASE_ROUTERS = ['prodekoorg.routers.AuthRouter']
 
 # Application definition
