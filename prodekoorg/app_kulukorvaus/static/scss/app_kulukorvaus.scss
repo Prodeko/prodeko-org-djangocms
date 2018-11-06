@@ -6,4 +6,24 @@
     .fa-minus {
         color: rgb(168, 35, 35);
     }
+    
+    .receipt-btn-wrapper {
+        position: relative;
+        overflow: hidden;
+        display: inline-block;
+
+        input[type="file"] {
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+        }
+
+        .btn {
+            color: white;
+            padding: 6px 15px;
+            background-color: #277027;
+            font-weight: bold;
+        }
+    } 
 }

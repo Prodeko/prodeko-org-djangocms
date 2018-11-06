@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-05 12:51+0000\n"
+"POT-Creation-Date: 2018-11-06 12:43+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,38 +29,6 @@ msgstr "Oikeudet"
 #: auth_prodeko/admin.py:17
 msgid "Important dates"
 msgstr "Tärkeitä päivämääriä"
-
-#: auth_prodeko/forms.py:33
-msgid "The two password fields didn't match."
-msgstr "Salasanat eivät täsmää."
-
-#: auth_prodeko/forms.py:41
-msgid "Password"
-msgstr "Salasana"
-
-#: auth_prodeko/forms.py:46
-msgid "Password confirmation"
-msgstr "Vahvista salasana"
-
-#: auth_prodeko/forms.py:49
-msgid "Enter the same password as before, for verification."
-msgstr "Vahvista antamalla sama salasana."
-
-#: auth_prodeko/forms.py:89
-msgid "Your old password was entered incorrectly. Please enter it again."
-msgstr "Salasana on väärä. Yritä uudestaan."
-
-#: auth_prodeko/forms.py:92
-msgid "Old password"
-msgstr "Vanha salasana"
-
-#: auth_prodeko/forms.py:97
-msgid "New password"
-msgstr "Uusi salasana"
-
-#: auth_prodeko/forms.py:102
-msgid "New password confirmation"
-msgstr "Uusi salsana - vahvistus"
 
 #: auth_prodeko/models.py:48
 msgid "email address"
@@ -319,6 +287,10 @@ msgstr "Poista kulu"
 #: prodekoorg/app_kulukorvaus/templates/form_kulukorvaus_kulu.html:2
 msgid "Reimbursement"
 msgstr "Kulukorvaukset"
+
+#: prodekoorg/app_kulukorvaus/templates/form_kulukorvaus_kulu.html:4
+msgid "Upload a receipt"
+msgstr "Lataa kuitti"
 
 #: prodekoorg/app_kulukorvaus/templates/form_perustiedot.html:2
 msgid "Basic information"
@@ -732,6 +704,30 @@ msgstr ""
 #: tiedotteet/info/forms.py:100
 msgid "TLS salaus päällä"
 msgstr ""
+
+#~ msgid "The two password fields didn't match."
+#~ msgstr "Salasanat eivät täsmää."
+
+#~ msgid "Password"
+#~ msgstr "Salasana"
+
+#~ msgid "Password confirmation"
+#~ msgstr "Vahvista salasana"
+
+#~ msgid "Enter the same password as before, for verification."
+#~ msgstr "Vahvista antamalla sama salasana."
+
+#~ msgid "Your old password was entered incorrectly. Please enter it again."
+#~ msgstr "Salasana on väärä. Yritä uudestaan."
+
+#~ msgid "Old password"
+#~ msgstr "Vanha salasana"
+
+#~ msgid "New password"
+#~ msgstr "Uusi salasana"
+
+#~ msgid "New password confirmation"
+#~ msgstr "Uusi salsana - vahvistus"
 
 #~ msgid "Sign in"
 #~ msgstr "Kirjaudu sisään"
