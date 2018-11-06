@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-09 20:31+0000\n"
+"POT-Creation-Date: 2018-11-05 12:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -74,7 +74,9 @@ msgstr "Salasanasi on asetettu. Voit kirjautua nyt sisään."
 msgid ""
 "The password reset link was invalid, possibly because it has already been "
 "used. Please request a new password reset."
-msgstr "Salasanan nollauslinkki viallinen - se on mahdollisesti käytetty. Pyydä uutta salasanan nollausta."
+msgstr ""
+"Salasanan nollauslinkki viallinen - se on mahdollisesti käytetty. Pyydä "
+"uutta salasanan nollausta."
 
 #: auth_prodeko/templates/password_reset_confirm.html:11
 msgid "Go back to the website"
@@ -84,17 +86,50 @@ msgstr "Mene takaisin sivustolle"
 msgid ""
 "We've emailed you instructions for setting your password, if an account "
 "exists with the email you entered. You should receive them shortly."
-msgstr "Olemme lähettäneet ohjeet salasanan asettamiseksi kirjoittamaasi sähköpostiosoitteeseen."
+msgstr ""
+"Olemme lähettäneet ohjeet salasanan asettamiseksi kirjoittamaasi "
+"sähköpostiosoitteeseen."
 
 #: auth_prodeko/templates/password_reset_done.html:11
 msgid ""
 "If you don't receive an email, please make sure you've entered the address "
 "you registered with, and check your spam folder."
-msgstr "Jos et saanut sähköpostia, varmista että kirjoitit sähköpostiosoitteen jolla rekisteröidyit. Tarkista lisäksi spam-kansio."
+msgstr ""
+"Jos et saanut sähköpostia, varmista että kirjoitit sähköpostiosoitteen jolla "
+"rekisteröidyit. Tarkista lisäksi spam-kansio."
 
 #: auth_prodeko/templates/password_reset_done.html:12
 msgid "Go back to login"
 msgstr "Takaisin kirjautumiseen"
+
+#: auth_prodeko/templates/password_reset_email.html:2
+#: auth_prodeko/templates/password_reset_html_email.html:2
+#, python-format
+msgid ""
+"You're receiving this email because you requested a password reset for your "
+"user account at %(site_name)s."
+msgstr ""
+
+#: auth_prodeko/templates/password_reset_email.html:4
+#: auth_prodeko/templates/password_reset_html_email.html:4
+msgid "Please go to the following page and choose a new password:"
+msgstr ""
+
+#: auth_prodeko/templates/password_reset_email.html:8
+#: auth_prodeko/templates/password_reset_html_email.html:8
+msgid "Your username, in case you've forgotten:"
+msgstr ""
+
+#: auth_prodeko/templates/password_reset_email.html:10
+#: auth_prodeko/templates/password_reset_html_email.html:10
+msgid "Thanks for using our site!"
+msgstr ""
+
+#: auth_prodeko/templates/password_reset_email.html:12
+#: auth_prodeko/templates/password_reset_html_email.html:12
+#, python-format
+msgid "The %(site_name)s team"
+msgstr ""
 
 #: auth_prodeko/templates/password_reset_form.html:10
 #: auth_prodeko/templates/prodeko_login.html:10
@@ -110,6 +145,22 @@ msgstr "Salasana unohtunut?"
 #: auth_prodeko/templates/prodeko_login.html:12
 msgid "The email and password didn't match. Try again."
 msgstr "Sähköposti ja salasana eivät täsmänneet. Yritä uudestaan."
+
+#: prodekoorg/app_apply_for_membership/admin.py:45
+msgid "View"
+msgstr "Katsele"
+
+#: prodekoorg/app_apply_for_membership/admin.py:46
+msgid "Accept"
+msgstr "Hyväksy"
+
+#: prodekoorg/app_apply_for_membership/admin.py:47
+msgid "Reject"
+msgstr "Hylkää"
+
+#: prodekoorg/app_apply_for_membership/admin.py:52
+msgid "Application actions"
+msgstr "Hakemustoimenpiteet"
 
 #: prodekoorg/app_apply_for_membership/models.py:21
 msgid "True member"
@@ -184,13 +235,13 @@ msgstr "Jäsenhakemukset"
 msgid "apply/"
 msgstr "hae-jäseneksi/"
 
-#: prodekoorg/app_kulukorvaus/forms.py:47
+#: prodekoorg/app_kulukorvaus/forms.py:49
 msgid ""
 "e.g. \"Food expenses\", \"Coffee to the guildroom\" or \"Mileage allowance\""
 msgstr ""
 "esim. \"Ruokakulut\", \"Kahvia kiltahuoneelle\" tai \"Kilometrikorvaus\""
 
-#: prodekoorg/app_kulukorvaus/forms.py:48
+#: prodekoorg/app_kulukorvaus/forms.py:50
 msgid "e.g. \"Fall sitz\", \"Freshmen meetup\" or \"Guildroom renovations\""
 msgstr ""
 "e.g. \"Syyssitsit\", \"Fuksiryhmätapaaminen\" tai \"Kiltahuoneen uudistaminen"
