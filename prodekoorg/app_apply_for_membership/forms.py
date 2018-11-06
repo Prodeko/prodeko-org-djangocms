@@ -26,6 +26,5 @@ class PendingUserForm(ModelForm):
             'additional_info': Textarea(attrs={'rows': 4, 'cols': 1}),
         }
         help_texts = {
-            'target': 'esim. "Ruokakulut", "Kahvia kiltikselle" tai "Kilometrikorvaus" ',
-            'explanation': 'esim. "Syyssitsit", "Fuksiryhmätapaaminen" tai "Kiltahuoneen uudistaminen"',
+            'membership_type': 'Mikäli opiskelet Aalto-yliopistossa hae varsinaiseksi jäseneksi. Muuten hae ulkojäseneksi.',
         }

@@ -1,12 +1,13 @@
 from django.conf.urls import url
 from django.contrib import admin
 from django.core.exceptions import PermissionDenied
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.db import models
 from django.forms import Textarea
 from django.shortcuts import redirect
 from django.utils.html import format_html
 from prodekoorg.app_apply_for_membership.models import PendingUser
+from django.utils.translation import gettext as _
 
 
 class PendingUserAdmin(admin.ModelAdmin):
@@ -41,14 +42,14 @@ class PendingUserAdmin(admin.ModelAdmin):
 
     def application_actions(self, obj):
         return format_html(
-            '<a class="button" href="{}">View</a>&nbsp;'
-            '<a class="button" href="{}">Accept</a>&nbsp;'
-            '<a class="button" href="{}">Reject</a>',
+            '<a class="button" href="{}">' + _('View') + '</a>&nbsp;'
+            '<a class="button" href="{}">' + _('Accept') + '</a>&nbsp;'
+            '<a class="button" href="{}">' + _('Reject') + '</a>',
             reverse('admin:application-view', args=[obj.pk]),
             reverse('admin:application-accept', args=[obj.pk]),
             reverse('admin:application-reject', args=[obj.pk]),
         )
-    application_actions.short_description = 'Application actions'
+    application_actions.short_description = _('Application actions')
     application_actions.allow_tags = True
 
 

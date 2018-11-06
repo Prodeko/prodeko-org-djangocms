@@ -1,3 +1,16 @@
 #application-done {
     text-align: center;
 }
+
+#form-apply-wrapper {
+    font-size: 1em;
+    
+    #payment-info {
+        margin: 2em 0 2em 1em;
+
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+    }
+}
