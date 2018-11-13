@@ -59,6 +59,7 @@ mysql -uroot -pvagrant -e "CREATE DATABASE auth_db;"
 
 # --- Required python modules ---
 pip3 install -r /vagrant/requirements.txt
+pip3 install --upgrade google-auth-oauthlib
 
 # tasks
 cd /vagrant && python3 manage.py makemigrations --noinput
