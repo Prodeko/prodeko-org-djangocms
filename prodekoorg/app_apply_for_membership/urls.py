@@ -5,5 +5,5 @@ from .views import main_form
 
 app_name = 'app_apply_for_membership'
 urlpatterns = [
-    url(_(r'apply/'), main_form, name='apply'),
+    url(_(r'^apply/$'), main_form, name='apply'),
 ]

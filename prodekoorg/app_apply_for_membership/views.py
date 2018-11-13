@@ -1,5 +1,3 @@
-import json
-
 from django.core.mail import EmailMultiAlternatives
 from django.shortcuts import render
 
@@ -10,17 +8,11 @@ from .forms import PendingUserForm
 def main_form(request):
     if request.method == 'POST' and request.is_ajax():
 
-        json_form_data = json.loads(request.body.decode('utf-8'))
-        form_data = {}
-        for i, entry in enumerate(json_form_data):
-            form_data[entry['name']] = entry['value']
-
-        form_apply = PendingUserForm(form_data, request.FILES)
+        form_apply = PendingUserForm(request.POST, request.FILES)
         is_valid_form = form_apply.is_valid()
 
         if is_valid_form:
             pending_user = form_apply.save()
-            print(pending_user)
             # send_email(pending_user)
 
             return render(request, 'app_base.html', {'done': True})

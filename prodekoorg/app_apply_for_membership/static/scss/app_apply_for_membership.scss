@@ -1,3 +1,5 @@
+@import '../../../static/scss/breakpoints_mixin.scss';
+
 #application-done {
     text-align: center;
 }
@@ -11,6 +13,26 @@
         ul {
             margin: 0;
             padding: 0;
+        }
+    }
+    
+    .receipt-btn-wrapper {
+        position: relative;
+        overflow: hidden;
+        display: inline-block;
+
+        input[type="file"] {
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+        }
+
+        .btn {
+            color: white;
+            padding: 6px 15px;
+            background-color: #277027;
+            font-weight: bold;
         }
     }
 }

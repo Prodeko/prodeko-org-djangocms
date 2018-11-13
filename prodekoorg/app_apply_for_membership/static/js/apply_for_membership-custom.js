@@ -14,27 +14,50 @@ $(document).ready(function () {
     });
 
 
+    function removeReceiptName(e) {
+        e.target.parentElement.previousElementSibling.value = "";
+        $(e.target.parentElement).remove();
+    }
+
+    function showFileName(e) {
+        var input = e.srcElement;
+        var filename = input.files[0].name;
+
+        var span = document.createElement("span");
+        span.classList.add("form-text", "receipt-name", "pr-2");
+        span.innerHTML = `<i id="removeReceptIcon" class="fas fa-times fa-lg pr-2" style="color: #b12321; vertical-align: middle;"></i> ${filename}`;
+        span.firstElementChild.addEventListener("click", removeReceiptName);
+
+        parent = input.parentNode;
+        if (parent.children.length > 2) {
+            parent.removeChild(parent.children[2]);
+        }
+        parent.appendChild(span);
+    }
+
+    document.getElementById("id_receipt").addEventListener("change", showFileName); 
+
+
     var formApply = $("#form_apply");
     formApply.on("submit", function (e) {
         e.preventDefault();
-        formData = JSON.stringify(formApply.serializeArray());
+        formData = new FormData((formApply).get(0));
 
         $.ajax({
-            url: "apply/",
+            url: "",
             type: "POST",
             data: formData,
             contentType: false, // Indicates 'multipart/form-data'
+            processData: false,
             success: function (data) {
-                console.log(data);
-                console.log("success");
                 document.write(data);
             },
 
             // Re-renders the same page with error texts.
             error: function (xhr, errmsg, err) {
-                console.log(xhr)
-                if(xhr.status === 599) {
+                if (xhr.status === 599) {
                     $("#form-apply-wrapper").replaceWith(xhr.responseText);
+                    document.getElementById("id_receipt").addEventListener("change", showFileName);
                 }
             }
         });
