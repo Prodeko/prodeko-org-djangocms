@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-06 12:43+0000\n"
+"POT-Creation-Date: 2018-11-13 23:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -102,7 +102,7 @@ msgstr ""
 #: auth_prodeko/templates/password_reset_form.html:10
 #: auth_prodeko/templates/prodeko_login.html:10
 #: prodekoorg/app_apply_for_membership/templates/app_base.html:13
-#: prodekoorg/app_kulukorvaus/templates/kulukorvaus.html:12
+#: prodekoorg/app_kulukorvaus/templates/kulukorvaus_forms.html:4
 msgid "Submit"
 msgstr "Lähetä"
 
@@ -199,9 +199,50 @@ msgstr "jäsenhakemus"
 msgid "Membership applications"
 msgstr "Jäsenhakemukset"
 
+#: prodekoorg/app_apply_for_membership/templates/form_apply.html:3
+#: prodekoorg/templates/layout-components/navbar.html:4
+msgid "Apply for a membership"
+msgstr "Hae jäsenyyttä"
+
+#: prodekoorg/app_apply_for_membership/templates/form_apply.html:4
+msgid ""
+"The membership payment has to be paid according to the following "
+"instructions:"
+msgstr "Jäsenmaksu tulee suorittaa seuraavien maksuohjeiden mukaisesti:"
+
+#: prodekoorg/app_apply_for_membership/templates/form_apply.html:5
+msgid "Receiver: Tuotantotalouden kilta Prodeko ry"
+msgstr "Saaja: Tuotantotalouden kilta Prodeko ry"
+
+#: prodekoorg/app_apply_for_membership/templates/form_apply.html:6
+msgid "IBAN: FI61 8000 1178 9578 42"
+msgstr "IBAN: FI61 8000 1178 9578 42"
+
+#: prodekoorg/app_apply_for_membership/templates/form_apply.html:7
+msgid "BIC: DABAFIHH"
+msgstr "BIC: DABAFIHH"
+
+#: prodekoorg/app_apply_for_membership/templates/form_apply.html:8
+msgid ""
+"Reference number: 13 (if it is not possible to add a reference number, input "
+"your name as the payment message)"
+msgstr ""
+"Viitenumero: 13 (jos viitenumeron asettaminen ei onnistu, lisää viestiksi "
+"oma nimesi)"
+
+#: prodekoorg/app_apply_for_membership/templates/form_apply.html:9
+msgid "Amount: 8€"
+msgstr "Määrä: 8€"
+
+#: prodekoorg/app_apply_for_membership/templates/form_apply.html:10
+#: prodekoorg/app_kulukorvaus/models.py:80
+#: prodekoorg/app_kulukorvaus/templates/form_kulukorvaus_kulu.html:4
+msgid "Receipt"
+msgstr "Kuitti"
+
 #: prodekoorg/app_apply_for_membership/urls.py:8
-msgid "apply/"
-msgstr "hae-jäseneksi/"
+msgid "^apply/$"
+msgstr "^hae-jaseneksi/$"
 
 #: prodekoorg/app_kulukorvaus/forms.py:49
 msgid ""
@@ -239,44 +280,40 @@ msgstr "Korvaussumma yhteensä (euroissa)"
 msgid "Additional information"
 msgstr "Lisätietoja, kulujen perusteita"
 
-#: prodekoorg/app_kulukorvaus/models.py:65
+#: prodekoorg/app_kulukorvaus/models.py:64
 msgid "reimbursement basic information"
 msgstr "kulukorvaus perustiedot"
 
-#: prodekoorg/app_kulukorvaus/models.py:66
+#: prodekoorg/app_kulukorvaus/models.py:65
 msgid "Reimbursement basic information"
 msgstr "Kulukorvaus perustiedot"
 
-#: prodekoorg/app_kulukorvaus/models.py:75 prodekoorg/app_vaalit/models.py:65
+#: prodekoorg/app_kulukorvaus/models.py:74 prodekoorg/app_vaalit/models.py:65
 #: prodekoorg/app_vaalit/models.py:86
 msgid "Created at"
 msgstr "Luotu"
 
-#: prodekoorg/app_kulukorvaus/models.py:77
+#: prodekoorg/app_kulukorvaus/models.py:76
 msgid "Expense explanation"
 msgstr "Kulun selite"
 
-#: prodekoorg/app_kulukorvaus/models.py:78
+#: prodekoorg/app_kulukorvaus/models.py:77
 msgid "Event / expense target"
 msgstr "Tapahtuma / kulun kohde"
 
-#: prodekoorg/app_kulukorvaus/models.py:79
+#: prodekoorg/app_kulukorvaus/models.py:78
 msgid "Sum (in €)"
 msgstr "Summa (euroissa)"
 
-#: prodekoorg/app_kulukorvaus/models.py:80
+#: prodekoorg/app_kulukorvaus/models.py:79
 msgid "Additional info"
 msgstr "Lisätietoja, kulujen perusteita"
 
-#: prodekoorg/app_kulukorvaus/models.py:81
-msgid "Receipt"
-msgstr "Kuitti"
-
-#: prodekoorg/app_kulukorvaus/models.py:91
+#: prodekoorg/app_kulukorvaus/models.py:90
 msgid "reimbursement"
 msgstr "kulukorvaus"
 
-#: prodekoorg/app_kulukorvaus/models.py:92
+#: prodekoorg/app_kulukorvaus/models.py:91
 msgid "Reimbursements"
 msgstr "Kulukorvaukset"
 
@@ -284,13 +321,9 @@ msgstr "Kulukorvaukset"
 msgid "Remove reimbursement"
 msgstr "Poista kulu"
 
-#: prodekoorg/app_kulukorvaus/templates/form_kulukorvaus_kulu.html:2
+#: prodekoorg/app_kulukorvaus/templates/form_kulukorvaus_kulu.html:3
 msgid "Reimbursement"
 msgstr "Kulukorvaukset"
-
-#: prodekoorg/app_kulukorvaus/templates/form_kulukorvaus_kulu.html:4
-msgid "Upload a receipt"
-msgstr "Lataa kuitti"
 
 #: prodekoorg/app_kulukorvaus/templates/form_perustiedot.html:2
 msgid "Basic information"
@@ -300,13 +333,17 @@ msgstr "Perustiedot"
 msgid "Overall"
 msgstr "Yhteensä"
 
-#: prodekoorg/app_kulukorvaus/templates/kulukorvaus.html:11
+#: prodekoorg/app_kulukorvaus/templates/kulukorvaus_done.html:3
+msgid "Download as pdf"
+msgstr "Lataa pdf"
+
+#: prodekoorg/app_kulukorvaus/templates/kulukorvaus_forms.html:3
 msgid "Add reimbursement"
 msgstr "Lisää kulu"
 
 #: prodekoorg/app_kulukorvaus/urls.py:8
-msgid "reimbursement/"
-msgstr "kulukorvaus/"
+msgid "^reimbursement/$"
+msgstr "^kulukorvaus/$"
 
 #: prodekoorg/app_poytakirjat/models.py:37
 msgid "minutes"
@@ -493,8 +530,6 @@ msgid "Answers"
 msgstr "Vastaukset"
 
 #: prodekoorg/app_vaalit/templates/forms/vaalit_answer_form.html:3
-#, fuzzy
-#| msgid "Submit"
 msgid "Submit answer"
 msgstr "Lähetä"
 
@@ -624,10 +659,6 @@ msgstr "Tietosuoja"
 msgid "Login"
 msgstr "Kirjaudu"
 
-#: prodekoorg/templates/layout-components/navbar.html:4
-msgid "Apply for a membership"
-msgstr "Hae jäsenyyttä"
-
 #: prodekoorg/urls.py:34
 msgid "^weekly-bulletin/"
 msgstr "^tiedotteet/"
@@ -704,6 +735,9 @@ msgstr ""
 #: tiedotteet/info/forms.py:100
 msgid "TLS salaus päällä"
 msgstr ""
+
+#~ msgid "Upload a receipt"
+#~ msgstr "Lataa kuitti"
 
 #~ msgid "The two password fields didn't match."
 #~ msgstr "Salasanat eivät täsmää."
