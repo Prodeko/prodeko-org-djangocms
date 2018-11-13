@@ -1,7 +1,7 @@
 {% load i18n %}
-{% trans "Reimbursement" as reimbursement %}
 
-{% trans "Upload a receipt" as receipt %}
+{% trans "Reimbursement" as reimbursement %}
+{% trans "Receipt" as receipt %}
 
 {% load common_tags %}
 <div class="form-kulu-wrapper">
@@ -9,8 +9,10 @@
   <div class="form-group row">
     <label class="col-sm-3 col-form-label" for="{{ form.target.id_for_label }}">{{ form.target.label }}</label>
     <div class="col-sm-6">
-      {% if not form.target.errors and request.POST %}
+      {% if not form.target.errors and request.body %}
         {{ form.target|add_class:"is-valid" }}
+      {% elif form.target.errors %}
+        {{ form.target|add_class:"is-invalid" }}
       {% else %}
         {{ form.target }}
       {% endif %}
@@ -27,8 +29,10 @@
   <div class="form-group row">
     <label class="col-sm-3 col-form-label" for="{{ form.explanation.id_for_label }}">{{ form.explanation.label }}</label>
     <div class="col-sm-6">
-      {% if not form.explanation.errors and request.POST %}
+      {% if not form.explanation.errors and request.body %}
         {{ form.explanation|add_class:"is-valid" }}
+      {% elif form.explanation.errors %}
+        {{ form.explanation|add_class:"is-invalid" }}
       {% else %}
         {{ form.explanation }}
       {% endif %}
@@ -45,8 +49,10 @@
   <div class="form-group row">
     <label class="col-sm-3 col-form-label" for="{{ form.sum_euros.id_for_label }}">{{ form.sum_euros.label }}</label>
     <div class="col-sm-6">
-      {% if not form.sum_euros.errors and request.POST %}
+      {% if not form.sum_euros.errors and request.body %}
         {{ form.sum_euros|add_class:"is-valid" }}
+      {% elif form.sum_euros.errors %}
+        {{ form.sum_euros|add_class:"is-invalid" }}
       {% else %}
         {{ form.sum_euros }}
       {% endif %}
@@ -71,8 +77,8 @@
   <div class="form-group row">
     <label class="col-sm-3 col-form-label" for="{{ form.receipt.id_for_label }}">{{ form.receipt.label }}</label>
     <div class="col-sm-6 receipt-btn-wrapper">
-      <button class="btn btn-default">{% trans receipt %}</button>
-      {% if not form.receipt.errors and request.POST %}
+      <button class="btn btn-default mb-3">{% trans receipt %}</button>
+      {% if not form.receipt.errors and request.body %}
         {{ form.receipt|add_class:"is-valid" }}
       {% else %}
         {{ form.receipt }}

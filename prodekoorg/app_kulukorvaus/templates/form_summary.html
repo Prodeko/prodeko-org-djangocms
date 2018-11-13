@@ -6,8 +6,10 @@
 <div class="form-group row">
   <label class="col-sm-3 col-form-label" for="{{ form_perustiedot.sum_overall.id_for_label }}">{{ form_perustiedot.sum_overall.label }}</label>
   <div class="col-sm-6">
-    {% if not form_perustiedot.sum_overall.errors and request.POST %}
+    {% if not form_perustiedot.sum_overall.errors and request.body %}
       {{ form_perustiedot.sum_overall|add_class:"is-valid" }}
+    {% elif form_perustiedot.sum_overall.errors %}
+      {{ form_perustiedot.sum_overall|add_class:"is-invalid" }}
     {% else %}
       {{ form_perustiedot.sum_overall }}
     {% endif %}

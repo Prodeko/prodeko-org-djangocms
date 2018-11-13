@@ -1,18 +1,12 @@
-{% extends "base.html" %}
-{% load cms_tags %}
-{% block content %}
+{% load static i18n %}
 
-{% include "layout-components/jumbotron.html" %}
+{% trans "Download as pdf" as download %}
 
-<div class="container kulukorvaus-container">
-
-	{% include "layout-components/breadcrumb.html" %}
-	{% placeholder "content" %}
-
-  <p>
-    Kulukorvaus lisätty
-  </p>
-
-
+<div id="kulukorvaus-done">
+    <img src="{% static 'images/logos/prodeko-logo-text-blue.png' %}" />
+    <p>Kulukorvauksesi on vastaanotettu. Hakemus käsitellään seuraavassa hallituksen kokouksessa.
+      Jos havaitset virheitä alla olevista tiedoista, ota välittömästi yhteys rahastonhoitajaan
+      rahastonhoitaja@prodeko.org.
+    </p>
+    <a href="{% url 'app_kulukorvaus:download_kulukorvaus' perustiedot_id %}" class="btn btn-default mb-4" role="button">{% trans download %}</a>
 </div>
-{% endblock content %}

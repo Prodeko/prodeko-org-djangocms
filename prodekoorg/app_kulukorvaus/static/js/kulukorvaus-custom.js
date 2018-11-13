@@ -1,5 +1,79 @@
 $(document).ready(function () {
 
+  var csrftoken = $("[name=csrfmiddlewaretoken]").val();
+  function csrfSafeMethod(method) {
+    // these HTTP methods do not require CSRF protection
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+  }
+  $.ajaxSetup({
+    beforeSend: function (xhr, settings) {
+      if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+        xhr.setRequestHeader("X-CSRFToken", csrftoken);
+      }
+    }
+  });
+
+
+  var formKulukorvaus = $("#form_kulukorvaus");
+  formKulukorvaus.on("submit", function (e) {
+    e.preventDefault();
+    formData = new FormData((formKulukorvaus).get(0));
+    console.log(formData)
+
+    $.ajax({
+      url: "",
+      type: "POST",
+      data: formData,
+      contentType: false, // Indicates 'multipart/form-data'
+      processData: false,
+      success: function (data) {
+        document.write(data);
+      },
+
+      // Re-renders the same page with error texts.
+      error: function (xhr, errmsg, err) {
+        if (xhr.status === 599) {
+          $("#forms-wrapper").replaceWith(xhr.responseText);
+          new Formset(document.querySelector('#form_kulukorvaus'));
+          handleFileUploads();
+        }
+      }
+    });
+  });
+
+  function handleFileUploads() {
+    var arr = [].slice.call(document.querySelectorAll('[type*=file]'));
+    arr.shift(); // Remove first element in the array which is the management form input button
+
+    arr.forEach(function (el) {
+      el.addEventListener('change', showFileName)
+    });
+  }
+
+  function removeReceiptName(e) {
+    e.target.parentElement.previousElementSibling.value = "";
+    $(e.target.parentElement).remove();
+  }
+
+  function showFileName(e) {
+    var input = e.srcElement;
+    var filename = input.files[0].name;
+
+    var span = document.createElement("span");
+    span.classList.add("form-text", "receipt-name", "pr-2");
+    span.innerHTML = `<i id="removeReceptIcon" class="fas fa-times fa-lg pr-2" style="color: #b12321; vertical-align: middle;"></i> ${filename}`;
+    span.firstElementChild.addEventListener("click", removeReceiptName);
+
+    parent = input.parentNode;
+    if (parent.children.length > 2) {
+      parent.removeChild(parent.children[2]);
+    }
+    parent.appendChild(span);
+  }
+
+  // Add event listeners to receipt upload buttons
+  handleFileUploads();
+
   function Formset(element) {
     /*
   	Dynamic Formset handler for Django formsets.
@@ -35,6 +109,7 @@ $(document).ready(function () {
       formsList.insertAdjacentElement('beforeend', newForm);
       // Update the totalForms.value
       totalForms.value = Number(totalForms.value) + 1;
+      handleFileUploads();
     }
 
     function getForm(target) {
@@ -76,6 +151,7 @@ $(document).ready(function () {
       formToRemove.remove();
       // Decrement the management form's count.
       totalForms.value = Number(totalForms.value) - 1;
+      handleFileUploads();
     }
 
     element.querySelector('[data-formset-add-form]').addEventListener('click', addForm);
@@ -84,5 +160,5 @@ $(document).ready(function () {
     this.addForm = addForm;
   }
 
-  new Formset(document.querySelector('#form_kulu'));
+  new Formset(document.querySelector('#form_kulukorvaus'));
 });

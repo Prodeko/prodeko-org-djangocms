@@ -92,8 +92,7 @@ class KulukorvausPDF:
                    ('TEXTCOLOR', (0, 0), (0, -1), colors.gray),
                    ('VALIGN', (0, 0), (0, -1), 'TOP')]
 
-        Img = self.get_image(settings.STATIC_ROOT +
-                             '/images/prodeko-logo-text-blue.png', width=10 * cm)
+        Img = self.get_image(settings.STATIC_ROOT + '/images/prodeko-logo-text-blue.png', width=10 * cm)
         s05cm = Spacer(width=0, height=0.5 * cm)
         ptime = "<font name='Raleway Medium' size=8>{}</font>".format(
             formatted_time)

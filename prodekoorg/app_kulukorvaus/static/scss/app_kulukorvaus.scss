@@ -1,4 +1,8 @@
+@import '../../../static/scss/breakpoints_mixin.scss';
+
 .kulukorvaus-container {
+    padding: 0;
+
     .fa-plus {
         color: rgb(39, 112, 39);
     }
@@ -25,5 +29,28 @@
             background-color: #277027;
             font-weight: bold;
         }
-    } 
+    }
+
+    #kulukorvaus-done {
+        a {
+            color: white;
+            padding: 6px 15px;
+            background-color: #277027;
+            font-weight: bold;
+        }
+
+        img {
+            max-width: 60%;
+            display: block;
+            margin: 0 auto 2.5em auto;
+        }
+
+        @include phone {
+            img {
+                max-width: 90%;
+                display: block;
+                margin: 0 auto 1.5em auto;
+            }
+        }
+    }
 }

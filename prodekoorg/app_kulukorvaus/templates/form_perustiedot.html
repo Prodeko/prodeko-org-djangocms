@@ -7,8 +7,10 @@
   <div class="form-group row">
     <label class="col-sm-3 col-form-label" for="{{ form_perustiedot.created_by.id_for_label }}">{{ form_perustiedot.created_by.label }}</label>
     <div class="col-sm-6">
-      {% if not form_perustiedot.created_by.errors and request.POST %}
+      {% if not form_perustiedot.created_by.errors and request.body %}
         {{ form_perustiedot.created_by|add_class:"is-valid" }}
+      {% elif form_perustiedot.created_by.errors %}
+        {{ form_perustiedot.created_by|add_class:"is-invalid" }}
       {% else %}
         {{ form_perustiedot.created_by }}
       {% endif %}
@@ -22,8 +24,10 @@
   <div class="form-group row">
     <label class="col-sm-3 col-form-label" for="{{ form_perustiedot.email.id_for_label }}">{{ form_perustiedot.email.label }}</label>
     <div class="col-sm-6">
-      {% if not form_perustiedot.email.errors and request.POST %}
+      {% if not form_perustiedot.email.errors and request.body %}
         {{ form_perustiedot.email|add_class:"is-valid" }}
+      {% elif form_perustiedot.email.errors %}
+        {{ form_perustiedot.email|add_class:"is-invalid" }}
       {% else %}
         {{ form_perustiedot.email }}
       {% endif %}
@@ -57,8 +61,10 @@
   <div class="form-group row">
     <label class="col-sm-3 col-form-label" for="{{ form_perustiedot.phone_number.id_for_label }}">{{ form_perustiedot.phone_number.label }}</label>
     <div class="col-sm-6">
-      {% if not form_perustiedot.phone_number.errors and request.POST %}
+      {% if not form_perustiedot.phone_number.errors and request.body %}
         {{ form_perustiedot.phone_number|add_class:"is-valid" }}
+      {% elif form_perustiedot.phone_number.errors %}
+        {{ form_perustiedot.phone_number|add_class:"is-invalid" }}
       {% else %}
         {{ form_perustiedot.phone_number }}
       {% endif %}
@@ -72,8 +78,10 @@
   <div class="form-group row">
     <label class="col-sm-3 col-form-label" for="{{ form_perustiedot.bank_number.id_for_label }}">{{ form_perustiedot.bank_number.label }}</label>
     <div class="col-sm-6">
-      {% if not form_perustiedot.bank_number.errors and request.POST %}
+      {% if not form_perustiedot.bank_number.errors and request.body %}
         {{ form_perustiedot.bank_number|add_class:"is-valid" }}
+      {% elif form_perustiedot.bank_number.errors %}
+        {{ form_perustiedot.bank_number|add_class:"is-invalid" }}
       {% else %}
         {{ form_perustiedot.bank_number }}
       {% endif %}
@@ -87,8 +95,10 @@
   <div class="form-group row">
     <label class="col-sm-3 col-form-label" for="{{ form_perustiedot.bic.id_for_label }}">{{ form_perustiedot.bic.label }}</label>
     <div class="col-sm-6">
-      {% if not form_perustiedot.bic.errors and request.POST %}
+      {% if not form_perustiedot.bic.errors and request.body %}
         {{ form_perustiedot.bic|add_class:"is-valid" }}
+      {% elif form_perustiedot.bic.errors %}
+        {{ form_perustiedot.bic|add_class:"is-invalid" }}
       {% else %}
         {{ form_perustiedot.bic }}
       {% endif %}

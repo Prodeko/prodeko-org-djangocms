@@ -55,10 +55,9 @@ class KulukorvausPerustiedot(models.Model):
                            validators=[FileExtensionValidator(['pdf'])])
 
     def __str__(self):
-        position = self.position_in_guild
         by = self.created_by
         s = self.sum_overall
-        return '{}, {}, {}€'.format(position, by, s)
+        return '{}, {}€'.format(by, s)
 
     class Meta:
         # Correct spelling in Django admin

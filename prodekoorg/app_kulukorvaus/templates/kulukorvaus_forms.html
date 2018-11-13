@@ -1,0 +1,31 @@
+{% load cms_tags sekizai_tags i18n sass_tags %}
+
+{% trans "Add reimbursement" as add_reimbursement %}
+{% trans "Submit" as submit %}
+
+<div id="forms-wrapper">
+
+    {% include "form_empty_and_management.html" %}
+    
+    <div class="forms">
+        {% include "form_perustiedot.html" with form_perustiedot=form_perustiedot %}
+        {% for form1 in formset_kulu %}
+            {% include "form_kulukorvaus_kulu.html" with form=form1 %}
+        {% endfor %}
+    </div>
+        
+    <div class="my-4">
+        <button type="button" data-formset-add-form class="add-kulukorvaus btn btn-default">
+            <span class="mr-1 fa fa-plus"></span>
+            {% trans add_reimbursement %}
+        </button>
+    </div>
+    
+    {% include "form_summary.html" %}
+    
+    <div class="form-group row">
+        <div class="col-sm-10">
+        <button type="submit" class="btn btn-primary my-2">{% trans submit %}</button>
+        </div>
+    </div>
+</div>
