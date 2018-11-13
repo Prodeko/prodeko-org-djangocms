@@ -8,10 +8,6 @@ ln -sf /usr/bin/python3.5 /usr/bin/python
 # install pip
 apt-get install -y python3-pip
 
-# fixes pip 'locale.Error: unsupported locale setting' error
-export LC_ALL="en_US.UTF-8"
-export LC_CTYPE="en_US.UTF-8"
-
 # --- apache ---
 # install packages
 apt-get install -y apache2 libapache2-mod-wsgi
@@ -77,3 +73,8 @@ su - ubuntu -c "cd /vagrant && screen -S watcher -d -m python3 manage.py watchst
 # --- restart apache ---
 
 service apache2 restart
+
+# fixes pip 'locale.Error: unsupported locale setting' error and ascii decode errors
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LANGUAGE=en_US.UTF-8
