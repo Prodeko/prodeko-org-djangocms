@@ -7,6 +7,8 @@ ln -sf /usr/bin/python3.5 /usr/bin/python
 
 # install pip
 apt-get install -y python3-pip
+# fixes pip 'locale.Error: unsupported locale setting' error and ascii decode errors
+sudo -H pip3 install --upgrade pip
 
 # --- apache ---
 # install packages
@@ -63,7 +65,7 @@ cd /vagrant && python3 manage.py makemigrations --noinput
 cd /vagrant && python3 manage.py migrate
 
 # creating an admin user
-echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.filter(email='webbitiimi@prodeko.org').delete(); User.objects.create_superuser('webbitiimi@prodeko.org', 'kananugetti')" | python manage.py shell
+cd /vagrant && echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.filter(email='webbitiimi@prodeko.org').delete(); User.objects.create_superuser('webbitiimi@prodeko.org', 'kananugetti')" | python manage.py shell
 
 # run server and static file watcher in screen
 su - ubuntu -c "cd /vagrant && screen -S server -d -m python3 manage.py runserver 0.0.0.0:8000"
