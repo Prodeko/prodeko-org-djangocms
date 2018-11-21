@@ -9,9 +9,8 @@ from django.contrib import admin
 from django.contrib.sitemaps.views import sitemap
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.utils.translation import ugettext_lazy as _
-from django.views.generic.base import RedirectView, TemplateView
+from django.views.generic.base import TemplateView
 from django.views.static import serve
-from prodekoorg import views
 from prodekoorg.app_poytakirjat.gdrive_api import run_app_poytakirjat
 from prodekoorg.app_toimarit.views import postcsv
 
@@ -37,6 +36,11 @@ urlpatterns += [
 # ==== lifelonglearning.prodeko.org ==== #
 urlpatterns += [
     url(r'^lifelonglearning/', include('lifelonglearning.urls', namespace='lifelonglearning')),
+]
+
+# ==== seminaari.prodeko.org ==== #
+urlpatterns += [
+    url(r'^seminaari/', include('seminaari.urls', namespace='seminaari')),
 ]
 
 # ==== Localization and internationalization ==== #
