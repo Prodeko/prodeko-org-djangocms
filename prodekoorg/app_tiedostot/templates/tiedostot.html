@@ -19,7 +19,7 @@
   {% for tiedosto in tiedostot %}
   <div class="col-md-3">
     <div class="card full-width">
-      <img class="card-img-top thumbnail_image" style="background-image: url('{{ tiedosto.get_thumbnail_image }}');" >
+      <img class="card-img-top thumbnail-image" style="background-image: url('{{ tiedosto.get_thumbnail_image }}');" >
       <div class="card-body">
         <h4 class="card-title">{{ tiedosto.title }}</h4>
 				<p class="card-text description">{{ tiedosto.description }}</p>
