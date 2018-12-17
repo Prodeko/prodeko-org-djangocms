@@ -107,9 +107,12 @@ Jos törmäät "ImportError: Couldn't import Django..." erroriin, vaihda käytt�
 Jos törmäät "CommandError: Can't find msgfmt. Make sure you have GNU gettext tools 0.15 or newer installed." virheeseen, aja sudo `apt-get install gettext` vagrantissa.
 
 .po tiedosto näyttää tältä: 
+
+```
 #: prodekoorg/app_apply_for_membership/models.py:37
 msgid "First name"
 msgstr "Etunimi"
+```
 
 ### Jos scss ei meinaa toimia
 Scss pitäisi compilaa silloin kun tiedosto tallennetaan ja sen aikaleima muuttuu. Tämä ei aina toimi. Workaround: poista tidostosta esim. yksi '{', jotta se on epäpätevä -> muodostuu error, jonka jälkeen compilaus toimii.
