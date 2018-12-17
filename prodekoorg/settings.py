@@ -26,7 +26,6 @@ SECRET_KEY = config['DJANGO']['SECRET']
 DEBUG = config['DEBUG']['MODE']
 ALLOWED_HOSTS = ['new.prodeko.org', 'prodeko.org', '.prodeko.org', 'localhost']
 DB_NAME_DEFAULT = config['DB']['NAME_DEFAULT']
-DB_NAME_AUTH = config['DB']['NAME_AUTH']
 DB_USER = config['DB']['USER']
 DB_PSWD = config['DB']['PASSWORD']
 
@@ -39,19 +38,11 @@ DATABASES = {
         'HOST': '',
         'PORT': '',
     },
-    'auth_db': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': DB_NAME_AUTH,
-        'USER': DB_USER,
-        'PASSWORD': DB_PSWD,
-    },
     'TEST': {
         'CHARSET': 'utf8',
         'COLLATION': 'utf8_general_ci',
     }
 }
-
-#DATABASE_ROUTERS = ['prodekoorg.routers.AuthRouter']
 
 # Application definition
 ROOT_URLCONF = 'prodekoorg.urls'
@@ -282,9 +273,9 @@ CMS_TEMPLATES = (
     ('contentpage/content-page-twocol6-6.html', 'Content page with 1:1 split'),
     ('contentpage/content-page-twocol8-4.html', 'Content page with 2:1 split'),
 )
-CMS_PERMISSION = True
+CMS_PERMISSION = False
 CMS_PLACEHOLDER_CONF = {}
-MIGRATION_MODULES = {}
+
 THUMBNAIL_PROCESSORS = (
     'easy_thumbnails.processors.colorspace',
     'easy_thumbnails.processors.autocrop',

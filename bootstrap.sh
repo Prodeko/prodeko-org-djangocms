@@ -52,8 +52,6 @@ mysql -uroot -pvagrant -e "CREATE USER 'prodekoorg'@'localhost' IDENTIFIED BY 'p
 mysql -uroot -pvagrant -e "GRANT ALL PRIVILEGES on *.* TO 'prodekoorg'@'localhost';"
 mysql -uroot -pvagrant -e "DROP DATABASE IF EXISTS prodekoorg;"
 mysql -uroot -pvagrant -e "CREATE DATABASE prodekoorg;"
-mysql -uroot -pvagrant -e "DROP DATABASE IF EXISTS auth_db;"
-mysql -uroot -pvagrant -e "CREATE DATABASE auth_db;"
 
 # --- Required python modules ---
 pip3 install -r /vagrant/requirements.txt
@@ -61,8 +59,7 @@ pip3 install --upgrade google-auth-oauthlib
 
 # tasks
 cd /vagrant && python3 manage.py makemigrations --noinput
-#cd /vagrant && python3 manage.py migrate auth_prodeko --database=auth_db
-cd /vagrant && python3 manage.py migrate
+cd /vagrant && python3 manage.py migrate 
 
 # creating an admin user
 cd /vagrant && echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.filter(email='webbitiimi@prodeko.org').delete(); User.objects.create_superuser('webbitiimi@prodeko.org', 'kananugetti')" | python manage.py shell
