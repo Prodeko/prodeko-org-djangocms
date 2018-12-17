@@ -62,10 +62,10 @@ class KulukorvausPDF:
         # Model
         created_by = model_perustiedot.created_by
         email = model_perustiedot.email
-        position_in_guild = model_perustiedot.position_in_guild
+        position_in_guild = model_perustiedot.get_position_in_guild_display()
         phone_number = model_perustiedot.phone_number
         bank_number = model_perustiedot.bank_number
-        bic = model_perustiedot.bic
+        bic = model_perustiedot.get_bic_display()
 
         elements = []
 
