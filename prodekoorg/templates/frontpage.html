@@ -14,7 +14,6 @@
 
 
 <div class="container frontpage-headercontainer">
-	<col>
 	<div class="carousel-item active">
 		<a href="https://www.prodeko.org/fuksit-2">
 			<picture>
@@ -32,35 +31,35 @@
 			</div>
 	</div>
 	<div class="row frontpage-squarerow">
-		<div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-6 frontpage-square">
+		<div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-6 frontpage-square">
 			<a href="matrikkeli.prodeko.org">
-				<img src="{% static 'images/landing_photos/abeille.jpg' %}" alt="{% trans for_abit %}" class="img-fluid">
+				<img src="{% static 'images/landing_photos/abeille_smaller.jpg' %}" alt="{% trans for_abit %}" class="img-fluid">
 				<div class="mask flex-center frontpage-square-caption">
-					<h3>{% trans for_abit %}</h1>
+					<h3>{% trans for_abit %}</h3>
 				</div>
 			</a>
 		</div>
-		<div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-6 view zoom frontpage-square">
+		<div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-6 view zoom frontpage-square">
 			<a href="matrikkeli.prodeko.org" target="_blank">
-				<img src="{% static 'images/landing_photos/kiltalaisille.jpg' %}" alt="{% trans for_guildmembers %}" class="img-fluid">
+				<img src="{% static 'images/landing_photos/kiltalaisille_smaller.jpg' %}" alt="{% trans for_guildmembers %}" class="img-fluid">
 				<div class="frontpage-square-caption">
-					<h3>{% trans for_guildmembers %}</h1>
+					<h3>{% trans for_guildmembers %}</h3>
 				</div>
 			</a>
 		</div>
-		<div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-6 frontpage-square">
+		<div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-6 frontpage-square">
 			<a href="matrikkeli.prodeko.org" target="_blank">
-				<img src="{% static 'images/landing_photos/alumneille.jpg' %}" alt="{% trans for_alumni %}">
+				<img src="{% static 'images/landing_photos/alumneille_smaller.jpg' %}" alt="{% trans for_alumni %}">
 				<div class="frontpage-square-caption">
-					<h3>{% trans for_alumni %}</h1>
+					<h3>{% trans for_alumni %}</h3>
 				</div>
 			</a>
 		</div>
-		<div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-6 frontpage-square">
+		<div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-6 frontpage-square">
 			<a href="matrikkeli.prodeko.org" target="_blank">
-				<img src="{% static 'images/landing_photos/yrityksille.jpg' %}" alt="{% trans for_businesses %}">
+				<img src="{% static 'images/landing_photos/yrityksille_smaller.jpg' %}" alt="{% trans for_businesses %}">
 				<div class="frontpage-square-caption">
-					<h3>{% trans for_businesses %}</h1>
+					<h3>{% trans for_businesses %}</h3>
 				</div>
 			</a>
 		</div>
@@ -100,7 +99,7 @@
   	<div class="col-md" style="background-image: url({% static 'images/frontpage-square.png' %})">
   	 <h2>Alumni</h2>
   	</div>
-  </div>
-</div>-->
+  </div>-->
+</div>
 
-	{% endblock content %}
+{% endblock content %}
