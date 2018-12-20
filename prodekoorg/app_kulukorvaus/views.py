@@ -1,6 +1,8 @@
 from io import BytesIO
 from time import localtime, strftime
 
+from django.contrib.auth.decorators import login_required
+from django.core.exceptions import PermissionDenied
 from django.core.files.base import ContentFile
 from django.forms import formset_factory
 from django.http import HttpResponse
@@ -12,8 +14,13 @@ from .printing import KulukorvausPDF
 
 
 def download_kulukorvaus_pdf(request, perustiedot_id):
-    # TODO access control
-    model_perustiedot = KulukorvausPerustiedot.objects.get(id=perustiedot_id)
+    try:
+        model_perustiedot = KulukorvausPerustiedot.objects.get(id=perustiedot_id)
+        if not request.user.is_authenticated() or \
+           not request.user == model_perustiedot.created_by_user:
+            raise PermissionDenied
+    except KulukorvausPerustiedot.DoesNotExist:
+        raise PermissionDenied
 
     # Create the HttpResponse object with the appropriate PDF headers.
     time = strftime("%Y-%m-%d", localtime())
@@ -40,6 +47,7 @@ def add_pdf_to_model(perustiedot_id):
     model_perustiedot.pdf.save('kulukorvaus.pdf', pdf_file)
 
 
+@login_required(login_url='/login/')
 def main_form(request):
     KulukorvausFormset = formset_factory(KulukorvausForm)
     if request.method == 'POST' and request.is_ajax():
@@ -51,7 +59,9 @@ def main_form(request):
         is_valid_formset = formset.is_valid()
 
         if is_valid_perustiedot and is_valid_formset:
-            model_perustiedot = form_perustiedot.save()
+            model_perustiedot = form_perustiedot.save(commit=False)
+            model_perustiedot.created_by_user = request.user
+            model_perustiedot.save()
 
             for form in formset:
                 model = form.save(commit=False)
