@@ -1,9 +1,10 @@
 {% extends "admin/base_site.html" %}
-{% load i18n admin_urls static admin_list %}
+{% load i18n admin_urls static admin_list sass_tags %}
 
 {% block extrastyle %}
+  <script src="/static/js/poytakirjat-custom.js"></script>
+  <link href="{% sass_src 'scss/app_poytakirjat_admin.scss' %}" rel="stylesheet" type="text/css" />
   {{ block.super }}
-src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="{% static "admin/css/changelists.css" %}" />
@@ -44,10 +45,10 @@ $(function () {
               Vuoden 2018 kansion id on jo kentässä valmiina - pyydä mediakeisaria vaihtamaan se mikäli tarve vaatii. <br /><br /> \
               Klikkaamalla 'Lataa pöytäkirjat Drivestä' 'Kokoukset'-kansiossa olevat pöytäkirjat latautuvat Driven API:n avulla. \
               Vain pöytäkirjat joita ei ole alla olevassa listassa ladataan. Pöytäkirjojen manuaalinen lisäys onnistuu painamalla 'Lisää pöytäkirja'.<br /><br /> \
-              Pöytäkirjan tulee olla Driven kansiossa, joka on nimetty seuraavasti: <järjestysnumero>_<pp.kk.yyyy> \
+              Pöytäkirjan tulee olla Driven kansiossa, joka on nimetty seuraavasti: järjestysnumero_pp.kk.yyyy \
               (esim. 12_19.3.2018 tai 35_12.10.2018 - huom! Kuukaudessa ei saa olla edessä 0).<br /><br /> \
               Pöytäkirjan tulee olla Google Docs muodossa (ei .docx tai .pdf) ja nimetty alkaen 'Pöytäkirja' (esim. Pöytäkirja_04).\
-              Liitteet tulee nimetä alkaen 'LIITE' (esim. LIITE-1_laskuliite, LIITE-2_esitys-x). Liitteitä voi olla useita.<br /><br /> \
+              Liitteet tulee nimetä alkaen 'LIITE' (esim. LIITE1_laskuliite, LIITE2_esitys-x). Liitteitä voi olla useita.<br /><br /> \
               LIITE-sanan jälkeen tuleva järjestysnumero määrää missä järjestyksessä liitteet lisätään lopulliseen pdf-tiedostoon.\
               Pöytäkirja ja liitteet ladataan ja yhdistetään yhdeksi pdf-tiedostoksi ja ne tulevat automaattisesti sivustolle /dokumentit näkyviin. \
             </span>"
@@ -96,13 +97,13 @@ $(function () {
               </form>
             </li>
             <li>
-              <a type="submit" onclick="document.getElementById('folderIdForm').submit()" href="#" style="color: white !important; background-color: green !important;border: 1px solid green !important; border-radius: 15px !important">
+              <a id="download-button" type="submit" onclick="document.getElementById('folderIdForm').submit()" href="#">
                 Lataa pöytäkirjat Drivestä
                 <i class="ml-2 fas fa-download"></i>
               </a>
             </li>
             <li>
-              <a href="#" data-toggle="tooltip" data-placement="bottom" style="color: white !important; background-color: #626262 !important;border: 1px solid #626262 !important; border-radius: 15px !important">
+              <a id="download-instructions" href="#" data-toggle="tooltip" data-placement="bottom">
                 Miten lataaminen toimii
                 <i class="ml-2 fas fa-question"></i>
               </a  >

@@ -15,6 +15,8 @@ from PyPDF2 import PdfFileMerger, PdfFileReader
 
 from .models import Dokumentti
 
+TEAM_DRIVE_ID = '0AD8EdtHhweZwUk9PVA'
+
 
 def initialize_service():
     """Initialize a Drive API service instance.
@@ -53,7 +55,7 @@ def merge_liitteet_to_doc(pdfs):
     return ret
 
 
-# TODO compress pdf using something. Now they ~7MB and
+# TODO compress pdf using something. Now they are ~7MB and
 # can be reduced to ~500kb without visible changes
 def compress_pdf(fh_pdf):
     import ghostscript
@@ -86,7 +88,7 @@ def get_gdrive_folders_dict(service, folder_id):
             q="mimeType='application/vnd.google-apps.folder' and parents in '" + folder_id + "'",
             supportsTeamDrives=True,
             includeTeamDriveItems=True,
-            teamDriveId='0AD8EdtHhweZwUk9PVA').execute()
+            teamDriveId=TEAM_DRIVE_ID).execute()
         return folders
 
 
@@ -142,7 +144,6 @@ def create_models_from_folders(service, request, folders_dict):
         # Create the new Dokumentti object and save 'final_pdf'
         doc = Dokumentti.objects.create(gdrive_id=parent_id, name=name, number=number, date=date)
         doc.doc_file.save('{}.pdf'.format(name), final_pdf)
-        messages.add_message(request, messages.SUCCESS, 'Pöytäkirja {} ladattu onnistuneesti'.format(name))
         success_count += 1
     return success_count
 
@@ -161,7 +162,7 @@ def download_files_as_pdf(service, parent_id):
         supportsTeamDrives=True,
         includeTeamDriveItems=True,
         pageSize=1,  # Only return one file at max
-        teamDriveId="0AD8EdtHhweZwUk9PVA").execute()
+        teamDriveId=TEAM_DRIVE_ID).execute()
 
     pdf_file = download_gdoc_as_pdf(poytakirja['files'], service)
 
@@ -170,7 +171,7 @@ def download_files_as_pdf(service, parent_id):
         q="mimeType='application/pdf' and name contains 'LIITE' and parents in '{}'".format(parent_id),
         supportsTeamDrives=True,
         includeTeamDriveItems=True,
-        teamDriveId="0AD8EdtHhweZwUk9PVA").execute()
+        teamDriveId=TEAM_DRIVE_ID).execute()
 
     liitteet = download_liitteet(liitteet['files'], service)
 
@@ -234,4 +235,4 @@ def run_app_poytakirjat(request):
         messages.add_message(request, messages.INFO, 'Ladattu {} pöytäkirjaa G Drivestä.'.format(success_count))
     except Exception as e:
         messages.add_message(request, messages.ERROR, 'Virhe pöytäkirjoja ladattaessa: {}'.format(e))
-    return redirect('/fi/admin/app_poytakirjat/dokumentti/')
+    return redirect('/admin/app_poytakirjat/dokumentti/')
