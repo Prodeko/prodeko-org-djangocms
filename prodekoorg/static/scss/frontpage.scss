@@ -25,12 +25,15 @@
         @include phone {
             font-size: 0.9em;
         }
+
+        @include tablet {
+            font-size: 1.5em;
+        }
     }
 }
 
 .frontpage-squarerow {
     padding: 0 7.5px;
-    min-height: 200px;
 
     @include phone {
         padding: 0 12.5px;
