@@ -2,6 +2,20 @@
 
 #application-done {
     text-align: center;
+    
+    img {
+        max-width: 60%;
+        display: block;
+        margin: 0 auto 2.5em auto;
+    }
+
+    @include phone {
+        img {
+            max-width: 90%;
+            display: block;
+            margin: 0 auto 1.5em auto;
+        }
+    }
 }
 
 #form-apply-wrapper {

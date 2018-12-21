@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-20 23:53+0000\n"
+"POT-Creation-Date: 2018-12-21 00:07+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -134,7 +134,9 @@ msgstr "Hakemustoimenpiteet"
 msgid ""
 "If you are studying at Aalto apply as a true member. Otherwise, apply as "
 "external member."
-msgstr "Mikäli opiskelet Aalto-yliopistossa hae varsinaiseksi jäseneksi. Muuten hae ulkojäseneksi"
+msgstr ""
+"Mikäli opiskelet Aalto-yliopistossa hae varsinaiseksi jäseneksi. Muuten hae "
+"ulkojäseneksi"
 
 #: prodekoorg/app_apply_for_membership/models.py:21
 msgid "True member"
@@ -224,6 +226,10 @@ msgstr "Hyväksy hakemus"
 #: prodekoorg/app_apply_for_membership/templates/admin/app_apply_for_membership/PendingUser/change_form.html:7
 msgid "Reject application"
 msgstr "Hylkää hakemus"
+
+#: prodekoorg/app_apply_for_membership/templates/application_complete.html:3
+msgid "Membership application received!"
+msgstr "Hakemus vastaanotettu!"
 
 #: prodekoorg/app_apply_for_membership/templates/form_apply.html:3
 #: prodekoorg/templates/layout-components/navbar.html:4

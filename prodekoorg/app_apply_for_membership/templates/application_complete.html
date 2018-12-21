@@ -1,3 +1,8 @@
+{% load static i18n %}
+
+{% trans "Membership application received!" as received %}
+
 <div id="application-done">
-  <p>Hakemus vastaanotettu!</p>
+  <img src="{% static 'images/logos/prodeko-logo-text-blue.png' %}" />
+  <p>{% trans received %}</p>
 </div>
