@@ -23,6 +23,11 @@ urlpatterns = [
     #url(r'^$', RedirectView.as_view(url='fi/main', permanent=False), name='index')
 ]
 
+urlpatterns += [
+    url(r'^robots.txt$', TemplateView.as_view(template_name="misc/robots.txt", content_type="text/plain"), name="robots_file"),
+    url(r'^browserconfig.xml$', TemplateView.as_view(template_name="misc/browserconfig.xml", content_type="text/xm l"), name="browserconfig_file"),
+]
+
 # ==== Django filer ==== #
 urlpatterns += [
     url(r'^', include('filer.server.urls')),
