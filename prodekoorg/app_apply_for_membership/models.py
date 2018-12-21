@@ -43,7 +43,7 @@ class PendingUser(models.Model):
     membership_type = models.CharField(max_length=50, choices=MEMBERSHIP_TYPE_CHOICES, verbose_name=_('Membership type'))
     additional_info = models.TextField(blank=True, verbose_name=_('Why do you want to become a member?'))
     is_ayy_member = models.CharField(max_length=12, choices=AYY_MEMBER_CHOICES, verbose_name=_('Are you an AYY (Aalto University Student Union) member?'))
-    receipt = models.FileField(blank=True, null=True, upload_to='jäsenhakemukset/%Y-%m', verbose_name=_('Receipt of the membership payment'),
+    receipt = models.FileField(blank=True, null=True, upload_to='jasenhakemukset/%Y-%m', verbose_name=_('Receipt of the membership payment'),
                                validators=[FileExtensionValidator(['jpg', 'png', 'jpeg'])])
 
    # @receiver(post_save, sender=User)
@@ -56,12 +56,12 @@ class PendingUser(models.Model):
         #TODO: send email?
         self.user.is_active = True
         self.user.save()
-        messages.success(request, 'Membership application accepted.')
+        messages.success(request, _('Membership application accepted.'))
         self.delete()
 
     def rejectMembership(self, request, account_id, *args, **kwargs):
         #TODO: send email?
-        messages.success(request, 'Membership application rejected.')
+        messages.success(request, _('Membership application rejected.'))
         self.user.delete()
         self.delete()
 
@@ -75,5 +75,3 @@ class PendingUser(models.Model):
         # Correct spelling in Django admin
         verbose_name = _('membership application')
         verbose_name_plural = _('Membership applications')
-
-

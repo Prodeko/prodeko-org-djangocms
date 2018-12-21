@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-15 10:35+0000\n"
+"POT-Creation-Date: 2018-12-20 23:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -130,6 +130,12 @@ msgstr "Hylkää"
 msgid "Application actions"
 msgstr "Hakemustoimenpiteet"
 
+#: prodekoorg/app_apply_for_membership/forms.py:30
+msgid ""
+"If you are studying at Aalto apply as a true member. Otherwise, apply as "
+"external member."
+msgstr "Mikäli opiskelet Aalto-yliopistossa hae varsinaiseksi jäseneksi. Muuten hae ulkojäseneksi"
+
 #: prodekoorg/app_apply_for_membership/models.py:21
 msgid "True member"
 msgstr "Varsinainen jäsen"
@@ -191,6 +197,18 @@ msgstr "Oletko AYY:n jäsen?"
 msgid "Receipt of the membership payment"
 msgstr "Kuitti jäsenmaksusta"
 
+#: prodekoorg/app_apply_for_membership/models.py:59
+#, fuzzy
+#| msgid "Membership applications"
+msgid "Membership application accepted."
+msgstr "Jäsenhakemukset"
+
+#: prodekoorg/app_apply_for_membership/models.py:64
+#, fuzzy
+#| msgid "Membership applications"
+msgid "Membership application rejected."
+msgstr "Jäsenhakemukset"
+
 #: prodekoorg/app_apply_for_membership/models.py:76
 msgid "membership application"
 msgstr "jäsenhakemus"
@@ -198,6 +216,14 @@ msgstr "jäsenhakemus"
 #: prodekoorg/app_apply_for_membership/models.py:77
 msgid "Membership applications"
 msgstr "Jäsenhakemukset"
+
+#: prodekoorg/app_apply_for_membership/templates/admin/app_apply_for_membership/PendingUser/change_form.html:6
+msgid "Accept application"
+msgstr "Hyväksy hakemus"
+
+#: prodekoorg/app_apply_for_membership/templates/admin/app_apply_for_membership/PendingUser/change_form.html:7
+msgid "Reject application"
+msgstr "Hylkää hakemus"
 
 #: prodekoorg/app_apply_for_membership/templates/form_apply.html:3
 #: prodekoorg/templates/layout-components/navbar.html:4
@@ -603,11 +629,11 @@ msgstr "Poista"
 msgid "Edit"
 msgstr "Muokkaa"
 
-#: prodekoorg/settings.py:79 prodekoorg/settings.py:96
+#: prodekoorg/settings.py:70 prodekoorg/settings.py:87
 msgid "Finnish"
 msgstr "Suomi"
 
-#: prodekoorg/settings.py:80 prodekoorg/settings.py:103
+#: prodekoorg/settings.py:71 prodekoorg/settings.py:94
 msgid "English"
 msgstr "Englanti"
 
@@ -620,30 +646,26 @@ msgid "Open"
 msgstr "Avaa"
 
 #: prodekoorg/templates/frontpage.html:8
-msgid "Guild of Industrial Engineering and Management Prodeko"
-msgstr "Tuotantotalouden kilta Prodeko"
-
-#: prodekoorg/templates/frontpage.html:9
 msgid "Welcome to Aalto IEM"
 msgstr "Tervetuloa opiskelemaan Aallon tutalle"
 
-#: prodekoorg/templates/frontpage.html:10
+#: prodekoorg/templates/frontpage.html:9
 msgid "If you are a new student - click here!"
 msgstr "Klikkaa tästä uusien opiskelijoiden sivuille!"
 
-#: prodekoorg/templates/frontpage.html:11
+#: prodekoorg/templates/frontpage.html:10
 msgid "For high school students"
 msgstr "Abeille"
 
-#: prodekoorg/templates/frontpage.html:12
+#: prodekoorg/templates/frontpage.html:11
 msgid "For guild members"
 msgstr "Kiltalaisille"
 
-#: prodekoorg/templates/frontpage.html:13
+#: prodekoorg/templates/frontpage.html:12
 msgid "For alumni"
 msgstr "Alumneille"
 
-#: prodekoorg/templates/frontpage.html:14
+#: prodekoorg/templates/frontpage.html:13
 msgid "For businesses"
 msgstr "Yrityksille"
 
@@ -659,9 +681,13 @@ msgstr "Tietosuoja"
 msgid "Login"
 msgstr "Kirjaudu"
 
-#: prodekoorg/urls.py:34
+#: prodekoorg/urls.py:33
 msgid "^weekly-bulletin/"
 msgstr "^tiedotteet/"
+
+#: seminaari/templates/seminaari.html:5
+msgid "Ilmoittaudu!"
+msgstr "Apply!"
 
 #: tiedotteet/info/forms.py:13 tiedotteet/info/forms.py:42
 msgid "Otsikko"
@@ -735,6 +761,9 @@ msgstr ""
 #: tiedotteet/info/forms.py:100
 msgid "TLS salaus päällä"
 msgstr ""
+
+#~ msgid "Guild of Industrial Engineering and Management Prodeko"
+#~ msgstr "Tuotantotalouden kilta Prodeko"
 
 #~ msgid "Upload a receipt"
 #~ msgstr "Lataa kuitti"

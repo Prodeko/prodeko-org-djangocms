@@ -4,7 +4,7 @@ from django.shortcuts import render
 from .forms import PendingUserForm
 
 
- # TODO: Display error message if email already exists in the database
+# TODO: Display error message if email already exists in the database
 def main_form(request):
     if request.method == 'POST' and request.is_ajax():
 
