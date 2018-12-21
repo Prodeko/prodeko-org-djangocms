@@ -61,7 +61,7 @@ $(document).ready(function () {
 
     var span = document.createElement("span");
     span.classList.add("form-text", "receipt-name", "pr-2");
-    span.innerHTML = `<i id="removeReceptIcon" class="fas fa-times fa-lg pr-2" style="color: #b12321; vertical-align: middle;"></i> ${filename}`;
+    span.innerHTML = `<i id="removeReceptIcon" class="fas fa-minus-square fa-lg pr-2";"></i> ${filename}`;
     span.firstElementChild.addEventListener("click", removeReceiptName);
 
     parent = input.parentNode;
