@@ -8,6 +8,7 @@
 {% block content %}
 
 {% trans "Submit" as submit_button %}
+{% trans "Go back" as go_back %}
 {% trans "Password forgotten?" as password_forgotten %}
 {% trans "The email and password didn't match. Try again." as error_login %}
 
@@ -79,11 +80,16 @@
                         <button type="submit" class="btn btn-primary">{% trans submit_button %}</button>
                     </div>
                 </div>
-                <div class="form-group row mt-3">
+                <div class="form-group row mt-2">
                     <div class="col-sm-12">
                         <a href="{% url 'auth_prodeko:password_reset' %}">{% trans password_forgotten %}</a>
                     </div>
                 </div>
+                <div class="form-group row mt-1">
+                   <div class="col-sm-12">
+                        <a href="../">{% trans go_back %}</a>
+                    </div>     
+                </div>           
                 <input type="hidden" name="next" value="{{ next }}">
             </form>
         </div>
