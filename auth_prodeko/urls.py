@@ -13,6 +13,11 @@ urlpatterns = [
                                                                    html_email_template_name='password_reset_html_email.html',
                                                                    success_url=reverse_lazy('auth_prodeko:password_reset_done')), name='password_reset'),
     url(r'^password_reset/done/', auth_views.PasswordResetDoneView.as_view(template_name='password_reset_done.html'), name='password_reset_done'),
-    url(r'^reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$', auth_views.PasswordResetConfirmView.as_view(template_name='password_reset_confirm.html'), name='password_reset_confirm'),
-    url(r'^reset/done/$', auth_views.PasswordResetCompleteView.as_view(), name='password_reset_complete')
+    #url(r'^reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$', auth_views.PasswordResetConfirmView.as_view(template_name='password_reset_confirm.html'), name='password_reset_confirm'),
+    url(r'^reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
+      auth_views.password_reset_confirm, {
+         'post_reset_redirect': '/reset/done/',
+         'template_name': 'password_reset_confirm.html'
+    }, name='password_reset_confirm'),
+    url(r'^reset/done/$', auth_views.PasswordResetCompleteView.as_view(template_name='password_reset_complete.html'), name='password_reset_complete')
 ]
