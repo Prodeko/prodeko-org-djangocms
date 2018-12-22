@@ -39,8 +39,6 @@ msgid "Your password has been set. You may go ahead and Sign in now."
 msgstr "Salasanasi on asetettu. Voit kirjautua nyt sisään."
 
 #: auth_prodeko/templates/password_reset_complete.html:11
-#, fuzzy
-#| msgid "Go back to login"
 msgid "Back to login"
 msgstr "Takaisin kirjautumiseen"
 
@@ -119,8 +117,6 @@ msgid "Submit"
 msgstr "Lähetä"
 
 #: auth_prodeko/templates/prodeko_login.html:11
-#, fuzzy
-#| msgid "Go back to login"
 msgid "Go back"
 msgstr "Takaisin kirjautumiseen"
 
