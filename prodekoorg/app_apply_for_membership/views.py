@@ -12,7 +12,7 @@ def main_form(request):
         is_valid_form = form_apply.is_valid()
         if is_valid_form:
             pending_user = form_apply.save()
-            # send_email(pending_user)
+            send_email(pending_user)
 
             return render(request, 'app_base.html', {'done': True})
         else:
@@ -27,11 +27,11 @@ def send_email(user):
     # inform user about activation of credentials
     subject = 'Uusi jäsenhakemus - {}'.format(user.name)
     text_content = '{} hakee Prodekon jäsenyyttä' \
-        '- {} \n - {}, {} \n - {} \n - {} \n - {} \n\n https://prodeko.org//fi/admin/app_apply_for_membership/pendinguser/' + user.id + '/change/ - Hyväksy tai hylkää hakemus'.format(
+        '- {} \n - {}, {} \n - {} \n - {} \n - {} \n\n https://prodeko.org//fi/admin/app_apply_for_membership/pendinguser/' + str(user.id) + '/change/ - Hyväksy tai hylkää hakemus'.format(
             user.name, user.email, user.field_of_study, user.start_year, user.hometown, user.membership_type, user.additional_info)
     html_content = '<p><strong>{}</strong> hakee Prodekon jäsenyyttä.' \
         '<ul><li>{}</li><li>{}, {}</li><li>{}</li><li>{}</li><li>{}</li></ul>'
-    '</p><br><p><a href="https://prodeko.org//fi/admin/app_apply_for_membership/pendinguser/' + user.id + '/change/">Hyväksy tai hylkää hakemus</a></p>'.format(
+    '</p><br><p><a href="https://prodeko.org//fi/admin/app_apply_for_membership/pendinguser/' + str(user.id) + '/change/">Hyväksy tai hylkää hakemus</a></p>'.format(
         user.name, user.email, user.field_of_study, user.start_year, user.hometown, user.membership_type, user.additional_info)
     email_to = 'mediakeisari@prodeko.org'
     from_email = 'no-reply@prodeko.org'
