@@ -7,8 +7,9 @@ from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.shortcuts import redirect
+from django.utils.crypto import get_random_string
 from django.utils.translation import ugettext_lazy as _
-#from auth_prodeko.models import User
+from django.core.mail import EmailMultiAlternatives
 
 
 class PendingUser(models.Model):
@@ -53,23 +54,58 @@ class PendingUser(models.Model):
 
 
     def acceptMembership(self, request, account_id, *args, **kwargs):
-        #TODO: send email?
+        password = get_random_string(length=16)
+        self.user.set_password(password)
+        self.send_accept_email(self.user, password)
         self.user.is_active = True
         self.user.save()
         messages.success(request, _('Membership application accepted.'))
         self.delete()
 
     def rejectMembership(self, request, account_id, *args, **kwargs):
-        #TODO: send email?
+        self.send_reject_email(self.user)
         messages.success(request, _('Membership application rejected.'))
         self.user.delete()
         self.delete()
+
+
+
+    def send_accept_email(self, user, password):
+        # inform user about accepted application
+        subject = 'Your Application to Prodeko has been accepted'
+        text_content = 'Hello, {} {}!' \
+            'Your application to join Prodeko has been accepted. You can now login to https://prodeko.org/ using the following credentials:\n' \
+            'Email: {}\n Password: {}\n\nPlease change your password after logging in.'.format(user.first_name, user.last_name, user.email, password)
+        html_content = '<p>Hello, {} {}!' \
+            'Your application to join Prodeko has been accepted. You can now login to https://prodeko.org/ using the following credentials:\n' \
+            '<strong>Email:</string> {}\n <strong>Password:</strong> {}\n\nPlease change your password after logging in.</p>'.format(user.first_name, user.last_name, user.email, password)
+        email_to = user.email
+        from_email = 'no-reply@prodeko.org'
+        msg = EmailMultiAlternatives(subject, text_content, from_email, [email_to])
+        msg.attach_alternative(html_content, "text/html")
+        msg.send()
+
+    def send_reject_email(self, user):
+        # inform user about rejected application
+        subject = 'Your Application to Prodeko has been rejected'
+        text_content = 'Hello, {} {}!' \
+            'Your application to join Prodeko has been rejected.'.format(user.first_name, user.last_name)
+        html_content = '<p>Hello, {} {}!' \
+            'Your application to join Prodeko has been rejected.'.format(user.first_name, user.last_name)
+        email_to = user.email
+        from_email = 'no-reply@prodeko.org'
+        msg = EmailMultiAlternatives(subject, text_content, from_email, [email_to])
+        msg.attach_alternative(html_content, "text/html")
+        msg.send()
 
     def __str__(self):
         first_name = self.first_name
         last_name = self.last_name
         field_of_study = self.field_of_study
         return '{} {} - {}'.format(first_name, last_name, field_of_study)
+
+    def name(self):
+        return '{} {}'.format(first_name, last_name)
 
     class Meta:
         # Correct spelling in Django admin
