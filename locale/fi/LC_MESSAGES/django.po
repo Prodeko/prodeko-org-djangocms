@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-21 00:07+0000\n"
+"POT-Creation-Date: 2018-12-22 13:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -38,6 +38,12 @@ msgstr "sähköposti"
 msgid "Your password has been set. You may go ahead and Sign in now."
 msgstr "Salasanasi on asetettu. Voit kirjautua nyt sisään."
 
+#: auth_prodeko/templates/password_reset_complete.html:11
+#, fuzzy
+#| msgid "Go back to login"
+msgid "Back to login"
+msgstr "Takaisin kirjautumiseen"
+
 #: auth_prodeko/templates/password_reset_confirm.html:10
 msgid ""
 "The password reset link was invalid, possibly because it has already been "
@@ -49,6 +55,12 @@ msgstr ""
 #: auth_prodeko/templates/password_reset_confirm.html:11
 msgid "Go back to the website"
 msgstr "Mene takaisin sivustolle"
+
+#: auth_prodeko/templates/password_reset_confirm.html:12
+#: prodekoorg/app_toimarit/templates/admin/base.html:44
+#: prodekoorg/templates/admin/inc/branding.html:23
+msgid "Change password"
+msgstr "Vaihda salasana"
 
 #: auth_prodeko/templates/password_reset_done.html:10
 msgid ""
@@ -138,84 +150,84 @@ msgstr ""
 "Mikäli opiskelet Aalto-yliopistossa hae varsinaiseksi jäseneksi. Muuten hae "
 "ulkojäseneksi"
 
-#: prodekoorg/app_apply_for_membership/models.py:21
+#: prodekoorg/app_apply_for_membership/models.py:22
 msgid "True member"
 msgstr "Varsinainen jäsen"
 
-#: prodekoorg/app_apply_for_membership/models.py:22
+#: prodekoorg/app_apply_for_membership/models.py:23
 msgid "Alumn"
 msgstr "Alumni"
 
-#: prodekoorg/app_apply_for_membership/models.py:23
+#: prodekoorg/app_apply_for_membership/models.py:24
 msgid "External member"
 msgstr "Ulkojäsen"
 
-#: prodekoorg/app_apply_for_membership/models.py:27
+#: prodekoorg/app_apply_for_membership/models.py:28
 msgid "Yes"
 msgstr "Kyllä"
 
-#: prodekoorg/app_apply_for_membership/models.py:28
+#: prodekoorg/app_apply_for_membership/models.py:29
 msgid "No"
 msgstr "Ei"
 
-#: prodekoorg/app_apply_for_membership/models.py:37
+#: prodekoorg/app_apply_for_membership/models.py:38
 msgid "First name"
 msgstr "Etunimi"
 
-#: prodekoorg/app_apply_for_membership/models.py:38
+#: prodekoorg/app_apply_for_membership/models.py:39
 msgid "Last name"
 msgstr "Sukunimi"
 
-#: prodekoorg/app_apply_for_membership/models.py:39
+#: prodekoorg/app_apply_for_membership/models.py:40
 msgid "Hometown"
 msgstr "Kotikaupunki"
 
-#: prodekoorg/app_apply_for_membership/models.py:40
+#: prodekoorg/app_apply_for_membership/models.py:41
 msgid "Field of study"
 msgstr "Opiskeluala"
 
-#: prodekoorg/app_apply_for_membership/models.py:41
+#: prodekoorg/app_apply_for_membership/models.py:42
 #: prodekoorg/app_kulukorvaus/models.py:44
 msgid "Email"
 msgstr "Sähköposti"
 
-#: prodekoorg/app_apply_for_membership/models.py:42
+#: prodekoorg/app_apply_for_membership/models.py:43
 msgid "Year"
 msgstr "Vuosi"
 
-#: prodekoorg/app_apply_for_membership/models.py:43
+#: prodekoorg/app_apply_for_membership/models.py:44
 msgid "Membership type"
 msgstr "Jäsentyyppi"
 
-#: prodekoorg/app_apply_for_membership/models.py:44
+#: prodekoorg/app_apply_for_membership/models.py:45
 msgid "Why do you want to become a member?"
 msgstr "Miksi haluat jäseneksi?"
 
-#: prodekoorg/app_apply_for_membership/models.py:45
+#: prodekoorg/app_apply_for_membership/models.py:46
 msgid "Are you an AYY (Aalto University Student Union) member?"
 msgstr "Oletko AYY:n jäsen?"
 
-#: prodekoorg/app_apply_for_membership/models.py:46
+#: prodekoorg/app_apply_for_membership/models.py:47
 msgid "Receipt of the membership payment"
 msgstr "Kuitti jäsenmaksusta"
 
-#: prodekoorg/app_apply_for_membership/models.py:59
+#: prodekoorg/app_apply_for_membership/models.py:62
 #, fuzzy
 #| msgid "Membership applications"
 msgid "Membership application accepted."
 msgstr "Jäsenhakemukset"
 
-#: prodekoorg/app_apply_for_membership/models.py:64
+#: prodekoorg/app_apply_for_membership/models.py:67
 #, fuzzy
 #| msgid "Membership applications"
 msgid "Membership application rejected."
 msgstr "Jäsenhakemukset"
 
-#: prodekoorg/app_apply_for_membership/models.py:76
+#: prodekoorg/app_apply_for_membership/models.py:112
 msgid "membership application"
 msgstr "jäsenhakemus"
 
-#: prodekoorg/app_apply_for_membership/models.py:77
+#: prodekoorg/app_apply_for_membership/models.py:113
 msgid "Membership applications"
 msgstr "Jäsenhakemukset"
 
@@ -232,7 +244,7 @@ msgid "Membership application received!"
 msgstr "Hakemus vastaanotettu!"
 
 #: prodekoorg/app_apply_for_membership/templates/form_apply.html:3
-#: prodekoorg/templates/layout-components/navbar.html:4
+#: prodekoorg/templates/layout-components/navbar.html:5
 msgid "Apply for a membership"
 msgstr "Hae jäsenyyttä"
 
@@ -385,30 +397,30 @@ msgstr "pöytäkirja"
 msgid "Minutes"
 msgstr "Pöytäkirjat"
 
-#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/dokumentti/change_list.html:76
-#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:31
+#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/Dokumentti/change_list.html:77
+#: prodekoorg/app_toimarit/templates/admin/app_toimarit/Toimari/change_list.html:31
 #: prodekoorg/app_toimarit/templates/admin/base.html:56
 msgid "Home"
 msgstr "Kotisivu"
 
-#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/dokumentti/change_list.html:114
-#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:49
+#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/Dokumentti/change_list.html:115
+#: prodekoorg/app_toimarit/templates/admin/app_toimarit/Toimari/change_list.html:49
 #, python-format
 msgid "Add %(name)s"
 msgstr "Lisää %(name)s"
 
-#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/dokumentti/change_list.html:123
-#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:65
+#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/Dokumentti/change_list.html:124
+#: prodekoorg/app_toimarit/templates/admin/app_toimarit/Toimari/change_list.html:65
 msgid "Please correct the error below."
 msgstr "Korjaa allaolevat virheet."
 
-#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/dokumentti/change_list.html:123
-#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:65
+#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/Dokumentti/change_list.html:124
+#: prodekoorg/app_toimarit/templates/admin/app_toimarit/Toimari/change_list.html:65
 msgid "Please correct the errors below."
 msgstr "Korjaa allaolevat virheet."
 
-#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/dokumentti/change_list.html:134
-#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:76
+#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/Dokumentti/change_list.html:135
+#: prodekoorg/app_toimarit/templates/admin/app_toimarit/Toimari/change_list.html:76
 msgid "Filter"
 msgstr "Filtteri"
 
@@ -429,11 +441,15 @@ msgid "File versions"
 msgstr "Tiedostoversiot"
 
 #: prodekoorg/app_tiedostot/urls.py:8
-msgid "files/"
+#, fuzzy
+#| msgid "files/"
+msgid "^files/$"
 msgstr "tiedostot/"
 
 #: prodekoorg/app_tiedostot/urls.py:9
-msgid "files/download/(?P<pk>\\d+)/"
+#, fuzzy
+#| msgid "files/download/(?P<pk>\\d+)/"
+msgid "^files/download/(?P<pk>\\d+)/$"
 msgstr "tiedostot/download/(?P<pk>\\d+)/"
 
 #: prodekoorg/app_toimarit/admin.py:35 prodekoorg/app_toimarit/admin.py:43
@@ -487,13 +503,9 @@ msgstr "Mene sivustolle"
 msgid "Documentation"
 msgstr "Dokumentaatio"
 
-#: prodekoorg/app_toimarit/templates/admin/base.html:44
-#: prodekoorg/templates/admin/inc/branding.html:23
-msgid "Change password"
-msgstr "Vaihda salasana"
-
 #: prodekoorg/app_toimarit/templates/admin/base.html:46
 #: prodekoorg/templates/admin/inc/branding.html:29
+#: prodekoorg/templates/layout-components/navbar.html:4
 msgid "Log out"
 msgstr "Kirjaudu ulos"
 
@@ -687,7 +699,7 @@ msgstr "Tietosuoja"
 msgid "Login"
 msgstr "Kirjaudu"
 
-#: prodekoorg/urls.py:33
+#: prodekoorg/urls.py:38
 msgid "^weekly-bulletin/"
 msgstr "^tiedotteet/"
 
