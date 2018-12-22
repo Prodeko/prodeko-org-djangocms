@@ -14,11 +14,10 @@ from .models import KulukorvausPerustiedot
 from .printing import KulukorvausPDF
 
 
+@login_required(login_url='/login/')
 def download_kulukorvaus_pdf(request, perustiedot_id):
     try:
         model_perustiedot = KulukorvausPerustiedot.objects.get(id=perustiedot_id)
-        if not request.user.is_authenticated():
-            return HttpResponseRedirect(reverse('auth_prodeko:login'))
         if not request.user == model_perustiedot.created_by_user:
             raise PermissionDenied
     except KulukorvausPerustiedot.DoesNotExist:
