@@ -36,7 +36,6 @@ $ python3 manage.py runserver 0.0.0.0:8000
 - Käyttäjä: **webbitiimi@prodeko.org**
 - Salasana: **kananugetti**
 
-
 ### Deployas palvelimelle
 
 1. Virtualenv päälle `source venv/bin/activate`
@@ -46,13 +45,21 @@ $ python3 manage.py runserver 0.0.0.0:8000
 
 Jos törmäät "ImportError: Couldn't import Django..." erroriin, vaihda käyttäjä roottiin ja tee kohdat 2. ja 3. uudestaan.
 
-## Rakennuspalikat
+### Testaus
+
+Testit saa ajettua komennolla `python3 manage.py test -v=2"`
+
+Vain osan testeistä saa ajettua esimerkiksi näin: `python3 manage.py test -p=test_forms.py -v=2"`
+
+Testien kirjoittamiseen voi katsoa mallia prodekoorg/app_kulukorvaus/tests/ kansiosta.
+
+### Rakennuspalikat
 
 * [Django](https://reactjs.org/) - Web development framework
 * [Django CMS](https://www.django-cms.org/en/) - Sisällönhallintajärjestelmä Djangolle
   * [djangocms-bootstrap4](https://github.com/divio/djangocms-bootstrap4) - Bootstrap4 elementtien lisäys suoraan CMS:stä
 
-## Rakenne
+### Rakenne
     .
     ├── ...
     ├── auth_prodeko                   # Autentikaatio
@@ -92,12 +99,9 @@ Jos törmäät "ImportError: Couldn't import Django..." erroriin, vaihda käytt�
     ├── bootstrap.sh          # Vagrant konfiguraatio, jonka komennot käydään läpi `vagrant up` komennon seurauksesta
     └── ...
 
-## Muuta
-
 ### Printtaaminen konsoliin
 - Mikäli haluat printata jotain konsoliin, kommentoi `su - ubuntu -c "cd /vagrant && screen -S server -d -m python3 manage.py runserver 0.0.0.0:8000"` rivi pois bootstrap.sh tiedostosta ja aja `vagrant provision`. Vaihtoehtoisesti tapa runserver prosessi ajamalla virtuaalikoneen sisällä `sudo netstat -plten |grep python` ja `sudo kill $PID` ($PID tilalle laita netstatin kertoma prosessinumero).
 - Suomenkielisten käännösten tekeminen onnistuu seuraavasti: 
-
 
 ### Kääntäminen eri kielille
 1. importtaa ugettext_lazy: `from django.utils.translation import ugettext_lazy as _`. Käytä koodissa näin: _("First name")
@@ -113,11 +117,10 @@ Jos törmäät "CommandError: Can't find msgfmt. Make sure you have GNU gettext 
 msgid "First name"
 msgstr "Etunimi"
 ```
-
 ### Jos scss ei meinaa toimia
 Scss pitäisi compilaa silloin kun tiedosto tallennetaan ja sen aikaleima muuttuu. Tämä ei aina toimi. Workaround: poista tidostosta esim. yksi '{', jotta se on epäpätevä -> muodostuu error, jonka jälkeen compilaus toimii.
 
-## Kehittäjät
+### Kehittäjät
 
 * Timo Riski
 * Santeri Kivinen
