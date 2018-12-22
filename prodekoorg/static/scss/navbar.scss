@@ -29,6 +29,14 @@
         font-size: 1.5em;
     }
     
+    .nav-sublink {
+        color: rgba(0, 0, 0, 0.65); 
+    }
+
+    .nav-ul {
+        list-style: none;
+    }
+    
     li.active-menu-item a {
         font-weight: bold;
     }
