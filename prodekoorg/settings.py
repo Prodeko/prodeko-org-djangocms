@@ -16,7 +16,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SITE_ID = 1
 
-LOGIN_URL = '/login/'
+LOGIN_URL = 'auth_prodeko:login'
 
 config = configparser.ConfigParser()
 config.read(os.path.join(BASE_DIR, 'prodekoorg/variables.txt'))
@@ -50,7 +50,7 @@ ROOT_URLCONF = 'prodekoorg.urls'
 # Django moel used for authentication
 AUTH_USER_MODEL = 'auth_prodeko.User'
 LOGIN_REDIRECT_URL = '/'
-LOGIN_URL = 'login'
+LOGIN_URL = 'auth_prodeko:login'
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
