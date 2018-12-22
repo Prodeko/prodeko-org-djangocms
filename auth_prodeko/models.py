@@ -61,3 +61,6 @@ class User(AbstractUser):
             instance.save()
 
     objects = UserManager()
+
+    class Meta:
+        app_label = 'auth_prodeko'
