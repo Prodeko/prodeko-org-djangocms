@@ -5,8 +5,9 @@ from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
 from django.core.files.base import ContentFile
 from django.forms import formset_factory
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.shortcuts import render
+from django.urls import reverse
 
 from .forms import KulukorvausForm, KulukorvausPerustiedotForm
 from .models import KulukorvausPerustiedot
@@ -16,11 +17,12 @@ from .printing import KulukorvausPDF
 def download_kulukorvaus_pdf(request, perustiedot_id):
     try:
         model_perustiedot = KulukorvausPerustiedot.objects.get(id=perustiedot_id)
-        if not request.user.is_authenticated() or \
-           not request.user == model_perustiedot.created_by_user:
+        if not request.user.is_authenticated():
+            return HttpResponseRedirect(reverse('auth_prodeko:login'))
+        if not request.user == model_perustiedot.created_by_user:
             raise PermissionDenied
     except KulukorvausPerustiedot.DoesNotExist:
-        raise PermissionDenied
+        raise Http404("Reimbursement does not exist")
 
     # Create the HttpResponse object with the appropriate PDF headers.
     time = strftime("%Y-%m-%d", localtime())
