@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-22 15:52+0000\n"
+"POT-Creation-Date: 2018-12-22 21:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -193,7 +193,7 @@ msgid "Field of study"
 msgstr "Opiskeluala"
 
 #: prodekoorg/app_apply_for_membership/models.py:42
-#: prodekoorg/app_kulukorvaus/models.py:33
+#: prodekoorg/app_kulukorvaus/models.py:32
 msgid "Email"
 msgstr "Sähköposti"
 
@@ -285,7 +285,7 @@ msgid "Amount: 8€"
 msgstr "Määrä: 8€"
 
 #: prodekoorg/app_apply_for_membership/templates/form_apply.html:10
-#: prodekoorg/app_kulukorvaus/models.py:69
+#: prodekoorg/app_kulukorvaus/models.py:70
 #: prodekoorg/app_kulukorvaus/templates/form_kulukorvaus_kulu.html:4
 msgid "Receipt"
 msgstr "Kuitti"
@@ -306,61 +306,61 @@ msgstr ""
 "e.g. \"Syyssitsit\", \"Fuksiryhmätapaaminen\" tai \"Kiltahuoneen uudistaminen"
 "\""
 
-#: prodekoorg/app_kulukorvaus/models.py:32 prodekoorg/app_vaalit/models.py:33
+#: prodekoorg/app_kulukorvaus/models.py:31 prodekoorg/app_vaalit/models.py:33
 msgid "Name"
 msgstr "Nimi"
 
-#: prodekoorg/app_kulukorvaus/models.py:34
+#: prodekoorg/app_kulukorvaus/models.py:33
 msgid "Position in guild"
 msgstr "Virka"
 
-#: prodekoorg/app_kulukorvaus/models.py:35
+#: prodekoorg/app_kulukorvaus/models.py:34
 msgid "Phone number"
 msgstr "Puhelinnumero"
 
-#: prodekoorg/app_kulukorvaus/models.py:38
+#: prodekoorg/app_kulukorvaus/models.py:37
 msgid "Account number (IBAN)"
 msgstr "Tilinumero (IBAN)"
 
-#: prodekoorg/app_kulukorvaus/models.py:41
+#: prodekoorg/app_kulukorvaus/models.py:40
 msgid "Total reimbursement (in €)"
 msgstr "Korvaussumma yhteensä (euroissa)"
 
-#: prodekoorg/app_kulukorvaus/models.py:42
-#: prodekoorg/app_kulukorvaus/models.py:68
+#: prodekoorg/app_kulukorvaus/models.py:41
+#: prodekoorg/app_kulukorvaus/models.py:69
 msgid "Additional information"
 msgstr "Lisätietoja, kulujen perusteita"
 
-#: prodekoorg/app_kulukorvaus/models.py:53
+#: prodekoorg/app_kulukorvaus/models.py:52
 msgid "reimbursement basic information"
 msgstr "kulukorvaus perustiedot"
 
-#: prodekoorg/app_kulukorvaus/models.py:54
+#: prodekoorg/app_kulukorvaus/models.py:53
 msgid "Reimbursement basic information"
 msgstr "Kulukorvaus perustiedot"
 
-#: prodekoorg/app_kulukorvaus/models.py:63 prodekoorg/app_vaalit/models.py:65
+#: prodekoorg/app_kulukorvaus/models.py:62 prodekoorg/app_vaalit/models.py:65
 #: prodekoorg/app_vaalit/models.py:86
 msgid "Created at"
 msgstr "Luotu"
 
-#: prodekoorg/app_kulukorvaus/models.py:65
+#: prodekoorg/app_kulukorvaus/models.py:66
 msgid "Expense explanation"
 msgstr "Kulun selite"
 
-#: prodekoorg/app_kulukorvaus/models.py:66
+#: prodekoorg/app_kulukorvaus/models.py:67
 msgid "Event / expense target"
 msgstr "Tapahtuma / kulun kohde"
 
-#: prodekoorg/app_kulukorvaus/models.py:67
+#: prodekoorg/app_kulukorvaus/models.py:68
 msgid "Sum (in €)"
 msgstr "Summa (euroissa)"
 
-#: prodekoorg/app_kulukorvaus/models.py:79
+#: prodekoorg/app_kulukorvaus/models.py:80
 msgid "reimbursement"
 msgstr "kulukorvaus"
 
-#: prodekoorg/app_kulukorvaus/models.py:80
+#: prodekoorg/app_kulukorvaus/models.py:81
 msgid "Reimbursements"
 msgstr "Kulukorvaukset"
 
@@ -782,6 +782,9 @@ msgstr ""
 #: tiedotteet/info/forms.py:100
 msgid "TLS salaus päällä"
 msgstr ""
+
+#~ msgid "Reimbursement does not exist"
+#~ msgstr "Kulukorvausta ei ole olemassa"
 
 #~ msgid "Additional info"
 #~ msgstr "Lisätietoja, kulujen perusteita"
