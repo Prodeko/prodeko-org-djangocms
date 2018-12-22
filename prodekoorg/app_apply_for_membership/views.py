@@ -2,15 +2,14 @@ from django.core.mail import EmailMultiAlternatives
 from django.shortcuts import render
 
 from .forms import PendingUserForm
+from .models import PendingUser
 
 
-# TODO: Display error message if email already exists in the database
 def main_form(request):
     if request.method == 'POST' and request.is_ajax():
 
         form_apply = PendingUserForm(request.POST, request.FILES)
         is_valid_form = form_apply.is_valid()
-
         if is_valid_form:
             pending_user = form_apply.save()
             # send_email(pending_user)

@@ -2,6 +2,7 @@ from django.forms import ModelForm, RadioSelect, Textarea
 from django.utils.translation import ugettext_lazy as _
 
 from .models import PendingUser
+from auth_prodeko.models import User
 
 
 class PendingUserForm(ModelForm):
@@ -19,6 +20,13 @@ class PendingUserForm(ModelForm):
         for visible in self.visible_fields():
             if visible.name not in ['membership_type', 'is_ayy_member']:
                 visible.field.widget.attrs['class'] = 'form-control'
+
+    def clean(self):
+        #Verify that email doesn't already exist
+        cleaned_data = super().clean()
+        email = cleaned_data.get("email")
+        if User.objects.filter(email=email).exists():
+            self.add_error('email', "An application or account associated with this email already exists")
 
     class Meta:
         model = PendingUser
