@@ -37,7 +37,7 @@
 				{% endfor %}
 				<!-- /end for child -->
 			</ul>
-			<ul class="navbar-nav">
+			<ul class="navbar-nav navbar-auth">
 				{% if not user.is_authenticated %}
 				<li>
 					<a href="{% url 'auth_prodeko:login' %}" class="btn btn-light mr-2">

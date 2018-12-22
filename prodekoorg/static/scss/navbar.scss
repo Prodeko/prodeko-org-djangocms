@@ -9,6 +9,19 @@
             text-decoration: underline;
         }
 
+        .navbar-auth {
+            @include phone {
+                li {
+                    margin-bottom: 5px;
+
+                    a {
+                        width: 165px;
+                        margin-right: 0 !important;
+                    }
+                }
+            }
+        }
+
         /* Keep 'FI/EN' in the same row */
         .nav-lang {
             white-space: nowrap;
