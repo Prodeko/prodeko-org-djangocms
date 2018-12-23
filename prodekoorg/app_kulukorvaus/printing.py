@@ -1,8 +1,9 @@
-import io
+from io import BytesIO
 
 from django.conf import settings
 from django.utils import timezone
 from django.utils.dateformat import format
+from django.utils.translation import ugettext as _
 from reportlab.lib import colors
 from reportlab.lib.enums import TA_CENTER, TA_JUSTIFY
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
@@ -16,40 +17,53 @@ from reportlab.platypus.flowables import HRFlowable
 
 
 class KulukorvausPDF:
+    """PDF generation from KulukorvausPerustiedot and Kulukorvaus objects.
+
+    This class abstracts away the pdf generation process utilising the
+    reportlab library (https://www.reportlab.com/opensource/).
+
+    Attributes:
+        model_perustiedot: Timestamp of object creation.
+        buffer: A BytesIO buffer.
+        models_kulukorvaukset: One or more Kulukorvaus objects
+    """
 
     def __init__(self, model_perustiedot, models_kulukorvaukset, buffer):
-        # Register fonts
+        """Initialize class attributes."""
         self.register_fonts()
         self.model_perustiedot = model_perustiedot
-        self.buffer = buffer
+        self.buffer = BytesIO()
         self.models_kulukorvaukset = models_kulukorvaukset
 
     def register_fonts(self):
+        """Register fonts so reportlab can use them."""
         pdfmetrics.registerFont(TTFont(
             'Raleway Bold', settings.STATIC_ROOT + '/fonts/Raleway/Raleway-Bold.ttf'))
         pdfmetrics.registerFont(TTFont(
             'Raleway Medium', settings.STATIC_ROOT + '/fonts/Raleway/Raleway-Medium.ttf'))
 
     def handle_receipt(self, img_receipt):
-        img = Image(io.BytesIO(img_receipt))
+        """Restrict receipt image size."""
+        img = Image(BytesIO(img_receipt))
         img._restrictSize(12 * cm, 15 * cm)
         return img
 
     def get_image(self, path, width):
-        """ Return image with a specified width with original aspect ratio."""
+        """Return image with a specified width and the original aspect ratio."""
         img = ImageReader(path)
         iw, ih = img.getSize()
         aspect = ih / float(iw)
         return Image(path, width=width, height=(width * aspect))
 
     def print_kulukorvaukset(self):
+        """Generates a pdf file from data"""
         buffer = self.buffer
         doc = SimpleDocTemplate(buffer,
                                 rightMargin=72,
                                 leftMargin=72,
                                 topMargin=18,
                                 bottomMargin=18,
-                                title='Prodeko kulukorvaus')
+                                title=_('Prodeko kulukorvaus'))
 
         styles = getSampleStyleSheet()
         styles.add(ParagraphStyle(name='Justify', alignment=TA_JUSTIFY))
@@ -69,11 +83,11 @@ class KulukorvausPDF:
 
         elements = []
 
-        t_data = [['Nimi', created_by],
-                  ['Sähköposti', email],
-                  ['Asema killassa', position_in_guild],
-                  ['Puhelinnumero', phone_number],
-                  ['Tilinumero (IBAN)', bank_number],
+        t_data = [[_('Name'), created_by],
+                  [_('Email'), email],
+                  [_('Position in guild'), position_in_guild],
+                  [_('Phone number'), phone_number],
+                  [_('Account number (IBAN)'), bank_number],
                   ['BIC', bic]]
 
         for model in self.models_kulukorvaukset:
@@ -98,14 +112,18 @@ class KulukorvausPDF:
             formatted_time)
         PTIME = Paragraph(ptime, styles['Center'])
 
-        ptext = """<font name='Raleway Medium' size=10>Kulukorvauksesi on vastaanotettu. Hakemus käsitellään seuraavassa hallituksen kokouksessa.
+        text_info = _("Your reimbursement claim has been received. The claim will be processed in the next Prodeko board meeting.")
+        text_errors = _("If you notice any errors in the information below, contact Prodeko's treasurer immediately at rahastonhoitaja@prodeko.org.")
+        # Kulukorvauksesi on vastaanotettu. Hakemus käsitellään seuraavassa hallituksen kokouksessa.
+        # Jos havaitset virheitä alla olevista tiedoista, ota välittömästi yhteys rahastonhoitajaan: rahastonhoitaja@prodeko.org.
 
+        ptext = """<font name='Raleway Medium' size=10>{}
         <br />
         <br />
-        Jos havaitset virheitä alla olevista tiedoista, ota välittömästi yhteys rahastonhoitajaan
-        rahastonhoitaja@prodeko.org.
+        {}
         </font>
-        """
+        """.format(text_info, text_errors)
+
         P1 = Paragraph(ptext, styles['Normal'])
         T = Table(t_data)
         T.setStyle(TableStyle(t_style))
