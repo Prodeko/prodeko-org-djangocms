@@ -5,6 +5,8 @@ from ..forms import KulukorvausForm, KulukorvausPerustiedotForm
 
 
 class KulukorvausPerustiedotFormTest(TestData):
+    """Tests for KulukorvausPerustiedotForm."""
+
     def test_kulukorvaus_perustiedot_form_valid(self):
         form_data = {'id': 1,
                      'created_by_user': 'webbitiimi@prodeko.org',
@@ -71,6 +73,8 @@ class KulukorvausPerustiedotFormTest(TestData):
 
 
 class KulukorvausFormTest(TestData):
+    """Tests for KulukorvausForm."""
+
     def test_kulukorvaus_form_valid(self):
         form_data = {'info': 1,
                      'target': 'Testing',

@@ -15,6 +15,8 @@ finnish = override_settings(
 
 
 class KulukorvausPerustiedotModelTest(TestData):
+    """Tests for KulukorvausPerustiedot model."""
+
     @english
     def test_created_by_label_english(self):
         field_label = self.test_perustiedot_model._meta.get_field('created_by').verbose_name
@@ -156,6 +158,8 @@ class KulukorvausPerustiedotModelTest(TestData):
 
 
 class KulukorvausModelTest(TestData):
+    """Tests for Kulukorvaus model"""
+
     @english
     def test_created_at_label_english(self):
         field_label = self.test_kulukorvaus_model._meta.get_field('created_at').verbose_name

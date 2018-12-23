@@ -14,7 +14,7 @@ class TestData(TestCase):
     test_forms.py, test_models.py and test_views.py
 
     Args:
-    TestCase: https://docs.djangoproject.com/en/dev/topics/testing/tools/#testcase.
+        TestCase: https://docs.djangoproject.com/en/dev/topics/testing/tools/#testcase.
     """
 
     @classmethod
