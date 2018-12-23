@@ -74,13 +74,10 @@ def add_pdf_to_model(perustiedot_id):
     # attribute is the KulukorvausPerustiedot object fetched above.
     models_kulukorvaukset = model_perustiedot.kulukorvaus_set.all()
 
-    # Buffer to hold the pdf.
-    buffer = BytesIO()
-
     # Initialize class KulukorvausPDF defined in printing.py and
     # generate the pdf based on KulukorvausPerustiedot and
     # Kulukorvaus object data.
-    kulukorvaus = KulukorvausPDF(model_perustiedot, models_kulukorvaukset, buffer)
+    kulukorvaus = KulukorvausPDF(model_perustiedot, models_kulukorvaukset)
     pdf = kulukorvaus.print_kulukorvaukset()
 
     # Set the 'pdf' attribute of model KulukorvausPerustiedot.

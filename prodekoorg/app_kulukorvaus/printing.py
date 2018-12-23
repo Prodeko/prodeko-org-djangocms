@@ -28,7 +28,7 @@ class KulukorvausPDF:
         models_kulukorvaukset: One or more Kulukorvaus objects
     """
 
-    def __init__(self, model_perustiedot, models_kulukorvaukset, buffer):
+    def __init__(self, model_perustiedot, models_kulukorvaukset):
         """Initialize class attributes."""
         self.register_fonts()
         self.model_perustiedot = model_perustiedot
