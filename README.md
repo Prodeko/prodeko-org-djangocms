@@ -4,7 +4,7 @@ Tuotantotalouden kilta Prodekon Django pohjaiset nettisivut.
 
 ---
 
- Prodeko.org projekti käyttää Django versiota 1.11.11, sillä DjangoCMS ei ole vielä yhteensopiva version 2.0 kanssa.
+Prodeko.org projekti käyttää Django versiota 1.11.11, sillä DjangoCMS ei ole vielä yhteensopiva version 2.0 kanssa.
 
 ### Vaatimukset
 
@@ -43,7 +43,7 @@ $ python3 manage.py runserver 0.0.0.0:8000
 3. Käynnistä apache uudestaan `sudo service apache2 restart`
 4. Tarkista näyttävätkö sivut toimivan [djangocms.prodeko.org](https://djangocms.prodeko.org)
 
-Jos törmäät "ImportError: Couldn't import Django..." erroriin, vaihda käyttäjä roottiin ja tee kohdat 2. ja 3. uudestaan.
+Jos törmäät "ImportError: Couldn't import Django..." erroriin, vaihda käyttäjä roottiin (`sudo su`) ja tee kohdat 2. ja 3. uudestaan.
 
 ### Testaus
 
@@ -52,6 +52,15 @@ Testit saa ajettua komennolla `python3 manage.py test -v=2"`
 Vain osan testeistä saa ajettua esimerkiksi näin: `python3 manage.py test -p=test_forms.py -v=2"`
 
 Testien kirjoittamiseen voi katsoa mallia prodekoorg/app_kulukorvaus/tests/ kansiosta.
+
+### Koodityyli
+
+Käytä koodityylin tarkistamiseen apuna [flake8:aa](http://flake8.pycqa.org/en/latest/index.html). 
+
+Asennusohjeet:
+- [VSCode](https://code.visualstudio.com/docs/python/linting#_flake8)
+- [Atom](https://atom.io/packages/linter-flake8)
+- [Sublime Text](https://packagecontrol.io/packages/SublimeLinter-flake8)
 
 ### Rakennuspalikat
 
@@ -95,13 +104,14 @@ Testien kirjoittamiseen voi katsoa mallia prodekoorg/app_kulukorvaus/tests/ kans
     │   └── ...  
     ├── tiedotteet            # tiedotteet.prodeko.org verkkosivu
     │   └── ...  
+    ├── seminaari             # Prodeko Seminaarin nettisivut
+    │   └── ...  
     ├── README.md             # README
-    ├── bootstrap.sh          # Vagrant konfiguraatio, jonka komennot käydään läpi `vagrant up` komennon seurauksesta
+    ├── bootstrap.sh          # Vagrant konfiguraatiotiedosto, jonka komennot käydään läpi `vagrant provision` komennolla
     └── ...
 
 ### Printtaaminen konsoliin
 - Mikäli haluat printata jotain konsoliin, kommentoi `su - ubuntu -c "cd /vagrant && screen -S server -d -m python3 manage.py runserver 0.0.0.0:8000"` rivi pois bootstrap.sh tiedostosta ja aja `vagrant provision`. Vaihtoehtoisesti tapa runserver prosessi ajamalla virtuaalikoneen sisällä `sudo netstat -plten |grep python` ja `sudo kill $PID` ($PID tilalle laita netstatin kertoma prosessinumero).
-- Suomenkielisten käännösten tekeminen onnistuu seuraavasti: 
 
 ### Kääntäminen eri kielille
 1. importtaa ugettext_lazy: `from django.utils.translation import ugettext_lazy as _`. Käytä koodissa näin: _("First name")
@@ -118,7 +128,7 @@ msgid "First name"
 msgstr "Etunimi"
 ```
 ### Jos scss ei meinaa toimia
-Scss pitäisi compilaa silloin kun tiedosto tallennetaan ja sen aikaleima muuttuu. Tämä ei aina toimi. Workaround: poista tidostosta esim. yksi '{', jotta se on epäpätevä -> muodostuu error, jonka jälkeen compilaus toimii.
+Scss:n pitäisi automaattisesti compilata silloin kun tiedosto tallennetaan ja sen aikaleima muuttuu. Tämä ei aina toimi. Workaround: poista tidostosta esim. yksi '{', jotta se on epäpätevä -> muodostuu error, jonka jälkeen compilaus toimii kun '{' lisätään takaisin.
 
 ### Kehittäjät
 
