@@ -5,9 +5,8 @@ from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
 from django.core.files.base import ContentFile
 from django.forms import formset_factory
-from django.http import HttpResponse, HttpResponseRedirect, Http404
+from django.http import HttpResponse, Http404
 from django.shortcuts import render
-from django.urls import reverse
 
 from .forms import KulukorvausForm, KulukorvausPerustiedotForm
 from .models import KulukorvausPerustiedot
