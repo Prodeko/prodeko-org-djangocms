@@ -4,9 +4,11 @@
 
 <div id="kulukorvaus-done">
     <img src="{% static 'images/logos/prodeko-logo-text-blue.png' %}" />
-    <p>Kulukorvauksesi on vastaanotettu. Hakemus käsitellään seuraavassa hallituksen kokouksessa.
-      Jos havaitset virheitä alla olevista tiedoista, ota välittömästi yhteys rahastonhoitajaan
-      rahastonhoitaja@prodeko.org.
+    <p>
+      {% blocktrans trimmed %}
+        Your reimbursement claim has been received. The claim will be processed in the next Prodeko board meeting.
+        If you notice any errors in the information below, contact Prodeko's treasurer immediately at rahastonhoitaja@prodeko.org.
+      {% endblocktrans %}
     </p>
     <a href="{% url 'app_kulukorvaus:download_kulukorvaus' perustiedot_id %}" class="btn btn-default mb-4" role="button">{% trans download %}</a>
 </div>

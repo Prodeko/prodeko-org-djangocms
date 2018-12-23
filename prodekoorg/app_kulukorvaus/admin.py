@@ -11,6 +11,7 @@ class YearFilter(SimpleListFilter):
     parameter_name = 'vuosi'
 
     def lookups(self, request, model_admin):
+        """Allows filtering the reimbursements by year in Django admin"""
         years = set([d.created_at.year for d in model_admin.model.objects.all()])
         return [(y, y) for y in years]
 
@@ -25,16 +26,14 @@ class KulukorvausAdmin(admin.ModelAdmin):
     list_display = ('created_at', 'explanation')
     list_filter = (YearFilter,)
 
-    # Override Textarea default height
     formfield_overrides = {
-        models.TextField: {'widget': Textarea(attrs={'rows': 1, 'cols': 1})},
+        models.TextField: {'widget': Textarea(attrs={'rows': 1, 'cols': 1})},  # Override Textarea default height
     }
 
 
 class KulukorvausPerustiedotAdmin(admin.ModelAdmin):
-    # Override Textarea default height
     formfield_overrides = {
-        models.TextField: {'widget': Textarea(attrs={'rows': 1, 'cols': 1})},
+        models.TextField: {'widget': Textarea(attrs={'rows': 1, 'cols': 1})},  # Override Textarea default height
     }
 
 
