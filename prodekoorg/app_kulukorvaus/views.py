@@ -100,10 +100,6 @@ def main_form(request):
         A Django TemplateResponse object that renders a html template.
 
         If the user isn't logged in, they are redirected to the login url.
-
-    Raises:
-        Http404: Kulukorvaus (reimbursements) does not exist.
-        PermissionDenied: User didn't create the reimbursement.
     """
 
     # Django docs: "A formset is a layer of abstraction to work
