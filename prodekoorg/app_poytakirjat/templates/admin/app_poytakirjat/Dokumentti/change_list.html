@@ -84,6 +84,10 @@ $(function () {
 {% block coltype %}flex{% endblock %}
 
 {% block content %}
+
+{% trans "Download minutes from Drive" as download %}
+{% trans "How does this work" as how_does_it_work %}
+
   <div id="content-main">
     {% block object-tools %}
         <ul class="object-tools">
@@ -98,13 +102,13 @@ $(function () {
             </li>
             <li>
               <a id="download-button" type="submit" onclick="document.getElementById('folderIdForm').submit()" href="#">
-                Lataa pöytäkirjat Drivestä
+                  {% trans download %}
                 <i class="ml-2 fas fa-download"></i>
               </a>
             </li>
             <li>
               <a id="download-instructions" href="#" data-toggle="tooltip" data-placement="bottom">
-                Miten lataaminen toimii
+                  {% trans how_does_it_work %}
                 <i class="ml-2 fas fa-question"></i>
               </a  >
             </li>

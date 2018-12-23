@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-23 14:37+0000\n"
+"POT-Creation-Date: 2018-12-23 15:45+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -291,13 +291,13 @@ msgstr "Kuitti"
 msgid "^apply/$"
 msgstr "^hae-jaseneksi/$"
 
-#: prodekoorg/app_kulukorvaus/forms.py:67
+#: prodekoorg/app_kulukorvaus/forms.py:68
 msgid ""
 "e.g. \"Food expenses\", \"Coffee to the guildroom\" or \"Mileage allowance\""
 msgstr ""
 "esim. \"Ruokakulut\", \"Kahvia kiltahuoneelle\" tai \"Kilometrikorvaus\""
 
-#: prodekoorg/app_kulukorvaus/forms.py:68
+#: prodekoorg/app_kulukorvaus/forms.py:69
 msgid "e.g. \"Fall sitz\", \"Freshmen meetup\" or \"Guildroom renovations\""
 msgstr ""
 "e.g. \"Syyssitsit\", \"Fuksiryhmätapaaminen\" tai \"Kiltahuoneen uudistaminen"
@@ -372,6 +372,7 @@ msgid "reimbursement"
 msgstr "kulukorvaus"
 
 #: prodekoorg/app_kulukorvaus/models.py:102
+#: prodekoorg/templates/layout-components/footer.html:7
 msgid "Reimbursements"
 msgstr "Kulukorvaukset"
 
@@ -434,11 +435,11 @@ msgstr "Lisää kulu"
 msgid "^reimbursement/$"
 msgstr "^kulukorvaus/$"
 
-#: prodekoorg/app_poytakirjat/models.py:37
+#: prodekoorg/app_poytakirjat/models.py:55
 msgid "minutes"
 msgstr "pöytäkirja"
 
-#: prodekoorg/app_poytakirjat/models.py:38
+#: prodekoorg/app_poytakirjat/models.py:56
 msgid "Minutes"
 msgstr "Pöytäkirjat"
 
@@ -448,23 +449,31 @@ msgstr "Pöytäkirjat"
 msgid "Home"
 msgstr "Kotisivu"
 
-#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/dokumentti/change_list.html:115
+#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/dokumentti/change_list.html:88
+msgid "Download minutes from Drive"
+msgstr "Lataa pöytäkirjat Drivestä"
+
+#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/dokumentti/change_list.html:89
+msgid "How does this work"
+msgstr "Miten lataaminen toimii"
+
+#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/dokumentti/change_list.html:119
 #: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:49
 #, python-format
 msgid "Add %(name)s"
 msgstr "Lisää %(name)s"
 
-#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/dokumentti/change_list.html:124
+#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/dokumentti/change_list.html:128
 #: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:65
 msgid "Please correct the error below."
 msgstr "Korjaa allaolevat virheet."
 
-#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/dokumentti/change_list.html:124
+#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/dokumentti/change_list.html:128
 #: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:65
 msgid "Please correct the errors below."
 msgstr "Korjaa allaolevat virheet."
 
-#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/dokumentti/change_list.html:135
+#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/dokumentti/change_list.html:139
 #: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:76
 msgid "Filter"
 msgstr "Filtteri"
@@ -727,13 +736,29 @@ msgstr "Alumneille"
 msgid "For businesses"
 msgstr "Yrityksille"
 
-#: prodekoorg/templates/layout-components/footer.html:13
-msgid "/privacy"
-msgstr "/tietosuoja"
+#: prodekoorg/templates/layout-components/footer.html:3
+msgid "Contact information"
+msgstr "Ota yhteyttä"
 
-#: prodekoorg/templates/layout-components/footer.html:13
+#: prodekoorg/templates/layout-components/footer.html:4
+msgid "Mailing address"
+msgstr "Postiosoite"
+
+#: prodekoorg/templates/layout-components/footer.html:5
+msgid "Visiting address"
+msgstr "Käyntiosoite"
+
+#: prodekoorg/templates/layout-components/footer.html:6
+msgid "Contact form"
+msgstr "Yhteydenottolomake"
+
+#: prodekoorg/templates/layout-components/footer.html:8
 msgid "Privacy policy"
 msgstr "Tietosuoja"
+
+#: prodekoorg/templates/layout-components/footer.html:20
+msgid "/privacy"
+msgstr "/tietosuoja"
 
 #: prodekoorg/templates/layout-components/navbar.html:3
 msgid "Login"
