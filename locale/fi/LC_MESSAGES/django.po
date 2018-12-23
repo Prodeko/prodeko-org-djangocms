@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-23 14:37+0000\n"
+"POT-Creation-Date: 2018-12-23 14:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -372,6 +372,7 @@ msgid "reimbursement"
 msgstr "kulukorvaus"
 
 #: prodekoorg/app_kulukorvaus/models.py:102
+#: prodekoorg/templates/layout-components/footer.html:7
 msgid "Reimbursements"
 msgstr "Kulukorvaukset"
 
@@ -727,13 +728,29 @@ msgstr "Alumneille"
 msgid "For businesses"
 msgstr "Yrityksille"
 
-#: prodekoorg/templates/layout-components/footer.html:13
-msgid "/privacy"
-msgstr "/tietosuoja"
+#: prodekoorg/templates/layout-components/footer.html:3
+msgid "Contact information"
+msgstr "Ota yhteyttä"
 
-#: prodekoorg/templates/layout-components/footer.html:13
+#: prodekoorg/templates/layout-components/footer.html:4
+msgid "Mailing address"
+msgstr "Postiosoite"
+
+#: prodekoorg/templates/layout-components/footer.html:5
+msgid "Visiting address"
+msgstr "Käyntiosoite"
+
+#: prodekoorg/templates/layout-components/footer.html:6
+msgid "Contact form"
+msgstr "Yhteydenottolomake"
+
+#: prodekoorg/templates/layout-components/footer.html:8
 msgid "Privacy policy"
 msgstr "Tietosuoja"
+
+#: prodekoorg/templates/layout-components/footer.html:20
+msgid "/privacy"
+msgstr "/tietosuoja"
 
 #: prodekoorg/templates/layout-components/navbar.html:3
 msgid "Login"
