@@ -3,7 +3,7 @@ from django.utils.translation import ugettext_lazy as _
 
 
 def content_directory(instance, filename):
-    """ Specify doc_file upload directory at runtime.
+    """Specify doc_file upload directory at runtime.
 
     Uploads the model instance to a directory that
     gets specified using information about the model itself
