@@ -1,16 +1,23 @@
 {% load cms_tags i18n staticfiles %}
 
+{% trans "Contact information" as contact_info %}
+{% trans "Mailing address" as postal_address %}
+{% trans "Visiting address" as visiting_address %}
+{% trans "Contact form" as contact_form %}
+{% trans "Reimbursements" as reimbursements %}
+{% trans "Privacy policy" as privacy_policy%}
+
 	<footer class="footer prodeko-footer container">
 		<div class="network-img-container">
 			<div class="row align-items-start">
 				<div class="mx-auto col-md-3 col-sm-4">
-					<h4><strong>Ota yhteyttä</strong></h4>
+					<h4><strong>{% trans contact_info %}</strong></h4>
 					<p>Tuotantotalouden kilta Prodeko ry</p>
-					<p><b>Postiosoite:</b><br>PL 15500<br>00076 Aalto</p>
-					<p><b>Käyntiosoite:</b><br>TUAS-talo<br>Maarintie 8<br>02150 Espoo</p>
-					<p><u><a href="https://docs.google.com/forms/d/e/1FAIpQLSc1ptM75jx9IUgMr6kD8puTKe4cOfrzwKO3Ae9s4nqYf17z9Q/viewform">Yhteydenottolomake</a></u></p>
-					<p><u><a href="{% url 'app_kulukorvaus:kulukorvaus' %}">Laskut</a></u></p>
-					<p><u><a href="{% trans '/privacy' %}">{% trans "Privacy policy" %}</a></u></p>
+					<p><b>{% trans postal_address %}:</b><br>PL 15500<br>00076 Aalto</p>
+					<p><b>{% trans visiting_address %}:</b><br>TUAS-talo<br>Maarintie 8<br>02150 Espoo</p>
+					<p><u><a href="https://docs.google.com/forms/d/e/1FAIpQLSc1ptM75jx9IUgMr6kD8puTKe4cOfrzwKO3Ae9s4nqYf17z9Q/viewform">{% trans contact_form %}</a></u></p>
+					<p><u><a href="{% url 'app_kulukorvaus:kulukorvaus' %}">{% trans reimbursements %}</a></u></p>
+					<p><u><a href="{% trans '/privacy' %}">{% trans privacy_policy %}</a></u></p>
 				</div>
 				<div class="col-md-8 col-sm-7 ml-1">
 					<div class="row">

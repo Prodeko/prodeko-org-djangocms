@@ -19,7 +19,10 @@ TEAM_DRIVE_ID = '0AD8EdtHhweZwUk9PVA'
 
 
 def initialize_service():
-    """Initialize a Drive API service instance.
+    """Initializes a Google Drive API instance.
+
+    Returns:
+        Google Drive API service object.
     """
 
     SERVICE_ACCOUNT_FILE = os.path.join(settings.BASE_DIR, 'prodekoorg/app_poytakirjat/service-account.json')
@@ -35,11 +38,17 @@ def initialize_service():
 
 
 def merge_liitteet_to_doc(pdfs):
-    """Merges a list of pdfs into one
+    """Merges a list of pdf's into a single pdf file.
+
+    Utilizes the PdfFileMerger from PyPDF2.
 
     Args:
-    pdfs: List of pdf's to merge.
+        pdfs: List of pdf's to merge.
+
+    Returns:
+        BytesIO buffer contents (a pdf file).
     """
+
     merger = PdfFileMerger()
     for pdf in pdfs:
         if(pdf):
@@ -74,18 +83,26 @@ def compress_pdf(fh_pdf):
     ghostscript.Ghostscript(*args)
 
 
-def get_gdrive_folders_dict(service, folder_id):
-    """Get a dictionary of files in a drive folder
+def get_gdrive_folders_dict(service, parent_folder_id):
+    """Get a dictionary of files in a Google Drive folder.
+
+    Generates a dictionary containing folder id's whose parent
+    folder's id is parent_folder_id.
 
     Args:
-    service: Drive API service instance.
-    folder_id: ID of the folder to print files from.
+        service: Drive API service instance.
+        folder_id: Id of the parent folder.
+
+    Returns:
+        Python dictionary containing folder id's that
+        are children of parent_folder_id.
     """
+
     while True:
         folders = service.files().list(
             corpora="teamDrive",
             orderBy="createdTime",
-            q="mimeType='application/vnd.google-apps.folder' and parents in '" + folder_id + "'",
+            q="mimeType='application/vnd.google-apps.folder' and parents in '" + parent_folder_id + "'",
             supportsTeamDrives=True,
             includeTeamDriveItems=True,
             teamDriveId=TEAM_DRIVE_ID).execute()
@@ -93,13 +110,21 @@ def get_gdrive_folders_dict(service, folder_id):
 
 
 def filter_gdrive_folders_dict(folders_dict):
-    """Filter out folders names that don't confine to a regular expression in the
-    folder name and folder id's for which we already have fetched documents.
+    """Filter folders_dict dictionary.
+
+    Filter out folders names that don't match a regular expression in the
+    folder name. Folder id's for which we already have documents are
+    also filtered out.
 
     Args:
-    folders_dict: Dictionary folder info that gets converted to Dokumentti models.
+        folders_dict: Dictionary folder info that gets converted to Dokumentti models.
+
+    Returns:
+        A filtered Python dictionary containing folder id's
+        whose contents are to be downloaded next.
     """
-    # Use a regex match to include only folders names like '10_31.12.2018'
+
+    # Use a regex match to include only folders names such as '10_31.12.2018'
     filtered_dict = {k['id']: k['name'] for k in folders_dict['files'] if match(
         '\d{2}_([0-9]|[1-3][0-9]).([1-9]|[1][0-2]).\d{4}$', k['name'])}
 
@@ -112,11 +137,15 @@ def filter_gdrive_folders_dict(folders_dict):
 
 
 def create_models_from_folders(service, request, folders_dict):
-    """Create models from folders_dict
+    """Create Django objects from folders_dict
 
     Args:
-    service: Drive API service instance.
-    folders_dict: Dictionary folder info that gets converted to Dokumentti models.
+        service: Drive API service instance.
+        folders_dict: Python dictionary containing
+            containing info that gets converted to Dokumentti models.
+
+    Returns:
+        Integer count of successfully downloaded documents.
     """
 
     # Filter out unwanted folders inside the 'Kokoukset' folder
@@ -149,13 +178,17 @@ def create_models_from_folders(service, request, folders_dict):
 
 
 def download_files_as_pdf(service, parent_id):
-    """Download files beginning 'Pöytäkirja' and 'LIITE' in a G Drive
+    """Download files beginning 'Pöytäkirja' and 'LIITE' in a Drive
     folder specified by parent_id.
 
     Args:
-    service: Drive API service instance.
-    parent_id: Id of the parent folder.
+        service: Drive API service instance.
+        parent_id: Id of the parent folder.
+
+    Returns:
+        Tuple consisting of 1. a pdf file and 2. the attachments to that pdf file.
     """
+
     poytakirja = service.files().list(
         corpora="teamDrive",
         q="mimeType='application/vnd.google-apps.document' and name contains 'Pöytäkirja' and parents in '{}'".format(parent_id),
@@ -179,6 +212,16 @@ def download_files_as_pdf(service, parent_id):
 
 
 def download_gdoc_as_pdf(files, service):
+    """Downloades the Google Doc document as a pdf using the Drive API.
+
+    Args:
+        files: List of .gdocs files in a Drive folder.
+        service: Drive API service instance.
+
+    Returns:
+        PDF file that was generated from a Google Docs file.
+    """
+
     pdf_file = None
     if files:
         # 'files' parameter should only contain one file
@@ -198,6 +241,18 @@ def download_gdoc_as_pdf(files, service):
 
 
 def download_liitteet(files, service):
+    """Downloades the attachments in a folder as PDF files.
+
+    There may be 0 or more attachments in a folder.
+
+    Args:
+        files: List of attachment files in a Drive folder.
+        service: Drive API service instance.
+
+    Returns:
+        List of attachment pdf files.
+    """
+
     pdf_files = []
 
     # Sort liitteet by name so that liite named 'LIITE1' gets
@@ -222,9 +277,24 @@ def download_liitteet(files, service):
 def run_app_poytakirjat(request):
     """Main routine of this file that gets called from Django admin view.
 
+    It works as follows:
+
+    1. Obtain folderID from POST
+    2. Get a dictionary of children folders of folderID
+    3. Create Django models from the folder dict
+    4. Redirect to the dokumentti admin page and display either
+        an error message or the number of successfully downloaded
+        documents
+
     Args:
-    request: http request object that we don't actually need.
+        request: HttpRequest object.
+
+    Returns:
+        Redirects to the main admin dokumentti page.
+
+        A user must be a staff member to access this function.
     """
+
     # Id of the 'Kokoukset' folder iside 'Hallituksen sisäinen Team Drive
     folder_id = request.POST['folderID']
     try:
