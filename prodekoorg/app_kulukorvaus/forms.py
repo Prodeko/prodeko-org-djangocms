@@ -46,6 +46,7 @@ class KulukorvausForm(ModelForm):
     Maps Kulukorvaus model's fields to
     HTML form <input> elements.
     """
+
     def __init__(self, *args, **kwargs):
         super(KulukorvausForm, self).__init__(*args, **kwargs)
         # The KulukorvausForm can't be empty.
