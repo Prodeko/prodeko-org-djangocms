@@ -1,4 +1,5 @@
-import tempfile
+import os
+from shutil import rmtree
 from unittest.mock import MagicMock
 
 from django.conf import settings
@@ -7,6 +8,12 @@ from django.core.files import File
 from django.test import TestCase
 
 from ..models import Kulukorvaus, KulukorvausPerustiedot
+
+tmp_media_dir = '/tmp/django_test'
+# Creates a temporary folder for test file uploads
+if not os.path.exists(tmp_media_dir):
+    os.makedirs(tmp_media_dir)
+settings.MEDIA_ROOT = tmp_media_dir
 
 
 class TestData(TestCase):
@@ -19,8 +26,6 @@ class TestData(TestCase):
 
     @classmethod
     def setUpTestData(cls):
-        # Creates a temporary folder like /tmp/tmp505q_7mi where file uploads go
-        settings.MEDIAROOT = tempfile.mkdtemp()
         # Create a user
         User = get_user_model()
         cls.test_user1 = User.objects.create_user(email='test1@test.com', password='Ukc55Has-@')
@@ -49,3 +54,7 @@ class TestData(TestCase):
                                                                 sum_euros=99.991,
                                                                 additional_info='Some additional info.',
                                                                 receipt=cls.file_mock_jpg,)
+
+    def tearDown(self):
+        print(settings.MEDIA_ROOT)
+        rmtree(settings.MEDIA_ROOT, ignore_errors=True)
