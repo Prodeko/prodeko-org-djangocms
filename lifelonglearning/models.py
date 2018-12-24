@@ -1,8 +1,7 @@
-import os
-
+from ckeditor.fields import RichTextField
 from django.conf import settings
 from django.db import models
-from ckeditor.fields import RichTextField
+from django.utils.translation import ugettext_lazy as _
 
 
 class Course(models.Model):
@@ -26,4 +25,5 @@ class Course(models.Model):
             return "{}{}".format(settings.STATIC_URL, "img/default_thumbnail.jpg")
 
     class Meta:
-        verbose_name_plural = "Courses"
+        verbose_name = _('courses')
+        verbose_name_plural = _("Courses")

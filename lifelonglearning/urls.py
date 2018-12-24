@@ -1,6 +1,6 @@
 from django.conf.urls import url
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-from .views import *
+from .views import index, coursepage
 
 app_name = 'lifelonglearning'
 urlpatterns = [
