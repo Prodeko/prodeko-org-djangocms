@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load cms_tags sekizai_tags sass_tags %}
+
+{% block extra_head %}
+<link href="{% sass_src 'scss/auth_prodeko.scss' %}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block content %}
+
+{% include "layout-components/jumbotron.html" %}
+
+<div class="container">
+
+  <h1>Profile</h1>
+  <strong>Name: </strong> {{ user.first_name }} {{ user.last_name }} <br />
+  <strong>Email: </strong> {{ user.email }} <br /> <br />
+
+  <h2>Edit profile</h2>
+  <form method="POST" action=".">
+  	{% csrf_token %}
+  	{{ form.as_p }}
+	  <input type="Submit" />
+	</form>
+	<br />
+</div>
+
+{% endblock content %}
