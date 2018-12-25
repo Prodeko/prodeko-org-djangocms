@@ -47,6 +47,5 @@ class DokumenttiViewTest(TestData):
         }
 
         response = self.client.post(reverse("download_docs_from_gsuite"), data=test_data)
-        print(response)
         self.assertEqual(response.status_code, 302)
         self.assertTrue(response.url.startswith('/admin/app_poytakirjat/dokumentti/'))
