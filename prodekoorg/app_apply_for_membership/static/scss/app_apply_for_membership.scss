@@ -20,6 +20,12 @@
 
 #form-apply-wrapper {
     font-size: 1em;
+
+    .fa-minus-square {
+        font-size: 25px;
+        color: rgb(141, 31, 31);
+        vertical-align: middle;
+    }
     
     #payment-info {
         margin: 2em 0 2em 1em;

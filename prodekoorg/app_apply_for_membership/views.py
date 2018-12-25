@@ -1,8 +1,8 @@
+from django.conf import settings
 from django.core.mail import EmailMultiAlternatives
 from django.shortcuts import render
 
 from .forms import PendingUserForm
-from .models import PendingUser
 
 
 def main_form(request):
@@ -34,7 +34,7 @@ def send_email(user):
     '</p><br><p><a href="https://prodeko.org//fi/admin/app_apply_for_membership/pendinguser/' + str(user.id) + '/change/">Hyväksy tai hylkää hakemus</a></p>'.format(
         user.name, user.email, user.field_of_study, user.start_year, user.hometown, user.membership_type, user.additional_info)
     email_to = 'mediakeisari@prodeko.org'
-    from_email = 'no-reply@prodeko.org'
+    from_email = settings.DEFAULT_FROM_EMAIL
     msg = EmailMultiAlternatives(subject, text_content, from_email, [email_to])
     msg.attach_alternative(html_content, "text/html")
     msg.send()
