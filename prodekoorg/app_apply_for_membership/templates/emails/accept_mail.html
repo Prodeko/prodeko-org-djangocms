@@ -1,8 +1,7 @@
+{% load i18n %}
+
 <p>Hello, {{ user.first_name }} {{ user.last_name }}!</p>
-<p>
-    Your application to join Prodeko has been accepted. You can now login to https://prodeko.org/ using the following credentials:\n'
-    <strong>Email:</strong> {{ user.email }}
-    <strong>Password:</strong> {{ password }}
-    
-    Please change your password after logging in.
-</p>
+<p>Your application to join Prodeko has been accepted. You can now login to https://prodeko.org/ using the following credentials:</p>
+<p><strong>Email: {{ user.email }}</strong></p>
+<p><strong>Password: {{ password }}</strong> </p>  
+<p>Please change your password after logging in.</p>

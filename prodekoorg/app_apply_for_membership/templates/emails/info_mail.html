@@ -1,0 +1,12 @@
+{% load i18n %}
+<p>Uusi jäsenhakemus:</p>
+<ul>
+    <li>{{ user.name }}</li>
+    <li>{{ user.email }}</li>
+    <li>{{ user.field_of_study }}, {{ user.start_year }}</li>
+    <li>{{ user.hometown }}</li>
+    <li>{{ user.get_membership_type_display }}</li>
+    <li>{{ user.additional_info }}</li>
+</ul>
+<br>    
+<p>https://prodeko.org/fi/admin/app_apply_for_membership/pendinguser/{{ user.id }}/change/ - Hyväksy tai hylkää hakemus.</p>
