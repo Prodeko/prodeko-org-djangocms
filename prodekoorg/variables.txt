@@ -8,3 +8,7 @@ PASSWORD = prodekoorg
 
 [DEBUG]
 MODE = True
+
+[EMAIL]
+USER = no-reply@prodeko.org
+PASSWORD = ****

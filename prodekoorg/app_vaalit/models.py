@@ -31,7 +31,7 @@ class Ehdokas(models.Model):
     id = models.AutoField(primary_key=True)
     auth_prodeko_user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, null=True)
     name = models.CharField(max_length=50, verbose_name=_('Name'))
-    introduction = RichTextField(config_name='vaalit_ckeditor')
+    introduction = RichTextField(config_name='main_ckeditor')
     virka = models.ForeignKey(Virka, related_name='ehdokkaat')
     pic = models.ImageField(blank=True, verbose_name=_('Picture'))
 

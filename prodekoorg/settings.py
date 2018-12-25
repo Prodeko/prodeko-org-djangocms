@@ -136,11 +136,12 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'prodekoorg', 'templates'),
-                 os.path.join(BASE_DIR, 'prodekoorg', 'templates', 'accounts'),
                  os.path.join(BASE_DIR, 'tiedotteet/info', 'templates'),
                  os.path.join(BASE_DIR, 'tiedotteet', 'public'),
                  os.path.join(BASE_DIR, 'lifelonglearning', 'templates'),
                  os.path.join(BASE_DIR, 'seminaari', 'templates'),
+                 os.path.join(BASE_DIR, 'prodekoorg/app_apply_for_membership', 'templates'),
+                 os.path.join(BASE_DIR, 'prodekoorg/app_apply_for_membership', 'templates', 'emails'),
                  os.path.join(BASE_DIR, 'prodekoorg/app_kulukorvaus', 'templates'),
                  os.path.join(BASE_DIR, 'prodekoorg/app_poytakirjat', 'templates'),
                  os.path.join(BASE_DIR, 'prodekoorg/app_toimarit', 'templates')],
@@ -325,7 +326,7 @@ FILER_STORAGES = {
 
 """CKEditor"""
 CKEDITOR_CONFIGS = {
-    'vaalit_ckeditor': {
+    'main_ckeditor': {
         'toolbar': [["Format", "Bold", "Italic", "Underline", "Strike"],
                     ["NumberedList", 'BulletedList', "Indent", "Outdent", "JustifyLeft", "JustifyCenter",
                      "JustifyRight", "JustifyBlock"],
@@ -343,11 +344,14 @@ MESSAGE_TAGS = {
     messages.ERROR: 'danger'
 }
 """Email"""
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-EMAIL_HOST = 'localhost'
-EMAIL_HOST_USER = ''
-EMAIL_HOST_PASSWORD = ''
-EMAIL_PORT = 25
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp-relay.gmail.com'
+EMAIL_HOST_USER = config['EMAIL']['USER']
+EMAIL_HOST_PASSWORD = config['EMAIL']['PASSWORD']
+DEFAULT_FROM_EMAIL = 'no-reply@prodeko.org'
+SERVER_EMAIL = 'errors@prodeko.org'
+EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
 """tiedotteet.prodeko.org settings"""
