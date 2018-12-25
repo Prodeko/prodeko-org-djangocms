@@ -66,8 +66,8 @@ class PendingUser(models.Model):
     def send_accept_email(self, user, password):
         # inform user about accepted application
         subject = 'Your Application to Prodeko has been accepted'
-        text_content = render_to_string('accept_mail.txt', {'user': user})
-        html_content = render_to_string('accept_mail.html', {'user': user})
+        text_content = render_to_string('accept_mail.txt', {'user': user, 'password': password})
+        html_content = render_to_string('accept_mail.html', {'user': user, 'password': password})
         email_to = user.email
         from_email = settings.DEFAULT_FROM_EMAIL
         msg = EmailMultiAlternatives(subject, text_content, from_email, [email_to])
