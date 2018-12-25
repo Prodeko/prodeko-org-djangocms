@@ -95,7 +95,7 @@ $(function () {
             {% if has_add_permission %}
             <!-- PÖYTÄKIRJOJEN LATAAMINEN -->
             <li>
-              <form id="folderIdForm" method="POST" action="{% url 'download_docs_from_gsuite' %}" style="padding: 0 !important; margin: 0 !important; background-color: transparent !important;">
+              <form id="folderIdForm" method="POST" action="{% url 'download_docs_from_gsuite' %}">
                 {% csrf_token %}
                 <input name="folderID" type="text" class="form-control" value ="1RD-AIF6GuB08wDSFKxNxRZgBu2BtPEli">
               </form>
