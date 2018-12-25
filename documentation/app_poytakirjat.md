@@ -5,23 +5,23 @@ Prodeko.org + G Drive integraatio pöytäkirjojen lisäämiseksi automaattisesti
 ## Setup
 
 1. Luo uusi projekti Google Cloud Platformiin https://console.developers.google.com/
-![Google Cloud Console uusi projekti](images/gcp-new-project.png)
+![Google Cloud Console uusi projekti](images/app_poytakirjat/gcp-new-project.png)
 2. Luo 'service account'
    https://developers.google.com/identity/protocols/OAuth2ServiceAccount#creatinganaccount
    - Lisäksi anna accountille projektin 'Owner' oikeus ja 'Domain wide authority' oikeus ja lataa private key
-![Service account creation kuva 1](images/service-account-creation-1.png)
-![Service account creation kuva 2](images/service-account-creation-2.png)
-![Service account creation kuva 3](images/service-account-creation-3.png)
-![Service account creation kuva 4](images/service-account-creation-4.png)
-![Service account creation kuva 3](images/service-account-key-1.png)
-![Service account creation kuva 4](images/service-account-key-2.png)
-![Service account creation kuva 4](images/service-account-json-example.png)
+![Service account creation kuva 1](images/app_poytakirjat/service-account-creation-1.png)
+![Service account creation kuva 2](images/app_poytakirjat/service-account-creation-2.png)
+![Service account creation kuva 3](images/app_poytakirjat/service-account-creation-3.png)
+![Service account creation kuva 4](images/app_poytakirjat/service-account-creation-4.png)
+![Service account creation kuva 3](images/app_poytakirjat/service-account-key-1.png)
+![Service account creation kuva 4](images/app_poytakirjat/service-account-key-2.png)
+![Service account creation kuva 4](images/app_poytakirjat/service-account-json-example.png)
 
 3. Anna service accountille 'Domain wide authority' G Suiten admin consolesta (vain mediakeisarilla pääsy). https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority
-![Service account authorization kuva 1](images/service-account-authorization-1.png)
-![Service account authorization kuva 2](images/service-account-authorization-2.png)
-![Service account authorization kuva 3](images/service-account-authorization-3.png)
-![Service account authorization kuva 4](images/service-account-authorization-4.png)
+![Service account authorization kuva 1](images/app_poytakirjat/service-account-authorization-1.png)
+![Service account authorization kuva 2](images/app_poytakirjat/service-account-authorization-2.png)
+![Service account authorization kuva 3](images/app_poytakirjat/service-account-authorization-3.png)
+![Service account authorization kuva 4](images/app_poytakirjat/service-account-authorization-4.png)
 
 ## Käyttö
 
@@ -36,7 +36,7 @@ Pöytäkirjojen lataaminen tapahtuu admin-consolesta osoitteesta /fi/admin/app_p
 - LIITE-sanan jälkeen tuleva järjestysnumero määrää missä järjestyksessä liitteet lisätään lopulliseen pdf-tiedostoon.
 - Pöytäkirja ja liitteet ladataan ja yhdistetään yhdeksi pdf-tiedostoksi ja ne tulevat automaattisesti sivustolle /dokumentit näkyviin.
 
-![Käyttöesimerkki](images/how-to-use.png)
+![Käyttöesimerkki](images/app_poytakirjat/how-to-use.png)
 
 ## Bugit
 
