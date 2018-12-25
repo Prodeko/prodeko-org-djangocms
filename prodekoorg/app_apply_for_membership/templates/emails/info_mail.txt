@@ -1,0 +1,13 @@
+{% load i18n %}
+
+{{ user.name }} hakee Prodekon jäsenyyttä.
+
+Tiedot:
+- {{ user.name }}
+- {{ user.email }}
+- {{ user.field_of_study }}, {{ user.start_year }}
+- {{ user.hometown }}
+- {{ user.get_membership_type_display }}
+- {{ user.additional_info }}
+
+https://prodeko.org/fi/admin/app_apply_for_membership/pendinguser/{{ user.id }}/change/ - Hyväksy tai hylkää hakemus.

@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.core.mail import EmailMultiAlternatives
 from django.shortcuts import render
+from django.template.loader import render_to_string
 
 from .forms import PendingUserForm
 
@@ -26,15 +27,11 @@ def main_form(request):
 def send_email(user):
     # inform user about activation of credentials
     subject = 'Uusi jäsenhakemus - {}'.format(user.name)
-    text_content = '{} hakee Prodekon jäsenyyttä' \
-        '- {} \n - {}, {} \n - {} \n - {} \n - {} \n\n https://prodeko.org//fi/admin/app_apply_for_membership/pendinguser/' + str(user.id) + '/change/ - Hyväksy tai hylkää hakemus'.format(
-            user.name, user.email, user.field_of_study, user.start_year, user.hometown, user.membership_type, user.additional_info)
-    html_content = '<p><strong>{}</strong> hakee Prodekon jäsenyyttä.' \
-        '<ul><li>{}</li><li>{}, {}</li><li>{}</li><li>{}</li><li>{}</li></ul>'
-    '</p><br><p><a href="https://prodeko.org//fi/admin/app_apply_for_membership/pendinguser/' + str(user.id) + '/change/">Hyväksy tai hylkää hakemus</a></p>'.format(
-        user.name, user.email, user.field_of_study, user.start_year, user.hometown, user.membership_type, user.additional_info)
+    text_content = render_to_string('info_mail.txt', {'user': user})
+    html_content = render_to_string('info_mail.html', {'user': user})
     email_to = 'mediakeisari@prodeko.org'
     from_email = settings.DEFAULT_FROM_EMAIL
     msg = EmailMultiAlternatives(subject, text_content, from_email, [email_to])
     msg.attach_alternative(html_content, "text/html")
+    msg.attach('receipt.jpg', user.receipt.file.read(), 'image/jpg')
     msg.send()
