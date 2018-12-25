@@ -22,11 +22,11 @@ class PendingUserForm(ModelForm):
                 visible.field.widget.attrs['class'] = 'form-control'
 
     def clean(self):
-        #Verify that email doesn't already exist
+        # Verify that email doesn't already exist
         cleaned_data = super().clean()
         email = cleaned_data.get("email")
         if User.objects.filter(email=email).exists():
-            self.add_error('email', "An application or account associated with this email already exists")
+            self.add_error('email', _("An application or account associated with this email already exists"))
 
     class Meta:
         model = PendingUser

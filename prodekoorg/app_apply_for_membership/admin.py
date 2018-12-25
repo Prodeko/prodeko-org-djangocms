@@ -1,21 +1,21 @@
 from django.conf.urls import url
 from django.contrib import admin
 from django.core.exceptions import PermissionDenied
-from django.urls import reverse
 from django.db import models
 from django.forms import Textarea
 from django.shortcuts import redirect
+from django.urls import reverse
 from django.utils.html import format_html
-from prodekoorg.app_apply_for_membership.models import PendingUser
 from django.utils.translation import gettext as _
+from prodekoorg.app_apply_for_membership.models import PendingUser
 
 
 class PendingUserAdmin(admin.ModelAdmin):
     list_display = ('first_name', 'last_name', 'user',
                     'hometown', 'application_actions')
 
-    # Override Textarea default height
     formfield_overrides = {
+        # Override Textarea default height
         models.TextField: {'widget': Textarea(attrs={'rows': 1, 'cols': 1})},
     }
 
@@ -24,17 +24,17 @@ class PendingUserAdmin(admin.ModelAdmin):
         custom_urls = [
             url(
                 r'^(?P<account_id>.+)/view/$',
-                self.admin_site.admin_view(viewApplication),
+                self.admin_site.admin_view(view_application),
                 name='application-view',
             ),
             url(
                 r'^(?P<account_id>.+)/accept/$',
-                self.admin_site.admin_view(acceptApplication),
+                self.admin_site.admin_view(accept_application),
                 name='application-accept',
             ),
             url(
                 r'^(?P<account_id>.+)/reject/$',
-                self.admin_site.admin_view(rejectApplication),
+                self.admin_site.admin_view(reject_application),
                 name='application-reject',
             ),
         ]
@@ -56,23 +56,23 @@ class PendingUserAdmin(admin.ModelAdmin):
 admin.site.register(PendingUser, PendingUserAdmin)
 
 
-def viewApplication(request, account_id, *args, **kwargs):
+def view_application(request, account_id, *args, **kwargs):
     if not request.user.is_staff:
         raise PermissionDenied
     return redirect("../")
 
 
-def acceptApplication(request, account_id, *args, **kwargs):
+def accept_application(request, account_id, *args, **kwargs):
     if not request.user.is_staff:
         raise PermissionDenied
     user = PendingUser.objects.get(pk=account_id)
-    user.acceptMembership(request, args, kwargs)
+    user.accept_membership(request, args, kwargs)
     return redirect("../../")
 
 
-def rejectApplication(request, account_id, *args, **kwargs):
+def reject_application(request, account_id, *args, **kwargs):
     if not request.user.is_staff:
         raise PermissionDenied
     user = PendingUser.objects.get(pk=account_id)
-    user.rejectMembership(request, args, kwargs)
+    user.reject_membership(request, args, kwargs)
     return redirect("../../")

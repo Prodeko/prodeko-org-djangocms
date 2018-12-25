@@ -1,0 +1,2 @@
+Hello, {{ user.first_name }} {{ user.last_name }}!
+Your application to join Prodeko has been rejected.

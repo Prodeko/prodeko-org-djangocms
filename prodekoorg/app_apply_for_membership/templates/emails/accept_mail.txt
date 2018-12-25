@@ -1,0 +1,8 @@
+Hello, {{ user.first_name }} {{ user.last_name }}!
+
+Your application to join Prodeko has been accepted. You can now login to https://prodeko.org/ using the following credentials:
+
+Email: {{ user.email }} 
+Password: {{ password }}
+
+Please change your password after logging in.
