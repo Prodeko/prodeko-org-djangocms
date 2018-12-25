@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-23 15:45+0000\n"
+"POT-Creation-Date: 2018-12-25 00:44+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,6 +33,14 @@ msgstr "Tärkeitä päivämääriä"
 #: auth_prodeko/models.py:48
 msgid "email address"
 msgstr "sähköposti"
+
+#: auth_prodeko/models.py:67
+msgid "user"
+msgstr "käyttäjä"
+
+#: auth_prodeko/models.py:68
+msgid "Users"
+msgstr "Käyttäjät"
 
 #: auth_prodeko/templates/password_reset_complete.html:10
 msgid "Your password has been set. You may go ahead and Sign in now."
@@ -128,6 +136,14 @@ msgstr "Salasana unohtunut?"
 msgid "The email and password didn't match. Try again."
 msgstr "Sähköposti ja salasana eivät täsmänneet. Yritä uudestaan."
 
+#: lifelonglearning/models.py:28
+msgid "courses"
+msgstr ""
+
+#: lifelonglearning/models.py:29
+msgid "Courses"
+msgstr ""
+
 #: prodekoorg/app_apply_for_membership/admin.py:45
 msgid "View"
 msgstr "Katsele"
@@ -144,6 +160,10 @@ msgstr "Hylkää"
 msgid "Application actions"
 msgstr "Hakemustoimenpiteet"
 
+#: prodekoorg/app_apply_for_membership/forms.py:29
+msgid "An application or account associated with this email already exists"
+msgstr "Jäsenhakemus tai käyttäjä tällä sähköpostiosoitteella on jo olemassa."
+
 #: prodekoorg/app_apply_for_membership/forms.py:38
 msgid ""
 "If you are studying at Aalto apply as a true member. Otherwise, apply as "
@@ -152,85 +172,85 @@ msgstr ""
 "Mikäli opiskelet Aalto-yliopistossa hae varsinaiseksi jäseneksi. Muuten hae "
 "ulkojäseneksi"
 
-#: prodekoorg/app_apply_for_membership/models.py:22
+#: prodekoorg/app_apply_for_membership/models.py:23
 msgid "True member"
 msgstr "Varsinainen jäsen"
 
-#: prodekoorg/app_apply_for_membership/models.py:23
+#: prodekoorg/app_apply_for_membership/models.py:24
 msgid "Alumn"
 msgstr "Alumni"
 
-#: prodekoorg/app_apply_for_membership/models.py:24
+#: prodekoorg/app_apply_for_membership/models.py:25
 msgid "External member"
 msgstr "Ulkojäsen"
 
-#: prodekoorg/app_apply_for_membership/models.py:28
+#: prodekoorg/app_apply_for_membership/models.py:29
 msgid "Yes"
 msgstr "Kyllä"
 
-#: prodekoorg/app_apply_for_membership/models.py:29
+#: prodekoorg/app_apply_for_membership/models.py:30
 msgid "No"
 msgstr "Ei"
 
-#: prodekoorg/app_apply_for_membership/models.py:38
+#: prodekoorg/app_apply_for_membership/models.py:39
 msgid "First name"
 msgstr "Etunimi"
 
-#: prodekoorg/app_apply_for_membership/models.py:39
+#: prodekoorg/app_apply_for_membership/models.py:40
 msgid "Last name"
 msgstr "Sukunimi"
 
-#: prodekoorg/app_apply_for_membership/models.py:40
+#: prodekoorg/app_apply_for_membership/models.py:41
 msgid "Hometown"
 msgstr "Kotikaupunki"
 
-#: prodekoorg/app_apply_for_membership/models.py:41
+#: prodekoorg/app_apply_for_membership/models.py:42
 msgid "Field of study"
 msgstr "Opiskeluala"
 
-#: prodekoorg/app_apply_for_membership/models.py:42
+#: prodekoorg/app_apply_for_membership/models.py:43
 #: prodekoorg/app_kulukorvaus/models.py:49
 #: prodekoorg/app_kulukorvaus/printing.py:87
 msgid "Email"
 msgstr "Sähköposti"
 
-#: prodekoorg/app_apply_for_membership/models.py:43
+#: prodekoorg/app_apply_for_membership/models.py:44
 msgid "Year"
 msgstr "Vuosi"
 
-#: prodekoorg/app_apply_for_membership/models.py:44
+#: prodekoorg/app_apply_for_membership/models.py:45
 msgid "Membership type"
 msgstr "Jäsentyyppi"
 
-#: prodekoorg/app_apply_for_membership/models.py:45
+#: prodekoorg/app_apply_for_membership/models.py:46
 msgid "Why do you want to become a member?"
 msgstr "Miksi haluat jäseneksi?"
 
-#: prodekoorg/app_apply_for_membership/models.py:46
+#: prodekoorg/app_apply_for_membership/models.py:47
 msgid "Are you an AYY (Aalto University Student Union) member?"
 msgstr "Oletko AYY:n jäsen?"
 
-#: prodekoorg/app_apply_for_membership/models.py:47
+#: prodekoorg/app_apply_for_membership/models.py:48
 msgid "Receipt of the membership payment"
 msgstr "Kuitti jäsenmaksusta"
 
-#: prodekoorg/app_apply_for_membership/models.py:62
+#: prodekoorg/app_apply_for_membership/models.py:57
 #, fuzzy
 #| msgid "Membership applications"
 msgid "Membership application accepted."
 msgstr "Jäsenhakemukset"
 
-#: prodekoorg/app_apply_for_membership/models.py:67
+#: prodekoorg/app_apply_for_membership/models.py:62
 #, fuzzy
 #| msgid "Membership applications"
 msgid "Membership application rejected."
 msgstr "Jäsenhakemukset"
 
-#: prodekoorg/app_apply_for_membership/models.py:112
+#: prodekoorg/app_apply_for_membership/models.py:99
 msgid "membership application"
 msgstr "jäsenhakemus"
 
-#: prodekoorg/app_apply_for_membership/models.py:113
+#: prodekoorg/app_apply_for_membership/models.py:100
 msgid "Membership applications"
 msgstr "Jäsenhakemukset"
 
