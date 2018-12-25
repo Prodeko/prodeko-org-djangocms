@@ -64,3 +64,5 @@ class User(AbstractUser):
 
     class Meta:
         app_label = 'auth_prodeko'
+        verbose_name = _('user')
+        verbose_name_plural = _("Users")

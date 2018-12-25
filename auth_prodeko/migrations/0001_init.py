@@ -34,6 +34,8 @@ class Migration(migrations.Migration):
             ],
             options={
                 'abstract': False,
+                'verbose_name': 'user', 
+                'verbose_name_plural': 'Users',
             },
             managers=[
                 ('objects', auth_prodeko.models.UserManager()),
