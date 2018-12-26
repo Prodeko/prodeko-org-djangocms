@@ -25,19 +25,19 @@ def exportcsv(modeladmin, request, queryset):
 
 @admin.register(Jaosto)
 class JaostoAdmin(admin.ModelAdmin):
-    list_display = ('nimi', )
+    list_display = ('name', )
 
 
 @admin.register(Toimari)
 class ToimariAdmin(admin.ModelAdmin):
-    list_display = ('etunimi', 'sukunimi', 'jaosto', 'virka')
+    list_display = ('firstname', 'lastname', 'section', 'position')
     actions = [exportcsv]
     exportcsv.short_description = _('Export selected as CSV')
 
 
 @admin.register(HallituksenJasen)
 class HallituksenJasenAdmin(admin.ModelAdmin):
-    list_display = ('etunimi', 'sukunimi', 'virka', 'virka_eng',
-                    'jaosto', 'puhelin', 'sahkoposti')
+    list_display = ('firstname', 'lastname', 'position', 'position_eng',
+                    'section', 'mobilephone', 'email')
     actions = [exportcsv]
     exportcsv.short_description = _('Export selected as CSV')

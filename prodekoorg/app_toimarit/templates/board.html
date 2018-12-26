@@ -24,20 +24,20 @@
 				<div>
 					<h2>Hallituksen jäsenet</h2>
 					<div class="row">
-					{% for h in hallituslaiset %}
+					{% for boardmember in boardmembers %}
 						<div class="col-md-12 col-lg-6">
 								<div class="boardMember">
-									{% if h.photoExists %}
-										<img src="{{ baseUrl }}/images/hallitus_photos/{{h.etunimi}}_{{h.sukunimi}}.jpg" />
+									{% if boardmember.photoExists %}
+										<img src="{{ baseUrl }}/images/hallitus_photos/{{boardmember.firstname}}_{{boardmember.lastname}}.jpg" />
 									{% else %}
 										<img src="{% static "images/hallitus_photos/placeholder.jpg" %}" />
 									{% endif %}
 										<div class="description">
-										<strong>{{ h.name }}</strong><br />
-										{{ h.virka }}<br />
-										{{ h.virka_eng }}<br />
-										{{ h.puhelin }}<br />
-										{{ h.sahkoposti }}<br />
+										<strong>{{ boardmember.name }}</strong><br />
+										{{ boardmember.position }}<br />
+										{{ boardmember.position_eng }}<br />
+										{{ boardmember.mobilephone }}<br />
+										{{ boardmember.email }}<br />
 									</div>
 								</div>
 						</div>
@@ -49,7 +49,7 @@
 
 		</div>
 		<div class="col-md-3">
-			{% show_sub_menu 2 1 100 "layout-components/sidenavi.html" %}
+			{% show_sub_menu 2 1 100 "layout-components/sidenav.html" %}
 		</div>
 	</div>
 </div>
