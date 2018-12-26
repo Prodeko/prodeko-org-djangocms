@@ -16,22 +16,22 @@
 		<!-- BEGIN LIST  -->
 		<!-- Toteutus vähän kankea, sillä nyt toimarit-lista käydään jokaista jaostoa kohti läpi uudestaan. Saa parantaa -->
 
-		{% for j in jaostot %}
+		{% for section in sections %}
 			<div class="row">
 				<div>
 					<h2>{{ j }}</h2>
 					<div class="row">
-					{% for t in toimarit %}
-						{% if t.jaosto == j %}
+					{% for official in guildofficials %}
+						{% if official.section == section %}
 							<div class="toimari">
-								{% if t.photoExists %}
-									<img src="{{ baseUrl }}/images/toimari_photos/{{t.etunimi}}_{{t.sukunimi}}.jpg" />
+								{% if official.photoExists %}
+									<img src="{{ baseUrl }}/images/toimari_photos/{{official.firstname}}_{{official.lastname}}.jpg" />
 								{% else %}
 									<img src="{% static "images/toimari_photos/anonyymi_uniseksi_maskulinoitu.jpg" %}" />
 								{% endif %}
 								<div class="description">
-									<strong>{{ t.name }}</strong><br />
-									{{ t.virka }}
+									<strong>{{ official.name }}</strong><br />
+									{{ official.position }}
 								</div>
 							</div>
 						{% endif %}
@@ -44,7 +44,7 @@
 
 		</div>
 		<div class="col-md-3">
-			{% show_sub_menu 2 1 100 "layout-components/sidenavi.html" %}
+			{% show_sub_menu 2 1 100 "layout-components/sidenav.html" %}
 		</div>
 	</div>
 </div>

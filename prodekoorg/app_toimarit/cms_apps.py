@@ -2,7 +2,7 @@ from cms.app_base import CMSApp
 from cms.apphook_pool import apphook_pool
 from django.conf.urls import url
 from django.utils.translation import ugettext_lazy as _
-from prodekoorg.app_toimarit.views import list_hallitus, list_toimarit
+from prodekoorg.app_toimarit.views import list_boardmembers, list_guildofficials
 
 
 @apphook_pool.register
@@ -12,7 +12,7 @@ class ToimaritApphook(CMSApp):
 
     def get_urls(self, page=None, language=None, **kwargs):
         return [
-            url(r'^$', list_toimarit),
+            url(r'^$', list_guildofficials),
         ]
 
 
@@ -23,5 +23,5 @@ class HallitusApphook(CMSApp):
 
     def get_urls(self, page=None, language=None, **kwargs):
         return [
-            url(r'^$', list_hallitus),
+            url(r'^$', list_boardmembers),
         ]
