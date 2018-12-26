@@ -3,12 +3,15 @@ import io
 
 from django.contrib import messages
 from django.contrib.admin.views.decorators import staff_member_required
+from django.views.decorators.csrf import csrf_protect
 from django.shortcuts import redirect, render
 
 from .models import HallituksenJasen, Jaosto, Toimari
 
 
+
 @staff_member_required(login_url='/login/')
+@csrf_protect
 def postcsv(request):
     try:
         csv_file = request.FILES['file']
