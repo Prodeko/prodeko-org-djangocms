@@ -6,7 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class Jaosto(models.Model):
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=50, verbose_name=_('Name'))
 
     def __str__(self):
         return self.name
@@ -17,10 +17,10 @@ class Jaosto(models.Model):
 
 
 class Toimari(models.Model):
-    firstname = models.CharField(max_length=30)
-    lastname = models.CharField(max_length=30)
-    position = models.CharField(max_length=50)
-    section = models.ForeignKey(Jaosto)
+    firstname = models.CharField(max_length=30, verbose_name=_('First name'))
+    lastname = models.CharField(max_length=30, verbose_name=_('Last name'))
+    position = models.CharField(max_length=50, verbose_name=_('Position'))
+    section = models.ForeignKey(Jaosto, verbose_name=_('Section'))
 
     @property
     def name(self):
@@ -39,13 +39,13 @@ class Toimari(models.Model):
 
 class HallituksenJasen(models.Model):
 
-    firstname = models.CharField(max_length=30)
-    lastname = models.CharField(max_length=30)
-    position = models.CharField(max_length=50)
-    section = models.ForeignKey(Jaosto, blank=True, null=True)
-    position_eng = models.CharField(max_length=60)
-    mobilephone = models.CharField(max_length=20)
-    email = models.CharField(max_length=30)
+    firstname = models.CharField(max_length=30, verbose_name=_('First name'))
+    lastname = models.CharField(max_length=30, verbose_name=_('Last name'))
+    position = models.CharField(max_length=50, verbose_name=_('Position'))
+    section = models.ForeignKey(Jaosto, blank=True, null=True, verbose_name=_('Section'))
+    position_eng = models.CharField(max_length=60, verbose_name=_('Position (English)'))
+    mobilephone = models.CharField(max_length=20, verbose_name=_('Mobile phone'))
+    email = models.CharField(max_length=30, verbose_name=_('Email'))
 
     @property
     def name(self):
