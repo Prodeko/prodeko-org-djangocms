@@ -59,7 +59,10 @@ pip3 install --upgrade google-auth-oauthlib
 
 # tasks
 cd /vagrant && python3 manage.py makemigrations --noinput
-cd /vagrant && python3 manage.py migrate 
+cd /vagrant && python3 manage.py migrate
+
+# load data
+cd /vagrant && python3 manage.py loaddata --e contenttypes --app cms --app menus --verbosity 3 data.json
 
 # creating an admin user
 cd /vagrant && echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.filter(email='webbitiimi@prodeko.org').delete(); User.objects.create_superuser('webbitiimi@prodeko.org', 'kananugetti')" | python manage.py shell

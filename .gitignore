@@ -74,6 +74,7 @@ prodekoorg/collected-static
 
 *.db
 *.json
+!data.json
 
 # tiedotteet.prodeko.org
 tiedotteet/static/
