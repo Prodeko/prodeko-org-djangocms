@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-25 00:44+0000\n"
+"POT-Creation-Date: 2018-12-26 17:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -160,11 +160,11 @@ msgstr "Hylkää"
 msgid "Application actions"
 msgstr "Hakemustoimenpiteet"
 
-#: prodekoorg/app_apply_for_membership/forms.py:29
+#: prodekoorg/app_apply_for_membership/forms.py:32
 msgid "An application or account associated with this email already exists"
 msgstr "Jäsenhakemus tai käyttäjä tällä sähköpostiosoitteella on jo olemassa."
 
-#: prodekoorg/app_apply_for_membership/forms.py:38
+#: prodekoorg/app_apply_for_membership/forms.py:41
 msgid ""
 "If you are studying at Aalto apply as a true member. Otherwise, apply as "
 "external member."
@@ -192,65 +192,83 @@ msgstr "Kyllä"
 msgid "No"
 msgstr "Ei"
 
-#: prodekoorg/app_apply_for_membership/models.py:39
+#: prodekoorg/app_apply_for_membership/models.py:34 prodekoorg/settings.py:70
+#: prodekoorg/settings.py:87
+msgid "Finnish"
+msgstr "Suomi"
+
+#: prodekoorg/app_apply_for_membership/models.py:35
+#, fuzzy
+#| msgid "English"
+msgid "Other (English)"
+msgstr "Englanti"
+
+#: prodekoorg/app_apply_for_membership/models.py:44
+#: prodekoorg/app_toimarit/models.py:20 prodekoorg/app_toimarit/models.py:42
 msgid "First name"
 msgstr "Etunimi"
 
-#: prodekoorg/app_apply_for_membership/models.py:40
+#: prodekoorg/app_apply_for_membership/models.py:45
+#: prodekoorg/app_toimarit/models.py:21 prodekoorg/app_toimarit/models.py:43
 msgid "Last name"
 msgstr "Sukunimi"
 
-#: prodekoorg/app_apply_for_membership/models.py:41
+#: prodekoorg/app_apply_for_membership/models.py:46
 msgid "Hometown"
 msgstr "Kotikaupunki"
 
-#: prodekoorg/app_apply_for_membership/models.py:42
+#: prodekoorg/app_apply_for_membership/models.py:47
 msgid "Field of study"
 msgstr "Opiskeluala"
 
-#: prodekoorg/app_apply_for_membership/models.py:43
+#: prodekoorg/app_apply_for_membership/models.py:48
 #: prodekoorg/app_kulukorvaus/models.py:49
 #: prodekoorg/app_kulukorvaus/printing.py:87
+#: prodekoorg/app_toimarit/models.py:48
 msgid "Email"
 msgstr "Sähköposti"
 
-#: prodekoorg/app_apply_for_membership/models.py:44
+#: prodekoorg/app_apply_for_membership/models.py:49
 msgid "Year"
 msgstr "Vuosi"
 
-#: prodekoorg/app_apply_for_membership/models.py:45
+#: prodekoorg/app_apply_for_membership/models.py:50
+msgid "Nationality (language)"
+msgstr ""
+
+#: prodekoorg/app_apply_for_membership/models.py:51
 msgid "Membership type"
 msgstr "Jäsentyyppi"
 
-#: prodekoorg/app_apply_for_membership/models.py:46
+#: prodekoorg/app_apply_for_membership/models.py:52
 msgid "Why do you want to become a member?"
 msgstr "Miksi haluat jäseneksi?"
 
-#: prodekoorg/app_apply_for_membership/models.py:47
+#: prodekoorg/app_apply_for_membership/models.py:53
 msgid "Are you an AYY (Aalto University Student Union) member?"
 msgstr "Oletko AYY:n jäsen?"
 
-#: prodekoorg/app_apply_for_membership/models.py:48
+#: prodekoorg/app_apply_for_membership/models.py:54
 msgid "Receipt of the membership payment"
 msgstr "Kuitti jäsenmaksusta"
 
-#: prodekoorg/app_apply_for_membership/models.py:57
+#: prodekoorg/app_apply_for_membership/models.py:63
 #, fuzzy
 #| msgid "Membership applications"
 msgid "Membership application accepted."
 msgstr "Jäsenhakemukset"
 
-#: prodekoorg/app_apply_for_membership/models.py:62
+#: prodekoorg/app_apply_for_membership/models.py:68
 #, fuzzy
 #| msgid "Membership applications"
 msgid "Membership application rejected."
 msgstr "Jäsenhakemukset"
 
-#: prodekoorg/app_apply_for_membership/models.py:99
+#: prodekoorg/app_apply_for_membership/models.py:105
 msgid "membership application"
 msgstr "jäsenhakemus"
 
-#: prodekoorg/app_apply_for_membership/models.py:100
+#: prodekoorg/app_apply_for_membership/models.py:106
 msgid "Membership applications"
 msgstr "Jäsenhakemukset"
 
@@ -334,7 +352,8 @@ msgid "Guild official"
 msgstr "Toimihenkilö"
 
 #: prodekoorg/app_kulukorvaus/models.py:48
-#: prodekoorg/app_kulukorvaus/printing.py:86 prodekoorg/app_vaalit/models.py:33
+#: prodekoorg/app_kulukorvaus/printing.py:86
+#: prodekoorg/app_toimarit/models.py:9 prodekoorg/app_vaalit/models.py:33
 msgid "Name"
 msgstr "Nimi"
 
@@ -463,38 +482,38 @@ msgstr "pöytäkirja"
 msgid "Minutes"
 msgstr "Pöytäkirjat"
 
-#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/dokumentti/change_list.html:77
-#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:31
+#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/Dokumentti/change_list.html:77
+#: prodekoorg/app_toimarit/templates/admin/app_toimarit/Toimari/change_list.html:31
 #: prodekoorg/app_toimarit/templates/admin/base.html:56
 msgid "Home"
 msgstr "Kotisivu"
 
-#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/dokumentti/change_list.html:88
+#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/Dokumentti/change_list.html:88
 msgid "Download minutes from Drive"
 msgstr "Lataa pöytäkirjat Drivestä"
 
-#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/dokumentti/change_list.html:89
+#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/Dokumentti/change_list.html:89
 msgid "How does this work"
 msgstr "Miten lataaminen toimii"
 
-#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/dokumentti/change_list.html:119
-#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:49
+#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/Dokumentti/change_list.html:119
+#: prodekoorg/app_toimarit/templates/admin/app_toimarit/Toimari/change_list.html:49
 #, python-format
 msgid "Add %(name)s"
 msgstr "Lisää %(name)s"
 
-#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/dokumentti/change_list.html:128
-#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:65
+#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/Dokumentti/change_list.html:128
+#: prodekoorg/app_toimarit/templates/admin/app_toimarit/Toimari/change_list.html:65
 msgid "Please correct the error below."
 msgstr "Korjaa allaolevat virheet."
 
-#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/dokumentti/change_list.html:128
-#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:65
+#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/Dokumentti/change_list.html:128
+#: prodekoorg/app_toimarit/templates/admin/app_toimarit/Toimari/change_list.html:65
 msgid "Please correct the errors below."
 msgstr "Korjaa allaolevat virheet."
 
-#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/dokumentti/change_list.html:139
-#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:76
+#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/Dokumentti/change_list.html:139
+#: prodekoorg/app_toimarit/templates/admin/app_toimarit/Toimari/change_list.html:76
 msgid "Filter"
 msgstr "Filtteri"
 
@@ -543,19 +562,36 @@ msgstr "jaosto"
 msgid "sections"
 msgstr "jaostot"
 
-#: prodekoorg/app_toimarit/models.py:38
+#: prodekoorg/app_toimarit/models.py:22 prodekoorg/app_toimarit/models.py:44
+#: prodekoorg/app_vaalit/models.py:12
+msgid "Position"
+msgstr "Virka"
+
+#: prodekoorg/app_toimarit/models.py:23 prodekoorg/app_toimarit/models.py:45
+msgid "Section"
+msgstr "Jaosto"
+
+#: prodekoorg/app_toimarit/models.py:36
 msgid "guild official"
 msgstr "toimari"
 
-#: prodekoorg/app_toimarit/models.py:39
+#: prodekoorg/app_toimarit/models.py:37
 msgid "guild officials"
 msgstr "toimarit"
 
-#: prodekoorg/app_toimarit/models.py:63
+#: prodekoorg/app_toimarit/models.py:46
+msgid "Position (English)"
+msgstr "Virka (Englanniksi)"
+
+#: prodekoorg/app_toimarit/models.py:47
+msgid "Mobile phone"
+msgstr "Puhelinnumero"
+
+#: prodekoorg/app_toimarit/models.py:61
 msgid "board member"
 msgstr "hallituksen jäsen"
 
-#: prodekoorg/app_toimarit/models.py:64
+#: prodekoorg/app_toimarit/models.py:62
 msgid "board members"
 msgstr "hallituksen jäsenet"
 
@@ -577,10 +613,6 @@ msgstr "Dokumentaatio"
 #: prodekoorg/templates/layout-components/navbar.html:4
 msgid "Log out"
 msgstr "Kirjaudu ulos"
-
-#: prodekoorg/app_vaalit/models.py:12
-msgid "Position"
-msgstr "Virka"
 
 #: prodekoorg/app_vaalit/models.py:23
 msgid "position"
@@ -715,10 +747,6 @@ msgstr "Poista"
 #: prodekoorg/app_vaalit/templates/vaalit_question.html:5
 msgid "Edit"
 msgstr "Muokkaa"
-
-#: prodekoorg/settings.py:70 prodekoorg/settings.py:87
-msgid "Finnish"
-msgstr "Suomi"
 
 #: prodekoorg/settings.py:71 prodekoorg/settings.py:94
 msgid "English"
@@ -864,6 +892,12 @@ msgstr ""
 #: tiedotteet/info/forms.py:100
 msgid "TLS salaus päällä"
 msgstr ""
+
+#~ msgid "First Name"
+#~ msgstr "Etunimi"
+
+#~ msgid "Last Name"
+#~ msgstr "Sukunimi"
 
 #~ msgid "Reimbursement does not exist"
 #~ msgstr "Kulukorvausta ei ole olemassa"
