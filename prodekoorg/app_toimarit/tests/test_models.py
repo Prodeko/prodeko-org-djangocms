@@ -140,3 +140,45 @@ class HallituksenJasenModelTest(TestData):
     def test_section_label_finnish(self):
         field_label = self.test_hallituksenjasen1._meta.get_field('section').verbose_name
         self.assertEquals(field_label, 'Jaosto')
+
+    @english
+    def test_position_eng_label_english(self):
+        field_label = self.test_hallituksenjasen1._meta.get_field('position_eng').verbose_name
+        self.assertEquals(field_label, 'Position (English)')
+
+    @finnish
+    def test_position_eng_label_finnish(self):
+        field_label = self.test_hallituksenjasen1._meta.get_field('position_eng').verbose_name
+        self.assertEquals(field_label, 'Virka (Englanniksi)')
+
+    def test_position_eng_max_length(self):
+        max_length = self.test_hallituksenjasen1._meta.get_field('position_eng').max_length
+        self.assertEquals(max_length, 60)
+
+    @english
+    def test_mobilephone_label_english(self):
+        field_label = self.test_hallituksenjasen1._meta.get_field('mobilephone').verbose_name
+        self.assertEquals(field_label, 'Mobile phone')
+
+    @finnish
+    def test_mobilephone_label_finnish(self):
+        field_label = self.test_hallituksenjasen1._meta.get_field('mobilephone').verbose_name
+        self.assertEquals(field_label, 'Puhelinnumero')
+
+    def test_mobilephone_max_length(self):
+        max_length = self.test_hallituksenjasen1._meta.get_field('mobilephone').max_length
+        self.assertEquals(max_length, 20)
+
+    @english
+    def test_email_label_english(self):
+        field_label = self.test_hallituksenjasen1._meta.get_field('email').verbose_name
+        self.assertEquals(field_label, 'Email')
+
+    @finnish
+    def test_email_label_finnish(self):
+        field_label = self.test_hallituksenjasen1._meta.get_field('email').verbose_name
+        self.assertEquals(field_label, 'Sähköposti')
+
+    def test_email_max_length(self):
+        max_length = self.test_hallituksenjasen1._meta.get_field('email').max_length
+        self.assertEquals(max_length, 30)
