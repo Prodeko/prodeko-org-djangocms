@@ -8,7 +8,7 @@ from django.shortcuts import redirect, render
 from .models import HallituksenJasen, Jaosto, Toimari
 
 
-@staff_member_required
+@staff_member_required(login_url='/login/')
 def postcsv(request):
     try:
         csv_file = request.FILES['file']
@@ -16,11 +16,11 @@ def postcsv(request):
         io_string = io.StringIO(decoded_file)
         for line in csv.reader(io_string, delimiter=';', quotechar='|'):
             nextRow = Toimari()
-            nextRow.etunimi = line[0]
-            nextRow.sukunimi = line[1]
-            nextRow.virka = line[2]
+            nextRow.firstname = line[0]
+            nextRow.lastname = line[1]
+            nextRow.position = line[2]
             # HUOM! Kaikkien Jaostojen täytyy olla jo luotu ennen CSV-tietojen lataamista
-            nextRow.jaosto = Jaosto.objects.get(nimi=line[3])
+            nextRow.section = Jaosto.objects.get(name=line[3])
             nextRow.save()
         messages.add_message(request, messages.SUCCESS, 'CSV-tiedosto ladattu onnistuneesti')
     except:
@@ -28,14 +28,14 @@ def postcsv(request):
     return redirect('../../admin/')
 
 
-def list_toimarit(request):
-    toimarit = Toimari.objects.all()
-    jaostot = Jaosto.objects.all()
-    context = {'toimarit': toimarit, 'jaostot': jaostot}
-    return render(request, 'toimarit.html', context)
+def list_guildofficials(request):
+    guildofficials = Toimari.objects.all()
+    sections = Jaosto.objects.all()
+    context = {'guildofficials': guildofficials, 'sections': sections}
+    return render(request, 'guildofficials.html', context)
 
 
-def list_hallitus(request):
-    hallituslaiset = HallituksenJasen.objects.all()
-    context = {'hallituslaiset': hallituslaiset}
-    return render(request, 'hallitus.html', context)
+def list_boardmembers(request):
+    boardmembers = HallituksenJasen.objects.all()
+    context = {'boardmembers': boardmembers}
+    return render(request, 'board.html', context)

@@ -6,10 +6,10 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class Jaosto(models.Model):
-    nimi = models.CharField(max_length=50)
+    name = models.CharField(max_length=50)
 
     def __str__(self):
-        return self.nimi
+        return self.name
 
     class Meta:
         verbose_name = _('section')
@@ -17,22 +17,20 @@ class Jaosto(models.Model):
 
 
 class Toimari(models.Model):
-
-    # Toimareille ja hallituslaisille
-    etunimi = models.CharField(max_length=30)
-    sukunimi = models.CharField(max_length=30)
-    virka = models.CharField(max_length=50)
-    jaosto = models.ForeignKey(Jaosto)
+    firstname = models.CharField(max_length=30)
+    lastname = models.CharField(max_length=30)
+    position = models.CharField(max_length=50)
+    section = models.ForeignKey(Jaosto)
 
     @property
     def name(self):
-        return '%s %s' % (self.etunimi, self.sukunimi)
+        return '%s %s' % (self.firstname, self.lastname)
 
     def photoExists(self):
-        return os.path.isfile("prodekoorg/app/toimarit/static/images/toimari_photos/" + self.etunimi + "_" + self.sukunimi + ".jpg")
+        return os.path.isfile("prodekoorg/app/toimarit/static/images/toimari_photos/" + self.firstname + "_" + self.lastname + ".jpg")
 
     def __str__(self):
-        return self.name + ", " + self.virka
+        return self.name + ", " + self.position
 
     class Meta:
         verbose_name = _('guild official')
@@ -41,23 +39,23 @@ class Toimari(models.Model):
 
 class HallituksenJasen(models.Model):
 
-    etunimi = models.CharField(max_length=30)
-    sukunimi = models.CharField(max_length=30)
-    virka = models.CharField(max_length=50)
-    jaosto = models.ForeignKey(Jaosto)
-    virka_eng = models.CharField(max_length=60)
-    puhelin = models.CharField(max_length=20)
-    sahkoposti = models.CharField(max_length=30)
+    firstname = models.CharField(max_length=30)
+    lastname = models.CharField(max_length=30)
+    position = models.CharField(max_length=50)
+    section = models.ForeignKey(Jaosto, blank=True, null=True)
+    position_eng = models.CharField(max_length=60)
+    mobilephone = models.CharField(max_length=20)
+    email = models.CharField(max_length=30)
 
     @property
     def name(self):
-        return '%s %s' % (self.etunimi, self.sukunimi)
+        return '%s %s' % (self.firstname, self.lastname)
 
     def photoExists(self):
-        return os.path.isfile("prodekoorg/app_toimarit/static/images/hallitus_photos/" + self.etunimi + "_" + self.sukunimi + ".jpg")
+        return os.path.isfile("prodekoorg/app_toimarit/static/images/hallitus_photos/" + self.firstname + "_" + self.lastname + ".jpg")
 
     def __str__(self):
-        return self.name + ", " + self.virka
+        return self.name + ", " + self.position
 
     class Meta:
         verbose_name = _('board member')
