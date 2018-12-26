@@ -11,6 +11,9 @@ class PendingUserForm(ModelForm):
         super(PendingUserForm, self).__init__(*args, **kwargs)
         self.empty_permitted = False
 
+        if 'language' in self.fields:
+            self.fields['language'].widget = RadioSelect(
+                choices=PendingUser.LANGUAGE_CHOICES)
         if 'membership_type' in self.fields:
             self.fields['membership_type'].widget = RadioSelect(
                 choices=PendingUser.MEMBERSHIP_TYPE_CHOICES)
@@ -18,7 +21,7 @@ class PendingUserForm(ModelForm):
             self.fields['is_ayy_member'].widget = RadioSelect(
                 choices=PendingUser.AYY_MEMBER_CHOICES)
         for visible in self.visible_fields():
-            if visible.name not in ['membership_type', 'is_ayy_member']:
+            if visible.name not in ['language', 'membership_type', 'is_ayy_member']:
                 visible.field.widget.attrs['class'] = 'form-control'
 
     def clean(self):
