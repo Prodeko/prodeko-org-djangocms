@@ -134,6 +134,26 @@
   </div>
   <div class="form-group">
     <div class="row">
+      <legend class="col-form-label col-sm-3 pt-0">{{ form.language.label }}</legend>
+      <div class="col-sm-6">
+        {% for choice in form.language %}
+        <div class="form-check">
+          {{ choice.tag|add_class:'form-check-input' }}
+          <label class="form-check-label" for="{{ form.language.auto_id }}_{{ forloop.counter0 }}">
+            {{ choice.choice_label }}
+          </label>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="col-sm-3">
+        {% if form.language.errors %}
+          <small class="form-text text-danger">{{ form.language.errors.as_text }}</small>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="row">
       <legend class="col-form-label col-sm-3 pt-0">{{ form.membership_type.label }}</legend>
       <div class="col-sm-6">
         {% for choice in form.membership_type %}

@@ -30,6 +30,11 @@ class PendingUser(models.Model):
         ('N', _('No')),
     )
 
+    LANGUAGE_CHOICES = (
+        ('FI', _('Finnish')),
+        ('EN', _('Other (English)')),
+    )
+
     YEAR_CHOICES = []
     for r in reversed(range(1966, (datetime.datetime.now().year + 1))):
         YEAR_CHOICES.append((r, r))
@@ -42,6 +47,7 @@ class PendingUser(models.Model):
     field_of_study = models.CharField(max_length=50, verbose_name=_('Field of study'))
     email = models.EmailField(verbose_name=_('Email'))
     start_year = models.IntegerField(verbose_name=_('Year'), choices=YEAR_CHOICES, default=datetime.datetime.now().year)
+    language = models.CharField(max_length=50, choices=LANGUAGE_CHOICES, verbose_name=_('Nationality (language)'))
     membership_type = models.CharField(max_length=2, choices=MEMBERSHIP_TYPE_CHOICES, verbose_name=_('Membership type'))
     additional_info = models.TextField(blank=True, verbose_name=_('Why do you want to become a member?'))
     is_ayy_member = models.CharField(max_length=1, choices=AYY_MEMBER_CHOICES, verbose_name=_('Are you an AYY (Aalto University Student Union) member?'))
