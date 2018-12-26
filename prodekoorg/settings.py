@@ -15,15 +15,19 @@ from prodekoorg.settings_dev import *
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SITE_ID = 1
-
-LOGIN_URL = 'auth_prodeko:login'
+# When DEBUG = False, all errors with level ERROR or
+# higher get mailed to ADMINS according to LOGGING conf
+ADMINS = [('CTO', 'cto@prodeko.org'), ]
+# When DEBUG = False, all broken links get emailed to MANAGERS
+MANAGERS = [('CTO', 'cto@prodeko.org'), ]
 
 config = configparser.ConfigParser()
 config.read(os.path.join(BASE_DIR, 'prodekoorg/variables.txt'))
 
-# SECURITY WARNING: keep the secret key used in production secret!
+# SECURITY WARNING: keep the secret keys used in production secret!
+# Use configparser to read environment variables from variables.txt file
 SECRET_KEY = config['DJANGO']['SECRET']
-DEBUG = config['DEBUG']['MODE']
+DEBUG = False
 ALLOWED_HOSTS = ['new.prodeko.org', 'prodeko.org', '.prodeko.org', 'localhost']
 DB_NAME_DEFAULT = config['DB']['NAME_DEFAULT']
 DB_USER = config['DB']['USER']
@@ -47,7 +51,7 @@ DATABASES = {
 # Application definition
 ROOT_URLCONF = 'prodekoorg.urls'
 
-# Django moel used for authentication
+# Model used for authentication
 AUTH_USER_MODEL = 'auth_prodeko.User'
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = 'auth_prodeko:login'
@@ -60,12 +64,13 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-# Store translations here
+# Translations are stored in locale/ folder
+# See README to learn how to use translations
 LOCALE_PATHS = [
     os.path.join(BASE_DIR, 'locale'),
 ]
 
-"""Language settings"""
+# Language settings
 LANGUAGES = (
     ('fi', _('Finnish')),
     ('en', _('English')),
@@ -99,13 +104,14 @@ CMS_LANGUAGES = {
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'prodekoorg', 'media')
-
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'prodekoorg', 'collected-static')
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'prodekoorg', 'media')
 
+# Directories where STATICFILES_FINDERS looks for static files
+# Custom apps serving static files need to be added here
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'prodekoorg', 'static'),
     os.path.join(BASE_DIR, 'auth_prodeko', 'static'),
@@ -123,15 +129,16 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'seminaari', 'static'),
 ]
 
-# SASS config
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'sass_processor.finders.CssFinder',
 ]
-
+# SASS config
+# Uses: https://github.com/jrief/django-sass-processor
 SASS_PRECISION = 8
 
+# Template config
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -168,7 +175,7 @@ TEMPLATES = [
     },
 ]
 
-# Common templatetags across apps
+# Common templatetags across different apps.
 OPTIONS = {
     'libraries': {
         'common_tags': os.path.join(BASE_DIR, 'prodekoorg', 'templatetags/common_tags'),
@@ -181,6 +188,7 @@ MIDDLEWARE = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.common.BrokenLinkEmailsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -267,7 +275,7 @@ INSTALLED_APPS = (
     # ------------------------
 )
 
-"""CMS template registration"""
+# DjagoCMS specific config
 CMS_TEMPLATES = (
     ('contentpage/content-page.html', 'Content page'),
     ('frontpage.html', 'Frontpage'),
@@ -284,7 +292,7 @@ THUMBNAIL_PROCESSORS = (
     'easy_thumbnails.processors.filters'
 )
 
-"""Django filer settings"""
+# Django filer config
 FILER_STORAGES = {
     'public': {
         'main': {
@@ -324,7 +332,9 @@ FILER_STORAGES = {
     },
 }
 
-"""CKEditor"""
+# CKEditor config.
+# See https://ckeditor.com/docs/ckeditor4/latest/api/CKEDITOR_config.html
+# for available options
 CKEDITOR_CONFIGS = {
     'main_ckeditor': {
         'toolbar': [["Format", "Bold", "Italic", "Underline", "Strike"],
@@ -339,22 +349,74 @@ CKEDITOR_CONFIGS = {
     },
 }
 
-"""Configure Django messages framework to work with bootstrap"""
+# Configure django messages framework to work with bootstrap
 MESSAGE_TAGS = {
     messages.ERROR: 'danger'
 }
-"""Email"""
 
+# Email config. See documentation/app_apply_for_membership.md
+# on more details about how email sending works through G Suite.
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp-relay.gmail.com'
 EMAIL_HOST_USER = config['EMAIL']['USER']
 EMAIL_HOST_PASSWORD = config['EMAIL']['PASSWORD']
 DEFAULT_FROM_EMAIL = 'no-reply@prodeko.org'
-SERVER_EMAIL = 'errors@prodeko.org'
+SERVER_EMAIL = 'no-reply@prodeko.org'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
-"""tiedotteet.prodeko.org settings"""
+# Loggin config. On DEBUG = FALSE, email ADMINS
+# on ERROR (or higher) level events, otherwise log
+# to standard output.
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse',
+        },
+        'require_debug_true': {
+            '()': 'django.utils.log.RequireDebugTrue',
+        },
+    },
+    'formatters': {
+        'django.server': {
+            '()': 'django.utils.log.ServerFormatter',
+            'format': '[{server_time}] {message}',
+            'style': '{',
+        }
+    },
+    'handlers': {
+        'console': {
+            'level': 'INFO',
+            'filters': ['require_debug_true'],
+            'class': 'logging.StreamHandler',
+        },
+        'django.server': {
+            'level': 'INFO',
+            'class': 'logging.StreamHandler',
+            'formatter': 'django.server',
+        },
+        'mail_admins': {
+            'level': 'ERROR',
+            'filters': ['require_debug_false'],
+            'class': 'django.utils.log.AdminEmailHandler'
+        }
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console', 'mail_admins'],
+            'level': 'INFO',
+        },
+        'django.server': {
+            'handlers': ['django.server'],
+            'level': 'INFO',
+            'propagate': False,
+        },
+    }
+}
+
+# tiedotteet.prodeko.org settings
 SESSION_SAVE_EVERY_REQUEST = True
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False
 SESSION_COOKIE_AGE = 60 * 60 * 24 * 30  # 30 days
