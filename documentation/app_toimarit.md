@@ -1,13 +1,16 @@
-===========================
-app_toimarit Documentation
-===========================
+# app_toimarit Documentation
 
-P‰ivitetty: 13.11.2018
+**P‰ivitetty:** 26.12.2018
+**Tekij‰:** Kalle Hiltunen
 
+## Asennus
+- Luo uusi sivu djangon admini-paneelissa
+- Mene sivun lis‰asetuksiin
+- Valitse sovellukseksi (Application) joko Officials (toimarit) tai Board (hallituslaiset). T‰m‰ m‰‰ritt‰‰ n‰ytett‰v‰n sis‰llˆn sivulla.
+- Kohtaan application instance name voi valita k‰yt‰nnˆss‰ mit‰ tahansa, mutta toimari- ja hallitussivuilla on oltava eri arvo. Esimerkiksi arvot voivat olla app_toimarit_officials ja app_toimarit_board.
+- Julkaise sivu
 
-*********************************
-Toimarien lis‰‰minen
-*********************************
+## Toimarien lis‰‰minen
 
 - Jaostot on lis‰tt‰v‰ ensin manuaalisesti admin-paneelin kautta, mik‰li niit‰ ei ole jo luotu
 - CSV-tiedoston voi ladata admin --> Guild Officials/Toimihenkilˆt --> Lataa CSV
@@ -16,19 +19,13 @@ Toimarien lis‰‰minen
 - Kuvien nime‰misen tulee noudattaa muotoa Etunimi_Sukunimi.jpg 
 - Oletuskuvaa voi vaihtaa samasta kansiosta tiedostosta anonyymi_uniseksi_maskulinoitu.jpg
 
-
-
-*********************************
-Hallituksen j‰senten lis‰‰minen
-*********************************
+## Hallituksen j‰senten lis‰‰minen
 
 - Manuaalisesti admin-paneelin kautta
 - Toimarien kuvat linkittyv‰t automaattisesti oikeisiin henkilˆihin, kun ne ladataan kansioon prodekoorg/app_toimarit/static/images/hallitus_photos
 - Kuvien nime‰misen tulee noudattaa muotoa Etunimi_Sukunimi.jpg 
 - Oletuskuvaa voi vaihtaa samasta kansiosta tiedostosta placeholder.jpg
 
-*********************************
-Muut toiminnallisuudet
-*********************************
+## Muut toiminnallisuudet
 
--Admin-paneelista kaikki toimarit voi ladata omalle koneelle CSV-tiedostona valitsemalla kaikki toimarit ja valitsemalla "Export selected as CSV" vasemmasta yl‰kulmasta.
+- Admin-paneelista kaikki toimarit voi ladata omalle koneelle CSV-tiedostona valitsemalla kaikki toimarit ja valitsemalla "Export selected as CSV" vasemmasta yl‰kulmasta.
