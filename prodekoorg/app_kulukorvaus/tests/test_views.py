@@ -9,6 +9,14 @@ from .test_data import TestData
 class KulukorvausViewTest(TestData):
     """Tests for views in the app_kulukorvaus app."""
 
+    def test_kulukorvaus_and_redirect_if_not_logged_in(self):
+        """
+        Tests redirect to login page if the main kulukorvaus page is
+        accessed and the user is not logged in.
+        """
+        response = self.client.get(reverse('app_kulukorvaus:kulukorvaus'))
+        self.assertRedirects(response, '/login/?next=/kulukorvaus/')
+
     def test_download_and_redirect_if_not_logged_in(self):
         """
         Tests redirect to login page if the download url is accessed
@@ -16,17 +24,7 @@ class KulukorvausViewTest(TestData):
         """
         response = self.client.get(reverse('app_kulukorvaus:download_kulukorvaus', kwargs={
                                    'perustiedot_id': self.test_perustiedot_model.id}))
-        self.assertEqual(response.status_code, 302)
-        self.assertTrue(response.url.startswith('/login/'))
-
-    def test_kulukorvaus_and_redirect_if_not_logged_in(self):
-        """
-        Tests redirect to login page if the main kulukorvaus page is
-        accessed and the user is not logged in.
-        """
-        response = self.client.get(reverse('app_kulukorvaus:kulukorvaus'))
-        self.assertEqual(response.status_code, 302)
-        self.assertTrue(response.url.startswith('/login/'))
+        self.assertRedirects(response, '/login/?next=/download-kulukorvaus/1')
 
     def test_download_if_not_correct_permissions(self):
         """
