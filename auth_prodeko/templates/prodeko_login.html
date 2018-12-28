@@ -8,7 +8,6 @@
 {% block content %}
 
 {% trans "Submit" as submit_button %}
-{% trans "Go back" as go_back %}
 {% trans "Password forgotten?" as password_forgotten %}
 {% trans "The email and password didn't match. Try again" as error_login %}
 
@@ -87,7 +86,7 @@
                 </div>
                 <div class="form-group row mt-1">
                    <div class="col-sm-12">
-                        <a href="../">{% trans go_back %}</a>
+                        <a href="../">{% trans "Go back to the website" %}</a>
                     </div>     
                 </div>           
                 <input type="hidden" name="next" value="{{ next }}">
