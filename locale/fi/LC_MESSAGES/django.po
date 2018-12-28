@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-28 17:21+0000\n"
+"POT-Creation-Date: 2018-12-28 18:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -183,11 +183,11 @@ msgstr "Sähköposti ja salasana eivät täsmänneet. Yritä uudestaan"
 
 #: lifelonglearning/models.py:28
 msgid "courses"
-msgstr ""
+msgstr "Kurssit"
 
 #: lifelonglearning/models.py:29
 msgid "Courses"
-msgstr ""
+msgstr "Kurssit"
 
 #: prodekoorg/app_apply_for_membership/admin.py:45
 msgid "View"
@@ -510,8 +510,6 @@ msgstr "^kulukorvaus/$"
 msgid "Downloaded {} proceedings documents from G Drive."
 msgstr "Ladattu {} pöytäkirjaa G Drivestä."
 
-#
-#
 #: prodekoorg/app_poytakirjat/gdrive_api.py:308
 msgid "Error downloading documents: {}"
 msgstr "Virhe pöytäkirjoja ladattaessa: {}"
