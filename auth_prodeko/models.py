@@ -52,7 +52,6 @@ class User(AbstractUser):
 
     @receiver(post_save, sender=PendingUser)
     def create_user_profile(sender, instance, created, **kwargs):
-        print(instance)
         if created:
             password = User.objects.make_random_password(length=14)
             usermodel = User.objects.create_user(
