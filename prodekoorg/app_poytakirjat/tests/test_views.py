@@ -15,7 +15,7 @@ class DokumenttiViewTest(TestData):
         """
         response = self.client.get(reverse('app_poytakirjat:documents'))
         self.assertEqual(response.status_code, 302)
-        self.assertTrue(response.url.startswith('/login/'))
+        self.assertRedirects(response, '/login/?next=/dokumentit/')
 
     def test_admin_download_not_authorized(self):
         """
@@ -28,8 +28,7 @@ class DokumenttiViewTest(TestData):
         }
 
         response = self.client.post(reverse("download_docs_from_gsuite"), data=test_data)
-        self.assertEqual(response.status_code, 302)
-        self.assertTrue(response.url.startswith('/admin/login/'))
+        self.assertRedirects(response, '/admin/login/?next=/admin/poytakirjat/download')
 
     @unittest.skip("This is a long running test. Run if you suspect the G Drive integration is broken.")
     def test_admin_download_authorized(self):
@@ -47,5 +46,4 @@ class DokumenttiViewTest(TestData):
         }
 
         response = self.client.post(reverse("download_docs_from_gsuite"), data=test_data)
-        self.assertEqual(response.status_code, 302)
-        self.assertTrue(response.url.startswith('/admin/app_poytakirjat/dokumentti/'))
+        self.assertRedirects(response, '/admin/app_poytakirjat/dokumentti/')

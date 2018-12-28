@@ -16,6 +16,8 @@ if not os.path.exists(tmp_media_dir):
     os.makedirs(tmp_media_dir)
 settings.MEDIA_ROOT = tmp_media_dir
 
+GDRIVE_ID = '1GUkGy5KDJ7HG9DNbbjUELs_KEBUcE-oV'
+
 
 class TestData(TestCase):
     """Common test data for app_poytakirjat used across
@@ -37,7 +39,7 @@ class TestData(TestCase):
         cls.file_mock_pdf = MagicMock(spec=File, name='FileMock')
         cls.file_mock_pdf.name = 'test_document.pdf'
 
-        cls.test_dokumentti_model = Dokumentti.objects.create(gdrive_id='1GUkGy5KDJ7HG9DNbbjUELs_KEBUcE-oV',
+        cls.test_dokumentti_model = Dokumentti.objects.create(gdrive_id=GDRIVE_ID,
                                                               name='1_1.1.2019',
                                                               number=1,
                                                               date=datetime.date.today(),
