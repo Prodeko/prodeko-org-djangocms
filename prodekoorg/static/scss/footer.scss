@@ -11,6 +11,11 @@
     color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
+    @include phone {
+        padding-top: 1em;
+        padding-bottom: 1em;
+    }
+
     a {
         color: white;
         font-weight: bold;
@@ -31,29 +36,26 @@
     .network-div {
         flex: 1 0 20%;
         margin: 10px;
-        height: 50px;
+        height: 65px;
+
+        @include phone {
+            height: 50px;
+        }
     }
 
     img {
         max-width: 5em;
         height: 100%;
+
+        @include desktop {
+            max-width: 8em;
+            height: 100%;
+        }
     }
 
     .social-row {
         a {
             padding: 1em;
-        }
-    }
-
-    @include phone {
-        padding-top: 1em;
-        padding-bottom: 1em;
-    }
-
-    @include desktop {
-        img {
-            max-width: 8em;
-            height: 100%;
         }
     }
 }
