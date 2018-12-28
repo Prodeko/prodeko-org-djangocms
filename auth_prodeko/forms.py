@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.hashers import check_password
-
+from django.contrib.auth.password_validation import get_default_password_validators
+from django.core.exceptions import ValidationError
 
 class EditProfileForm(forms.Form):
     email = forms.EmailField(label='Email', max_length=50, required=False)
@@ -25,6 +26,17 @@ class EditProfileForm(forms.Form):
         newpassword = cleaned_data.get("newpassword")
         newpassword_confirm = cleaned_data.get("newpassword_confirm")
 
-        if newpassword:
-            if newpassword_confirm != newpassword:
-                self.add_error('newpassword_confirm', "Passwords don't match")
+        if newpassword or newpassword_confirm:
+        	errors = []
+        	password_validators = get_default_password_validators()
+	        for validator in password_validators:
+		        try:
+		        	validator.validate(newpassword, self.user)
+		        except ValidationError as error:
+		        	errors.append(error)
+	        for error in errors:
+	        	self.add_error('newpassword', error)
+
+	        if newpassword_confirm != newpassword:
+	            self.add_error('newpassword', "Passwords don't match")
+	            self.add_error('newpassword_confirm', "Passwords don't match")
