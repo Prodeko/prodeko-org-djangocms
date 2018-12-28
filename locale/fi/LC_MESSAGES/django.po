@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-28 11:59+0000\n"
+"POT-Creation-Date: 2018-12-28 15:39+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -482,38 +482,38 @@ msgstr "pöytäkirja"
 msgid "Minutes"
 msgstr "Pöytäkirjat"
 
-#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/dokumentti/change_list.html:77
-#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:31
+#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/Dokumentti/change_list.html:77
+#: prodekoorg/app_toimarit/templates/admin/app_toimarit/Toimari/change_list.html:31
 #: prodekoorg/app_toimarit/templates/admin/base.html:56
 msgid "Home"
 msgstr "Kotisivu"
 
-#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/dokumentti/change_list.html:88
+#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/Dokumentti/change_list.html:88
 msgid "Download minutes from Drive"
 msgstr "Lataa pöytäkirjat Drivestä"
 
-#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/dokumentti/change_list.html:89
+#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/Dokumentti/change_list.html:89
 msgid "How does this work"
 msgstr "Miten lataaminen toimii"
 
-#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/dokumentti/change_list.html:119
-#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:49
+#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/Dokumentti/change_list.html:119
+#: prodekoorg/app_toimarit/templates/admin/app_toimarit/Toimari/change_list.html:49
 #, python-format
 msgid "Add %(name)s"
 msgstr "Lisää %(name)s"
 
-#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/dokumentti/change_list.html:128
-#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:65
+#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/Dokumentti/change_list.html:128
+#: prodekoorg/app_toimarit/templates/admin/app_toimarit/Toimari/change_list.html:65
 msgid "Please correct the error below."
 msgstr "Korjaa allaolevat virheet."
 
-#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/dokumentti/change_list.html:128
-#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:65
+#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/Dokumentti/change_list.html:128
+#: prodekoorg/app_toimarit/templates/admin/app_toimarit/Toimari/change_list.html:65
 msgid "Please correct the errors below."
 msgstr "Korjaa allaolevat virheet."
 
-#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/dokumentti/change_list.html:139
-#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:76
+#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/Dokumentti/change_list.html:139
+#: prodekoorg/app_toimarit/templates/admin/app_toimarit/Toimari/change_list.html:76
 msgid "Filter"
 msgstr "Filtteri"
 
@@ -587,11 +587,19 @@ msgstr "Virka (Englanniksi)"
 msgid "Mobile phone"
 msgstr "Puhelinnumero"
 
-#: prodekoorg/app_toimarit/models.py:61
+#: prodekoorg/app_toimarit/models.py:49
+msgid "Telegram"
+msgstr "Telegram"
+
+#: prodekoorg/app_toimarit/models.py:50
+msgid "Description"
+msgstr "Kuvaus"
+
+#: prodekoorg/app_toimarit/models.py:63
 msgid "board member"
 msgstr "hallituksen jäsen"
 
-#: prodekoorg/app_toimarit/models.py:62
+#: prodekoorg/app_toimarit/models.py:64
 msgid "board members"
 msgstr "hallituksen jäsenet"
 
