@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-28 15:39+0000\n"
+"POT-Creation-Date: 2018-12-28 16:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,6 +30,14 @@ msgstr "Oikeudet"
 msgid "Important dates"
 msgstr "Tärkeitä päivämääriä"
 
+#: auth_prodeko/forms.py:23
+msgid "Incorrect password"
+msgstr "Väärä salasana"
+
+#: auth_prodeko/forms.py:42 auth_prodeko/forms.py:43
+msgid "Passwords don't match"
+msgstr "Salasanat eivät täsmää"
+
 #: auth_prodeko/models.py:48
 msgid "email address"
 msgstr "sähköposti"
@@ -41,6 +49,46 @@ msgstr "käyttäjä"
 #: auth_prodeko/models.py:67
 msgid "Users"
 msgstr "Käyttäjät"
+
+#: auth_prodeko/templates/accounts/user_profile.html:9
+msgid "Profile"
+msgstr "Profiili"
+
+#: auth_prodeko/templates/accounts/user_profile.html:10
+#: prodekoorg/app_kulukorvaus/models.py:48
+#: prodekoorg/app_kulukorvaus/printing.py:86
+#: prodekoorg/app_toimarit/models.py:9 prodekoorg/app_vaalit/models.py:33
+msgid "Name"
+msgstr "Nimi"
+
+#: auth_prodeko/templates/accounts/user_profile.html:11
+#: auth_prodeko/templates/accounts/user_profile.html:17
+#: prodekoorg/app_apply_for_membership/models.py:48
+#: prodekoorg/app_kulukorvaus/models.py:49
+#: prodekoorg/app_kulukorvaus/printing.py:87
+#: prodekoorg/app_toimarit/models.py:48
+msgid "Email"
+msgstr "Sähköposti"
+
+#: auth_prodeko/templates/accounts/user_profile.html:12
+msgid "Edit profile"
+msgstr "Muokkaa profiilia"
+
+#: auth_prodeko/templates/accounts/user_profile.html:26
+msgid "New Password"
+msgstr "Uusi salasana"
+
+#: auth_prodeko/templates/accounts/user_profile.html:35
+msgid "Confirm New Password"
+msgstr "Vahvista Uusi salasana"
+
+#: auth_prodeko/templates/accounts/user_profile.html:44
+msgid "Current Password"
+msgstr "Nykyinen Salasana"
+
+#: auth_prodeko/templates/accounts/user_profile.html:54
+msgid "Save changes"
+msgstr "Tallenna muutokset"
 
 #: auth_prodeko/templates/password_reset_complete.html:10
 msgid "Your password has been set. You may go ahead and Sign in now."
@@ -59,6 +107,7 @@ msgstr ""
 "uutta salasanan nollausta."
 
 #: auth_prodeko/templates/password_reset_confirm.html:11
+#: auth_prodeko/templates/prodeko_login.html:89
 msgid "Go back to the website"
 msgstr "Mene takaisin sivustolle"
 
@@ -125,14 +174,10 @@ msgid "Submit"
 msgstr "Lähetä"
 
 #: auth_prodeko/templates/prodeko_login.html:11
-msgid "Go back"
-msgstr "Takaisin kirjautumiseen"
-
-#: auth_prodeko/templates/prodeko_login.html:12
 msgid "Password forgotten?"
 msgstr "Salasana unohtunut?"
 
-#: auth_prodeko/templates/prodeko_login.html:13
+#: auth_prodeko/templates/prodeko_login.html:12
 msgid "The email and password didn't match. Try again"
 msgstr "Sähköposti ja salasana eivät täsmänneet. Yritä uudestaan"
 
@@ -220,13 +265,6 @@ msgstr "Kotikaupunki"
 #: prodekoorg/app_apply_for_membership/models.py:47
 msgid "Field of study"
 msgstr "Opiskeluala"
-
-#: prodekoorg/app_apply_for_membership/models.py:48
-#: prodekoorg/app_kulukorvaus/models.py:49
-#: prodekoorg/app_kulukorvaus/printing.py:87
-#: prodekoorg/app_toimarit/models.py:48
-msgid "Email"
-msgstr "Sähköposti"
 
 #: prodekoorg/app_apply_for_membership/models.py:49
 msgid "Year"
@@ -350,12 +388,6 @@ msgstr "Hallitus"
 #: prodekoorg/app_kulukorvaus/models.py:32
 msgid "Guild official"
 msgstr "Toimihenkilö"
-
-#: prodekoorg/app_kulukorvaus/models.py:48
-#: prodekoorg/app_kulukorvaus/printing.py:86
-#: prodekoorg/app_toimarit/models.py:9 prodekoorg/app_vaalit/models.py:33
-msgid "Name"
-msgstr "Nimi"
 
 #: prodekoorg/app_kulukorvaus/models.py:50
 #: prodekoorg/app_kulukorvaus/printing.py:88
@@ -901,6 +933,12 @@ msgstr ""
 msgid "TLS salaus päällä"
 msgstr ""
 
+#~ msgid "Save"
+#~ msgstr "Tallenna"
+
+#~ msgid "Go back"
+#~ msgstr "Takaisin kirjautumiseen"
+
 #~ msgid "First Name"
 #~ msgstr "Etunimi"
 
@@ -925,9 +963,6 @@ msgstr ""
 #~ msgid "Password"
 #~ msgstr "Salasana"
 
-#~ msgid "Password confirmation"
-#~ msgstr "Vahvista salasana"
-
 #~ msgid "Enter the same password as before, for verification."
 #~ msgstr "Vahvista antamalla sama salasana."
 
@@ -937,11 +972,8 @@ msgstr ""
 #~ msgid "Old password"
 #~ msgstr "Vanha salasana"
 
-#~ msgid "New password"
-#~ msgstr "Uusi salasana"
-
 #~ msgid "New password confirmation"
-#~ msgstr "Uusi salsana - vahvistus"
+#~ msgstr "Uusi salasana - vahvistus"
 
 #~ msgid "Sign in"
 #~ msgstr "Kirjaudu sisään"
@@ -951,9 +983,6 @@ msgstr ""
 
 #~ msgid "^account/(?P<pk>\\d+)/$"
 #~ msgstr "^kayttaja/(?P<pk>\\d+)/$"
-
-#~ msgid "/profile"
-#~ msgstr "/profiili"
 
 #~ msgid "^profile/"
 #~ msgstr "^profiili/"
