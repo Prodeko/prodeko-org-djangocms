@@ -56,6 +56,10 @@
 .card {
     width: 50%;
 
+    .centered {
+        text-align: center;
+    }
+
     @include phone {
         width: 98%;
     }
