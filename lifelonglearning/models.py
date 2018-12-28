@@ -8,7 +8,7 @@ class Course(models.Model):
 
     name = models.CharField(max_length=255, default="", blank=False)
     coaches = models.CharField(max_length=255, default="", blank=True)
-    description = RichTextField(config_name='main_ckeditor', blank=True)
+    description = RichTextField(config_name="main_ckeditor", blank=True)
     registration = models.URLField(max_length=255)
     banner = models.ImageField(upload_to="", null=True, blank=True)
     groupsize = models.IntegerField(blank=True, null=True)
@@ -20,10 +20,10 @@ class Course(models.Model):
 
     def get_banner_image(self):
         if self.banner:
-            return '{}'.format(self.banner.url)
+            return "{}".format(self.banner.url)
         else:
             return "{}{}".format(settings.STATIC_URL, "img/default_thumbnail.jpg")
 
     class Meta:
-        verbose_name = _('courses')
+        verbose_name = _("courses")
         verbose_name_plural = _("Courses")
