@@ -1,27 +1,58 @@
 {% extends "base.html" %}
 {% load cms_tags sekizai_tags sass_tags %}
-
 {% block extra_head %}
 <link href="{% sass_src 'scss/auth_prodeko.scss' %}" rel="stylesheet" type="text/css" />
 {% endblock %}
-
 {% block content %}
-
 {% include "layout-components/jumbotron.html" %}
-
 <div class="container">
-
-  <h1>Profile</h1>
-  <strong>Name: </strong> {{ user.first_name }} {{ user.last_name }} <br />
-  <strong>Email: </strong> {{ user.email }} <br /> <br />
-
-  <h2>Edit profile</h2>
-  <form method="POST" action=".">
-  	{% csrf_token %}
-  	{{ form.as_p }}
-	  <input type="Submit" />
-	</form>
-	<br />
+    <h1>Profile</h1>
+    <strong>Name: </strong> {{ user.first_name }} {{ user.last_name }} <br />
+    <strong>Email: </strong> {{ user.email }} <br /> <br />
+    <h2>Edit profile</h2>
+    <form method="POST" action="." class="form-wrapper">
+        {% csrf_token %}
+        <div class="fieldWrapper">
+            <div class='field-input'>
+                <label for='{{ form.email.id_for_label }}'>Email</label>
+                {{ form.email }}
+            </div>
+            <div class="field-error">
+                {{ form.email.errors }}
+            </div>
+        </div>
+        <div class="fieldWrapper">
+            <div class='field-input'>
+                <label for='{{ form.newpassword.id_for_label }}'>New password</label>
+                {{ form.newpassword }}
+            </div>
+            <div class="field-error">
+                {{ form.newpassword.errors }}
+            </div>
+        </div>
+        <div class="fieldWrapper">
+            <div class='field-input'>
+                <label for='{{ form.newpassword_confirm.id_for_label }}'>Confirm new password</label>
+                {{ form.newpassword_confirm }}
+            </div>
+            <div class="field-error">
+                {{ form.newpassword_confirm.errors }}
+            </div>
+        </div>
+        <div class="fieldWrapper">
+            <div class='field-input'>
+                <label for='{{ form.password.id_for_label }}'>Current password</label>
+                {{ form.password }}
+            </div>
+            <div class="field-error">
+                {{ form.password.errors }}
+            </div>
+        </div>
+        <div class="other-errors">
+            {{ form.non_field_errors }}
+        </div>
+        <input type="Submit" />
+    </form>
+    <br />
 </div>
-
 {% endblock content %}
