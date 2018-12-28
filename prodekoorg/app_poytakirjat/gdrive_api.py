@@ -10,6 +10,7 @@ from django.contrib import messages
 from django.contrib.admin.views.decorators import staff_member_required
 from django.core.files.base import ContentFile
 from django.shortcuts import redirect
+from django.utils.translation import ugettext_lazy as _
 from google.oauth2 import service_account
 from PyPDF2 import PdfFileMerger, PdfFileReader
 
@@ -302,7 +303,7 @@ def run_app_poytakirjat(request):
         # Returns a dict of folders inside the folder_id above
         folders_dict = get_gdrive_folders_dict(service, folder_id)
         success_count = create_models_from_folders(service, request, folders_dict)
-        messages.add_message(request, messages.INFO, 'Ladattu {} pöytäkirjaa G Drivestä.'.format(success_count))
+        messages.add_message(request, messages.INFO, _('Downloaded {} proceedings documents from G Drive.'.format(success_count)))
     except Exception as e:
-        messages.add_message(request, messages.ERROR, 'Virhe pöytäkirjoja ladattaessa: {}'.format(e))
+        messages.add_message(request, messages.ERROR, _('Error downloading documents: {}'.format(e)))
     return redirect('/admin/app_poytakirjat/dokumentti/')
