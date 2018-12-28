@@ -182,3 +182,31 @@ class HallituksenJasenModelTest(TestData):
     def test_email_max_length(self):
         max_length = self.test_hallituksenjasen1._meta.get_field('email').max_length
         self.assertEquals(max_length, 30)
+
+    @english
+    def test_telegram_label_english(self):
+        field_label = self.test_hallituksenjasen1._meta.get_field('telegram').verbose_name
+        self.assertEquals(field_label, 'Telegram')
+
+    @finnish
+    def test_telegram_label_finnish(self):
+        field_label = self.test_hallituksenjasen1._meta.get_field('telegram').verbose_name
+        self.assertEquals(field_label, 'Telegram')
+
+    def test_telegram_max_length(self):
+        max_length = self.test_hallituksenjasen1._meta.get_field('telegram').max_length
+        self.assertEquals(max_length, 20)
+
+    @english
+    def test_description_label_english(self):
+        field_label = self.test_hallituksenjasen1._meta.get_field('description').verbose_name
+        self.assertEquals(field_label, 'Description')
+
+    @finnish
+    def test_description_label_finnish(self):
+        field_label = self.test_hallituksenjasen1._meta.get_field('description').verbose_name
+        self.assertEquals(field_label, 'Kuvaus')
+
+    def test_description_max_length(self):
+        max_length = self.test_hallituksenjasen1._meta.get_field('description').max_length
+        self.assertEquals(max_length, 255)

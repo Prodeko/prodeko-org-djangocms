@@ -46,6 +46,8 @@ class HallituksenJasen(models.Model):
     position_eng = models.CharField(max_length=60, verbose_name=_('Position (English)'))
     mobilephone = models.CharField(max_length=20, verbose_name=_('Mobile phone'))
     email = models.CharField(max_length=30, verbose_name=_('Email'))
+    telegram = models.CharField(max_length=20, verbose_name=_('Telegram'), blank=True, null=True)
+    description = models.CharField(max_length=255, verbose_name=_('Description'), blank=True, null=True)
 
     @property
     def name(self):
