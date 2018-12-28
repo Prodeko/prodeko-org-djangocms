@@ -3,11 +3,11 @@ import io
 
 from django.contrib import messages
 from django.contrib.admin.views.decorators import staff_member_required
-from django.views.decorators.csrf import csrf_protect
 from django.shortcuts import redirect, render
+from django.utils.translation import ugettext_lazy as _
+from django.views.decorators.csrf import csrf_protect
 
 from .models import HallituksenJasen, Jaosto, Toimari
-
 
 
 @staff_member_required(login_url='/login/')
@@ -25,9 +25,9 @@ def postcsv(request):
             # HUOM! Kaikkien Jaostojen täytyy olla jo luotu ennen CSV-tietojen lataamista
             nextRow.section = Jaosto.objects.get(name=line[3])
             nextRow.save()
-        messages.add_message(request, messages.SUCCESS, 'CSV-tiedosto ladattu onnistuneesti')
-    except:
-        messages.add_message(request, messages.ERROR, 'Virhe tiedostoa ladattaessa')
+        messages.add_message(request, messages.SUCCESS, _('CSV imported successfully.'))
+    except Exception as e:
+        messages.add_message(request, messages.ERROR, _('Error downloading CSV: {}'.format(e)))
     return redirect('../../admin/')
 
 
