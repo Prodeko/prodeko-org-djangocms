@@ -27,7 +27,7 @@ config.read(os.path.join(BASE_DIR, 'prodekoorg/variables.txt'))
 # SECURITY WARNING: keep the secret keys used in production secret!
 # Use configparser to read environment variables from variables.txt file
 SECRET_KEY = config['DJANGO']['SECRET']
-DEBUG = False
+DEBUG = config['DEBUG']['MODE']
 ALLOWED_HOSTS = ['new.prodeko.org', 'prodeko.org', '.prodeko.org', 'localhost']
 DB_NAME_DEFAULT = config['DB']['NAME_DEFAULT']
 DB_USER = config['DB']['USER']
