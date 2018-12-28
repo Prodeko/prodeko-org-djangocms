@@ -1,12 +1,7 @@
-import tempfile
-from unittest.mock import MagicMock
-
-from django.conf import settings
 from django.contrib.auth import get_user_model
-from django.core.files import File
 from django.test import TestCase
 
-from ..models import Jaosto, Toimari, HallituksenJasen
+from ..models import HallituksenJasen, Jaosto, Toimari
 
 
 class TestData(TestCase):
@@ -29,15 +24,15 @@ class TestData(TestCase):
         cls.test_jaosto1 = Jaosto.objects.create(name='Test1')
         cls.test_jaosto2 = Jaosto.objects.create(name='Test2')
 
-        cls.test_toimari1 = Toimari.objects.create(firstname='John', 
-                                                  lastname='Doe', 
-                                                  position='Webbitiimi', 
-                                                  section=cls.test_jaosto1)
+        cls.test_toimari1 = Toimari.objects.create(firstname='John',
+                                                   lastname='Doe',
+                                                   position='Webbitiimi',
+                                                   section=cls.test_jaosto1)
 
-        cls.test_hallituksenjasen1 = HallituksenJasen.objects.create(firstname='John', 
-                                                                    lastname='Doe', 
-                                                                    position='Puheenjohtaja', 
-                                                                    position_eng='Chairman', 
-                                                                    section=cls.test_jaosto2, 
-                                                                    mobilephone='000123123', 
-                                                                    email='puheenjohtaja@')
+        cls.test_hallituksenjasen1 = HallituksenJasen.objects.create(firstname='John',
+                                                                     lastname='Doe',
+                                                                     position='Puheenjohtaja',
+                                                                     position_eng='Chairman',
+                                                                     section=cls.test_jaosto2,
+                                                                     mobilephone='000123123',
+                                                                     email='puheenjohtaja@test.com')

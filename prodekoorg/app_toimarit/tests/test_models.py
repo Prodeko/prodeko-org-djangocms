@@ -31,6 +31,7 @@ class JaostoModelTest(TestData):
         max_length = self.test_jaosto1._meta.get_field('name').max_length
         self.assertEquals(max_length, 50)
 
+
 class ToimariModelTest(TestData):
     """Tests for Toimari model."""
 
@@ -85,6 +86,7 @@ class ToimariModelTest(TestData):
     def test_section_label_finnish(self):
         field_label = self.test_toimari1._meta.get_field('section').verbose_name
         self.assertEquals(field_label, 'Jaosto')
+
 
 class HallituksenJasenModelTest(TestData):
     """Tests for HallituksenJasen model."""
