@@ -8,6 +8,9 @@ Tiedot:
 - {{ user.field_of_study }}, {{ user.start_year }}
 - {{ user.hometown }}
 - {{ user.get_membership_type_display }}
+{% if user.additional_info|length > 0 %}
 - {{ user.additional_info }}
+{% endif %}
+
 
 https://prodeko.org/fi/admin/app_apply_for_membership/pendinguser/{{ user.id }}/change/ - Hyväksy tai hylkää hakemus.
