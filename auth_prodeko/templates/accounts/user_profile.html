@@ -1,20 +1,20 @@
 {% extends "base.html" %}
-{% load cms_tags sekizai_tags sass_tags %}
+{% load cms_tags sekizai_tags i18n sass_tags %}
 {% block extra_head %}
 <link href="{% sass_src 'scss/auth_prodeko.scss' %}" rel="stylesheet" type="text/css" />
 {% endblock %}
 {% block content %}
 {% include "layout-components/jumbotron.html" %}
 <div class="container">
-    <h1>Profile</h1>
-    <strong>Name: </strong> {{ user.first_name }} {{ user.last_name }} <br />
-    <strong>Email: </strong> {{ user.email }} <br /> <br />
-    <h2>Edit profile</h2>
+    <h1>{% trans "Profile" %}</h1>
+    <strong>{% trans "Name" %}: </strong> {{ user.first_name }} {{ user.last_name }} <br />
+    <strong>{% trans "Email" %}: </strong> {{ user.email }} <br /> <br />
+    <h2>{% trans "Edit profile" %}</h2>
     <form method="POST" action="." class="form-wrapper">
         {% csrf_token %}
         <div class="fieldWrapper">
             <div class='field-input'>
-                <label for='{{ form.email.id_for_label }}'>Email</label>
+                <label for='{{ form.email.id_for_label }}'>{% trans "Email" %}</label>
                 {{ form.email }}
             </div>
             <div class="field-error">
@@ -23,7 +23,7 @@
         </div>
         <div class="fieldWrapper">
             <div class='field-input'>
-                <label for='{{ form.newpassword.id_for_label }}'>New password</label>
+                <label for='{{ form.newpassword.id_for_label }}'>{% trans "New Password" %}</label>
                 {{ form.newpassword }}
             </div>
             <div class="field-error">
@@ -32,7 +32,7 @@
         </div>
         <div class="fieldWrapper">
             <div class='field-input'>
-                <label for='{{ form.newpassword_confirm.id_for_label }}'>Confirm new password</label>
+                <label for='{{ form.newpassword_confirm.id_for_label }}'>{% trans "Confirm New Password" %}</label>
                 {{ form.newpassword_confirm }}
             </div>
             <div class="field-error">
@@ -41,7 +41,7 @@
         </div>
         <div class="fieldWrapper">
             <div class='field-input'>
-                <label for='{{ form.password.id_for_label }}'>Current password</label>
+                <label for='{{ form.password.id_for_label }}'>{% trans "Current Password" %}</label>
                 {{ form.password }}
             </div>
             <div class="field-error">
@@ -51,7 +51,7 @@
         <div class="other-errors">
             {{ form.non_field_errors }}
         </div>
-        <input type="Submit" />
+        <input type="Submit" value="{% trans 'Save changes' %}"/>
     </form>
     <br />
 </div>
