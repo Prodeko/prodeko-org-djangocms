@@ -14,12 +14,10 @@
 		{% include "layout-components/breadcrumb.html" %}
 
 		<!-- BEGIN LIST  -->
-		<!-- Toteutus vähän kankea, sillä nyt toimarit-lista käydään jokaista jaostoa kohti läpi uudestaan. Saa parantaa -->
-
 		{% for section in sections %}
 			<div class="row">
 				<div>
-					<h2>{{ j }}</h2>
+					<h2>{{ section }}</h2>
 					<div class="row">
 					{% for official in guildofficials %}
 						{% if official.section == section %}
