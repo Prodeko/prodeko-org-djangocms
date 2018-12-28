@@ -1,7 +1,6 @@
 import os.path
 
 from django.db import models
-from django.utils.html import *
 from django.utils.translation import ugettext_lazy as _
 
 
