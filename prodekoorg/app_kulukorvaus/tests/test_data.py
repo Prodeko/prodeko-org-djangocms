@@ -56,5 +56,4 @@ class TestData(TestCase):
                                                                 receipt=cls.file_mock_jpg,)
 
     def tearDown(self):
-        print(settings.MEDIA_ROOT)
         rmtree(settings.MEDIA_ROOT, ignore_errors=True)
