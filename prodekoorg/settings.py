@@ -17,9 +17,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE_ID = 1
 # When DEBUG = False, all errors with level ERROR or
 # higher get mailed to ADMINS according to LOGGING conf
-ADMINS = [('CTO', 'cto@prodeko.org'), ]
+ADMINS = [('CTO', 'timo.h.riski@aalto.fi'), ]
 # When DEBUG = False, all broken links get emailed to MANAGERS
-MANAGERS = [('CTO', 'cto@prodeko.org'), ]
+MANAGERS = [('CTO', 'timo.h.riski@aalto.fi'), ]
 
 config = configparser.ConfigParser()
 config.read(os.path.join(BASE_DIR, 'prodekoorg/variables.txt'))
@@ -55,6 +55,24 @@ ROOT_URLCONF = 'prodekoorg.urls'
 AUTH_USER_MODEL = 'auth_prodeko.User'
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = 'auth_prodeko:login'
+
+AUTH_PASSWORD_VALIDATORS = [
+    {
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'OPTIONS': {
+            'min_length': 9,
+        }
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    },
+]
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
