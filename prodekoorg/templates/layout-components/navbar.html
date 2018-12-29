@@ -4,7 +4,7 @@
 {% trans "Log out" as logout %}
 {% trans "Apply for a membership" as apply %}
 
-<div class="container">
+<div class="container-fluid p-0">
 	<nav class="navbar navbar-expand-lg navbar-light prodeko-navbar">
 		<a class="navbar-brand" id="prodeko-logo" href="/"></a>
 
@@ -15,7 +15,7 @@
 		</button>
 
 		<div class="collapse navbar-collapse" id="collapsibleNavbar">
-			<ul class="navbar-nav mr-auto">
+			<ul class="navbar-nav mr-auto navigation-list">
 				{% for child in children %}
 				<!-- li element for open navbar -->
 				<li class="d-none d-lg-block nav-item{% if child.selected %} active-menu-item{% endif %} mr-2"><a class="nav-link nav-top" href="{{ child.get_absolute_url }}">{{child.get_menu_title }}</a></li>
@@ -23,7 +23,7 @@
 				<!-- li element for dropdown navbar -->
 				{% if not child.is_leaf_node or child.ancestor %}
 					<li class="d-lg-none nav-item mr-2" data-toggle="collapse" data-target="#dropdown-{{child.get_menu_title}}"><a class="dropdown-toggle nav-link">{{child.get_menu_title }}<span class="caret"></span></a>
-						<ul class="collapse ul mr-auto" id="dropdown-{{child.get_menu_title}}">
+						<ul class="collapse ul mr-auto navigation-list" id="dropdown-{{child.get_menu_title}}">
 							<li class="nav-item {% if child.selected %} active-menu-item{% endif %} mr-2"><a class="nav-sublink" href="{{ child.get_absolute_url }}">{{child.get_menu_title }}</a></li>
 							{% for kid in child.get_descendants %}
 								<li class="nav-item {% if kid.selected %} active-menu-item{% endif %} mr-2"><a class="nav-sublink" href="{{ kid.get_absolute_url }}">{{kid.get_menu_title }}</a></li>
