@@ -1,21 +1,21 @@
-import React from 'react'
-import TestUtils from 'react-addons-test-utils'
-import { mount } from 'enzyme'
-import Container, { COMPONENT_NAME } from 'containers/PATH_PREFIX/COMPONENT_NAME'
+import React from "react";
+import TestUtils from "react-addons-test-utils";
+import { mount } from "enzyme";
+import Container, {
+  COMPONENT_NAME
+} from "containers/PATH_PREFIX/COMPONENT_NAME";
 
-describe.only('Container::COMPONENT_FULL_NAMESPACE', () => {
-  let props
+describe.only("Container::COMPONENT_FULL_NAMESPACE", () => {
+  let props;
 
-  function renderDoc () {
-    return mount(<COMPONENT_NAME {...props}/>)
+  function renderDoc() {
+    return mount(<COMPONENT_NAME {...props} />);
   }
   beforeEach(() => {
-    props = {
-    }
-  })
+    props = {};
+  });
 
-  it('can be rendered', () => {
-    let doc = renderDoc()
-  })
-
-})
+  it("can be rendered", () => {
+    const doc = renderDoc();
+  });
+});

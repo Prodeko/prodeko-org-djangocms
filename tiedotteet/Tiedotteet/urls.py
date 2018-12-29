@@ -1,25 +1,14 @@
 from django.conf.urls import include, url
-from django.contrib import admin
-from django.contrib.auth import views as auth_views
-from django.contrib.auth.decorators import login_required
-from django.views.decorators.http import require_POST
-from rest_framework.urlpatterns import format_suffix_patterns
 from tiedotteet.info import views, views_api
 
+app_name = 'tiedotteet'
 urlpatterns = [
 
     # index
     url(r'^$', views.index, name='index'),
 
-    # Authentication
-    url(r'^login/$', auth_views.login, {'template_name': 'login.html'}, name='login'),
-    url(r'^logout/$', auth_views.logout, {'next_page': '/'}, name='logout'),
-
     # ckeditor
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
-
-    # Django Admin
-    url(r'^super-admin/', include(admin.site.urls)),
 
     # Control panel
     url(r'^cp/$', views.control_panel, name="cp"),

@@ -1,16 +1,16 @@
-var cacheName = 'prodeko-tiedotteet';
-var filesToCache = [];
+const cacheName = "prodeko-tiedotteet";
+const filesToCache = [];
 
-self.addEventListener('install', function(e) {
-  console.log('[ServiceWorker] Install');
+self.addEventListener("install", e => {
+  console.log("[ServiceWorker] Install");
   e.waitUntil(
-    caches.open(cacheName).then(function(cache) {
-      console.log('[ServiceWorker] Caching app shell');
+    caches.open(cacheName).then(cache => {
+      console.log("[ServiceWorker] Caching app shell");
       return cache.addAll(filesToCache);
     })
-  )
-})
+  );
+});
 
-self.addEventListener('activate', function(e) {
-  console.log('[ServiceWorker] Activate');
+self.addEventListener("activate", e => {
+  console.log("[ServiceWorker] Activate");
 });

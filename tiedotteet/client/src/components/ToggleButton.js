@@ -1,20 +1,18 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 class ToggleButton extends Component {
   render() {
     if (!this.props.show) {
-      return null
+      return null;
     }
-    return (
-      <div className="toggle-button" onClick={this.props.handleClick}></div>
-    )
+    return <div className="toggle-button" onClick={this.props.handleClick} />;
   }
 }
 
 ToggleButton.propTypes = {
   show: PropTypes.bool.isRequired,
   handleClick: PropTypes.func.isRequired
-}
+};
 
-export default ToggleButton
+export default ToggleButton;

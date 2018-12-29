@@ -4,80 +4,80 @@
 <div id="page-wrapper">
     <div class="container-fluid">
 
-      <!-- Page Heading -->
-      <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header">
-                Kategoriat
-                <small>Muokkaa kategorioita</small>
-            </h1>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-10">
-          <p><a href="#" data-target="#addCategory" data-toggle="modal">Lisää uusi kategoria</a></p>
-          <p>Voit poistaa kategorian jättämällä sen tyhjäksi ja klikkaamalla Tallenna</p>
-          <!-- Modal -->
-          <div class="modal fade" id="addCategory" role="dialog">
-            <div class="modal-dialog">
-
-              <!-- Modal content-->
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h4 class="modal-title">Lisää kategoria</h4>
-                </div>
-                <div class="modal-body">
-                  <form action="{% url 'tiedotteet:new_category' %}" method="post">
-                    {% csrf_token %}
-                    {% for field in nform %}
-                      <label>{{ field.label }}</label>
-                      <div class="form-group">
-                        {{ field }}
-                      </div>
-                    {% endfor %}
-                    <div class="form-group">
-                      <button class="btn btn-success" type="submit">Lisää</button>
-                    </div>
-                  </form>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Sulje</button>
-                </div>
-              </div>
-
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    Kategoriat
+                    <small>Muokkaa kategorioita</small>
+                </h1>
             </div>
-          </div>
-
-
-          <form method="post">
-            {% csrf_token %}
-            <table class="table">
-              <thead>
-                <th>Kategoria</th>
-                <th>Järjestys</th>
-                <th>Näkyvyys</th>
-              </thead>
-              <tbody>
-                {% for c in cforms %}
-                <tr>
-                  <td>{{ c.title }}</td>
-                  <td>{{ c.order }}</td>
-                  <td>{{ c.login_required }}</td>
-                  <td>
-                    {% if c.errors %}
-                      <p class="text-danger">Virhe</p>
-                    {% endif %}
-                  </td>
-                </tr>
-                {% endfor %}
-              </tbody>
-            </table>
-            <button class="btn btn-success" type="submit">Tallenna</button>
-          </form>
         </div>
+        <div class="row">
+            <div class="col-lg-10">
+                <p><a href="#" data-target="#addCategory" data-toggle="modal">Lisää uusi kategoria</a></p>
+                <p>Voit poistaa kategorian jättämällä sen tyhjäksi ja klikkaamalla Tallenna</p>
+                <!-- Modal -->
+                <div class="modal fade" id="addCategory" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Lisää kategoria</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form action="{% url 'tiedotteet:new_category' %}" method="post">
+                                    {% csrf_token %}
+                                    {% for field in nform %}
+                                        <label>{{ field.label }}</label>
+                                        <div class="form-group">
+                                            {{ field }}
+                                        </div>
+                                    {% endfor %}
+                                    <div class="form-group">
+                                        <button class="btn btn-success" type="submit">Lisää</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Sulje</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <form method="post">
+                    {% csrf_token %}
+                    <table class="table">
+                        <thead>
+                            <th>Kategoria</th>
+                            <th>Järjestys</th>
+                            <th>Näkyvyys</th>
+                        </thead>
+                        <tbody>
+                            {% for c in cforms %}
+                                <tr>
+                                    <td>{{ c.title }}</td>
+                                    <td>{{ c.order }}</td>
+                                    <td>{{ c.login_required }}</td>
+                                    <td>
+                                        {% if c.errors %}
+                                        <p class="text-danger">Virhe</p>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    <button class="btn btn-success" type="submit">Tallenna</button>
+                </form>
+            </div>
+        </div>
+        <!-- /.container-fluid -->
     </div>
-    <!-- /.container-fluid -->
-</div>
-<!-- /#page-wrapper -->
-{% endblock %}
+    <!-- /#page-wrapper -->
+    {% endblock %}
