@@ -1,18 +1,15 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React, { Component } from "react";
 
 class Footer extends Component {
   render() {
     return (
       <div id="footer">
-        <img src={"/static/assets/prodeko.png"} alt="Prodeko"/>
+        <img src="/static/assets/prodeko-logo-text-blue.png" alt="Prodeko" />
       </div>
-    )
+    );
   }
 }
 
-Footer.propTypes = {
+Footer.propTypes = {};
 
-}
-
-export default Footer
+export default Footer;

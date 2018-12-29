@@ -1,18 +1,15 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React, { Component } from "react";
 
 class Loader extends Component {
   render() {
     return (
       <div className="loader">
-        <img src={"/public/assets/prodeko.png"} alt="Loading..."/>
+        <img src="/static/assets/prodeko.png" alt="Loading..." />
       </div>
-    )
+    );
   }
 }
 
-Loader.propTypes = {
+Loader.propTypes = {};
 
-}
-
-export default Loader
+export default Loader;

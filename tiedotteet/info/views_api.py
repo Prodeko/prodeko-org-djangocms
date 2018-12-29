@@ -1,8 +1,7 @@
-from rest_framework import status
+from rest_framework import serializers
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from rest_framework import serializers
-from tiedotteet.info.models import *
+from tiedotteet.info.models import Category, Message, Tag
 
 
 class TagSerializer(serializers.ModelSerializer):
@@ -45,6 +44,7 @@ class ContentList(APIView):
     """
     List all visible content.
     """
+
     def get(self, request, format=None):
         queryset = Category.objects.all().order_by('order')
         if not request.user.is_authenticated():

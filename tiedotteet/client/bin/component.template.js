@@ -1,18 +1,12 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 class COMPONENT_NAME extends Component {
   render() {
-    return (
-      <div>
-        COMPONENT_NAME component
-      </div>
-    )
+    return <div>COMPONENT_NAME component</div>;
   }
 }
 
-COMPONENT_NAME.propTypes = {
+COMPONENT_NAME.propTypes = {};
 
-}
-
-export default COMPONENT_NAME
+export default COMPONENT_NAME;

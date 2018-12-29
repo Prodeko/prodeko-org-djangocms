@@ -1,19 +1,19 @@
-from datetime import datetime, timedelta
+from datetime import timedelta
 
 from django.contrib import messages
 from django.core.mail import EmailMultiAlternatives
 from django.core.mail.backends.smtp import EmailBackend
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
-from django.http import (HttpResponseForbidden, HttpResponseNotFound,
-                         JsonResponse)
-from django.shortcuts import (HttpResponse, HttpResponseRedirect,
-                              get_object_or_404, redirect, render)
-from django.template import Context, RequestContext
-from django.template.loader import get_template, render_to_string
+from django.http import HttpResponseForbidden, JsonResponse
+from django.shortcuts import get_object_or_404, redirect, render
+from django.template import Context
+from django.template.loader import get_template
 from django.utils import timezone
 from django.utils.html import strip_tags
-from tiedotteet.info.forms import *
-from tiedotteet.info.models import *
+from tiedotteet.info.forms import (CategoryForm, EditForm,
+                                   MailConfigurationForm, PublishForm,
+                                   SendEmailForm, TagForm)
+from tiedotteet.info.models import Category, MailConfiguration, Message, Tag
 
 
 def index(request):
@@ -32,7 +32,7 @@ def control_panel(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Uusi tiedote tallennettu')
-            return redirect(control_panel)
+            return redirect('/tiedotteet/cp')
     return render(request, 'control/cp.html', {
         'form': form,
         'latest_messages': latest_messages,
@@ -105,7 +105,7 @@ def categories(request):
                 category = cf.save()
                 if category.title == "":
                     category.delete()
-            return redirect('/cp/categories/')
+            return redirect('/tiedotteet/cp/categories/')
     return render(request, 'control/categories.html', {
         'categories': categories,
         'cforms': cforms,
@@ -121,7 +121,7 @@ def new_category(request):
         form = CategoryForm(request.POST)
         if form.is_valid():
             form.save()
-    return redirect('/cp/categories/')
+    return redirect('/tiedotteet/cp/categories/')
 
 
 def tags(request):
@@ -133,8 +133,8 @@ def tags(request):
     if request.method == "POST":
         form = TagForm(request.POST)
         if form.is_valid():
-            tag = form.save()
-            return redirect('/cp/tags/')
+            form.save()
+            return redirect('/tiedottet/cp/tags/')
     return render(request, 'control/tags.html', {
         'tags': tags,
         'form': form,
@@ -147,7 +147,7 @@ def delete_tag(request, pk):
     if request.method == 'POST':
         tag = get_object_or_404(Tag, pk=pk)
         tag.delete()
-    return redirect('/cp/tags/')
+    return redirect('/tiedotteet/cp/tags/')
 
 
 def email(request):
@@ -178,7 +178,7 @@ def delete_message(request, pk):
     if request.method == 'POST':
         message = get_object_or_404(Message, pk=pk)
         message.delete()
-    return redirect('/cp/messages/all/all/')
+    return redirect('/tiedotteet/cp/messages/all/all/')
 
 
 def hide_message(request, pk):
@@ -191,7 +191,7 @@ def hide_message(request, pk):
         else:
             message.visible = True
         message.save()
-    return redirect('/cp/messages/all/all/')
+    return redirect('/tiedotteet/cp/messages/all/all/')
 
 
 def edit_message(request, pk):
@@ -274,7 +274,7 @@ def send_email(request):
                 return JsonResponse({
                     'success': True,
                 })
-            except:
+            except Exception as e:
                 return JsonResponse({
                     'success': False,
                     'errors': {'mail': 'failed to send'},

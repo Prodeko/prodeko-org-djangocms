@@ -2,32 +2,45 @@
 
 <!DOCTYPE html>
 <html lang="fi">
-  <head>
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
-    <title>Tiedotteet</title>
+
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title>Prodeko tiedotteet</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#1e3553">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    {# Favicon stuff #}
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'assets/favicons/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'assets/favicons/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'assets/favicons/favicon-16x16.png' %}">
+    <link rel="mask-icon" href="{% static 'assets/favicons/safari-pinned-tab.svg' %}" color="#002e7d">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="theme-color" content="#ffffff">
+
     <link rel="manifest" href="{% static 'manifest.json'%}">
-    <link rel="icon" href="{% static 'assets/icon72.png'%}">
-    <link rel="icon" href="{% static 'assets/icon72.png'%}">
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,600" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'style_sqsqqw.css'%}">
+    <link rel="stylesheet" href="{% static 'style_p6zlmn.css'%}">
     <script>
-      window.csrfToken = "{{csrf_token}}";
-      window.user = "{{user}}";
-      window.isAdmin = "{{user.is_superuser}}" === "True";
+        window.csrfToken = "{{csrf_token}}";
+        window.user = "{{user}}";
+        window.isAdmin = "{{user.is_superuser}}" === "True";
     </script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131516572-1"></script>
     <script>
-      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-      ga('create', 'UA-67979916-1', 'auto');
-      ga('send', 'pageview');
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-131516572-1');
     </script>
-    <script async src='https://www.google-analytics.com/analytics.js'></script>
-  </head>
-  <body>
+</head>
+
+<body>
     <noscript>This site requires JavaScript turned on</noscript>
     <div id="root"></div>
-    <script type="text/javascript" src="{% static 'app.bundle_sqsqqw.js' %}"></script>
-  </body>
+    <script type="text/javascript" src="{% static 'app.bundle_p6zlmn.js' %}"></script>
+</body>
+
 </html>
