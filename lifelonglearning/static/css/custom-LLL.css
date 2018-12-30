@@ -1,5 +1,6 @@
-html, body {
-  font-family: 'Raleway', sans-serif;
+html,
+body {
+  font-family: "Raleway", sans-serif;
   font-size: 1em;
   color: #666;
   width: 100% !important;
@@ -9,7 +10,12 @@ html, body {
   border: none;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: #666;
 }
 
@@ -54,10 +60,10 @@ h5 {
 }
 
 p {
-
 }
 
-#first, #third {
+#first,
+#third {
   margin: auto auto;
   max-width: 800px;
 }
@@ -66,7 +72,8 @@ p {
   margin-top: 30px;
 }
 
-a, a:hover {
+a,
+a:hover {
   text-decoration: none;
   color: inherit;
 }
@@ -78,7 +85,6 @@ i {
 i:hover {
   color: lightgrey;
 }
-
 
 .white {
   color: white;
@@ -131,7 +137,6 @@ hr {
   margin: 30px 0;
 }
 
-
 /* === NAVBAR === */
 
 #navbar {
@@ -140,7 +145,11 @@ hr {
   z-index: 999;
   margin-top: 0px;
   padding: 15px 0px;
-  background-image: linear-gradient(to bottom, rgba(0,40,81,1), rgba(0,40,81,0));
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 40, 81, 1),
+    rgba(0, 40, 81, 0)
+  );
   background-position: center -300px;
   background-repeat: no-repeat;
   transition: background-position 0.5s ease;
@@ -155,8 +164,10 @@ hr {
   text-align: center;
 }
 
-
-.nav, .navbar-nav, .navbar-header, .navbar-brand {
+.nav,
+.navbar-nav,
+.navbar-header,
+.navbar-brand {
   float: none;
   text-align: center;
   display: block !important;
@@ -174,12 +185,13 @@ hr {
   margin: 0 auto;
 }
 
-.nav>li>a:focus, .nav>li>a:hover {
+.nav > li > a:focus,
+.nav > li > a:hover {
   background: inherit;
   color: lightgrey;
 }
 
-.nav>li {
+.nav > li {
   display: inline-block;
   float: none;
 }
@@ -193,17 +205,14 @@ hr {
   transition: all 0.5s ease;
 
   color: lightgrey;
-  text-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   font-size: 3em;
 }
 
-
-
-
-.container, .white-block {
+.container,
+.white-block {
   background-color: white;
 }
-
 
 /* === BANNER === */
 
@@ -220,7 +229,7 @@ hr {
 .banner-background {
   width: 100%;
   height: 100%;
-  background-image: url('../img/default_thumbnail.jpg');
+  background-image: url("../img/default_thumbnail.jpg");
   background-position: center center;
   background-size: cover;
   z-index: -100;
@@ -239,7 +248,7 @@ hr {
   top: 50%;
   transform: translateY(-50%);
   object-fit: cover;
-  background-image: url('../img/default_thumbnail.jpg');
+  background-image: url("../img/default_thumbnail.jpg");
   background-position: center center;
   background-size: cover;
 }
@@ -271,17 +280,18 @@ hr {
   max-height: 70%;
   bottom: 0;
   z-index: 5;
-  background-image: linear-gradient(to top, rgba(0,40,81,1), rgba(0,40,81,0));
+  background-image: linear-gradient(
+    to top,
+    rgba(0, 40, 81, 1),
+    rgba(0, 40, 81, 0)
+  );
 }
-
-
-
 
 /* === COURSE FEED === */
 
 .course {
   position: relative;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   margin-bottom: 20px;
 }
 
@@ -292,7 +302,7 @@ hr {
   position: relative;
   z-index: 10;
   padding: 20px 20px;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   background-color: white;
 }
 
@@ -336,8 +346,6 @@ hr {
   margin-bottom: 20px;
 }
 
-
-
 .read-more {
   position: absolute;
   width: 100%;
@@ -346,7 +354,11 @@ hr {
   bottom: 0;
   left: 0;
   z-index: 5;
-  background-image: linear-gradient(to top, rgba(255,255,255,1), rgba(255,255,255,0));
+  background-image: linear-gradient(
+    to top,
+    rgba(255, 255, 255, 1),
+    rgba(255, 255, 255, 0)
+  );
   text-align: center;
   color: grey;
 }
@@ -368,8 +380,6 @@ hr {
   padding: 15px 45px;
   z-index: 100;
 }
-
-
 
 /* === OTHER PAGE CONTENT === */
 
@@ -404,20 +414,19 @@ footer {
   color: white;
 }
 
-.social > p, .social > a {
+.social > p,
+.social > a {
   font-size: 0.8em;
 }
 
-
 /* === EFFECTS === */
-.blur   {
-    filter: blur(7px);
-    -webkit-filter: blur(7px);
-    -moz-filter: blur(7px);
-    -o-filter: blur(7px);
-    -ms-filter: blur(7px);
+.blur {
+  filter: blur(7px);
+  -webkit-filter: blur(7px);
+  -moz-filter: blur(7px);
+  -o-filter: blur(7px);
+  -ms-filter: blur(7px);
 }
-
 
 /* === BOOTSTRAP === */
 
@@ -436,9 +445,9 @@ footer {
 /* === SCREEN SIZES === */
 
 /* Mobile devices ----------- */
-@media only screen
-and (max-device-width : 768px) {
-  html, body {
+@media only screen and (max-device-width: 768px) {
+  html,
+  body {
     font-size: 0.95em;
   }
   #logo {
@@ -447,7 +456,7 @@ and (max-device-width : 768px) {
     display: block;
     margin: 0 auto;
   }
-  .nav>li {
+  .nav > li {
     display: block;
     float: none;
   }

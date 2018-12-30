@@ -1,61 +1,60 @@
-@import '../../../static/scss/breakpoints_mixin.scss';
+@import "../../../static/scss/breakpoints_mixin.scss";
 
 .kulukorvaus-container {
+  .fa-plus {
+    color: rgb(31, 88, 31);
+  }
 
-    .fa-plus {
-        color: rgb(31, 88, 31);
+  .fa-minus {
+    color: rgb(119, 22, 22);
+  }
+
+  .fa-minus-square {
+    font-size: 25px;
+    color: rgb(141, 31, 31);
+    vertical-align: middle;
+  }
+
+  .receipt-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+
+    input[type="file"] {
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: 0;
     }
 
-    .fa-minus {
-        color: rgb(119, 22, 22);
+    .btn {
+      color: white;
+      padding: 6px 15px;
+      background-color: #277027;
+      font-weight: bold;
+    }
+  }
+
+  #kulukorvaus-done {
+    a {
+      color: white;
+      padding: 6px 15px;
+      background-color: #277027;
+      font-weight: bold;
     }
 
-    .fa-minus-square {
-        font-size: 25px;
-        color: rgb(141, 31, 31);
-        vertical-align: middle;
-    }
-    
-    .receipt-btn-wrapper {
-        position: relative;
-        overflow: hidden;
-        display: inline-block;
-
-        input[type="file"] {
-            position: absolute;
-            left: 0;
-            top: 0;
-            opacity: 0;
-        }
-
-        .btn {
-            color: white;
-            padding: 6px 15px;
-            background-color: #277027;
-            font-weight: bold;
-        }
+    img {
+      max-width: 60%;
+      display: block;
+      margin: 0 auto 2.5em auto;
     }
 
-    #kulukorvaus-done {
-        a {
-            color: white;
-            padding: 6px 15px;
-            background-color: #277027;
-            font-weight: bold;
-        }
-
-        img {
-            max-width: 60%;
-            display: block;
-            margin: 0 auto 2.5em auto;
-        }
-
-        @include phone {
-            img {
-                max-width: 90%;
-                display: block;
-                margin: 0 auto 1.5em auto;
-            }
-        }
+    @include phone {
+      img {
+        max-width: 90%;
+        display: block;
+        margin: 0 auto 1.5em auto;
+      }
     }
+  }
 }

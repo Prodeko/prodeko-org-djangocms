@@ -1,62 +1,62 @@
-@import '../../../static/scss/breakpoints_mixin.scss';
+@import "../../../static/scss/breakpoints_mixin.scss";
 
 #application-done {
-    text-align: center;
-    
-    img {
-        max-width: 60%;
-        display: block;
-        margin: 0 auto 2.5em auto;
-    }
+  text-align: center;
 
-    @include phone {
-        img {
-            max-width: 90%;
-            display: block;
-            margin: 0 auto 1.5em auto;
-        }
+  img {
+    max-width: 60%;
+    display: block;
+    margin: 0 auto 2.5em auto;
+  }
+
+  @include phone {
+    img {
+      max-width: 90%;
+      display: block;
+      margin: 0 auto 1.5em auto;
     }
+  }
 }
 
 #form-apply-wrapper {
-    font-size: 1em;
+  font-size: 1em;
 
-    .fa-minus-square {
-        font-size: 25px;
-        color: rgb(141, 31, 31);
-        vertical-align: middle;
+  .fa-minus-square {
+    font-size: 25px;
+    color: rgb(141, 31, 31);
+    vertical-align: middle;
+  }
+
+  #payment-info {
+    margin: 2em 0 2em 0;
+
+    ul {
+      margin: 0 0 0 2em;
+      padding: 0;
+
+      @include phone {
+        margin: 1em;
+      }
     }
-    
-    #payment-info {
-        margin: 2em 0 2em 0;
+  }
 
-        ul {
-            margin: 0 0 0 2em;
-            padding: 0;
+  .receipt-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
 
-            @include phone {
-                margin: 1em;
-            }
-        }
+    input[type="file"] {
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: 0;
     }
-    
-    .receipt-btn-wrapper {
-        position: relative;
-        overflow: hidden;
-        display: inline-block;
 
-        input[type="file"] {
-            position: absolute;
-            left: 0;
-            top: 0;
-            opacity: 0;
-        }
-
-        .btn {
-            color: white;
-            padding: 6px 15px;
-            background-color: #277027;
-            font-weight: bold;
-        }
+    .btn {
+      color: white;
+      padding: 6px 15px;
+      background-color: #277027;
+      font-weight: bold;
     }
+  }
 }

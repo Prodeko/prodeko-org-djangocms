@@ -1,39 +1,39 @@
 .toimari {
-    margin: 5px 5px 10px 10px;
-    border: 1px solid #cccccc;
-    float: left;
-    width: 150px;
+  margin: 5px 5px 10px 10px;
+  border: 1px solid #cccccc;
+  float: left;
+  width: 150px;
 
-    img {
-        width: 100%;
-        height: auto;
-    }
+  img {
+    width: 100%;
+    height: auto;
+  }
 
-    .description {
-        padding: 7px;
-        text-align: center;
-        font-size: 0.85rem;
-    }
+  .description {
+    padding: 7px;
+    text-align: center;
+    font-size: 0.85rem;
+  }
 
-    strong {
-        color: #002851;
-        font-size: 1rem;
-    }
+  strong {
+    color: #002851;
+    font-size: 1rem;
+  }
 }
 
 .boardMember {
-    margin: 5px;
-    border: 1px solid #cccccc;
-    float: left;
-    width: 350px;
+  margin: 5px;
+  border: 1px solid #cccccc;
+  float: left;
+  width: 350px;
 
-    .description {
-        margin: 10px;
-        font-size: 0.9rem;
-    }
+  .description {
+    margin: 10px;
+    font-size: 0.9rem;
+  }
 
-    strong {
-        color: #002851;
-        font-size: 1.1rem;
-    }
+  strong {
+    color: #002851;
+    font-size: 1.1rem;
+  }
 }

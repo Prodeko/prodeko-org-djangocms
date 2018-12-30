@@ -1,67 +1,75 @@
 #vaaliContainer {
-    .btn {
-        font-weight: 200;
-	    width: 140px;
-    }
+  .btn {
+    font-weight: 200;
+    width: 140px;
+  }
 
-    .btn-xs {
-        width: 90px;
-	    font-size: 0.7em;
-    }
+  .btn-xs {
+    width: 90px;
+    font-size: 0.7em;
+  }
 
-    .modal-lg {
-        max-width: 70%;
-    }
+  .modal-lg {
+    max-width: 70%;
+  }
 }
 
-
-#vaaliContainer #confirmDeleteEhdokasModal .btn, #vaaliContainer .vaalitQuestions .btn {
-	width: 85px;
+#vaaliContainer #confirmDeleteEhdokasModal .btn,
+#vaaliContainer .vaalitQuestions .btn {
+  width: 85px;
 }
 
-#vaaliContainer .card .img-container, #vaalitModifyApplyForm .img-preview  {
-	width: 100px;
-	height: 100px;
-	border-radius: 50%;
+#vaaliContainer .card .img-container,
+#vaalitModifyApplyForm .img-preview {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
   overflow: hidden;
 }
 
 #vaaliContainer .vaalitQuestions .vaalit-vastaus .img-container {
- height: 50px;
- width: 50px;
- border-radius: 50%;
- overflow: hidden;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  overflow: hidden;
 }
 
 /* Height is set to 100px in 'vaalit_custom.js' once the
  * image file is selected and cropped.
  */
-#vaaliContainer .crop-preview, #vaalitModifyApplyForm .crop-preview {
-	height: 0;
-	width: 100px;
-	border-radius: 50%;
-	overflow: hidden;
+#vaaliContainer .crop-preview,
+#vaalitModifyApplyForm .crop-preview {
+  height: 0;
+  width: 100px;
+  border-radius: 50%;
+  overflow: hidden;
 }
 
 #vaaliContainer .img-container img {
-	display: inline;
-	margin: 0 auto;
+  display: inline;
+  margin: 0 auto;
 }
 
-#vaaliContainer #modalCrop .img-container img, #vaalitModifyApplyModal .img-container img {
-	max-width: 100%;
+#vaaliContainer #modalCrop .img-container img,
+#vaalitModifyApplyModal .img-container img {
+  max-width: 100%;
 }
 
 #vaaliContainer #vaalitKysymysForm a {
-	background-color: #e7e7e7;
+  background-color: #e7e7e7;
 }
 
 #vaaliContainer #vaalitKysymysForm .fa-chevron-down {
   transition: all 0.3s ease-in-out;
 }
 
-#vaaliContainer #vaalitKysymysForm #btnHaeVirkaan.animate-chevron .fa-chevron-down {
-	transform: rotate(-179.999deg); /* For some reason there is a small wiggle if the rotation is 180 degrees */
+#vaaliContainer
+  #vaalitKysymysForm
+  #btnHaeVirkaan.animate-chevron
+  .fa-chevron-down {
+  transform: rotate(
+    -179.999deg
+  ); /* For some reason there is a small wiggle if the rotation is 180 degrees */
   transition: all 0.3s ease-in-out;
 }
 
@@ -70,12 +78,12 @@
 }
 
 #vaaliContainer .vaalitQuestions small {
-	font-weight: 200;
-	font-size: 0.7em;
+  font-weight: 200;
+  font-size: 0.7em;
 }
 
-#vaaliContainer form[id^='vaalitAnswerForm_'] .btn {
-    width: 150px;
+#vaaliContainer form[id^="vaalitAnswerForm_"] .btn {
+  width: 150px;
 }
 
 /* Bootstrap nested list group.
@@ -84,33 +92,33 @@
  */
 
 .list-group.list-group-root {
-    padding: 0;
-    overflow: hidden;
+  padding: 0;
+  overflow: hidden;
 }
 
 .list-group.list-group-root .list-group {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .list-group.list-group-root .list-group-item {
-    border-radius: 0;
-    border-width: 1px 0 0 0;
+  border-radius: 0;
+  border-width: 1px 0 0 0;
 }
 
 .list-group.list-group-root > .list-group-item:first-child {
-    border-top-width: 0;
+  border-top-width: 0;
 }
 
 .list-group.list-group-root > .list-group > .list-group-item {
-    padding-left: 30px;
+  padding-left: 30px;
 }
 
 .list-group.list-group-root > .list-group > .list-group > .list-group-item {
-    padding-left: 45px;
+  padding-left: 45px;
 }
 
 .list-group-root .list-group-item .fa {
-    margin-right: 5px;
+  margin-right: 5px;
 }
 
 .collapse {
@@ -124,35 +132,33 @@
   transition: all 0.3s ease-in-out;
 }
 
-.list-group-root .collapsed .fa-chevron-down  {
-	transform: rotate(-90deg);
+.list-group-root .collapsed .fa-chevron-down {
+  transform: rotate(-90deg);
   transition: all 0.4s ease-in-out;
 }
 
 .list-group-root .list-group-item.active {
-    background-color: #0053a0 !important;
-		border-color: #0053a0 !important;
+  background-color: #0053a0 !important;
+  border-color: #0053a0 !important;
 }
 
 .list-group-root .virka-name {
-    font-size: 0.8em;
+  font-size: 0.8em;
 }
 
 /* MEDIA QUERIES */
 
 /* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
 @media only screen and (max-width: 479px) {
-	#vaaliContainer #modalCrop button[class*="js-zoom"] {
-	    max-width: 50px;
-	}
+  #vaaliContainer #modalCrop button[class*="js-zoom"] {
+    max-width: 50px;
+  }
 }
 
 /* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
 @media only screen and (min-width: 480px) and (max-width: 767px) {
-
 }
 
 /* Tablet Portrait size to standard 960 (devices and browsers) */
 @media only screen and (min-width: 768px) and (max-width: 959px) {
-
 }
