@@ -22,9 +22,19 @@
       }
     }
 
-    /* Keep 'FI/EN' in the same row */
-    .nav-lang {
-      white-space: nowrap;
+    .navigation-list {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .nav-link {
+        font-size: 1.5em;
+    }
+    
+    .nav-sublink {
+        color: rgba(0, 0, 0, 0.65); 
+    }
 
       @include desktop {
         padding-right: 40px;
