@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-28 18:24+0000\n"
+"POT-Creation-Date: 2018-12-30 10:19+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -205,6 +205,10 @@ msgstr "Hylkää"
 msgid "Application actions"
 msgstr "Hakemustoimenpiteet"
 
+#: prodekoorg/app_apply_for_membership/cms_apps.py:11
+msgid "Apply For Membership"
+msgstr "Hae jäsenyyttä"
+
 #: prodekoorg/app_apply_for_membership/forms.py:32
 msgid "An application or account associated with this email already exists"
 msgstr "Jäsenhakemus tai käyttäjä tällä sähköpostiosoitteella on jo olemassa."
@@ -367,6 +371,10 @@ msgstr "Kuitti"
 msgid "^apply/$"
 msgstr "^hae-jaseneksi/$"
 
+#: prodekoorg/app_kulukorvaus/cms_apps.py:11
+msgid "Reimbursement Application"
+msgstr "Kulukorvaushakemus"
+
 #: prodekoorg/app_kulukorvaus/forms.py:68
 msgid ""
 "e.g. \"Food expenses\", \"Coffee to the guildroom\" or \"Mileage allowance\""
@@ -506,6 +514,11 @@ msgstr "Lisää kulu"
 msgid "^reimbursement/$"
 msgstr "^kulukorvaus/$"
 
+#: prodekoorg/app_poytakirjat/cms_apps.py:11
+#: prodekoorg/app_poytakirjat/models.py:56
+msgid "Minutes"
+msgstr "Pöytäkirjat"
+
 #: prodekoorg/app_poytakirjat/gdrive_api.py:306
 msgid "Downloaded {} proceedings documents from G Drive."
 msgstr "Ladattu {} pöytäkirjaa G Drivestä."
@@ -518,48 +531,48 @@ msgstr "Virhe pöytäkirjoja ladattaessa: {}"
 msgid "minutes"
 msgstr "pöytäkirja"
 
-#: prodekoorg/app_poytakirjat/models.py:56
-msgid "Minutes"
-msgstr "Pöytäkirjat"
-
-#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/dokumentti/change_list.html:77
-#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:31
+#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/Dokumentti/change_list.html:77
+#: prodekoorg/app_toimarit/templates/admin/app_toimarit/Toimari/change_list.html:31
 #: prodekoorg/app_toimarit/templates/admin/base.html:56
 msgid "Home"
 msgstr "Kotisivu"
 
-#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/dokumentti/change_list.html:88
+#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/Dokumentti/change_list.html:88
 msgid "Download minutes from Drive"
 msgstr "Lataa pöytäkirjat Drivestä"
 
-#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/dokumentti/change_list.html:89
+#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/Dokumentti/change_list.html:89
 msgid "How does this work"
 msgstr "Miten lataaminen toimii"
 
-#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/dokumentti/change_list.html:119
-#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:49
+#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/Dokumentti/change_list.html:119
+#: prodekoorg/app_toimarit/templates/admin/app_toimarit/Toimari/change_list.html:49
 #, python-format
 msgid "Add %(name)s"
 msgstr "Lisää %(name)s"
 
-#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/dokumentti/change_list.html:128
-#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:65
+#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/Dokumentti/change_list.html:128
+#: prodekoorg/app_toimarit/templates/admin/app_toimarit/Toimari/change_list.html:65
 msgid "Please correct the error below."
 msgstr "Korjaa allaolevat virheet."
 
-#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/dokumentti/change_list.html:128
-#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:65
+#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/Dokumentti/change_list.html:128
+#: prodekoorg/app_toimarit/templates/admin/app_toimarit/Toimari/change_list.html:65
 msgid "Please correct the errors below."
 msgstr "Korjaa allaolevat virheet."
 
-#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/dokumentti/change_list.html:139
-#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:76
+#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/Dokumentti/change_list.html:139
+#: prodekoorg/app_toimarit/templates/admin/app_toimarit/Toimari/change_list.html:76
 msgid "Filter"
 msgstr "Filtteri"
 
 #: prodekoorg/app_poytakirjat/urls.py:8
 msgid "^documents/"
 msgstr "^dokumentit/"
+
+#: prodekoorg/app_tiedostot/cms_apps.py:11
+msgid "Documents"
+msgstr "Tiedostot"
 
 #: prodekoorg/app_tiedostot/models.py:26
 msgid "Files"
@@ -878,76 +891,76 @@ msgstr "^tiedotteet/"
 msgid "Ilmoittaudu!"
 msgstr "Apply!"
 
-#: tiedotteet/info/forms.py:13 tiedotteet/info/forms.py:42
+#: tiedotteet/info/forms.py:17 tiedotteet/info/forms.py:47
 msgid "Otsikko"
 msgstr ""
 
-#: tiedotteet/info/forms.py:14
+#: tiedotteet/info/forms.py:18
 msgid "Sisältö"
 msgstr ""
 
-#: tiedotteet/info/forms.py:15 tiedotteet/info/forms.py:44
-#: tiedotteet/info/forms.py:69
+#: tiedotteet/info/forms.py:19 tiedotteet/info/forms.py:49
+#: tiedotteet/info/forms.py:75
 msgid "Kategoria"
 msgstr ""
 
-#: tiedotteet/info/forms.py:16 tiedotteet/info/forms.py:45
+#: tiedotteet/info/forms.py:20 tiedotteet/info/forms.py:50
 msgid "Tagit"
 msgstr ""
 
-#: tiedotteet/info/forms.py:17 tiedotteet/info/forms.py:46
+#: tiedotteet/info/forms.py:21 tiedotteet/info/forms.py:51
 msgid "Alkaa"
 msgstr ""
 
-#: tiedotteet/info/forms.py:18 tiedotteet/info/forms.py:47
+#: tiedotteet/info/forms.py:22 tiedotteet/info/forms.py:52
 msgid "Loppuu"
 msgstr ""
 
-#: tiedotteet/info/forms.py:19 tiedotteet/info/forms.py:48
+#: tiedotteet/info/forms.py:23 tiedotteet/info/forms.py:53
 msgid "Deadline"
 msgstr ""
 
-#: tiedotteet/info/forms.py:20 tiedotteet/info/forms.py:49
+#: tiedotteet/info/forms.py:24 tiedotteet/info/forms.py:54
 msgid "Näytä deadline"
 msgstr ""
 
-#: tiedotteet/info/forms.py:21 tiedotteet/info/forms.py:50
+#: tiedotteet/info/forms.py:25 tiedotteet/info/forms.py:55
 msgid "Näytetään"
 msgstr ""
 
-#: tiedotteet/info/forms.py:43
+#: tiedotteet/info/forms.py:48
 msgid "Content"
 msgstr ""
 
-#: tiedotteet/info/forms.py:70
+#: tiedotteet/info/forms.py:76
 msgid "Järjestys"
 msgstr ""
 
-#: tiedotteet/info/forms.py:71
+#: tiedotteet/info/forms.py:77
 msgid "Näkyvyys"
 msgstr ""
 
-#: tiedotteet/info/forms.py:84
+#: tiedotteet/info/forms.py:91
 msgid "Uusi tagi"
 msgstr ""
 
-#: tiedotteet/info/forms.py:96
+#: tiedotteet/info/forms.py:103
 msgid "Palvelin (host)"
 msgstr ""
 
-#: tiedotteet/info/forms.py:97
+#: tiedotteet/info/forms.py:104
 msgid "Portti"
 msgstr ""
 
-#: tiedotteet/info/forms.py:98
+#: tiedotteet/info/forms.py:105
 msgid "Käyttäjätunnus (sähköpostiosoite)"
 msgstr ""
 
-#: tiedotteet/info/forms.py:99
+#: tiedotteet/info/forms.py:106
 msgid "Salasana"
 msgstr ""
 
-#: tiedotteet/info/forms.py:100
+#: tiedotteet/info/forms.py:107
 msgid "TLS salaus päällä"
 msgstr ""
 
