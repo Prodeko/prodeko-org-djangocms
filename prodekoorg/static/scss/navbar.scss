@@ -23,17 +23,17 @@
     }
 
     .navigation-list {
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
     }
 
     .nav-link {
-        font-size: 1.5em;
+      font-size: 1.5em;
     }
     
     .nav-sublink {
-        color: rgba(0, 0, 0, 0.65); 
+      color: rgba(0, 0, 0, 0.65); 
     }
 
       @include desktop {
