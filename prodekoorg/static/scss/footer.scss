@@ -1,61 +1,62 @@
-@import 'breakpoints_mixin.scss';
-@import 'variables.scss';
+@import "breakpoints_mixin.scss";
+@import "variables.scss";
 
 .prodeko-footer {
-    font-family: Raleway, Helvetica, sans-serif;
-    padding-left: 0;
-    padding-right: 0;
-    padding-top: 3em;
-    padding-bottom: 2em;
-    background-color: $blue-dark;
+  font-family: Raleway, Helvetica, sans-serif;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 3em;
+  padding-bottom: 2em;
+  background-color: $blue-dark;
+  color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+  @include phone {
+    padding-top: 1em;
+    padding-bottom: 1em;
+  }
+
+  a {
     color: white;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    font-weight: bold;
+
+    &:hover {
+      color: grey;
+      -webkit-transition: 0.3s ease-out;
+      -moz-transition: 0.3s ease-out;
+      -o-transition: 0.3s ease-out;
+      transition: 0.3s ease-out;
+    }
+  }
+
+  h2,
+  p {
+    font-size: 0.9em;
+  }
+
+  .network-div {
+    flex: 1 0 20%;
+    margin: 10px;
+    height: 65px;
 
     @include phone {
-        padding-top: 1em;
-        padding-bottom: 1em;
+      height: 50px;
     }
+  }
 
+  img {
+    max-width: 5em;
+    height: 100%;
+
+    @include desktop {
+      max-width: 8em;
+      height: 100%;
+    }
+  }
+
+  .social-row {
     a {
-        color: white;
-        font-weight: bold;
-
-        &:hover {
-            color: grey;
-            -webkit-transition: 0.3s ease-out;
-            -moz-transition: 0.3s ease-out;
-            -o-transition: 0.3s ease-out;
-            transition: 0.3s ease-out;
-        }
+      padding: 1em;
     }
-
-    h2, p {
-		font-size: 0.9em;
-	}
-
-    .network-div {
-        flex: 1 0 20%;
-        margin: 10px;
-        height: 65px;
-
-        @include phone {
-            height: 50px;
-        }
-    }
-
-    img {
-        max-width: 5em;
-        height: 100%;
-
-        @include desktop {
-            max-width: 8em;
-            height: 100%;
-        }
-    }
-
-    .social-row {
-        a {
-            padding: 1em;
-        }
-    }
+  }
 }

@@ -1,116 +1,116 @@
-@import '../../../prodekoorg/static/scss/breakpoints_mixin.scss';
-@import '../../../prodekoorg/static/scss/variables.scss';
+@import "../../../prodekoorg/static/scss/breakpoints_mixin.scss";
+@import "../../../prodekoorg/static/scss/variables.scss";
 
 #login-form {
-    max-width: 60%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    
-    label {
-        display: block;
-        width: 100%;
-      }
+  max-width: 60%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 
-    input {
-        display: block;
-        width: 100%;
-    }    
+  @include phone {
+    max-width: 98%;
+  }
 
-    button {
-        display: block;
-        width: 100%;
-    }   
+  @include tablet {
+    max-width: 70%;
+  }
 
-    .form-group {
-        margin-bottom: 0;
-    }
+  label {
+    display: block;
+    width: 100%;
+  }
 
-    @include phone {
-        max-width: 98%;
-    }
+  input {
+    display: block;
+    width: 100%;
+  }
 
-    @include tablet {
-        max-width: 70%;
-    }
+  button {
+    display: block;
+    width: 100%;
+  }
+
+  .form-group {
+    margin-bottom: 0;
+  }
 }
 
 .header-logo {
-    width: 50%;
-    margin: 5em 0 2em 0;
+  width: 50%;
+  margin: 5em 0 2em 0;
 
-    @include phone {
-        width: 98%;
-        margin: 1em 0 1em 0;
-    }
+  @include phone {
+    width: 98%;
+    margin: 1em 0 1em 0;
+  }
 
-    @include tablet {
-        width: 80%;
-    }
+  @include tablet {
+    width: 80%;
+  }
 
-    img {
-        display: block;
-        margin: auto;
-    }
+  img {
+    display: block;
+    margin: auto;
+  }
 }
 
 .card {
-    width: 50%;
+  width: 50%;
 
-    .centered {
-        text-align: center;
-    }
+  @include phone {
+    width: 98%;
+  }
 
-    @include phone {
-        width: 98%;
-    }
+  @include tablet {
+    width: 80%;
+  }
 
-    @include tablet {
-        width: 80%;
-    }
+  .centered {
+    text-align: center;
+  }
 }
 .form-wrapper {
-    .fieldWrapper {
-        .field-input {
-            display: inline-block;
-            padding: 3px;
-            margin: 2px;
+  .fieldWrapper {
+    .field-input {
+      display: inline-block;
+      padding: 3px;
+      margin: 2px;
 
-        input {
-            outline: none;
-            border: none;
-            display:block;
-            line-height: 1.2em;
-            font-size: 14pt;
-            border-bottom: 1.5px solid gray;
-            margin-bottom: 5px;
-            }
-
-        label {
-            display: block;
-            font-size: 12px;
-            color: $blue-normal;
-            }
-        }
-
-        .field-error {
-            color: red;
-            display: inline-block;
-            font-size: 12px;
-        }
-    }
-
-    .other-errors {
-        margin: 5px;
-        color: red;
-        font-size: 14px;
-    }
-
-    input[type=submit] {
-        margin: 15px 2px;
-        background-color: $blue-normal;
+      input {
+        outline: none;
         border: none;
-        color: white;
-        padding: 10px 30px;
+        display: block;
+        line-height: 1.2em;
+        font-size: 14pt;
+        border-bottom: 1.5px solid gray;
+        margin-bottom: 5px;
+      }
+
+      label {
+        display: block;
+        font-size: 12px;
+        color: $blue-normal;
+      }
     }
+
+    .field-error {
+      color: red;
+      display: inline-block;
+      font-size: 12px;
+    }
+  }
+
+  .other-errors {
+    margin: 5px;
+    color: red;
+    font-size: 14px;
+  }
+
+  input[type="submit"] {
+    margin: 15px 2px;
+    background-color: $blue-normal;
+    border: none;
+    color: white;
+    padding: 10px 30px;
+  }
 }

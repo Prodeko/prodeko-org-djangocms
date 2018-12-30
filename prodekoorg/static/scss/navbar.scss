@@ -1,128 +1,128 @@
 .prodeko-navbar {
-    text-transform: uppercase;
-    padding: 0;
-    text-align: center;
-    margin-bottom: 1em;
+  text-transform: uppercase;
+  padding: 0;
+  text-align: center;
+  margin-bottom: 1em;
 
-    #collapsibleNavbar {
-        .lang {
-            text-decoration: underline;
+  #collapsibleNavbar {
+    .lang {
+      text-decoration: underline;
+    }
+
+    .navbar-auth {
+      @include phone {
+        li {
+          margin-bottom: 5px;
+
+          a {
+            width: 165px;
+            margin-right: 0 !important;
+          }
         }
-
-        .navbar-auth {
-            @include phone {
-                li {
-                    margin-bottom: 5px;
-
-                    a {
-                        width: 165px;
-                        margin-right: 0 !important;
-                    }
-                }
-            }
-        }
-
-        /* Keep 'FI/EN' in the same row */
-        .nav-lang {
-            white-space: nowrap;
-        
-            @include desktop {
-                padding-right: 40px;
-            }
-        }
-
-        @include desktop {
-            form {
-                width: 0px;
-              }
-        }
+      }
     }
 
-    .nav-link {
-        font-size: 1.5em;
-    }
-    
-    .nav-sublink {
-        color: rgba(0, 0, 0, 0.65); 
-    }
+    /* Keep 'FI/EN' in the same row */
+    .nav-lang {
+      white-space: nowrap;
 
-    .nav-ul {
-        list-style: none;
-    }
-    
-    li.active-menu-item a {
-        font-weight: bold;
-    }
-
-    @include tablet {
-        .login-dropdown {
-            background-color: #002851;
-            min-width: 22rem
-        }
-    }
-
-    /* Start animated underlines
-
-    Credits: http://tobiasahlin.com/blog/css-trick-animating-link-underlines/
-    */
-    a.nav-top {
-        position: relative;
-	    text-decoration: none;
-    }
-
-    .prodeko-navbar #collapsibleNavbar a.nav-top {
-        position: relative;
-        text-decoration: none;
-    }
-    
-    a.nav-top:not(.no-animation):before {
-        content: "";
-      position: absolute;
-      width: 100%;
-      height: 1px;
-      bottom: 0;
-      left: 0;
-      background-color: #002851;
-      visibility: hidden;
-      -webkit-transform: scaleX(0);
-      transform: scaleX(0);
-      -webkit-transition: all 0.3s ease-in-out 0s;
-      transition: all 0.3s ease-in-out 0s;
-    }
-    
-    a.nav-top:not(.no-animation):hover:before {
-        visibility: visible;
-      -webkit-transform: scaleX(1);
-      transform: scaleX(1);
-    }
-    /* End animated underlines*/
-}
-
-#prodeko-logo {
-	background-size: contain;
-    background-repeat: no-repeat;
-    background-origin: content-box;
-	margin-left: 1em;
-    padding: 5px;
-    flex-grow: 1;
-    display: block;
-
-    @include phone {
-        height: 40px;
-        max-width: 200px;
-        background-image: url('/static/images/logos/prodeko-logo-text-blue.png');
-        margin-left: 0;
-    }
-
-    @include tablet {
-        height: 60px;
-        max-width: 300px;
-        background-image: url('/static/images/logos/prodeko-logo-text-blue.png');
+      @include desktop {
+        padding-right: 40px;
+      }
     }
 
     @include desktop {
-        height: 75px;
-        max-width: 150px;
-        background-image: url('/static/images/logos/prodeko-logo-darkblue.png');
+      form {
+        width: 0px;
+      }
     }
+  }
+
+  .nav-link {
+    font-size: 1.5em;
+  }
+
+  .nav-sublink {
+    color: rgba(0, 0, 0, 0.65);
+  }
+
+  .nav-ul {
+    list-style: none;
+  }
+
+  li.active-menu-item a {
+    font-weight: bold;
+  }
+
+  @include tablet {
+    .login-dropdown {
+      background-color: #002851;
+      min-width: 22rem;
+    }
+  }
+
+  /* Start animated underlines
+
+    Credits: http://tobiasahlin.com/blog/css-trick-animating-link-underlines/
+    */
+  a.nav-top {
+    position: relative;
+    text-decoration: none;
+  }
+
+  .prodeko-navbar #collapsibleNavbar a.nav-top {
+    position: relative;
+    text-decoration: none;
+  }
+
+  a.nav-top:not(.no-animation):before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background-color: #002851;
+    visibility: hidden;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transition: all 0.3s ease-in-out 0s;
+    transition: all 0.3s ease-in-out 0s;
+  }
+
+  a.nav-top:not(.no-animation):hover:before {
+    visibility: visible;
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+  }
+  /* End animated underlines*/
+}
+
+#prodeko-logo {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-origin: content-box;
+  margin-left: 1em;
+  padding: 5px;
+  flex-grow: 1;
+  display: block;
+
+  @include phone {
+    height: 40px;
+    max-width: 200px;
+    background-image: url("/static/images/logos/prodeko-logo-text-blue.png");
+    margin-left: 0;
+  }
+
+  @include tablet {
+    height: 60px;
+    max-width: 300px;
+    background-image: url("/static/images/logos/prodeko-logo-text-blue.png");
+  }
+
+  @include desktop {
+    height: 75px;
+    max-width: 150px;
+    background-image: url("/static/images/logos/prodeko-logo-darkblue.png");
+  }
 }

@@ -12,21 +12,21 @@ Prodekon keskisininen: #002e7d
 Prodekon tummansininen: #002851
 */
 
-@import 'messages_animation.scss';
-@import 'breakpoints_mixin.scss';
-@import 'typography.scss';
-@import 'variables.scss';
-@import 'hamburgers.scss';
+@import "messages_animation.scss";
+@import "breakpoints_mixin.scss";
+@import "typography.scss";
+@import "variables.scss";
+@import "hamburgers.scss";
 
-@import 'frontpage.scss';
-@import 'sidenav.scss';
-@import 'navbar.scss';
-@import 'footer.scss';
-@import 'content-page.scss';
-@import '403.scss';
-@import '404.scss';
+@import "frontpage.scss";
+@import "sidenav.scss";
+@import "navbar.scss";
+@import "footer.scss";
+@import "content-page.scss";
+@import "403.scss";
+@import "404.scss";
 
 body {
-	font-family: Raleway, Helvetica, sans-serif;
-	min-height: 100%;
+  font-family: Raleway, Helvetica, sans-serif;
+  min-height: 100%;
 }
