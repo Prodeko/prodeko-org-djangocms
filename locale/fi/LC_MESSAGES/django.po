@@ -183,7 +183,7 @@ msgstr "Sähköposti ja salasana eivät täsmänneet. Yritä uudestaan"
 
 #: lifelonglearning/models.py:28
 msgid "courses"
-msgstr "Kurssit"
+msgstr "kurssit"
 
 #: lifelonglearning/models.py:29
 msgid "Courses"
@@ -276,7 +276,7 @@ msgstr "Vuosi"
 
 #: prodekoorg/app_apply_for_membership/models.py:50
 msgid "Nationality (language)"
-msgstr ""
+msgstr "Kansallisuus (kieli)"
 
 #: prodekoorg/app_apply_for_membership/models.py:51
 msgid "Membership type"
@@ -566,10 +566,6 @@ msgstr "Korjaa allaolevat virheet."
 msgid "Filter"
 msgstr "Filtteri"
 
-#: prodekoorg/app_poytakirjat/urls.py:8
-msgid "^documents/"
-msgstr "^dokumentit/"
-
 #: prodekoorg/app_tiedostot/cms_apps.py:11
 msgid "Documents"
 msgstr "Tiedostot"
@@ -585,18 +581,6 @@ msgstr "tiedostoversio"
 #: prodekoorg/app_tiedostot/models.py:51
 msgid "File versions"
 msgstr "Tiedostoversiot"
-
-#: prodekoorg/app_tiedostot/urls.py:8
-#, fuzzy
-#| msgid "files/"
-msgid "^files/$"
-msgstr "tiedostot/"
-
-#: prodekoorg/app_tiedostot/urls.py:9
-#, fuzzy
-#| msgid "files/download/(?P<pk>\\d+)/"
-msgid "^files/download/(?P<pk>\\d+)/$"
-msgstr "tiedostot/download/(?P<pk>\\d+)/"
 
 #: prodekoorg/app_toimarit/admin.py:35 prodekoorg/app_toimarit/admin.py:43
 msgid "Export selected as CSV"
@@ -1012,26 +996,8 @@ msgstr ""
 #~ msgid "Sign in"
 #~ msgstr "Kirjaudu sisään"
 
-#~ msgid "^account/$"
-#~ msgstr "^kayttaja/$"
-
-#~ msgid "^account/(?P<pk>\\d+)/$"
-#~ msgstr "^kayttaja/(?P<pk>\\d+)/$"
-
-#~ msgid "^profile/"
-#~ msgstr "^profiili/"
-
-#~ msgid "/profile/"
-#~ msgstr "/profiili/"
-
-#~ msgid "profile/"
-#~ msgstr "profiili/"
-
 #~ msgid "Heading"
 #~ msgstr "Otsikko"
 
 #~ msgid "year"
 #~ msgstr "vuosi"
-
-#~ msgid "kirjaudu/"
-#~ msgstr "login/"
