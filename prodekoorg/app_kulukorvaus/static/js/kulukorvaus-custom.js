@@ -18,7 +18,6 @@ $(document).ready(function () {
   formKulukorvaus.on("submit", function (e) {
     e.preventDefault();
     formData = new FormData((formKulukorvaus).get(0));
-    console.log(formData)
 
     $.ajax({
       url: "",
