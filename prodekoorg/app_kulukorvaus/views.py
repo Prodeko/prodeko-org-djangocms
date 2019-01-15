@@ -1,11 +1,14 @@
 from time import localtime, strftime
 
+from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
 from django.core.files.base import ContentFile
+from django.core.mail import EmailMultiAlternatives
 from django.forms import formset_factory
-from django.http import HttpResponse, Http404
+from django.http import Http404, HttpResponse
 from django.shortcuts import render
+from django.template.loader import render_to_string
 
 from .forms import KulukorvausForm, KulukorvausPerustiedotForm
 from .models import KulukorvausPerustiedot
@@ -45,8 +48,7 @@ def download_kulukorvaus_pdf(request, perustiedot_id):
         raise Http404("Reimbursement does not exist")
 
     # Create the HttpResponse object with the appropriate PDF headers.
-    time = strftime("%Y-%m-%d", localtime())
-    filename = '{}_kulukorvaus_{}.pdf'.format(time, model_perustiedot.created_by.replace(" ", "_"))
+    filename = model_perustiedot.pdf_filename()
     response = HttpResponse(model_perustiedot.pdf.file, content_type='application/pdf')
     response['Content-Disposition'] = 'attachment; filename="' + filename + '"'
     return response
@@ -71,7 +73,7 @@ def add_pdf_to_model(perustiedot_id):
 
     model_perustiedot = KulukorvausPerustiedot.objects.get(id=perustiedot_id)
     # This fetches all the Kulukorvaus objects whose 'info' foreign key
-    # attribute is the KulukorvausPerustiedot object fetched above.
+    # attribute is the KulukorvausPerustiedot object obtained above.
     models_kulukorvaukset = model_perustiedot.kulukorvaus_set.all()
 
     # Initialize class KulukorvausPDF defined in printing.py and
@@ -82,7 +84,8 @@ def add_pdf_to_model(perustiedot_id):
 
     # Set the 'pdf' attribute of model KulukorvausPerustiedot.
     pdf_file = ContentFile(pdf)
-    model_perustiedot.pdf.save('kulukorvaus.pdf', pdf_file)
+    filename = model_perustiedot.pdf_filename()
+    model_perustiedot.pdf.save(filename, pdf_file)
 
 
 @login_required(login_url='/login/')
@@ -135,6 +138,9 @@ def main_form(request):
             # to the KulukorvausPerustiedot object created above.
             add_pdf_to_model(model_perustiedot.id)
 
+            # Send the kulukorvaus by email also
+            send_email(request.user, model_perustiedot.id)
+
             # Successfull form submission - render page displaying
             # info and pdf download link.
             return render(request, 'kulukorvaus.html', {'done': True,
@@ -156,3 +162,39 @@ def main_form(request):
         return render(request, 'kulukorvaus.html', {'form_perustiedot': form_perustiedot,
                                                     'formset_kulu': formset
                                                     })
+
+
+def send_email(user, perustiedot_id):
+    """Informs the user, by email, of successfull kulukorvaus submission.
+
+    Args:
+        user: Django user
+        perustiedot_id: id of KulukorvauPerustiedot model
+
+    Returns:
+      Nothing, sends an email to the right user.
+    """
+    # Passing the model_perustiedot object straight from main_form
+    # Doesn't work. Has something to do with it being in memory still
+    # and not having the pdf file attached yet.
+    model_perustiedot = KulukorvausPerustiedot.objects.get(id=perustiedot_id)
+
+    # This fetches all the Kulukorvaus objects whose 'info' foreign key
+    # attribute is the KulukorvausPerustiedot object obtained above.
+    models_kulukorvaukset = model_perustiedot.kulukorvaus_set.all()
+    subject = 'Uusi kulukorvaus - {} {}'.format(user.first_name, user.last_name)
+    text_content = render_to_string('info_mail.txt', {
+                                    'user': user,
+                                    'model_perustiedot': model_perustiedot,
+                                    'models_kulukorvaukset': models_kulukorvaukset
+                                    })
+    email_to = model_perustiedot.email
+    from_email = settings.DEFAULT_FROM_EMAIL
+    msg = EmailMultiAlternatives(subject, text_content, from_email, [email_to])
+
+    filename = model_perustiedot.pdf_filename()
+
+    # TODO: No html alternative for now...
+    # msg.attach_alternative(html_content, "text/html")
+    msg.attach(filename, model_perustiedot.pdf.file.read(), 'application/jpg')
+    msg.send()
