@@ -1,3 +1,5 @@
+from time import localtime, strftime
+
 from django.conf import settings
 from django.core.validators import FileExtensionValidator
 from django.db import models
@@ -56,10 +58,16 @@ class KulukorvausPerustiedot(models.Model):
     pdf = models.FileField(blank=True, null=True, upload_to='kulukorvaukset/%Y-%m', verbose_name='PDF',
                            validators=[FileExtensionValidator(['pdf'])])
 
+    def pdf_filename(self):
+        created_at = self.kulukorvaus_set.all().first().created_at.date()
+        filename = '{}_kulukorvaus_{}.pdf'.format(created_at, self.created_by.replace(" ", "_"))
+        return filename
+
     def __str__(self):
+        position_in_guild = self.position_in_guild
         by = self.created_by
         s = self.sum_overall
-        return '{}, {}€'.format(by, s)
+        return '{} - {}, ({}€)'.format(position_in_guild, by, s)
 
     class Meta:
         # Correct spelling in Django admin

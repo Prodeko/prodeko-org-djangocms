@@ -169,6 +169,7 @@ TEMPLATES = [
                  os.path.join(BASE_DIR, 'prodekoorg/app_apply_for_membership', 'templates'),
                  os.path.join(BASE_DIR, 'prodekoorg/app_apply_for_membership', 'templates', 'emails'),
                  os.path.join(BASE_DIR, 'prodekoorg/app_kulukorvaus', 'templates'),
+                 os.path.join(BASE_DIR, 'prodekoorg/app_kulukorvaus', 'templates', 'emails'),
                  os.path.join(BASE_DIR, 'prodekoorg/app_poytakirjat', 'templates'),
                  os.path.join(BASE_DIR, 'prodekoorg/app_toimarit', 'templates')],
         'OPTIONS': {
