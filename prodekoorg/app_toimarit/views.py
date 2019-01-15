@@ -13,6 +13,15 @@ from .models import HallituksenJasen, Jaosto, Toimari
 @staff_member_required(login_url='/login/')
 @csrf_protect
 def postcsv(request):
+    """Handle a CSV POST request and create new Guild Official objects.
+
+    Args:
+        request: HttpRequest object from Django.
+
+    Returns:
+        If user is logged in and has staff permissions, they will be rediricted to admin home.
+        Otherwise they will be redirected to login page.
+    """
     try:
         csv_file = request.FILES['file']
         decoded_file = csv_file.read().decode('utf-8')
@@ -32,6 +41,14 @@ def postcsv(request):
 
 
 def list_guildofficials(request):
+    """Fetch all Guild Official objects and display them on a page.
+
+    Args:
+        request: HttpRequest object from Django.
+
+    Returns:
+        A Django TemplateResponse object that renders a html template.
+    """
     guildofficials = Toimari.objects.all()
     sections = Jaosto.objects.all()
     context = {'guildofficials': guildofficials, 'sections': sections}
@@ -39,6 +56,14 @@ def list_guildofficials(request):
 
 
 def list_boardmembers(request):
+    """Fetch all Board Member objects and display them on a page.
+
+    Args:
+        request: HttpRequest object from Django.
+
+    Returns:
+        A Django TemplateResponse object that renders a html template.
+    """
     boardmembers = HallituksenJasen.objects.all()
     context = {'boardmembers': boardmembers}
     return render(request, 'board.html', context)

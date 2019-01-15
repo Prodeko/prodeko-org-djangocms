@@ -9,6 +9,19 @@ from .models import HallituksenJasen, Jaosto, Toimari
 
 
 def exportcsv(modeladmin, request, queryset):
+    """Handle a CSV POST request and create new Guild Official objects.
+
+    Args:
+        modeladmin: Django's representation of a model in admin panel
+        request: HttpRequest object from Django.
+        queryset: Represents selected (Toimari) objects in admin panel
+
+    Returns:
+        If user is logged in and has staff permissions, a CSV containg
+        all 'Toimari' objects will be returned.
+
+        Otherwise a permission denied exception will be raised.
+    """
     if not request.user.is_staff:
         raise PermissionDenied
     opts = queryset.model._meta

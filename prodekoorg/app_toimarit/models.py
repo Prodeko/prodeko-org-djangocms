@@ -5,6 +5,14 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class Jaosto(models.Model):
+    """Prodeko board proceedings documents.
+
+    This model represents a section in Prodeko's organization.
+
+    Attributes:
+        name: Name of the section
+    """
+
     name = models.CharField(max_length=50, verbose_name=_('Name'))
 
     def __str__(self):
@@ -16,6 +24,15 @@ class Jaosto(models.Model):
 
 
 class Toimari(models.Model):
+    """This model represents a Guild Official in Prodeko.
+
+    Attributes:
+        firstname: First name of the Guild Official
+        lastname: Last name of the Guild Official
+        Position: Current position as a Guild Official
+        Section: The section in which the Guild Official belongs to based on their position
+    """
+
     firstname = models.CharField(max_length=30, verbose_name=_('First name'))
     lastname = models.CharField(max_length=30, verbose_name=_('Last name'))
     position = models.CharField(max_length=50, verbose_name=_('Position'))
@@ -37,6 +54,22 @@ class Toimari(models.Model):
 
 
 class HallituksenJasen(models.Model):
+    """This model represents a Board Member in Prodeko.
+
+    Attributes:
+        firstname: First name of the Board Member
+        lastname: Last name of the Board Member
+        position: Current position as a Board Member (in Finnish)
+        section: The section of responsibility.
+                Not currently displayed anywhere, and exists just to make
+                the export CSV function simpler.
+        position_eng: English version of the Board Member's position
+        mobilephone: Mobile phone number of the Board Member
+        telegram: Telegram username of the Board Member.
+                Not currently displayed anywhere.
+        description: A short description of the role.
+                Not currenly displayed anywhere.
+    """
 
     firstname = models.CharField(max_length=30, verbose_name=_('First name'))
     lastname = models.CharField(max_length=30, verbose_name=_('Last name'))

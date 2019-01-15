@@ -23,6 +23,7 @@ class Tiedosto(models.Model):
             return "{}{}".format(settings.STATIC_ROOT, "default_thumbnail.jpg")
 
     class Meta:
+        # Correct spelling in Django admin
         verbose_name_plural = _('Files')
 
 
@@ -47,5 +48,6 @@ class TiedostoVersio(models.Model):
         return "{}: {}".format(self.tiedosto.title, self.file_extension())
 
     class Meta:
+        # Correct spelling in Django admin
         verbose_name = _('file version')
         verbose_name_plural = _('File versions')
