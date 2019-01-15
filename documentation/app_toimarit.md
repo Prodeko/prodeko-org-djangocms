@@ -1,31 +1,31 @@
-# app_toimarit Documentation
+# app_toimarit :feelsgood::godmode::finnadie::trollface:
 
-**Päivitetty:** 26.12.2018
-**Tekijä:** Kalle Hiltunen
+**Pï¿½ivitetty:** 26.12.2018
+**Tekijï¿½:** Kalle Hiltunen
 
 ## Asennus
 - Luo uusi sivu djangon admini-paneelissa
-- Mene sivun lisäasetuksiin
-- Valitse sovellukseksi (Application) joko Officials (toimarit) tai Board (hallituslaiset). Tämä määrittää näytettävän sisällön sivulla.
-- Kohtaan application instance name voi valita käytännössä mitä tahansa, mutta toimari- ja hallitussivuilla on oltava eri arvo. Esimerkiksi arvot voivat olla app_toimarit_officials ja app_toimarit_board.
+- Mene sivun lisï¿½asetuksiin
+- Valitse sovellukseksi (Application) joko Officials (toimarit) tai Board (hallituslaiset). Tï¿½mï¿½ mï¿½ï¿½rittï¿½ï¿½ nï¿½ytettï¿½vï¿½n sisï¿½llï¿½n sivulla.
+- Kohtaan application instance name voi valita kï¿½ytï¿½nnï¿½ssï¿½ mitï¿½ tahansa, mutta toimari- ja hallitussivuilla on oltava eri arvo. Esimerkiksi arvot voivat olla app_toimarit_officials ja app_toimarit_board.
 - Julkaise sivu
 
-## Toimarien lisääminen
+## Toimarien lisï¿½ï¿½minen
 
-- Jaostot on lisättävä ensin manuaalisesti admin-paneelin kautta, mikäli niitä ei ole jo luotu
-- CSV-tiedoston voi ladata admin --> Guild Officials/Toimihenkilöt --> Lataa CSV
-- Vanhat toimarit eivät poistu CSV-tiedostoa ladatessa, joten tarvittaessa ne tulee poistaa ennen tiedoston lataamista
-- Toimarien kuvat linkittyvät automaattisesti oikeisiin henkilöihin, kun ne ladataan kansioon prodekoorg/app_toimarit/static/images/toimari_photos
-- Kuvien nimeämisen tulee noudattaa muotoa Etunimi_Sukunimi.jpg 
+- Jaostot on lisï¿½ttï¿½vï¿½ ensin manuaalisesti admin-paneelin kautta, mikï¿½li niitï¿½ ei ole jo luotu
+- CSV-tiedoston voi ladata admin --> Guild Officials/Toimihenkilï¿½t --> Lataa CSV
+- Vanhat toimarit eivï¿½t poistu CSV-tiedostoa ladatessa, joten tarvittaessa ne tulee poistaa ennen tiedoston lataamista
+- Toimarien kuvat linkittyvï¿½t automaattisesti oikeisiin henkilï¿½ihin, kun ne ladataan kansioon prodekoorg/app_toimarit/static/images/toimari_photos
+- Kuvien nimeï¿½misen tulee noudattaa muotoa Etunimi_Sukunimi.jpg 
 - Oletuskuvaa voi vaihtaa samasta kansiosta tiedostosta anonyymi_uniseksi_maskulinoitu.jpg
 
-## Hallituksen jäsenten lisääminen
+## Hallituksen jï¿½senten lisï¿½ï¿½minen
 
 - Manuaalisesti admin-paneelin kautta
-- Toimarien kuvat linkittyvät automaattisesti oikeisiin henkilöihin, kun ne ladataan kansioon prodekoorg/app_toimarit/static/images/hallitus_photos
-- Kuvien nimeämisen tulee noudattaa muotoa Etunimi_Sukunimi.jpg 
+- Toimarien kuvat linkittyvï¿½t automaattisesti oikeisiin henkilï¿½ihin, kun ne ladataan kansioon prodekoorg/app_toimarit/static/images/hallitus_photos
+- Kuvien nimeï¿½misen tulee noudattaa muotoa Etunimi_Sukunimi.jpg 
 - Oletuskuvaa voi vaihtaa samasta kansiosta tiedostosta placeholder.jpg
 
 ## Muut toiminnallisuudet
 
-- Admin-paneelista kaikki toimarit voi ladata omalle koneelle CSV-tiedostona valitsemalla kaikki toimarit ja valitsemalla "Export selected as CSV" vasemmasta yläkulmasta.
+- Admin-paneelista kaikki toimarit voi ladata omalle koneelle CSV-tiedostona valitsemalla kaikki toimarit ja valitsemalla "Export selected as CSV" vasemmasta ylï¿½kulmasta.

@@ -1,6 +1,9 @@
 # app_poytakirjat :page_facing_up::page_with_curl::bookmark_tabs:
 
-Prodeko.org + G Drive integraatio pöytäkirjojen lataamisen automatisoimiseksi. Päivitetty 25.12.2018.
+- **Päivitetty** 25.12.2018
+- **Tekijä:** Timo Riski
+
+Prodeko.org + G Drive integraatio pöytäkirjojen lataamisen automatisoimiseksi.
 
 ## Setup
 
@@ -52,7 +55,3 @@ Pöytäkirjojen lataaminen tapahtuu admin-consolesta osoitteesta /fi/admin/app_p
 
 * [Google Drive API v3](https://developers.google.com/drive/api/v3/reference/) - Yhdistäminen G Suiten Driveen pöytäkirjojen lataamiseksi.
 * [PyPDF2](https://pythonhosted.org/PyPDF2/) - PDF-tiedostojen yhdistäminen yhdeksi tiedostoksi.
-
-## Kehittäjät
-
-* Timo Riski
