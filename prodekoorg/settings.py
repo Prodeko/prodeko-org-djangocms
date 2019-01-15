@@ -435,10 +435,13 @@ LOGGING = {
     }
 }
 
+# NOTE: these were causing trouble with Django CMS language
+# preferences. Disabled for now.
+
 # tiedotteet.prodeko.org settings
-SESSION_SAVE_EVERY_REQUEST = True
-SESSION_EXPIRE_AT_BROWSER_CLOSE = False
-SESSION_COOKIE_AGE = 60 * 60 * 24 * 30  # 30 days
+# SESSION_SAVE_EVERY_REQUEST = True
+# SESSION_EXPIRE_AT_BROWSER_CLOSE = False
+# SESSION_COOKIE_AGE = 60 * 60 * 24 * 30  # 30 days
 
 CKEDITOR_UPLOAD_PATH = "tiedotteet/uploads/"
 DJANGO_WYSIWYG_FLAVOR = "ckeditor"
