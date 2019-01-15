@@ -17,9 +17,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE_ID = 1
 # When DEBUG = False, all errors with level ERROR or
 # higher get mailed to ADMINS according to LOGGING conf
-ADMINS = [('CTO', 'timo.h.riski@aalto.fi'), ]
+ADMINS = [('CTO', 'cto@prodeko.org'), ]
 # When DEBUG = False, all broken links get emailed to MANAGERS
-MANAGERS = [('CTO', 'timo.h.riski@aalto.fi'), ]
+MANAGERS = [('CTO', 'cto@prodeko.org'), ]
 
 config = configparser.ConfigParser()
 config.read(os.path.join(BASE_DIR, 'prodekoorg/variables.txt'))
@@ -99,6 +99,7 @@ LANGUAGE_FALLBACK = None
 CMS_LANGUAGES = {
     'default': {
         'public': True,
+        'fallbacks': ['fi'],
         'hide_untranslated': False,
         'redirect_on_fallback': True,
     },
