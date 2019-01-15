@@ -17,10 +17,7 @@ from prodekoorg.app_toimarit.views import postcsv
 admin.autodiscover()
 
 urlpatterns = [
-    url(r'^sitemap\.xml$', sitemap,
-        {'sitemaps': {'cmspages': CMSSitemap}}),
-    # Redirects to 'fi/main'
-    #url(r'^$', RedirectView.as_view(url='fi/main', permanent=False), name='index')
+    url(r'^sitemap\.xml$', sitemap, {'sitemaps': {'cmspages': CMSSitemap}}),
 ]
 
 urlpatterns += [
