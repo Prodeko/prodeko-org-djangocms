@@ -6,8 +6,10 @@ Author: Webbitiimi
 
 import configparser
 import os
-from django.utils.translation import gettext_lazy as _
+
 from django.contrib.messages import constants as messages
+from django.utils.translation import gettext_lazy as _
+
 # Change the line below to 'prodekoorg.settings_prod' in production
 from prodekoorg.settings_dev import *
 
@@ -97,12 +99,6 @@ LANGUAGES = (
 LANGUAGE_FALLBACK = None
 
 CMS_LANGUAGES = {
-    'default': {
-        'public': True,
-        'fallbacks': ['fi'],
-        'hide_untranslated': False,
-        'redirect_on_fallback': True,
-    },
     1: [
         {
             'public': True,
@@ -119,6 +115,12 @@ CMS_LANGUAGES = {
             'redirect_on_fallback': False,
         },
     ],
+    'default': {
+        'public': True,
+        'fallbacks': ['fi'],
+        'hide_untranslated': False,
+        'redirect_on_fallback': False,
+    },
 }
 
 # Static files (CSS, JavaScript, Images)
