@@ -6,7 +6,7 @@ from django.shortcuts import render
 from .models import Dokumentti
 
 
-@login_required(login_url='/login/')
+@login_required
 def docs(request):
     """Fetch all Dokumentti objects and display them on a page.
 
