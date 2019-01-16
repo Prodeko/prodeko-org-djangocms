@@ -247,8 +247,6 @@ msgid "Finnish"
 msgstr "Suomi"
 
 #: prodekoorg/app_apply_for_membership/models.py:35
-#, fuzzy
-#| msgid "English"
 msgid "Other (English)"
 msgstr "Englanti"
 
@@ -296,16 +294,12 @@ msgid "Receipt of the membership payment"
 msgstr "Kuitti jäsenmaksusta"
 
 #: prodekoorg/app_apply_for_membership/models.py:63
-#, fuzzy
-#| msgid "Membership applications"
 msgid "Membership application accepted."
-msgstr "Jäsenhakemukset"
+msgstr "Jäsenhakemus hyväsytty"
 
 #: prodekoorg/app_apply_for_membership/models.py:68
-#, fuzzy
-#| msgid "Membership applications"
 msgid "Membership application rejected."
-msgstr "Jäsenhakemukset"
+msgstr "Jäsenhakemus hylätty"
 
 #: prodekoorg/app_apply_for_membership/models.py:105
 msgid "membership application"
@@ -564,10 +558,8 @@ msgid "Filter"
 msgstr "Filtteri"
 
 #: prodekoorg/app_poytakirjat/urls.py:8
-#, fuzzy
-#| msgid "Documents"
 msgid "^documents/"
-msgstr "Tiedostot"
+msgstr "^dokumentit/"
 
 #: prodekoorg/app_tiedostot/cms_apps.py:11
 msgid "Documents"
@@ -586,14 +578,12 @@ msgid "File versions"
 msgstr "Tiedostoversiot"
 
 #: prodekoorg/app_tiedostot/urls.py:8
-#, fuzzy
-#| msgid "Files"
 msgid "^files/$"
-msgstr "Tiedostot"
+msgstr "^tiedostot/"
 
 #: prodekoorg/app_tiedostot/urls.py:9
 msgid "^files/download/(?P<pk>\\d+)/$"
-msgstr ""
+msgstr "^tiedostot/download/(?P<pk>\\d+)/$"
 
 #: prodekoorg/app_toimarit/admin.py:48 prodekoorg/app_toimarit/admin.py:56
 msgid "Export selected as CSV"
@@ -677,8 +667,6 @@ msgid "CSV imported successfully."
 msgstr "CSV-tiedosto ladattu onnistuneesti"
 
 #: prodekoorg/app_toimarit/views.py:39
-#, fuzzy
-#| msgid "Error downloading csv: {}"
 msgid "Error downloading CSV: {}"
 msgstr "Virhe csv:tä ladattaessa: {}"
 
