@@ -10,7 +10,7 @@ from django.views.decorators.csrf import csrf_protect
 from .models import HallituksenJasen, Jaosto, Toimari
 
 
-@staff_member_required(login_url='/login/')
+@staff_member_required
 @csrf_protect
 def postcsv(request):
     """Handle a CSV POST request and create new Guild Official objects.
