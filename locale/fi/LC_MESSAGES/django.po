@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-30 10:19+0000\n"
+"POT-Creation-Date: 2019-01-16 14:27+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -56,8 +56,8 @@ msgstr "Profiili"
 
 #: auth_prodeko/templates/accounts/user_profile.html:10
 #: prodekoorg/app_kulukorvaus/models.py:48
-#: prodekoorg/app_kulukorvaus/printing.py:86
-#: prodekoorg/app_toimarit/models.py:8 prodekoorg/app_vaalit/models.py:33
+#: prodekoorg/app_kulukorvaus/printing.py:87
+#: prodekoorg/app_toimarit/models.py:16 prodekoorg/app_vaalit/models.py:33
 msgid "Name"
 msgstr "Nimi"
 
@@ -65,8 +65,8 @@ msgstr "Nimi"
 #: auth_prodeko/templates/accounts/user_profile.html:17
 #: prodekoorg/app_apply_for_membership/models.py:48
 #: prodekoorg/app_kulukorvaus/models.py:49
-#: prodekoorg/app_kulukorvaus/printing.py:87
-#: prodekoorg/app_toimarit/models.py:47
+#: prodekoorg/app_kulukorvaus/printing.py:88
+#: prodekoorg/app_toimarit/models.py:80
 msgid "Email"
 msgstr "Sähköposti"
 
@@ -242,7 +242,7 @@ msgid "No"
 msgstr "Ei"
 
 #: prodekoorg/app_apply_for_membership/models.py:34 prodekoorg/settings.py:93
-#: prodekoorg/settings.py:110
+#: prodekoorg/settings.py:111
 msgid "Finnish"
 msgstr "Suomi"
 
@@ -253,12 +253,12 @@ msgid "Other (English)"
 msgstr "Englanti"
 
 #: prodekoorg/app_apply_for_membership/models.py:44
-#: prodekoorg/app_toimarit/models.py:19 prodekoorg/app_toimarit/models.py:41
+#: prodekoorg/app_toimarit/models.py:36 prodekoorg/app_toimarit/models.py:74
 msgid "First name"
 msgstr "Etunimi"
 
 #: prodekoorg/app_apply_for_membership/models.py:45
-#: prodekoorg/app_toimarit/models.py:20 prodekoorg/app_toimarit/models.py:42
+#: prodekoorg/app_toimarit/models.py:37 prodekoorg/app_toimarit/models.py:75
 msgid "Last name"
 msgstr "Sukunimi"
 
@@ -271,6 +271,7 @@ msgid "Field of study"
 msgstr "Opiskeluala"
 
 #: prodekoorg/app_apply_for_membership/models.py:49
+#: prodekoorg/app_kulukorvaus/admin.py:12
 msgid "Year"
 msgstr "Vuosi"
 
@@ -362,7 +363,7 @@ msgid "Amount: 8€"
 msgstr "Määrä: 8€"
 
 #: prodekoorg/app_apply_for_membership/templates/form_apply.html:10
-#: prodekoorg/app_kulukorvaus/models.py:91
+#: prodekoorg/app_kulukorvaus/models.py:97
 #: prodekoorg/app_kulukorvaus/templates/form_kulukorvaus_kulu.html:4
 msgid "Receipt"
 msgstr "Kuitti"
@@ -398,17 +399,17 @@ msgid "Guild official"
 msgstr "Toimihenkilö"
 
 #: prodekoorg/app_kulukorvaus/models.py:50
-#: prodekoorg/app_kulukorvaus/printing.py:88
+#: prodekoorg/app_kulukorvaus/printing.py:89
 msgid "Position in guild"
 msgstr "Virka"
 
 #: prodekoorg/app_kulukorvaus/models.py:51
-#: prodekoorg/app_kulukorvaus/printing.py:89
+#: prodekoorg/app_kulukorvaus/printing.py:90
 msgid "Phone number"
 msgstr "Puhelinnumero"
 
 #: prodekoorg/app_kulukorvaus/models.py:52
-#: prodekoorg/app_kulukorvaus/printing.py:90
+#: prodekoorg/app_kulukorvaus/printing.py:91
 msgid "Account number (IBAN)"
 msgstr "Tilinumero (IBAN)"
 
@@ -417,49 +418,45 @@ msgid "Total reimbursement (in €)"
 msgstr "Korvaussumma yhteensä (euroissa)"
 
 #: prodekoorg/app_kulukorvaus/models.py:55
-#: prodekoorg/app_kulukorvaus/models.py:90
+#: prodekoorg/app_kulukorvaus/models.py:96
 msgid "Additional information"
 msgstr "Lisätietoja, kulujen perusteita"
 
-#: prodekoorg/app_kulukorvaus/models.py:66
+#: prodekoorg/app_kulukorvaus/models.py:72
 msgid "reimbursement basic information"
 msgstr "kulukorvaus perustiedot"
 
-#: prodekoorg/app_kulukorvaus/models.py:67
+#: prodekoorg/app_kulukorvaus/models.py:73
 msgid "Reimbursement basic information"
 msgstr "Kulukorvaus perustiedot"
 
-#: prodekoorg/app_kulukorvaus/models.py:83 prodekoorg/app_vaalit/models.py:65
+#: prodekoorg/app_kulukorvaus/models.py:89 prodekoorg/app_vaalit/models.py:65
 #: prodekoorg/app_vaalit/models.py:86
 msgid "Created at"
 msgstr "Luotu"
 
-#: prodekoorg/app_kulukorvaus/models.py:87
+#: prodekoorg/app_kulukorvaus/models.py:93
 msgid "Expense explanation"
 msgstr "Kulun selite"
 
-#: prodekoorg/app_kulukorvaus/models.py:88
+#: prodekoorg/app_kulukorvaus/models.py:94
 msgid "Event / expense target"
 msgstr "Tapahtuma / kulun kohde"
 
-#: prodekoorg/app_kulukorvaus/models.py:89
+#: prodekoorg/app_kulukorvaus/models.py:95
 msgid "Sum (in €)"
 msgstr "Summa (euroissa)"
 
-#: prodekoorg/app_kulukorvaus/models.py:101
+#: prodekoorg/app_kulukorvaus/models.py:107
 msgid "reimbursement"
 msgstr "kulukorvaus"
 
-#: prodekoorg/app_kulukorvaus/models.py:102
+#: prodekoorg/app_kulukorvaus/models.py:108
 #: prodekoorg/templates/layout-components/footer.html:7
 msgid "Reimbursements"
 msgstr "Kulukorvaukset"
 
-#: prodekoorg/app_kulukorvaus/printing.py:66
-msgid "Prodeko kulukorvaus"
-msgstr "Prodeko reimbuursement claim"
-
-#: prodekoorg/app_kulukorvaus/printing.py:115
+#: prodekoorg/app_kulukorvaus/printing.py:117
 msgid ""
 "Your reimbursement claim has been received. The claim will be processed in "
 "the next Prodeko board meeting."
@@ -467,7 +464,7 @@ msgstr ""
 "Kulukorvauksesi on vastaanotettu. Hakemus käsitellään seuraavassa "
 "hallituksen kokouksessa."
 
-#: prodekoorg/app_kulukorvaus/printing.py:116
+#: prodekoorg/app_kulukorvaus/printing.py:118
 msgid ""
 "If you notice any errors in the information below, contact Prodeko's "
 "treasurer immediately at rahastonhoitaja@prodeko.org."
@@ -532,7 +529,7 @@ msgid "minutes"
 msgstr "pöytäkirja"
 
 #: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/Dokumentti/change_list.html:77
-#: prodekoorg/app_toimarit/templates/admin/app_toimarit/Toimari/change_list.html:31
+#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:31
 #: prodekoorg/app_toimarit/templates/admin/base.html:56
 msgid "Home"
 msgstr "Kotisivu"
@@ -546,43 +543,59 @@ msgid "How does this work"
 msgstr "Miten lataaminen toimii"
 
 #: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/Dokumentti/change_list.html:119
-#: prodekoorg/app_toimarit/templates/admin/app_toimarit/Toimari/change_list.html:49
+#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:49
 #, python-format
 msgid "Add %(name)s"
 msgstr "Lisää %(name)s"
 
 #: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/Dokumentti/change_list.html:128
-#: prodekoorg/app_toimarit/templates/admin/app_toimarit/Toimari/change_list.html:65
+#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:65
 msgid "Please correct the error below."
 msgstr "Korjaa allaolevat virheet."
 
 #: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/Dokumentti/change_list.html:128
-#: prodekoorg/app_toimarit/templates/admin/app_toimarit/Toimari/change_list.html:65
+#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:65
 msgid "Please correct the errors below."
 msgstr "Korjaa allaolevat virheet."
 
 #: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/Dokumentti/change_list.html:139
-#: prodekoorg/app_toimarit/templates/admin/app_toimarit/Toimari/change_list.html:76
+#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:76
 msgid "Filter"
 msgstr "Filtteri"
+
+#: prodekoorg/app_poytakirjat/urls.py:8
+#, fuzzy
+#| msgid "Documents"
+msgid "^documents/"
+msgstr "Tiedostot"
 
 #: prodekoorg/app_tiedostot/cms_apps.py:11
 msgid "Documents"
 msgstr "Tiedostot"
 
-#: prodekoorg/app_tiedostot/models.py:26
+#: prodekoorg/app_tiedostot/models.py:27
 msgid "Files"
 msgstr "Tiedostot"
 
-#: prodekoorg/app_tiedostot/models.py:50
+#: prodekoorg/app_tiedostot/models.py:52
 msgid "file version"
 msgstr "tiedostoversio"
 
-#: prodekoorg/app_tiedostot/models.py:51
+#: prodekoorg/app_tiedostot/models.py:53
 msgid "File versions"
 msgstr "Tiedostoversiot"
 
-#: prodekoorg/app_toimarit/admin.py:35 prodekoorg/app_toimarit/admin.py:43
+#: prodekoorg/app_tiedostot/urls.py:8
+#, fuzzy
+#| msgid "Files"
+msgid "^files/$"
+msgstr "Tiedostot"
+
+#: prodekoorg/app_tiedostot/urls.py:9
+msgid "^files/download/(?P<pk>\\d+)/$"
+msgstr ""
+
+#: prodekoorg/app_toimarit/admin.py:48 prodekoorg/app_toimarit/admin.py:56
 msgid "Export selected as CSV"
 msgstr "Vie valitut CSV:hen"
 
@@ -591,52 +604,52 @@ msgstr "Vie valitut CSV:hen"
 msgid "Officials"
 msgstr "Toimarit"
 
-#: prodekoorg/app_toimarit/models.py:14
+#: prodekoorg/app_toimarit/models.py:22
 msgid "section"
 msgstr "jaosto"
 
-#: prodekoorg/app_toimarit/models.py:15
+#: prodekoorg/app_toimarit/models.py:23
 msgid "sections"
 msgstr "jaostot"
 
-#: prodekoorg/app_toimarit/models.py:21 prodekoorg/app_toimarit/models.py:43
+#: prodekoorg/app_toimarit/models.py:38 prodekoorg/app_toimarit/models.py:76
 #: prodekoorg/app_vaalit/models.py:12
 msgid "Position"
 msgstr "Virka"
 
-#: prodekoorg/app_toimarit/models.py:22 prodekoorg/app_toimarit/models.py:44
+#: prodekoorg/app_toimarit/models.py:39 prodekoorg/app_toimarit/models.py:77
 msgid "Section"
 msgstr "Jaosto"
 
-#: prodekoorg/app_toimarit/models.py:35
+#: prodekoorg/app_toimarit/models.py:52
 msgid "guild official"
 msgstr "toimari"
 
-#: prodekoorg/app_toimarit/models.py:36
+#: prodekoorg/app_toimarit/models.py:53
 msgid "guild officials"
 msgstr "toimarit"
 
-#: prodekoorg/app_toimarit/models.py:45
+#: prodekoorg/app_toimarit/models.py:78
 msgid "Position (English)"
 msgstr "Virka (Englanniksi)"
 
-#: prodekoorg/app_toimarit/models.py:46
+#: prodekoorg/app_toimarit/models.py:79
 msgid "Mobile phone"
 msgstr "Puhelinnumero"
 
-#: prodekoorg/app_toimarit/models.py:48
+#: prodekoorg/app_toimarit/models.py:81
 msgid "Telegram"
 msgstr "Telegram"
 
-#: prodekoorg/app_toimarit/models.py:49
+#: prodekoorg/app_toimarit/models.py:82
 msgid "Description"
 msgstr "Kuvaus"
 
-#: prodekoorg/app_toimarit/models.py:62
+#: prodekoorg/app_toimarit/models.py:95
 msgid "board member"
 msgstr "hallituksen jäsen"
 
-#: prodekoorg/app_toimarit/models.py:63
+#: prodekoorg/app_toimarit/models.py:96
 msgid "board members"
 msgstr "hallituksen jäsenet"
 
@@ -659,11 +672,11 @@ msgstr "Dokumentaatio"
 msgid "Log out"
 msgstr "Kirjaudu ulos"
 
-#: prodekoorg/app_toimarit/views.py:28
+#: prodekoorg/app_toimarit/views.py:37
 msgid "CSV imported successfully."
 msgstr "CSV-tiedosto ladattu onnistuneesti"
 
-#: prodekoorg/app_toimarit/views.py:30
+#: prodekoorg/app_toimarit/views.py:39
 #, fuzzy
 #| msgid "Error downloading csv: {}"
 msgid "Error downloading CSV: {}"
@@ -803,7 +816,7 @@ msgstr "Poista"
 msgid "Edit"
 msgstr "Muokkaa"
 
-#: prodekoorg/settings.py:94 prodekoorg/settings.py:117
+#: prodekoorg/settings.py:94 prodekoorg/settings.py:118
 msgid "English"
 msgstr "Englanti"
 
@@ -867,7 +880,7 @@ msgstr "/tietosuoja"
 msgid "Login"
 msgstr "Kirjaudu"
 
-#: prodekoorg/urls.py:38
+#: prodekoorg/urls.py:35
 msgid "^weekly-bulletin/"
 msgstr "^tiedotteet/"
 
@@ -947,6 +960,9 @@ msgstr ""
 #: tiedotteet/info/forms.py:107
 msgid "TLS salaus päällä"
 msgstr ""
+
+#~ msgid "Prodeko kulukorvaus"
+#~ msgstr "Prodeko reimbuursement claim"
 
 #~ msgid "Error downloading csv on line {}"
 #~ msgstr "Virhe tiedostoa ladattaessa rivillä {}"
