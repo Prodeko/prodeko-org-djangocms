@@ -16,7 +16,7 @@ class AppToimaritViewTest(TestData):
         and the user is not logged in.
         """
         response = self.client.get(reverse('postcsv'))
-        self.assertRedirects(response, '/login/?next=/admin/toimarit/postcsv')
+        self.assertRedirects(response, '/fi/login/?next=/fi/admin/toimarit/postcsv')
 
     def test_postcsv_if_not_correct_permissions(self):
         """
@@ -25,7 +25,7 @@ class AppToimaritViewTest(TestData):
         """
         self.client.login(email='test2@test.com', password='q"WaXkcB>7')
         response = self.client.get(reverse('postcsv'))
-        self.assertRedirects(response, '/login/?next=/admin/toimarit/postcsv')
+        self.assertRedirects(response, '/fi/login/?next=/fi/admin/toimarit/postcsv')
 
     def test_postcsv_correct_import_and_permissions(self):
         self.client.login(email='test1@test.com', password='Ukc55Has-@')
@@ -45,4 +45,4 @@ class AppToimaritViewTest(TestData):
         self.assertEqual(toimari.position, 'Keppitiimi')
         self.assertEqual(toimari.section, self.test_jaosto2)
 
-        self.assertRedirects(response, '/admin/')
+        self.assertRedirects(response, '/fi/admin/')
