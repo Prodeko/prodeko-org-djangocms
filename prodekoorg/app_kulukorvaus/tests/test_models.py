@@ -125,15 +125,13 @@ class KulukorvausPerustiedotModelTest(TestData):
     @english
     def test_object_name_english(self):
         model = self.test_perustiedot_model
-        expected_object_name = '{}, {}€'.format(
-            model.created_by, model.sum_overall)
+        expected_object_name = '{} - {}, ({}€)'.format(model.position_in_guild, model.created_by, model.sum_overall)
         self.assertEquals(expected_object_name, str(model))
 
     @finnish
     def test_object_name_finnish(self):
         model = self.test_perustiedot_model
-        expected_object_name = '{}, {}€'.format(
-            model.created_by, model.sum_overall)
+        expected_object_name = '{} - {}, ({}€)'.format(model.position_in_guild, model.created_by, model.sum_overall)
         self.assertEquals(expected_object_name, str(model))
 
     @english
@@ -234,6 +232,20 @@ class KulukorvausModelTest(TestData):
     def test_receipt_label_finnish(self):
         field_label = self.test_kulukorvaus_model._meta.get_field('receipt').verbose_name
         self.assertEquals(field_label, 'Kuitti')
+
+    @english
+    def test_object_name_english(self):
+        model = self.test_kulukorvaus_model
+        time = model.created_at.strftime('%Y-%m-%d %H:%M:%S')
+        expected_object_name = '{}-{}'.format(time, model.explanation)
+        self.assertEquals(expected_object_name, str(model))
+
+    @finnish
+    def test_object_name_finnish(self):
+        model = self.test_kulukorvaus_model
+        time = model.created_at.strftime('%Y-%m-%d %H:%M:%S')
+        expected_object_name = '{}-{}'.format(time, model.explanation)
+        self.assertEquals(expected_object_name, str(model))
 
     @english
     def test_object_verbose_name_english(self):

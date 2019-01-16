@@ -15,7 +15,7 @@ class KulukorvausViewTest(TestData):
         accessed and the user is not logged in.
         """
         response = self.client.get(reverse('app_kulukorvaus:kulukorvaus'))
-        self.assertRedirects(response, '/login/?next=/kulukorvaus/')
+        self.assertRedirects(response, '/fi/login/?next=/fi/kulukorvaus/')
 
     def test_download_and_redirect_if_not_logged_in(self):
         """
@@ -24,7 +24,7 @@ class KulukorvausViewTest(TestData):
         """
         response = self.client.get(reverse('app_kulukorvaus:download_kulukorvaus', kwargs={
                                    'perustiedot_id': self.test_perustiedot_model.id}))
-        self.assertRedirects(response, '/login/?next=/download-kulukorvaus/1')
+        self.assertRedirects(response, '/fi/login/?next=/fi/download-kulukorvaus/1')
 
     def test_download_if_not_correct_permissions(self):
         """

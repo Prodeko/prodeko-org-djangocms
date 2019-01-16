@@ -56,4 +56,5 @@ class TestData(TestCase):
                                                                 receipt=cls.file_mock_jpg,)
 
     def tearDown(self):
+        # Remove the temporary folder created for file upload tests
         rmtree(settings.MEDIA_ROOT, ignore_errors=True)

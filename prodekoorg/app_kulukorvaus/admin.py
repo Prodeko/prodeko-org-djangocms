@@ -2,12 +2,14 @@ from django.contrib import admin
 from django.contrib.admin import SimpleListFilter
 from django.db import models
 from django.forms import Textarea
+from django.utils.translation import ugettext_lazy as _
 from prodekoorg.app_kulukorvaus.models import (Kulukorvaus,
                                                KulukorvausPerustiedot)
 
 
 class YearFilter(SimpleListFilter):
-    title = 'Vuosi'
+    """Filter for Django admin to"""
+    title = _('Year')
     parameter_name = 'vuosi'
 
     def lookups(self, request, model_admin):
