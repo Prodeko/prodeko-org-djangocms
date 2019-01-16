@@ -43,7 +43,7 @@ class KulukorvausPDF:
             'Raleway Medium', settings.STATIC_ROOT + '/fonts/Raleway/Raleway-Medium.ttf'))
 
     def handle_receipt(self, img_receipt):
-        """Restrict receipt image size."""
+        """Read receipt into reportlab compatible Image format and make it smaller."""
         img = Image(BytesIO(img_receipt))
         img._restrictSize(12 * cm, 15 * cm)
         return img
@@ -56,24 +56,23 @@ class KulukorvausPDF:
         return Image(path, width=width, height=(width * aspect))
 
     def print_kulukorvaukset(self):
-        """Generates a pdf file from data"""
+        """Generates a pdf file from submitted form data."""
         buffer = self.buffer
         doc = SimpleDocTemplate(buffer,
                                 rightMargin=72,
                                 leftMargin=72,
                                 topMargin=18,
-                                bottomMargin=18,
-                                title=_('Prodeko kulukorvaus'))
+                                bottomMargin=18)
 
         styles = getSampleStyleSheet()
         styles.add(ParagraphStyle(name='Justify', alignment=TA_JUSTIFY))
         styles.add(ParagraphStyle(name="Center", alignment=TA_CENTER))
 
-        # General
+        # General data
         formatted_time = format(timezone.now(), 'D, j M Y H:i:s')
         model_perustiedot = self.model_perustiedot
 
-        # Model
+        # Extract data from model
         created_by = model_perustiedot.created_by
         email = model_perustiedot.email
         position_in_guild = model_perustiedot.get_position_in_guild_display()
@@ -81,8 +80,10 @@ class KulukorvausPDF:
         bank_number = model_perustiedot.bank_number
         bic = model_perustiedot.get_bic_display()
 
+        # Container to hold table elements
         elements = []
 
+        # Setup table data
         t_data = [[_('Name'), created_by],
                   [_('Email'), email],
                   [_('Position in guild'), position_in_guild],
@@ -90,6 +91,7 @@ class KulukorvausPDF:
                   [_('Account number (IBAN)'), bank_number],
                   ['BIC', bic]]
 
+        # Loop Kulukorvaus models and append to t_data
         for model in self.models_kulukorvaukset:
             fields = model._meta.get_fields()
             for field in fields:
@@ -101,6 +103,7 @@ class KulukorvausPDF:
                         value = receipt
                     t_data.append([verbose_name, value])
 
+        # Styling for the table
         t_style = [('GRID', (0, 0), (-1, -1), 0.01 * cm, (0, 0, 0)),
                    ('FONT', (0, 0), (-1, -1), 'Raleway Medium'),
                    ('TEXTCOLOR', (0, 0), (0, -1), colors.gray),
@@ -108,14 +111,11 @@ class KulukorvausPDF:
 
         Img = self.get_image(settings.STATIC_ROOT + '/images/prodeko-logo-text-blue.png', width=10 * cm)
         s05cm = Spacer(width=0, height=0.5 * cm)
-        ptime = "<font name='Raleway Medium' size=8>{}</font>".format(
-            formatted_time)
+        ptime = "<font name='Raleway Medium' size=8>{}</font>".format(formatted_time)
         PTIME = Paragraph(ptime, styles['Center'])
 
         text_info = _("Your reimbursement claim has been received. The claim will be processed in the next Prodeko board meeting.")
         text_errors = _("If you notice any errors in the information below, contact Prodeko's treasurer immediately at rahastonhoitaja@prodeko.org.")
-        # Kulukorvauksesi on vastaanotettu. Hakemus käsitellään seuraavassa hallituksen kokouksessa.
-        # Jos havaitset virheitä alla olevista tiedoista, ota välittömästi yhteys rahastonhoitajaan: rahastonhoitaja@prodeko.org.
 
         ptext = """<font name='Raleway Medium' size=10>{}
         <br />
@@ -124,10 +124,13 @@ class KulukorvausPDF:
         </font>
         """.format(text_info, text_errors)
 
+        # Setup paragraph of text before the table as well as the table
         P1 = Paragraph(ptext, styles['Normal'])
         T = Table(t_data)
         T.setStyle(TableStyle(t_style))
 
+        # Append pdf elements (time, image, spacers, paragraph, table) 
+        # to the container
         elements.append(PTIME)
         elements.append(Img)
         elements.append(s05cm)

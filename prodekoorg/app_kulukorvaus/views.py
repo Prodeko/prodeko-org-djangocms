@@ -13,7 +13,7 @@ from .models import KulukorvausPerustiedot
 from .printing import KulukorvausPDF
 
 
-@login_required(login_url='/login/')
+@login_required
 def download_kulukorvaus_pdf(request, perustiedot_id):
     """Downloads a Kulukorvaus model as PDF
 
@@ -86,7 +86,7 @@ def add_pdf_to_model(perustiedot_id):
     model_perustiedot.pdf.save(filename, pdf_file)
 
 
-@login_required(login_url='/login/')
+@login_required
 def main_form(request):
     """Processing logic behind the form at url /kulukorvaus.
 
@@ -136,7 +136,6 @@ def main_form(request):
             # to the KulukorvausPerustiedot object created above.
             add_pdf_to_model(model_perustiedot.id)
 
-            # Send the kulukorvaus by email also
             send_email(request.user, model_perustiedot.id)
 
             # Successfull form submission - render page displaying
@@ -180,7 +179,7 @@ def send_email(user, perustiedot_id):
     # This fetches all the Kulukorvaus objects whose 'info' foreign key
     # attribute is the KulukorvausPerustiedot object obtained above.
     models_kulukorvaukset = model_perustiedot.kulukorvaus_set.all()
-    subject = 'Uusi kulukorvaus - {} {}'.format(user.first_name, user.last_name)
+    subject = 'Prodeko kulukorvaus - {} {}'.format(user.first_name, user.last_name)
     text_content = render_to_string('info_mail.txt', {
                                     'user': user,
                                     'model_perustiedot': model_perustiedot,
