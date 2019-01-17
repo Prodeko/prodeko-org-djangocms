@@ -10,6 +10,19 @@ from .forms import PendingUserForm
 
 
 def main_form(request):
+    """Processing logic behind the form at url /hae-jaseneksi.
+
+    Handles form submission by POST & AJAX, model creation from form data,
+    form error handling as well as redirecting the user to a new page after
+    a successful form submission.
+
+    Args:
+        request: HttpRequest object from Django.
+
+    Returns:
+        A Django TemplateResponse object that renders a html template.
+    """
+
     if request.method == 'POST' and request.is_ajax():
 
         form_apply = PendingUserForm(request.POST, request.FILES)
@@ -28,7 +41,16 @@ def main_form(request):
 
 
 def send_email(user):
-    # Inform mediakeisari about new user
+    """Send an information mail to mediakeisari@prodeko.org
+    about a new PendingUser.
+
+    Args:
+        user: Django user
+
+    Returns:
+        Nothing, sends an email message.
+    """
+
     subject = 'Uusi jäsenhakemus - {}'.format(user.name)
     text_content = render_to_string('info_mail.txt', {'user': user})
     html_content = render_to_string('info_mail.html', {'user': user})

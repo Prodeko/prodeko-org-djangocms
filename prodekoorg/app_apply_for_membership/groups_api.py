@@ -54,6 +54,7 @@ def main_groups_api(request, email):
 
         data = {'email': email, 'role': 'MEMBER'}
 
+        # Call G Suite API and add a member to the email list
         service.members().insert(
             groupKey=ADD_TO_LIST, body=data).execute()
 

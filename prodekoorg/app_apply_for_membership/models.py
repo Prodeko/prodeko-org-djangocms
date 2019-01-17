@@ -11,10 +11,32 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class PendingUser(models.Model):
-    """ PendingUser model
+    """Basic information about the reimbursement claim as a whole.
 
-    User that has applied to Prodeko through the website
+    The PendingUser contains information about people who
+    want to become Prodeko members. 
+
+    Kulukorvaus perustiedot model contains basic information
+    about the reimbursement claim as well as acts as a Foreign key to
+    bind togethen Kulukorvaus objects (defined below in another class)
+    under one KulukorvausPerustiedot object.
+
+    Attributes:
+        id: Primary key.
+        user: Tracks which User created the membership application.
+        first_name: First name of the applicant.
+        last_name: Last name of the applicant.
+        hometown: Hometown of the applicant.
+        field_of_study: Field of study of the applicant.
+        email: Email address of the applicant.
+        start_year: The year in which the applicant started their studies.
+        language: Preferred language - either Finnish or English
+        membership_type: Membership type.
+        additional_info: Any additional information about the membership application.
+        is_ayy_member: Boolen indicating whether the person is part of AYY student union or not.
+        receipt: Receipt for the membership payment.
     """
+
     TRUE_MEMBER = 'TR'
     ALUMN_MEMBER = 'AL'
     EXTERNAL_MEMBER = 'EX'
