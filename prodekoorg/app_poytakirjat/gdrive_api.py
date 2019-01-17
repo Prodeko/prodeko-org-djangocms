@@ -26,15 +26,12 @@ def initialize_service():
         Google Drive API service object.
     """
 
-    SERVICE_ACCOUNT_FILE = os.path.join(settings.BASE_DIR, 'prodekoorg/app_poytakirjat/service-account.json')
+    SERVICE_ACCOUNT_FILE = os.path.join(settings.BASE_DIR, 'prodekoorg/service_account.json')
 
-    # mimeType of Google Drive folder
     SCOPES = ['https://www.googleapis.com/auth/drive']
 
-    credentials = service_account.Credentials.from_service_account_file(SERVICE_ACCOUNT_FILE, scopes=SCOPES)
-    delegated_credentials = credentials.with_subject('mediakeisari@prodeko.org')
-
-    service = build('drive', 'v3', credentials=delegated_credentials)
+    credentials = service_account.Credentials.from_service_account_file(SERVICE_ACCOUNT_FILE, subject='mediakeisari@prodeko.org', scopes=SCOPES)
+    service = build('drive', 'v3', credentials=credentials)
     return service
 
 
