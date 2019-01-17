@@ -11,4 +11,5 @@ MODE = True
 
 [EMAIL]
 USER = no-reply@prodeko.org
-PASSWORD = ****
+PASSWORD = itsasecret
+DEV_EMAIL = timo.h.riski@aalto.fi
