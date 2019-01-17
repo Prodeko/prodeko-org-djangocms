@@ -7,8 +7,7 @@ from .models import Kulukorvaus, KulukorvausPerustiedot
 class KulukorvausPerustiedotForm(ModelForm):
     """KulukorvausPerustiedotForm class extending Django's ModelForm.
 
-    Maps KulukorvausPerustiedot model's fields to
-    HTML form <input> elements.
+    Maps KulukorvausPerustiedot model's fields to HTML form <input> elements.
     """
 
     def __init__(self, *args, **kwargs):
@@ -43,8 +42,7 @@ class KulukorvausPerustiedotForm(ModelForm):
 class KulukorvausForm(ModelForm):
     """KulukorvausForm class extending Django's ModelForm.
 
-    Maps Kulukorvaus model's fields to
-    HTML form <input> elements.
+    Maps Kulukorvaus model's fields to HTML form <input> elements.
     """
 
     def __init__(self, *args, **kwargs):
