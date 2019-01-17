@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-16 14:27+0000\n"
+"POT-Creation-Date: 2019-01-17 17:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -189,19 +189,19 @@ msgstr "kurssit"
 msgid "Courses"
 msgstr "Kurssit"
 
-#: prodekoorg/app_apply_for_membership/admin.py:45
+#: prodekoorg/app_apply_for_membership/admin.py:46
 msgid "View"
 msgstr "Katsele"
 
-#: prodekoorg/app_apply_for_membership/admin.py:46
+#: prodekoorg/app_apply_for_membership/admin.py:47
 msgid "Accept"
 msgstr "Hyväksy"
 
-#: prodekoorg/app_apply_for_membership/admin.py:47
+#: prodekoorg/app_apply_for_membership/admin.py:48
 msgid "Reject"
 msgstr "Hylkää"
 
-#: prodekoorg/app_apply_for_membership/admin.py:52
+#: prodekoorg/app_apply_for_membership/admin.py:53
 msgid "Application actions"
 msgstr "Hakemustoimenpiteet"
 
@@ -220,6 +220,20 @@ msgid ""
 msgstr ""
 "Mikäli opiskelet Aalto-yliopistossa hae varsinaiseksi jäseneksi. Muuten hae "
 "ulkojäseneksi"
+
+#: prodekoorg/app_apply_for_membership/groups_api.py:61
+msgid "Successfully added {} to {} mailing list."
+msgstr "Lisätty {} onnistuneesti {} sähköpostilistalle."
+
+#: prodekoorg/app_apply_for_membership/groups_api.py:66
+msgid "Error adding a member to {}: {} is already a member."
+msgstr "Virhe lisättäessä listalle {}: {} on jo listan jäsen."
+
+#: prodekoorg/app_apply_for_membership/groups_api.py:69
+msgid ""
+"Invalid credentials. Check documentation and validate setup in G Suite and "
+"GCP API console."
+msgstr "Virheelliset tunnukset. Lue dokumentaatio uudestaan ja tarkista että G Suite sekä GCP API console on määritetty oikein."
 
 #: prodekoorg/app_apply_for_membership/models.py:23
 msgid "True member"
@@ -241,8 +255,8 @@ msgstr "Kyllä"
 msgid "No"
 msgstr "Ei"
 
-#: prodekoorg/app_apply_for_membership/models.py:34 prodekoorg/settings.py:93
-#: prodekoorg/settings.py:111
+#: prodekoorg/app_apply_for_membership/models.py:34 prodekoorg/settings.py:95
+#: prodekoorg/settings.py:107
 msgid "Finnish"
 msgstr "Suomi"
 
@@ -510,11 +524,11 @@ msgstr "^kulukorvaus/$"
 msgid "Minutes"
 msgstr "Pöytäkirjat"
 
-#: prodekoorg/app_poytakirjat/gdrive_api.py:306
+#: prodekoorg/app_poytakirjat/gdrive_api.py:303
 msgid "Downloaded {} proceedings documents from G Drive."
 msgstr "Ladattu {} pöytäkirjaa G Drivestä."
 
-#: prodekoorg/app_poytakirjat/gdrive_api.py:308
+#: prodekoorg/app_poytakirjat/gdrive_api.py:305
 msgid "Error downloading documents: {}"
 msgstr "Virhe pöytäkirjoja ladattaessa: {}"
 
@@ -522,40 +536,13 @@ msgstr "Virhe pöytäkirjoja ladattaessa: {}"
 msgid "minutes"
 msgstr "pöytäkirja"
 
-#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/Dokumentti/change_list.html:77
-#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:31
-#: prodekoorg/app_toimarit/templates/admin/base.html:56
-msgid "Home"
-msgstr "Kotisivu"
-
-#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/Dokumentti/change_list.html:88
+#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/Dokumentti/change_list.html:52
 msgid "Download minutes from Drive"
 msgstr "Lataa pöytäkirjat Drivestä"
 
-#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/Dokumentti/change_list.html:89
+#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/Dokumentti/change_list.html:53
 msgid "How does this work"
 msgstr "Miten lataaminen toimii"
-
-#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/Dokumentti/change_list.html:119
-#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:49
-#, python-format
-msgid "Add %(name)s"
-msgstr "Lisää %(name)s"
-
-#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/Dokumentti/change_list.html:128
-#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:65
-msgid "Please correct the error below."
-msgstr "Korjaa allaolevat virheet."
-
-#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/Dokumentti/change_list.html:128
-#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:65
-msgid "Please correct the errors below."
-msgstr "Korjaa allaolevat virheet."
-
-#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/Dokumentti/change_list.html:139
-#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:76
-msgid "Filter"
-msgstr "Filtteri"
 
 #: prodekoorg/app_poytakirjat/urls.py:8
 msgid "^documents/"
@@ -642,6 +629,28 @@ msgstr "hallituksen jäsen"
 #: prodekoorg/app_toimarit/models.py:96
 msgid "board members"
 msgstr "hallituksen jäsenet"
+
+#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:31
+#: prodekoorg/app_toimarit/templates/admin/base.html:56
+msgid "Home"
+msgstr "Kotisivu"
+
+#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:49
+#, python-format
+msgid "Add %(name)s"
+msgstr "Lisää %(name)s"
+
+#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:65
+msgid "Please correct the error below."
+msgstr "Korjaa allaolevat virheet."
+
+#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:65
+msgid "Please correct the errors below."
+msgstr "Korjaa allaolevat virheet."
+
+#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:76
+msgid "Filter"
+msgstr "Filtteri"
 
 #: prodekoorg/app_toimarit/templates/admin/base.html:30
 msgid "Welcome,"
@@ -804,7 +813,7 @@ msgstr "Poista"
 msgid "Edit"
 msgstr "Muokkaa"
 
-#: prodekoorg/settings.py:94 prodekoorg/settings.py:118
+#: prodekoorg/settings.py:96 prodekoorg/settings.py:114
 msgid "English"
 msgstr "Englanti"
 
