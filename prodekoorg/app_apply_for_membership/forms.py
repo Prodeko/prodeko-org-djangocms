@@ -6,6 +6,10 @@ from auth_prodeko.models import User
 
 
 class PendingUserForm(ModelForm):
+    """PendingUserForm class extending Django's ModelForm.
+
+    Maps PendingUser model's fields to HTML form <input> elements.
+    """
 
     def __init__(self, *args, **kwargs):
         super(PendingUserForm, self).__init__(*args, **kwargs)
@@ -25,7 +29,7 @@ class PendingUserForm(ModelForm):
                 visible.field.widget.attrs['class'] = 'form-control'
 
     def clean(self):
-        # Verify that email doesn't already exist
+        # Verify that the email doesn't already exist
         cleaned_data = super().clean()
         email = cleaned_data.get("email")
         if User.objects.filter(email=email).exists():
