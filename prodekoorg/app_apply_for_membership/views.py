@@ -1,3 +1,6 @@
+import configparser
+import os
+
 from django.conf import settings
 from django.core.mail import EmailMultiAlternatives
 from django.shortcuts import render
@@ -25,11 +28,17 @@ def main_form(request):
 
 
 def send_email(user):
-    # inform user about activation of credentials
+    # Inform mediakeisari about new user
     subject = 'Uusi jäsenhakemus - {}'.format(user.name)
     text_content = render_to_string('info_mail.txt', {'user': user})
     html_content = render_to_string('info_mail.html', {'user': user})
-    email_to = 'mediakeisari@prodeko.org'
+
+    # If DEBUG = True, email to DEV_EMAIl else
+    # email to mediakeisari@prodeko.org
+    config = configparser.ConfigParser()
+    config.read(os.path.join(settings.BASE_DIR, 'prodekoorg/variables.txt'))
+
+    email_to = 'mediakeisari@prodeko.org' if not settings.DEBUG else config['EMAIL']['DEV_EMAIL'] 
     from_email = settings.DEFAULT_FROM_EMAIL
     msg = EmailMultiAlternatives(subject, text_content, from_email, [email_to])
     msg.attach_alternative(html_content, "text/html")
