@@ -70,7 +70,7 @@ class PendingUser(models.Model):
         self.delete()
 
     def send_accept_email(self, user, password):
-        # inform user about accepted application
+        # Inform user about accepted application
         subject = 'Your Application to Prodeko has been accepted'
         text_content = render_to_string('accept_mail.txt', {'user': user, 'password': password})
         html_content = render_to_string('accept_mail.html', {'user': user, 'password': password})
@@ -81,7 +81,7 @@ class PendingUser(models.Model):
         msg.send()
 
     def send_reject_email(self, user):
-        # inform user about rejected application
+        # Inform user about rejected application
         subject = 'Your Application to Prodeko has been rejected'
         text_content = render_to_string('reject_mail.txt', {'user': user})
         html_content = render_to_string('reject_mail.html', {'user': user})

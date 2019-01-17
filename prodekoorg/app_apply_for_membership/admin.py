@@ -1,6 +1,6 @@
 from django.conf.urls import url
 from django.contrib import admin
-from django.core.exceptions import PermissionDenied
+from django.contrib.admin.views.decorators import staff_member_required
 from django.db import models
 from django.forms import Textarea
 from django.shortcuts import redirect
@@ -8,6 +8,7 @@ from django.urls import reverse
 from django.utils.html import format_html
 from django.utils.translation import gettext as _
 from prodekoorg.app_apply_for_membership.models import PendingUser
+from .groups_api import main_groups_api
 
 
 class PendingUserAdmin(admin.ModelAdmin):
@@ -56,23 +57,21 @@ class PendingUserAdmin(admin.ModelAdmin):
 admin.site.register(PendingUser, PendingUserAdmin)
 
 
+@staff_member_required
 def view_application(request, account_id, *args, **kwargs):
-    if not request.user.is_staff:
-        raise PermissionDenied
     return redirect("../")
 
 
+@staff_member_required
 def accept_application(request, account_id, *args, **kwargs):
-    if not request.user.is_staff:
-        raise PermissionDenied
     user = PendingUser.objects.get(pk=account_id)
     user.accept_membership(request, args, kwargs)
+    main_groups_api(request, user.email)
     return redirect("../../")
 
 
+@staff_member_required
 def reject_application(request, account_id, *args, **kwargs):
-    if not request.user.is_staff:
-        raise PermissionDenied
     user = PendingUser.objects.get(pk=account_id)
     user.reject_membership(request, args, kwargs)
     return redirect("../../")
