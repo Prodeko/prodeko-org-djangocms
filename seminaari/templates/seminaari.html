@@ -35,15 +35,17 @@
     </div>
     <div class="banner-content">
       <div class="banner-text">
-        <h1 class="white ok-spacing">Lifelong Learning</h1>
-        <h4 class="lightgrey no-top">by Prodeko</h4>
+        <h1 class="white ok-spacing">Prodeko-seminaari 5.4.2019</h1>
+        <h4 class="lightgrey no-top">Business with Purpose</h4>
         <h5 class="white">
-          Maailma muuttuu koko ajan kiihtyvällä tahdilla. Jos kohta tällä hetkellä muutos tuntuu äärimmäisen nopealta, todellisuudessa
-          <b>se ei ikinä enää tule olemaan niin hidasta, kuin se on nyt</b>. Tehostamalla omaa oppimistamme mahdollistamme sen, että voimme
-          tulevaisuudessakin olla viemässä Suomea ja suomalaisia yrityksiä eteenpäin kehityksen kärjessä.
+          Prodeko-yhteisön jokavuotinen kärkitapahtuma kokoaa yhteen Aalto-yliopiston tuotantotalouden laitoksen, 
+          alumnin ja opiskelijat. Tänä vuonna juhlapäivää vietetään perjantaina 5. huhtikuuta Otaniemessä ja laadukas 
+          ohjelma puheineen, työpajoineen ja paneelikeskusteluineen kiteytyy pohtimaan merkityksellisen liiketoiminnan 
+          mahdollisuuksia ja haasteita erilaisista näkökulmista. 
+
         </h5>
         <br>
-        <a class="btn btn-success registration center" href="#courses">Ilmoittaudu sessioihin</a>
+        <a class="btn btn-success registration center" href="#courses">Seuraa tapahtumaa Facebookissa</a>
       </div>
     </div>
   </div>
@@ -54,19 +56,20 @@
       <div id="first" class="section row">
         <h2>Liity oppimaan</h2>
         <p>
-          Oppimista tulee jatkaa myös tutkinnon valmistuttua läpi koko elämän. Tämä ei välttämättä tarkoita palaamista koulunpenkille, vaan
-          uudenlaisen asenteen omaksumista. Siirrymme koulutuksesta oppimiseen ja työelämän ja opintojen välillä valitsemisesta näiden yhdistämiseen.
-          <br>
-          Prodeko-yhteisönä meillä on mahdollisuus kehittää omaa osaamistamme yhdessä hyödyntäen uniikkia yhteisöämme. Koska Prodekolaiset ovat monissa
-          yrityksissä erittäin tärkeissä asemissa, on useilla meistä myös velvollisuus ylläpitää ja kehittää omaa osaamistaan. Lifelong Learning -projekti
-          käynnistettiin juuri tätä varten: mahdollistamaan prodekolaisten elinikäistä oppimista.
+          Prodeko-seminaari järjestettiin seminaarimuodossan ensimmäisen kerran Prodekon 50-vuotisjuhlavuonna 2016. 
+          Sitä ennen Prodeko-yhteisön keräsi vuosien ajan yhteen toukokuinen grillailuilta, jonka peruja nykyisenlainen 
+          seminaarikin on. Kevään 2019 seminaari on järjestyksessään neljäs, ja tapahtuma toteutetaan vapaaehtoisvoimin 
+          yhteistyössä laitoksen, alumnin ja kiltalaisten kanssa. Erinomaisten puhujien ja yhteisön arvoja heijastelevan 
+          sisällön lisäksi seminaari tarjoaa mahdollisuuden koota yhteen ystävät omilta opiskeluajoilta ja pysyä mukana 
+          tuotantotalouden ajankohtaisista tutkimusaiheista ja liike-elämän polttavista kysymyksistä. 
+
         </p>
         <br>
       </div>
       <div id="courses">
         {% if courses %}
         <hr>
-        <h2 class="center">Avoimet kurssit</h2>
+        <h2 class="center">Päivän ohjelma</h2>
         {% endif %}
 
         {% for course in courses %}
