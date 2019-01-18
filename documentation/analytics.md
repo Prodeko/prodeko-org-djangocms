@@ -1,4 +1,4 @@
-# Analytiikasta :mailbox_with_mail::email:
+# Analytiikasta :bar_chart::chart_with_upwards_trend:
 
 - **Päivitetty** 18.1.2019
 - **Tekijä:** Timo Riski
