@@ -3,15 +3,17 @@
 <html>
 	<head>
 		<title>{% block title %}Tuotantotalouden kilta Prodeko ry{% endblock title %}</title>
-		<meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
 
 		{% render_block "css" %}
 		{% render_block "custom-css" %}
 		{% render_block "custom-js" %}
 
+    {% comment %} Javascript and SCSS included in separate apps {% endcomment %}
 		{% block extra_head %}{% endblock %}
 	</head>
 	<body>
+    {% include "snippets/ga-body.html" %}
 
 		{% cms_toolbar %}
 
@@ -19,13 +21,13 @@
 		{% block content %}{% endblock content %}
 		{% include "layout-components/footer.html" %}
 
-		{% comment %} Javascript included in separate apps {% endcomment %}
 		{% render_block "js" %}
-	</body>
+  </body>
 </html>
 
 
 {% addtoblock "custom-css" %}
+{% include "snippets/ga-head.html" %}
 <link href="https://fonts.googleapis.com/css?family=Raleway:200,400,600,800" rel="stylesheet">
 <link href="{% sass_src 'scss/prodeko-style.scss' %}" rel="stylesheet" type="text/css" />
 
