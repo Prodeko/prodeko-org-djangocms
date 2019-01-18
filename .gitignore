@@ -77,7 +77,7 @@ prodekoorg/collected-static
 !data.json
 
 # tiedotteet.prodeko.org
-tiedotteet/public/
+tiedotteet/static/
 node_modules/
 yarn.lock
 dist/
