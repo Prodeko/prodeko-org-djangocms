@@ -3,7 +3,8 @@
 <html>
 	<head>
 		<title>{% block title %}Tuotantotalouden kilta Prodeko ry{% endblock title %}</title>
-		<meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    {% include "snippets/ga-head.html" %}
 
 		{% render_block "css" %}
 		{% render_block "custom-css" %}
@@ -12,8 +13,9 @@
 		{% block extra_head %}{% endblock %}
 	</head>
 	<body>
-		{% block body %}
-		{% endblock %}
+    {% include "snippets/ga-body.html" %}
+
+		{% block body %}{% endblock %}
 	</body>
 </html>
 
