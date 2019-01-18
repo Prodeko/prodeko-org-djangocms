@@ -180,7 +180,7 @@ def send_email(user, perustiedot_id):
     # attribute is the KulukorvausPerustiedot object obtained above.
     models_kulukorvaukset = model_perustiedot.kulukorvaus_set.all()
     subject = 'Prodeko kulukorvaus - {} {}'.format(user.first_name, user.last_name)
-    text_content = render_to_string('info_mail.txt', {
+    text_content = render_to_string('kulukorvaus.txt', {
                                     'user': user,
                                     'model_perustiedot': model_perustiedot,
                                     'models_kulukorvaukset': models_kulukorvaukset
