@@ -60,15 +60,15 @@ class HallituksenJasen(models.Model):
         firstname: First name of the Board Member
         lastname: Last name of the Board Member
         position: Current position as a Board Member (in Finnish)
-        section: The section of responsibility.
-                Not currently displayed anywhere, and exists just to make
-                the export CSV function simpler.
+        section: The section of responsibility. 
+          Not currently displayed anywhere, and exists just to make
+          the export CSV function simpler.
         position_eng: English version of the Board Member's position
         mobilephone: Mobile phone number of the Board Member
         telegram: Telegram username of the Board Member.
-                Not currently displayed anywhere.
+          Not currently displayed anywhere.
         description: A short description of the role.
-                Not currenly displayed anywhere.
+          Not currenly displayed anywhere.
     """
 
     firstname = models.CharField(max_length=30, verbose_name=_('First name'))
@@ -86,7 +86,7 @@ class HallituksenJasen(models.Model):
         return '%s %s' % (self.firstname, self.lastname)
 
     def photoExists(self):
-        return os.path.isfile("prodekoorg/app_toimarit/static/images/hallitus_photos/" + self.firstname + "_" + self.lastname + ".jpg")
+        return os.path.isfile("prodekoorg/app_toimarit/static/images/hallitus_photos/{}_{}.jpg".format(self.first_name, self.last_name))
 
     def __str__(self):
         return self.name + ", " + self.position

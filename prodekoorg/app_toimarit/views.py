@@ -22,6 +22,7 @@ def postcsv(request):
         If user is logged in and has staff permissions, they will be rediricted to admin home.
         Otherwise they will be redirected to login page.
     """
+
     try:
         csv_file = request.FILES['file']
         decoded_file = csv_file.read().decode('utf-8')
@@ -49,6 +50,7 @@ def list_guildofficials(request):
     Returns:
         A Django TemplateResponse object that renders a html template.
     """
+
     guildofficials = Toimari.objects.all()
     sections = Jaosto.objects.all()
     context = {'guildofficials': guildofficials, 'sections': sections}
@@ -64,6 +66,7 @@ def list_boardmembers(request):
     Returns:
         A Django TemplateResponse object that renders a html template.
     """
+
     boardmembers = HallituksenJasen.objects.all()
     context = {'boardmembers': boardmembers}
     return render(request, 'board.html', context)

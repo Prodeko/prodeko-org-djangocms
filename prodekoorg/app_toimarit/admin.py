@@ -22,6 +22,7 @@ def exportcsv(modeladmin, request, queryset):
 
         Otherwise a permission denied exception will be raised.
     """
+
     if not request.user.is_staff:
         raise PermissionDenied
     opts = queryset.model._meta
