@@ -45,7 +45,8 @@ class User(AbstractUser):
     """User model."""
 
     username = None
-    email = models.EmailField(_('email address'), unique=True)
+    email = models.EmailField(verbose_name=_('email address'), unique=True)
+    has_accepted_policies = models.BooleanField(default=False, verbose_name=_('Has accepted policies'))
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
@@ -55,7 +56,12 @@ class User(AbstractUser):
         if created:
             password = User.objects.make_random_password(length=14)
             usermodel = User.objects.create_user(
-                email=instance.email, password=password, is_active=False, first_name=instance.first_name, last_name=instance.last_name)
+                email=instance.email,
+                has_accepted_policies=True,
+                password=password,
+                is_active=False,
+                first_name=instance.first_name,
+                last_name=instance.last_name)
             instance.user = usermodel
             instance.save()
 
