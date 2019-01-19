@@ -46,21 +46,21 @@ Sivustolle on konfiguroitu [Google Analytics](https://analytics.google.com) ja [
 
 - Lisätietoja GTM toiminnasta on luettavissa [täältä](https://support.google.com/tagmanager/answer/6102821?hl=fi).
 
-<img src="images/analytics/images/analytics/gtm-tags.png" style="display: block;" width="500" alt="GTM tägit" />
+<img src="images/analytics/gtm-tags.png" style="display: block;" width="700" alt="GTM tägit" />
 
 *Tägit*
 
-<img src="images/analytics/gtm-triggers.png" style="display: block;" width="500" alt="GTM triggerit" />
+<img src="images/analytics/gtm-triggers.png" style="display: block;" width="700" alt="GTM triggerit" />
 
 *Triggerit*
 
-<img src="images/analytics/gtm-triggers.png" style="display: block;" width="500" alt="GTM muuttujat" />
+<img src="images/analytics/gtm-triggers.png" style="display: block;" width="700" alt="GTM muuttujat" />
 
 *Muuttujat*
 
 5. Tämän jälkeen Google Analytics toimii!
 
-<img src="images/analytics/ga.png" style="display: block;" width="500" alt="GA toimii!" />
+<img src="images/analytics/ga.png" style="display: block;" width="700" alt="GA toimii!" />
 
 ## Mitä kaikkea voi seurata?
 
@@ -71,32 +71,32 @@ GTM:n kautta voi asentaa monenlaisia tagejä: sivuston katselukerrat, kuvan/link
 Sivun näyttökertojen seurannan konfigurointi on helppoa. Tarvitaan ainoastaan yksi muuttuja, triggeri ja tägi.
 
 - Muuttuja **Google Analytics** joka yhdistää Google Analyticsin ja Google Tag Managerin.
-<img src="images/analytics/gtm-google-analytics-variable.png" style="display: block;" width="500" alt="Google Analytics muuttuja" />
+<img src="images/analytics/gtm-google-analytics-variable.png" style="display: block;" width="700" alt="Google Analytics muuttuja" />
 
 - Määritettiin tag 'GA - Sivujen näyttökerrat' ('All pages' triggeri on valmiiksi määritetty)
-<img src="images/analytics/gtm-pageviews.png" style="display: block;" width="500" alt="Google Analytics sivujen näyttökerrat" />
+<img src="images/analytics/gtm-pageviews.png" style="display: block;" width="700" alt="Google Analytics sivujen näyttökerrat" />
 
 ## Lomakkeen lähetyksen seuranta
 
 Appien app_kulukorvaus ja app_apply_for_membership lomakkeet lähtevät AJAX requesteinä palvelimelle, eikä GTM:n normaali 'Lomakkeen lähetys' trigger toimi niiden kanssa.
 
-<img src="images/analytics/gtm-trigger-formsubmission.png" style="display: block;" width="500" alt="Lomakkeen lähetys' trigger ei toimi" />
+<img src="images/analytics/gtm-trigger-formsubmission.png" style="display: block;" width="700" alt="Lomakkeen lähetys' trigger ei toimi" />
 
 [Näiden ohjeiden](https://www.clickinsight.ca/blog/tracking-form-submissions-gtm) avulla määritettiin uudet custom eventit `formSubmitted` ja `formError` sekä uusi dataLayer muuttuja `formName` Google Tag Manageriin.
 
 Tämän jälkeen määritettiin tarvittavat tägit. Kokonaisuudessaan setup näyttää tältä:
 
-<img src="images/analytics/gtm-form-success-tag.png" style="display: block;" width="500" alt="GTM tägit" />
-<img src="images/analytics/gtm-form-error-tag.png" style="display: block;" width="500" alt="GTM tägit" />
+<img src="images/analytics/gtm-form-success-tag.png" style="display: block;" width="700" alt="GTM tägit" />
+<img src="images/analytics/gtm-form-error-tag.png" style="display: block;" width="700" alt="GTM tägit" />
 
 *Tägit*
 
-<img src="images/analytics/gtm-form-success-trigger.png" style="display: block;" width="500" alt="GTM triggerit" />
-<img src="images/analytics/gtm-form-error-trigger.png" style="display: block;" width="500" alt="GTM triggerit" />
+<img src="images/analytics/gtm-form-success-trigger.png" style="display: block;" width="700" alt="GTM triggerit" />
+<img src="images/analytics/gtm-form-error-trigger.png" style="display: block;" width="700" alt="GTM triggerit" />
 
 *Triggerit*
 
-<img src="images/analytics/gtm-datalayer-variable.png" style="display: block;" width="500" alt="GTM muuttujat" />
+<img src="images/analytics/gtm-datalayer-variable.png" style="display: block;" width="700" alt="GTM muuttujat" />
 
 *Muuttujat*
 
