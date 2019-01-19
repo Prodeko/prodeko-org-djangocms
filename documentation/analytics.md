@@ -57,6 +57,41 @@ Sivustolle on konfiguroitu [Google Analytics](https://analytics.google.com) ja [
 
 GTM:n kautta voi asentaa monenlaisia tagejä: sivuston katselukerrat, kuvan/linkin klikkaus, lomakkeen lähetys etc.
 
+### Sivun näyttökertojen seuranta
+
+Sivun näyttökertojen seurannan konfigurointi on helppoa. Tarvitaan ainoastaan yksi muuttuja, triggeri ja tägi.
+
+- Muuttuja __Google Analytics__ joka yhdistää Google Analyticsin ja Google Tag Managerin.
+![Google Analytics muuttuja](images/analytics/gtm-google-analytics-variable.png)
+
+- Määritettiin tag 'GA - Sivujen näyttökerrat' ('All pages' triggeri on valmiiksi määritetty)
+![Google Analytics sivujen näyttökerrat](images/analytics/gtm-pageviews.png)
+
+## Lomakkeen lähetyksen seuranta
+
+Appien app_kulukorvaus ja app_apply_for_membership lomakkeet lähtevät AJAX requesteinä palvelimelle, eikä GTM:n normaali 'Lomakkeen lähetys' trigger toimi niiden kanssa.
+
+!['Lomakkeen lähetys' trigger ei toimi](images/analytics/gtm-trigger-formsubmission.png)
+
+[Näiden ohjeiden](https://www.clickinsight.ca/blog/tracking-form-submissions-gtm) avulla määritettiin uudet custom eventit `formSubmitted` ja `formError` sekä uusi dataLayer muuttuja `formName` Google Tag Manageriin.
+
+Tämän jälkeen määritettiin tarvittavat tägit. Kokonaisuudessaan setup näyttää tältä:
+
+![GTM tägit](images/analytics/gtm-form-success-tag.png)
+![GTM tägit](images/analytics/gtm-form-error-tag.png)
+*Tägit*
+![GTM triggerit](images/analytics/gtm-form-success-trigger.png)
+![GTM triggerit](images/analytics/gtm-form-error-trigger.png)
+*Triggerit*
+![GTM muuttujat](images/analytics/gtm-datalayer-variable.png)
+*Muuttujat*
+
+Tämän lisäksi CSRF-validointia varten täytyy päivittää settings.py muuttuja `CSRF_TRUSTED_ORIGINS = '.google.com'`. Tämä johtuu siitä, että analytiikan tallentamiseksi lähtee GET-pyyntö Googlen palvelimelle, jolloin CSRF-token vanhenee.
+
+Nyt javascriptillä voi lähettää dataLayeriin custom tapahtumia (esim. prodekoorg/app_kulukorvaus/static/js/kulukorvaus-custom.js):
+
+![GTM muuttujat](images/analytics/gtm-datalayer-javascript.png)
+
 ## Muuta
 
 Google Analyticsiin on configuroitu linkitys Prodekon Google Ads accountin kanssa.

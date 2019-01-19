@@ -438,6 +438,8 @@ LOGGING = {
     }
 }
 
+CSRF_TRUSTED_ORIGINS = '.google.com'
+
 # tiedotteet.prodeko.org settings
 SESSION_SAVE_EVERY_REQUEST = True
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False

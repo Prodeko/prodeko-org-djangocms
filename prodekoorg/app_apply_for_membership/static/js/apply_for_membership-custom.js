@@ -50,12 +50,16 @@ $(document).ready(function () {
             contentType: false, // Indicates 'multipart/form-data'
             processData: false,
             success: function (data) {
+                // Google Analytics form submission tracking
+                dataLayer.push({'event' : 'formSubmitted', 'formName' : 'form_apply'});
                 document.write(data);
             },
 
             // Re-renders the same page with error texts.
             error: function (xhr, errmsg, err) {
                 if (xhr.status === 599) {
+                    // Google Analytics form error tracking
+                    dataLayer.push({'event' : 'formError', 'formName' : 'form_apply'});
                     $("#form-apply-wrapper").replaceWith(xhr.responseText);
                     document.getElementById("id_receipt").addEventListener("change", showFileName);
                 }
