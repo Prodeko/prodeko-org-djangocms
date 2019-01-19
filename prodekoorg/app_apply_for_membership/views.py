@@ -28,7 +28,12 @@ def main_form(request):
         form_apply = PendingUserForm(request.POST, request.FILES)
         is_valid_form = form_apply.is_valid()
         if is_valid_form:
-            pending_user = form_apply.save()
+            pending_user = form_apply.save(commit=False)
+
+            if not pending_user.has_accepted_policies:
+                return render(request, 'app_base.html', {'form': form_apply})
+
+            pending_user.save()
             send_email(pending_user)
 
             return render(request, 'app_base.html', {'done': True})

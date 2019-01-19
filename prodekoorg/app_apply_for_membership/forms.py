@@ -1,4 +1,4 @@
-from django.forms import ModelForm, RadioSelect, Textarea
+from django.forms import ModelForm, RadioSelect, Textarea, HiddenInput
 from django.utils.translation import ugettext_lazy as _
 
 from .models import PendingUser
@@ -40,6 +40,7 @@ class PendingUserForm(ModelForm):
         exclude = ['created_by_user']
         widgets = {
             'additional_info': Textarea(attrs={'rows': 4, 'cols': 1}),
+            'has_accepted_policies': HiddenInput()
         }
         help_texts = {
             'membership_type': _('If you are studying at Aalto apply as a true member. Otherwise, apply as external member.'),

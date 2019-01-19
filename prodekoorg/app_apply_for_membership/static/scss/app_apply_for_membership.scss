@@ -27,19 +27,6 @@
     vertical-align: middle;
   }
 
-  #payment-info {
-    margin: 2em 0 2em 0;
-
-    ul {
-      margin: 0 0 0 2em;
-      padding: 0;
-
-      @include phone {
-        margin: 1em;
-      }
-    }
-  }
-
   .receipt-btn-wrapper {
     position: relative;
     overflow: hidden;

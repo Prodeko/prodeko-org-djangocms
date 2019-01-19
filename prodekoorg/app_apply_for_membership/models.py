@@ -73,8 +73,9 @@ class PendingUser(models.Model):
     membership_type = models.CharField(max_length=2, choices=MEMBERSHIP_TYPE_CHOICES, verbose_name=_('Membership type'))
     additional_info = models.TextField(blank=True, verbose_name=_('Why do you want to become a member?'))
     is_ayy_member = models.CharField(max_length=1, choices=AYY_MEMBER_CHOICES, verbose_name=_('Are you an AYY (Aalto University Student Union) member?'))
-    receipt = models.FileField(blank=True, null=True, upload_to='jasenhakemukset/%Y-%m', verbose_name=_('Receipt of the membership payment'),
+    receipt = models.FileField(upload_to='jasenhakemukset/%Y-%m', verbose_name=_('Receipt of the membership payment'),
                                validators=[FileExtensionValidator(['jpg', 'png', 'jpeg'])])
+    has_accepted_policies = models.BooleanField(default=False, verbose_name=_('Has accepted policies'))
 
     def accept_membership(self, request, account_id, *args, **kwargs):
         password = get_random_string(length=16)
