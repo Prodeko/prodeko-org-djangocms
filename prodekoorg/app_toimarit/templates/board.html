@@ -16,9 +16,7 @@
 		{% include "layout-components/breadcrumb.html" %}
 		<!-- BEGIN LIST  -->
 		<div class="hallituskuva">
-			<center>
-				<img src="https://www.prodeko.org/wp-content/uploads/2018/02/hallituskuva_kaikki.jpeg"/>
-			</center>
+			<img src="https://www.prodeko.org/wp-content/uploads/2018/02/hallituskuva_kaikki.jpeg"/>
 		</div>
 			<div class="row">
 				<div>
@@ -30,7 +28,7 @@
 									{% if boardmember.photoExists %}
 										<img src="{{ baseUrl }}/images/hallitus_photos/{{boardmember.firstname}}_{{boardmember.lastname}}.jpg" />
 									{% else %}
-										<img src="{% static "images/hallitus_photos/placeholder.jpg" %}" />
+										<img src="{% static 'images/hallitus_photos/placeholder.jpg' %}" />
 									{% endif %}
 										<div class="description">
 										<strong>{{ boardmember.name }}</strong><br />
