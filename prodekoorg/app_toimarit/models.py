@@ -60,7 +60,7 @@ class HallituksenJasen(models.Model):
         firstname: First name of the Board Member
         lastname: Last name of the Board Member
         position: Current position as a Board Member (in Finnish)
-        section: The section of responsibility. 
+        section: The section of responsibility.
           Not currently displayed anywhere, and exists just to make
           the export CSV function simpler.
         position_eng: English version of the Board Member's position
