@@ -48,15 +48,15 @@ Sivustolle on konfiguroitu [Google Analytics](https://analytics.google.com) ja [
 
 <img src="images/analytics/images/analytics/gtm-tags.png" style="display: block;" width="500" alt="GTM tägit" />
 
-_Tägit_
+*Tägit*
 
 <img src="images/analytics/gtm-triggers.png" style="display: block;" width="500" alt="GTM triggerit" />
 
-_Triggerit_
+*Triggerit*
 
 <img src="images/analytics/gtm-triggers.png" style="display: block;" width="500" alt="GTM muuttujat" />
 
-_Muuttujat_
+*Muuttujat*
 
 5. Tämän jälkeen Google Analytics toimii!
 
@@ -89,16 +89,16 @@ Tämän jälkeen määritettiin tarvittavat tägit. Kokonaisuudessaan setup näy
 <img src="images/analytics/gtm-form-success-tag.png" style="display: block;" width="500" alt="GTM tägit" />
 <img src="images/analytics/gtm-form-error-tag.png" style="display: block;" width="500" alt="GTM tägit" />
 
-_Tägit_
+*Tägit*
 
 <img src="images/analytics/gtm-form-success-trigger.png" style="display: block;" width="500" alt="GTM triggerit" />
 <img src="images/analytics/gtm-form-error-trigger.png" style="display: block;" width="500" alt="GTM triggerit" />
 
-_Triggerit_
+*Triggerit*
 
 <img src="images/analytics/gtm-datalayer-variable.png" style="display: block;" width="500" alt="GTM muuttujat" />
 
-_Muuttujat_
+*Muuttujat*
 
 Tämän lisäksi CSRF-validointia varten täytyy päivittää settings.py muuttuja `CSRF_TRUSTED_ORIGINS = '.google.com'`. Tämä johtuu siitä, että analytiikan tallentamiseksi lähtee GET-pyyntö Googlen palvelimelle, jolloin CSRF-token vanhenee.
 
