@@ -12,19 +12,19 @@
 
 <div class="container kulukorvaus-container mt-4">
 
-	{% placeholder "content" %}
-
 	{% if done %}
 		{% include "kulukorvaus_done.html" with perustiedot_id=perustiedot_id %}
-	{% else %}
+  {% else %}
+
+    {% placeholder "content" %}
+
 		<form method="POST" novalidate enctype="multipart/form-data" id="form_kulukorvaus">
 			{% csrf_token %}
 
 			{% include "kulukorvaus_forms.html" with form_perustiedot=form_perustiedot formset_kulu=formset_kulu %}
 
 		</form>
-	{% endif %}
-
+  {% endif %}
 </div>
 
 {% endblock content %}

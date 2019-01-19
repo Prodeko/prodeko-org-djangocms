@@ -14,23 +14,42 @@
 
 <div class="container apply-container">
 
-	{% include "layout-components/breadcrumb.html" %}
-	{% placeholder "content" %}
+  {% include "layout-components/breadcrumb.html" %}
 
 	{% if done %}
 		{% include "application_complete.html" %}
-	{% else %}
+  {% else %}
+  
+    {% placeholder "content" %}
+
 		<form method="POST" novalidate enctype="multipart/form-data" id="form_apply">
 			{% csrf_token %}
 
-			{% include "form_apply.html" %}
-
-			<div class="form-group row">
-				<div class="col-sm-10">
-					<button type="submit" class="btn btn-primary my-2">{% trans submit %}</button>
-				</div>
-			</div>
-		</form>
+      {% include "form_apply.html" %}
+      
+      <div class="row mb-4">
+        <div class="col-sm-10">
+          <button type="submit" class="btn btn-primary my-2">{% trans submit %}</button>
+        </div>
+      </div>
+    </form>
+    
+    <div id="policyModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="accept-policies-modal" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Tietosuojaseloste ja evästeiden käyttö</h5>
+            </div>
+            <div class="modal-body">
+              <p>Hyväksy perkele</p>
+            </div>
+            <div class="modal-footer">
+              <button id="accept_policy" type="button" class="btn btn-secondary">Accept</button>
+              <button id="deny_policy" type="button" class="btn btn-primary" data-dismiss="modal">Deny</button>
+            </div>
+        </div>
+      </div>
+    </div>
 	{% endif %}
 
 
