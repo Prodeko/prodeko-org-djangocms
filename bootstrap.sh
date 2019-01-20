@@ -55,7 +55,6 @@ mysql -uroot -pvagrant -e "CREATE DATABASE prodekoorg;"
 
 # --- Required python modules ---
 pip3 install -r /vagrant/requirements.txt
-pip3 install --upgrade google-auth-oauthlib
 
 # tasks
 cd /vagrant && python3 manage.py makemigrations --noinput
@@ -65,7 +64,7 @@ cd /vagrant && python3 manage.py migrate
 cd /vagrant && python3 manage.py loaddata --e contenttypes --app cms --app menus --verbosity 3 data.json
 
 # creating an admin user
-cd /vagrant && echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.filter(email='webbitiimi@prodeko.org').delete(); User.objects.create_superuser('webbitiimi@prodeko.org', 'kananugetti')" | python manage.py shell
+cd /vagrant && echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.filter(email='webbitiimi@prodeko.org').delete(); User.objects.create_superuser('webbitiimi@prodeko.org', 'kananugetti')" | python3 manage.py shell
 
 # run server and static file watcher in screen
 su - ubuntu -c "cd /vagrant && screen -S server -d -m python3 manage.py runserver 0.0.0.0:8000"
