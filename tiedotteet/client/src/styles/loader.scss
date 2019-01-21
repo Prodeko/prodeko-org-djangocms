@@ -6,18 +6,18 @@
   width: 100%;
   overflow: show;
   margin: auto;
-}
 
-.loader img {
-  -webkit-animation: spin 4s linear infinite;
-  animation: spin 4s linear infinite;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  margin: auto;
-  max-width: 10rem;
+  img {
+    -webkit-animation: spin 4s linear infinite;
+    animation: spin 4s linear infinite;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    max-width: 10rem;
+  }
 }
 
 @-webkit-keyframes spin {
