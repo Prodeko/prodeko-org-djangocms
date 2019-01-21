@@ -1,9 +1,11 @@
 @import "breakpoints_mixin.scss";
 
+$frontpage-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+
 .frontpage-headercontainer {
   /*
-    Forces image to be 100% width and not max width of 100%
-    */
+  Forces image to be 100% width and not max width of 100%
+  */
   .carousel-item {
     .img-fluid {
       width: 100%;
@@ -23,11 +25,11 @@
     text-shadow: 0px 0px 16px rgba(0, 0, 0, 0.71);
 
     @include phone {
-      font-size: 0.9em;
+      font-size: 0.9rem;
     }
 
     @include tablet {
-      font-size: 1.5em;
+      font-size: 1.5rem;
     }
   }
 }
@@ -40,16 +42,16 @@
   }
 
   .frontpage-square {
-    padding: 1em 0.5em;
-    -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
-    transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    padding: 1rem 0.5rem;
+    -webkit-transition: $frontpage-transition;
+    transition: $frontpage-transition;
 
     @include phone {
       padding: 2.5px 2.5px;
     }
 
     @include tablet {
-      padding: 0.5em 7.5px;
+      padding: 0.5rem 7.5px;
     }
 
     &:after {
@@ -57,8 +59,8 @@
       top: 0;
       left: 0;
       opacity: 0;
-      -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
-      transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+      -webkit-transition: $frontpage-transition;
+      transition: $frontpage-transition;
     }
 
     &:hover {
@@ -82,17 +84,17 @@
 
       h3 {
         color: white;
-        font-size: 1.5em;
+        font-size: 1.5rem;
         font-weight: 900;
         letter-spacing: 2px;
         text-shadow: -1px 2px 10px rgba(150, 150, 150, 1);
 
         @include phone {
-          font-size: 0.9em;
+          font-size: 0.9rem;
         }
 
         @include tablet {
-          font-size: 1em;
+          font-size: 1rem;
         }
       }
     }
@@ -100,12 +102,12 @@
 }
 
 .frontpage-container {
-  padding: 3em 2em 3em 2em;
+  padding: 3rem 2rem 3rem 2rem;
 
   h2 {
     .frontpage-container h3 {
-      margin-top: 0.6em;
-      margin-bottom: 0.8em;
+      margin-top: 0.6rem;
+      margin-bottom: 0.8rem;
     }
 
     &:first-of-type {
