@@ -28,7 +28,7 @@ PyPDF2
 requests
 
 PyMySQL
-mysqlclient
+mysqlclient<1.4
 
 # Google drive integration
 google-api-python-client>=1.7.4
