@@ -30,11 +30,6 @@ urlpatterns += [
     url(r'^', include('filer.server.urls')),
 ]
 
-# ==== tiedotteet.prodeko.org ==== #
-urlpatterns += [
-    url(_(r'^weekly-bulletin/'), include('tiedotteet.Tiedotteet.urls', namespace='tiedotteet')),
-]
-
 # ==== lifelonglearning.prodeko.org ==== #
 urlpatterns += [
     url(r'^lifelonglearning/', include('lifelonglearning.urls', namespace='lifelonglearning')),
@@ -65,6 +60,9 @@ urlpatterns += i18n_patterns(
     url(r'^', include('prodekoorg.app_tiedostot.urls', namespace='app_tiedostot')),
     # ==== app_vaalit ==== #
     url(r'^', include('prodekoorg.app_vaalit.urls', namespace='app_vaalit')),
+
+    # ==== tiedotteet.prodeko.org ==== #
+    url(_(r'^weekly-bulletin/'), include('tiedotteet.Tiedotteet.urls', namespace='tiedotteet')),
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^', include('cms.urls')),
