@@ -41,8 +41,8 @@ DATABASES = {
         'NAME': DB_NAME_DEFAULT,
         'USER': DB_USER,
         'PASSWORD': DB_PSWD,
-        'HOST': '',
-        'PORT': '',
+        'HOST': 'db',
+        'PORT': '3306',
     },
     'TEST': {
         'CHARSET': 'utf8',

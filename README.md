@@ -8,21 +8,26 @@ Prodeko.org projekti käyttää Django versiota 1.11.11, sillä DjangoCMS ei ole
 
 ### Vaatimukset
 
+#### Docker
+
+Lataa [docker](https://docs.docker.com/install/).
+
+```
+$ docker-compose up  # Kehitysympäristön käynnistys
+```
+
+#### Vagrant 
 Yhtenäisen kehitysympäristöön käytämme Virtualboxia ja vagranttia. Virtuaalikoneen versio on Ubuntu 16.04.4 LTS (Xenial Xerus).
 
 Lataa vagrant ja virtualbox:
 - [vagrant](https://www.vagrantup.com/downloads.html)
 - [virtualbox](https://www.virtualbox.org/wiki/Downloads)
 
-### Vagrantin käyttö
 ```
 $ vagrant up         # Virtuaalikoneen käynnistys (Vagrantfile & bootstrap.sh)
 $ vagrant provision  # Ajaa bootstrap.sh tiedoston komennot virtuaalikoneen sisällä.
 $ vagrant ssh        # SSH yhteys virtuaalikoneeseen
 $ cd /vagrant        # Jaettu kansio
-```
-
-### Kehittäminen
 
 Komento `vagrant up` käynnistää lokaalin serverin osoitteeseen localhost:9000 (sama kuin 127.0.0.1:9000). Lisäksi bootstrap.sh luo automaattisesti Django superuserin kirjautumista varten. Komento `vagrant provision` ajaa bootstrap.sh tiedoston komennot. 
 
@@ -32,6 +37,10 @@ Jos vagrantin sisällä oleva serveri pysähtyy jostain syystä, sen saa uudesta
 $ vagrant ssh
 $ python3 manage.py runserver 0.0.0.0:8000
 ```
+
+### Kehittäminen
+
+Kehitysympäristön käynnistys luo uuden Django käyttäjän:
 
 - Käyttäjä: **webbitiimi@prodeko.org**
 - Salasana: **kananugetti**

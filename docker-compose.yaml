@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  db:
+    image: mysql:5.7
+    environment:
+      - MYSQL_RANDOM_ROOT_PASSWORD=yes
+      - MYSQL_DATABASE=prodekoorg
+      - MYSQL_USER=prodekoorg
+      - MYSQL_PASSWORD=secret
+  web:
+    tty: true
+    build: .
+    command: python3 manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+     - DATABASE_URL=mysql://prodekoorg:secret@db/prodekoorg
