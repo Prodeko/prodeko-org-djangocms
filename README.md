@@ -28,6 +28,7 @@ $ vagrant up         # Virtuaalikoneen käynnistys (Vagrantfile & bootstrap.sh)
 $ vagrant provision  # Ajaa bootstrap.sh tiedoston komennot virtuaalikoneen sisällä.
 $ vagrant ssh        # SSH yhteys virtuaalikoneeseen
 $ cd /vagrant        # Jaettu kansio
+```
 
 Komento `vagrant up` käynnistää lokaalin serverin osoitteeseen localhost:9000 (sama kuin 127.0.0.1:9000). Lisäksi bootstrap.sh luo automaattisesti Django superuserin kirjautumista varten. Komento `vagrant provision` ajaa bootstrap.sh tiedoston komennot. 
 
