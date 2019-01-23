@@ -129,7 +129,7 @@ class KulukorvausPDF:
         T = Table(t_data)
         T.setStyle(TableStyle(t_style))
 
-        # Append pdf elements (time, image, spacers, paragraph, table) 
+        # Append pdf elements (time, image, spacers, paragraph, table)
         # to the container
         elements.append(PTIME)
         elements.append(Img)

@@ -1,0 +1,9 @@
+{% load i18n %}
+
+Uusi kulukorvaus: 
+
+{{ model_perustiedot }}
+
+{% for kulukorvaus in models_kulukorvaukset %}
+  {{ kulukorvaus }}
+{% endfor %}
