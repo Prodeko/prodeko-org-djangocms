@@ -65,7 +65,7 @@ def send_email(user):
     config = configparser.ConfigParser()
     config.read(os.path.join(settings.BASE_DIR, 'prodekoorg/variables.txt'))
 
-    email_to = 'mediakeisari@prodeko.org' if not settings.DEBUG else config['EMAIL']['DEV_EMAIL'] 
+    email_to = 'mediakeisari@prodeko.org' if not settings.DEBUG else settings.DEV_EMAIL
     from_email = settings.DEFAULT_FROM_EMAIL
     msg = EmailMultiAlternatives(subject, text_content, from_email, [email_to])
     msg.attach_alternative(html_content, "text/html")
