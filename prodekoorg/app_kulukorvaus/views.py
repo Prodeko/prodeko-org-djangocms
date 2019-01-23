@@ -136,7 +136,12 @@ def main_form(request):
             # to the KulukorvausPerustiedot object created above.
             add_pdf_to_model(model_perustiedot.id)
 
-            send_email(request.user, model_perustiedot.id)
+            # Send email to the person who submitted the kulukorvaus
+            send_email(request.user, model_perustiedot.id, 'kulukorvaus.txt', model_perustiedot.email)
+
+            # Send email to rahastonhoitaja@prodeko.org, or DEV_EMAIL if we are in debug mode.
+            email_to = 'rahastonhoitaja@prodeko.org' if not settings.DEBUG else settings.DEV_EMAIL
+            send_email(request.user, model_perustiedot.id, 'kulukorvaus_rahastonhoitaja.txt', email_to)
 
             # Successfull form submission - render page displaying
             # info and pdf download link.
@@ -161,8 +166,8 @@ def main_form(request):
                                                     })
 
 
-def send_email(user, perustiedot_id):
-    """Informs the user, by email, of successfull kulukorvaus submission.
+def send_email(user, perustiedot_id, template, email_to):
+    """Informs the user or rahastonhoitaja, by email, of successfull kulukorvaus submission.
 
     Args:
         user: Django user
@@ -180,12 +185,12 @@ def send_email(user, perustiedot_id):
     # attribute is the KulukorvausPerustiedot object obtained above.
     models_kulukorvaukset = model_perustiedot.kulukorvaus_set.all()
     subject = 'Prodeko kulukorvaus - {} {}'.format(user.first_name, user.last_name)
-    text_content = render_to_string('kulukorvaus.txt', {
+    text_content = render_to_string(template, {
                                     'user': user,
                                     'model_perustiedot': model_perustiedot,
                                     'models_kulukorvaukset': models_kulukorvaukset
                                     })
-    email_to = model_perustiedot.email
+    email_to = email_to
     from_email = settings.DEFAULT_FROM_EMAIL
     msg = EmailMultiAlternatives(subject, text_content, from_email, [email_to])
 
