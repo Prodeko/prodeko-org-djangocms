@@ -386,6 +386,7 @@ DEFAULT_FROM_EMAIL = 'no-reply@prodeko.org'
 SERVER_EMAIL = 'no-reply@prodeko.org'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+DEV_EMAIL = config['EMAIL']['DEV_EMAIL']
 
 # Loggin config. On DEBUG = FALSE, email ADMINS
 # on ERROR (or higher) level events, otherwise log
