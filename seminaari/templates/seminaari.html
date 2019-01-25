@@ -5,23 +5,7 @@
 {% trans "Ilmoittaudu!" as signup %}
 
 {% block body %}
-<nav id="navbar">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <i class="fas fa-bars white"></i>
-      </button>
-      <a class="navbar-brand"><img id="logo" src="{% static 'img/headerlogo.png' %}" alt="Prodeko logo"></a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li><a href="#first">{% trans signup %}</a></li>
-        <li><a href="#second">Ideologia</a></li>
-        <li><a href="#third">Lukuvinkkejä ja linkkejä</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+
 
 <div id="scrollToTop"><i class="fas fa-arrow-circle-up"></i></div>
 
@@ -35,17 +19,14 @@
     </div>
     <div class="banner-content">
       <div class="banner-text">
-        <h1 class="white ok-spacing">Prodeko-seminaari 5.4.2019</h1>
-        <h4 class="lightgrey no-top">Business with Purpose</h4>
+        <h1 class="white ok-spacing">5.4.2019</h1>
+        <h4 class="lightgrey no-top"></h4>
         <h5 class="white">
-          Prodeko-yhteisön jokavuotinen kärkitapahtuma kokoaa yhteen Aalto-yliopiston tuotantotalouden laitoksen, 
-          alumnin ja opiskelijat. Tänä vuonna juhlapäivää vietetään perjantaina 5. huhtikuuta Otaniemessä ja laadukas 
-          ohjelma puheineen, työpajoineen ja paneelikeskusteluineen kiteytyy pohtimaan merkityksellisen liiketoiminnan 
-          mahdollisuuksia ja haasteita erilaisista näkökulmista. 
+         
 
         </h5>
         <br>
-        <a class="btn btn-success registration center" href="#courses">Seuraa tapahtumaa Facebookissa</a>
+        <a href="https://www.facebook.com/events/2320633134677418/"class="btn btn-outline"> Seuraa tapahtumaa Facebookissa</a>
       </div>
     </div>
   </div>
@@ -54,14 +35,21 @@
   <div class="white-block">
     <div class="container">
       <div id="first" class="section row">
-        <h2>Liity oppimaan</h2>
+        <h2>Prodeko-yhteisön kärkitapahtuma</h2>
         <p>
+            Jokavuotinen tapahtuma kokoaa yhteen Aalto-yliopiston tuotantotalouden laitoksen, 
+            alumnin ja opiskelijat. Tänä vuonna juhlapäivää vietetään perjantaina 5. huhtikuuta Otaniemessä ja laadukas 
+            ohjelma puheineen, työpajoineen ja paneelikeskusteluineen kiteytyy pohtimaan merkityksellisen liiketoiminnan 
+            mahdollisuuksia ja haasteita erilaisista näkökulmista.
+        </p>
+          <p>
           Prodeko-seminaari järjestettiin seminaarimuodossan ensimmäisen kerran Prodekon 50-vuotisjuhlavuonna 2016. 
           Sitä ennen Prodeko-yhteisön keräsi vuosien ajan yhteen toukokuinen grillailuilta, jonka peruja nykyisenlainen 
           seminaarikin on. Kevään 2019 seminaari on järjestyksessään neljäs, ja tapahtuma toteutetaan vapaaehtoisvoimin 
           yhteistyössä laitoksen, alumnin ja kiltalaisten kanssa. Erinomaisten puhujien ja yhteisön arvoja heijastelevan 
           sisällön lisäksi seminaari tarjoaa mahdollisuuden koota yhteen ystävät omilta opiskeluajoilta ja pysyä mukana 
           tuotantotalouden ajankohtaisista tutkimusaiheista ja liike-elämän polttavista kysymyksistä. 
+          <p>Lipunmyynti tapahtumaan avataan helmikuussa. Lisätietoja myöhemmin.</p>
 
         </p>
         <br>
@@ -99,73 +87,45 @@
       {% endfor %}
       </div>
 
-      <hr>
-
-      <div id="second" class="section row">
-        <h2 class="center">Ideologia</h2>
-        <br>
-        <div class="row center">
-          <div class="col-md-3">
-            <i class="fas fa-child principles"></i>
-            <h4>1. Tee päätös</h4>
-            <p>Asennoidu niin, että pyrit kehittämään itseäsi hieman joka päivä</p>
-          </div>
-          <div class="col-md-3">
-            <i class="fab fa-leanpub principles"></i>
-            <h4>2. Itsenäinen toiminta</h4>
-            <p>Lue kirjoja, katso dokumentteja, reflektoi onnistumisiasi ja epäonnistumisiasi</p>
-          </div>
-          <div class="col-md-3">
-            <i class="fas fa-users principles"></i>
-            <h4>3. Osallistu</h4>
-            <p>Lähde mukaan <a href="https://lifelonglearning.prodeko.org/#vertais">vertaisryhmätoimintaan</a></p>
-          </div>
-          <div class="col-md-3">
-            <i class="fas fa-handshake principles"></i>
-            <h4>4. Co-create</h4>
-            <p>Fasilitoi vertaisryhmiä ja jaa oppimaasi muille</p>
-          </div>
-        </div>
-      </div>
-
-      <hr>
+      <br></br>
+      <div id="third" class="section row">
+          <h2>Puhujat ja diskussantit</h2>
+          <p>Puhujat julkaistaan tällä sivulla myöhemmin. </p>
+          <br></br>
+          <br></br>
 
       <div id="third" class="section row">
-        <h2>Lukuvinkkejä ja linkkejä</h2>
-        <p>Kirjoja</p>
+        <h2>Päivän ohjelma</h2>
+      
 
         <ul>
-        	<li>The Hard Thing About Hard Things (Ben Horowitz)</li>
-        	<li>The Google Story (David A. Vise, Mark Malseed)</li>
-        	<li>Shoe Dog (Phil Knight)</li>
-          <li>Peak: Secrets from the New Science of Expertise (Anders Ericsson, Robert Pool)</li>
-          <li>5 Elements of Effective Thinking (Edward B. Burger, Michael Starbird)</li>
-          <li>A More Beautiful Question: The Power of Inquiry to Spark Breakthrough Ideas (Warren Berger)</li>
-          <li>The 10X Rule: The Only Difference Between Success and Failure (Grant Cardone)</li>
-          <li>Flow: The Psychology of Optimal Experience (Mihaly Csikszentmihalyi)</li>
-          <li>How Will You Measure Your Life? (Clayton M. Christensen)</li>
-          <li>The Oxford Handbook of Lifelong Learning (Manuel London)</li>
-          <li>Hacking Your Education: Ditch the Lectures, Save Tens of Thousands, and Learn More Than Your Peers Ever Will (Dale J. Stephens)</li>
-          <li>The Education of Millionaires: It’s Not What You Think and It’s Not Too Late (Michael Ellsberg)</li>
+        	<p><br>Ajat ja ohjelma tarkentuvat myöhemmin.</br>
+
+              <br><i>Kandidaattikeskus (myös Päälafkaksi kutsuttu), Otakaari 1</i></br>
+              <br>12:30 Tervetuloa</br>
+              <br>12:40 Avauspuheenvuoro</br>
+              <br>12:50 - 16:30 Puheita, työpajoja ja paneelikeskustelu, sis. kahvitauko
+          </br></p><p>
+              <br><i>Väre, Otaniementie 12</i></br>
+              <br>17:00 Cocktail-tilaisuus alkaa</br>
+              <br>18:30 Päivällinen </br>
+              <br>21:30 Kuljetus jatkoille</br>
+
+              <div id="fourth" class="section row">
+                  <h2>Seminaaritiimin esittely</h2>
+
+                  <p><br>Tänä vuonna Prodeko-seminaaria ovat tekemässä:</br></p>
+                  Timo Moilanen, Mary-Ann Alftan, Risto Rajala, Perttu Nihti, Christine Korjus, Maria Haukka, 
+                  Sara Ikonen, Matias Hynönen, Tua Videman, Teemu Mikola ja Niko Kinnunen
+                  <br></br>
+<p>Kiltalaisten haku seminaaritiimiin on vuosittain marraskuussa ja valinnat tehdään killan toisessa vaalikokouksessa.</p>
+
+              
+              
+          </p>
+        	
         </ul>
 
-        <p>Hyviä äänikirjatiivistelmiä löytyy palvelusta <a href="https://www.blinkist.com/">Blinkist</a></p>
-        <div id="links">
-          <p>Dokumenttifilmejä</p>
-          <ul>
-            <li><a class="link" href="https://youtu.be/quYDkuD4dMU">The Future of Learning, Networked Society - Ericsson</a></li>
-            <li><a class="link" href="https://vimeo.com/119101747">Collaboration - On the Edge of a New Paradigm?</a></li>
-            <li><a class="link" href="https://vimeo.com/34608191">PressPausePlay - Opportunities of creativity</a></li>
-            <li><a class="link" href="https://vimeo.com/4489849">Us Now</a></li>
-            <li><a class="link" href="https://youtu.be/_wqm6G5DjaI">The Networked Society, On the Brink</a></li>
-          </ul>
-
-          <p>TED-talkeja</p>
-          <ul>
-            <li><a class="link" href="https://www.ted.com/talks/john_green_the_nerd_s_guide_to_learning_everything_online">The nerd's guide to learning everything online</a></li>
-            <li><a class="link" href="https://www.ted.com/talks/ben_dunlap_talks_about_a_passionate_life">The life-long learner</a></li>
-            <li><a class="link" href="https://www.ted.com/talks/daphne_koller_what_we_re_learning_from_online_education">What we're learning from online education</a></li>
-            <li><a class="link" href="https://www.ted.com/talks/kathryn_schulz_on_being_wrong">On being wrong</a></li>
           </ul>
         </div>
 
