@@ -1,14 +1,18 @@
 {% load i18n %}
-<p>Uusi jäsenhakemus:</p>
-<ul>
-    <li>{{ user.name }}</li>
-    <li>{{ user.email }}</li>
-    <li>{{ user.field_of_study }}, {{ user.start_year }}</li>
-    <li>{{ user.hometown }}</li>
-    <li>{{ user.get_membership_type_display }}</li>
-    {% if user.additional_info|length > 0 %}
-    <li>{{ user.additional_info }}</li>
-    {% endif %}
-</ul>
-<br>    
-<p>https://prodeko.org/fi/admin/app_apply_for_membership/pendinguser/{{ user.id }}/change/ - Hyväksy tai hylkää hakemus.</p>
+<p>Huomio,</p>
+<p>&nbsp;</p>
+<p>{{ user.name }} hakee Prodekon j&auml;senyytt&auml;.</p>
+<p>&nbsp;</p>
+<p><strong>J&auml;senhakemuksen tiedot:</strong></p>
+<p>Nimi: {{ user.name }}</p>
+<p>S&auml;hk&ouml;posti: {{ user.email }}</p>
+<p>Opiskeluala: {{ user.field_of_study }}, aloitusvuosi: {{ user.start_year }}</p>
+<p>Kotikaupunki: {{ user.hometown }}</p>
+<p>J&auml;sentyyppi: {{ user.get_membership_type_display }}</p>
+<p>{% if user.additional_info|length &gt; 0 %}</p>
+<p>Muuta: {{ user.additional_info }}</p>
+<p>{% endif %}</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>https://prodeko.org/fi/admin/app_apply_for_membership/pendinguser/{{ user.id }}/change/ - Hyv&auml;ksy tai hylk&auml;&auml; hakemus t&auml;st&auml;, mutta huolehdi ensin, ett&auml; olet lis&auml;nnyt j&auml;senen sek&auml; Prodekon Matrikkeliin ett&auml; j&auml;senet-s&auml;hk&ouml;postilistalle (ja suomenkieliset opiskelijat my&ouml;s PoRan s&auml;hk&ouml;postilistalle). Hakeneelle l&auml;hetet&auml;&auml;n s&auml;hk&ouml;postilla k&auml;ytt&auml;j&auml;tunnus ka salasana prodeko.orgiin ja ohjeet matrikkelin salasanan vaihtamiseen.</p>
+<p>&nbsp;</p>
