@@ -1,5 +1,6 @@
-html, body {
-  font-family: "Raleway", sans-serif;
+html,
+body {
+  font-family: 'Raleway', sans-serif !important;
   font-size: 1em;
   color: #666;
   width: 100% !important;
@@ -9,7 +10,12 @@ html, body {
   border: none;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: #666;
 }
 
@@ -22,7 +28,7 @@ h1 {
 }
 
 h2 {
-  text-align: center;
+  text-align: left;
   font-weight: 800;
   letter-spacing: 4px;
   text-transform: uppercase;
@@ -53,9 +59,13 @@ h5 {
   line-height: 25px;
 }
 
-p {}
+p {
+}
 
-#first, #third {
+#first,
+#second,
+#third,
+#fourth {
   margin: auto auto;
   max-width: 800px;
 }
@@ -138,7 +148,11 @@ hr {
   z-index: 999;
   margin-top: 0px;
   padding: 15px 0px;
-  background-image: linear-gradient(to bottom, rgb(81, 49, 0), rgba(0, 40, 81, 0));
+  background-image: linear-gradient(
+    to bottom,
+    rgb(81, 49, 0),
+    rgba(0, 40, 81, 0)
+  );
   background-position: center -300px;
   background-repeat: no-repeat;
   transition: background-position 0.5s ease;
@@ -151,7 +165,10 @@ hr {
   text-align: center;
 }
 
-.nav, .navbar-nav, .navbar-header, .navbar-brand {
+.nav,
+.navbar-nav,
+.navbar-header,
+.navbar-brand {
   float: none;
   text-align: center;
   display: block !important;
@@ -169,7 +186,8 @@ hr {
 
 .nav > li {
   > a {
-    &:focus, &:hover {
+    &:focus,
+    &:hover {
       background: inherit;
       color: lightgrey;
     }
@@ -190,7 +208,8 @@ hr {
   font-size: 3em;
 }
 
-.container, .white-block {
+.container,
+.white-block {
   background-color: white;
 }
 
@@ -198,24 +217,16 @@ hr {
 
 .banner {
   position: relative;
-  margin-top: -100px;
   display: block;
   width: 100%;
-  height: auto;
+  height: 30rem;
   text-align: center;
-  margin-bottom: 0px;
+  @media (max-width: 576px) {
+    height: 50vh;
+  }
 }
 
-.banner-background {
-  width: 100%;
-  height: 100%;
-  background-image: "../img/semmanettisivutausta.png";
-  background-position: center center;
-  background-size: cover;
-  z-index: -100;
-}
-
-#banner-video {
+.banner-image {
   position: absolute;
   left: 0;
   bottom: auto;
@@ -228,32 +239,52 @@ hr {
   top: 50%;
   transform: translateY(-50%);
   object-fit: cover;
-  background-image: url("../img/semmanettisivutausta.png");
   background-position: center center;
   background-size: cover;
 }
 
-.banner-text {
+.seminaari-logo {
+  position: absolute;
+  width: 50%;
+  max-width: 700px;
+  height: auto;
+  z-index: 100;
+  top: 1rem;
+  right: 1rem;
+  @media (max-width: 576px) {
+    margin: auto;
+    height: auto;
+    width: 80%;
+    position: relative;
+  }
+}
+
+.banner-content {
   z-index: 10;
   position: relative;
-  margin: 0px auto;
-  margin-top: 100px;
-  padding: 150px 10px 50px;
+  padding-top: 15rem;
   width: 100%;
-  max-width: 1000px;
   height: auto;
   z-index: 10;
   color: white;
   text-shadow: 0px 3px 5px black;
   text-align: center;
+  .fa-facebook-square {
+    color: #f8505e;
+    padding-right: 0.3rem;
+  }
+  a {
+    font-size: 1.2rem;
+  }
+  @media (max-width: 576px) {
+    padding-top: 9rem;
+  }
 }
 
 .section {
   margin: 10px 0;
   height: auto !important;
 }
-
-
 
 /* === COURSE FEED === */
 
@@ -321,7 +352,11 @@ hr {
   bottom: 0;
   left: 0;
   z-index: 5;
-  background-image: linear-gradient(to top, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+  background-image: linear-gradient(
+    to top,
+    rgba(255, 255, 255, 1),
+    rgba(255, 255, 255, 0)
+  );
   text-align: center;
   color: grey;
 }
@@ -374,7 +409,8 @@ footer {
     h3 {
       color: white;
     }
-    p, a {
+    p,
+    a {
       font-size: 0.8em;
     }
   }
@@ -408,7 +444,8 @@ footer {
 
 /* Mobile devices ----------- */
 @media only screen and (max-device-width: 768px) {
-  html, body {
+  html,
+  body {
     font-size: 0.95em;
   }
   #logo {
