@@ -1,0 +1,16 @@
+@import "../../../prodekoorg/static/scss/breakpoints_mixin.scss";
+
+// POISTA TOI YLYEMPI JOS ET TARTTE BREAKPOINTTEJA OLLI
+
+.test {
+  background-color: red;
+
+  // Tällee toimii media queryt
+  @include phone {
+    img {
+      max-width: 90%;
+      display: block;
+      margin: 0 auto 1.5em auto;
+    }
+  }
+}

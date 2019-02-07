@@ -141,13 +141,15 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'prodekoorg/app_tiedostot', 'static'),
     os.path.join(BASE_DIR, 'prodekoorg/app_toimarit', 'static'),
     os.path.join(BASE_DIR, 'prodekoorg/app_vaalit', 'static'),
-    # tiedotteet.prodeko.org
-    os.path.join(BASE_DIR, 'tiedotteet/info', 'static'),
-    os.path.join(BASE_DIR, 'tiedotteet', 'public'),
+    # abit.prodeko.org
+    os.path.join(BASE_DIR, 'abisivut', 'static'),
     # lifelonglearning.prodeko.org
     os.path.join(BASE_DIR, 'lifelonglearning', 'static'),
     # seminaari.prodeko.org
     os.path.join(BASE_DIR, 'seminaari', 'static'),
+    # tiedotteet.prodeko.org
+    os.path.join(BASE_DIR, 'tiedotteet/info', 'static'),
+    os.path.join(BASE_DIR, 'tiedotteet', 'public'),
 ]
 
 STATICFILES_FINDERS = [
@@ -164,11 +166,11 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'prodekoorg', 'templates'),
-                 os.path.join(BASE_DIR, 'tiedotteet/info', 'templates'),
-                 os.path.join(BASE_DIR, 'tiedotteet', 'public'),
                  os.path.join(BASE_DIR, 'abisivut', 'templates'),
                  os.path.join(BASE_DIR, 'lifelonglearning', 'templates'),
                  os.path.join(BASE_DIR, 'seminaari', 'templates'),
+                 os.path.join(BASE_DIR, 'tiedotteet/info', 'templates'),
+                 os.path.join(BASE_DIR, 'tiedotteet', 'public'),
                  os.path.join(BASE_DIR, 'prodekoorg/app_apply_for_membership', 'templates'),
                  os.path.join(BASE_DIR, 'prodekoorg/app_apply_for_membership', 'templates', 'emails'),
                  os.path.join(BASE_DIR, 'prodekoorg/app_kulukorvaus', 'templates'),
