@@ -171,11 +171,16 @@ TEMPLATES = [
                  os.path.join(BASE_DIR, 'seminaari', 'templates'),
                  os.path.join(BASE_DIR, 'tiedotteet/info', 'templates'),
                  os.path.join(BASE_DIR, 'tiedotteet', 'public'),
-                 os.path.join(BASE_DIR, 'prodekoorg/app_apply_for_membership', 'templates'),
-                 os.path.join(BASE_DIR, 'prodekoorg/app_apply_for_membership', 'templates', 'emails'),
-                 os.path.join(BASE_DIR, 'prodekoorg/app_kulukorvaus', 'templates'),
-                 os.path.join(BASE_DIR, 'prodekoorg/app_kulukorvaus', 'templates', 'emails'),
-                 os.path.join(BASE_DIR, 'prodekoorg/app_poytakirjat', 'templates'),
+                 os.path.join(
+                     BASE_DIR, 'prodekoorg/app_apply_for_membership', 'templates'),
+                 os.path.join(
+                     BASE_DIR, 'prodekoorg/app_apply_for_membership', 'templates', 'emails'),
+                 os.path.join(
+                     BASE_DIR, 'prodekoorg/app_kulukorvaus', 'templates'),
+                 os.path.join(BASE_DIR, 'prodekoorg/app_kulukorvaus',
+                              'templates', 'emails'),
+                 os.path.join(
+                     BASE_DIR, 'prodekoorg/app_poytakirjat', 'templates'),
                  os.path.join(BASE_DIR, 'prodekoorg/app_toimarit', 'templates')],
         'OPTIONS': {
             'context_processors': [
@@ -306,6 +311,7 @@ CMS_TEMPLATES = (
     ('abit.html', 'Abit page'),
     ('contentpage/content-page.html', 'Content page'),
     ('frontpage.html', 'Frontpage'),
+    ('seminaari.html', 'Seminar page'),
     ('contentpage/content-page-twocol6-6.html', 'Content page with 1:1 split'),
     ('contentpage/content-page-twocol8-4.html', 'Content page with 2:1 split'),
 )
