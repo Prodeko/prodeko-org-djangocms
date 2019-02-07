@@ -166,6 +166,7 @@ TEMPLATES = [
         'DIRS': [os.path.join(BASE_DIR, 'prodekoorg', 'templates'),
                  os.path.join(BASE_DIR, 'tiedotteet/info', 'templates'),
                  os.path.join(BASE_DIR, 'tiedotteet', 'public'),
+                 os.path.join(BASE_DIR, 'abisivut', 'templates'),
                  os.path.join(BASE_DIR, 'lifelonglearning', 'templates'),
                  os.path.join(BASE_DIR, 'seminaari', 'templates'),
                  os.path.join(BASE_DIR, 'prodekoorg/app_apply_for_membership', 'templates'),
@@ -282,9 +283,10 @@ INSTALLED_APPS = (
     'rest_framework',
     'corsheaders',
     # ------------------------
+    # abit.prodeko.org
+    'abisivut',
     # lifelonglearning.prodeko.org
     'lifelonglearning',
-    # ------------------------
     # seminaari.prodeko.org
     'seminaari',
     # ------------------------
