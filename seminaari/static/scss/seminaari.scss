@@ -76,7 +76,7 @@ p {
 
 a {
   text-decoration: none;
-  color: rgb(248, 80, 94) !important;
+  color: rgb(248, 80, 94);
   &:hover {
     text-decoration: none;
     color: inherit;
@@ -277,10 +277,51 @@ hr {
     padding-right: 0.3rem;
   }
   a {
+    color: rgb(248, 80, 94);
     font-size: 1.2rem;
+  }
+  .fa-angle-down {
+    display: none;
+    animation: shake 0.82s infinite cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+
+  @keyframes shake {
+    10%,
+    90% {
+      transform: translate3d(-1px, 0, 0);
+    }
+
+    20%,
+    80% {
+      transform: translate3d(2px, 0, 0);
+    }
+
+    30%,
+    50%,
+    70% {
+      transform: translate3d(-4px, 0, 0);
+    }
+
+    40%,
+    60% {
+      transform: translate3d(4px, 0, 0);
+    }
   }
   @media (max-width: 576px) {
     padding-top: 9rem;
+    .fa-angle-down {
+      color: white;
+      font-size: 4rem;
+      display: block;
+      padding-top: 10rem;
+    }
+    .fa-facebook-square,
+    a {
+      color: white;
+    }
   }
 }
 
