@@ -4,7 +4,7 @@ ENV PYTHONUNBUFFERED 1
 
 # Install Python and Package Libraries
 RUN apt-get update && \
-      apt-get install -y mysql-client
+      apt-get install -y mysql-client gettext
 
 WORKDIR /code
 
