@@ -21,8 +21,10 @@ urlpatterns = [
 ]
 
 urlpatterns += [
-    url(r'^robots.txt$', TemplateView.as_view(template_name="misc/robots.txt", content_type="text/plain"), name="robots_file"),
-    url(r'^browserconfig.xml$', TemplateView.as_view(template_name="misc/browserconfig.xml", content_type="text/xm l"), name="browserconfig_file"),
+    url(r'^robots.txt$', TemplateView.as_view(
+        template_name="misc/robots.txt", content_type="text/plain"), name="robots_file"),
+    url(r'^browserconfig.xml$', TemplateView.as_view(
+        template_name="misc/browserconfig.xml", content_type="text/xm l"), name="browserconfig_file"),
 ]
 
 # ==== Django filer ==== #
@@ -37,26 +39,26 @@ urlpatterns += [
 
 # ==== lifelonglearning.prodeko.org ==== #
 urlpatterns += [
-    url(r'^lifelonglearning/', include('lifelonglearning.urls', namespace='lifelonglearning')),
+    url(r'^lifelonglearning/',
+        include('lifelonglearning.urls', namespace='lifelonglearning')),
 ]
 
-# ==== seminaari.prodeko.org ==== #
-urlpatterns += [
-    url(r'^seminaari/', include('seminaari.urls', namespace='seminaari')),
-]
 
 # ==== Localization and internationalization ==== #
 urlpatterns += i18n_patterns(
     # ==== app_toimarit & app_poytakirjat ==== #
     # Must be before admin urls
-    url(r'^admin/toimarit/csvupload$', TemplateView.as_view(template_name='admin/uploadcsv.html'), name='uploadcsv'),
+    url(r'^admin/toimarit/csvupload$',
+        TemplateView.as_view(template_name='admin/uploadcsv.html'), name='uploadcsv'),
     url(r'^admin/toimarit/postcsv$', postcsv, name='postcsv'),
-    url(r'^admin/poytakirjat/download$', run_app_poytakirjat, name='download_docs_from_gsuite'),
+    url(r'^admin/poytakirjat/download$', run_app_poytakirjat,
+        name='download_docs_from_gsuite'),
 
     # ==== auth_prodeko ==== #
     url(r'^', include('auth_prodeko.urls', namespace='auth_prodeko')),
     # ==== app_apply_for_membership ==== #
-    url(r'^', include('prodekoorg.app_apply_for_membership.urls', namespace='app_apply_for_membership')),
+    url(r'^', include('prodekoorg.app_apply_for_membership.urls',
+                      namespace='app_apply_for_membership')),
     # ==== app_kulukorvaus ==== #
     url(r'^', include('prodekoorg.app_kulukorvaus.urls', namespace='app_kulukorvaus')),
     # ==== app_poytakirjat ==== #
@@ -67,7 +69,8 @@ urlpatterns += i18n_patterns(
     url(r'^', include('prodekoorg.app_vaalit.urls', namespace='app_vaalit')),
 
     # ==== tiedotteet.prodeko.org ==== #
-    url(_(r'^weekly-bulletin/'), include('tiedotteet.Tiedotteet.urls', namespace='tiedotteet')),
+    url(_(r'^weekly-bulletin/'),
+        include('tiedotteet.Tiedotteet.urls', namespace='tiedotteet')),
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^', include('cms.urls')),

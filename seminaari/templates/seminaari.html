@@ -1,23 +1,19 @@
 {% extends "base-seminaari.html" %} 
-{% load staticfiles i18n %}
+{% load staticfiles cms_tags menu_tags staticfiles i18n %}
  {# TEE SEMINAARIN SIVUT MYÖS ENGLANNIKSI! #} 
-{% trans "Ilmoittaudu!" as signup %}
-<link
-  rel="stylesheet"
-  href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
-  integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
-  crossorigin="anonymous"
-/>
 
-{% block body %}
-
-<!--
-      <video autoplay muted loop id="banner-video">
-        <source src="{% static 'video_banner_720p.webm' %}" type="video/webm">
-      </video>
-      
--->
+{% block content %}
 <div id="scrollToTop"><i class="fas fa-arrow-circle-up"></i></div>
+
+<div class="container page-container">
+	<div class="row">
+		<div class="col-md-9">
+
+		{% placeholder "content" %}
+
+		</div>
+	</div>
+</div>
 
 <div id="content">
   <div class="banner" style="background-image: url({% static 'img/semmanettisivutausta.png' %})">
@@ -26,14 +22,6 @@
       class="seminaari-logo"
       alt="Responsive image"
     />
-<!--
-    <img
-      src="{% static 'img/semmanettisivutausta.png' %}"
-      type="image/png"
-      class="img-fluid banner-image"
-      alt="Responsive image"
-    /> 
-    -->
     <div class="banner-content">
       <h1 class="white ok-spacing">5.4.2019</h1>
       <br />
@@ -72,53 +60,6 @@
         <p>
           Lipunmyynti tapahtumaan avataan helmikuussa. Lisätietoja myöhemmin.
         </p>
-      </div>
-      <div id="courses">
-        {% if courses %}
-        <hr />
-        <h2 class="center">Päivän ohjelma</h2>
-        {% endif %} {% for course in courses %}
-        <a href="{% url 'lifelonglearning:coursepage' course.id %}">
-          <div class="col-md-6">
-            <div class="course">
-              <div
-                class="course-banner"
-                style="background-image: url('{{ course.get_banner_image }}')"
-              >
-                <div class="bottom-gradient"></div>
-              </div>
-              <div class="course-text">
-                <h3>{{ course.name }}</h3>
-                {% if course.coaches %}
-                <p class="addition clear">
-                  Valmentajat: <span class="black">{{ course.coaches }}</span>
-                </p>
-                {% endif %} {% if course.groupsize %}
-                <p class="addition">
-                  Kurssikoko: <span class="black">{{ course.groupsize }}</span>
-                </p>
-                {% endif %} {% if course.timing %}
-                <p class="addition">
-                  Ajankohta: <span class="black">{{ course.timing }}</span>
-                </p>
-                {% endif %}
-                <hr />
-                <div class="course-ingress">
-                  <p>{% autoescape off %}{{ course.description | truncatechars:400 | safe }}{% endautoescape %}</p>
-                  <div class="read-more">
-                    <p class="read-more-text">Lue lisää...</p>
-                  </div>
-                </div>
-                <a
-                  class="btn btn-success btn-block registration"
-                  href="{{ course.registration }}"
-                  >Ilmoittaudu</a
-                >
-              </div>
-            </div>
-          </div>
-        </a>
-        {% endfor %}
       </div>
 
       <div id="second" class="section">
@@ -163,6 +104,8 @@
   </div>
 </div>
 
+{% endblock %}
+
 <footer>
   <div class="social center white">
     <h3 class="center ok-spacing">
@@ -186,4 +129,3 @@
   </div>
 </footer>
 
-{% endblock %}

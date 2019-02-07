@@ -1,4 +1,4 @@
-{% load sekizai_tags sass_tags i18n staticfiles %}
+{% load cms_tags menu_tags sekizai_tags sass_tags i18n common_tags staticfiles %}
 <!doctype html>
 <html>
 	<head>
@@ -13,9 +13,12 @@
 		{% block extra_head %}{% endblock %}
 	</head>
 	<body>
-    {% include "snippets/ga-body.html" %}
 
-		{% block body %}{% endblock %}
+    {% include "snippets/ga-body.html" %}
+		{% cms_toolbar %}
+
+		{% block content %}
+		{% endblock %}
 	</body>
 </html>
 
@@ -24,6 +27,12 @@
 <link href="https://fonts.googleapis.com/css?family=Raleway:200,400,600,800" rel="stylesheet">
 <link href="{% sass_src 'scss/seminaari.scss' %}" rel="stylesheet" type="text/css" />
 <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
+<link
+  rel="stylesheet"
+  href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+  integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+  crossorigin="anonymous"
+/>
 {% endaddtoblock %}
 
 {% addtoblock "custom-js" %}
