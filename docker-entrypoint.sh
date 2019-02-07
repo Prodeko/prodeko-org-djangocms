@@ -25,7 +25,6 @@ wait_for_mysql
 # Collect static for the django installation.
 python3 manage.py collectstatic --noinput > /dev/null 2>&1
 
-python3 manage.py makemigrations --noinput
 python3 manage.py migrate
 
 # Load sample data for development
