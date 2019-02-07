@@ -1,19 +1,12 @@
 {% extends "base-seminaari.html" %} 
-{% load staticfiles cms_tags menu_tags staticfiles i18n %}
+{% load staticfiles cms_tags menu_tags i18n %}
  {# TEE SEMINAARIN SIVUT MYÖS ENGLANNIKSI! #} 
 
 {% block content %}
-<div id="scrollToTop"><i class="fas fa-arrow-circle-up"></i></div>
 
-<div class="container page-container">
-	<div class="row">
-		<div class="col-md-9">
 
-		{% placeholder "content" %}
+{% placeholder "content" %}
 
-		</div>
-	</div>
-</div>
 
 <div id="content">
   <div class="banner" style="background-image: url({% static 'img/semmanettisivutausta.png' %})">
@@ -104,7 +97,7 @@
   </div>
 </div>
 
-{% endblock %}
+
 
 <footer>
   <div class="social center white">
@@ -129,3 +122,4 @@
   </div>
 </footer>
 
+{% endblock %}
