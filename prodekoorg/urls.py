@@ -30,11 +30,6 @@ urlpatterns += [
     url(r'^', include('filer.server.urls')),
 ]
 
-# ==== abit.prodeko.org ==== #
-urlpatterns += [
-    url(r'^abit/', include('abisivut.urls', namespace='abit')),
-]
-
 # ==== lifelonglearning.prodeko.org ==== #
 urlpatterns += [
     url(r'^lifelonglearning/', include('lifelonglearning.urls', namespace='lifelonglearning')),

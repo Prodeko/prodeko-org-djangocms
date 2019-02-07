@@ -301,6 +301,7 @@ INSTALLED_APPS = (
 
 # DjagoCMS specific config
 CMS_TEMPLATES = (
+    ('abit.html', 'Abit page'),
     ('contentpage/content-page.html', 'Content page'),
     ('frontpage.html', 'Frontpage'),
     ('contentpage/content-page-twocol6-6.html', 'Content page with 1:1 split'),
