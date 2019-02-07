@@ -1,12 +1,17 @@
 {% extends "base-seminaari.html" %} 
-{% load staticfiles cms_tags menu_tags i18n %}
- {# TEE SEMINAARIN SIVUT MYÖS ENGLANNIKSI! #} 
+{% load cms_tags menu_tags staticfiles i18n %}
 
 {% block content %}
 
+<div class="container">
+	<div class="row">
+		<div class="col-md-9">
 
-{% placeholder "content" %}
+		{% placeholder "content" %}
 
+		</div>
+	</div>
+</div>
 
 <div id="content">
   <div class="banner" style="background-image: url({% static 'img/semmanettisivutausta.png' %})">
@@ -122,4 +127,4 @@
   </div>
 </footer>
 
-{% endblock %}
+{% endblock content %}
