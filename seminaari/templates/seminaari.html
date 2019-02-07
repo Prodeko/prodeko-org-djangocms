@@ -1,19 +1,9 @@
 {% extends "base-seminaari.html" %} 
 {% load cms_tags menu_tags staticfiles i18n %}
 
+
 {% block content %}
 
-<div class="container">
-	<div class="row">
-		<div class="col-md-9">
-
-		{% placeholder "content" %}
-
-		</div>
-	</div>
-</div>
-
-<div id="content">
   <div class="banner" style="background-image: url({% static 'img/semmanettisivutausta.png' %})">
     <img
       src="{% static 'img/semmasivuteksti_ilmanpvm.png' %}"
@@ -25,82 +15,16 @@
       <br />
       <i class="fab fa-facebook-square"></i>
       <a href="https://www.facebook.com/events/2320633134677418/">
-        Seuraa tapahtumaa Facebookissa</a
+        Seuraa tapahtumaa Facebookissa!</a
       >
+    </div>
       <i onclick="$('html, body').animate({scrollTop: $('#first').offset().top}, 1000);" class="fas fa-angle-down"></i>
-    </div>
   </div>
 
-  <div class="white-block">
-    <div class="container">
-      <div id="first" class="section">
-        <h2>Prodeko-yhteisön kärkitapahtuma</h2>
-        <p>
-          Jokavuotinen tapahtuma kokoaa yhteen Aalto-yliopiston tuotantotalouden
-          laitoksen, alumnin ja opiskelijat. Tänä vuonna juhlapäivää vietetään
-          perjantaina 5. huhtikuuta Otaniemessä ja laadukas ohjelma puheineen,
-          työpajoineen ja paneelikeskusteluineen kiteytyy pohtimaan
-          merkityksellisen liiketoiminnan mahdollisuuksia ja haasteita
-          erilaisista näkökulmista.
-        </p>
-        <p>
-          Prodeko-seminaari järjestettiin seminaarimuodossan ensimmäisen kerran
-          Prodekon 50-vuotisjuhlavuonna 2016. Sitä ennen Prodeko-yhteisön keräsi
-          vuosien ajan yhteen toukokuinen grillailuilta, jonka peruja
-          nykyisenlainen seminaarikin on. Kevään 2019 seminaari on
-          järjestyksessään neljäs, ja tapahtuma toteutetaan vapaaehtoisvoimin
-          yhteistyössä laitoksen, alumnin ja kiltalaisten kanssa. Erinomaisten
-          puhujien ja yhteisön arvoja heijastelevan sisällön lisäksi seminaari
-          tarjoaa mahdollisuuden koota yhteen ystävät omilta opiskeluajoilta ja
-          pysyä mukana tuotantotalouden ajankohtaisista tutkimusaiheista ja
-          liike-elämän polttavista kysymyksistä.
-        </p>
-        <p>
-          Lipunmyynti tapahtumaan avataan helmikuussa. Lisätietoja myöhemmin.
-        </p>
-      </div>
 
-      <div id="second" class="section">
-        <h2>Puhujat ja diskussantit</h2>
-        <p>Puhujat julkaistaan tällä sivulla myöhemmin.</p>
-      </div>
 
-      <div id="third" class="section">
-        <h2>Päivän ohjelma</h2>
 
-        <p>
-          <br />Ajat ja ohjelma tarkentuvat myöhemmin.
-          <br />
-          <br />
-          <i>Kandidaattikeskus (myös Päälafkaksi kutsuttu), Otakaari 1</i>
-          <br />
-          <br />12:30 Tervetuloa <br />12:40 Avauspuheenvuoro
-          <br />
-          12:50 - 16:30 Puheita, työpajoja ja paneelikeskustelu, sis. kahvitauko
-          <br />
-          <br /><i>Väre, Otaniementie 12</i>
-          <br />
-          <br />17:00 Cocktail-tilaisuus alkaa <br />18:30 Päivällinen
-          <br />21:30 Kuljetus jatkoille
-        </p>
-      </div>
-      <div id="fourth" class="section">
-        <h2>Seminaaritiimin esittely</h2>
-
-        <p>Tänä vuonna Prodeko-seminaaria ovat tekemässä:</p>
-        <p>
-          Timo Moilanen, Mary-Ann Alftan, Risto Rajala, Perttu Nihti, Christine
-          Korjus, Maria Haukka, Sara Ikonen, Matias Hynönen, Tua Videman, Teemu
-          Mikola ja Niko Kinnunen
-        </p>
-        <p>
-          Kiltalaisten haku seminaaritiimiin on vuosittain marraskuussa ja
-          valinnat tehdään killan toisessa vaalikokouksessa.
-        </p>
-      </div>
-    </div>
-  </div>
-</div>
+		{% placeholder "content" %}
 
 
 
