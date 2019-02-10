@@ -1,6 +1,6 @@
 /* SIDENAV */
 
-@import "variables.scss";
+@import 'variables.scss';
 
 #sidenav {
   list-style-type: none;
@@ -10,10 +10,14 @@
   min-width: 15em;
   display: flex;
   justify-content: center;
+  position: fixed;
 
   a {
     color: lightgrey;
     text-transform: uppercase;
+    &:hover {
+      color: white;
+    }
   }
 
   .sidemenu-collapsable {
