@@ -6,11 +6,12 @@
   list-style-type: none;
   background-color: $blue-dark;
   padding: 1em;
-  min-height: 20em;
+  min-height: 15em;
   min-width: 15em;
   display: flex;
   justify-content: center;
   position: fixed;
+  bottom: 1rem;
 
   a {
     color: lightgrey;
