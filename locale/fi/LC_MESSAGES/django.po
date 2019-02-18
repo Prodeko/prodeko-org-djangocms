@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-17 17:04+0000\n"
+"POT-Creation-Date: 2019-02-18 18:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: abisivut/cms_apps.py:11
+msgid "High school student page"
+msgstr "Abisivut"
 
 #: auth_prodeko/admin.py:14
 msgid "Personal info"
@@ -30,11 +34,11 @@ msgstr "Oikeudet"
 msgid "Important dates"
 msgstr "Tärkeitä päivämääriä"
 
-#: auth_prodeko/forms.py:23
+#: auth_prodeko/forms.py:24
 msgid "Incorrect password"
 msgstr "Väärä salasana"
 
-#: auth_prodeko/forms.py:42 auth_prodeko/forms.py:43
+#: auth_prodeko/forms.py:43 auth_prodeko/forms.py:45
 msgid "Passwords don't match"
 msgstr "Salasanat eivät täsmää"
 
@@ -42,11 +46,21 @@ msgstr "Salasanat eivät täsmää"
 msgid "email address"
 msgstr "sähköposti"
 
-#: auth_prodeko/models.py:66
+#: auth_prodeko/models.py:51
+msgid "Has accepted Prodeko's privacy and cookie policies"
+msgstr "Käyttäjä on hyväksynyt Prodekon tietosuojalausekkeen ja evästeiden käytön"
+
+#: auth_prodeko/models.py:52
+msgid ""
+"Designates whether the user has accepted Prodeko's privacy policy and cookie "
+"policy."
+msgstr "Määrittää, onko käyttäjä hyväksynyt Prodekon tietosuojlausekkeen ja evästeiden käytön."
+
+#: auth_prodeko/models.py:75
 msgid "user"
 msgstr "käyttäjä"
 
-#: auth_prodeko/models.py:67
+#: auth_prodeko/models.py:76
 msgid "Users"
 msgstr "Käyttäjät"
 
@@ -63,7 +77,7 @@ msgstr "Nimi"
 
 #: auth_prodeko/templates/accounts/user_profile.html:11
 #: auth_prodeko/templates/accounts/user_profile.html:17
-#: prodekoorg/app_apply_for_membership/models.py:48
+#: prodekoorg/app_apply_for_membership/models.py:70
 #: prodekoorg/app_kulukorvaus/models.py:49
 #: prodekoorg/app_kulukorvaus/printing.py:88
 #: prodekoorg/app_toimarit/models.py:80
@@ -189,31 +203,33 @@ msgstr "kurssit"
 msgid "Courses"
 msgstr "Kurssit"
 
-#: prodekoorg/app_apply_for_membership/admin.py:46
+#: prodekoorg/app_apply_for_membership/admin.py:51
 msgid "View"
 msgstr "Katsele"
 
-#: prodekoorg/app_apply_for_membership/admin.py:47
+#: prodekoorg/app_apply_for_membership/admin.py:52
 msgid "Accept"
 msgstr "Hyväksy"
 
-#: prodekoorg/app_apply_for_membership/admin.py:48
+#: prodekoorg/app_apply_for_membership/admin.py:53
 msgid "Reject"
 msgstr "Hylkää"
 
-#: prodekoorg/app_apply_for_membership/admin.py:53
+#: prodekoorg/app_apply_for_membership/admin.py:58
 msgid "Application actions"
 msgstr "Hakemustoimenpiteet"
 
 #: prodekoorg/app_apply_for_membership/cms_apps.py:11
-msgid "Apply For Membership"
+#, fuzzy
+#| msgid "Apply for a membership"
+msgid "Apply for membership"
 msgstr "Hae jäsenyyttä"
 
-#: prodekoorg/app_apply_for_membership/forms.py:32
+#: prodekoorg/app_apply_for_membership/forms.py:36
 msgid "An application or account associated with this email already exists"
 msgstr "Jäsenhakemus tai käyttäjä tällä sähköpostiosoitteella on jo olemassa."
 
-#: prodekoorg/app_apply_for_membership/forms.py:41
+#: prodekoorg/app_apply_for_membership/forms.py:46
 msgid ""
 "If you are studying at Aalto apply as a true member. Otherwise, apply as "
 "external member."
@@ -221,105 +237,111 @@ msgstr ""
 "Mikäli opiskelet Aalto-yliopistossa hae varsinaiseksi jäseneksi. Muuten hae "
 "ulkojäseneksi"
 
-#: prodekoorg/app_apply_for_membership/groups_api.py:61
+#: prodekoorg/app_apply_for_membership/groups_api.py:62
 msgid "Successfully added {} to {} mailing list."
 msgstr "Lisätty {} onnistuneesti {} sähköpostilistalle."
 
-#: prodekoorg/app_apply_for_membership/groups_api.py:66
+#: prodekoorg/app_apply_for_membership/groups_api.py:67
 msgid "Error adding a member to {}: {} is already a member."
 msgstr "Virhe lisättäessä listalle {}: {} on jo listan jäsen."
 
-#: prodekoorg/app_apply_for_membership/groups_api.py:69
+#: prodekoorg/app_apply_for_membership/groups_api.py:70
 msgid ""
 "Invalid credentials. Check documentation and validate setup in G Suite and "
 "GCP API console."
-msgstr "Virheelliset tunnukset. Lue dokumentaatio uudestaan ja tarkista että G Suite sekä GCP API console on määritetty oikein."
+msgstr ""
+"Virheelliset tunnukset. Lue dokumentaatio uudestaan ja tarkista että G Suite "
+"sekä GCP API console on määritetty oikein."
 
-#: prodekoorg/app_apply_for_membership/models.py:23
+#: prodekoorg/app_apply_for_membership/models.py:45
 msgid "True member"
 msgstr "Varsinainen jäsen"
 
-#: prodekoorg/app_apply_for_membership/models.py:24
+#: prodekoorg/app_apply_for_membership/models.py:46
 msgid "Alumn"
 msgstr "Alumni"
 
-#: prodekoorg/app_apply_for_membership/models.py:25
+#: prodekoorg/app_apply_for_membership/models.py:47
 msgid "External member"
 msgstr "Ulkojäsen"
 
-#: prodekoorg/app_apply_for_membership/models.py:29
+#: prodekoorg/app_apply_for_membership/models.py:51
 msgid "Yes"
 msgstr "Kyllä"
 
-#: prodekoorg/app_apply_for_membership/models.py:30
+#: prodekoorg/app_apply_for_membership/models.py:52
 msgid "No"
 msgstr "Ei"
 
-#: prodekoorg/app_apply_for_membership/models.py:34 prodekoorg/settings.py:95
+#: prodekoorg/app_apply_for_membership/models.py:56 prodekoorg/settings.py:95
 #: prodekoorg/settings.py:107
 msgid "Finnish"
 msgstr "Suomi"
 
-#: prodekoorg/app_apply_for_membership/models.py:35
+#: prodekoorg/app_apply_for_membership/models.py:57
 msgid "Other (English)"
 msgstr "Englanti"
 
-#: prodekoorg/app_apply_for_membership/models.py:44
+#: prodekoorg/app_apply_for_membership/models.py:66
 #: prodekoorg/app_toimarit/models.py:36 prodekoorg/app_toimarit/models.py:74
 msgid "First name"
 msgstr "Etunimi"
 
-#: prodekoorg/app_apply_for_membership/models.py:45
+#: prodekoorg/app_apply_for_membership/models.py:67
 #: prodekoorg/app_toimarit/models.py:37 prodekoorg/app_toimarit/models.py:75
 msgid "Last name"
 msgstr "Sukunimi"
 
-#: prodekoorg/app_apply_for_membership/models.py:46
+#: prodekoorg/app_apply_for_membership/models.py:68
 msgid "Hometown"
 msgstr "Kotikaupunki"
 
-#: prodekoorg/app_apply_for_membership/models.py:47
+#: prodekoorg/app_apply_for_membership/models.py:69
 msgid "Field of study"
 msgstr "Opiskeluala"
 
-#: prodekoorg/app_apply_for_membership/models.py:49
+#: prodekoorg/app_apply_for_membership/models.py:71
 #: prodekoorg/app_kulukorvaus/admin.py:12
 msgid "Year"
 msgstr "Vuosi"
 
-#: prodekoorg/app_apply_for_membership/models.py:50
+#: prodekoorg/app_apply_for_membership/models.py:72
 msgid "Nationality (language)"
 msgstr "Kansallisuus (kieli)"
 
-#: prodekoorg/app_apply_for_membership/models.py:51
+#: prodekoorg/app_apply_for_membership/models.py:73
 msgid "Membership type"
 msgstr "Jäsentyyppi"
 
-#: prodekoorg/app_apply_for_membership/models.py:52
+#: prodekoorg/app_apply_for_membership/models.py:74
 msgid "Why do you want to become a member?"
 msgstr "Miksi haluat jäseneksi?"
 
-#: prodekoorg/app_apply_for_membership/models.py:53
+#: prodekoorg/app_apply_for_membership/models.py:75
 msgid "Are you an AYY (Aalto University Student Union) member?"
 msgstr "Oletko AYY:n jäsen?"
 
-#: prodekoorg/app_apply_for_membership/models.py:54
+#: prodekoorg/app_apply_for_membership/models.py:76
 msgid "Receipt of the membership payment"
 msgstr "Kuitti jäsenmaksusta"
 
-#: prodekoorg/app_apply_for_membership/models.py:63
+#: prodekoorg/app_apply_for_membership/models.py:78
+msgid "Has accepted policies"
+msgstr "Hyväksynyt tietosuojalausekkeen ja evästeiden käytön"
+
+#: prodekoorg/app_apply_for_membership/models.py:86
 msgid "Membership application accepted."
 msgstr "Jäsenhakemus hyväsytty"
 
-#: prodekoorg/app_apply_for_membership/models.py:68
+#: prodekoorg/app_apply_for_membership/models.py:91
 msgid "Membership application rejected."
 msgstr "Jäsenhakemus hylätty"
 
-#: prodekoorg/app_apply_for_membership/models.py:105
+#: prodekoorg/app_apply_for_membership/models.py:128
 msgid "membership application"
 msgstr "jäsenhakemus"
 
-#: prodekoorg/app_apply_for_membership/models.py:106
+#: prodekoorg/app_apply_for_membership/models.py:129
 msgid "Membership applications"
 msgstr "Jäsenhakemukset"
 
@@ -336,41 +358,6 @@ msgid "Membership application received!"
 msgstr "Hakemus vastaanotettu!"
 
 #: prodekoorg/app_apply_for_membership/templates/form_apply.html:3
-#: prodekoorg/templates/layout-components/navbar.html:5
-msgid "Apply for a membership"
-msgstr "Hae jäsenyyttä"
-
-#: prodekoorg/app_apply_for_membership/templates/form_apply.html:4
-msgid ""
-"The membership payment has to be paid according to the following "
-"instructions:"
-msgstr "Jäsenmaksu tulee suorittaa seuraavien maksuohjeiden mukaisesti:"
-
-#: prodekoorg/app_apply_for_membership/templates/form_apply.html:5
-msgid "Receiver: Tuotantotalouden kilta Prodeko ry"
-msgstr "Saaja: Tuotantotalouden kilta Prodeko ry"
-
-#: prodekoorg/app_apply_for_membership/templates/form_apply.html:6
-msgid "IBAN: FI61 8000 1178 9578 42"
-msgstr "IBAN: FI61 8000 1178 9578 42"
-
-#: prodekoorg/app_apply_for_membership/templates/form_apply.html:7
-msgid "BIC: DABAFIHH"
-msgstr "BIC: DABAFIHH"
-
-#: prodekoorg/app_apply_for_membership/templates/form_apply.html:8
-msgid ""
-"Reference number: 13 (if it is not possible to add a reference number, input "
-"your name as the payment message)"
-msgstr ""
-"Viitenumero: 13 (jos viitenumeron asettaminen ei onnistu, lisää viestiksi "
-"oma nimesi)"
-
-#: prodekoorg/app_apply_for_membership/templates/form_apply.html:9
-msgid "Amount: 8€"
-msgstr "Määrä: 8€"
-
-#: prodekoorg/app_apply_for_membership/templates/form_apply.html:10
 #: prodekoorg/app_kulukorvaus/models.py:97
 #: prodekoorg/app_kulukorvaus/templates/form_kulukorvaus_kulu.html:4
 msgid "Receipt"
@@ -381,16 +368,18 @@ msgid "^apply/$"
 msgstr "^hae-jaseneksi/$"
 
 #: prodekoorg/app_kulukorvaus/cms_apps.py:11
-msgid "Reimbursement Application"
+#, fuzzy
+#| msgid "Reimbursement Application"
+msgid "Reimbursement application"
 msgstr "Kulukorvaushakemus"
 
-#: prodekoorg/app_kulukorvaus/forms.py:68
+#: prodekoorg/app_kulukorvaus/forms.py:66
 msgid ""
 "e.g. \"Food expenses\", \"Coffee to the guildroom\" or \"Mileage allowance\""
 msgstr ""
 "esim. \"Ruokakulut\", \"Kahvia kiltahuoneelle\" tai \"Kilometrikorvaus\""
 
-#: prodekoorg/app_kulukorvaus/forms.py:69
+#: prodekoorg/app_kulukorvaus/forms.py:67
 msgid "e.g. \"Fall sitz\", \"Freshmen meetup\" or \"Guildroom renovations\""
 msgstr ""
 "e.g. \"Syyssitsit\", \"Fuksiryhmätapaaminen\" tai \"Kiltahuoneen uudistaminen"
@@ -572,7 +561,7 @@ msgstr "^tiedostot/"
 msgid "^files/download/(?P<pk>\\d+)/$"
 msgstr "^tiedostot/download/(?P<pk>\\d+)/$"
 
-#: prodekoorg/app_toimarit/admin.py:48 prodekoorg/app_toimarit/admin.py:56
+#: prodekoorg/app_toimarit/admin.py:49 prodekoorg/app_toimarit/admin.py:57
 msgid "Export selected as CSV"
 msgstr "Vie valitut CSV:hen"
 
@@ -671,11 +660,11 @@ msgstr "Dokumentaatio"
 msgid "Log out"
 msgstr "Kirjaudu ulos"
 
-#: prodekoorg/app_toimarit/views.py:37
+#: prodekoorg/app_toimarit/views.py:38
 msgid "CSV imported successfully."
 msgstr "CSV-tiedosto ladattu onnistuneesti"
 
-#: prodekoorg/app_toimarit/views.py:39
+#: prodekoorg/app_toimarit/views.py:40
 msgid "Error downloading CSV: {}"
 msgstr "Virhe csv:tä ladattaessa: {}"
 
@@ -877,13 +866,17 @@ msgstr "/tietosuoja"
 msgid "Login"
 msgstr "Kirjaudu"
 
-#: prodekoorg/urls.py:35
+#: prodekoorg/templates/layout-components/navbar.html:5
+msgid "Apply for a membership"
+msgstr "Hae jäsenyyttä"
+
+#: prodekoorg/urls.py:67
 msgid "^weekly-bulletin/"
 msgstr "^tiedotteet/"
 
-#: seminaari/templates/seminaari.html:5
-msgid "Ilmoittaudu!"
-msgstr "Apply!"
+#: seminaari/cms_apps.py:11
+msgid "Prodeko seminar page"
+msgstr "Prodeko-seminaari sivu"
 
 #: tiedotteet/info/forms.py:17 tiedotteet/info/forms.py:47
 msgid "Otsikko"
@@ -957,6 +950,36 @@ msgstr ""
 #: tiedotteet/info/forms.py:107
 msgid "TLS salaus päällä"
 msgstr ""
+
+#~ msgid "Apply For Membership"
+#~ msgstr "Hae jäsenyyttä"
+
+#~ msgid ""
+#~ "The membership payment has to be paid according to the following "
+#~ "instructions:"
+#~ msgstr "Jäsenmaksu tulee suorittaa seuraavien maksuohjeiden mukaisesti:"
+
+#~ msgid "Receiver: Tuotantotalouden kilta Prodeko ry"
+#~ msgstr "Saaja: Tuotantotalouden kilta Prodeko ry"
+
+#~ msgid "IBAN: FI61 8000 1178 9578 42"
+#~ msgstr "IBAN: FI61 8000 1178 9578 42"
+
+#~ msgid "BIC: DABAFIHH"
+#~ msgstr "BIC: DABAFIHH"
+
+#~ msgid ""
+#~ "Reference number: 13 (if it is not possible to add a reference number, "
+#~ "input your name as the payment message)"
+#~ msgstr ""
+#~ "Viitenumero: 13 (jos viitenumeron asettaminen ei onnistu, lisää viestiksi "
+#~ "oma nimesi)"
+
+#~ msgid "Amount: 8€"
+#~ msgstr "Määrä: 8€"
+
+#~ msgid "Ilmoittaudu!"
+#~ msgstr "Apply!"
 
 #~ msgid "Prodeko kulukorvaus"
 #~ msgstr "Prodeko reimbuursement claim"
