@@ -15,14 +15,13 @@
 		{% block extra_head %}{% endblock %}
 	</head>
 	<body>
-
     {% include "snippets/ga-body.html" %}
+
 		{% cms_toolbar %}
 
-		{% block content %}
-		{% endblock %}
-		{% render_block "js" %}
+    {% block content %}{% endblock %}
 
+    {% render_block "js" %}
 	</body>
 </html>
 
