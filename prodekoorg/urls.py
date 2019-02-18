@@ -51,6 +51,13 @@ urlpatterns += i18n_patterns(
 
     # ==== auth_prodeko ==== #
     url(r'^', include('auth_prodeko.urls', namespace='auth_prodeko')),
+    # ==== app_apply_for_membership ==== #
+    url(r'^', include('prodekoorg.app_apply_for_membership.urls',
+                      namespace='app_apply_for_membership')),
+    # ==== app_kulukorvaus ==== #
+    url(r'^', include('prodekoorg.app_kulukorvaus.urls', namespace='app_kulukorvaus')),
+    # ==== app_tiedostot ==== #
+    url(r'^', include('prodekoorg.app_tiedostot.urls', namespace='app_tiedostot')),
 
     # ==== tiedotteet.prodeko.org ==== #
     url(_(r'^weekly-bulletin/'),
