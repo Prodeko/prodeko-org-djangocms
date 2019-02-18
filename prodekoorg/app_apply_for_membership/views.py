@@ -60,8 +60,7 @@ def send_email(user):
     text_content = render_to_string('info_mail.txt', {'user': user})
     html_content = render_to_string('info_mail.html', {'user': user})
 
-    # If DEBUG = True, email to DEV_EMAIl else
-    # email to mediakeisari@prodeko.org
+    # If DEBUG = True, email to DEV_EMAIl else email to mediakeisari@prodeko.org
     config = configparser.ConfigParser()
     config.read(os.path.join(settings.BASE_DIR, 'prodekoorg/variables.txt'))
 
