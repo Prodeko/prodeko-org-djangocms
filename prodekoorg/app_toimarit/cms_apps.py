@@ -8,7 +8,7 @@ from prodekoorg.app_toimarit.views import list_boardmembers, list_guildofficials
 @apphook_pool.register
 class ToimaritApphook(CMSApp):
     app_name = "app_toimarit"
-    name = _("Officials")
+    name = _("Guild officials application")
 
     def get_urls(self, page=None, language=None, **kwargs):
         return [
@@ -19,7 +19,7 @@ class ToimaritApphook(CMSApp):
 @apphook_pool.register
 class HallitusApphook(CMSApp):
     app_name = "app_toimarit"
-    name = _("Board")
+    name = _("Board of Prodeko application")
 
     def get_urls(self, page=None, language=None, **kwargs):
         return [

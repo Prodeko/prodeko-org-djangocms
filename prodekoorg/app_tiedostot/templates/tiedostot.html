@@ -11,10 +11,9 @@
 
 <div class="container">
 
-	{% include "layout-components/breadcrumb.html" %}
-	{% placeholder "content" %}
+  {% include "layout-components/breadcrumb.html" %}
 
-  <h1>Tiedostot</h1>
+  {% placeholder "content" %}
 
   {% for tiedosto in tiedostot %}
   <div class="col-md-3">

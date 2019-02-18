@@ -8,7 +8,7 @@ from .views import main
 @apphook_pool.register
 class TiedostotApphook(CMSApp):
     app_name = "app_tiedostot"
-    name = _("Documents")
+    name = _("Files application")
 
     def get_urls(self, page=None, language=None, **kwargs):
         return [

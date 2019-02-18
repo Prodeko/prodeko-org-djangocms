@@ -8,7 +8,7 @@ from .views import docs
 @apphook_pool.register
 class MinutesApphook(CMSApp):
     app_name = "app_poytakirjat"
-    name = _("Minutes")
+    name = _("Board meeting minutes application")
 
     def get_urls(self, page=None, language=None, **kwargs):
         return [

@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load cms_tags sekizai_tags sass_tags i18n %}
+{% load cms_tags menu_tags sekizai_tags sass_tags i18n %}
 
 {% block extra_head %}
 <script src="/static/js/apply_for_membership-custom.js"></script>
@@ -13,8 +13,6 @@
 {% trans "Submit" as submit %}
 
 <div class="container apply-container">
-
-  {% include "layout-components/breadcrumb.html" %}
 
 	{% if done %}
 		{% include "application_complete.html" %}
