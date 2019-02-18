@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-18 18:12+0000\n"
+"POT-Creation-Date: 2019-02-18 21:50+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -48,13 +48,16 @@ msgstr "sähköposti"
 
 #: auth_prodeko/models.py:51
 msgid "Has accepted Prodeko's privacy and cookie policies"
-msgstr "Käyttäjä on hyväksynyt Prodekon tietosuojalausekkeen ja evästeiden käytön"
+msgstr ""
+"Käyttäjä on hyväksynyt Prodekon tietosuojalausekkeen ja evästeiden käytön"
 
 #: auth_prodeko/models.py:52
 msgid ""
 "Designates whether the user has accepted Prodeko's privacy policy and cookie "
 "policy."
-msgstr "Määrittää, onko käyttäjä hyväksynyt Prodekon tietosuojlausekkeen ja evästeiden käytön."
+msgstr ""
+"Määrittää, onko käyttäjä hyväksynyt Prodekon tietosuojalausekkeen ja "
+"evästeiden käytön."
 
 #: auth_prodeko/models.py:75
 msgid "user"
@@ -220,10 +223,8 @@ msgid "Application actions"
 msgstr "Hakemustoimenpiteet"
 
 #: prodekoorg/app_apply_for_membership/cms_apps.py:11
-#, fuzzy
-#| msgid "Apply for a membership"
-msgid "Apply for membership"
-msgstr "Hae jäsenyyttä"
+msgid "Apply for Prodeko membership application"
+msgstr "Sovellus Prodekon jäseneksi liittymiseksi"
 
 #: prodekoorg/app_apply_for_membership/forms.py:36
 msgid "An application or account associated with this email already exists"
@@ -385,8 +386,7 @@ msgstr ""
 "e.g. \"Syyssitsit\", \"Fuksiryhmätapaaminen\" tai \"Kiltahuoneen uudistaminen"
 "\""
 
-#: prodekoorg/app_kulukorvaus/models.py:31
-#: prodekoorg/app_toimarit/cms_apps.py:22 prodekoorg/app_vaalit/models.py:11
+#: prodekoorg/app_kulukorvaus/models.py:31 prodekoorg/app_vaalit/models.py:11
 #: prodekoorg/app_vaalit/templates/vaalit_nav.html:3
 msgid "Board"
 msgstr "Hallitus"
@@ -500,18 +500,19 @@ msgstr ""
 "hallituksen kokouksessa. Jos havaitset virheitä pdf:n tiedoissa, ota "
 "välittömästi yhteys rahastonhoitajaan rahastonhoitaja@prodeko.org."
 
+#: prodekoorg/app_kulukorvaus/templates/kulukorvaus_error.html:6
+msgid ""
+"Something went wrong. Contact mediakeisari@prodeko.org to get the issue "
+"resolved."
+msgstr "Jotakin meni pieleen. Ota yhteyttä mediakeisari@prodeko.org ongelman selvittämiseksi."
+
 #: prodekoorg/app_kulukorvaus/templates/kulukorvaus_forms.html:3
 msgid "Add reimbursement"
 msgstr "Lisää kulu"
 
-#: prodekoorg/app_kulukorvaus/urls.py:8
-msgid "^reimbursement/$"
-msgstr "^kulukorvaus/$"
-
 #: prodekoorg/app_poytakirjat/cms_apps.py:11
-#: prodekoorg/app_poytakirjat/models.py:56
-msgid "Minutes"
-msgstr "Pöytäkirjat"
+msgid "Board meeting minutes application"
+msgstr "Sovellus hallituksen pöytäkirjat lataamiseksi"
 
 #: prodekoorg/app_poytakirjat/gdrive_api.py:303
 msgid "Downloaded {} proceedings documents from G Drive."
@@ -525,6 +526,10 @@ msgstr "Virhe pöytäkirjoja ladattaessa: {}"
 msgid "minutes"
 msgstr "pöytäkirja"
 
+#: prodekoorg/app_poytakirjat/models.py:56
+msgid "Minutes"
+msgstr "Pöytäkirjat"
+
 #: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/Dokumentti/change_list.html:52
 msgid "Download minutes from Drive"
 msgstr "Lataa pöytäkirjat Drivestä"
@@ -533,13 +538,9 @@ msgstr "Lataa pöytäkirjat Drivestä"
 msgid "How does this work"
 msgstr "Miten lataaminen toimii"
 
-#: prodekoorg/app_poytakirjat/urls.py:8
-msgid "^documents/"
-msgstr "^dokumentit/"
-
 #: prodekoorg/app_tiedostot/cms_apps.py:11
-msgid "Documents"
-msgstr "Tiedostot"
+msgid "Files application"
+msgstr "Sovellus tiedostojen lataamiseksi"
 
 #: prodekoorg/app_tiedostot/models.py:27
 msgid "Files"
@@ -554,10 +555,6 @@ msgid "File versions"
 msgstr "Tiedostoversiot"
 
 #: prodekoorg/app_tiedostot/urls.py:8
-msgid "^files/$"
-msgstr "^tiedostot/"
-
-#: prodekoorg/app_tiedostot/urls.py:9
 msgid "^files/download/(?P<pk>\\d+)/$"
 msgstr "^tiedostot/download/(?P<pk>\\d+)/$"
 
@@ -566,9 +563,12 @@ msgid "Export selected as CSV"
 msgstr "Vie valitut CSV:hen"
 
 #: prodekoorg/app_toimarit/cms_apps.py:11
-#: prodekoorg/app_vaalit/templates/vaalit_nav.html:4
-msgid "Officials"
-msgstr "Toimarit"
+msgid "Guild officials application"
+msgstr "Sovellus toimarisivulle"
+
+#: prodekoorg/app_toimarit/cms_apps.py:22
+msgid "Board of Prodeko application"
+msgstr "Sovellus hallitussivulle"
 
 #: prodekoorg/app_toimarit/models.py:22
 msgid "section"
@@ -794,6 +794,10 @@ msgstr "Rajaa kuva"
 msgid "Crop"
 msgstr "Rajaa"
 
+#: prodekoorg/app_vaalit/templates/vaalit_nav.html:4
+msgid "Officials"
+msgstr "Toimarit"
+
 #: prodekoorg/app_vaalit/templates/vaalit_question.html:4
 msgid "Remove"
 msgstr "Poista"
@@ -858,6 +862,10 @@ msgstr "Yhteydenottolomake"
 msgid "Privacy policy"
 msgstr "Tietosuoja"
 
+#: prodekoorg/templates/layout-components/footer.html:19
+msgid "/reimbursement"
+msgstr "/kulukorvaus"
+
 #: prodekoorg/templates/layout-components/footer.html:20
 msgid "/privacy"
 msgstr "/tietosuoja"
@@ -870,7 +878,7 @@ msgstr "Kirjaudu"
 msgid "Apply for a membership"
 msgstr "Hae jäsenyyttä"
 
-#: prodekoorg/urls.py:67
+#: prodekoorg/urls.py:63
 msgid "^weekly-bulletin/"
 msgstr "^tiedotteet/"
 
@@ -950,6 +958,23 @@ msgstr ""
 #: tiedotteet/info/forms.py:107
 msgid "TLS salaus päällä"
 msgstr ""
+
+#, fuzzy
+#~| msgid "Apply for a membership"
+#~ msgid "Apply for membership"
+#~ msgstr "Hae jäsenyyttä"
+
+#~ msgid "^reimbursement/$"
+#~ msgstr "^kulukorvaus/$"
+
+#~ msgid "^documents/"
+#~ msgstr "^dokumentit/"
+
+#~ msgid "Documents"
+#~ msgstr "Tiedostot"
+
+#~ msgid "^files/$"
+#~ msgstr "^tiedostot/"
 
 #~ msgid "Apply For Membership"
 #~ msgstr "Hae jäsenyyttä"
