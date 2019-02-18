@@ -1,3 +1,5 @@
+from smtplib import SMTPAuthenticationError
+
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
@@ -39,7 +41,8 @@ def download_kulukorvaus_pdf(request, perustiedot_id):
     # exist, raise HTTP404. If the user doesn't own the object
     # raise PermissionDenied.
     try:
-        model_perustiedot = KulukorvausPerustiedot.objects.get(id=perustiedot_id)
+        model_perustiedot = KulukorvausPerustiedot.objects.get(
+            id=perustiedot_id)
         if not request.user == model_perustiedot.created_by_user:
             raise PermissionDenied
     except KulukorvausPerustiedot.DoesNotExist:
@@ -47,7 +50,8 @@ def download_kulukorvaus_pdf(request, perustiedot_id):
 
     # Create the HttpResponse object with the appropriate PDF headers.
     filename = model_perustiedot.pdf_filename()
-    response = HttpResponse(model_perustiedot.pdf.file, content_type='application/pdf')
+    response = HttpResponse(model_perustiedot.pdf.file,
+                            content_type='application/pdf')
     response['Content-Disposition'] = 'attachment; filename="' + filename + '"'
     return response
 
@@ -136,15 +140,22 @@ def main_form(request):
             # to the KulukorvausPerustiedot object created above.
             add_pdf_to_model(model_perustiedot.id)
 
-            # Send email to the person who submitted the kulukorvaus
-            send_email(request.user, model_perustiedot.id, 'kulukorvaus.txt', model_perustiedot.email)
+            try:
+                # Send email to the person who submitted the kulukorvaus
+                send_email(request.user, model_perustiedot.id,
+                           'kulukorvaus.txt', model_perustiedot.email)
 
-            # Send email to rahastonhoitaja@prodeko.org, or DEV_EMAIL if we are in debug mode.
-            email_to = 'rahastonhoitaja@prodeko.org' if not settings.DEBUG else settings.DEV_EMAIL
-            send_email(request.user, model_perustiedot.id, 'kulukorvaus_rahastonhoitaja.txt', email_to)
+                # Send email to rahastonhoitaja@prodeko.org, or DEV_EMAIL if we are in debug mode.
+                email_to = 'rahastonhoitaja@prodeko.org' if not settings.DEBUG else settings.DEV_EMAIL
+                send_email(request.user, model_perustiedot.id,
+                           'kulukorvaus_rahastonhoitaja.txt', email_to)
+            except SMTPAuthenticationError:
+                # Google server doesn't authenticate no-reply@prodeko.org.
+                # Most likely the password to said account is configured incorrectly
+                return render(request, 'kulukorvaus_error.html', status=500)
 
-            # Successfull form submission - render page displaying
-            # info and pdf download link.
+                # Successfull form submission - render page displaying
+                # info and pdf download link.
             return render(request, 'kulukorvaus.html', {'done': True,
                                                         'perustiedot_id': model_perustiedot.id
                                                         })
@@ -184,7 +195,8 @@ def send_email(user, perustiedot_id, template, email_to):
     # This fetches all the Kulukorvaus objects whose 'info' foreign key
     # attribute is the KulukorvausPerustiedot object obtained above.
     models_kulukorvaukset = model_perustiedot.kulukorvaus_set.all()
-    subject = 'Prodeko kulukorvaus - {} {}'.format(user.first_name, user.last_name)
+    subject = 'Prodeko kulukorvaus - {} {}'.format(
+        user.first_name, user.last_name)
     text_content = render_to_string(template, {
                                     'user': user,
                                     'model_perustiedot': model_perustiedot,
