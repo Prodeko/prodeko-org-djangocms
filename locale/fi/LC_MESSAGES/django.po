@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-18 21:50+0000\n"
+"POT-Creation-Date: 2019-02-19 09:49+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -47,9 +47,8 @@ msgid "email address"
 msgstr "sähköposti"
 
 #: auth_prodeko/models.py:51
-msgid "Has accepted Prodeko's privacy and cookie policies"
-msgstr ""
-"Käyttäjä on hyväksynyt Prodekon tietosuojalausekkeen ja evästeiden käytön"
+msgid "Accepted privacy and cookie policy"
+msgstr "Hyväksynyt tietosuojalausekkeen ja evästeiden käytön"
 
 #: auth_prodeko/models.py:52
 msgid ""
@@ -491,24 +490,32 @@ msgstr "Lataa pdf"
 
 #: prodekoorg/app_kulukorvaus/templates/kulukorvaus_done.html:8
 msgid ""
-"Your reimbursement claim has been received. The claim will be processed in "
+"✅ Your reimbursement claim has been received. The claim will be processed in "
 "the next Prodeko board meeting. If you notice any errors in the information "
 "below, contact Prodeko's treasurer immediately at rahastonhoitaja@prodeko."
 "org."
 msgstr ""
-"Kulukorvauksesi on vastaanotettu. Hakemus käsitellään seuraavassa "
+"✅  Kulukorvauksesi on vastaanotettu. Hakemus käsitellään seuraavassa "
 "hallituksen kokouksessa. Jos havaitset virheitä pdf:n tiedoissa, ota "
 "välittömästi yhteys rahastonhoitajaan rahastonhoitaja@prodeko.org."
 
 #: prodekoorg/app_kulukorvaus/templates/kulukorvaus_error.html:6
 msgid ""
-"Something went wrong. Contact mediakeisari@prodeko.org to get the issue "
+"⚠️ Something went wrong. Contact mediakeisari@prodeko.org to get the issue "
 "resolved."
-msgstr "Jotakin meni pieleen. Ota yhteyttä mediakeisari@prodeko.org ongelman selvittämiseksi."
+msgstr ""
+"️⚠️ Jotakin meni pieleen. Ota yhteyttä mediakeisari@prodeko.org ongelman "
+"selvittämiseksi."
 
 #: prodekoorg/app_kulukorvaus/templates/kulukorvaus_forms.html:3
 msgid "Add reimbursement"
 msgstr "Lisää kulu"
+
+#: prodekoorg/app_kulukorvaus/templates/kulukorvaus_policy.html:6
+msgid ""
+"📝 You have not accepted Prodeko's privacy policy. Please go to your profile "
+"and accept the policy in order to use the reimbursement form."
+msgstr "📝 Et ole hyväksynyt Prodekon tietosuojalauseketta. Käyttääksesi kulukorvauslomaketta sinun on hyväksyttävä tietosuojalauseke profiilisivultasi."
 
 #: prodekoorg/app_poytakirjat/cms_apps.py:11
 msgid "Board meeting minutes application"
