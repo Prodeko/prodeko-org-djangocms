@@ -107,6 +107,8 @@ def main_form(request):
         If the user isn't logged in, they are redirected to the login url.
     """
 
+    # If the user hasn't accepted Prodeko's privacy policy
+    # return a 'policy error' page.
     if not request.user.has_accepted_policies:
         return render(request, 'kulukorvaus.html', {'policy_error': True})
 
