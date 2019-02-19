@@ -13,7 +13,11 @@
 <div class="container kulukorvaus-container mt-4">
 
 	{% if done %}
-		{% include "kulukorvaus_done.html" with perustiedot_id=perustiedot_id %}
+    {% include "kulukorvaus_done.html" with perustiedot_id=perustiedot_id %}
+  {% elif policy_error %}
+    {% include "kulukorvaus_policy.html"%}
+  {% elif error %}
+    {% include "kulukorvaus_error.html"%}
   {% else %}
 
     {% placeholder "content" %}

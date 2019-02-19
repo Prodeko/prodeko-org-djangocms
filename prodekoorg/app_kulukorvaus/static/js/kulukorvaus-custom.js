@@ -33,10 +33,7 @@ $(document).ready(function () {
 
       // Re-renders the same page with error texts.
       error: function (xhr, errmsg, err) {
-        if (xhr.status === 500) {
-          dataLayer.push({'event' : 'formError', 'formName' : 'form_kulukorvaus'});
-          $("#form_kulukorvaus").replaceWith(xhr.responseText);
-        } else if (xhr.status === 599) {
+        if (xhr.status === 599) {
           // Google Analytics form error tracking
           dataLayer.push({'event' : 'formError', 'formName' : 'form_kulukorvaus'});
           $("#forms-wrapper").replaceWith(xhr.responseText);

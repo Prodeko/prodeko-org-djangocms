@@ -35,7 +35,9 @@
     }
   }
 
-  #kulukorvaus-done, #kulukorvaus-error {
+  #kulukorvaus-done,
+  #kulukorvaus-error,
+  #kulukorvaus-policies {
     a {
       color: white;
       padding: 6px 15px;
@@ -44,7 +46,7 @@
     }
 
     img {
-      max-width: 60%;
+      max-width: 50%;
       display: block;
       margin: 0 auto 2.5em auto;
     }

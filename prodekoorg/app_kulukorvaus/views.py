@@ -107,6 +107,9 @@ def main_form(request):
         If the user isn't logged in, they are redirected to the login url.
     """
 
+    if not request.user.has_accepted_policies:
+        return render(request, 'kulukorvaus.html', {'policy_error': True})
+
     # Django docs: "A formset is a layer of abstraction to work
     # with multiple forms on the same page." In this case we might
     # have multiple KulukorvausForms in the same page but only one
@@ -152,7 +155,7 @@ def main_form(request):
             except SMTPAuthenticationError:
                 # Google server doesn't authenticate no-reply@prodeko.org.
                 # Most likely the password to said account is configured incorrectly
-                return render(request, 'kulukorvaus_error.html', status=500)
+                return render(request, 'kulukorvaus.html', {'error': True})
 
                 # Successfull form submission - render page displaying
                 # info and pdf download link.
