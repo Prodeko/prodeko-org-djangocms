@@ -48,7 +48,7 @@ class User(AbstractUser):
     email = models.EmailField(verbose_name=_('email address'), unique=True)
     has_accepted_policies = models.BooleanField(
         default=False,
-        verbose_name=_('Has accepted Prodeko\'s privacy and cookie policies'),
+        verbose_name=_('Accepted privacy and cookie policy'),
         help_text=_('Designates whether the user has accepted Prodeko\'s privacy policy and cookie policy.'))
 
     USERNAME_FIELD = 'email'
