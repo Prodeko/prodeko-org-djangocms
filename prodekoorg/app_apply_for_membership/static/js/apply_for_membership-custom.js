@@ -34,39 +34,40 @@ $(document).ready(function() {
   }
 
   function acceptPolicy() {
-    $("input#id_has_accepted_policies").val("True");
-    $("#policyModal").modal("hide");
+    $("button[type=submit]").removeAttr("disabled");
+    $("#policy-not-accepted").fadeOut("fast");
     hasAcceptedPolicies = true;
   }
 
   function denyPolicy() {
-    $("input#id_has_accepted_policies").val("False");
-    $("#policyModal").modal("hide");
+    $("button[type=submit]").attr("disabled", "");
+    $("#policy-not-accepted").fadeIn("fast");
     hasAcceptedPolicies = false;
-    window.location.href = "/"; // Redirect to index
   }
 
   document
     .getElementById("id_receipt")
     .addEventListener("change", showFileName);
 
-  document
-    .getElementById("accept_policy")
-    .addEventListener("click", acceptPolicy);
-
-  document
-  .getElementById("deny_policy")
-  .addEventListener("click", denyPolicy);
-
   var formApply = $("#form_apply");
   var hasAcceptedPolicies = false;
+
+  document
+    .getElementById("id_has_accepted_policies")
+    .addEventListener("change", function() {
+      if (this.checked) {
+        acceptPolicy();
+      } else {
+        denyPolicy();
+      }
+    });
 
   formApply.on("submit", function(e) {
     e.preventDefault();
     formData = new FormData(formApply.get(0));
 
     if (!hasAcceptedPolicies) {
-      $("#policyModal").modal("show");
+      denyPolicy();
     } else {
       $.ajax({
         url: "",
@@ -77,7 +78,7 @@ $(document).ready(function() {
         success: function(data) {
           // Google Analytics form submission tracking
           dataLayer.push({ event: "formSubmitted", formName: "form_apply" });
-          //document.write(data);
+          document.write(data);
         },
 
         // Re-renders the same page with error texts.

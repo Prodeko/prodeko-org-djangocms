@@ -1,6 +1,8 @@
 {% load common_tags i18n %}
 
 {% trans "Receipt" as receipt %}
+{% trans "Privacy policy" as privacy_policy %}
+{% trans "Cookie policy" as cookie_policy %}
 
 <div id="form-apply-wrapper">
   <div class="form-group row">
@@ -114,51 +116,47 @@
       {% endif %}
     </div>
   </div>
-  <div class="form-group">
-    <div class="row">
-      <legend class="col-form-label col-sm-3 pt-0">{{ form.language.label }}</legend>
-      <div class="col-sm-6">
-        {% for choice in form.language %}
-        <div class="form-check">
-          {{ choice.tag|add_class:'form-check-input' }}
-          <label class="form-check-label" for="{{ form.language.auto_id }}_{{ forloop.counter0 }}">
-            {{ choice.choice_label }}
-          </label>
-        </div>
-        {% endfor %}
+  <div class="form-group row">
+    <legend class="col-form-label col-sm-3 pt-0">{{ form.language.label }}</legend>
+    <div class="col-sm-6">
+      {% for choice in form.language %}
+      <div class="form-check">
+        {{ choice.tag|add_class:'form-check-input' }}
+        <label class="form-check-label" for="{{ form.language.auto_id }}_{{ forloop.counter0 }}">
+          {{ choice.choice_label }}
+        </label>
       </div>
-      <div class="col-sm-3">
-        {% if form.language.errors %}
-          <small class="form-text text-danger">{{ form.language.errors.as_text }}</small>
-        {% endif %}
-      </div>
+      {% endfor %}
     </div>
-  </div>
-  <div class="form-group">
-    <div class="row">
-      <legend class="col-form-label col-sm-3 pt-0">{{ form.membership_type.label }}</legend>
-      <div class="col-sm-6">
-        {% for choice in form.membership_type %}
-        <div class="form-check">
-          {{ choice.tag|add_class:'form-check-input' }}
-          <label class="form-check-label" for="{{ form.membership_type.auto_id }}_{{ forloop.counter0 }}">
-            {{ choice.choice_label }}
-          </label>
-        </div>
-        {% endfor %}
-        {% if form.membership_type.help_text %}
-        <small class="form-text text-muted">{{ form.membership_type.help_text }}</small>
-        {% endif %}
-      </div>
-      <div class="col-sm-3">
-        {% if form.membership_type.errors %}
-          <small class="form-text text-danger">{{ form.membership_type.errors.as_text }}</small>
-        {% endif %}
-      </div>
+    <div class="col-sm-3">
+      {% if form.language.errors %}
+        <small class="form-text text-danger">{{ form.language.errors.as_text }}</small>
+      {% endif %}
     </div>
   </div>
   <div class="form-group row">
-    <label class="col-sm-3 col-form-label" for="{{ form.additional_info.id_for_label }}">{{ form.additional_info.label }}</label>
+    <legend class="col-form-label col-sm-3 pt-0">{{ form.membership_type.label }}</legend>
+    <div class="col-sm-6">
+      {% for choice in form.membership_type %}
+      <div class="form-check">
+        {{ choice.tag|add_class:'form-check-input' }}
+        <label class="form-check-label" for="{{ form.membership_type.auto_id }}_{{ forloop.counter0 }}">
+          {{ choice.choice_label }}
+        </label>
+      </div>
+      {% endfor %}
+      {% if form.membership_type.help_text %}
+      <small class="form-text text-muted">{{ form.membership_type.help_text }}</small>
+      {% endif %}
+    </div>
+    <div class="col-sm-3">
+      {% if form.membership_type.errors %}
+        <small class="form-text text-danger">{{ form.membership_type.errors.as_text }}</small>
+      {% endif %}
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label pt-0" for="{{ form.additional_info.id_for_label }}">{{ form.additional_info.label }}</label>
     <div class="col-sm-6">
       {% if not form.additional_info.errors and request.POST %}
         {{ form.additional_info|add_class:"is-valid" }}
@@ -174,28 +172,26 @@
       {% endif %}
     </div>
   </div>
-  <div class="form-group">
-    <div class="row">
-      <legend class="col-form-label col-sm-3 pt-0">{{ form.is_ayy_member.label }}</legend>
-      <div class="col-sm-6">
-        {% for choice in form.is_ayy_member %}
-        <div class="form-check">
-          {{ choice.tag|add_class:'form-check-input' }}
-          <label class="form-check-label" for="{{ form.is_ayy_member.auto_id }}_{{ forloop.counter0 }}">
-            {{ choice.choice_label }}
-          </label>
-        </div>
-        {% endfor %}
+  <div class="form-group row">
+    <legend class="col-form-label col-sm-3 pt-0">{{ form.is_ayy_member.label }}</legend>
+    <div class="col-sm-6">
+      {% for choice in form.is_ayy_member %}
+      <div class="form-check">
+        {{ choice.tag|add_class:'form-check-input' }}
+        <label class="form-check-label" for="{{ form.is_ayy_member.auto_id }}_{{ forloop.counter0 }}">
+          {{ choice.choice_label }}
+        </label>
       </div>
-      <div class="col-sm-3">
-        {% if form.is_ayy_member.errors %}
-          <small class="form-text text-danger">{{ form.is_ayy_member.errors.as_text }}</small>
-        {% endif %}
-      </div>
+      {% endfor %}
+    </div>
+    <div class="col-sm-3">
+      {% if form.is_ayy_member.errors %}
+        <small class="form-text text-danger">{{ form.is_ayy_member.errors.as_text }}</small>
+      {% endif %}
     </div>
   </div>
   <div class="form-group row">
-    <label class="col-sm-3 col-form-label" for="{{ form.receipt.id_for_label }}">{{ form.receipt.label }}</label>
+    <legend class="col-sm-3 col-form-label pt-0" for="{{ form.receipt.id_for_label }}">{{ form.receipt.label }}</legend>
     <div class="col-sm-6 receipt-btn-wrapper">
       <button class="btn btn-default mb-3">{% trans receipt %}</button>
       {% if not form.receipt.errors and request.POST %}
@@ -210,5 +206,14 @@
       {% endif %}
     </div>
   </div>
-  {{ form.has_accepted_policies }}
+  <div class="form-group row">
+    <legend class="col-sm-3 col-form-label pt-0" for="{{ form.has_accepted_policies.id_for_label }}">{{ form.has_accepted_policies.label }}</legend>
+    <div class="col-sm-1 mb-4">
+      {{ form.has_accepted_policies }}
+    </div>
+    <div class="col-sm-5">
+      <p class="mb-2"><a href="{% trans '/reimbursement' %}" target="_blank">{% trans privacy_policy %}</a></p>
+      <p><a href="{% trans '/cookies' %}" target="_blank">{% trans cookie_policy %}</a></p>
+    </div>
+  </div>
 </div>

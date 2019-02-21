@@ -1,5 +1,4 @@
-import configparser
-import os
+from smtplib import SMTPAuthenticationError
 
 from django.conf import settings
 from django.core.mail import EmailMultiAlternatives
@@ -34,7 +33,12 @@ def main_form(request):
                 return render(request, 'app_base.html', {'form': form_apply})
 
             pending_user.save()
-            send_email(pending_user)
+            try:
+                send_email(pending_user)
+            except SMTPAuthenticationError:
+                # Google server doesn't authenticate no-reply@prodeko.org.
+                # Most likely the password to said account is configured incorrectly
+                return render(request, 'app_base.html', {'error': True})
 
             return render(request, 'app_base.html', {'done': True})
         else:
@@ -56,14 +60,11 @@ def send_email(user):
         Nothing, sends an email message.
     """
 
-    subject = 'Uusi jäsenhakemus - {}'.format(user.name)
+    subject = 'Uusi jäsenhakemus - {} {}'.format(user.first_name, user.last_name)
     text_content = render_to_string('info_mail.txt', {'user': user})
     html_content = render_to_string('info_mail.html', {'user': user})
 
     # If DEBUG = True, email to DEV_EMAIl else email to mediakeisari@prodeko.org
-    config = configparser.ConfigParser()
-    config.read(os.path.join(settings.BASE_DIR, 'prodekoorg/variables.txt'))
-
     email_to = 'mediakeisari@prodeko.org' if not settings.DEBUG else settings.DEV_EMAIL
     from_email = settings.DEFAULT_FROM_EMAIL
     msg = EmailMultiAlternatives(subject, text_content, from_email, [email_to])

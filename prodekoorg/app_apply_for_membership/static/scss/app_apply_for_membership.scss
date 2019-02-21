@@ -1,6 +1,7 @@
 @import "../../../static/scss/breakpoints_mixin.scss";
 
-#application-done {
+#application-done,
+#application-error {
   text-align: center;
 
   img {
@@ -25,6 +26,10 @@
     font-size: 25px;
     color: rgb(141, 31, 31);
     vertical-align: middle;
+  }
+
+  input[type="checkbox"] {
+    transform: scale(1.3);
   }
 
   .receipt-btn-wrapper {

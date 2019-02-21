@@ -9,7 +9,7 @@
 <p>Opiskeluala: {{ user.field_of_study }}, aloitusvuosi: {{ user.start_year }}</p>
 <p>Kotikaupunki: {{ user.hometown }}</p>
 <p>J&auml;sentyyppi: {{ user.get_membership_type_display }}</p>
-<p>{% if user.additional_info|length &gt; 0 %}</p>
+<p>{% if user.additional_info|length > 0 %}</p>
 <p>Muuta: {{ user.additional_info }}</p>
 <p>{% endif %}</p>
 <p>&nbsp;</p>

@@ -75,7 +75,7 @@ class PendingUser(models.Model):
     is_ayy_member = models.CharField(max_length=1, choices=AYY_MEMBER_CHOICES, verbose_name=_('Are you an AYY (Aalto University Student Union) member?'))
     receipt = models.FileField(upload_to='jasenhakemukset/%Y-%m', verbose_name=_('Receipt of the membership payment'),
                                validators=[FileExtensionValidator(['jpg', 'png', 'jpeg'])])
-    has_accepted_policies = models.BooleanField(default=False, verbose_name=_('Has accepted policies'))
+    has_accepted_policies = models.BooleanField(default=False, verbose_name=_('I accept Prodeko\'s privacy and cookie policies.'))
 
     def accept_membership(self, request, account_id, *args, **kwargs):
         password = get_random_string(length=16)
