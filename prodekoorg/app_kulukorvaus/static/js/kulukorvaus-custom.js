@@ -1,23 +1,22 @@
-$(document).ready(function () {
-
+$(document).ready(function() {
   var csrftoken = $("[name=csrfmiddlewaretoken]").val();
   function csrfSafeMethod(method) {
     // these HTTP methods do not require CSRF protection
-    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+    return /^(GET|HEAD|OPTIONS|TRACE)$/.test(method);
   }
   $.ajaxSetup({
-    beforeSend: function (xhr, settings) {
+    beforeSend: function(xhr, settings) {
       if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
         xhr.setRequestHeader("X-CSRFToken", csrftoken);
       }
     }
   });
 
-
   var formKulukorvaus = $("#form_kulukorvaus");
-  formKulukorvaus.on("submit", function (e) {
+  formKulukorvaus.on("submit", function(e) {
     e.preventDefault();
-    formData = new FormData((formKulukorvaus).get(0));
+    $("button[type=submit]").attr("disabled", "");
+    formData = new FormData(formKulukorvaus.get(0));
 
     $.ajax({
       url: "",
@@ -25,19 +24,22 @@ $(document).ready(function () {
       data: formData,
       contentType: false, // Indicates 'multipart/form-data'
       processData: false,
-      success: function (data) {
+      success: function(data) {
         // Google Analytics form submission tracking
-        dataLayer.push({'event' : 'formSubmitted', 'formName' : 'form_kulukorvaus'});
+        dataLayer.push({
+          event: "formSubmitted",
+          formName: "form_kulukorvaus"
+        });
         document.write(data);
       },
 
       // Re-renders the same page with error texts.
-      error: function (xhr, errmsg, err) {
+      error: function(xhr, errmsg, err) {
         if (xhr.status === 599) {
           // Google Analytics form error tracking
-          dataLayer.push({'event' : 'formError', 'formName' : 'form_kulukorvaus'});
+          dataLayer.push({ event: "formError", formName: "form_kulukorvaus" });
           $("#forms-wrapper").replaceWith(xhr.responseText);
-          new Formset(document.querySelector('#form_kulukorvaus'));
+          new Formset(document.querySelector("#form_kulukorvaus"));
           handleFileUploads();
         }
       }
@@ -45,11 +47,11 @@ $(document).ready(function () {
   });
 
   function handleFileUploads() {
-    var arr = [].slice.call(document.querySelectorAll('[type*=file]'));
+    var arr = [].slice.call(document.querySelectorAll("[type*=file]"));
     arr.shift(); // Remove first element in the array which is the management form input button
 
-    arr.forEach(function (el) {
-      el.addEventListener('change', showFileName)
+    arr.forEach(function(el) {
+      el.addEventListener("change", showFileName);
     });
   }
 
@@ -94,22 +96,24 @@ $(document).ready(function () {
       return new Formset(element);
     }
     var formset = this;
-    var emptyForm = element.querySelector('.empty-form').firstElementChild;
-    var formsList = element.querySelector('.forms');
+    var emptyForm = element.querySelector(".empty-form").firstElementChild;
+    var formsList = element.querySelector(".forms");
 
-    var initialForms = element.querySelector('[name$=INITIAL_FORMS]');
-    var totalForms = element.querySelector('[name$=TOTAL_FORMS]');
-    var prefix = initialForms.name.replace(/INITIAL_FORMS$/, '');
+    var initialForms = element.querySelector("[name$=INITIAL_FORMS]");
+    var totalForms = element.querySelector("[name$=TOTAL_FORMS]");
+    var prefix = initialForms.name.replace(/INITIAL_FORMS$/, "");
 
     function addForm(event) {
       // Duplicate empty form.
       var newForm = emptyForm.cloneNode(true);
       // Update all references to __prefix__ in the elements names.
-      renumberForm(newForm, '__prefix__', totalForms.value);
+      renumberForm(newForm, "__prefix__", totalForms.value);
       // Make it able to delete itself.
-      newForm.querySelector('[data-formset-remove-form]').addEventListener('click', removeForm);
+      newForm
+        .querySelector("[data-formset-remove-form]")
+        .addEventListener("click", removeForm);
       // Append the new form to the formsList.
-      formsList.insertAdjacentElement('beforeend', newForm);
+      formsList.insertAdjacentElement("beforeend", newForm);
       // Update the totalForms.value
       totalForms.value = Number(totalForms.value) + 1;
       handleFileUploads();
@@ -131,10 +135,15 @@ $(document).ready(function () {
       var match = new RegExp(matchValue);
       var replace = prefix + newValue.toString();
 
-      ['name', 'id', 'for'].forEach(function (attr) {
-        form.querySelectorAll('[' + attr + '*=' + matchValue + ']').forEach(function (el) {
-          el.setAttribute(attr, el.getAttribute(attr).replace(match, replace));
-        });
+      ["name", "id", "for"].forEach(function(attr) {
+        form
+          .querySelectorAll("[" + attr + "*=" + matchValue + "]")
+          .forEach(function(el) {
+            el.setAttribute(
+              attr,
+              el.getAttribute(attr).replace(match, replace)
+            );
+          });
       });
     }
 
@@ -144,7 +153,10 @@ $(document).ready(function () {
       var formToRemove = getForm(event.target);
       // Renumber the rows that come after us.
       var nextElement = formToRemove.nextElementSibling;
-      var nextElementIndex = Array.prototype.indexOf.call(formsList.children, formToRemove);
+      var nextElementIndex = Array.prototype.indexOf.call(
+        formsList.children,
+        formToRemove
+      );
       while (nextElement) {
         renumberForm(nextElement, nextElementIndex + 1, nextElementIndex);
         nextElement = nextElement.nextElementSibling;
@@ -157,11 +169,13 @@ $(document).ready(function () {
       handleFileUploads();
     }
 
-    element.querySelector('[data-formset-add-form]').addEventListener('click', addForm);
+    element
+      .querySelector("[data-formset-add-form]")
+      .addEventListener("click", addForm);
     element.formset = this;
 
     this.addForm = addForm;
   }
 
-  new Formset(document.querySelector('#form_kulukorvaus'));
+  new Formset(document.querySelector("#form_kulukorvaus"));
 });
