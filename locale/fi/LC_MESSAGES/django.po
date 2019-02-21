@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-19 09:49+0000\n"
+"POT-Creation-Date: 2019-02-21 20:59+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -184,7 +184,7 @@ msgstr ""
 
 #: auth_prodeko/templates/password_reset_form.html:10
 #: auth_prodeko/templates/prodeko_login.html:10
-#: prodekoorg/app_apply_for_membership/templates/app_base.html:13
+#: prodekoorg/app_apply_for_membership/templates/app_base.html:17
 #: prodekoorg/app_kulukorvaus/templates/kulukorvaus_forms.html:4
 msgid "Submit"
 msgstr "Lähetä"
@@ -225,7 +225,7 @@ msgstr "Hakemustoimenpiteet"
 msgid "Apply for Prodeko membership application"
 msgstr "Sovellus Prodekon jäseneksi liittymiseksi"
 
-#: prodekoorg/app_apply_for_membership/forms.py:36
+#: prodekoorg/app_apply_for_membership/forms.py:37
 msgid "An application or account associated with this email already exists"
 msgstr "Jäsenhakemus tai käyttäjä tällä sähköpostiosoitteella on jo olemassa."
 
@@ -326,7 +326,7 @@ msgid "Receipt of the membership payment"
 msgstr "Kuitti jäsenmaksusta"
 
 #: prodekoorg/app_apply_for_membership/models.py:78
-msgid "Has accepted policies"
+msgid "I accept Prodeko's privacy and cookie policies."
 msgstr "Hyväksynyt tietosuojalausekkeen ja evästeiden käytön"
 
 #: prodekoorg/app_apply_for_membership/models.py:86
@@ -353,15 +353,54 @@ msgstr "Hyväksy hakemus"
 msgid "Reject application"
 msgstr "Hylkää hakemus"
 
+#: prodekoorg/app_apply_for_membership/templates/app_base.html:18
+msgid ""
+"If you don't agree with Prodeko's privacy policy you can't use this online "
+"application form. Please contact Mediakeisari (mediakeisari@prodeko.org) if "
+"you still wish to apply to become a Prodeko member."
+msgstr ""
+"Jos et hyväksy Prodekon tietosuojakäytäntöä, et voi käyttää tätä "
+"jäsenhakemuslomaketta. Ota yhteyttä mediakeisariin (mediakeisari@prodeko."
+"org) jos silti haluat hakea Prodekon jäseneksi."
+
 #: prodekoorg/app_apply_for_membership/templates/application_complete.html:3
-msgid "Membership application received!"
-msgstr "Hakemus vastaanotettu!"
+#, fuzzy
+#| msgid "Membership application received!"
+msgid "📬 Membership application received!"
+msgstr "📬 Hakemus vastaanotettu!"
+
+#: prodekoorg/app_apply_for_membership/templates/application_error.html:6
+#: prodekoorg/app_kulukorvaus/templates/kulukorvaus_error.html:6
+msgid ""
+"⚠️ Something went wrong. Contact mediakeisari@prodeko.org to get the issue "
+"resolved."
+msgstr ""
+"️⚠️ Jotakin meni pieleen. Ota yhteyttä mediakeisari@prodeko.org ongelman "
+"selvittämiseksi."
 
 #: prodekoorg/app_apply_for_membership/templates/form_apply.html:3
 #: prodekoorg/app_kulukorvaus/models.py:97
 #: prodekoorg/app_kulukorvaus/templates/form_kulukorvaus_kulu.html:4
 msgid "Receipt"
 msgstr "Kuitti"
+
+#: prodekoorg/app_apply_for_membership/templates/form_apply.html:4
+#: prodekoorg/templates/layout-components/footer.html:8
+msgid "Privacy policy"
+msgstr "Tietosuoja"
+
+#: prodekoorg/app_apply_for_membership/templates/form_apply.html:5
+msgid "Cookie policy"
+msgstr "Evästekäytäntö"
+
+#: prodekoorg/app_apply_for_membership/templates/form_apply.html:215
+#: prodekoorg/templates/layout-components/footer.html:19
+msgid "/reimbursement"
+msgstr "/kulukorvaus"
+
+#: prodekoorg/app_apply_for_membership/templates/form_apply.html:216
+msgid "/cookies"
+msgstr "/keksit"
 
 #: prodekoorg/app_apply_for_membership/urls.py:8
 msgid "^apply/$"
@@ -499,14 +538,6 @@ msgstr ""
 "hallituksen kokouksessa. Jos havaitset virheitä pdf:n tiedoissa, ota "
 "välittömästi yhteys rahastonhoitajaan rahastonhoitaja@prodeko.org."
 
-#: prodekoorg/app_kulukorvaus/templates/kulukorvaus_error.html:6
-msgid ""
-"⚠️ Something went wrong. Contact mediakeisari@prodeko.org to get the issue "
-"resolved."
-msgstr ""
-"️⚠️ Jotakin meni pieleen. Ota yhteyttä mediakeisari@prodeko.org ongelman "
-"selvittämiseksi."
-
 #: prodekoorg/app_kulukorvaus/templates/kulukorvaus_forms.html:3
 msgid "Add reimbursement"
 msgstr "Lisää kulu"
@@ -515,7 +546,10 @@ msgstr "Lisää kulu"
 msgid ""
 "📝 You have not accepted Prodeko's privacy policy. Please go to your profile "
 "and accept the policy in order to use the reimbursement form."
-msgstr "📝 Et ole hyväksynyt Prodekon tietosuojalauseketta. Käyttääksesi kulukorvauslomaketta sinun on hyväksyttävä tietosuojalauseke profiilisivultasi."
+msgstr ""
+"📝 Et ole hyväksynyt Prodekon tietosuojalauseketta. Käyttääksesi "
+"kulukorvauslomaketta sinun on hyväksyttävä tietosuojalauseke "
+"profiilisivultasi."
 
 #: prodekoorg/app_poytakirjat/cms_apps.py:11
 msgid "Board meeting minutes application"
@@ -865,14 +899,6 @@ msgstr "Käyntiosoite"
 msgid "Contact form"
 msgstr "Yhteydenottolomake"
 
-#: prodekoorg/templates/layout-components/footer.html:8
-msgid "Privacy policy"
-msgstr "Tietosuoja"
-
-#: prodekoorg/templates/layout-components/footer.html:19
-msgid "/reimbursement"
-msgstr "/kulukorvaus"
-
 #: prodekoorg/templates/layout-components/footer.html:20
 msgid "/privacy"
 msgstr "/tietosuoja"
@@ -965,6 +991,9 @@ msgstr ""
 #: tiedotteet/info/forms.py:107
 msgid "TLS salaus päällä"
 msgstr ""
+
+#~ msgid "Has accepted policies"
+#~ msgstr "Hyväksynyt tietosuojalausekkeen ja evästeiden käytön"
 
 #, fuzzy
 #~| msgid "Apply for a membership"
