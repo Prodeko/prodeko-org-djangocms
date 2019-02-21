@@ -4,11 +4,13 @@ from apiclient.discovery import build
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.admin.views.decorators import staff_member_required
+from django.db.models.signals import pre_delete
+from django.dispatch import receiver
 from django.utils.translation import ugettext_lazy as _
 from google.oauth2 import service_account
 from googleapiclient.http import HttpError
 
-ADD_TO_LIST = 'jäsenet@prodeko.org' if not settings.DEBUG else 'test@prodeko.org'
+MAILING_LIST = 'jäsenet@prodeko.org' if not settings.DEBUG else 'test@prodeko.org'
 
 
 def initialize_service():
@@ -36,7 +38,7 @@ def main_groups_api(request, email):
 
     This routine gets called if a PendingUser is accepted from the admin panel.
     As a result the accepted user gets added to Prodeko's main mailing list
-    jäsenet@prodeko.org that resides in G Suite.
+    (jäsenet@prodeko.org) that resides in G Suite.
 
     Args:
         request: HttpRequest object.
@@ -56,16 +58,47 @@ def main_groups_api(request, email):
 
         # Call G Suite API and add a member to the email list
         service.members().insert(
-            groupKey=ADD_TO_LIST, body=data).execute()
+            groupKey=MAILING_LIST, body=data).execute()
 
         messages.add_message(request, messages.SUCCESS, _(
-            'Successfully added {} to {} mailing list.'.format(email, ADD_TO_LIST)))
+            'Successfully added {} to {} mailing list.'.format(email, MAILING_LIST)))
 
     except HttpError as e:
         if e.resp.status == 409:
             messages.add_message(request, messages.ERROR, _(
-                'Error adding a member to {}: {} is already a member.'.format(ADD_TO_LIST, email)))
+                'Error adding a member to {}: {} is already a member.'.format(MAILING_LIST, email)))
         elif e.resp.status == 403:
             messages.add_message(request, messages.ERROR, _(
                 'Invalid credentials. Check documentation and validate setup in G Suite and GCP API console.'.format(e)))
             raise
+
+
+@receiver(pre_delete, sender=settings.AUTH_USER_MODEL)
+def delete_user_from_mailing_list(sender, instance, **kwargs):
+    """Remove a user from G Suite mailing list when a user model is deleted.
+
+    This routine gets called if a User model is deleted.
+    As a result the deleted user gets removed from Prodeko's
+    main mailing list (jäsenet@prodeko.org) that resides in G Suite.
+
+    Args:
+        sender: Model sending the signal.
+        instance: Instance of the model that sent the signal
+        **kwargs: Any additional arguments
+
+    Returns:
+        Nothing, either removes or fails to remove a user
+        from the mailing list.
+
+        A user must be a staff member to access this function.
+    """
+
+    try:
+        service = initialize_service()
+
+        # Call G Suite API and remove a member from the email list
+        service.members().delete(
+            groupKey=MAILING_LIST, memberKey=instance.email).execute()
+
+    except HttpError as e:
+        pass

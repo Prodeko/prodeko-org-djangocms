@@ -69,6 +69,7 @@ $(document).ready(function() {
     if (!hasAcceptedPolicies) {
       denyPolicy();
     } else {
+      $("button[type=submit]").attr("disabled", "");
       $.ajax({
         url: "",
         type: "POST",
