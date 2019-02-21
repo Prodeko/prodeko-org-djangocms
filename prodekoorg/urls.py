@@ -24,7 +24,7 @@ urlpatterns += [
     url(r'^robots.txt$', TemplateView.as_view(
         template_name="misc/robots.txt", content_type="text/plain"), name="robots_file"),
     url(r'^browserconfig.xml$', TemplateView.as_view(
-        template_name="misc/browserconfig.xml", content_type="text/xm l"), name="browserconfig_file"),
+        template_name="misc/browserconfig.xml", content_type="text/xml"), name="browserconfig_file"),
 ]
 
 # ==== Django filer ==== #
