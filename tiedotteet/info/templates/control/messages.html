@@ -1,5 +1,5 @@
 {% extends "control/base.html" %}
-
+{% load i18n %}
 {% block body %}
 
 <div id="page-wrapper">
@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">
-                    Tiedotteet
+                    {% trans "Bulletins" %}
                     <small>{{ filter_label }}</small>
                 </h1>
 
@@ -16,13 +16,13 @@
         </div>
         <!-- /.row -->
         {% if not messages %}
-            <h4>Ei tuloksia</h4>
+            <h4>{% trans "No results" %}</h4>
         {% else %}
             <div class="row">
                 <div class="navbar navbar-default">
                     <ul class="nav navbar-nav">
                         <li>
-                            <a href="/cp/messages/{{ filter }}/all/">Kaikki</a>
+                            <a href="/cp/messages/{{ filter }}/all/">{% trans "All" %}</a>
                         </li>
                         {% for c in categories %}
                             <li>
@@ -38,13 +38,13 @@
                 <div class="pagination">
                     <span class="step-links">
                         {% if messages.has_previous %}
-                            <a href="?{{queries.urlencode}}&amp;page={{ messages.previous_page_number }}">edellinen</a>
+                            <a href="?{{queries.urlencode}}&amp;page={{ messages.previous_page_number }}">{% trans "previous" %}</a>
                         {% endif %}
                         <span class="current">
                             Sivu {{ messages.number }}/{{ messages.paginator.num_pages }}.
                         </span>
                         {% if messages.has_next %}
-                            <a href="?{{queries.urlencode}}&amp;page={{ messages.next_page_number }}">seuraava</a>
+                            <a href="?{{queries.urlencode}}&amp;page={{ messages.next_page_number }}">{% trans "next" %}</a>
                         {% endif %}
                     </span>
                 </div>
@@ -71,16 +71,16 @@
                                     <form action="/cp/messages/{{ m.pk }}/hide/" method="post">
                                         {% csrf_token %}
                                         {% if m.visible %}
-                                            <button class="btn btn-warning" type="submit">Piilota</button>
+                                            <button class="btn btn-warning" type="submit">{% trans "Hide" %}</button>
                                         {% else %}
-                                            <button class="btn btn-info" type="submit">Näytä</button>
+                                            <button class="btn btn-info" type="submit">{% trans "Show" %}</button>
                                         {% endif %}
                                     </form>
                                 </td>
                                 <td>
                                     <form action="/cp/messages/{{ m.pk }}/delete/" method="post">
                                         {% csrf_token %}
-                                        <button class="btn btn-danger delete-button" type="submit">Poista</button>
+                                        <button class="btn btn-danger delete-button" type="submit">{% trans "Delete" %}</button>
                                     </form>
                                 </td>
                             </tr>
@@ -93,13 +93,13 @@
         <div class="pagination">
             <span class="step-links">
                 {% if messages.has_previous %}
-                    <a href="?{{queries.urlencode}}&amp;page={{ messages.previous_page_number }}">edellinen</a>
+                    <a href="?{{queries.urlencode}}&amp;page={{ messages.previous_page_number }}">{% trans "previous" %}</a>
                 {% endif %}
                 <span class="current">
                     Sivu {{ messages.number }}/{{ messages.paginator.num_pages }}.
                 </span>
                 {% if messages.has_next %}
-                    <a href="?{{queries.urlencode}}&amp;page={{ messages.next_page_number }}">seuraava</a>
+                    <a href="?{{queries.urlencode}}&amp;page={{ messages.next_page_number }}">{% trans "next" %}</a>
                 {% endif %}
             </span>
         </div>

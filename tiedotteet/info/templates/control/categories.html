@@ -1,5 +1,5 @@
 {% extends "control/base.html" %}
-
+{% load i18n %}
 {% block body %}
 <div id="page-wrapper">
     <div class="container-fluid">
@@ -8,15 +8,15 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">
-                    Kategoriat
-                    <small>Muokkaa kategorioita</small>
+                    {% trans "Categories" %}
+                    <small>{% trans "Edit categories" %}</small>
                 </h1>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-10">
-                <p><a href="#" data-target="#addCategory" data-toggle="modal">Lisää uusi kategoria</a></p>
-                <p>Voit poistaa kategorian jättämällä sen tyhjäksi ja klikkaamalla Tallenna</p>
+                <p><a href="#" data-target="#addCategory" data-toggle="modal">{% trans "Add a category" %}</a></p>
+                <p>{% trans "You can delete a category by leaving it empty and clicking Save" %}</p>
                 <!-- Modal -->
                 <div class="modal fade" id="addCategory" role="dialog">
                     <div class="modal-dialog">
@@ -25,7 +25,7 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title">Lisää kategoria</h4>
+                                <h4 class="modal-title">{% trans "Add a category" %}</h4>
                             </div>
                             <div class="modal-body">
                                 <form action="{% url 'tiedotteet:new_category' %}" method="post">
@@ -37,12 +37,12 @@
                                         </div>
                                     {% endfor %}
                                     <div class="form-group">
-                                        <button class="btn btn-success" type="submit">Lisää</button>
+                                        <button class="btn btn-success" type="submit">{% trans "Add" %}</button>
                                     </div>
                                 </form>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Sulje</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">{% trans "Close" %}</button>
                             </div>
                         </div>
 
@@ -54,9 +54,9 @@
                     {% csrf_token %}
                     <table class="table">
                         <thead>
-                            <th>Kategoria</th>
-                            <th>Järjestys</th>
-                            <th>Näkyvyys</th>
+                            <th>{% trans "Category" %}</th>
+                            <th>{% trans "Order" %}</th>
+                            <th>{% trans "Visible" %}</th>
                         </thead>
                         <tbody>
                             {% for c in cforms %}
@@ -66,14 +66,14 @@
                                     <td>{{ c.login_required }}</td>
                                     <td>
                                         {% if c.errors %}
-                                        <p class="text-danger">Virhe</p>
+                                        <p class="text-danger">{% trans Error %}</p>
                                         {% endif %}
                                     </td>
                                 </tr>
                             {% endfor %}
                         </tbody>
                     </table>
-                    <button class="btn btn-success" type="submit">Tallenna</button>
+                    <button class="btn btn-success" type="submit">{% trans "Save" %}</button>
                 </form>
             </div>
         </div>

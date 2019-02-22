@@ -1,13 +1,13 @@
-{% load staticfiles %}
+{% load i18n staticfiles %}
 
 <!DOCTYPE html>
-<html lang="fi">
+<html>
 
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>{% block title %}Tiedotteet - Control Panel{% endblock %}</title>
+	<title>{% block title %}{% trans "Weekly Bulletin - Control Panel" as weeklybulletin_title%}{% endblock %}</title>
 
 	<!-- Bootstrap Core CSS -->
 	<link href="{% static 'control/css/bootstrap.min.css' %}" rel="stylesheet">
@@ -39,7 +39,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/cp/">Tiedotteet - Control Panel</a>
+				<a class="navbar-brand" href="/cp/">{% trans weeklybulletin_title %}</a>
 			</div>
 			<!-- Top Menu Items -->
 			<ul class="nav navbar-right top-nav">
@@ -47,7 +47,7 @@
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{ user.username }} <b class="caret"></b></a>
 					<ul class="dropdown-menu">
 						<li>
-							<a href="/logout/"><i class="fa fa-fw fa-power-off"></i> Kirjaudu ulos</a>
+							<a href="/logout/"><i class="fa fa-fw fa-power-off"></i>{% trans "Sign out" %}</a>
 						</li>
 					</ul>
 				</li>
@@ -56,38 +56,38 @@
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
 				<ul class="nav navbar-nav side-nav">
 					<li>
-						<a href="{% url 'tiedotteet:index' %}"><i class="fa fa-fw fa-desktop"></i> Mene sivustolle</a>
+						<a href="{% url 'tiedotteet:index' %}"><i class="fa fa-fw fa-desktop"></i> {% trans "Go to site" %}</a>
 					</li>
 					<li>
-						<a href="{% url 'tiedotteet:cp' %}"><i class="fa fa-fw fa-edit"></i> Julkaise</a>
+						<a href="{% url 'tiedotteet:cp' %}"><i class="fa fa-fw fa-edit"></i> {% trans "Publish" %}</a>
 					</li>
 					<li>
-						<a href="{% url 'tiedotteet:control_panel_email' %}"><i class="fa fa-fw fa-envelope"></i> Sähköpostin lähetys</a>
+						<a href="{% url 'tiedotteet:control_panel_email' %}"><i class="fa fa-fw fa-envelope"></i> {% trans "Send email" %}</a>
 					</li>
 					<li>
-						<a href="{% url 'tiedotteet:categories' %}"><i class="fa fa-fw fa-pie-chart"></i> Kategoriat</a>
+						<a href="{% url 'tiedotteet:categories' %}"><i class="fa fa-fw fa-pie-chart"></i> {% trans "Categories" %}</a>
 					</li>
 					<li>
-						<a href="{% url 'tiedotteet:tags' %}"><i class="fa fa-fw fa-tag"></i> Tagit</a>
+						<a href="{% url 'tiedotteet:tags' %}"><i class="fa fa-fw fa-tag"></i> {% trans "Tags" %}</a>
 					</li>
 					<li>
 						<a href="javascript:;" data-toggle="collapse" data-target="#messages-control"><i class="fa fa-fw fa-table"></i>
 							Tiedotteet <i class="fa fa-fw fa-caret-down"></i></a>
 						<ul id="messages-control" class="collapse">
 							<li>
-								<a href="/tiedotteet/cp/messages/all/all/"><i class="fa fa-fw fa-reorder"></i> Kaikki</a>
+								<a href="/tiedotteet/cp/messages/all/all/"><i class="fa fa-fw fa-reorder"></i> {% trans "All" %}</a>
 							</li>
 							<li>
-								<a href="/tiedotteet/cp/messages/now/all/"><i class="fa fa-fw fa-square-o"></i> Nykyiset</a>
+								<a href="/tiedotteet/cp/messages/now/all/"><i class="fa fa-fw fa-square-o"></i> {% trans "Now" %}</a>
 							</li>
 							<li>
-								<a href="/tiedotteet/cp/messages/new/all/"><i class="fa fa-fw fa-flag"></i> Uudet</a>
+								<a href="/tiedotteet/cp/messages/new/all/"><i class="fa fa-fw fa-flag"></i> {% trans "New" %}</a>
 							</li>
 							<li>
-								<a href="/tiedotteet/cp/messages/upcoming/all/"><i class="fa fa-fw fa-calendar"></i> Tulevat</a>
+								<a href="/tiedotteet/cp/messages/upcoming/all/"><i class="fa fa-fw fa-calendar"></i> {% trans "Upcoming" %}</a>
 							</li>
 							<li>
-								<a href="/tiedotteet/cp/messages/old/all/"><i class="fa fa-fw fa-history"></i> Menneet</a>
+								<a href="/tiedotteet/cp/messages/old/all/"><i class="fa fa-fw fa-history"></i> {% trans "Old" %}</a>
 							</li>
 						</ul>
 					</li>
