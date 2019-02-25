@@ -3,7 +3,7 @@
 {% block body %}
 
 
-{% load wysiwyg %}
+{% load wysiwyg i18n %}
 {% wysiwyg_setup %}
 
     <div id="page-wrapper">
@@ -17,8 +17,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">
-                        Julkaise
-                        <small>Tiedotteiden julkaisu</small>
+                        {% trans "Publish" %}
+                        <small>{% trans "Publish a new bulletin" %}</small>
                     </h1>
                 </div>
             </div>
@@ -115,7 +115,7 @@
                     </form>
                 </div>
                 <div class="col col-lg-2" style="border-left:1px solid #000000;">
-                    <h4>Viimeisimmät julkaisut</h4>
+                    <h4>{% trans "Latest bulletins" %}</h4>
                     <ul>
                         {% for m in latest_messages %}
                             <li>{{ m.header }}</li>

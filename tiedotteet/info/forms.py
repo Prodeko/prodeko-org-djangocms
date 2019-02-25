@@ -14,15 +14,15 @@ class PublishForm(ModelForm):
         fields = ['header', 'content', 'category', 'tags', 'start_date',
                   'end_date', 'deadline_date', 'show_deadline', 'visible']
         labels = {
-            'header': _('Otsikko'),
-            'content': _('Sisältö'),
-            'category': _('Kategoria'),
-            'tags': _('Tagit'),
-            'start_date': _('Alkaa'),
-            'end_date': _('Loppuu'),
+            'header': _('Header'),
+            'content': _('Content'),
+            'category': _('Category'),
+            'tags': _('Tags'),
+            'start_date': _('Start date'),
+            'end_date': _('End date'),
             'deadline_date': _('Deadline'),
-            'show_deadline': _('Näytä deadline'),
-            'visible': _('Näytetään'),
+            'show_deadline': _('Show deadline'),
+            'visible': _('Visible'),
         }
         widgets = {
             'header': TextInput(attrs={'class': 'form-control input-md'}),
@@ -40,19 +40,19 @@ class PublishForm(ModelForm):
 class EditForm(ModelForm):
     class Meta:
         model = Message
-        success_message = 'Tiedote päivitetty'
+        success_message = _('Bulletin updated')
         fields = ['header', 'content', 'category', 'tags', 'start_date',
                   'end_date', 'deadline_date', 'show_deadline', 'visible']
         labels = {
-            'header': _('Otsikko'),
+            'header': _('Header'),
             'content': _('Content'),
-            'category': _('Kategoria'),
-            'tags': _('Tagit'),
-            'start_date': _('Alkaa'),
-            'end_date': _('Loppuu'),
+            'category': _('Category'),
+            'tags': _('Tags'),
+            'start_date': _('Start date'),
+            'end_date': _('End date'),
             'deadline_date': _('Deadline'),
-            'show_deadline': _('Näytä deadline'),
-            'visible': _('Näytetään'),
+            'show_deadline': _('Show deadline'),
+            'visible': _('Visible'),
         }
         widgets = {
             'header': TextInput(attrs={'class': 'form-control input-md'}),
@@ -72,14 +72,14 @@ class CategoryForm(ModelForm):
         model = Category
         fields = ['title', 'order', 'login_required']
         labels = {
-            'title': _('Kategoria'),
-            'order': _('Järjestys'),
-            'login_required': _('Näkyvyys'),
+            'title': _('Category'),
+            'order': _('Order'),
+            'login_required': _('Visibility'),
         }
         widgets = {
             'title': TextInput(attrs={'class': 'form-control'}),
             'order': NumberInput(attrs={'class': 'form-control'}),
-            'login_required': Select(attrs={'class': 'form-control'}, choices=((False, "Julkinen"), (True, "Vaatii kirjautumisen")))
+            'login_required': Select(attrs={'class': 'form-control'}, choices=((False, _("Public")), (True, _("Login required"))))
         }
 
 
@@ -88,7 +88,7 @@ class TagForm(ModelForm):
         model = Tag
         fields = ['title']
         labels = {
-            'title': _('Uusi tagi'),
+            'title': _('Add a new tag'),
         }
         widgets = {
             'title': TextInput(attrs={'class': 'form-control'}),
@@ -100,11 +100,11 @@ class MailConfigurationForm(ModelForm):
         model = MailConfiguration
         fields = ['host', 'port', 'username', 'password', 'use_tls']
         labels = {
-            'host': _('Palvelin (host)'),
-            'port': _('Portti'),
-            'username': _('Käyttäjätunnus (sähköpostiosoite)'),
-            'password': _('Salasana'),
-            'use_tls': _('TLS salaus päällä'),
+            'host': _('Host'),
+            'port': _('Port'),
+            'username': _('Username (email)'),
+            'password': _('Password'),
+            'use_tls': _('Use TLS Encryption'),
         }
         widgets = {
             'host': TextInput(attrs={'class': 'form-control'}),
@@ -117,6 +117,6 @@ class MailConfigurationForm(ModelForm):
 
 class SendEmailForm(Form):
     subject = CharField(widget=TextInput(
-        attrs={'class': 'form-control'}), label="Otsikko")
+        attrs={'class': 'form-control'}), label=_("Title"))
     to = CharField(widget=TextInput(
-        attrs={'class': 'form-control'}), label="Vastaanottajat (erottele pilkulla)")
+        attrs={'class': 'form-control'}), label=_("Recipients (separated by comma)"))

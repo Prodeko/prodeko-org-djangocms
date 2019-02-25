@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-21 20:59+0000\n"
+"POT-Creation-Date: 2019-02-22 13:32+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -42,15 +42,15 @@ msgstr "Väärä salasana"
 msgid "Passwords don't match"
 msgstr "Salasanat eivät täsmää"
 
-#: auth_prodeko/models.py:48
+#: auth_prodeko/models.py:47
 msgid "email address"
 msgstr "sähköposti"
 
-#: auth_prodeko/models.py:51
+#: auth_prodeko/models.py:50
 msgid "Accepted privacy and cookie policy"
 msgstr "Hyväksynyt tietosuojalausekkeen ja evästeiden käytön"
 
-#: auth_prodeko/models.py:52
+#: auth_prodeko/models.py:51
 msgid ""
 "Designates whether the user has accepted Prodeko's privacy policy and cookie "
 "policy."
@@ -58,11 +58,11 @@ msgstr ""
 "Määrittää, onko käyttäjä hyväksynyt Prodekon tietosuojalausekkeen ja "
 "evästeiden käytön."
 
-#: auth_prodeko/models.py:75
+#: auth_prodeko/models.py:74
 msgid "user"
 msgstr "käyttäjä"
 
-#: auth_prodeko/models.py:76
+#: auth_prodeko/models.py:75
 msgid "Users"
 msgstr "Käyttäjät"
 
@@ -237,15 +237,15 @@ msgstr ""
 "Mikäli opiskelet Aalto-yliopistossa hae varsinaiseksi jäseneksi. Muuten hae "
 "ulkojäseneksi"
 
-#: prodekoorg/app_apply_for_membership/groups_api.py:62
+#: prodekoorg/app_apply_for_membership/groups_api.py:64
 msgid "Successfully added {} to {} mailing list."
 msgstr "Lisätty {} onnistuneesti {} sähköpostilistalle."
 
-#: prodekoorg/app_apply_for_membership/groups_api.py:67
+#: prodekoorg/app_apply_for_membership/groups_api.py:69
 msgid "Error adding a member to {}: {} is already a member."
 msgstr "Virhe lisättäessä listalle {}: {} on jo listan jäsen."
 
-#: prodekoorg/app_apply_for_membership/groups_api.py:70
+#: prodekoorg/app_apply_for_membership/groups_api.py:72
 msgid ""
 "Invalid credentials. Check documentation and validate setup in G Suite and "
 "GCP API console."
@@ -660,25 +660,25 @@ msgstr "hallituksen jäsen"
 msgid "board members"
 msgstr "hallituksen jäsenet"
 
-#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:31
+#: prodekoorg/app_toimarit/templates/admin/app_toimarit/Toimari/change_list.html:31
 #: prodekoorg/app_toimarit/templates/admin/base.html:56
 msgid "Home"
 msgstr "Kotisivu"
 
-#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:49
+#: prodekoorg/app_toimarit/templates/admin/app_toimarit/Toimari/change_list.html:49
 #, python-format
 msgid "Add %(name)s"
 msgstr "Lisää %(name)s"
 
-#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:65
+#: prodekoorg/app_toimarit/templates/admin/app_toimarit/Toimari/change_list.html:65
 msgid "Please correct the error below."
 msgstr "Korjaa allaolevat virheet."
 
-#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:65
+#: prodekoorg/app_toimarit/templates/admin/app_toimarit/Toimari/change_list.html:65
 msgid "Please correct the errors below."
 msgstr "Korjaa allaolevat virheet."
 
-#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:76
+#: prodekoorg/app_toimarit/templates/admin/app_toimarit/Toimari/change_list.html:76
 msgid "Filter"
 msgstr "Filtteri"
 
@@ -811,6 +811,8 @@ msgstr "Ei kysymyksiä"
 
 #: prodekoorg/app_vaalit/templates/vaalit_ehdokas.html:3
 #: prodekoorg/app_vaalit/templates/vaalit_modal_delete_ehdokas.html:5
+#: tiedotteet/info/templates/control/messages.html:83
+#: tiedotteet/info/templates/control/tags.html:45
 msgid "Delete"
 msgstr "Poista"
 
@@ -824,6 +826,8 @@ msgstr "Haluatko varmasti poistaa hakemuksesi?"
 
 #: prodekoorg/app_vaalit/templates/vaalit_modal_delete_ehdokas.html:4
 #: prodekoorg/app_vaalit/templates/vaalit_modal_photocrop.html:4
+#: tiedotteet/info/templates/control/categories.html:45
+#: tiedotteet/info/templates/control/email.html:117
 msgid "Close"
 msgstr "Sulje"
 
@@ -844,6 +848,7 @@ msgid "Remove"
 msgstr "Poista"
 
 #: prodekoorg/app_vaalit/templates/vaalit_question.html:5
+#: tiedotteet/info/templates/control/editor.html:14
 msgid "Edit"
 msgstr "Muokkaa"
 
@@ -920,77 +925,255 @@ msgid "Prodeko seminar page"
 msgstr "Prodeko-seminaari sivu"
 
 #: tiedotteet/info/forms.py:17 tiedotteet/info/forms.py:47
-msgid "Otsikko"
-msgstr ""
+msgid "Header"
+msgstr "Otsikko"
 
-#: tiedotteet/info/forms.py:18
-msgid "Sisältö"
-msgstr ""
+#: tiedotteet/info/forms.py:18 tiedotteet/info/forms.py:48
+msgid "Content"
+msgstr "Sisältö"
 
 #: tiedotteet/info/forms.py:19 tiedotteet/info/forms.py:49
 #: tiedotteet/info/forms.py:75
-msgid "Kategoria"
-msgstr ""
+#: tiedotteet/info/templates/control/categories.html:57
+msgid "Category"
+msgstr "Kategoria"
 
 #: tiedotteet/info/forms.py:20 tiedotteet/info/forms.py:50
-msgid "Tagit"
-msgstr ""
+#: tiedotteet/info/templates/control/base.html:71
+#: tiedotteet/info/templates/control/tags.html:10
+msgid "Tags"
+msgstr "Tagit"
 
 #: tiedotteet/info/forms.py:21 tiedotteet/info/forms.py:51
-msgid "Alkaa"
-msgstr ""
+msgid "Start date"
+msgstr "Alkamispäivä"
 
 #: tiedotteet/info/forms.py:22 tiedotteet/info/forms.py:52
-msgid "Loppuu"
-msgstr ""
+msgid "End date"
+msgstr "Päättymispäivä"
 
 #: tiedotteet/info/forms.py:23 tiedotteet/info/forms.py:53
 msgid "Deadline"
-msgstr ""
+msgstr "Deadline"
 
 #: tiedotteet/info/forms.py:24 tiedotteet/info/forms.py:54
-msgid "Näytä deadline"
-msgstr ""
+msgid "Show deadline"
+msgstr "Näytä deadline"
 
 #: tiedotteet/info/forms.py:25 tiedotteet/info/forms.py:55
-msgid "Näytetään"
-msgstr ""
+#: tiedotteet/info/templates/control/categories.html:59
+msgid "Visible"
+msgstr "Näytä"
 
-#: tiedotteet/info/forms.py:48
-msgid "Content"
-msgstr ""
+#: tiedotteet/info/forms.py:43 tiedotteet/info/views.py:208
+msgid "Bulletin updated"
+msgstr "Tiedote päivitetty"
 
 #: tiedotteet/info/forms.py:76
-msgid "Järjestys"
-msgstr ""
+#: tiedotteet/info/templates/control/categories.html:58
+msgid "Order"
+msgstr "Järjestys"
 
 #: tiedotteet/info/forms.py:77
-msgid "Näkyvyys"
-msgstr ""
+msgid "Visibility"
+msgstr "Näkyvyys"
+
+#: tiedotteet/info/forms.py:82
+msgid "Public"
+msgstr "Julkinen"
+
+#: tiedotteet/info/forms.py:82
+msgid "Login required"
+msgstr "Vaatii kirjautumisen"
 
 #: tiedotteet/info/forms.py:91
-msgid "Uusi tagi"
-msgstr ""
+msgid "Add a new tag"
+msgstr "Lisää tagi"
 
-#: tiedotteet/info/forms.py:103
-msgid "Palvelin (host)"
-msgstr ""
+#: tiedotteet/info/forms.py:103 tiedotteet/info/templates/control/email.html:21
+msgid "Host"
+msgstr "Palvelin"
 
-#: tiedotteet/info/forms.py:104
-msgid "Portti"
-msgstr ""
+#: tiedotteet/info/forms.py:104 tiedotteet/info/templates/control/email.html:25
+msgid "Port"
+msgstr "Portti"
 
 #: tiedotteet/info/forms.py:105
-msgid "Käyttäjätunnus (sähköpostiosoite)"
-msgstr ""
+msgid "Username (email)"
+msgstr "Käyttäjänimi (sähköpostiosoite)"
 
 #: tiedotteet/info/forms.py:106
-msgid "Salasana"
-msgstr ""
+msgid "Password"
+msgstr "Salasana"
 
 #: tiedotteet/info/forms.py:107
-msgid "TLS salaus päällä"
+msgid "Use TLS Encryption"
+msgstr "TLS salaus päällä"
+
+#: tiedotteet/info/forms.py:120
+msgid "Title"
+msgstr "Otsikko"
+
+#: tiedotteet/info/forms.py:122
+msgid "Recipients (separated by comma)"
+msgstr "Vastaanottajat (pilkulla eroteltuna)"
+
+#: tiedotteet/info/templates/control/base.html:10
+msgid "Weekly Bulletin - Control Panel"
+msgstr "Tiedotteet - Hallintapaneeli"
+
+#: tiedotteet/info/templates/control/base.html:50
+msgid "Sign out"
+msgstr "Kirjaudu ulos"
+
+#: tiedotteet/info/templates/control/base.html:59
+msgid "Go to site"
+msgstr "Mene takaisin sivustolle"
+
+#: tiedotteet/info/templates/control/base.html:62
+#: tiedotteet/info/templates/control/cp.html:20
+msgid "Publish"
+msgstr "Julkaise"
+
+#: tiedotteet/info/templates/control/base.html:65
+#: tiedotteet/info/templates/control/email.html:10
+#: tiedotteet/info/templates/control/email.html:56
+msgid "Send email"
+msgstr "Lähetä sähköposti"
+
+#: tiedotteet/info/templates/control/base.html:68
+#: tiedotteet/info/templates/control/categories.html:11
+msgid "Categories"
+msgstr "Kategoriat"
+
+#: tiedotteet/info/templates/control/base.html:78
+#: tiedotteet/info/templates/control/messages.html:25
+#: tiedotteet/info/views.py:65
+msgid "All"
+msgstr "Kaikki"
+
+#: tiedotteet/info/templates/control/base.html:81 tiedotteet/info/views.py:50
+msgid "Now"
+msgstr "Nykyiset"
+
+#: tiedotteet/info/templates/control/base.html:84 tiedotteet/info/views.py:54
+msgid "New"
+msgstr "Uudet"
+
+#: tiedotteet/info/templates/control/base.html:87 tiedotteet/info/views.py:58
+msgid "Upcoming"
+msgstr "Tulevat"
+
+#: tiedotteet/info/templates/control/base.html:90 tiedotteet/info/views.py:62
+msgid "Old"
+msgstr "Menneet"
+
+#: tiedotteet/info/templates/control/categories.html:12
+msgid "Edit categories"
+msgstr "Muokkaa kategorioita"
+
+#: tiedotteet/info/templates/control/categories.html:18
+#: tiedotteet/info/templates/control/categories.html:28
+msgid "Add a category"
+msgstr "Lisää kategoria"
+
+#: tiedotteet/info/templates/control/categories.html:19
+msgid "You can delete a category by leaving it empty and clicking Save"
 msgstr ""
+"Voit poistaa kategorian jättämällä sen tyhjäksi ja klikkaamalla Tallenna"
+
+#: tiedotteet/info/templates/control/categories.html:40
+msgid "Add"
+msgstr "Lisää"
+
+#: tiedotteet/info/templates/control/categories.html:76
+#: tiedotteet/info/templates/control/email.html:116
+#: tiedotteet/info/templates/control/tags.html:29
+msgid "Save"
+msgstr "Tallenna"
+
+#: tiedotteet/info/templates/control/cp.html:21
+msgid "Publish a new bulletin"
+msgstr "Tiedotteiden julkaisu"
+
+#: tiedotteet/info/templates/control/cp.html:118
+msgid "Latest bulletins"
+msgstr "Viimeisimmät julkaisut"
+
+#: tiedotteet/info/templates/control/editor.html:15
+msgid "Edit bulletins"
+msgstr "Muokkaa tiedotteita"
+
+#: tiedotteet/info/templates/control/email.html:11
+msgid "Send a bulletin by email"
+msgstr "Lähetä tiedote sähköpostilla"
+
+#: tiedotteet/info/templates/control/email.html:17
+msgid "Edit settings"
+msgstr "Muokkaa asetuksia"
+
+#: tiedotteet/info/templates/control/email.html:18
+msgid "Email server settings"
+msgstr "Lähettävän palvelimen asetukset"
+
+#: tiedotteet/info/templates/control/email.html:29
+msgid "User"
+msgstr "Käyttäjä"
+
+#: tiedotteet/info/templates/control/email.html:54
+msgid "Preview"
+msgstr "Esikatselu"
+
+#: tiedotteet/info/templates/control/messages.html:11
+msgid "Bulletins"
+msgstr "Tiedotteet"
+
+#: tiedotteet/info/templates/control/messages.html:19
+msgid "No results"
+msgstr "Ei tuloksia"
+
+#: tiedotteet/info/templates/control/messages.html:41
+#: tiedotteet/info/templates/control/messages.html:96
+msgid "previous"
+msgstr "edellinen"
+
+#: tiedotteet/info/templates/control/messages.html:47
+#: tiedotteet/info/templates/control/messages.html:102
+msgid "next"
+msgstr "seuraava"
+
+#: tiedotteet/info/templates/control/messages.html:74
+msgid "Hide"
+msgstr "Piilota"
+
+#: tiedotteet/info/templates/control/messages.html:76
+msgid "Show"
+msgstr "Näytä"
+
+#: tiedotteet/info/templates/control/tags.html:11
+msgid "Edit tags"
+msgstr "Muokkaa tageja"
+
+#: tiedotteet/info/templates/control/tags.html:35
+msgid "No tags"
+msgstr "Ei tageja"
+
+#: tiedotteet/info/views.py:28 tiedotteet/info/views.py:46
+#: tiedotteet/info/views.py:97 tiedotteet/info/views.py:120
+#: tiedotteet/info/views.py:131 tiedotteet/info/views.py:147
+#: tiedotteet/info/views.py:157 tiedotteet/info/views.py:178
+#: tiedotteet/info/views.py:187 tiedotteet/info/views.py:200
+#: tiedotteet/info/views.py:219 tiedotteet/info/views.py:238
+#: tiedotteet/info/views.py:287
+msgid "Admin login required"
+msgstr "Kirjautuminen ylläpitäjänä vaadittu"
+
+#: tiedotteet/info/views.py:35
+msgid "New bulletin added"
+msgstr "Tiedote lisätty"
+
+#~ msgid "Control Panel"
+#~ msgstr "Hallintapaneeli"
 
 #~ msgid "Has accepted policies"
 #~ msgstr "Hyväksynyt tietosuojalausekkeen ja evästeiden käytön"
@@ -1048,9 +1231,6 @@ msgstr ""
 #~ msgid "Error downloading csv on line {}"
 #~ msgstr "Virhe tiedostoa ladattaessa rivillä {}"
 
-#~ msgid "Save"
-#~ msgstr "Tallenna"
-
 #~ msgid "Go back"
 #~ msgstr "Takaisin kirjautumiseen"
 
@@ -1075,9 +1255,6 @@ msgstr ""
 #~ msgid "The two password fields didn't match."
 #~ msgstr "Salasanat eivät täsmää."
 
-#~ msgid "Password"
-#~ msgstr "Salasana"
-
 #~ msgid "Enter the same password as before, for verification."
 #~ msgstr "Vahvista antamalla sama salasana."
 
@@ -1089,12 +1266,6 @@ msgstr ""
 
 #~ msgid "New password confirmation"
 #~ msgstr "Uusi salasana - vahvistus"
-
-#~ msgid "Sign in"
-#~ msgstr "Kirjaudu sisään"
-
-#~ msgid "Heading"
-#~ msgstr "Otsikko"
 
 #~ msgid "year"
 #~ msgstr "vuosi"

@@ -1,5 +1,5 @@
 {% extends "control/base.html" %}
-{% load staticfiles %}
+{% load staticfiles i18n %}
 {% block body %}
 <div id="page-wrapper">
     <div class="container-fluid">
@@ -7,27 +7,26 @@
         <div class="row">
             <div class="col-md-12">
                 <h1 class="page-header">
-                    Sähköpostin lähetys
-                    <small>Lähetä tiedote sähköpostilla</small>
+                    {% trans "Send email" %}
+                    <small>{% trans "Send a bulletin by email" %}</small>
                 </h1>
             </div>
         </div>
         <div class="row">
             <div class="col col-md-8">
-                <p class="pull-right"><a type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#email-settings">Muokkaa
-                        asetuksia</a></p>
-                <p>Lähettävän palvelimen asetukset</p>
+                <p class="pull-right"><a type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#email-settings">{% trans "Edit settings" %}</a></p>
+                <p>{% trans "Email server settings" as emailserver_settings %}</p>
                 <table class="table table-bordered">
                     <tr>
-                        <td>Palvelin</td>
+                        <td>{% trans "Host" %}</td>
                         <td>{{ config.host }}</td>
                     </tr>
                     <tr>
-                        <td>Portti</td>
+                        <td>{% trans "Port" %}</td>
                         <td>{{ config.port }}</td>
                     </tr>
                     <tr>
-                        <td>Käyttäjä</td>
+                        <td>{% trans "User" %}</td>
                         <td>{{ config.username }}</td>
                     </tr>
                     <tr>
@@ -52,9 +51,9 @@
                     <hr>
                     <div class="form-group">
                         <div class="col-sm-12">
-                            <a href="{% url 'tiedotteet:email' %}" class="btn btn-default btn-lg">Esikatselu</a>
+                            <a href="{% url 'tiedotteet:email' %}" class="btn btn-default btn-lg">{% trans "Preview" %}</a>
                             <button id="email-submit-button" type="submit" class="btn btn-success btn-lg">
-                                Lähetä sähköposti
+                                {% trans "Send email" %}
                             </button>
                             <img id="email-spinner" class="hidden" src="{% static 'img/loading.svg' %}" style="width:30px;">
                         </div>
@@ -74,7 +73,7 @@
                     {% csrf_token %}
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Lähettävän palvelimen asetukset</h4>
+                        <h4 class="modal-title">{% trans emailserver_settings %}</h4>
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
@@ -114,8 +113,8 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-success">Tallenna</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Sulje</button>
+                        <button type="submit" class="btn btn-success">{% trans "Save" %}</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">{% trans "Close" %}</button>
                     </div>
                 </form>
             </div>
