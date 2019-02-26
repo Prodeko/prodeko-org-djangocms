@@ -9,7 +9,7 @@ from django.utils.html import format_html
 from django.utils.translation import gettext as _
 from prodekoorg.app_apply_for_membership.models import PendingUser
 
-from .groups_api import main_groups_api
+# from .groups_api import main_groups_api
 
 
 class PendingUserAdmin(admin.ModelAdmin):
@@ -73,7 +73,7 @@ def accept_application(request, account_id, *args, **kwargs):
     """Accept a membership application from Django admin."""
     user = PendingUser.objects.get(pk=account_id)
     user.accept_membership(request, args, kwargs)
-    main_groups_api(request, user.email)
+    # main_groups_api(request, user.email)
     return redirect("../../")
 
 

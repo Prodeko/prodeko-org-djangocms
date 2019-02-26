@@ -913,7 +913,7 @@ msgid "Login"
 msgstr "Kirjaudu"
 
 #: prodekoorg/templates/layout-components/navbar.html:5
-msgid "Apply for a membership"
+msgid "Membership"
 msgstr "Hae jäsenyyttä"
 
 #: prodekoorg/urls.py:63

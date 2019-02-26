@@ -11,7 +11,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic.base import TemplateView
 from django.views.static import serve
-from prodekoorg.app_poytakirjat.gdrive_api import run_app_poytakirjat
+# from prodekoorg.app_poytakirjat.gdrive_api import run_app_poytakirjat
 from prodekoorg.app_toimarit.views import postcsv
 
 admin.autodiscover()
@@ -46,8 +46,7 @@ urlpatterns += i18n_patterns(
     url(r'^admin/toimarit/csvupload$',
         TemplateView.as_view(template_name='admin/uploadcsv.html'), name='uploadcsv'),
     url(r'^admin/toimarit/postcsv$', postcsv, name='postcsv'),
-    url(r'^admin/poytakirjat/download$', run_app_poytakirjat,
-        name='download_docs_from_gsuite'),
+    #url(r'^admin/poytakirjat/download$', run_app_poytakirjat,  name='download_docs_from_gsuite'),
 
     # ==== auth_prodeko ==== #
     url(r'^', include('auth_prodeko.urls', namespace='auth_prodeko')),
