@@ -320,7 +320,13 @@ hr {
   a {
     color: rgb(248, 80, 94);
     font-size: 1.2rem;
+    
+    &:hover {
+      text-decoration: none;
+      color: inherit;
+    }
   }
+
 
   @media (max-width: 576px) {
     padding-top: 9rem;
