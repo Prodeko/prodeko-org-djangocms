@@ -32,13 +32,6 @@ urlpatterns += [
     url(r'^', include('filer.server.urls')),
 ]
 
-# ==== lifelonglearning.prodeko.org ==== #
-urlpatterns += [
-    url(r'^lifelonglearning/',
-        include('lifelonglearning.urls', namespace='lifelonglearning')),
-]
-
-
 # ==== Localization and internationalization ==== #
 urlpatterns += i18n_patterns(
     # ==== app_toimarit & app_poytakirjat ==== #
