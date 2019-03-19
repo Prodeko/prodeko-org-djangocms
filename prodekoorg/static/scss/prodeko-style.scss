@@ -16,7 +16,6 @@ Prodekon tummansininen: #002851
 @import "typography";
 @import "variables";
 @import "hamburgers";
-
 @import "frontpage";
 @import "sidenav";
 @import "navbar";
@@ -25,6 +24,6 @@ Prodekon tummansininen: #002851
 @import "error_pages";
 
 body {
-  font-family: Raleway, Helvetica, sans-serif;
   min-height: 100%;
+  font-family: Raleway, Helvetica, sans-serif;
 }

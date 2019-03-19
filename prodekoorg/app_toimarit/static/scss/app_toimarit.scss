@@ -1,15 +1,15 @@
 #hallituskuva {
   img {
-    margin: 0 auto;
     display: block;
+    margin: 0 auto;
   }
 }
 
 .toimari {
-  margin: 5px 5px 10px 10px;
-  border: 1px solid #cccccc;
   float: left;
   width: 150px;
+  margin: 5px 5px 10px 10px;
+  border: 1px solid #ccc;
 
   img {
     width: 100%;
@@ -18,8 +18,8 @@
 
   .description {
     padding: 7px;
-    text-align: center;
     font-size: 0.85rem;
+    text-align: center;
   }
 
   strong {
@@ -29,10 +29,10 @@
 }
 
 .boardMember {
-  margin: 5px;
-  border: 1px solid #cccccc;
   float: left;
   width: 350px;
+  margin: 5px;
+  border: 1px solid #ccc;
 
   .description {
     margin: 10px;

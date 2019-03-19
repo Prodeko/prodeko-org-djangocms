@@ -1,7 +1,7 @@
 #vaaliContainer {
   .btn {
-    font-weight: 200;
     width: 140px;
+    font-weight: 200;
   }
 
   .btn-xs {
@@ -23,15 +23,15 @@
 #vaalitModifyApplyForm .img-preview {
   width: 100px;
   height: 100px;
-  border-radius: 50%;
   overflow: hidden;
+  border-radius: 50%;
 }
 
 #vaaliContainer .vaalitQuestions .vaalit-vastaus .img-container {
-  height: 50px;
   width: 50px;
-  border-radius: 50%;
+  height: 50px;
   overflow: hidden;
+  border-radius: 50%;
 }
 
 /* Height is set to 100px in 'vaalit_custom.js' once the
@@ -39,10 +39,10 @@
  */
 #vaaliContainer .crop-preview,
 #vaalitModifyApplyForm .crop-preview {
-  height: 0;
   width: 100px;
-  border-radius: 50%;
+  height: 0;
   overflow: hidden;
+  border-radius: 50%;
 }
 
 #vaaliContainer .img-container img {
@@ -63,13 +63,12 @@
   transition: all 0.3s ease-in-out;
 }
 
-#vaaliContainer
-  #vaalitKysymysForm
-  #btnHaeVirkaan.animate-chevron
-  .fa-chevron-down {
-  transform: rotate(
-    -179.999deg
-  ); /* For some reason there is a small wiggle if the rotation is 180 degrees */
+#vaaliContainer #vaalitKysymysForm #btnHaeVirkaan.animate-chevron .fa-chevron-down {
+  transform:
+    rotate(
+      -179.999deg
+    ); /* For some reason there is a small wiggle if the rotation is 180 degrees */
+
   transition: all 0.3s ease-in-out;
 }
 
@@ -101,8 +100,8 @@
 }
 
 .list-group.list-group-root .list-group-item {
-  border-radius: 0;
   border-width: 1px 0 0 0;
+  border-radius: 0;
 }
 
 .list-group.list-group-root > .list-group-item:first-child {
@@ -123,6 +122,7 @@
 
 .collapse {
   display: none;
+
   &.show {
     display: block;
   }

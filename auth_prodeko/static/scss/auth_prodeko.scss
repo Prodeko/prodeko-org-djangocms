@@ -2,10 +2,10 @@
 @import "../../../prodekoorg/static/scss/variables.scss";
 
 #login-form {
-  max-width: 60%;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
+  max-width: 60%;
+  margin: 0 auto;
 
   @include phone {
     max-width: 98%;
@@ -69,33 +69,34 @@
     text-align: center;
   }
 }
+
 .form-wrapper {
   .fieldWrapper {
     .field-input {
       display: inline-block;
-      padding: 3px;
       margin: 2px;
+      padding: 3px;
 
       input {
-        outline: none;
-        border: none;
         display: block;
-        line-height: 1.2em;
-        font-size: 14pt;
-        border-bottom: 1.5px solid gray;
         margin-bottom: 5px;
+        font-size: 14pt;
+        line-height: 1.2em;
+        border: none;
+        border-bottom: 1.5px solid gray;
+        outline: none;
       }
 
       label {
         display: block;
-        font-size: 12px;
         color: $blue-normal;
+        font-size: 12px;
       }
     }
 
     .field-error {
-      color: red;
       display: inline-block;
+      color: red;
       font-size: 12px;
     }
   }
@@ -108,9 +109,9 @@
 
   input[type="submit"] {
     margin: 15px 2px;
+    padding: 10px 30px;
+    color: white;
     background-color: $blue-normal;
     border: none;
-    color: white;
-    padding: 10px 30px;
   }
 }
