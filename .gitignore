@@ -77,6 +77,7 @@ prodekoorg/collected-static
 !data.json
 !package.json
 !package-lock.json
+!eslintrc.json
 
 # tiedotteet.prodeko.org
 tiedotteet/static/
