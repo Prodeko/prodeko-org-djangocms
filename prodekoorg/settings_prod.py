@@ -7,12 +7,10 @@ Author: Webbitiimi
 """
 
 FILER_SERVERS = {
-    'private': {
-        'main': {
-            'ENGINE': 'filer.server.backends.xsendfile.ApacheXSendfileServer',
+    "private": {
+        "main": {"ENGINE": "filer.server.backends.xsendfile.ApacheXSendfileServer"},
+        "thumbnails": {
+            "ENGINE": "filer.server.backends.xsendfile.ApacheXSendfileServer"
         },
-        'thumbnails': {
-            'ENGINE': 'filer.server.backends.xsendfile.ApacheXSendfileServer',
-        },
-    },
+    }
 }

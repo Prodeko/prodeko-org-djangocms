@@ -11,15 +11,20 @@ from django.template.loader import get_template
 from django.utils import timezone
 from django.utils.html import strip_tags
 from django.utils.translation import ugettext as _
-from tiedotteet.info.forms import (CategoryForm, EditForm,
-                                   MailConfigurationForm, PublishForm,
-                                   SendEmailForm, TagForm)
+from tiedotteet.info.forms import (
+    CategoryForm,
+    EditForm,
+    MailConfigurationForm,
+    PublishForm,
+    SendEmailForm,
+    TagForm,
+)
 from tiedotteet.info.models import Category, MailConfiguration, Message, Tag
 
 
 def index(request):
     """ the public main page """
-    return render(request, 'index.html')
+    return render(request, "index.html")
 
 
 def control_panel(request):
@@ -27,52 +32,52 @@ def control_panel(request):
     if not request.user.is_superuser:
         return HttpResponseForbidden(_("Admin login required"))
     form = PublishForm()
-    latest_messages = Message.objects.filter(visible=True).order_by('-pk')[:10]
-    if request.method == 'POST':
+    latest_messages = Message.objects.filter(visible=True).order_by("-pk")[:10]
+    if request.method == "POST":
         form = PublishForm(request.POST)
         if form.is_valid():
             form.save()
             messages.success(request, _("New bulletin added"))
-            return redirect('/tiedotteet/cp')
-    return render(request, 'control/cp.html', {
-        'form': form,
-        'latest_messages': latest_messages,
-    })
+            return redirect("/tiedotteet/cp")
+    return render(
+        request, "control/cp.html", {"form": form, "latest_messages": latest_messages}
+    )
 
 
 def control_messages(request, filter, category):
     """ control panel - list messages """
     if not request.user.is_superuser:
         return HttpResponseForbidden(_("Admin login required"))
-    if filter == 'now':
-        messages = Message.objects.filter(
-            end_date__gte=timezone.now()).order_by('-pk')
+    if filter == "now":
+        messages = Message.objects.filter(end_date__gte=timezone.now()).order_by("-pk")
         filter_label = _("Now")
-    elif filter == 'new':
+    elif filter == "new":
         messages = Message.objects.filter(
-            start_date__gte=timezone.now() - timedelta(days=7)).order_by('-pk')
+            start_date__gte=timezone.now() - timedelta(days=7)
+        ).order_by("-pk")
         filter_label = _("New")
-    elif filter == 'upcoming':
-        messages = Message.objects.filter(
-            start_date__gte=timezone.now()).order_by('-pk')
+    elif filter == "upcoming":
+        messages = Message.objects.filter(start_date__gte=timezone.now()).order_by(
+            "-pk"
+        )
         filter_label = _("Upcoming")
-    elif filter == 'old':
-        messages = Message.objects.filter(
-            end_date__lt=timezone.now()).order_by('-pk')
+    elif filter == "old":
+        messages = Message.objects.filter(end_date__lt=timezone.now()).order_by("-pk")
         filter_label = _("Old")
     else:
-        messages = Message.objects.all().order_by('-pk')
+        messages = Message.objects.all().order_by("-pk")
         filter_label = _("All")
 
-    categories = Category.objects.filter(
-        messages__in=messages).distinct().order_by('order')
+    categories = (
+        Category.objects.filter(messages__in=messages).distinct().order_by("order")
+    )
 
     for c in categories:
         if str(c.pk) == category:
             messages = messages.filter(category=c)
 
     paginator = Paginator(messages, 100)  # 100 messages per page
-    page = request.GET.get('page')
+    page = request.GET.get("page")
     try:
         messages = paginator.page(page)
     except PageNotAnInteger:
@@ -80,15 +85,19 @@ def control_messages(request, filter, category):
     except EmptyPage:
         messages = paginator.page(paginator.num_pages)
     queries_without_page = request.GET.copy()
-    if 'page' in queries_without_page.keys():
-        del queries_without_page['page']
+    if "page" in queries_without_page.keys():
+        del queries_without_page["page"]
 
-    return render(request, 'control/messages.html', {
-        'messages': messages,
-        'categories': categories,
-        'filter': filter,
-        'filter_label': filter_label,
-    })
+    return render(
+        request,
+        "control/messages.html",
+        {
+            "messages": messages,
+            "categories": categories,
+            "filter": filter,
+            "filter_label": filter_label,
+        },
+    )
 
 
 def categories(request):
@@ -99,19 +108,20 @@ def categories(request):
     cforms = [CategoryForm(prefix=str(x), instance=x) for x in categories]
     nform = CategoryForm()
     if request.method == "POST":
-        cforms = [CategoryForm(request.POST, prefix=str(
-            x), instance=x) for x in categories]
+        cforms = [
+            CategoryForm(request.POST, prefix=str(x), instance=x) for x in categories
+        ]
         if all([cf.is_valid() for cf in cforms]):
             for cf in cforms:
                 category = cf.save()
                 if category.title == "":
                     category.delete()
-            return redirect('/tiedotteet/cp/categories/')
-    return render(request, 'control/categories.html', {
-        'categories': categories,
-        'cforms': cforms,
-        'nform': nform,
-    })
+            return redirect("/tiedotteet/cp/categories/")
+    return render(
+        request,
+        "control/categories.html",
+        {"categories": categories, "cforms": cforms, "nform": nform},
+    )
 
 
 def new_category(request):
@@ -122,7 +132,7 @@ def new_category(request):
         form = CategoryForm(request.POST)
         if form.is_valid():
             form.save()
-    return redirect('/tiedotteet/cp/categories/')
+    return redirect("/tiedotteet/cp/categories/")
 
 
 def tags(request):
@@ -135,64 +145,63 @@ def tags(request):
         form = TagForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('/tiedottet/cp/tags/')
-    return render(request, 'control/tags.html', {
-        'tags': tags,
-        'form': form,
-    })
+            return redirect("/tiedottet/cp/tags/")
+    return render(request, "control/tags.html", {"tags": tags, "form": form})
 
 
 def delete_tag(request, pk):
     if not request.user.is_superuser:
         return HttpResponseForbidden(_("Admin login required"))
-    if request.method == 'POST':
+    if request.method == "POST":
         tag = get_object_or_404(Tag, pk=pk)
         tag.delete()
-    return redirect('/tiedotteet/cp/tags/')
+    return redirect("/tiedotteet/cp/tags/")
 
 
 def email(request):
     """ email template """
     if not request.user.is_superuser:
         return HttpResponseForbidden(_("Admin login required"))
-    visible_messages = Message.visible_objects.order_by('end_date')
-    categories = Category.objects.filter(
-        messages__in=visible_messages).distinct().order_by('order')
-    return render(request, 'email.html', {
-        'categories': categories
-    })
+    visible_messages = Message.visible_objects.order_by("end_date")
+    categories = (
+        Category.objects.filter(messages__in=visible_messages)
+        .distinct()
+        .order_by("order")
+    )
+    return render(request, "email.html", {"categories": categories})
 
 
 def toc(request):
     """ toc """
-    visible_messages = Message.visible_objects.order_by('end_date')
-    categories = Category.objects.filter(
-        messages__in=visible_messages).distinct().order_by('order')
-    return render(request, 'toc.html', {
-        'categories': categories
-    })
+    visible_messages = Message.visible_objects.order_by("end_date")
+    categories = (
+        Category.objects.filter(messages__in=visible_messages)
+        .distinct()
+        .order_by("order")
+    )
+    return render(request, "toc.html", {"categories": categories})
 
 
 def delete_message(request, pk):
     if not request.user.is_superuser:
         return HttpResponseForbidden(_("Admin login required"))
-    if request.method == 'POST':
+    if request.method == "POST":
         message = get_object_or_404(Message, pk=pk)
         message.delete()
-    return redirect('/tiedotteet/cp/messages/all/all/')
+    return redirect("/tiedotteet/cp/messages/all/all/")
 
 
 def hide_message(request, pk):
     if not request.user.is_superuser:
         return HttpResponseForbidden(_("Admin login required"))
-    if request.method == 'POST':
+    if request.method == "POST":
         message = get_object_or_404(Message, pk=pk)
         if message.visible:
             message.visible = False
         else:
             message.visible = True
         message.save()
-    return redirect('/tiedotteet/cp/messages/all/all/')
+    return redirect("/tiedotteet/cp/messages/all/all/")
 
 
 def edit_message(request, pk):
@@ -200,17 +209,13 @@ def edit_message(request, pk):
         return HttpResponseForbidden(_("Admin login required"))
     form = EditForm(instance=get_object_or_404(Message, pk=pk))
     messages = {}
-    if request.method == 'POST':
-        form = EditForm(
-            request.POST, instance=get_object_or_404(Message, pk=pk))
+    if request.method == "POST":
+        form = EditForm(request.POST, instance=get_object_or_404(Message, pk=pk))
         if form.is_valid():
             form.save()
-            messages['success'] = _("Bulletin updated")
+            messages["success"] = _("Bulletin updated")
 
-    return render(request, 'control/editor.html', {
-        'form': form,
-        'messages': messages,
-    })
+    return render(request, "control/editor.html", {"form": form, "messages": messages})
 
 
 def control_panel_email(request):
@@ -225,11 +230,11 @@ def control_panel_email(request):
         if config_form.is_valid():
             config_form.save()
             return redirect(control_panel_email)
-    return render(request, 'control/email.html', {
-        'config': config,
-        'config_form': config_form,
-        'send_form': send_form,
-    })
+    return render(
+        request,
+        "control/email.html",
+        {"config": config, "config_form": config_form, "send_form": send_form},
+    )
 
 
 def send_email(request):
@@ -240,14 +245,15 @@ def send_email(request):
         form = SendEmailForm(request.POST)
         if form.is_valid():
             # create html body
-            visible_messages = Message.visible_objects.order_by('end_date')
-            categories = Category.objects.filter(
-                messages__in=visible_messages).distinct().order_by('order')
+            visible_messages = Message.visible_objects.order_by("end_date")
+            categories = (
+                Category.objects.filter(messages__in=visible_messages)
+                .distinct()
+                .order_by("order")
+            )
             config = MailConfiguration.objects.get(pk=1)
-            template = get_template('email.html')
-            context = Context({
-                'categories': categories,
-            })
+            template = get_template("email.html")
+            context = Context({"categories": categories})
             text_content = strip_tags(template.render(context))
             html_content = template.render(context)
             # backend configuration
@@ -257,7 +263,7 @@ def send_email(request):
                 username=config.username,
                 password=config.password,
                 use_tls=config.use_tls,
-                fail_silently=config.fail_silently
+                fail_silently=config.fail_silently,
             )
             # create the email
             email = EmailMultiAlternatives(
@@ -265,23 +271,17 @@ def send_email(request):
                 body=text_content,
                 from_email=config.username,
                 to=form.cleaned_data["to"].split(","),
-                connection=backend
+                connection=backend,
             )
             # attach html content
             email.attach_alternative(html_content, "text/html")
             # send
             try:
                 email.send()
-                return JsonResponse({
-                    'success': True,
-                })
+                return JsonResponse({"success": True})
             except Exception as e:
-                return JsonResponse({
-                    'success': False,
-                    'errors': {'mail': 'failed to send'},
-                })
-        return JsonResponse({
-            'success': False,
-            'errors': dict(form.errors.items()),
-        })
+                return JsonResponse(
+                    {"success": False, "errors": {"mail": "failed to send"}}
+                )
+        return JsonResponse({"success": False, "errors": dict(form.errors.items())})
         return HttpResponseForbidden(_("Admin login required"))

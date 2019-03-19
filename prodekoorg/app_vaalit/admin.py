@@ -8,20 +8,19 @@ class VirkaAdmin(admin.ModelAdmin):
 
 
 class EhdokasAdmin(admin.ModelAdmin):
-    list_display = ('name', )
+    list_display = ("name",)
 
 
 class KysymysAdmin(admin.ModelAdmin):
-
     def save_model(self, request, obj, form, change):
         obj.created_by = request.user
         obj.save()
 
-    list_display = ('to_virka', 'created_at')
+    list_display = ("to_virka", "created_at")
 
 
 class VastausAdmin(admin.ModelAdmin):
-    list_display = ('to_question', 'created_at')
+    list_display = ("to_question", "created_at")
 
 
 admin.site.register(Virka, VirkaAdmin)

@@ -13,31 +13,36 @@ from prodekoorg.app_apply_for_membership.models import PendingUser
 
 
 class PendingUserAdmin(admin.ModelAdmin):
-    list_display = ('first_name', 'last_name', 'user',
-                    'hometown', 'application_actions')
+    list_display = (
+        "first_name",
+        "last_name",
+        "user",
+        "hometown",
+        "application_actions",
+    )
 
     formfield_overrides = {
         # Override Textarea default height
-        models.TextField: {'widget': Textarea(attrs={'rows': 1, 'cols': 1})},
+        models.TextField: {"widget": Textarea(attrs={"rows": 1, "cols": 1})}
     }
 
     def get_urls(self):
         urls = super().get_urls()
         custom_urls = [
             url(
-                r'^(?P<account_id>.+)/view/$',
+                r"^(?P<account_id>.+)/view/$",
                 self.admin_site.admin_view(view_application),
-                name='application-view',
+                name="application-view",
             ),
             url(
-                r'^(?P<account_id>.+)/accept/$',
+                r"^(?P<account_id>.+)/accept/$",
                 self.admin_site.admin_view(accept_application),
-                name='application-accept',
+                name="application-accept",
             ),
             url(
-                r'^(?P<account_id>.+)/reject/$',
+                r"^(?P<account_id>.+)/reject/$",
                 self.admin_site.admin_view(reject_application),
-                name='application-reject',
+                name="application-reject",
             ),
         ]
         return custom_urls + urls
@@ -48,14 +53,15 @@ class PendingUserAdmin(admin.ModelAdmin):
         Buttons are added to the row which displays a PendingUser model.
         """
         return format_html(
-            '<a class="button" href="{}">' + _('View') + '</a>&nbsp;'
-            '<a class="button" href="{}">' + _('Accept') + '</a>&nbsp;'
-            '<a class="button" href="{}">' + _('Reject') + '</a>',
-            reverse('admin:application-view', args=[obj.pk]),
-            reverse('admin:application-accept', args=[obj.pk]),
-            reverse('admin:application-reject', args=[obj.pk]),
+            '<a class="button" href="{}">' + _("View") + "</a>&nbsp;"
+            '<a class="button" href="{}">' + _("Accept") + "</a>&nbsp;"
+            '<a class="button" href="{}">' + _("Reject") + "</a>",
+            reverse("admin:application-view", args=[obj.pk]),
+            reverse("admin:application-accept", args=[obj.pk]),
+            reverse("admin:application-reject", args=[obj.pk]),
         )
-    application_actions.short_description = _('Application actions')
+
+    application_actions.short_description = _("Application actions")
     application_actions.allow_tags = True
 
 

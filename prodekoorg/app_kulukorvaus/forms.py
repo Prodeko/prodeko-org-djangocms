@@ -20,22 +20,29 @@ class KulukorvausPerustiedotForm(ModelForm):
         # Call ModelForm __init__ method.
         super(KulukorvausPerustiedotForm, self).__init__(*args, **kwargs)
 
-        if 'position_in_guild' in self.fields:
+        if "position_in_guild" in self.fields:
             # Attach a RadioSelect widget to the position_in_guild for field
-            self.fields['position_in_guild'].widget = RadioSelect(
-                choices=KulukorvausPerustiedot.POSITION_CHOICES)
+            self.fields["position_in_guild"].widget = RadioSelect(
+                choices=KulukorvausPerustiedot.POSITION_CHOICES
+            )
         for visible in self.visible_fields():
-            if not visible.name == 'position_in_guild':
+            if not visible.name == "position_in_guild":
                 # 'form-control' is a bootstrap class used to style
                 # form fields appropriately.
-                visible.field.widget.attrs['class'] = 'form-control'
+                visible.field.widget.attrs["class"] = "form-control"
 
     class Meta:
         model = KulukorvausPerustiedot
-        exclude = ['created_by_user']  # Don't include 'created_by_user' in the form. It is inferred from the HttpRequest.
-        localized_fields = ('sum_overall',)  # Use ',' as a decimal separator for Finnish and '.' in English
+        exclude = [
+            "created_by_user"
+        ]  # Don't include 'created_by_user' in the form. It is inferred from the HttpRequest.
+        localized_fields = (
+            "sum_overall",
+        )  # Use ',' as a decimal separator for Finnish and '.' in English
         widgets = {
-            'additional_info': Textarea(attrs={'rows': 1, 'cols': 1}),  # Override Textarea default height
+            "additional_info": Textarea(
+                attrs={"rows": 1, "cols": 1}
+            )  # Override Textarea default height
         }
 
 
@@ -53,16 +60,24 @@ class KulukorvausForm(ModelForm):
         for visible in self.visible_fields():
             # 'form-control' is a bootstrap class used to style
             # form fields appropriately.
-            visible.field.widget.attrs['class'] = 'form-control'
+            visible.field.widget.attrs["class"] = "form-control"
 
     class Meta:
         model = Kulukorvaus
-        fields = '__all__'  # Use all model fields in form creation.
-        localized_fields = ('sum_euros',)  # Use ',' as a decimal separator for Finnish and '.' in English
+        fields = "__all__"  # Use all model fields in form creation.
+        localized_fields = (
+            "sum_euros",
+        )  # Use ',' as a decimal separator for Finnish and '.' in English
         widgets = {
-            'additional_info': Textarea(attrs={'rows': 1, 'cols': 1}),  # Override Textarea default height
+            "additional_info": Textarea(
+                attrs={"rows": 1, "cols": 1}
+            )  # Override Textarea default height
         }
         help_texts = {
-            'target': _('e.g. "Food expenses", "Coffee to the guildroom" or "Mileage allowance"'),
-            'explanation': _('e.g. "Fall sitz", "Freshmen meetup" or "Guildroom renovations"'),
+            "target": _(
+                'e.g. "Food expenses", "Coffee to the guildroom" or "Mileage allowance"'
+            ),
+            "explanation": _(
+                'e.g. "Fall sitz", "Freshmen meetup" or "Guildroom renovations"'
+            ),
         }

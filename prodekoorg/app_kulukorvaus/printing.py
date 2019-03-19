@@ -11,8 +11,14 @@ from reportlab.lib.units import cm
 from reportlab.lib.utils import ImageReader
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
-from reportlab.platypus import (Image, Paragraph, SimpleDocTemplate, Spacer,
-                                Table, TableStyle)
+from reportlab.platypus import (
+    Image,
+    Paragraph,
+    SimpleDocTemplate,
+    Spacer,
+    Table,
+    TableStyle,
+)
 from reportlab.platypus.flowables import HRFlowable
 
 
@@ -37,10 +43,17 @@ class KulukorvausPDF:
 
     def register_fonts(self):
         """Register fonts so reportlab can use them."""
-        pdfmetrics.registerFont(TTFont(
-            'Raleway Bold', settings.STATIC_ROOT + '/fonts/Raleway/Raleway-Bold.ttf'))
-        pdfmetrics.registerFont(TTFont(
-            'Raleway Medium', settings.STATIC_ROOT + '/fonts/Raleway/Raleway-Medium.ttf'))
+        pdfmetrics.registerFont(
+            TTFont(
+                "Raleway Bold", settings.STATIC_ROOT + "/fonts/Raleway/Raleway-Bold.ttf"
+            )
+        )
+        pdfmetrics.registerFont(
+            TTFont(
+                "Raleway Medium",
+                settings.STATIC_ROOT + "/fonts/Raleway/Raleway-Medium.ttf",
+            )
+        )
 
     def handle_receipt(self, img_receipt):
         """Read receipt into reportlab compatible Image format and make it smaller."""
@@ -58,18 +71,16 @@ class KulukorvausPDF:
     def print_kulukorvaukset(self):
         """Generates a pdf file from submitted form data."""
         buffer = self.buffer
-        doc = SimpleDocTemplate(buffer,
-                                rightMargin=72,
-                                leftMargin=72,
-                                topMargin=18,
-                                bottomMargin=18)
+        doc = SimpleDocTemplate(
+            buffer, rightMargin=72, leftMargin=72, topMargin=18, bottomMargin=18
+        )
 
         styles = getSampleStyleSheet()
-        styles.add(ParagraphStyle(name='Justify', alignment=TA_JUSTIFY))
+        styles.add(ParagraphStyle(name="Justify", alignment=TA_JUSTIFY))
         styles.add(ParagraphStyle(name="Center", alignment=TA_CENTER))
 
         # General data
-        formatted_time = format(timezone.now(), 'D, j M Y H:i:s')
+        formatted_time = format(timezone.now(), "D, j M Y H:i:s")
         model_perustiedot = self.model_perustiedot
 
         # Extract data from model
@@ -84,18 +95,24 @@ class KulukorvausPDF:
         elements = []
 
         # Setup table data
-        t_data = [[_('Name'), created_by],
-                  [_('Email'), email],
-                  [_('Position in guild'), position_in_guild],
-                  [_('Phone number'), phone_number],
-                  [_('Account number (IBAN)'), bank_number],
-                  ['BIC', bic]]
+        t_data = [
+            [_("Name"), created_by],
+            [_("Email"), email],
+            [_("Position in guild"), position_in_guild],
+            [_("Phone number"), phone_number],
+            [_("Account number (IBAN)"), bank_number],
+            ["BIC", bic],
+        ]
 
         # Loop Kulukorvaus models and append to t_data
         for model in self.models_kulukorvaukset:
             fields = model._meta.get_fields()
             for field in fields:
-                if field.name != "id" and field.name != "created_at" and field.name != "info":
+                if (
+                    field.name != "id"
+                    and field.name != "created_at"
+                    and field.name != "info"
+                ):
                     verbose_name = field.verbose_name
                     value = getattr(model, field.name)
                     if field.name == "receipt":
@@ -104,28 +121,38 @@ class KulukorvausPDF:
                     t_data.append([verbose_name, value])
 
         # Styling for the table
-        t_style = [('GRID', (0, 0), (-1, -1), 0.01 * cm, (0, 0, 0)),
-                   ('FONT', (0, 0), (-1, -1), 'Raleway Medium'),
-                   ('TEXTCOLOR', (0, 0), (0, -1), colors.gray),
-                   ('VALIGN', (0, 0), (0, -1), 'TOP')]
+        t_style = [
+            ("GRID", (0, 0), (-1, -1), 0.01 * cm, (0, 0, 0)),
+            ("FONT", (0, 0), (-1, -1), "Raleway Medium"),
+            ("TEXTCOLOR", (0, 0), (0, -1), colors.gray),
+            ("VALIGN", (0, 0), (0, -1), "TOP"),
+        ]
 
-        Img = self.get_image(settings.STATIC_ROOT + '/images/prodeko-logo-text-blue.png', width=10 * cm)
+        Img = self.get_image(
+            settings.STATIC_ROOT + "/images/prodeko-logo-text-blue.png", width=10 * cm
+        )
         s05cm = Spacer(width=0, height=0.5 * cm)
         ptime = "<font name='Raleway Medium' size=8>{}</font>".format(formatted_time)
-        PTIME = Paragraph(ptime, styles['Center'])
+        PTIME = Paragraph(ptime, styles["Center"])
 
-        text_info = _("Your reimbursement claim has been received. The claim will be processed in the next Prodeko board meeting.")
-        text_errors = _("If you notice any errors in the information below, contact Prodeko's treasurer immediately at rahastonhoitaja@prodeko.org.")
+        text_info = _(
+            "Your reimbursement claim has been received. The claim will be processed in the next Prodeko board meeting."
+        )
+        text_errors = _(
+            "If you notice any errors in the information below, contact Prodeko's treasurer immediately at rahastonhoitaja@prodeko.org."
+        )
 
         ptext = """<font name='Raleway Medium' size=10>{}
         <br />
         <br />
         {}
         </font>
-        """.format(text_info, text_errors)
+        """.format(
+            text_info, text_errors
+        )
 
         # Setup paragraph of text before the table as well as the table
-        P1 = Paragraph(ptext, styles['Normal'])
+        P1 = Paragraph(ptext, styles["Normal"])
         T = Table(t_data)
         T.setStyle(TableStyle(t_style))
 

@@ -14,6 +14,6 @@ class LifelonglearningApphook(CMSApp):
 
     def get_urls(self, page=None, language=None, **kwargs):
         return [
-            url(r'^$', index, name='index'),
-            url(r'^(?P<pk>\d+)/$', coursepage, name='coursepage'),
+            url(r"^$", index, name="index"),
+            url(r"^(?P<pk>\d+)/$", coursepage, name="coursepage"),
         ]

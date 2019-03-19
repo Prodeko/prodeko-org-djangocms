@@ -7,6 +7,7 @@ from django.utils.encoding import smart_str
 
 class MailConfiguration(models.Model):
     """ configuration for email backend """
+
     host = models.CharField(max_length=50, default="mail.aalto.fi")
     port = models.CharField(max_length=10, default="587")
     username = models.CharField(max_length=50, default="tiedottaja@aalto.fi")
@@ -31,34 +32,45 @@ class Category(models.Model):
         return smart_str(self.title)
 
     def visible_messages(self):
-        return Message.visible_objects.filter(category=self).order_by('end_date')
+        return Message.visible_objects.filter(category=self).order_by("end_date")
 
     def old_messages(self):
-        return Message.old_objects.filter(category=self).order_by('end_date')
+        return Message.old_objects.filter(category=self).order_by("end_date")
 
 
 class MessageManager(models.Manager):
     def get_queryset(self):
-        return super(MessageManager, self).get_queryset().filter(visible=True, start_date__lte=timezone.now(), end_date__gte=timezone.now())
+        return (
+            super(MessageManager, self)
+            .get_queryset()
+            .filter(
+                visible=True,
+                start_date__lte=timezone.now(),
+                end_date__gte=timezone.now(),
+            )
+        )
 
 
 class OldMessageManager(models.Manager):
     def get_queryset(self):
-        return super(OldMessageManager, self).get_queryset().filter(visible=True, end_date__lt=timezone.now())
+        return (
+            super(OldMessageManager, self)
+            .get_queryset()
+            .filter(visible=True, end_date__lt=timezone.now())
+        )
 
 
 class Message(models.Model):
     header = models.CharField(max_length=250)
     content = models.TextField()
     pub_date = models.DateTimeField(default=timezone.now)
-    category = models.ForeignKey(Category, related_name='messages', null=True)
-    tags = models.ManyToManyField(
-        Tag, related_name='messages', null=True, blank=True)
+    category = models.ForeignKey(Category, related_name="messages", null=True)
+    tags = models.ManyToManyField(Tag, related_name="messages", null=True, blank=True)
     start_date = models.DateField(default=timezone.now)
-    end_date = models.DateField(
-        default=timezone.now().date() + timedelta(days=7))
-    deadline_date = models.DateField(default=timezone.now(
-    ).date() + timedelta(days=7), blank=True, null=True)
+    end_date = models.DateField(default=timezone.now().date() + timedelta(days=7))
+    deadline_date = models.DateField(
+        default=timezone.now().date() + timedelta(days=7), blank=True, null=True
+    )
     show_deadline = models.BooleanField(default=False)
     visible = models.BooleanField(default=True)
 
@@ -73,7 +85,14 @@ class Message(models.Model):
         return timezone.now().date() - self.start_date < timedelta(days=7)
 
     def is_active(self):
-        return self.start_date <= timezone.now().date() and self.end_date >= timezone.now().date() and self.visible
+        return (
+            self.start_date <= timezone.now().date()
+            and self.end_date >= timezone.now().date()
+            and self.visible
+        )
 
     def is_current(self):
-        return self.start_date <= timezone.now().date() and self.end_date >= timezone.now().date()
+        return (
+            self.start_date <= timezone.now().date()
+            and self.end_date >= timezone.now().date()
+        )

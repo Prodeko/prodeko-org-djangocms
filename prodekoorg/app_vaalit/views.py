@@ -12,8 +12,13 @@ from django.core.files.base import ContentFile
 from django.core.files.uploadedfile import InMemoryUploadedFile
 from django.core.serializers import serialize
 from django.core.serializers.json import DjangoJSONEncoder
-from django.http import (Http404, HttpResponse, HttpResponseForbidden,
-                         HttpResponseRedirect, JsonResponse)
+from django.http import (
+    Http404,
+    HttpResponse,
+    HttpResponseForbidden,
+    HttpResponseRedirect,
+    JsonResponse,
+)
 from django.shortcuts import get_object_or_404, redirect, render
 from django.template.loader import render_to_string
 from django.urls import reverse_lazy
@@ -31,8 +36,9 @@ class EhdokasDeleteView(SuccessMessageMixin, DeleteView):
         PermissionDenied: Unauthorized user tried to delete an application that
                           they didn't create.
     """
+
     model = Ehdokas
-    success_url = reverse_lazy('app_vaalit:vaalit')
+    success_url = reverse_lazy("app_vaalit:vaalit")
     success_message = "%(name)s poistettu onnistuneesti."
 
     def get_object(self, *args, **kwargs):
@@ -55,10 +61,11 @@ class EhdokasUpdateView(UpdateView):
         PermissionDenied: Unauthorized user tried to delete an application that
                           they didn't create.
     """
+
     model = Ehdokas
     form_class = EhdokasForm
-    success_url = reverse_lazy('app_vaalit:vaalit')
-    template_name = 'forms/vaalit_modify_application_form.html'
+    success_url = reverse_lazy("app_vaalit:vaalit")
+    template_name = "forms/vaalit_modify_application_form.html"
 
     def get_object(self, *args, **kwargs):
         """Allows updating the object only if request.user created the application."""
@@ -80,10 +87,10 @@ def delete_kysymys_view(request, pk):
     kysymys = get_object_or_404(Kysymys, pk=pk)
     if kysymys.created_by != request.user:
         raise PermissionDenied
-    if request.method == 'POST' and request.is_ajax():
+    if request.method == "POST" and request.is_ajax():
         id = kysymys.id
         kysymys.delete()
-        return JsonResponse({'delete_kysymys_id': id})
+        return JsonResponse({"delete_kysymys_id": id})
     else:
         raise Http404
 
@@ -93,18 +100,18 @@ def update_kysymys_view(request, pk):
     kysymys = get_object_or_404(Kysymys, pk=pk)
     if kysymys.created_by != request.user:
         raise PermissionDenied
-    if request.method == 'POST':
+    if request.method == "POST":
         kysymys.delete()
-        return redirect('/vaalit')
+        return redirect("/vaalit")
     else:
         raise Http404
 
 
 def crop_pic(uploaded_img, x, y, w, h):
     if not uploaded_img:
-        img_url_prt = static('images/misc/anonymous_prodeko.jpg')
+        img_url_prt = static("images/misc/anonymous_prodeko.jpg")
         x, y, w, h = 0, 0, 150, 150
-        img_url_full = settings.BASE_DIR + '/prodekoorg' + img_url_prt
+        img_url_full = settings.BASE_DIR + "/prodekoorg" + img_url_prt
         img = Image.open(img_url_full)
     else:
         img = Image.open(uploaded_img.file)
@@ -113,13 +120,14 @@ def crop_pic(uploaded_img, x, y, w, h):
     img_io = BytesIO()
     # Have to use because people might upload them anyways...
     # We get an error if forma='JPEG' because png's have alpha channel
-    cropped_img.save(fp=img_io, format='PNG')
+    cropped_img.save(fp=img_io, format="PNG")
     buff_val = img_io.getvalue()
     contentFile = ContentFile(buff_val)
     # If no image was provided use anonymous_prodeko.jpg
-    name = uploaded_img.name if uploaded_img else 'anonymous_prodeko.jpg'
-    ret = InMemoryUploadedFile(contentFile, None, name,
-                               'image/png', cropped_img.tell, None)
+    name = uploaded_img.name if uploaded_img else "anonymous_prodeko.jpg"
+    ret = InMemoryUploadedFile(
+        contentFile, None, name, "image/png", cropped_img.tell, None
+    )
     img.close()
     img_io.close()
     return ret
@@ -137,8 +145,13 @@ def get_hidden_inputs(post):
 def is_duplicate_application(request, hidden_virka):
     # If the user has already applied to this virka
     # don't create a new ehdokas instance and display a warning message
-    if Ehdokas.objects.filter(virka__name=hidden_virka, auth_prodeko_user=request.user).exists():
-        messages.warning(request, 'Et voi hakea samaan virkaan kahta kertaa, muokkaa edellistä hakemustasi.')
+    if Ehdokas.objects.filter(
+        virka__name=hidden_virka, auth_prodeko_user=request.user
+    ).exists():
+        messages.warning(
+            request,
+            "Et voi hakea samaan virkaan kahta kertaa, muokkaa edellistä hakemustasi.",
+        )
         return True
     else:
         return False
@@ -146,11 +159,15 @@ def is_duplicate_application(request, hidden_virka):
 
 def get_ehdokkaat_json(context, ehdokas):
     # Append the new ehdokas to the ehdokas_json list that is processed in javascript
-    ehdokas_new_python = serialize('python', [ehdokas], use_natural_foreign_keys=True,
-                                   fields=('auth_prodeko_user', 'virka'))
-    ehdokas_new_json = json.dumps([d['fields'] for d in ehdokas_new_python])
+    ehdokas_new_python = serialize(
+        "python",
+        [ehdokas],
+        use_natural_foreign_keys=True,
+        fields=("auth_prodeko_user", "virka"),
+    )
+    ehdokas_new_json = json.dumps([d["fields"] for d in ehdokas_new_python])
     ehdokas_new = json.loads(ehdokas_new_json)
-    ehdokkaat_json = json.loads(context['ehdokkaat_json'])
+    ehdokkaat_json = json.loads(context["ehdokkaat_json"])
     ehdokkaat_json.extend(ehdokas_new)  # Extend operates in-place and returns none
     return json.dumps(ehdokkaat_json)
 
@@ -158,7 +175,7 @@ def get_ehdokkaat_json(context, ehdokas):
 def handle_submit_ehdokas(request, context):
     form_ehdokas = EhdokasForm(request.POST, request.FILES)
     # Store the form in context in case there were errors
-    context['form_ehdokas'] = form_ehdokas
+    context["form_ehdokas"] = form_ehdokas
 
     if form_ehdokas.is_valid():
 
@@ -167,10 +184,10 @@ def handle_submit_ehdokas(request, context):
 
         # Check for duplicate application to one Virka by the same Ehdokas
         if is_duplicate_application(request, hidden_virka):
-            return redirect('/vaalit')
+            return redirect("/vaalit")
 
         # Crop the image using the hidden input x, y, w and h coordinates
-        cropped_pic = crop_pic(request.FILES.get('pic', ), x, y, w, h)
+        cropped_pic = crop_pic(request.FILES.get("pic"), x, y, w, h)
 
         # Get the ehdokas object without committing changes to the database.
         # We still need to append pic, user object and foreign key virka object to the ehdokas object.
@@ -180,14 +197,14 @@ def handle_submit_ehdokas(request, context):
         ehdokas.virka = get_object_or_404(Virka, name=hidden_virka)
         ehdokas.save()
 
-        context['ehdokkaat_json'] = get_ehdokkaat_json(context, ehdokas)
-        context['form_ehdokas'] = form_ehdokas
-        return render(request, 'vaalit.html', context)
+        context["ehdokkaat_json"] = get_ehdokkaat_json(context, ehdokas)
+        context["form_ehdokas"] = form_ehdokas
+        return render(request, "vaalit.html", context)
     else:
         # If there are errors show the form by setting it's display to 'block'
-        context['style_vaaliApplyForm'] = 'display: block;'
+        context["style_vaaliApplyForm"] = "display: block;"
         # Return the form with error messages and reder vaalit main page
-        return render(request, 'vaalit.html', context)
+        return render(request, "vaalit.html", context)
 
 
 def handle_modify_ehdokas(request, context, ehdokas):
@@ -195,16 +212,16 @@ def handle_modify_ehdokas(request, context, ehdokas):
     hidden_virka, x, y, w, h = get_hidden_inputs(request.POST)
 
     # Crop the image using the hidden input x, y, w and h coordinates
-    cropped_pic = crop_pic(request.FILES.get('pic', ), x, y, w, h)
+    cropped_pic = crop_pic(request.FILES.get("pic"), x, y, w, h)
 
     # Get the ehdokas object without committing changes to the database.
     # We still need to append pic, user object and foreign key virka object to the ehdokas object.
     # TODO handle name once auth_prodeko is ready
     ehdokas.pic = cropped_pic
-    ehdokas.introduction = request.POST.get('introduction', )
+    ehdokas.introduction = request.POST.get("introduction")
     ehdokas.virka = get_object_or_404(Virka, name=hidden_virka)
     ehdokas.save()
-    render(request, 'vaalit.html', context)
+    render(request, "vaalit.html", context)
 
 
 def handle_submit_kysymys(request, context):
@@ -228,9 +245,9 @@ def handle_submit_kysymys(request, context):
         kysymys.to_virka = virka
         kysymys.save()
 
-        context['kysymys'] = kysymys
-        context['virka'] = virka
-        html = render_to_string('vaalit_question.html', context, request)
+        context["kysymys"] = kysymys
+        context["virka"] = virka
+        html = render_to_string("vaalit_question.html", context, request)
 
         return HttpResponse(html)
     else:
@@ -248,39 +265,45 @@ def handle_submit_answer(request, context):
         vastaus.to_question = get_object_or_404(Kysymys, id=hidden_kysymys_id)
         vastaus.save()
 
-        html = render_to_string('vaalit_answer.html', context, request)
+        html = render_to_string("vaalit_answer.html", context, request)
 
-        #return HttpResponse(html)
+        # return HttpResponse(html)
 
-        return redirect('/vaalit')
+        return redirect("/vaalit")
     else:
         print("went here")
         # Return form with error and render vaalit main page
-        return render(request, 'vaalit.html', context)
+        return render(request, "vaalit.html", context)
 
 
 def main_view(request):
     context = {}
     ehdokkaat = Ehdokas.objects.all()
     # ehdokkaat_json is parsed to JSON in the template 'vaalit_question_form.html'
-    ehdokkaat_python = serialize('python', ehdokkaat, use_natural_foreign_keys=True,
-                                 fields=('auth_prodeko_user', 'virka'))
-    ehdokkaat_json = json.dumps([d['fields'] for d in ehdokkaat_python])
-    context['virat'] = Virka.objects.all()
-    context['ehdokkaat'] = ehdokkaat
-    context['ehdokkaat_json'] = ehdokkaat_json
-    context['count_ehdokkaat_hallitus'] = Virka.objects.filter(is_hallitus=True).count()
-    context['count_ehdokkaat_toimarit'] = Virka.objects.filter(is_hallitus=False).count()
+    ehdokkaat_python = serialize(
+        "python",
+        ehdokkaat,
+        use_natural_foreign_keys=True,
+        fields=("auth_prodeko_user", "virka"),
+    )
+    ehdokkaat_json = json.dumps([d["fields"] for d in ehdokkaat_python])
+    context["virat"] = Virka.objects.all()
+    context["ehdokkaat"] = ehdokkaat
+    context["ehdokkaat_json"] = ehdokkaat_json
+    context["count_ehdokkaat_hallitus"] = Virka.objects.filter(is_hallitus=True).count()
+    context["count_ehdokkaat_toimarit"] = Virka.objects.filter(
+        is_hallitus=False
+    ).count()
     print(request.POST)
-    if request.method == 'POST':
-        if 'submitVirka' in request.POST:
+    if request.method == "POST":
+        if "submitVirka" in request.POST:
             return handle_submit_ehdokas(request, context)
-        elif 'submitVastaus' in request.POST:
+        elif "submitVastaus" in request.POST:
             return handle_submit_answer(request, context)
-        elif 'submitKysymys' in request.POST and request.is_ajax():
+        elif "submitKysymys" in request.POST and request.is_ajax():
             return handle_submit_kysymys(request, context)
         else:
             raise Http404
     else:
-        context['form_ehdokas'] = EhdokasForm()
-        return render(request, 'vaalit.html', context)
+        context["form_ehdokas"] = EhdokasForm()
+        return render(request, "vaalit.html", context)

@@ -7,7 +7,7 @@ from tiedotteet.info.models import Category, Message, Tag
 class TagSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tag
-        fields = ['title']
+        fields = ["title"]
 
 
 class MessageSerializer(serializers.ModelSerializer):
@@ -17,7 +17,7 @@ class MessageSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Message
-        fields = ('__all__')
+        fields = "__all__"
 
     def get_tags(self, message):
         queryset = message.tags.all()
@@ -32,7 +32,7 @@ class CategorySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Category
-        fields = ['id', 'title', 'order', 'messages']
+        fields = ["id", "title", "order", "messages"]
 
     def get_messages(self, category):
         queryset = Message.visible_objects.filter(category=category)
@@ -46,7 +46,7 @@ class ContentList(APIView):
     """
 
     def get(self, request, format=None):
-        queryset = Category.objects.all().order_by('order')
+        queryset = Category.objects.all().order_by("order")
         if not request.user.is_authenticated():
             queryset = queryset.exclude(login_required=True)
         serializer = CategorySerializer(queryset, many=True)

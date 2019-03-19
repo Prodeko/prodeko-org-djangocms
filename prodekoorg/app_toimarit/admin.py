@@ -26,9 +26,9 @@ def exportcsv(modeladmin, request, queryset):
     if not request.user.is_staff:
         raise PermissionDenied
     opts = queryset.model._meta
-    response = HttpResponse(content_type='text/csv')
-    response['Content-Disposition'] = 'attachment;filename=toimarit.csv'
-    writer = csv.writer(response, delimiter=';')
+    response = HttpResponse(content_type="text/csv")
+    response["Content-Disposition"] = "attachment;filename=toimarit.csv"
+    writer = csv.writer(response, delimiter=";")
     field_names = [field.name for field in opts.fields]
     field_names = field_names[1:]
 
@@ -39,19 +39,26 @@ def exportcsv(modeladmin, request, queryset):
 
 @admin.register(Jaosto)
 class JaostoAdmin(admin.ModelAdmin):
-    list_display = ('name', )
+    list_display = ("name",)
 
 
 @admin.register(Toimari)
 class ToimariAdmin(admin.ModelAdmin):
-    list_display = ('firstname', 'lastname', 'section', 'position')
+    list_display = ("firstname", "lastname", "section", "position")
     actions = [exportcsv]
-    exportcsv.short_description = _('Export selected as CSV')
+    exportcsv.short_description = _("Export selected as CSV")
 
 
 @admin.register(HallituksenJasen)
 class HallituksenJasenAdmin(admin.ModelAdmin):
-    list_display = ('firstname', 'lastname', 'position', 'position_eng',
-                    'section', 'mobilephone', 'email')
+    list_display = (
+        "firstname",
+        "lastname",
+        "position",
+        "position_eng",
+        "section",
+        "mobilephone",
+        "email",
+    )
     actions = [exportcsv]
-    exportcsv.short_description = _('Export selected as CSV')
+    exportcsv.short_description = _("Export selected as CSV")
