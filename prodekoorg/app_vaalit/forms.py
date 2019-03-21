@@ -10,11 +10,11 @@ class EhdokasForm(ModelForm):
         super(EhdokasForm, self).__init__(*args, **kwargs)
 
         for visible in self.visible_fields():
-            visible.field.widget.attrs['class'] = 'form-control'
+            visible.field.widget.attrs["class"] = "form-control"
 
     class Meta:
         model = Ehdokas
-        fields = ['name', 'introduction', 'pic']
+        fields = ["name", "introduction", "pic"]
 
 
 class KysymysForm(ModelForm):
@@ -22,11 +22,11 @@ class KysymysForm(ModelForm):
         super(KysymysForm, self).__init__(*args, **kwargs)
 
         for visible in self.visible_fields():
-            visible.field.widget.attrs['class'] = 'form-control'
+            visible.field.widget.attrs["class"] = "form-control"
 
     class Meta:
         model = Kysymys
-        fields = ['question']
+        fields = ["question"]
 
 
 class VastausForm(ModelForm):
@@ -34,8 +34,8 @@ class VastausForm(ModelForm):
         super(VastausForm, self).__init__(*args, **kwargs)
 
         for visible in self.visible_fields():
-            visible.field.widget.attrs['class'] = 'form-control'
+            visible.field.widget.attrs["class"] = "form-control"
 
     class Meta:
         model = Vastaus
-        fields = ['answer']
+        fields = ["answer"]

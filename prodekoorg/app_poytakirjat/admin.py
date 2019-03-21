@@ -4,8 +4,8 @@ from prodekoorg.app_poytakirjat.models import Dokumentti
 
 
 class YearFilter(SimpleListFilter):
-    title = 'vuosi'
-    parameter_name = 'vuosi'
+    title = "vuosi"
+    parameter_name = "vuosi"
 
     def lookups(self, request, model_admin):
         years = set([d.date.year for d in model_admin.model.objects.all()])
@@ -19,7 +19,7 @@ class YearFilter(SimpleListFilter):
 
 
 class DokumenttiAdmin(admin.ModelAdmin):
-    list_display = ('name', 'date')
+    list_display = ("name", "date")
     list_filter = (YearFilter,)
 
 

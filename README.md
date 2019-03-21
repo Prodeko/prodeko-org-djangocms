@@ -67,12 +67,26 @@ Testien kirjoittamiseen voi katsoa mallia prodekoorg/app_kulukorvaus/tests/ kans
 
 ### Koodityyli
 
-Käytä koodityylin tarkistamiseen apuna [flake8:aa](http://flake8.pycqa.org/en/latest/index.html). 
+**Code compliance (PEP8)**
 
-Asennusohjeet:
-- [VSCode](https://code.visualstudio.com/docs/python/linting#_flake8)
-- [Atom](https://atom.io/packages/linter-flake8)
-- [Sublime Text](https://packagecontrol.io/packages/SublimeLinter-flake8)
+Konfiguraatiotiedosto [.flake8](./.flake8).
+
+Aja flake8:
+```shell
+$ flake8
+```
+
+**Code formatting**
+
+Konfiguraatiotiedosto [pyproject.toml](./pyproject.toml).
+
+Aja black:
+```shell
+$ black .
+
+All done! ✨ 🍰 ✨
+48 files left unchanged.
+```
 
 ### Rakennuspalikat
 

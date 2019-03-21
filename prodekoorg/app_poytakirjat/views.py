@@ -19,10 +19,10 @@ def docs(request):
         If the user isn't logged in, they are redirected to the login url.
     """
 
-    docs = Dokumentti.objects.all().order_by('date')
+    docs = Dokumentti.objects.all().order_by("date")
     iterable = [(str(doc.date.year), doc) for doc in docs]
     context = defaultdict(list)
     for year, doc in iterable:
         context[year].append(doc)
     context = dict(context)
-    return render(request, 'documents.html', {'context': context})
+    return render(request, "documents.html", {"context": context})

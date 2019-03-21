@@ -24,10 +24,10 @@ def postcsv(request):
     """
 
     try:
-        csv_file = request.FILES['file']
-        decoded_file = csv_file.read().decode('utf-8')
+        csv_file = request.FILES["file"]
+        decoded_file = csv_file.read().decode("utf-8")
         io_string = io.StringIO(decoded_file)
-        for line in csv.reader(io_string, delimiter=';', quotechar='|'):
+        for line in csv.reader(io_string, delimiter=";", quotechar="|"):
             nextRow = Toimari()
             nextRow.firstname = line[0]
             nextRow.lastname = line[1]
@@ -35,10 +35,12 @@ def postcsv(request):
             # HUOM! Kaikkien Jaostojen täytyy olla jo luotu ennen CSV-tietojen lataamista
             nextRow.section = Jaosto.objects.get(name=line[3])
             nextRow.save()
-        messages.add_message(request, messages.SUCCESS, _('CSV imported successfully.'))
+        messages.add_message(request, messages.SUCCESS, _("CSV imported successfully."))
     except Exception as e:
-        messages.add_message(request, messages.ERROR, _('Error downloading CSV: {}'.format(e)))
-    return redirect('../../admin/')
+        messages.add_message(
+            request, messages.ERROR, _("Error downloading CSV: {}".format(e))
+        )
+    return redirect("../../admin/")
 
 
 def list_guildofficials(request):
@@ -53,8 +55,8 @@ def list_guildofficials(request):
 
     guildofficials = Toimari.objects.all()
     sections = Jaosto.objects.all()
-    context = {'guildofficials': guildofficials, 'sections': sections}
-    return render(request, 'guildofficials.html', context)
+    context = {"guildofficials": guildofficials, "sections": sections}
+    return render(request, "guildofficials.html", context)
 
 
 def list_boardmembers(request):
@@ -68,5 +70,5 @@ def list_boardmembers(request):
     """
 
     boardmembers = HallituksenJasen.objects.all()
-    context = {'boardmembers': boardmembers}
-    return render(request, 'board.html', context)
+    context = {"boardmembers": boardmembers}
+    return render(request, "board.html", context)

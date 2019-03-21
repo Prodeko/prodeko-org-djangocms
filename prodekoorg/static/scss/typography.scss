@@ -6,10 +6,10 @@ h3,
 h4,
 h5,
 h6 {
+  color: $blue-light;
+  font-weight: semi-bold;
   font-family: Raleway, Helvetica, sans-serif;
   text-transform: uppercase;
-  font-weight: semi-bold;
-  color: $blue-light;
 }
 
 h1 {
@@ -29,9 +29,9 @@ h4 {
 }
 
 h5 {
+  font-weight: 600;
   font-size: 1rem;
   text-transform: none;
-  font-weight: 600;
 }
 
 .uppercase {

@@ -3,27 +3,29 @@
 @import 'variables.scss';
 
 #sidenav {
-  list-style-type: none;
-  background-color: $blue-dark;
-  padding: 1em;
-  min-height: 10em;
-  min-width: 15em;
-  display: flex;
-  justify-content: center;
   position: fixed;
   bottom: 40px;
+  display: flex;
+  justify-content: center;
+  min-width: 15em;
+  min-height: 10em;
+  padding: 1em;
+  list-style-type: none;
+  background-color: $blue-dark;
+
   a {
     color: lightgrey;
     text-transform: uppercase;
+
     &:hover {
       color: white;
     }
   }
 
   .sidemenu-collapsable {
+    justify-content: center;
     padding-left: 0;
     line-height: 50%;
-    justify-content: center;
   }
 
   .sidenav-highlink {

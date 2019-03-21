@@ -1,0 +1,3 @@
+[flake8]
+exclude = .git,locale,documentation,.vagrant,tiedotteet/client/node_modules/,tiedotteet/info/migrations/,**/**/migrations,**/migrations
+max-line-length = 88

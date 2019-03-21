@@ -2,21 +2,21 @@
 
 .loader {
   position: absolute;
-  height: 100%;
   width: 100%;
-  overflow: show;
+  height: 100%;
   margin: auto;
+  overflow: show;
 
   img {
-    -webkit-animation: spin 4s linear infinite;
-    animation: spin 4s linear infinite;
     position: absolute;
     top: 0;
-    left: 0;
-    bottom: 0;
     right: 0;
-    margin: auto;
+    bottom: 0;
+    left: 0;
     max-width: 10rem;
+    margin: auto;
+    -webkit-animation: spin 4s linear infinite;
+    animation: spin 4s linear infinite;
   }
 }
 
@@ -24,6 +24,7 @@
   0% {
     -webkit-transform: rotate(0deg);
   }
+
   100% {
     -webkit-transform: rotate(360deg);
   }
@@ -33,6 +34,7 @@
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }

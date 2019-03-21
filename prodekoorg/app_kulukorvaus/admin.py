@@ -3,14 +3,14 @@ from django.contrib.admin import SimpleListFilter
 from django.db import models
 from django.forms import Textarea
 from django.utils.translation import ugettext_lazy as _
-from prodekoorg.app_kulukorvaus.models import (Kulukorvaus,
-                                               KulukorvausPerustiedot)
+from prodekoorg.app_kulukorvaus.models import Kulukorvaus, KulukorvausPerustiedot
 
 
 class YearFilter(SimpleListFilter):
     """Filter for Django admin to"""
-    title = _('Year')
-    parameter_name = 'vuosi'
+
+    title = _("Year")
+    parameter_name = "vuosi"
 
     def lookups(self, request, model_admin):
         """Allows filtering the reimbursements by year in Django admin"""
@@ -25,17 +25,21 @@ class YearFilter(SimpleListFilter):
 
 
 class KulukorvausAdmin(admin.ModelAdmin):
-    list_display = ('created_at', 'explanation')
+    list_display = ("created_at", "explanation")
     list_filter = (YearFilter,)
 
     formfield_overrides = {
-        models.TextField: {'widget': Textarea(attrs={'rows': 1, 'cols': 1})},  # Override Textarea default height
+        models.TextField: {
+            "widget": Textarea(attrs={"rows": 1, "cols": 1})
+        }  # Override Textarea default height
     }
 
 
 class KulukorvausPerustiedotAdmin(admin.ModelAdmin):
     formfield_overrides = {
-        models.TextField: {'widget': Textarea(attrs={'rows': 1, 'cols': 1})},  # Override Textarea default height
+        models.TextField: {
+            "widget": Textarea(attrs={"rows": 1, "cols": 1})
+        }  # Override Textarea default height
     }
 
 

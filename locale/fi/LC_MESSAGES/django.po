@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-22 13:32+0000\n"
+"POT-Creation-Date: 2019-03-19 14:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -196,6 +196,10 @@ msgstr "Salasana unohtunut?"
 #: auth_prodeko/templates/prodeko_login.html:12
 msgid "The email and password didn't match. Try again"
 msgstr "Sähköposti ja salasana eivät täsmänneet. Yritä uudestaan"
+
+#: lifelonglearning/cms_apps.py:13
+msgid "Lifelonglearning page"
+msgstr "Lifelonglearning sivu"
 
 #: lifelonglearning/models.py:28
 msgid "courses"
@@ -660,25 +664,25 @@ msgstr "hallituksen jäsen"
 msgid "board members"
 msgstr "hallituksen jäsenet"
 
-#: prodekoorg/app_toimarit/templates/admin/app_toimarit/Toimari/change_list.html:31
+#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:31
 #: prodekoorg/app_toimarit/templates/admin/base.html:56
 msgid "Home"
 msgstr "Kotisivu"
 
-#: prodekoorg/app_toimarit/templates/admin/app_toimarit/Toimari/change_list.html:49
+#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:49
 #, python-format
 msgid "Add %(name)s"
 msgstr "Lisää %(name)s"
 
-#: prodekoorg/app_toimarit/templates/admin/app_toimarit/Toimari/change_list.html:65
+#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:65
 msgid "Please correct the error below."
 msgstr "Korjaa allaolevat virheet."
 
-#: prodekoorg/app_toimarit/templates/admin/app_toimarit/Toimari/change_list.html:65
+#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:65
 msgid "Please correct the errors below."
 msgstr "Korjaa allaolevat virheet."
 
-#: prodekoorg/app_toimarit/templates/admin/app_toimarit/Toimari/change_list.html:76
+#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:76
 msgid "Filter"
 msgstr "Filtteri"
 
@@ -916,7 +920,7 @@ msgstr "Kirjaudu"
 msgid "Membership"
 msgstr "Hae jäsenyyttä"
 
-#: prodekoorg/urls.py:63
+#: prodekoorg/urls.py:55
 msgid "^weekly-bulletin/"
 msgstr "^tiedotteet/"
 

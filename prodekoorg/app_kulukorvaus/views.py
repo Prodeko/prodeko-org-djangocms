@@ -41,8 +41,7 @@ def download_kulukorvaus_pdf(request, perustiedot_id):
     # exist, raise HTTP404. If the user doesn't own the object
     # raise PermissionDenied.
     try:
-        model_perustiedot = KulukorvausPerustiedot.objects.get(
-            id=perustiedot_id)
+        model_perustiedot = KulukorvausPerustiedot.objects.get(id=perustiedot_id)
         if not request.user == model_perustiedot.created_by_user:
             raise PermissionDenied
     except KulukorvausPerustiedot.DoesNotExist:
@@ -50,9 +49,8 @@ def download_kulukorvaus_pdf(request, perustiedot_id):
 
     # Create the HttpResponse object with the appropriate PDF headers.
     filename = model_perustiedot.pdf_filename()
-    response = HttpResponse(model_perustiedot.pdf.file,
-                            content_type='application/pdf')
-    response['Content-Disposition'] = 'attachment; filename="' + filename + '"'
+    response = HttpResponse(model_perustiedot.pdf.file, content_type="application/pdf")
+    response["Content-Disposition"] = 'attachment; filename="' + filename + '"'
     return response
 
 
@@ -110,14 +108,14 @@ def main_form(request):
     # If the user hasn't accepted Prodeko's privacy policy
     # return a 'policy error' page.
     if not request.user.has_accepted_policies:
-        return render(request, 'kulukorvaus.html', {'policy_error': True})
+        return render(request, "kulukorvaus.html", {"policy_error": True})
 
     # Django docs: "A formset is a layer of abstraction to work
     # with multiple forms on the same page." In this case we might
     # have multiple KulukorvausForms in the same page but only one
     # KulukorvausPerustiedotForm.
     KulukorvausFormset = formset_factory(KulukorvausForm)
-    if request.method == 'POST' and request.is_ajax():
+    if request.method == "POST" and request.is_ajax():
 
         # Generate form objects from POST data.
         form_perustiedot = KulukorvausPerustiedotForm(request.POST)
@@ -147,39 +145,58 @@ def main_form(request):
 
             try:
                 # Send email to the person who submitted the kulukorvaus
-                send_email(request.user, model_perustiedot.id,
-                           'kulukorvaus.txt', model_perustiedot.email)
+                send_email(
+                    request.user,
+                    model_perustiedot.id,
+                    "kulukorvaus.txt",
+                    model_perustiedot.email,
+                )
 
                 # Send email to rahastonhoitaja@prodeko.org, or DEV_EMAIL if we are in debug mode.
-                email_to = 'rahastonhoitaja@prodeko.org' if not settings.DEBUG else settings.DEV_EMAIL
-                send_email(request.user, model_perustiedot.id,
-                           'kulukorvaus_rahastonhoitaja.txt', email_to)
+                email_to = (
+                    "rahastonhoitaja@prodeko.org"
+                    if not settings.DEBUG
+                    else settings.DEV_EMAIL
+                )
+                send_email(
+                    request.user,
+                    model_perustiedot.id,
+                    "kulukorvaus_rahastonhoitaja.txt",
+                    email_to,
+                )
             except SMTPAuthenticationError:
                 # Google server doesn't authenticate no-reply@prodeko.org.
                 # Most likely the password to said account is configured incorrectly
-                return render(request, 'kulukorvaus.html', {'error': True})
+                return render(request, "kulukorvaus.html", {"error": True})
 
                 # Successfull form submission - render page displaying
                 # info and pdf download link.
-            return render(request, 'kulukorvaus.html', {'done': True,
-                                                        'perustiedot_id': model_perustiedot.id
-                                                        })
+            return render(
+                request,
+                "kulukorvaus.html",
+                {"done": True, "perustiedot_id": model_perustiedot.id},
+            )
         else:
             # Form submission contained errors. Return status code 599
             # (599 is not specified in any RFC). The status code is captured
             # in javascript and form errors are displayed without
             # refreshing the page.
-            return render(request, 'kulukorvaus_forms.html', {'form_perustiedot': form_perustiedot,
-                                                              'formset_kulu': formset
-                                                              }, status=599)
+            return render(
+                request,
+                "kulukorvaus_forms.html",
+                {"form_perustiedot": form_perustiedot, "formset_kulu": formset},
+                status=599,
+            )
     else:
         # Generate empty forms and display them to the user.
         # Initial GET request to this view triggers ends up here.
         form_perustiedot = KulukorvausPerustiedotForm()
         formset = KulukorvausFormset()
-        return render(request, 'kulukorvaus.html', {'form_perustiedot': form_perustiedot,
-                                                    'formset_kulu': formset
-                                                    })
+        return render(
+            request,
+            "kulukorvaus.html",
+            {"form_perustiedot": form_perustiedot, "formset_kulu": formset},
+        )
 
 
 def send_email(user, perustiedot_id, template, email_to):
@@ -200,13 +217,15 @@ def send_email(user, perustiedot_id, template, email_to):
     # This fetches all the Kulukorvaus objects whose 'info' foreign key
     # attribute is the KulukorvausPerustiedot object obtained above.
     models_kulukorvaukset = model_perustiedot.kulukorvaus_set.all()
-    subject = 'Prodeko kulukorvaus - {} {}'.format(
-        user.first_name, user.last_name)
-    text_content = render_to_string(template, {
-                                    'user': user,
-                                    'model_perustiedot': model_perustiedot,
-                                    'models_kulukorvaukset': models_kulukorvaukset
-                                    })
+    subject = "Prodeko kulukorvaus - {} {}".format(user.first_name, user.last_name)
+    text_content = render_to_string(
+        template,
+        {
+            "user": user,
+            "model_perustiedot": model_perustiedot,
+            "models_kulukorvaukset": models_kulukorvaukset,
+        },
+    )
     email_to = email_to
     from_email = settings.DEFAULT_FROM_EMAIL
     msg = EmailMultiAlternatives(subject, text_content, from_email, [email_to])
@@ -215,5 +234,5 @@ def send_email(user, perustiedot_id, template, email_to):
 
     # TODO: No html alternative for now...
     # msg.attach_alternative(html_content, "text/html")
-    msg.attach(filename, model_perustiedot.pdf.file.read(), 'application/jpg')
+    msg.attach(filename, model_perustiedot.pdf.file.read(), "application/jpg")
     msg.send()

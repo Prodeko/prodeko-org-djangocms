@@ -6,6 +6,12 @@ $desktop-width: 1024px;
  * Usage: @include tablet {}
  */
 
+@mixin smallphone {
+  @media (max-width: #{$phone-width - 1px}) {
+    @content;
+  }
+}
+
 @mixin phone {
   @media (max-width: #{$tablet-width - 1px}) {
     @content;

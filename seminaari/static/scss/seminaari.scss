@@ -1,12 +1,12 @@
 html,
 body {
-  font-family: 'Raleway', sans-serif !important;
-  font-size: 1em;
-  color: #666;
   width: 100% !important;
-  overflow-x: hidden;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
+  color: #666;
+  font-size: 1em;
+  font-family: 'Raleway', sans-serif !important;
   border: none;
 }
 
@@ -20,40 +20,40 @@ h6 {
 }
 
 h1 {
+  margin: 0;
+  padding: 0;
   font-weight: bold;
-  text-transform: uppercase;
   font-size: 4em;
-  margin: 0px;
-  padding: 0px;
+  text-transform: uppercase;
 }
 
 h2 {
-  text-align: left;
+  margin: 0;
+  padding: 20px 0 15px;
   font-weight: 800;
-  letter-spacing: 4px;
-  text-transform: uppercase;
   font-size: 2.5em;
-  margin: 0px;
-  padding: 20px 0px 15px;
+  letter-spacing: 4px;
+  text-align: left;
+  text-transform: uppercase;
 }
 
 h3 {
+  margin: 0;
+  padding: 0;
   font-weight: 800;
-  text-transform: uppercase;
   font-size: 2em;
-  margin: 0px;
-  padding: 0px;
+  text-transform: uppercase;
 }
 
 h4 {
-  font-weight: 600;
   margin: 10px;
   padding: 10px;
+  font-weight: 600;
   font-size: 1.5em;
 }
 
 h5 {
-  margin: 0px;
+  margin: 0;
   padding: 10px;
   font-size: 1.2em;
   line-height: 25px;
@@ -66,8 +66,8 @@ p {
 #second,
 #third,
 #fourth {
-  margin: auto auto;
   max-width: 800px;
+  margin: auto auto;
 }
 
 #first {
@@ -75,16 +75,18 @@ p {
 }
 
 a {
-  text-decoration: none;
   color: rgb(248, 80, 94);
+  text-decoration: none;
+
   &:hover {
-    text-decoration: none;
     color: inherit;
+    text-decoration: none;
   }
 }
 
 i {
   transition: all 0.2s ease;
+
   &:hover {
     color: lightgrey;
   }
@@ -113,6 +115,7 @@ i {
 
 .link {
   color: #ffc933;
+
   &:hover {
     text-decoration: underline;
   }
@@ -125,10 +128,11 @@ i {
 
 .addition {
   float: left;
-  /*display: inline-block;*/
-  margin: 5px 0px;
+
+  /* display: inline-block; */
+  margin: 5px 0;
   margin-right: 50px;
-  padding: 0px 0px;
+  padding: 0 0;
 }
 
 .clear {
@@ -144,43 +148,44 @@ hr {
 
 #navbar {
   position: fixed !important;
-  width: 100%;
   z-index: 999;
-  margin-top: 0px;
-  padding: 15px 0px;
-  background-image: linear-gradient(
-    to bottom,
-    rgb(81, 49, 0),
-    rgba(0, 40, 81, 0)
-  );
-  background-position: center -300px;
-  background-repeat: no-repeat;
-  transition: background-position 0.5s ease;
-  border-radius: 0;
-  border: none;
+  width: 100%;
+  margin-top: 0;
+  padding: 15px 0;
   color: white;
   font-weight: 800;
-  text-transform: uppercase;
-  text-shadow: 0px 2px 10px #000;
   text-align: center;
+  text-transform: uppercase;
+  text-shadow: 0 2px 10px #000;
+  background-image:
+    linear-gradient(
+      to bottom,
+      rgb(81, 49, 0),
+      rgba(0, 40, 81, 0)
+    );
+  background-repeat: no-repeat;
+  background-position: center -300px;
+  border: none;
+  border-radius: 0;
+  transition: background-position 0.5s ease;
 }
 
 .nav,
 .navbar-nav,
 .navbar-header,
 .navbar-brand {
+  display: block !important;
   float: none;
   text-align: center;
-  display: block !important;
 }
 
 #myNavbar {
 }
 
 #logo {
+  display: block;
   width: 300px;
   max-width: 300px;
-  display: block;
   margin: 0 auto;
 }
 
@@ -188,24 +193,25 @@ hr {
   > a {
     &:focus,
     &:hover {
-      background: inherit;
       color: lightgrey;
+      background: inherit;
     }
   }
+
   display: inline-block;
   float: none;
 }
 
 #scrollToTop {
   position: fixed;
-  z-index: 999;
-  bottom: 20px;
   right: 30px;
+  bottom: 20px;
+  z-index: 999;
+  color: lightgrey;
+  font-size: 3em;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   opacity: 0;
   transition: all 0.5s ease;
-  color: lightgrey;
-  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  font-size: 3em;
 }
 
 .container,
@@ -221,15 +227,15 @@ hr {
   width: 100%;
   height: 30rem;
   text-align: center;
-  background-size: cover;
   background-position: right top;
+  background-size: cover;
 
   .fa-angle-down {
     display: none;
-    animation: shake 0.87s infinite cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
     transform: translate3d(0, 0, 0);
     backface-visibility: hidden;
     perspective: 1000px;
+    animation: shake 0.87s infinite cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
   }
 
   @keyframes shake {
@@ -254,76 +260,87 @@ hr {
       transform: translate3d(4px, 0, 0);
     }
   }
+
   @media (max-width: 576px) {
     height: 100vh;
     background-position: 0 0;
+
     .fa-angle-down {
-      color: white;
-      font-size: 4rem;
-      display: block;
       position: absolute;
+      right: 0;
       bottom: 10%;
       left: 0;
-      right: 0;
+      display: block;
       margin: auto;
+      color: white;
+      font-size: 4rem;
     }
   }
 }
 
 .banner-image {
   position: absolute;
-  left: 0;
-  bottom: auto;
-  z-index: -1;
-  min-height: 100%;
-  min-width: 100%;
-  width: auto;
-  height: auto;
-
   top: 50%;
-  transform: translateY(-50%);
+  bottom: auto;
+  left: 0;
+  z-index: -1;
+  width: auto;
+  min-width: 100%;
+  height: auto;
+  min-height: 100%;
   background-position: center center;
   background-size: cover;
+  transform: translateY(-50%);
 }
 
 .seminaari-logo {
   position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 100;
   width: 50%;
   max-width: 700px;
   height: auto;
-  z-index: 100;
-  top: 1rem;
-  right: 1rem;
+
   @media (max-width: 576px) {
-    margin: auto;
-    height: auto;
-    width: 80%;
     position: relative;
     right: 0;
+    width: 80%;
+    height: auto;
+    margin: auto;
   }
 }
 
 .banner-content {
-  z-index: 10;
   position: relative;
-  padding-top: 15rem;
+  z-index: 10;
+  z-index: 10;
   width: 100%;
   height: auto;
-  z-index: 10;
+  padding-top: 15rem;
   color: white;
-  text-shadow: 0px 3px 5px black;
   text-align: center;
+  text-shadow: 0 3px 5px black;
+
   .fa-facebook-square {
-    color: #f8505e;
     padding-right: 0.3rem;
+    color: #f8505e;
   }
+
   a {
     color: rgb(248, 80, 94);
     font-size: 1.2rem;
+
+    &:hover {
+      color: inherit;
+      text-decoration: none;
+    }
   }
+
 
   @media (max-width: 576px) {
     padding-top: 9rem;
+
     .fa-facebook-square,
     a {
       color: white;
@@ -332,45 +349,45 @@ hr {
 }
 
 .section {
-  margin: 10px 0;
   height: auto !important;
+  margin: 10px 0;
 }
 
 /* === COURSE FEED === */
 
 .course {
   position: relative;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   margin-bottom: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 .coursepage-card {
-  display: block;
-  margin: -170px auto 50px;
-  max-width: 800px;
   position: relative;
   z-index: 10;
+  display: block;
+  max-width: 800px;
+  margin: -170px auto 50px;
   padding: 20px 20px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 .course-banner {
   position: relative;
-  background-position: center center;
-  background-size: cover;
-  background-color: rgb(255, 145, 0);
   width: 100%;
   height: 150px;
+  background-color: rgb(255, 145, 0);
+  background-position: center center;
+  background-size: cover;
 }
 
 .coursepage-banner {
   position: relative;
-  background-position: center center;
-  background-size: cover;
-  background-color: rgb(247, 184, 10);
   width: 100%;
   height: 300px;
+  background-color: rgb(247, 184, 10);
+  background-position: center center;
+  background-size: cover;
 }
 
 .course-text {
@@ -378,13 +395,14 @@ hr {
 }
 
 .course-specs {
-  padding: 5px 0px 15px;
+  padding: 5px 0 15px;
 }
 
 .course-description {
   margin: 50px 0 20px;
+
   a {
-    color: #33ccff;
+    color: #3cf;
   }
 }
 
@@ -396,19 +414,20 @@ hr {
 
 .read-more {
   position: absolute;
-  width: 100%;
-  height: 200px;
-  max-height: 70%;
   bottom: 0;
   left: 0;
   z-index: 5;
-  background-image: linear-gradient(
-    to top,
-    rgba(255, 255, 255, 1),
-    rgba(255, 255, 255, 0)
-  );
-  text-align: center;
+  width: 100%;
+  height: 200px;
+  max-height: 70%;
   color: grey;
+  text-align: center;
+  background-image:
+    linear-gradient(
+      to top,
+      rgba(255, 255, 255, 1),
+      rgba(255, 255, 255, 0)
+    );
 }
 
 .read-more-text {
@@ -425,8 +444,8 @@ hr {
 }
 
 .registration {
-  padding: 15px 45px;
   z-index: 100;
+  padding: 15px 45px;
 }
 
 /* === OTHER PAGE CONTENT === */
@@ -438,27 +457,30 @@ hr {
 /* === FOOTER === */
 
 footer {
-  clear: both;
   position: relative;
   bottom: 0;
-  margin-top: 100px;
+  clear: both;
   width: 100%;
   height: 230px;
-  background-color: #000000;
+  margin-top: 100px;
+  background-color: #000;
 }
 
 .social {
   padding-top: 40px;
+
   > {
     hr {
       display: block;
-      max-width: 300px;
       width: 80%;
+      max-width: 300px;
       margin: 20px auto;
     }
+
     h3 {
       color: white;
     }
+
     p,
     a {
       font-size: 0.8em;
@@ -469,11 +491,11 @@ footer {
 /* === EFFECTS === */
 
 .blur {
-  filter: blur(7px);
   -webkit-filter: blur(7px);
   -moz-filter: blur(7px);
   -o-filter: blur(7px);
   -ms-filter: blur(7px);
+  filter: blur(7px);
 }
 
 /* === BOOTSTRAP === */
@@ -483,9 +505,9 @@ footer {
 }
 
 .btn {
-  font-weight: 600;
   max-width: 800px;
   margin: 50px auto 0;
+  font-weight: 600;
   font-size: 1em;
   border-radius: 0;
 }
@@ -498,12 +520,14 @@ footer {
   body {
     font-size: 0.95em;
   }
+
   #logo {
+    display: block;
     float: left;
     width: 80%;
-    display: block;
     margin: 0 auto;
   }
+
   .nav > li {
     display: block;
     float: none;

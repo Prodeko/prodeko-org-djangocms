@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class AppKulukorvausConfig(AppConfig):
-    name = 'app_kulukorvaus'
+    name = "app_kulukorvaus"

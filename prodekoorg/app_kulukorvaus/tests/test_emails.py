@@ -15,5 +15,5 @@ class EmailTest(TestData):
         self.assertEqual(len(mail.outbox), 1)
 
         # Verify that the subject of the first message is correct.
-        subject = 'Prodeko kulukorvaus - {} {}'.format(user.first_name, user.last_name)
+        subject = "Prodeko kulukorvaus - {} {}".format(user.first_name, user.last_name)
         self.assertEqual(mail.outbox[0].subject, subject)
