@@ -1,0 +1,27 @@
+#instagram {
+    width: 100%;
+    display: block;
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    object-fit: cover;
+}
+
+@media (min-width: 576px) {
+    #instagram {
+        width: 30%;
+        display: grid;
+        grid-column-gap: 1.2rem;
+        grid-row-gap: 1.2rem;
+        grid-template-columns: repeat(2, auto);
+    }
+    img {
+        margin: none;
+        width: 12rem;
+        height: 12rem;
+    }
+}
