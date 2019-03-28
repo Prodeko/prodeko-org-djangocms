@@ -1,7 +1,7 @@
 const ACCESS_TOKEN = "2398789603.1677ed0.2175ddadc380435f9a837eac1a212d0c";
 var num = 4
 if(window.innerWidth >= 576) {
-   num = 8;
+   num = 6;
 }
 window.onload = fetch(`https://api.instagram.com/v1/users/self/media/recent/?access_token=${ACCESS_TOKEN}&count=${num}`)
     .then(function (response) {

@@ -1,14 +1,15 @@
+{% load cms_tags sass_tags i18n staticfiles %}
+
 <html>
 
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
     </script>
-    <script type="text/javascript" src="instagram.js"></script>
-    <link href="style.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="{% static 'js/instagram.js' %}"></script>
 </head>
 
 <body>
-    <p>Tähän niitä kuvia</p>
+    <h2>Some-kuulumiset</h2>
     <div id="instagram" />
 </body>
 
