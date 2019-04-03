@@ -11,6 +11,4 @@ class SeminaariApphook(CMSApp):
     name = _("Prodeko seminar page")
 
     def get_urls(self, page=None, language=None, **kwargs):
-        return [
-            url(r'^$', index),
-        ]
+        return [url(r"^$", index)]

@@ -16,7 +16,7 @@ from PyPDF2 import PdfFileMerger, PdfFileReader
 
 from .models import Dokumentti
 
-TEAM_DRIVE_ID = '0AD8EdtHhweZwUk9PVA'
+TEAM_DRIVE_ID = "0AD8EdtHhweZwUk9PVA"
 
 
 def initialize_service():
@@ -26,12 +26,16 @@ def initialize_service():
         Google Drive API service object.
     """
 
-    SERVICE_ACCOUNT_FILE = os.path.join(settings.BASE_DIR, 'prodekoorg/service_account.json')
+    SERVICE_ACCOUNT_FILE = os.path.join(
+        settings.BASE_DIR, "prodekoorg/service_account.json"
+    )
 
-    SCOPES = ['https://www.googleapis.com/auth/drive']
+    SCOPES = ["https://www.googleapis.com/auth/drive"]
 
-    credentials = service_account.Credentials.from_service_account_file(SERVICE_ACCOUNT_FILE, subject='mediakeisari@prodeko.org', scopes=SCOPES)
-    service = build('drive', 'v3', credentials=credentials)
+    credentials = service_account.Credentials.from_service_account_file(
+        SERVICE_ACCOUNT_FILE, subject="mediakeisari@prodeko.org", scopes=SCOPES
+    )
+    service = build("drive", "v3", credentials=credentials)
     return service
 
 
@@ -49,7 +53,7 @@ def merge_liitteet_to_doc(pdfs):
 
     merger = PdfFileMerger()
     for pdf in pdfs:
-        if(pdf):
+        if pdf:
             merger.append(PdfFileReader(pdf))
             pdf.close()
 
@@ -69,13 +73,18 @@ def compress_pdf(fh_pdf):
 
     args = [
         "ghostscript",  # actual value doesn't matter
-        "-dNOPAUSE", "-dBATCH", "-dSAFER", "dQUIET",
+        "-dNOPAUSE",
+        "-dBATCH",
+        "-dSAFER",
+        "dQUIET",
         "-sDEVICE=pdfwrite",
         "-dCompatibilityLevel=1.4",
         "-dPDFSETTINGS=/printer",
         "-sOutputFile=test.pdf",
-        "-c", ".setpdfwrite",
-        "-f", fh_pdf
+        "-c",
+        ".setpdfwrite",
+        "-f",
+        fh_pdf,
     ]
 
     ghostscript.Ghostscript(*args)
@@ -97,13 +106,20 @@ def get_gdrive_folders_dict(service, parent_folder_id):
     """
 
     while True:
-        folders = service.files().list(
-            corpora="teamDrive",
-            orderBy="createdTime",
-            q="mimeType='application/vnd.google-apps.folder' and parents in '" + parent_folder_id + "'",
-            supportsTeamDrives=True,
-            includeTeamDriveItems=True,
-            teamDriveId=TEAM_DRIVE_ID).execute()
+        folders = (
+            service.files()
+            .list(
+                corpora="teamDrive",
+                orderBy="createdTime",
+                q="mimeType='application/vnd.google-apps.folder' and parents in '"
+                + parent_folder_id
+                + "'",
+                supportsTeamDrives=True,
+                includeTeamDriveItems=True,
+                teamDriveId=TEAM_DRIVE_ID,
+            )
+            .execute()
+        )
         return folders
 
 
@@ -123,14 +139,19 @@ def filter_gdrive_folders_dict(folders_dict):
     """
 
     # Use a regex match to include only folders names such as '10_31.12.2018'
-    filtered_dict = {k['id']: k['name'] for k in folders_dict['files'] if match(
-        '\d{2}_([0-9]|[1-3][0-9]).([1-9]|[1][0-2]).\d{4}$', k['name'])}
+    filtered_dict = {
+        k["id"]: k["name"]
+        for k in folders_dict["files"]
+        if match("\d{2}_([0-9]|[1-3][0-9]).([1-9]|[1][0-2]).\d{4}$", k["name"])
+    }
 
-    existing_gdrive_ids = Dokumentti.objects.values_list('gdrive_id', flat=True)
+    existing_gdrive_ids = Dokumentti.objects.values_list("gdrive_id", flat=True)
 
     # Filter out documents that we already have in the database
     if existing_gdrive_ids:
-        filtered_dict = {k: v for k, v in filtered_dict.items() if k not in list(existing_gdrive_ids)}
+        filtered_dict = {
+            k: v for k, v in filtered_dict.items() if k not in list(existing_gdrive_ids)
+        }
     return filtered_dict
 
 
@@ -169,8 +190,10 @@ def create_models_from_folders(service, request, folders_dict):
         final_pdf = ContentFile(pdf_file)
 
         # Create the new Dokumentti object and save 'final_pdf'
-        doc = Dokumentti.objects.create(gdrive_id=parent_id, name=name, number=number, date=date)
-        doc.doc_file.save('{}.pdf'.format(name), final_pdf)
+        doc = Dokumentti.objects.create(
+            gdrive_id=parent_id, name=name, number=number, date=date
+        )
+        doc.doc_file.save("{}.pdf".format(name), final_pdf)
         success_count += 1
     return success_count
 
@@ -187,24 +210,38 @@ def download_files_as_pdf(service, parent_id):
         Tuple consisting of 1. a pdf file and 2. the attachments to that pdf file.
     """
 
-    poytakirja = service.files().list(
-        corpora="teamDrive",
-        q="mimeType='application/vnd.google-apps.document' and name contains 'Pöytäkirja' and parents in '{}'".format(parent_id),
-        supportsTeamDrives=True,
-        includeTeamDriveItems=True,
-        pageSize=1,  # Only return one file at max
-        teamDriveId=TEAM_DRIVE_ID).execute()
+    poytakirja = (
+        service.files()
+        .list(
+            corpora="teamDrive",
+            q="mimeType='application/vnd.google-apps.document' and name contains 'Pöytäkirja' and parents in '{}'".format(
+                parent_id
+            ),
+            supportsTeamDrives=True,
+            includeTeamDriveItems=True,
+            pageSize=1,  # Only return one file at max
+            teamDriveId=TEAM_DRIVE_ID,
+        )
+        .execute()
+    )
 
-    pdf_file = download_gdoc_as_pdf(poytakirja['files'], service)
+    pdf_file = download_gdoc_as_pdf(poytakirja["files"], service)
 
-    liitteet = service.files().list(
-        corpora="teamDrive",
-        q="mimeType='application/pdf' and name contains 'LIITE' and parents in '{}'".format(parent_id),
-        supportsTeamDrives=True,
-        includeTeamDriveItems=True,
-        teamDriveId=TEAM_DRIVE_ID).execute()
+    liitteet = (
+        service.files()
+        .list(
+            corpora="teamDrive",
+            q="mimeType='application/pdf' and name contains 'LIITE' and parents in '{}'".format(
+                parent_id
+            ),
+            supportsTeamDrives=True,
+            includeTeamDriveItems=True,
+            teamDriveId=TEAM_DRIVE_ID,
+        )
+        .execute()
+    )
 
-    liitteet = download_liitteet(liitteet['files'], service)
+    liitteet = download_liitteet(liitteet["files"], service)
 
     return pdf_file, liitteet
 
@@ -224,8 +261,9 @@ def download_gdoc_as_pdf(files, service):
     if files:
         # 'files' parameter should only contain one file
         f = files[0]
-        request = service.files().export_media(fileId=f['id'],
-                                               mimeType='application/pdf')
+        request = service.files().export_media(
+            fileId=f["id"], mimeType="application/pdf"
+        )
         fh = BytesIO()
         downloader = MediaIoBaseDownload(fh, request)
         done = False
@@ -255,10 +293,10 @@ def download_liitteet(files, service):
 
     # Sort liitteet by name so that liite named 'LIITE1' gets
     # merged to the final pdf before 'LIITE2' and so on
-    files = sorted(files, key=lambda k: k['name'])
+    files = sorted(files, key=lambda k: k["name"])
     if files:
         for f in files:
-            request = service.files().get_media(fileId=f['id'])
+            request = service.files().get_media(fileId=f["id"])
             fh = BytesIO()
             downloader = MediaIoBaseDownload(fh, request)
             done = False
@@ -294,13 +332,23 @@ def run_app_poytakirjat(request):
     """
 
     # Id of the 'Kokoukset' folder iside 'Hallituksen sisäinen Team Drive
-    folder_id = request.POST['folderID']
+    folder_id = request.POST["folderID"]
     try:
         service = initialize_service()
         # Returns a dict of folders inside the folder_id above
         folders_dict = get_gdrive_folders_dict(service, folder_id)
         success_count = create_models_from_folders(service, request, folders_dict)
-        messages.add_message(request, messages.INFO, _('Downloaded {} proceedings documents from G Drive.'.format(success_count)))
+        messages.add_message(
+            request,
+            messages.INFO,
+            _(
+                "Downloaded {} proceedings documents from G Drive.".format(
+                    success_count
+                )
+            ),
+        )
     except Exception as e:
-        messages.add_message(request, messages.ERROR, _('Error downloading documents: {}'.format(e)))
-    return redirect('/admin/app_poytakirjat/dokumentti/')
+        messages.add_message(
+            request, messages.ERROR, _("Error downloading documents: {}".format(e))
+        )
+    return redirect("/admin/app_poytakirjat/dokumentti/")

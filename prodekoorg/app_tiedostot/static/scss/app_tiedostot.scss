@@ -1,5 +1,5 @@
 .card-title {
-  margin-bottom: 0px;
+  margin-bottom: 0;
 }
 
 .tiedostot-list {
@@ -10,10 +10,10 @@
 .thumbnail-image {
   width: 100%;
   height: 150px;
-  background-size: contain;
   background-color: white;
   background-repeat: no-repeat;
   background-position: center center;
+  background-size: contain;
 }
 
 .full-width {

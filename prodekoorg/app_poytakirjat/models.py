@@ -22,7 +22,9 @@ def content_directory(instance, filename):
         A string representing the file upload path.
     """
 
-    return '/'.join(['dokumentit', str(instance.date.year), str(instance.number), filename])
+    return "/".join(
+        ["dokumentit", str(instance.date.year), str(instance.number), filename]
+    )
 
 
 class Dokumentti(models.Model):
@@ -52,9 +54,9 @@ class Dokumentti(models.Model):
 
     class Meta:
         # Correct spelling in Django admin
-        verbose_name = _('minutes')
-        verbose_name_plural = _('Minutes')
-        ordering = ['-date', '-number']
+        verbose_name = _("minutes")
+        verbose_name_plural = _("Minutes")
+        ordering = ["-date", "-number"]
 
     def get_absolute_url(self):
         return "%s" % (self.doc_file.url)

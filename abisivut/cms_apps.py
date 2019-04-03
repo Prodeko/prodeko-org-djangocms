@@ -11,6 +11,4 @@ class AbisivutApphook(CMSApp):
     name = _("High school student page")
 
     def get_urls(self, page=None, language=None, **kwargs):
-        return [
-            url(r'^$', index),
-        ]
+        return [url(r"^$", index)]

@@ -37,45 +37,62 @@ class PendingUser(models.Model):
         receipt: Receipt for the membership payment.
     """
 
-    TRUE_MEMBER = 'TR'
-    ALUMN_MEMBER = 'AL'
-    EXTERNAL_MEMBER = 'EX'
+    TRUE_MEMBER = "TR"
+    ALUMN_MEMBER = "AL"
+    EXTERNAL_MEMBER = "EX"
 
     MEMBERSHIP_TYPE_CHOICES = (
-        (TRUE_MEMBER, _('True member')),
-        (ALUMN_MEMBER, _('Alumn')),
-        (EXTERNAL_MEMBER, _('External member')),
+        (TRUE_MEMBER, _("True member")),
+        (ALUMN_MEMBER, _("Alumn")),
+        (EXTERNAL_MEMBER, _("External member")),
     )
 
-    AYY_MEMBER_CHOICES = (
-        ('Y', _('Yes')),
-        ('N', _('No')),
-    )
+    AYY_MEMBER_CHOICES = (("Y", _("Yes")), ("N", _("No")))
 
-    LANGUAGE_CHOICES = (
-        ('FI', _('Finnish')),
-        ('EN', _('Other (English)')),
-    )
+    LANGUAGE_CHOICES = (("FI", _("Finnish")), ("EN", _("Other (English)")))
 
     YEAR_CHOICES = []
     for r in reversed(range(1966, (datetime.datetime.now().year + 1))):
         YEAR_CHOICES.append((r, r))
 
     id = models.AutoField(primary_key=True)
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, null=True, blank=True, on_delete=models.CASCADE)
-    first_name = models.CharField(max_length=50, verbose_name=_('First name'))
-    last_name = models.CharField(max_length=50, verbose_name=_('Last name'))
-    hometown = models.CharField(max_length=50, verbose_name=_('Hometown'))
-    field_of_study = models.CharField(max_length=50, verbose_name=_('Field of study'))
-    email = models.EmailField(verbose_name=_('Email'))
-    start_year = models.IntegerField(verbose_name=_('Year'), choices=YEAR_CHOICES, default=datetime.datetime.now().year)
-    language = models.CharField(max_length=50, choices=LANGUAGE_CHOICES, verbose_name=_('Nationality (language)'))
-    membership_type = models.CharField(max_length=2, choices=MEMBERSHIP_TYPE_CHOICES, verbose_name=_('Membership type'))
-    additional_info = models.TextField(blank=True, verbose_name=_('Why do you want to become a member?'))
-    is_ayy_member = models.CharField(max_length=1, choices=AYY_MEMBER_CHOICES, verbose_name=_('Are you an AYY (Aalto University Student Union) member?'))
-    receipt = models.FileField(upload_to='jasenhakemukset/%Y-%m', verbose_name=_('Receipt of the membership payment'),
-                               validators=[FileExtensionValidator(['jpg', 'png', 'jpeg'])])
-    has_accepted_policies = models.BooleanField(default=False, verbose_name=_('I accept Prodeko\'s privacy and cookie policies.'))
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL, null=True, blank=True, on_delete=models.CASCADE
+    )
+    first_name = models.CharField(max_length=50, verbose_name=_("First name"))
+    last_name = models.CharField(max_length=50, verbose_name=_("Last name"))
+    hometown = models.CharField(max_length=50, verbose_name=_("Hometown"))
+    field_of_study = models.CharField(max_length=50, verbose_name=_("Field of study"))
+    email = models.EmailField(verbose_name=_("Email"))
+    start_year = models.IntegerField(
+        verbose_name=_("Year"),
+        choices=YEAR_CHOICES,
+        default=datetime.datetime.now().year,
+    )
+    language = models.CharField(
+        max_length=50,
+        choices=LANGUAGE_CHOICES,
+        verbose_name=_("Nationality (language)"),
+    )
+    membership_type = models.CharField(
+        max_length=2, choices=MEMBERSHIP_TYPE_CHOICES, verbose_name=_("Membership type")
+    )
+    additional_info = models.TextField(
+        blank=True, verbose_name=_("Why do you want to become a member?")
+    )
+    is_ayy_member = models.CharField(
+        max_length=1,
+        choices=AYY_MEMBER_CHOICES,
+        verbose_name=_("Are you an AYY (Aalto University Student Union) member?"),
+    )
+    receipt = models.FileField(
+        upload_to="jasenhakemukset/%Y-%m",
+        verbose_name=_("Receipt of the membership payment"),
+        validators=[FileExtensionValidator(["jpg", "png", "jpeg"])],
+    )
+    has_accepted_policies = models.BooleanField(
+        default=False, verbose_name=_("I accept Prodeko's privacy and cookie policies.")
+    )
 
     def accept_membership(self, request, account_id, *args, **kwargs):
         password = get_random_string(length=16)
@@ -83,20 +100,24 @@ class PendingUser(models.Model):
         self.send_accept_email(self.user, password)
         self.user.is_active = True
         self.user.save()
-        messages.success(request, _('Membership application accepted.'))
+        messages.success(request, _("Membership application accepted."))
         self.delete()
 
     def reject_membership(self, request, account_id, *args, **kwargs):
         self.send_reject_email(self.user)
-        messages.success(request, _('Membership application rejected.'))
+        messages.success(request, _("Membership application rejected."))
         self.user.delete()
         self.delete()
 
     def send_accept_email(self, user, password):
         # Inform user about accepted application
-        subject = 'Your Application to Prodeko has been accepted'
-        text_content = render_to_string('accept_mail.txt', {'user': user, 'password': password})
-        html_content = render_to_string('accept_mail.html', {'user': user, 'password': password})
+        subject = "Your Application to Prodeko has been accepted"
+        text_content = render_to_string(
+            "accept_mail.txt", {"user": user, "password": password}
+        )
+        html_content = render_to_string(
+            "accept_mail.html", {"user": user, "password": password}
+        )
         email_to = user.email
         from_email = settings.DEFAULT_FROM_EMAIL
         msg = EmailMultiAlternatives(subject, text_content, from_email, [email_to])
@@ -105,9 +126,9 @@ class PendingUser(models.Model):
 
     def send_reject_email(self, user):
         # Inform user about rejected application
-        subject = 'Your Application to Prodeko has been rejected'
-        text_content = render_to_string('reject_mail.txt', {'user': user})
-        html_content = render_to_string('reject_mail.html', {'user': user})
+        subject = "Your Application to Prodeko has been rejected"
+        text_content = render_to_string("reject_mail.txt", {"user": user})
+        html_content = render_to_string("reject_mail.html", {"user": user})
         email_to = user.email
         from_email = settings.DEFAULT_FROM_EMAIL
         msg = EmailMultiAlternatives(subject, text_content, from_email, [email_to])
@@ -118,12 +139,12 @@ class PendingUser(models.Model):
         first_name = self.first_name
         last_name = self.last_name
         field_of_study = self.field_of_study
-        return '{} {} - {}'.format(first_name, last_name, field_of_study)
+        return "{} {} - {}".format(first_name, last_name, field_of_study)
 
     def name(self):
-        return '{} {}'.format(self.first_name, self.last_name)
+        return "{} {}".format(self.first_name, self.last_name)
 
     class Meta:
         # Correct spelling in Django admin
-        verbose_name = _('membership application')
-        verbose_name_plural = _('Membership applications')
+        verbose_name = _("membership application")
+        verbose_name_plural = _("Membership applications")

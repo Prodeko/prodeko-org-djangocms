@@ -1,0 +1,2 @@
+[tool.black]
+exclude = '.git|locale|documentation|.vagrant|tiedotteet/client/node_modules|tiedotteet/migrations|tiedotteet/info/migrations|auth_prodeko/migrations|prodekoorg/app_apply_for_membership/migrations|prodekoorg/app_kulukorvaus/migrations|prodekoorg/app_poytakirjat/migrations|prodekoorg/app_tiedostot/migrations|prodekoorg/app_toimarit/migrations|prodekoorg/app_vaalit/migrations|lifelonglearning/migrations'

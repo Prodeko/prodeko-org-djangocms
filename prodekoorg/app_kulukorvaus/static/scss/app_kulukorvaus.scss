@@ -10,28 +10,28 @@
   }
 
   .fa-minus-square {
-    font-size: 25px;
     color: rgb(141, 31, 31);
+    font-size: 25px;
     vertical-align: middle;
   }
 
   .receipt-btn-wrapper {
     position: relative;
-    overflow: hidden;
     display: inline-block;
+    overflow: hidden;
 
     input[type="file"] {
       position: absolute;
-      left: 0;
       top: 0;
+      left: 0;
       opacity: 0;
     }
 
     .btn {
-      color: white;
       padding: 6px 15px;
-      background-color: #277027;
+      color: white;
       font-weight: bold;
+      background-color: #277027;
     }
   }
 
@@ -39,22 +39,22 @@
   #kulukorvaus-error,
   #kulukorvaus-policies {
     a {
-      color: white;
       padding: 6px 15px;
-      background-color: #277027;
+      color: white;
       font-weight: bold;
+      background-color: #277027;
     }
 
     img {
-      max-width: 50%;
       display: block;
+      max-width: 50%;
       margin: 0 auto 2.5em auto;
     }
 
     @include phone {
       img {
-        max-width: 90%;
         display: block;
+        max-width: 90%;
         margin: 0 auto 1.5em auto;
       }
     }

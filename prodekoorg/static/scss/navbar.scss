@@ -6,9 +6,9 @@ body {
 }
 
 .prodeko-navbar {
-  text-transform: uppercase;
-  text-align: center;
   margin-bottom: 16px;
+  text-align: center;
+  text-transform: uppercase;
 
   #collapsibleNavbar {
     .lang {
@@ -29,16 +29,16 @@ body {
     }
 
     .navigation-list-child {
+      width: 80%;
+      margin: auto;
+      padding: 10px 0 10px 0;
       list-style-type: none;
       background-color: rgb(193, 204, 216);
-      padding: 10px 0 10px 0;
-      margin: auto;
-      width: 80%;
     }
 
     .nav-link {
-      cursor: pointer;
       font-size: 1.5em;
+      cursor: pointer;
     }
 
     .nav-sublink {
@@ -51,7 +51,7 @@ body {
 
     @include desktop {
       form {
-        width: 0px;
+        width: 0;
       }
     }
   }
@@ -73,23 +73,23 @@ body {
   }
 
   @include phone {
-    background-color: white;
-    min-height: $navbar-height;
     // .fixed-top {
     position: fixed !important;
     top: 0;
     right: 0;
     left: 0;
     z-index: 1030; // $zindex-fixed;
+    min-height: $navbar-height;
     // }
     max-height: 100vh; // enables overflow scrolling
     overflow-y: auto;
+    background-color: white;
   }
 
   @include tablet {
     .login-dropdown {
-      background-color: #002851;
       min-width: 22rem;
+      background-color: #002851;
     }
   }
 
@@ -107,55 +107,56 @@ body {
     text-decoration: none;
   }
 
-  a.nav-top:not(.no-animation):before {
-    content: '';
+  a.nav-top:not(.no-animation)::before {
     position: absolute;
-    width: 100%;
-    height: 1px;
     bottom: 0;
     left: 0;
+    width: 100%;
+    height: 1px;
     background-color: #002851;
-    visibility: hidden;
     -webkit-transform: scaleX(0);
     transform: scaleX(0);
+    visibility: hidden;
     -webkit-transition: all 0.3s ease-in-out 0s;
     transition: all 0.3s ease-in-out 0s;
+    content: '';
   }
 
-  a.nav-top:not(.no-animation):hover:before {
-    visibility: visible;
+  a.nav-top:not(.no-animation):hover::before {
     -webkit-transform: scaleX(1);
     transform: scaleX(1);
+    visibility: visible;
   }
+
   /* End animated underlines */
 }
 
 #prodeko-logo {
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-origin: content-box;
+  display: block;
+  flex-grow: 1;
   margin-left: 1em;
   padding: 5px;
-  flex-grow: 1;
-  display: block;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-origin: content-box;
 
   @include phone {
-    height: $navbar-height - 2 * 8px;
-    background-position-y: center;
     max-width: 200px;
-    background-image: url('/static/images/logos/prodeko-logo-text-blue.png');
+    height: $navbar-height - 2 * 8px;
     margin-left: 0;
+    background-image: url('/static/images/logos/prodeko-logo-text-blue.png');
+    background-position-y: center;
   }
 
   @include tablet {
-    height: 60px;
     max-width: 300px;
+    height: 60px;
     background-image: url('/static/images/logos/prodeko-logo-text-blue.png');
   }
 
   @include desktop {
-    height: 75px;
     max-width: 150px;
+    height: 75px;
     background-image: url('/static/images/logos/prodeko-logo-darkblue.png');
   }
 }

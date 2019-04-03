@@ -1,17 +1,17 @@
 @import "variables.scss";
 
 #sidebar {
-  color: $sidebar-text;
-  top: 0;
   position: fixed;
-  height: 100%;
-  background-color: $sidebar-bg;
+  top: 0;
   z-index: 1;
-  overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
   width: $sidebar-width;
-  transition-property: left;
+  height: 100%;
+  overflow-y: scroll;
+  color: $sidebar-text;
+  background-color: $sidebar-bg;
   transition-duration: $sidebar-transition-duration;
+  transition-property: left;
+  -webkit-overflow-scrolling: touch;
 
   &.open {
     left: 0;
@@ -40,18 +40,18 @@
 }
 
 .sidebar-category {
-  font-size: 1.2em;
   font-weight: bold;
+  font-size: 1.2em;
   text-decoration: underline;
 }
 
 .sidebar-list-item {
-  border-bottom: 1px solid #325482;
   padding: 0.5rem 0;
+  border-bottom: 1px solid #325482;
 
   &.icon-container {
-    font-size: 0.8em;
     color: $light-blue;
     font-weight: bold;
+    font-size: 0.8em;
   }
 }

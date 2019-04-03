@@ -22,7 +22,7 @@ def main_form(request):
         A Django TemplateResponse object that renders a html template.
     """
 
-    if request.method == 'POST' and request.is_ajax():
+    if request.method == "POST" and request.is_ajax():
 
         form_apply = PendingUserForm(request.POST, request.FILES)
         is_valid_form = form_apply.is_valid()
@@ -30,7 +30,7 @@ def main_form(request):
             pending_user = form_apply.save(commit=False)
 
             if not pending_user.has_accepted_policies:
-                return render(request, 'app_base.html', {'form': form_apply})
+                return render(request, "app_base.html", {"form": form_apply})
 
             pending_user.save()
             try:
@@ -38,15 +38,15 @@ def main_form(request):
             except SMTPAuthenticationError:
                 # Google server doesn't authenticate no-reply@prodeko.org.
                 # Most likely the password to said account is configured incorrectly
-                return render(request, 'app_base.html', {'error': True})
+                return render(request, "app_base.html", {"error": True})
 
-            return render(request, 'app_base.html', {'done': True})
+            return render(request, "app_base.html", {"done": True})
         else:
             # The http status code is captured as an error in javascript
-            return render(request, 'form_apply.html', {'form': form_apply}, status=599)
+            return render(request, "form_apply.html", {"form": form_apply}, status=599)
     else:
         form_apply = PendingUserForm()
-        return render(request, 'app_base.html', {'form': form_apply})
+        return render(request, "app_base.html", {"form": form_apply})
 
 
 def send_email(user):
@@ -60,14 +60,14 @@ def send_email(user):
         Nothing, sends an email message.
     """
 
-    subject = 'Uusi jäsenhakemus - {} {}'.format(user.first_name, user.last_name)
-    text_content = render_to_string('info_mail.txt', {'user': user})
-    html_content = render_to_string('info_mail.html', {'user': user})
+    subject = "Uusi jäsenhakemus - {} {}".format(user.first_name, user.last_name)
+    text_content = render_to_string("info_mail.txt", {"user": user})
+    html_content = render_to_string("info_mail.html", {"user": user})
 
     # If DEBUG = True, email to DEV_EMAIl else email to mediakeisari@prodeko.org
-    email_to = 'mediakeisari@prodeko.org' if not settings.DEBUG else settings.DEV_EMAIL
+    email_to = "mediakeisari@prodeko.org" if not settings.DEBUG else settings.DEV_EMAIL
     from_email = settings.DEFAULT_FROM_EMAIL
     msg = EmailMultiAlternatives(subject, text_content, from_email, [email_to])
     msg.attach_alternative(html_content, "text/html")
-    msg.attach('receipt.jpg', user.receipt.file.read(), 'image/jpg')
+    msg.attach("receipt.jpg", user.receipt.file.read(), "image/jpg")
     msg.send()
