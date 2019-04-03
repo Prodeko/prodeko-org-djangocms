@@ -1,0 +1,9 @@
+{%load custom_tags %}
+{% regroup persons by class_of_year as year_list %}
+
+{% for year in year_list %}{% if year.grouper %}
+\section*{ {{year.grouper}} }
+{% for person in year.list %} {{person.user.last_name }}, {{person.user.first_name}} {% if person.middle_names %}{{ person.middle_names }}{% endif %}
+
+{% endfor %}{% endif %}
+{% endfor %}

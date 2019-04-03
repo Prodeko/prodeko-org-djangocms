@@ -8,6 +8,7 @@ from django.http import HttpResponseForbidden, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.template import Context
 from django.template.loader import get_template
+from django.urls import reverse
 from django.utils import timezone
 from django.utils.html import strip_tags
 from django.utils.translation import ugettext as _
@@ -33,7 +34,7 @@ def control_panel(request):
         if form.is_valid():
             form.save()
             messages.success(request, _("New bulletin added"))
-            return redirect('/tiedotteet/cp')
+            return redirect('tiedotteet:cp')
     return render(request, 'control/cp.html', {
         'form': form,
         'latest_messages': latest_messages,
@@ -106,7 +107,7 @@ def categories(request):
                 category = cf.save()
                 if category.title == "":
                     category.delete()
-            return redirect('/tiedotteet/cp/categories/')
+            return redirect('tiedotteet:categories')
     return render(request, 'control/categories.html', {
         'categories': categories,
         'cforms': cforms,
@@ -122,7 +123,7 @@ def new_category(request):
         form = CategoryForm(request.POST)
         if form.is_valid():
             form.save()
-    return redirect('/tiedotteet/cp/categories/')
+    return redirect('tiedotteet:categories')
 
 
 def tags(request):
@@ -135,7 +136,7 @@ def tags(request):
         form = TagForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('/tiedottet/cp/tags/')
+            return redirect('tiedotteet:tags')
     return render(request, 'control/tags.html', {
         'tags': tags,
         'form': form,
@@ -148,7 +149,7 @@ def delete_tag(request, pk):
     if request.method == 'POST':
         tag = get_object_or_404(Tag, pk=pk)
         tag.delete()
-    return redirect('/tiedotteet/cp/tags/')
+    return redirect('tiedotteet:tags')
 
 
 def email(request):
@@ -179,7 +180,7 @@ def delete_message(request, pk):
     if request.method == 'POST':
         message = get_object_or_404(Message, pk=pk)
         message.delete()
-    return redirect('/tiedotteet/cp/messages/all/all/')
+    return redirect('tiedotteet:control_messages', args=('all', 'all'))
 
 
 def hide_message(request, pk):

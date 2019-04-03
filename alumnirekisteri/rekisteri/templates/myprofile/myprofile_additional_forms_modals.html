@@ -1,0 +1,359 @@
+<!-- Add Email Modal -->
+<div id="add-email-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content modal-form">
+      <form id="add-email-form" class="form-horizontal" role="form" method="post" action="{% url 'alumnirekisteri:add_email' person_pk %}">
+        {% csrf_token %}
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Lisää sähköpostiosoite</h4>
+        </div>
+        <div class="modal-body">
+          {% for field in email_form %}
+          <div class="form-group">
+            <label class="col col-md-3 control-label">{{ field.label }}</label>
+            <div class="col-md-9">
+              {{ field }}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        <div class="modal-footer">
+          <a type="button" class="btn btn-default" data-dismiss="modal">Sulje</a>
+          <input type="submit" class="btn btn-success" value="Tallenna" />
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Add Phone Modal -->
+<div id="add-phone-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content modal-form">
+      <form id="add-phone-form" class="form-horizontal" role="form" method="post" action="{% url 'alumnirekisteri:add_phone' person_pk %}">
+        {% csrf_token %}
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Lisää puhelinnumero</h4>
+        </div>
+        <div class="modal-body">
+          {% for field in phone_form %}
+          <div class="form-group">
+            <label class="col col-md-3 control-label">{{ field.label }}</label>
+            <div class="col-md-9">
+              {{ field }}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        <div class="modal-footer">
+          <a type="button" class="btn btn-default" data-dismiss="modal">Sulje</a>
+          <input type="submit" class="btn btn-success" value="Tallenna" />
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Add Skill Modal -->
+<div id="add-skill-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content modal-form">
+      <form id="add-skill-form" class="form-horizontal" role="form" method="post" action="{% url 'alumnirekisteri:add_skill' person_pk %}">
+        {% csrf_token %}
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Lisää skilli</h4>
+        </div>
+        <div class="modal-body">
+          {% for field in skill_form %}
+          <div class="form-group">
+            <label class="col col-md-3 control-label">{{ field.label }}</label>
+            <div class="col-md-9">
+              {{ field }}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        <div class="modal-footer">
+          <a type="button" class="btn btn-default" data-dismiss="modal">Sulje</a>
+          <input type="submit" class="btn btn-success" value="Tallenna" />
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Add Language Modal -->
+<div id="add-language-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content modal-form">
+      <form id="add-language-form" class="form-horizontal" role="form" method="post" action="{% url 'alumnirekisteri:add_language' person_pk %}">
+        {% csrf_token %}
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Lisää kieli</h4>
+        </div>
+        <div class="modal-body">
+          {% for field in language_form %}
+          <div class="form-group">
+            <label class="col col-md-3 control-label">{{ field.label }}</label>
+            <div class="col-md-9">
+              {{ field }}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        <div class="modal-footer">
+          <a type="button" class="btn btn-default" data-dismiss="modal">Sulje</a>
+          <input type="submit" class="btn btn-success" value="Tallenna" />
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Add Education Modal -->
+<div id="add-education-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content modal-form">
+      <form id="add-education-form" class="form-horizontal" role="form" method="post" action="{% url 'alumnirekisteri:add_education' person_pk %}">
+        {% csrf_token %}
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Lisää kolulutus</h4>
+        </div>
+        <div class="modal-body">
+          {% for field in education_form %}
+          <div class="form-group">
+            <label class="col col-md-3 control-label">{{ field.label }}</label>
+            <div class="col-md-9">
+              {{ field }}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        <div class="modal-footer">
+          <a type="button" class="btn btn-default" data-dismiss="modal">Sulje</a>
+          <input type="submit" class="btn btn-success" value="Tallenna" />
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Add Experience Modal -->
+<div id="add-experience-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content modal-form">
+      <form id="add-experience-form" class="form-horizontal" role="form" method="post" action="{% url 'alumnirekisteri:add_work_experience' person_pk %}">
+        {% csrf_token %}
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Lisää työkokemus</h4>
+        </div>
+        <div class="modal-body">
+          {% for field in experience_form %}
+          <div class="form-group">
+            <label class="col col-md-3 control-label">{{ field.label }}</label>
+            <div class="col-md-9">
+              {{ field }}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        <div class="modal-footer">
+          <a type="button" class="btn btn-default" data-dismiss="modal">Sulje</a>
+          <input type="submit" class="btn btn-success" value="Tallenna" />
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Add Position of Trust Modal -->
+<div id="add-positionoftrust-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content modal-form">
+      <form id="add-positionoftrust-form" class="form-horizontal" role="form" method="post" action="{% url 'alumnirekisteri:add_position_of_trust' person_pk %}">
+        {% csrf_token %}
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Lisää luottamustoimi</h4>
+        </div>
+        <div class="modal-body">
+          {% for field in positions_of_trust_form %}
+          <div class="form-group">
+            <label class="col col-md-3 control-label">{{ field.label }}</label>
+            <div class="col-md-9">
+              {{ field }}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        <div class="modal-footer">
+          <a type="button" class="btn btn-default" data-dismiss="modal">Sulje</a>
+          <input type="submit" class="btn btn-success" value="Tallenna" />
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Add Student Activity Modal -->
+<div id="add-studentactivity-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content modal-form">
+      <form id="" class="form-horizontal" role="form" method="post" action="{% url 'alumnirekisteri:add_student_activity' person_pk %}">
+        {% csrf_token %}
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Lisää opiskelijajärjestö</h4>
+        </div>
+        <div class="modal-body">
+          {% for field in student_activity_form %}
+          <div class="form-group">
+            <label class="col col-md-3 control-label">{{ field.label }}</label>
+            <div class="col-md-9">
+              {{ field }}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        <div class="modal-footer">
+          <a type="button" class="btn btn-default" data-dismiss="modal">Sulje</a>
+          <input type="submit" class="btn btn-success" value="Tallenna" />
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Add Volunteer Modal -->
+<div id="add-volunteer-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content modal-form">
+      <form id="" class="form-horizontal" role="form" method="post" action="{% url 'alumnirekisteri:add_volunteer' person_pk %}">
+        {% csrf_token %}
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Lisää vapaaehtoistyö</h4>
+        </div>
+        <div class="modal-body">
+          {% for field in volunteer_form %}
+          <div class="form-group">
+            <label class="col col-md-3 control-label">{{ field.label }}</label>
+            <div class="col-md-9">
+              {{ field }}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        <div class="modal-footer">
+          <a type="button" class="btn btn-default" data-dismiss="modal">Sulje</a>
+          <input type="submit" class="btn btn-success" value="Tallenna" />
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Add Honor Modal -->
+<div id="add-honor-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content modal-form">
+      <form id="" class="form-horizontal" role="form" method="post" action="{% url 'alumnirekisteri:add_honor' person_pk %}">
+        {% csrf_token %}
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Lisää kunnianosoitus</h4>
+        </div>
+        <div class="modal-body">
+          {% for field in honor_form %}
+          <div class="form-group">
+            <label class="col col-md-3 control-label">{{ field.label }}</label>
+            <div class="col-md-9">
+              {{ field }}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        <div class="modal-footer">
+          <a type="button" class="btn btn-default" data-dismiss="modal">Sulje</a>
+          <input type="submit" class="btn btn-success" value="Tallenna" />
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Add Interest Modal -->
+<div id="add-interest-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content modal-form">
+      <form id="" class="form-horizontal" role="form" method="post" action="{% url 'alumnirekisteri:add_interest' person_pk %}">
+        {% csrf_token %}
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Lisää kiinnostuksen kohde</h4>
+        </div>
+        <div class="modal-body">
+          {% for field in interest_form %}
+          <div class="form-group">
+            <label class="col col-md-3 control-label">{{ field.label }}</label>
+            <div class="col-md-9">
+              {{ field }}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        <div class="modal-footer">
+          <a type="button" class="btn btn-default" data-dismiss="modal">Sulje</a>
+          <input type="submit" class="btn btn-success" value="Tallenna" />
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Add Family Member Modal -->
+<div id="add-familymember-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content modal-form">
+      <form id="" class="form-horizontal" role="form" method="post" action="{% url 'alumnirekisteri:add_family_member' person_pk %}">
+        {% csrf_token %}
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Lisää perheenjäsen</h4>
+        </div>
+        <div class="modal-body">
+          {% for field in family_member_form %}
+          <div class="form-group">
+            <label class="col col-md-3 control-label">{{ field.label }}</label>
+            <div class="col-md-9">
+              {{ field }}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        <div class="modal-footer">
+          <a type="button" class="btn btn-default" data-dismiss="modal">Sulje</a>
+          <input type="submit" class="btn btn-success" value="Tallenna" />
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

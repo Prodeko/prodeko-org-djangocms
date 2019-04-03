@@ -62,6 +62,10 @@ urlpatterns += i18n_patterns(
     url(_(r'^weekly-bulletin/'),
         include('tiedotteet.Tiedotteet.urls', namespace='tiedotteet')),
 
+    # ==== matrikkeli.prodeko.org ==== #
+    url(_(r'^matrikkeli/'),
+        include('alumnirekisteri.alumnirekisteri.urls', namespace='alumnirekisteri')),
+
     url(r'^admin/', include(admin.site.urls)),
     url(r'^', include('cms.urls')),
 )

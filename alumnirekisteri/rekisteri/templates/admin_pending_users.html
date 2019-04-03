@@ -1,0 +1,36 @@
+{% extends "ar_base.html" %}
+
+{% load staticfiles %}
+
+{% block body %}
+
+<section id="settings">
+  <div class="container">
+    <div class="row">
+      <div class="col col-md-12">
+        {% if messages %}
+          {% for m in messages %}
+            <div class="alert {% if m.tags %}alert-{{ m.tags }}{% endif %}">{{ m.message|striptags }}</div>
+          {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+
+    <table class="table-responsive">
+      <thead>
+        <th>Nimi</th>
+      </thead>
+      <tbody>
+        {% for user in users %}
+          <tr>
+            <td>{{ user.get_full_name }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  
+</section>
+
+
+{% endblock %}

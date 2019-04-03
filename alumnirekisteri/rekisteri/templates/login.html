@@ -1,0 +1,103 @@
+{% extends "ar_base.html" %}
+{% load staticfiles %}
+{% block body %}
+<div class="bg">
+<div class="container" style="text-align:center;">
+  <img src="{% static '/static/images/logo_blue.png'  %}" id="matrikkeli-logo" style="margin-top: 15vh;" alt="Prodeko">
+  <div id="loginbox" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 login">
+    <div class="panel-default">
+      <div class="login" style="padding-bottom: 10px;text-align: center;">
+        <!-- <img src="{% static 'images/prodeko.png' %}" id="prodeko-logo" class="img-responsive" alt="Prodeko"> -->
+      </div>
+
+      <div class="panel-body login" >
+        <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+        <form id="loginform" class="form-horizontal" role="form" method="post" action="{% url 'alumnirekisteri:login' %}">
+          {% if form.non_field_errors %}
+          <div class="alert alert-danger">
+            {% for key, value in form.errors.items %}
+              {{ value }}
+            {% endfor %}
+          </div>
+          {% endif %}
+          {% csrf_token %}
+          <input type="hidden" name="next" value="{% url 'alumnirekisteri:myprofile' %}" />
+          <div style="margin-bottom: 25px" class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            {{ form.username }}
+          </div>
+          {% if form.username.errors %}
+          <div class="alert alert-danger">
+            {{ form.username.errors }}
+          </div>
+          {% endif %}
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+            {{ form.password }}
+          </div>
+          {% if form.password.errors %}
+          <div class="alert alert-danger">
+            {{ form.password.errors }}
+          </div>
+          {% endif %}
+          <div style="margin-top:10px" class="form-group">
+            <!-- Button -->
+            <div class="col-sm-12 controls">
+              <input id="btn-login" style="border:none;" type="submit" value="Kirjaudu" class="btn btn-primary"></input>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-12 control">
+                <div class="row">
+                  <div class="col-sm-12" style="border-top: 1px solid#888; font-size: 85%; padding:10px 0px 10px 0px;">
+                      <a href={% url 'alumnirekisteri:password_reset' %}>Salasana unohtunut?</a>
+                  </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6" style="border-top: 1px solid#888; font-size: 85%; padding:10px 0px 10px 0px;">
+                        <a href="{% static 'Rekisteriseloste.pdf' %}">Rekisteriseloste</a>
+                    </div>
+                    <div class="col-sm-6" style="border-top: 1px solid#888; font-size: 85%; padding:10px 0px 10px 0px;">
+                        <a href="https://www.prodeko.org/tietosuojakaytanto/">Tietosuojakäytäntö</a>
+                    </div>
+                </div>
+                <div class="row text-center">
+                    <div class="col-md-offset-2 col-md-8 col-sm-12" style="font-size: 85%; padding:10px 0px 10px 0px;">
+                        <p style="color: grey;">Jos tietojen lisäämisessä tai päivittämisessä ilmenee ongelmia, ota yhteyttä <a href="mailto:mediakeisari@prodeko.org">mediakeisari@prodeko.org</a> tai kokeile toista selainta.</p>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container footer footer-blue">
+  <div class="row" style="padding-top:15px;">
+      <div class="col-md-2 col-md-offset-2 contact-info">
+        <p>Käyttäjäongelmat ja bugit: <br><a href="mailto:mediakeisari@prodeko.org">mediakeisari@prodeko.org</a></p>
+      </div>
+      <div class="col-md-2 contact-info">
+        <p>Jäsenille: <br><a href="mailto:hallitus@prodeko.org">hallitus@prodeko.org</a></p>
+      </div>
+      <div class="col-md-2 contact-info">
+        <p>Alumnille: <br><a href="mailto:alumnirekisteri@prodeko.org">alumnirekisteri@prodeko.org</a></p>
+      </div>
+      <div class="col-md-2 contact-info" align="right" style="margin-bottom:12px;">
+        <a href="https://www.linkedin.com/company-beta/16188688/"><img src="../static/images/linkedin.png" style="width:30px;"/></a>
+        <a href="https://www.facebook.com/prodeko/"><img src="../static/images/facebook.png" style="width:30px;"/></a>
+        <a href="https://www.instagram.com/prodeko/"><img src="../static/images/instagram.png" style="width:30px;"/></a>
+      </div>
+    </div>
+</div>
+
+</div>
+<script type="text/javascript" >
+    $(document).ready(function(){
+        $("#id_username").attr('placeholder', 'Sähköposti');
+        $("#id_password").attr('placeholder', 'Salasana');
+    });
+</script>
+{% endblock %}

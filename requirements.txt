@@ -48,3 +48,7 @@ djangorestframework==3.6
 markdown
 django-filter
 django-cors-headers
+
+# matrikkeli.prodeko.org requirements
+django-audit-log==0.7.0
+unicodecsv==0.14.1

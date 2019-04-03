@@ -41,7 +41,7 @@ DATABASES = {
         'NAME': DB_NAME_DEFAULT,
         'USER': DB_USER,
         'PASSWORD': DB_PSWD,
-        'HOST': 'db',
+        'HOST': '',
         'PORT': '3306',
     },
     'TEST': {
@@ -150,6 +150,8 @@ STATICFILES_DIRS = [
     # tiedotteet.prodeko.org
     os.path.join(BASE_DIR, 'tiedotteet/info', 'static'),
     os.path.join(BASE_DIR, 'tiedotteet', 'public'),
+    # matrikkeli.prodeko.org
+    os.path.join(BASE_DIR, 'alumnirekisteri/rekisteri', 'static'),
 ]
 
 STATICFILES_FINDERS = [
@@ -171,6 +173,7 @@ TEMPLATES = [
                  os.path.join(BASE_DIR, 'seminaari', 'templates'),
                  os.path.join(BASE_DIR, 'tiedotteet/info', 'templates'),
                  os.path.join(BASE_DIR, 'tiedotteet', 'public'),
+                 os.path.join(BASE_DIR, 'alumnirekisteri', 'rekisteri'),
                  os.path.join(
                      BASE_DIR, 'prodekoorg/app_apply_for_membership', 'templates'),
                  os.path.join(
@@ -227,6 +230,8 @@ MIDDLEWARE = (
     'cms.middleware.toolbar.ToolbarMiddleware',
     # tiedotteet.prodeko.org
     'corsheaders.middleware.CorsMiddleware',
+    # matrikkeli.prodeko.org
+    #'audit_log.middleware.UserLoggingMiddleware',
 )
 
 INSTALLED_APPS = (
@@ -290,6 +295,11 @@ INSTALLED_APPS = (
     'rest_framework',
     'corsheaders',
     # ------------------------
+    # matrikkeli.prodeko.org
+    'alumnirekisteri',
+    'alumnirekisteri.rekisteri',
+    'alumnirekisteri.auth2',
+    # ------------------------
     # abit.prodeko.org
     'abisivut',
     # lifelonglearning.prodeko.org
@@ -297,12 +307,12 @@ INSTALLED_APPS = (
     # seminaari.prodeko.org
     'seminaari',
     # ------------------------
+    'prodekoorg.app_apply_for_membership',
     'prodekoorg.app_poytakirjat',
     'prodekoorg.app_toimarit',
     'prodekoorg.app_kulukorvaus',
     'prodekoorg.app_vaalit',
     'prodekoorg.app_tiedostot',
-    'prodekoorg.app_apply_for_membership',
     # ------------------------
 )
 

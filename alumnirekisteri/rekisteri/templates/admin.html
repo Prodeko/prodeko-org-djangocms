@@ -1,0 +1,178 @@
+{% extends "ar_base.html" %}
+
+{% load staticfiles %}
+{% load custom_tags %}
+
+{% block body %}
+
+<section id="settings" class="">
+  <div class="container">
+
+    <div class="row">
+      <div class="col col-md-12">
+        {% if messages %}
+          {% for m in messages %}
+            <div class="alert {% if m.tags %}alert-{{ m.tags }}{% endif %}">{{ m.message|striptags }}</div>
+          {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col col-md-12">
+        <h2>{{ heading }}</h2>
+      </div>
+    </div>
+
+    <form id="search" class="admin_search" action="GET">
+        <div class="row" style="margin-bottom:8px;">
+          <div class="col-md-3">
+            Etunimi:
+            <input class="admin_text_field" type="text" name="first_name" id="first_name"/>
+          </div>
+          <div class="col-md-3">
+            Sukunimi:
+            <input class="admin_text_field" type="text" name="last_name" id="last_name"/>
+          </div>
+          <div class="col-md-4">
+            Muistiinpano:
+            <input class="admin_text_field" type="text" name="admin_note" id="admin_note"/>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            Jäsenyys päättyy (YYYY-MM-DD)
+            <select name="member_until_type" id="member_until_type" style="margin:0px 31px 0px 31px">
+                <option value="before"> Ennen </option>
+                <option value="after"> Jälkeen </option>
+            </select>
+            <input class="admin_text_field" type="text" name="member_until" id="admin_note"/>
+          </div>
+          <div class ="col-md-4">
+            <select name="member_type" id="member_type">
+                <option value="all">Kaikki</option>
+                <option value="alumni">Alumnit</option>
+                <option value="member">Jäsen (myös maksamattomat)</option>
+            </select>
+          </div>
+          <div class="col-md-2 text-right">
+            <input class="btn btn-white" type="submit"/>
+          </div>
+        </div>
+    </form>
+
+    <div class="row">
+      <div class="col col-md-12">
+        <div class="table-responsive" style="padding-bottom: 120px;">
+          <table class="table">
+            <thead>
+              <th>Sähköposti</th>
+              <th>Nimi</th>
+              <th>Vuosikurssi</th>
+              <th>Tila</th>
+              <th>Viime kirjautuminen</th>
+              <th>Muistiinpano</th>
+              <th>Jäsenyys päättyy</th>
+            </thead>
+            <tbody>
+              {% for user in users %}
+              <tr>
+                <td>{{ user.email }}</td>
+                <td><a href="{% url 'alumnirekisteri:admin_edit_person_view' user.pk %}">{{ user.get_full_name }}</a></td>
+                <td>{% if user.person.class_of_year %}{{ user.person.class_of_year }}{% endif %}</td>
+                <td>
+                  <!-- Single button -->
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-default dropdown-toggle {% if user == request.user %}disabled{% endif %}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      {% if user.is_admin %}
+                        Ylläpitäjä
+                      {% elif user.is_hidden %}
+                        Piilotettu
+                      {% elif user.is_active %}
+                        Käyttäjä
+                      {% else %}
+                        Ei aktiivinen
+                      {% endif %}
+                      <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><a class="make-admin" href="#" user-id="{{ user.id }}" >Ylläpitäjä</a></li>
+                      <li><a class="make-user" href="#" user-id="{{ user.id }}">Käyttäjä</a></li>
+                      <li><a class="make-inactive" href="#" user-id="{{ user.id }}">Ei aktiivinen</a></li>
+                      <li><a class="make-hidden" href="#" user-id="{{ user.id }}">Piilotettu</a></li>
+                      <li role="separator" class="divider"></li>
+                      <li><a class="delete-user-button" href="#" user-id="{{ user.id }}" user-name="{{ user.get_full_name }}">Poista</a></li>
+                    </ul>
+                  </div>
+                </td>
+                <td>
+                    {{ user.last_login }}
+                </td>
+                <td>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <input type="text" name="admin_note" value="{{ user.person.admin_note }}"/>
+                        <input type="text" name="user_id" value="{{ user.id }}" style="display:none;"/>
+                        <input type="submit" value="Tallenna"/>
+                    </form>
+                </td>
+                <td>
+                    {{ user.person.member_until }}
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col col-md-12">
+        <div class="pagination">
+          <span class="step-links">
+            {% if users.has_previous %}
+            <a href="?{% url_replace page=users.previous_page_number %}"> Edellinen</a>
+            {% endif %}
+
+            <span class="current">
+              Sivu {{ users.number }}/{{ users.paginator.num_pages }}.
+            </span>
+
+            {% if users.has_next %}
+            <a href="?{% url_replace page=users.next_page_number %}"> Seuraava</a>
+            {% endif %}
+          </span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- Delete User Modal -->
+<div id="delete-user-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Poistetaanko käyttäjä?</h4>
+      </div>
+      <div class="modal-body">
+        <p>Haluatko varmasti poistaa käyttäjän <span id="modal-user-name"></span>?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal" id="delete-user" user-id="">Poista</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Sulje</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script type="text/javascript" src="{% static 'js/admin.js' %}"></script>
+
+{% endblock %}

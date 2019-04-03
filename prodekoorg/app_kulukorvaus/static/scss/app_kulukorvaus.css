@@ -1,0 +1,51 @@
+/*
+ * Usage: @include tablet {}
+ */
+.kulukorvaus-container .fa-plus {
+  color: #1f581f; }
+
+.kulukorvaus-container .fa-minus {
+  color: #771616; }
+
+.kulukorvaus-container .fa-minus-square {
+  font-size: 25px;
+  color: #8d1f1f;
+  vertical-align: middle; }
+
+.kulukorvaus-container .receipt-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block; }
+  .kulukorvaus-container .receipt-btn-wrapper input[type="file"] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0; }
+  .kulukorvaus-container .receipt-btn-wrapper .btn {
+    color: white;
+    padding: 6px 15px;
+    background-color: #277027;
+    font-weight: bold; }
+
+.kulukorvaus-container #kulukorvaus-done a,
+.kulukorvaus-container #kulukorvaus-error a,
+.kulukorvaus-container #kulukorvaus-policies a {
+  color: white;
+  padding: 6px 15px;
+  background-color: #277027;
+  font-weight: bold; }
+
+.kulukorvaus-container #kulukorvaus-done img,
+.kulukorvaus-container #kulukorvaus-error img,
+.kulukorvaus-container #kulukorvaus-policies img {
+  max-width: 50%;
+  display: block;
+  margin: 0 auto 2.5em auto; }
+
+@media (max-width: 767px) {
+  .kulukorvaus-container #kulukorvaus-done img,
+  .kulukorvaus-container #kulukorvaus-error img,
+  .kulukorvaus-container #kulukorvaus-policies img {
+    max-width: 90%;
+    display: block;
+    margin: 0 auto 1.5em auto; } }

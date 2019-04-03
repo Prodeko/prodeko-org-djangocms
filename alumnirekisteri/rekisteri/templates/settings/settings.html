@@ -1,0 +1,45 @@
+{% extends "ar_base.html" %}
+{% load staticfiles %}
+
+{% block body %}
+
+<section id="settings" class="">
+  <div class="container">
+
+    <form id="main-form" class="form-horizontal" method="post" enctype="multipart/form-data" action="{{form_action_url}}">
+      {% csrf_token %}
+      <input type="hidden" id="{{ user_form.first_name.id }}" name="user_form-{{user_form.first_name.name}}" value="{{user_form.first_name.value}}" />
+      <input type="hidden" id="{{ user_form.last_name.id }}" name="user_form-{{user_form.last_name.name}}" value="{{user_form.last_name.value}}" />
+      {% include 'settings/settings_main_form.html' %}
+    </form>
+
+  </div>
+</section>
+
+
+<!-- Delete Modal -->
+<div id="delete-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content modal-form">
+      <!-- Content is rendered here -->
+    </div>
+  </div>
+</div>
+
+<div id="settings-footer" class="footer footer-blue">
+  <div class="row col col-md-8 col-md-offset-2">
+    {% if messages %}
+      {% for m in messages %}
+        <span class="alert {% if m.tags %}alert-{{ m.tags }}{% endif %}">{{ m.message|striptags }}</span>
+      {% endfor %}
+    {% endif %}
+    <button type="submit" form="main-form" class="btn-white btn-primary" style="float:right;margin-right:10px;margin-top: 8px;">Tallenna tiedot</button>
+  </div>
+</div>
+
+<div style="height:50px;width:100%;"></div> <!-- Makes page long enough to see behind footer -->
+
+<script type="text/javascript" src="{% static 'js/settings.js' %}"></script>
+
+{% endblock %}

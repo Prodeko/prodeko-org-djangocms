@@ -22,11 +22,11 @@
                 <div class="navbar navbar-default">
                     <ul class="nav navbar-nav">
                         <li>
-                            <a href="/cp/messages/{{ filter }}/all/">{% trans "All" %}</a>
+                            <a href="{% url 'tiedotteet:control_messages' filter=filter category='all' %}">{% trans "All" %}</a>
                         </li>
                         {% for c in categories %}
                             <li>
-                                <a href="/cp/messages/{{ filter }}/{{ c.pk }}/">{{ c.title }}</a>
+                                <a href="{% url 'tiedotteet:control_messages' filter=filter category='all' %}">{{ c.title }}</a>
                             </li>
                         {% endfor %}
                     </ul>
@@ -62,7 +62,7 @@
                     <tbody>
                         {% for m in messages %}
                             <tr>
-                                <td><a href="/cp/messages/{{ m.pk }}/edit/">{{ m }}</a></td>
+                                <td><a href="{% url 'tiedotteet:edit' pk=m.pk %}">{{ m }}</a></td>
                                 <td>{{ m.category }}</td>
                                 <td>{{ m.start_date|date:"d.m.Y" }}</td>
                                 <td>{{ m.end_date|date:"d.m.Y" }}</td>

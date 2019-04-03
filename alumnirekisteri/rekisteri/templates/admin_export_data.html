@@ -1,0 +1,204 @@
+{% extends "ar_base.html" %}
+
+{% load staticfiles %}
+
+{% block body %}
+
+<section id="settings" class="">
+
+  <div class="container">
+
+    <div class="row">
+      <div class="col col-md-12">
+        <h2>Admin: Export data</h2>
+      </div>
+    </div>
+        <form id="export_form" method="post" action="{{form_action_url}}">
+            {% csrf_token %}
+            <div class="admin_search">
+              <div class="row" style="margin-bottom:8px;">
+                <div class="col-md-3">
+                  Etunimi:
+                  <input class="admin_text_field" type="text" name="first_name_search" id="first_name"/>
+                </div>
+                <div class="col-md-3">
+                  Sukunimi:
+                  <input class="admin_text_field" type="text" name="last_name_search" id="last_name"/>
+                </div>
+                <div class="col-md-4">
+                  Muistiinpano:
+                  <input class="admin_text_field" type="text" name="admin_note_search" id="admin_note"/>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  Jäsenyys päättyy (YYYY-MM-DD)
+                  <select name="member_until_type" id="member_until_type" style="margin:0px 31px 0px 31px">
+                      <option value="before"> Ennen </option>
+                      <option value="after"> Jälkeen </option>
+                  </select>
+                  <input class="admin_text_field" type="text" name="member_until_search" id="admin_note"/>
+                </div>
+                <div class ="col-md-4">
+                  <select name="member_type_search" id="member_type">
+                      <option value="all">Kaikki</option>
+                      <option value="alumni">Alumnit</option>
+                      <option value="member">Jäsen (myös maksamattomat)</option>
+                  </select>
+                </div>
+                <div class ="col-md-4">
+                  Vain elossa olevat
+                  <input id="alive_checkbox" type="checkbox" name="alive" checked/><br>
+                </div>
+
+                <div class="col-md-2 text-right">
+                  <input class="btn btn-white" type="submit" value="Lataa tiedot"/>
+                </div>
+              </div>
+            </div>
+            <div class="row admin-export">
+              <div class="col-md-4">
+                Sähköposti
+                <input id="email_checkbox" type="checkbox" name="email" checked/><br>
+                Etunimi
+                <input id="first_name_checkbox" type="checkbox" name="first_name" checked/><br>
+                Sukunimi
+                <input id="last_name_checkbox" type="checkbox" name="last_name" checked/><br>
+                Viime kirjautuminen
+                <input id="last_login_checkbox" type="checkbox" name="last_login" checked/><br>
+                Toiset nimet
+                <input id="middle_names_checkbox" type="checkbox" name="middle_names" checked/><br>
+                Lempinimi
+                <input id="nickname_checkbox" type="checkbox" name="nickname" checked/><br>
+                Kutsumanimi
+                <input id="preferred_name_checkbox" type="checkbox" name="preferred_name" checked/><br>
+                Osoitetiedot
+                <input id="address_checkbox" type="checkbox" name="address" checked/><br>
+                Kuollut
+                <input id="is_dead_checkbox" type="checkbox" name="is_dead" checked/><br>
+                Syntymäaika
+                <input id="birthdate_checkbox" type="checkbox" name="birthdate" checked/><br>
+                Syntymäpaikka
+                <input id="place_of_birth_checkbox" type="checkbox" name="place_of_birth" checked/><br>
+                Sukupuoli
+                <input id="gender_checkbox" type="checkbox" name="gender" checked/><br>
+                Siviilisääty
+                <input id="marital_status_checkbox" type="checkbox" name="marital_status" checked/><br>
+              </div>
+              <div class="col-md-4">
+                Opintojen aloitus
+                <input id="class_of_year_checkbox" type="checkbox" name="class_of_year" checked/><br>
+                Jäsenyys päättyy
+                <input id="member_until_checkbox" type="checkbox" name="member_until" checked/><br>
+                Op. nro
+                <input id="student_number_checkbox" type="checkbox" name="student_number" checked/><br>
+                Julkaise matrikkelissa
+                <input id="dont_publish_in_book_checkbox" type="checkbox" name="dont_publish_in_book" checked/><br>
+                Mentorointitiedot
+                <input id="mentoring_checkbox" type="checkbox" name="mentoring" checked/><br>
+                Tietojen luovutus Alumnin yhteistyökumppaneille
+                <input id="partner_contact_checkbox" type="checkbox" name="partner_contact" checked/><br>
+                On alumni
+                <input id="is_alumni_checkbox" type="checkbox" name="is_alumni" checked/><br>
+                Tilaa alumnikirje
+                <input id="subscribe_alumnimail_checkbox" type="checkbox" name="subscribe_alumnimail" checked/><br>
+                Kotisivu
+                <input id="homepage_checkbox" type="checkbox" name="homepage" checked/><br>
+                LinkedIn
+                <input id="linkedin_profile_checkbox" type="checkbox" name="linkedin_profile" checked/><br>
+                Muistiinpano
+                <input id="admin_note_checkbox" type="checkbox" name="admin_note" checked/><br>
+                Sotilastiedot
+                <input id="military_rank_checkbox" type="checkbox" name="military_rank" checked/><br>
+              </div>
+              <div class="col-md-4">
+                Puhelinnumerot
+                <input id="phones_checkbox" type="checkbox" name="phones" checked/><br>
+                Työkokemukset
+                <input id="work_experiences_checkbox" type="checkbox" name="work_experiences" /><br>
+                Sähköpostit (erillisesti lisätyt)
+                <input id="emails_checkbox" type="checkbox" name="emails" /><br>
+                Erityistaidot
+                <input id="skills_checkbox" type="checkbox" name="skills" /><br>
+                Kielet
+                <input id="languages_checkbox" type="checkbox" name="languages" /><br>
+                Koulutukset
+                <input id="educations_checkbox" type="checkbox" name="educations" /><br>
+                Luottamustehtävät
+                <input id="positions_of_trust_checkbox" type="checkbox" name="positions_of_trust" /><br>
+                Opiskelija-aktiivisuus
+                <input id="student_organizational_activities_checkbox" type="checkbox" name="student_organizational_activities" /><br>
+                Vapaaehtoistehtävät
+                <input id="volunteers_checkbox" type="checkbox" name="volunteers" /><br>
+                Kunnianosoitukset
+                <input id="honors_checkbox" type="checkbox" name="honors" /><br>
+                Kiinnostukset
+                <input id="interests_checkbox" type="checkbox" name="interests" /><br>
+                Perheenjäsenet
+                <input id="family_members_checkbox" type="checkbox" name="family_members" /><br>
+                Aloitus ja lopetusvuodet
+                <input id="tuta_info_checkbox" type="checkbox" name="tuta_info" /><br>
+              </div>
+            </div>
+        </form>
+        <div class="admin_search" style="border-radius: 0 0 5px 5px">
+          <div class="row">
+            Presets:
+            <button class="btn btn-white" onclick="preset(0);"> Kaikki </button>
+            <button class="btn btn-white" onclick="preset(1);"> Tai ei mitään </button>
+            <button class="btn btn-white" onclick="preset(2);"> Ventures </button>
+            <button class="btn btn-white" onclick="preset(3);"> Admin thingies </button>
+            <button class="btn btn-white" onclick="preset(4);"> Alumnikirje </button>
+          </div>
+        </div>
+
+  </div>
+
+</section>
+
+<script type="text/javascript">
+    var attributs = ["email", "first_name", "last_name", "last_login", "middle_names", "nickname", "preferred_name",
+                      "address", "is_dead", "birthdate","place_of_birth", "gender", "marital_status", "military_rank", "class_of_year",
+                      "member_until", "student_number", "dont_publish_in_book", "mentoring", "partner_contact", "is_alumni",
+                      "subscribe_alumnimail", "homepage", "linkedin_profile", "admin_note",
+                      "phones", "work_experiences", "emails", "skills", "languages", "educations", "positions_of_trust", "student_organizational_activities",
+                      "volunteers", "honors", "interests", "family_members", "tuta_info"];
+    var checkboxes = {};
+    attributs.forEach(function(x){checkboxes[x] = document.getElementById(x + "_checkbox")});
+
+    function preset(x){
+        switch(x){
+            case 0:
+                Object.values(checkboxes).forEach(function(x){x.checked = true});
+                break;
+            case 1:
+                Object.values(checkboxes).forEach(function(x){x.checked = false});
+                break;
+            case 2:
+                Object.values(checkboxes).forEach(function(x){x.checked = false});
+                checkboxes["first_name"].checked = true;
+                checkboxes["last_name"].checked = true;
+                checkboxes["email"].checked = true;
+                checkboxes["mentoring"].checked = true;
+                checkboxes["partner_contact"].checked = true;
+                break;
+            case 3:
+                Object.values(checkboxes).forEach(function(x){x.checked = false});
+                checkboxes["first_name"].checked = true;
+                checkboxes["last_name"].checked = true;
+                checkboxes["email"].checked = true;
+                checkboxes["last_login"].checked = true;
+                checkboxes["admin_note"].checked = true;
+                break;
+            case 4:
+                Object.values(checkboxes).forEach(function(x){x.checked = false});
+                checkboxes["first_name"].checked = true;
+                checkboxes["last_name"].checked = true;
+                checkboxes["email"].checked = true;
+                checkboxes["subscribe_alumnimail"].checked = true;
+                checkboxes["is_dead"].checked = true;
+                break;
+        }
+    }
+</script>
+{% endblock %}
