@@ -1,6 +1,6 @@
 #vaaliContainer .btn {
-  font-weight: 200;
-  width: 140px; }
+  width: 140px;
+  font-weight: 200; }
 
 #vaaliContainer .btn-xs {
   width: 90px;
@@ -17,24 +17,24 @@
 #vaalitModifyApplyForm .img-preview {
   width: 100px;
   height: 100px;
-  border-radius: 50%;
-  overflow: hidden; }
+  overflow: hidden;
+  border-radius: 50%; }
 
 #vaaliContainer .vaalitQuestions .vaalit-vastaus .img-container {
-  height: 50px;
   width: 50px;
-  border-radius: 50%;
-  overflow: hidden; }
+  height: 50px;
+  overflow: hidden;
+  border-radius: 50%; }
 
 /* Height is set to 100px in 'vaalit_custom.js' once the
  * image file is selected and cropped.
  */
 #vaaliContainer .crop-preview,
 #vaalitModifyApplyForm .crop-preview {
-  height: 0;
   width: 100px;
-  border-radius: 50%;
-  overflow: hidden; }
+  height: 0;
+  overflow: hidden;
+  border-radius: 50%; }
 
 #vaaliContainer .img-container img {
   display: inline;
@@ -50,10 +50,7 @@
 #vaaliContainer #vaalitKysymysForm .fa-chevron-down {
   transition: all 0.3s ease-in-out; }
 
-#vaaliContainer
-#vaalitKysymysForm
-#btnHaeVirkaan.animate-chevron
-.fa-chevron-down {
+#vaaliContainer #vaalitKysymysForm #btnHaeVirkaan.animate-chevron .fa-chevron-down {
   transform: rotate(-179.999deg);
   /* For some reason there is a small wiggle if the rotation is 180 degrees */
   transition: all 0.3s ease-in-out; }
@@ -80,8 +77,8 @@
   margin-bottom: 0; }
 
 .list-group.list-group-root .list-group-item {
-  border-radius: 0;
-  border-width: 1px 0 0 0; }
+  border-width: 1px 0 0 0;
+  border-radius: 0; }
 
 .list-group.list-group-root > .list-group-item:first-child {
   border-top-width: 0; }

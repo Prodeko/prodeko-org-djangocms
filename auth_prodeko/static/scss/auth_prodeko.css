@@ -2,10 +2,10 @@
  * Usage: @include tablet {}
  */
 #login-form {
-  max-width: 60%;
-  margin: 0 auto;
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+  max-width: 60%;
+  margin: 0 auto; }
   @media (max-width: 767px) {
     #login-form {
       max-width: 98%; } }
@@ -51,24 +51,24 @@
 
 .form-wrapper .fieldWrapper .field-input {
   display: inline-block;
-  padding: 3px;
-  margin: 2px; }
+  margin: 2px;
+  padding: 3px; }
   .form-wrapper .fieldWrapper .field-input input {
-    outline: none;
-    border: none;
     display: block;
-    line-height: 1.2em;
+    margin-bottom: 5px;
     font-size: 14pt;
+    line-height: 1.2em;
+    border: none;
     border-bottom: 1.5px solid gray;
-    margin-bottom: 5px; }
+    outline: none; }
   .form-wrapper .fieldWrapper .field-input label {
     display: block;
-    font-size: 12px;
-    color: #002e7d; }
+    color: #002e7d;
+    font-size: 12px; }
 
 .form-wrapper .fieldWrapper .field-error {
-  color: red;
   display: inline-block;
+  color: red;
   font-size: 12px; }
 
 .form-wrapper .other-errors {
@@ -78,7 +78,7 @@
 
 .form-wrapper input[type="submit"] {
   margin: 15px 2px;
-  background-color: #002e7d;
-  border: none;
+  padding: 10px 30px;
   color: white;
-  padding: 10px 30px; }
+  background-color: #002e7d;
+  border: none; }

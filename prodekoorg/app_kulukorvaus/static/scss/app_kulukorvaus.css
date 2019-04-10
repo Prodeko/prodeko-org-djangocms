@@ -8,44 +8,44 @@
   color: #771616; }
 
 .kulukorvaus-container .fa-minus-square {
-  font-size: 25px;
   color: #8d1f1f;
+  font-size: 25px;
   vertical-align: middle; }
 
 .kulukorvaus-container .receipt-btn-wrapper {
   position: relative;
-  overflow: hidden;
-  display: inline-block; }
+  display: inline-block;
+  overflow: hidden; }
   .kulukorvaus-container .receipt-btn-wrapper input[type="file"] {
     position: absolute;
-    left: 0;
     top: 0;
+    left: 0;
     opacity: 0; }
   .kulukorvaus-container .receipt-btn-wrapper .btn {
-    color: white;
     padding: 6px 15px;
-    background-color: #277027;
-    font-weight: bold; }
+    color: white;
+    font-weight: bold;
+    background-color: #277027; }
 
 .kulukorvaus-container #kulukorvaus-done a,
 .kulukorvaus-container #kulukorvaus-error a,
 .kulukorvaus-container #kulukorvaus-policies a {
-  color: white;
   padding: 6px 15px;
-  background-color: #277027;
-  font-weight: bold; }
+  color: white;
+  font-weight: bold;
+  background-color: #277027; }
 
 .kulukorvaus-container #kulukorvaus-done img,
 .kulukorvaus-container #kulukorvaus-error img,
 .kulukorvaus-container #kulukorvaus-policies img {
-  max-width: 50%;
   display: block;
+  max-width: 50%;
   margin: 0 auto 2.5em auto; }
 
 @media (max-width: 767px) {
   .kulukorvaus-container #kulukorvaus-done img,
   .kulukorvaus-container #kulukorvaus-error img,
   .kulukorvaus-container #kulukorvaus-policies img {
-    max-width: 90%;
     display: block;
+    max-width: 90%;
     margin: 0 auto 1.5em auto; } }
