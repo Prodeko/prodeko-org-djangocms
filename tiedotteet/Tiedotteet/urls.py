@@ -13,7 +13,7 @@ urlpatterns = [
     # Control panel
     url(r'^cp/$', views.control_panel, name="cp"),
     url(r'^cp/messages/(?P<pk>\d+)/edit/$', views.edit_message, name="edit_message"),
-    url(r'^cp/messages/(?P<pk>\d+)/delete/$', views.delete_message, "delete_message"),
+    url(r'^cp/messages/(?P<pk>\d+)/delete/$', views.delete_message, name="delete_message"),
     url(r'^cp/messages/(?P<pk>\d+)/hide/$', views.hide_message, name="hide_message"),
     url(r'^cp/messages/(?P<filter>\w+)/(?P<category>\w+)/$', views.control_messages, name="control_messages"),
     url(r'^cp/categories/$', views.categories, name='categories'),

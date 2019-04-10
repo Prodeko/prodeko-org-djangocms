@@ -193,7 +193,7 @@ def delete_message(request, pk):
         message = get_object_or_404(Message, pk=pk)
         message.delete()
 
-    return redirect('tiedotteet:control_messages', args=('all', 'all'))
+    return redirect('tiedotteet:control_messages', filter="all", category="all")
 
 
 def hide_message(request, pk):
@@ -206,7 +206,7 @@ def hide_message(request, pk):
         else:
             message.visible = True
         message.save()
-    return redirect("/tiedotteet/cp/messages/all/all/")
+    return redirect('tiedotteet:control_messages', filter="all", category="all")
 
 
 def edit_message(request, pk):
