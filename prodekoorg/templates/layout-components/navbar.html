@@ -23,7 +23,7 @@
 				<ul class="collapse ul mr-auto navigation-list-child-desktop" id="dropdown-desktop-{{child.get_menu_title}}">
 						<li class="nav-item {% if child.selected %} active-menu-item{% endif %} mr-2"><a class="nav-sublink" href="{{ child.get_absolute_url }}">{{child.get_menu_title }}</a></li>
 						{% for kid in child.get_descendants %}
-							<li class="nav-item {% if kid.selected %} active-menu-item{% endif %} mr-2"><a class="nav-sublink" href="{{ kid.get_absolute_url }}">{{kid.get_menu_title }}</a></li>
+							<li class="nav-item {% if kid.selected %} active-menu-item{% endif %}"><a class="nav-sublink" href="{{ kid.get_absolute_url }}">{{kid.get_menu_title }}</a></li>
 						{% endfor %}
 					</ul>
 				</li>
