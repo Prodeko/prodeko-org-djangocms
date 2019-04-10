@@ -20,10 +20,10 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: Raleway, Helvetica, sans-serif;
-  text-transform: uppercase;
+  color: #0053a0;
   font-weight: semi-bold;
-  color: #0053a0; }
+  font-family: Raleway, Helvetica, sans-serif;
+  text-transform: uppercase; }
 
 h1 {
   font-size: 2.5rem; }
@@ -38,9 +38,9 @@ h4 {
   font-size: 1rem; }
 
 h5 {
+  font-weight: 600;
   font-size: 1rem;
-  text-transform: none;
-  font-weight: 600; }
+  text-transform: none; }
 
 .uppercase {
   text-transform: uppercase; }
@@ -893,10 +893,10 @@ h5 {
     width: 100%; }
   .frontpage-headercontainer .carousel-caption h1 {
     color: white;
-    font-size: 2rem;
     font-weight: 900;
+    font-size: 2rem;
     letter-spacing: 2px;
-    text-shadow: 0px 0px 16px rgba(0, 0, 0, 0.71); }
+    text-shadow: 0 0 16px rgba(0, 0, 0, 0.71); }
     @media (max-width: 767px) {
       .frontpage-headercontainer .carousel-caption h1 {
         font-size: 0.9rem; } }
@@ -919,10 +919,10 @@ h5 {
     @media (min-width: 768px) and (max-width: 1023px) {
       .frontpage-squarerow .frontpage-square {
         padding: 0.5rem 7.5px; } }
-    .frontpage-squarerow .frontpage-square:after {
-      z-index: -1;
+    .frontpage-squarerow .frontpage-square::after {
       top: 0;
       left: 0;
+      z-index: -1;
       opacity: 0;
       -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
       transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1); }
@@ -940,8 +940,8 @@ h5 {
       transform: translate(-50%, -50%); }
       .frontpage-squarerow .frontpage-square .frontpage-square-caption h3 {
         color: white;
-        font-size: 1.5rem;
         font-weight: 900;
+        font-size: 1.5rem;
         letter-spacing: 2px;
         text-shadow: -1px 2px 10px #969696; }
         @media (max-width: 767px) {
@@ -961,24 +961,24 @@ h5 {
 
 /* SIDENAV */
 #sidenav {
-  list-style-type: none;
-  background-color: #002851;
-  padding: 1em;
-  min-height: 10em;
-  min-width: 15em;
+  position: fixed;
+  bottom: 40px;
   display: flex;
   justify-content: center;
-  position: fixed;
-  bottom: 40px; }
+  min-width: 15em;
+  min-height: 10em;
+  padding: 1em;
+  list-style-type: none;
+  background-color: #002851; }
   #sidenav a {
     color: lightgrey;
     text-transform: uppercase; }
     #sidenav a:hover {
       color: white; }
   #sidenav .sidemenu-collapsable {
+    justify-content: center;
     padding-left: 0;
-    line-height: 50%;
-    justify-content: center; }
+    line-height: 50%; }
   #sidenav .sidenav-highlink {
     font-weight: bold;
     line-height: 200%; }
@@ -988,9 +988,10 @@ h5 {
     margin-top: 106px !important; } }
 
 .prodeko-navbar {
-  text-transform: uppercase;
-  text-align: center;
   margin-bottom: 16px;
+  text-align: center;
+  text-transform: uppercase;
+  white-space: nowrap;
   /* Start animated underlines
 
     Credits: http://tobiasahlin.com/blog/css-trick-animating-link-underlines/
@@ -1005,14 +1006,23 @@ h5 {
         width: 165px;
         margin-right: 0 !important; } }
   .prodeko-navbar #collapsibleNavbar .navigation-list-child {
-    list-style-type: none;
-    background-color: #c1ccd8;
-    padding: 10px 0 10px 0;
+    width: 80%;
     margin: auto;
-    width: 80%; }
+    padding: 10px 0 10px 0;
+    list-style-type: none;
+    background-color: #c1ccd8; }
+  .prodeko-navbar #collapsibleNavbar .navigation-list-child-desktop {
+    width: 100%;
+    margin: auto;
+    padding: 10px 10px 10px 10px;
+    border-style: solid;
+    border-width: 0.5px;
+    border-color: #002851;
+    list-style-type: none;
+    background-color: #f1f1f1; }
   .prodeko-navbar #collapsibleNavbar .nav-link {
-    cursor: pointer;
-    font-size: 1.5em; }
+    font-size: 1.5em;
+    cursor: pointer; }
   .prodeko-navbar #collapsibleNavbar .nav-sublink {
     color: rgba(0, 0, 0, 0.65); }
   @media (min-width: 1024px) {
@@ -1020,7 +1030,7 @@ h5 {
       padding-right: 40px; } }
   @media (min-width: 1024px) {
     .prodeko-navbar #collapsibleNavbar form {
-      width: 0px; } }
+      width: 0; } }
   .prodeko-navbar .nav-link {
     font-size: 1.5em; }
   .prodeko-navbar .nav-sublink {
@@ -1031,80 +1041,80 @@ h5 {
     font-weight: bold; }
   @media (max-width: 767px) {
     .prodeko-navbar {
-      background-color: white;
-      min-height: 90px;
       position: fixed !important;
       top: 0;
       right: 0;
       left: 0;
       z-index: 1030;
+      min-height: 90px;
       max-height: 100vh;
-      overflow-y: auto; } }
+      overflow-y: auto;
+      background-color: white; } }
   @media (min-width: 768px) and (max-width: 1023px) {
     .prodeko-navbar .login-dropdown {
-      background-color: #002851;
-      min-width: 22rem; } }
+      min-width: 22rem;
+      background-color: #002851; } }
   .prodeko-navbar a.nav-top {
     position: relative;
     text-decoration: none; }
   .prodeko-navbar .prodeko-navbar #collapsibleNavbar a.nav-top {
     position: relative;
     text-decoration: none; }
-  .prodeko-navbar a.nav-top:not(.no-animation):before {
-    content: '';
+  .prodeko-navbar a.nav-top:not(.no-animation)::before {
     position: absolute;
-    width: 100%;
-    height: 1px;
     bottom: 0;
     left: 0;
+    width: 100%;
+    height: 1px;
     background-color: #002851;
-    visibility: hidden;
     -webkit-transform: scaleX(0);
     transform: scaleX(0);
+    visibility: hidden;
     -webkit-transition: all 0.3s ease-in-out 0s;
-    transition: all 0.3s ease-in-out 0s; }
-  .prodeko-navbar a.nav-top:not(.no-animation):hover:before {
-    visibility: visible;
+    transition: all 0.3s ease-in-out 0s;
+    content: ''; }
+  .prodeko-navbar a.nav-top:not(.no-animation):hover::before {
     -webkit-transform: scaleX(1);
-    transform: scaleX(1); }
+    transform: scaleX(1);
+    visibility: visible; }
 
 #prodeko-logo {
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-origin: content-box;
+  display: block;
+  flex-grow: 1;
   margin-left: 1em;
   padding: 5px;
-  flex-grow: 1;
-  display: block; }
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-origin: content-box; }
   @media (max-width: 767px) {
     #prodeko-logo {
-      height: 74px;
-      background-position-y: center;
       max-width: 200px;
+      height: 74px;
+      margin-left: 0;
       background-image: url("/static/images/logos/prodeko-logo-text-blue.png");
-      margin-left: 0; } }
+      background-position-y: center; } }
   @media (min-width: 768px) and (max-width: 1023px) {
     #prodeko-logo {
-      height: 60px;
       max-width: 300px;
+      height: 60px;
       background-image: url("/static/images/logos/prodeko-logo-text-blue.png"); } }
   @media (min-width: 1024px) {
     #prodeko-logo {
-      height: 75px;
       max-width: 150px;
+      height: 75px;
       background-image: url("/static/images/logos/prodeko-logo-darkblue.png"); } }
 
 /*
  * Usage: @include tablet {}
  */
 .prodeko-footer {
-  font-family: Raleway, Helvetica, sans-serif;
-  padding-left: 0;
-  padding-right: 0;
   padding-top: 3em;
+  padding-right: 0;
   padding-bottom: 2em;
-  background-color: #002851;
+  padding-left: 0;
   color: white;
+  font-family: Raleway, Helvetica, sans-serif;
+  background-color: #002851;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
   @media (max-width: 767px) {
     .prodeko-footer {
@@ -1124,8 +1134,8 @@ h5 {
     font-size: 0.9em; }
   .prodeko-footer .network-div {
     flex: 1 0 20%;
-    margin: 10px;
-    height: 65px; }
+    height: 65px;
+    margin: 10px; }
     @media (max-width: 767px) {
       .prodeko-footer .network-div {
         height: 50px; } }
@@ -1140,11 +1150,11 @@ h5 {
     padding: 1em; }
 
 .content-page-jumbotron {
-  background-image: url("/static/images/backgrounds/content-page-bg-blue.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
   height: 30vh;
-  margin-bottom: 0; }
+  margin-bottom: 0;
+  background-image: url("/static/images/backgrounds/content-page-bg-blue.jpg");
+  background-repeat: no-repeat;
+  background-size: cover; }
   .content-page-jumbotron h1 {
     color: white;
     font-size: 3.5rem; }
@@ -1155,11 +1165,11 @@ h5 {
 .page-container {
   padding: 2.5em 2em 2.5em 2em; }
   .page-container h1 {
+    margin-top: 0.5em;
     margin-bottom: 0.8em;
-    text-transform: uppercase;
-    font-size: 2em;
     font-weight: normal;
-    margin-top: 0.5em; }
+    font-size: 2em;
+    text-transform: uppercase; }
     @media (max-width: 767px) {
       .page-container h1 {
         font-size: 1.5em;
@@ -1177,8 +1187,8 @@ h5 {
       float: left; }
     .page-container img .align-center {
       display: block;
-      margin-left: auto;
-      margin-right: auto; }
+      margin-right: auto;
+      margin-left: auto; }
     .page-container img .align-right {
       float: right; }
     .page-container img .img-40 {
@@ -1192,38 +1202,38 @@ h5 {
     .page-container img .img-5 {
       max-width: 5em; }
   .page-container ul:not(.page-breadcrumb):not(#sidenav) {
-    list-style-type: none;
+    margin: 0;
     padding: 0 0 0 1.5em;
-    margin: 0; }
+    list-style-type: none; }
   .page-container ul:not(.page-breadcrumb):not(#sidenav) li::before {
     content: "–";
     padding-right: 1em; }
   @media (min-width: 1024px) {
     .page-container .img.cms-plugin.cms-plugin-7 {
+      display: block;
       max-height: 400px;
-      background-size: cover;
-      display: block; } }
+      background-size: cover; } }
 
 .page-breadcrumb {
-  list-style-type: none;
-  padding-left: 0; }
+  padding-left: 0;
+  list-style-type: none; }
   .page-breadcrumb li {
     display: inline; }
     .page-breadcrumb li a {
       color: #002851; }
 
 .page-navigation-menu {
-  font-family: Raleway, Helvetica, sans-serif;
-  padding-left: 0; }
+  padding-left: 0;
+  font-family: Raleway, Helvetica, sans-serif; }
   .page-navigation-menu li {
     list-style: none; }
 
 .container-error h1 {
+  padding: 100px;
   font-weight: 900;
   font-size: 7em;
-  text-align: center;
-  padding: 100px; }
+  text-align: center; }
 
 body {
-  font-family: Raleway, Helvetica, sans-serif;
-  min-height: 100%; }
+  min-height: 100%;
+  font-family: Raleway, Helvetica, sans-serif; }

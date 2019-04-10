@@ -9,6 +9,7 @@ body {
   margin-bottom: 16px;
   text-align: center;
   text-transform: uppercase;
+  white-space: nowrap;
 
   #collapsibleNavbar {
     .lang {
@@ -16,6 +17,7 @@ body {
     }
 
     .navbar-auth {
+
       @include phone {
         li {
           margin-bottom: 5px;
@@ -34,6 +36,17 @@ body {
       padding: 10px 0 10px 0;
       list-style-type: none;
       background-color: rgb(193, 204, 216);
+    }
+
+    .navigation-list-child-desktop {
+      width: 100%;
+      margin: auto;
+      padding: 10px 10px 10px 10px;
+      border-style: solid;
+      border-width: 0.5px;
+      border-color: rgb(0, 40, 81);
+      list-style-type: none;
+      background-color: rgb(241, 241, 241);
     }
 
     .nav-link {
