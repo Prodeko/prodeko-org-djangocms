@@ -1,0 +1,38 @@
+#instagram {
+    width: 100%;
+    display: block;
+
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0.6rem;
+    margin-bottom: 0.6rem;
+    width: 100%;
+    object-fit: cover;
+}
+
+@media (min-width: 576px) {
+    #instagram {
+        width: 30%;
+        display: grid;
+        grid-column-gap: 1.2rem;
+        grid-row-gap: 1.2rem;
+        grid-template-columns: 1fr 1fr;
+        grid-auto-rows: auto;
+    }
+
+    .cms-placeholder-10{
+      display: none;
+    }
+
+    img {
+        margin-top: 0;
+        margin: none;
+        width: 12rem;
+        height: 12rem;
+        margin-top: none;
+    }
+}
