@@ -1042,15 +1042,13 @@ img {
     list-style-type: none;
     background-color: #c1ccd8; }
   .prodeko-navbar #collapsibleNavbar .navigation-list-child-desktop {
-    width: 170px;
-    margin: 0px -30px;
     padding: 10px 10px 10px 10px;
     border-style: solid;
     border-width: 0.5px;
     border-color: #002851;
     list-style-type: none;
     background-color: #f1f1f1;
-    position: absolute;
+    position: relative;
     z-index: 1; }
   .prodeko-navbar #collapsibleNavbar .nav-link {
     font-size: 1.5em;
