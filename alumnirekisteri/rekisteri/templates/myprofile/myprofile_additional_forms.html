@@ -1,0 +1,489 @@
+<div class="row">
+  <div class="col col-md-8 col-md-offset-2">
+    <div class="panel panel-default">
+      <div class="panel-heading ">
+          Sähköpostiosoitteet
+          <div class="pull-right"><a href="#add-email" data-toggle="modal" data-target="#add-email-modal"><i class="fa fa-plus"></i> Lisää</a>&emsp;{{ person_form.show_emails_category }} </div>
+      </div>
+      <div>
+        <small class="form-text text-danger" style="padding: 10px 15px;">Nämä eivät vaikuta alumnikirjeen lähetykseen vaan kirje lähetetään yläpuolella käyttäjätunnuksena olevaan sähköpostiin.</small>    
+      </div>
+      <div class="panel-body">
+        <ul class="list-group">
+          {% for x in emails %}
+            <li class="list-group-item">
+              <div class="pull-right">
+                <a href="#" class="edit-link" modal="#edit-modal" url="{% url 'alumnirekisteri:edit_email' x.pk %}"><i class="fa fa-edit"></i></a>
+                <a href="#" class="delete-link" modal="#delete-modal" url="{% url 'alumnirekisteri:delete_email' x.pk %}"><i class="fa fa-remove"></i></a>
+              </div>
+              <span class="text-muted">{{ x.get_address_type_display }}</span>
+              <h4>{{ x.address }}</h4>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col col-md-8 col-md-offset-2">
+    <div class="panel panel-default">
+      <div class="panel-heading ">
+        Puhelinnumerot
+        <div class="pull-right"><a href="#add-phone" data-toggle="modal" data-target="#add-phone-modal"><i class="fa fa-plus"></i> Lisää</a>&emsp;{{ person_form.show_phones_category }}</div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="panel-body">
+        <ul class="list-group">
+          {% for x in phones %}
+            <li class="list-group-item">
+              <div class="pull-right">
+                <a href="#" class="edit-link" modal="#edit-modal" url="{% url 'alumnirekisteri:edit_phone' x.pk %}"><i class="fa fa-edit"></i></a>
+                <a href="#" class="delete-link" modal="#delete-modal" url="{% url 'alumnirekisteri:delete_phone' x.pk %}"><i class="fa fa-remove"></i></a>
+              </div>
+              <span class="text-muted">{{ x.get_number_type_display }}</span>
+              <h4>{{ x.phone_number }}</h4>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col col-md-8 col-md-offset-2">
+    <div class="panel panel-default">
+      <div class="panel-heading ">
+        Erityistaidot
+        <div class="pull-right"><a href="#add-skill" data-toggle="modal" data-target="#add-skill-modal"><i class="fa fa-plus"></i> Lisää</a>&emsp;{{ person_form.show_skills_category }}</div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="panel-body">
+        <ul class="list-group">
+          {% for x in skills %}
+            <li class="list-group-item">
+              <div class="pull-right">
+                <a href="#" class="edit-link" modal="#edit-modal" url="{% url 'alumnirekisteri:edit_skill' x.pk %}"><i class="fa fa-edit"></i></a>
+                <a href="#" class="delete-link" modal="#delete-modal" url="{% url 'alumnirekisteri:delete_skill' x.pk %}"><i class="fa fa-remove"></i></a>
+              </div>
+              <h4>{{ x.title }}</h4>
+              <p>{{ x.description }}</p>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col col-md-8 col-md-offset-2">
+    <div class="panel panel-default">
+      <div class="panel-heading ">
+        Kielitaito
+        <div class="pull-right"><a href="#add-language" data-toggle="modal" data-target="#add-language-modal"><i class="fa fa-plus"></i> Lisää</a>&emsp;{{ person_form.show_languages_category }}</div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="panel-body">
+        <ul class="list-group">
+          {% for x in languages %}
+            <li class="list-group-item">
+              <div class="pull-right">
+                <a href="#" class="edit-link" modal="#edit-modal" url="{% url 'alumnirekisteri:edit_language' x.pk %}"><i class="fa fa-edit"></i></a>
+                <a href="#" class="delete-link" modal="#delete-modal" url="{% url 'alumnirekisteri:delete_language' x.pk %}"><i class="fa fa-remove"></i></a>
+              </div>
+              <span class="text-muted">{% if x.level >= 0 %}{{ x.get_level_display }}{% endif %}</span>
+              <h4>{{ x.language }}</h4>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col col-md-8 col-md-offset-2">
+    <div class="panel panel-default">
+      <div class="panel-heading ">
+        Koulutus
+        <div class="pull-right"><a href="#add-education" data-toggle="modal" data-target="#add-education-modal"><i class="fa fa-plus"></i> Lisää</a>&emsp;{{ person_form.show_educations_category }}</div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="panel-body">
+        <ul class="list-group">
+          {% for x in educations %}
+          <li class="list-group-item">
+            <div class="pull-right">
+              <a href="#" class="edit-link" modal="#edit-modal" url="{% url 'alumnirekisteri:edit_education' x.pk %}"><i class="fa fa-edit"></i></a>
+              <a href="#" class="delete-link" modal="#delete-modal" url="{% url 'alumnirekisteri:delete_education' x.pk %}"><i class="fa fa-remove"></i></a>
+            </div>
+            <span class="text-muted">{% if x.get_degree_level_display %}{{ x.get_degree_level_display }}{% endif %}</span>
+            <h4>{{ x.school }}</h4>
+            <p>
+               {% if x.start_year or x.end_year %}{% if x.start_year %}{{ x.start_year }}{% endif %} - {% if x.end_year %}{{ x.end_year }}{% endif %},{% endif %} {{ x.field }}
+            </p>
+            <p>{% if x.major %}Pääaine: {{ x.major }}{% endif %}</p>
+            <p>{% if x.minor %}Sivuaine: {{ x.minor }}{% endif %}</p>
+            <p>{% if x.description %}{{ x.description }}{% endif %}</p>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col col-md-8 col-md-offset-2">
+    <div class="panel panel-default">
+      <div class="panel-heading ">
+        Työkokemus
+        <div class="pull-right"><a href="#add-experience" data-toggle="modal" data-target="#add-experience-modal"><i class="fa fa-plus"></i> Lisää</a>&emsp;{{ person_form.show_work_experiences_category }}</div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="panel-body">
+        <ul class="list-group">
+          {% for x in work_experiences %}
+          <li class="list-group-item">
+            <div class="pull-right">
+              <a href="#" class="edit-link" modal="#edit-modal" url="{% url 'alumnirekisteri:edit_work_experience' x.pk %}"><i class="fa fa-edit"></i></a>
+              <a href="#" class="delete-link" modal="#delete-modal" url="{% url 'alumnirekisteri:delete_work_experience' x.pk %}"><i class="fa fa-remove"></i></a>
+            </div>
+            <span class="text-muted">{{ x.position }}</span>
+            <h4>{{ x.organisation }}</h4>
+            <p>
+              {% if x.start_year or x.end_year %}{% if x.start_month and x.start_year %}{{ x.get_start_month_display }}, {% endif %}{% if x.start_year %}{{ x.start_year }}{% endif %} - {% if x.end_month and x.end_year %}{{ x.get_end_month_display }}, {% endif %}{% if x.end_year %}{{ x.end_year }}{% endif %}{% endif %}
+            </p>
+            <p>{{ x.description }}</p>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col col-md-8 col-md-offset-2">
+    <div class="panel panel-default">
+      <div class="panel-heading ">
+          Toimialat
+          <div class="pull-right">Yksityinen, käytetään mentorointimahdollisuuksien kohdentamiseen</div>
+          <div class="clearfix"></div>
+
+        <div class="clearfix"></div>
+      </div>
+      <div class="panel-body">
+          <div class="checkbox industry">
+              <label>{{ person_form.industry_consulting.label }}</label>
+              <span class="pull-right">{{ person_form.industry_consulting }}</span>
+          </div>
+          <div class="checkbox industry">
+              <label>{{ person_form.industry_industrial.label }}</label>
+              <span class="pull-right">{{ person_form.industry_industrial }}</span>
+          </div>
+          <div class="checkbox industry">
+              <label>{{ person_form.industry_law.label }}</label>
+              <span class="pull-right">{{ person_form.industry_law }}</span>
+          </div>
+          <div class="checkbox industry">
+              <label>{{ person_form.industry_consumer.label }}</label>
+              <span class="pull-right">{{ person_form.industry_consumer }}</span>
+          </div>
+          <div class="checkbox industry">
+              <label>{{ person_form.industry_health.label }}</label>
+              <span class="pull-right">{{ person_form.industry_health }}</span>
+          </div>
+          <div class="checkbox industry">
+              <label>{{ person_form.industry_energy.label }}</label>
+              <span class="pull-right">{{ person_form.industry_energy }}</span>
+          </div>
+          <div class="checkbox industry">
+              <label>{{ person_form.industry_it.label }}</label>
+              <span class="pull-right">{{ person_form.industry_it }}</span>
+          </div>
+          <div class="checkbox industry">
+              <label>{{ person_form.industry_finance.label }}</label>
+              <span class="pull-right">{{ person_form.industry_finance }}</span>
+          </div>
+          <div class="checkbox industry">
+              <label>{{ person_form.industry_traffic.label }}</label>
+              <span class="pull-right">{{ person_form.industry_traffic }}</span>
+          </div>
+          <div class="checkbox industry">
+              <label>{{ person_form.industry_retail.label }}</label>
+              <span class="pull-right">{{ person_form.industry_retail }}</span>
+          </div>
+          <div class="checkbox industry">
+              <label>{{ person_form.industry_media.label }}</label>
+              <span class="pull-right">{{ person_form.industry_media }}</span>
+          </div>
+          <div class="checkbox industry">
+              <label>{{ person_form.industry_marketing.label }}</label>
+              <span class="pull-right">{{ person_form.industry_marketing }}</span>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col col-md-8 col-md-offset-2">
+    <div class="panel panel-default">
+      <div class="panel-heading ">
+          Osaamisalueet
+          <div class="pull-right">Yksityinen, käytetään mentorointimahdollisuuksien kohdentamiseen</div>
+          <div class="clearfix"></div>
+
+        <div class="clearfix"></div>
+      </div>
+      <div class="panel-body">
+          <div class="checkbox industry">
+              <label>{{ person_form.function_logistics.label }}</label>
+              <span class="pull-right">{{ person_form.function_logistics }}</span>
+          </div>
+          <div class="checkbox industry">
+              <label>{{ person_form.function_ackquisitions.label }}</label>
+              <span class="pull-right">{{ person_form.function_ackquisitions }}</span>
+          </div>
+          <div class="checkbox industry">
+              <label>{{ person_form.function_sales.label }}</label>
+              <span class="pull-right">{{ person_form.function_sales }}</span>
+          </div>
+          <div class="checkbox industry">
+              <label>{{ person_form.function_digital_marketing.label }}</label>
+              <span class="pull-right">{{ person_form.function_digital_marketing }}</span>
+          </div>
+          <div class="checkbox industry">
+              <label>{{ person_form.function_marketing.label }}</label>
+              <span class="pull-right">{{ person_form.function_marketing }}</span>
+          </div>
+          <div class="checkbox industry">
+              <label>{{ person_form.function_pr.label }}</label>
+              <span class="pull-right">{{ person_form.function_pr }}</span>
+          </div>
+          <div class="checkbox industry">
+              <label>{{ person_form.function_hr.label }}</label>
+              <span class="pull-right">{{ person_form.function_hr }}</span>
+          </div>
+          <div class="checkbox industry">
+              <label>{{ person_form.function_rnd.label }}</label>
+              <span class="pull-right">{{ person_form.function_rnd }}</span>
+          </div>
+          <div class="checkbox industry">
+              <label>{{ person_form.function_finance.label }}</label>
+              <span class="pull-right">{{ person_form.function_finance }}</span>
+          </div>
+          <div class="checkbox industry">
+              <label>{{ person_form.function_it.label }}</label>
+              <span class="pull-right">{{ person_form.function_it }}</span>
+          </div>
+          <div class="checkbox industry">
+              <label>{{ person_form.function_ux.label }}</label>
+              <span class="pull-right">{{ person_form.function_ux }}</span>
+          </div>
+          <div class="checkbox industry">
+              <label>{{ person_form.function_strategy.label }}</label>
+              <span class="pull-right">{{ person_form.function_strategy }}</span>
+          </div>
+          <div class="checkbox industry">
+              <label>{{ person_form.function_analytics.label }}</label>
+              <span class="pull-right">{{ person_form.function_analytics }}</span>
+          </div>
+          <div class="checkbox industry">
+              <label>{{ person_form.function_enterpreneurship.label }}</label>
+              <span class="pull-right">{{ person_form.function_enterpreneurship }}</span>
+          </div>
+          <div class="checkbox industry">
+              <label>{{ person_form.function_research.label }}</label>
+              <span class="pull-right">{{ person_form.function_research }}</span>
+          </div>
+      <br/>
+          <div class="">
+              <label>{{ person_form.function_free.label }}</label>
+              {{ person_form.function_free }}
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col col-md-8 col-md-offset-2">
+    <div class="panel panel-default">
+      <div class="panel-heading ">
+        Luottamustehtävät
+        <div class="pull-right"><a href="#add-positionoftrust" data-toggle="modal" data-target="#add-positionoftrust-modal"><i class="fa fa-plus"></i> Lisää</a>&emsp;{{ person_form.show_positions_of_trust_category }}</div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="panel-body">
+        <ul class="list-group">
+          {% for x in positions_of_trust %}
+          <li class="list-group-item">
+            <div class="pull-right">
+              <a href="#" class="edit-link" modal="#edit-modal" url="{% url 'alumnirekisteri:edit_position_of_trust' x.pk %}"><i class="fa fa-edit"></i></a>
+              <a href="#" class="delete-link" modal="#delete-modal" url="{% url 'alumnirekisteri:delete_position_of_trust' x.pk %}"><i class="fa fa-remove"></i></a>
+            </div>
+            <span class="text-muted">{{ x.position }}</span>
+            <h4>{{ x.organisation }}</h4>
+            <p>
+              {% if x.start_year or x.end_year %}{% if x.start_month >= 0 and x.start_year %}{{ x.get_start_month_display }}, {% endif %}{% if x.start_year %}{{ x.start_year }}{% endif %} - {% if x.end_month >= 0 and x.end_year %}{{ x.get_end_month_display }}, {% endif %}{% if x.end_year %}{{ x.end_year }}{% endif %}{% endif %}
+            </p>
+            <p>{{ x.description }}</p>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col col-md-8 col-md-offset-2">
+    <div class="panel panel-default">
+      <div class="panel-heading ">
+        Opiskelijajärjestöt
+        <div class="pull-right"><a href="#" data-toggle="modal" data-target="#add-studentactivity-modal"><i class="fa fa-plus"></i> Lisää</a>&emsp;{{ person_form.show_student_organizational_activities_category }}</div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="panel-body">
+        <ul class="list-group">
+          {% for x in student_organizational_activities %}
+          <li class="list-group-item">
+            <div class="pull-right">
+              <a href="#" class="edit-link" modal="#edit-modal" url="{% url 'alumnirekisteri:edit_student_activity' x.pk %}"><i class="fa fa-edit"></i></a>
+              <a href="#" class="delete-link" modal="#delete-modal" url="{% url 'alumnirekisteri:delete_student_activity' x.pk %}"><i class="fa fa-remove"></i></a>
+            </div>
+            <h4>{{ x.organisation }}</h4>
+            <p>
+              {% if x.start_year or x.end_year %}{% if x.start_month >= 0 and x.start_year %}{{ x.get_start_month_display }}, {% endif %}{% if x.start_year %}{{ x.start_year }}{% endif %} - {% if x.end_month >= 0 and x.end_year %}{{ x.get_end_month_display }}, {% endif %}{% if x.end_year %}{{ x.end_year }}{% endif %}{% endif %}
+            </p>
+            <p>{{ x.position }}</p>
+            <p>{{ x.description }}</p>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col col-md-8 col-md-offset-2">
+    <div class="panel panel-default">
+      <div class="panel-heading ">
+        Vapaaehtoistehtävät
+        <div class="pull-right"><a href="#" data-toggle="modal" data-target="#add-volunteer-modal"><i class="fa fa-plus"></i> Lisää</a>&emsp;{{ person_form.show_volunteers_category }}</div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="panel-body">
+        <ul class="list-group">
+          {% for x in volunteers %}
+          <li class="list-group-item">
+            <div class="pull-right">
+              <a href="#" class="edit-link" modal="#edit-modal" url="{% url 'alumnirekisteri:edit_volunteer' x.pk %}"><i class="fa fa-edit"></i></a>
+              <a href="#" class="delete-link" modal="#delete-modal" url="{% url 'alumnirekisteri:delete_volunteer' x.pk %}"><i class="fa fa-remove"></i></a>
+            </div>
+            <h4>{{ x.organisation }}</h4>
+            <p>
+              {% if x.start_year or x.end_year %}{% if x.start_month >= 0 and x.start_year %}{{ x.get_start_month_display }}, {% endif %}{% if x.start_year %}{{ x.start_year }}{% endif %} - {% if x.end_month >= 0 and x.end_year %}{{ x.get_end_month_display }}, {% endif %}{% if x.end_year %}{{ x.end_year }}{% endif %}{% endif %}
+            </p>
+            <p>{{ x.position }}</p>
+            <p>{{ x.description }}</p>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col col-md-8 col-md-offset-2">
+    <div class="panel panel-default">
+      <div class="panel-heading ">
+        Kunnianosoitukset
+        <div class="pull-right"><a href="#" data-toggle="modal" data-target="#add-honor-modal"><i class="fa fa-plus"></i> Lisää</a>&emsp;{{ person_form.show_honors_category }}</div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="panel-body">
+        <ul class="list-group">
+          {% for x in honors %}
+          <li class="list-group-item">
+            <div class="pull-right">
+              <a href="#" class="edit-link" modal="#edit-modal" url="{% url 'alumnirekisteri:edit_honor' x.pk %}"><i class="fa fa-edit"></i></a>
+              <a href="#" class="delete-link" modal="#delete-modal" url="{% url 'alumnirekisteri:delete_honor' x.pk %}"><i class="fa fa-remove"></i></a>
+            </div>
+            <h4>{{ x.title }}</h4>
+            <p>
+              {% if x.organisation %}{{ x.organisation }}{% endif %}{% if x.organisation and x.year %}, {% endif %}{% if x.year %}{{ x.year }}{% endif %}
+            </p>
+            <p>{% if x.description %}{{ x.description }}{% endif %}</p>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col col-md-8 col-md-offset-2">
+    <div class="panel panel-default">
+      <div class="panel-heading ">
+        Kiinnostuksen kohteet
+        <div class="pull-right"><a href="#" data-toggle="modal" data-target="#add-interest-modal"><i class="fa fa-plus"></i> Lisää</a>&emsp;{{ person_form.show_interests_category }}</div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="panel-body">
+        <ul class="list-group">
+          {% for x in interests %}
+          <li class="list-group-item">
+            <div class="pull-right">
+              <a href="#" class="edit-link" modal="#edit-modal" url="{% url 'alumnirekisteri:edit_interest' x.pk %}"><i class="fa fa-edit"></i></a>
+              <a href="#" class="delete-link" modal="#delete-modal" url="{% url 'alumnirekisteri:delete_interest' x.pk %}"><i class="fa fa-remove"></i></a>
+            </div>
+            <h4>{{ x.title }}</h4>
+            <p>
+              {% if x.organisation %}{{ x.organisation }}{% endif %}{% if x.organisation and x.year %}, {% endif %}{% if x.year %}{{ x.year }}{% endif %}
+            </p>
+            <p>{% if x.description %}{{ x.description }}{% endif %}</p>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col col-md-8 col-md-offset-2">
+    <div class="panel panel-default">
+      <div class="panel-heading ">
+        Perheenjäsenet
+        <div class="pull-right"><a href="#" data-toggle="modal" data-target="#add-familymember-modal"><i class="fa fa-plus"></i> Lisää</a>&emsp;{{ person_form.show_family_members_category }}</div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="panel-body">
+
+        <ul class="list-group">
+          {% for x in family_members %}
+          <li class="list-group-item">
+            <div class="pull-right">
+              <a href="#" class="edit-link" modal="#edit-modal" url="{% url 'alumnirekisteri:edit_family_member' x.pk %}"><i class="fa fa-edit"></i></a>
+              <a href="#" class="delete-link" modal="#delete-modal" url="{% url 'alumnirekisteri:delete_family_member' x.pk %}"><i class="fa fa-remove"></i></a>
+            </div>
+            <span class="text-muted">{{ x.get_member_type_display }}</span>
+            <h4>{{ x.first_name }} {{ x.last_name }}</h4>
+            <p>{% if x.original_last_name %}{{ x.original_last_name }} (alkuperäinen sukunimi){% endif %}</p>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,490 @@
+    /* === GENERAL === */
+
+html, body { height: 100%; }
+
+body {
+    font-family: "Raleway", Sans !important;
+    --teksti-color: #1E3553;
+    --sininen: #1E3553;
+    color:#1E3553;
+}
+
+section {
+	/*margin-top: -50px;*/
+	padding-top: 80px;
+	background-color: #fafafa;
+	min-height: 100%;
+}
+
+/* === BACKGROUND === */
+
+.bg {
+    background-color: #ededed;
+    background-image: url('/static/alumnirekisteri_images/Vaalea3.jpg');
+    background-position: center center;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    position: fixed;
+}
+
+
+
+
+
+/* === LOGIN PAGE === */
+
+.login {
+    background-color: transparent !important;
+    color: white !important;
+    text-decoration: none !important;
+}
+
+#loginform{
+    padding-top: 15px;
+    border-top: 1px solid;
+    border-color: #ddd;
+    text-align: center;
+}
+
+#login {
+    background-image: url('/static/alumnirekisteri_images/search_background.jpg');
+}
+
+#btn-login {
+    width: 80%;
+}
+
+.contact-info {
+    margin-bottom: 5px;
+    text-align: center;
+    color: white;
+    font-weight: lighter;
+    font-size: 0.8em;
+}
+
+.contact-info a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.3em;
+}
+
+
+
+
+/* === FRONT PAGE === */
+#welcome_text{
+    text-align: center;
+    padding: 20px;
+    color: white;
+    font-size: 2em;
+}
+
+#prodeko-logo {
+    width: 70%;
+	  max-width: 300px;
+    min-width: 250px;
+	  margin-left: auto;
+	  margin-right: auto;
+    transform: rotate(0deg);
+    transition-duration: 2s;
+    animation: fadein;
+    animation-duration: 3s;
+}
+
+
+#prodeko-logo:hover {
+    transform: rotate(360deg);
+    transition-duration: 2s;
+}
+
+#matrikkeli-logo {
+  width: 100%;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.values {
+    text-align: center;
+    font-size: 1em;
+    margin-top: 30px;
+    font-weight: bolder;
+    animation: fadein;
+    animation-duration: 3s;
+}
+
+#frontpagePanel {
+    position: fixed;
+    width: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+
+
+/* === SEARCH RESULTS === */
+
+#search{
+    text-decoration: none !important;
+	  height: 100%;
+    width: 100%;
+}
+
+#search>p{
+    font-weight: bold;
+}
+
+#search-result-text{
+    text-decoration: none;
+    color: #1E3553;
+    animation-name: fadein;
+    animation-duration: 1s;
+}
+
+
+.search-profile-image {
+    transition: background-size 0.5s, transform 0.5s;
+    background-size:160px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin:5px;
+    border: 0px;
+}
+
+.search-profile-card {
+    animation-name: fadein;
+    animation-duration: 0.5s;
+}
+
+.search-profile-card:hover .search-profile-image{
+    background-size: 200px;
+    /*transform: rotate(7deg);*/
+}
+
+@keyframes fadein {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes gradient-fadein {
+    from {opacity: 0;}
+    to {opacity: 0.4;}
+}
+
+.bottom-gradient {
+    animation-name: gradient-fadein;
+    animation-duration: 5s;
+    opacity: 0.5;
+    z-index: 1;
+    height: 81px;
+    background: linear-gradient(transparent, grey);
+    width: 100%;
+}
+
+.step-links {
+    z-index: 10;
+    position: relative;
+}
+.pagination {
+    margin-top: 30px;
+    z-index: 10;
+    opacity: 1;
+    font-weight: bold;
+    color: #1E3553;
+}
+
+.w3-container {
+    padding:0.01em 16px;
+}
+
+.w3-left {
+    float:left !important;
+}
+
+.w3-margin-right {
+    margin-right:16px !important;
+}
+
+/* === PUBLIC PROFILE === */
+
+.public-profile-picture {
+    display: block;
+    margin: 0 auto;
+    max-width: 350px;
+    width: 100%;
+}
+
+/* === PROFILE EDIT PAGE === */
+
+#crop-image {
+    max-width: 250px;
+    width: 100%;
+
+}
+
+.margin-pois {
+    margin-bottom: 0px !important;
+}
+
+.footer-blue {
+    background-color: #1E3553;
+    min-height:50px;
+    z-index: 10;
+}
+
+.category-disabled .panel-body {
+    opacity: 0.5;
+}
+
+.category-enabled .panel-heading {
+}
+
+.checkbox:before {
+  content : "";
+  position: absolute;
+  left: 20px;
+  bottom  : -2px;
+  height  : 1px;
+  width   : 90%;  /* or 100px */
+  border-bottom: 1px dashed #ccc;
+}
+
+
+/* === BOOTSTRAP STUFF === */
+
+.btn-primary, .btn-primary:active, .btn-primary:focus{
+    background-color: #1E3553;
+    /*border-color: #1E3553;*/
+}
+
+.btn {
+    border-radius: 4px;
+}
+
+.btn-white {
+    background-color: transparent;
+    border: white solid 2px;
+    border-radius: 4px;
+    color: white;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.btn-white:hover {
+    background-color: white;
+    color: #1E3553;
+    border: white solid 2px;
+}
+
+.btn-white:focus {
+    background-color: white;
+    color: #1E3553;
+    border: white solid 2px;
+}
+
+.alert-top {
+  /*position: fixed;*/
+}
+
+/* === FOOTER === */
+
+
+.footer {
+   left:0px;
+   bottom:0px;
+   width:100%;
+}
+
+.footer-fixed {
+  position: fixed;
+}
+
+.footer .alert {
+  position:absolute;
+  top:8px;
+  left:20px;
+  padding: 3px 20px;
+}
+
+@media (min-width: 768px){
+  .footer {
+     position:fixed;
+  }
+  .footer .alert {
+    left:50%;
+    transform: translate(-50%, -0%);
+  }
+}
+
+/* === NAVBAR === */
+.navbar {
+    font-size: 14px !important;
+	border: none;
+	margin-bottom: 0px;
+	border-radius: 0px;
+    z-index: 10;
+}
+
+.navbar-brand>img {
+  height: 100%;
+}
+
+.navbar-brand {
+  padding: 10px 10px;
+}
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    border: 0px;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: #ffffff;
+}
+.navbar-default .navbar-nav>li>a:visited {
+    color: #ffffff;
+}
+.navbar-default .navbar-nav>li>a:focus {
+    color: #ffffff;
+}
+.navbar-default .navbar-nav>li>a:hover {
+    color: #dddddd;
+}
+.nav-haku{
+	border-radius: 4px !important;
+	color: white !important;
+	border-color: white !important;
+    border: solid 2px;
+	background-color: transparent !important;
+}
+
+.nav-haku-btn{
+	border-radius: 4px !important;
+    border: white solid 1px;
+    font-weight: bold;
+    padding-left: 15px;
+    padding-right: 15px;
+    background: white;
+}
+
+/* === MEMBER REQUESTS PAGE === */
+
+.settings #table-responsive {
+    padding-bottom: 20% !important;
+}
+
+/* === ADMIN VIEWS === */
+
+.admin_search {
+  margin-bottom: 20px;
+    padding: 10px 0px 10px 50px;
+    background-color: #1E3553;
+    color: white;
+    border-radius: 5px;
+    z-index: 10 !important;
+}
+
+.admin_text_field {
+    color: #1E3553 !important;
+}
+
+.admin_search input {
+    margin-right: 10px;
+    color: white;
+}
+
+.admin_search select {
+    background-color: #1E3553;
+    border: solid 2px;
+}
+
+.admin-export {
+  background-color: #f2f2f2;
+  color: #1E3553;
+  margin: -25px 0px -25px 0px;
+  padding: 20px 0px 40px 30px;
+  z-index: -10 !important;
+}
+
+.settings-section {
+    margin-top: 50px;
+}
+
+
+@media (max-width: 1050px) {
+    .navbar-header {
+        float: none;
+    }
+    .navbar-left,.navbar-right {
+        float: none !important;
+    }
+    .navbar-right {
+        float: right!important;
+        margin-right: -15px;
+        margin-left: -15px;
+    }
+    .navbar-toggle {
+        display: block;
+    }
+    .navbar-collapse {
+        border-top: 1px solid transparent;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+    .navbar-fixed-top {
+        top: 0;
+        border-width: 0 0 1px;
+    }
+    .navbar-collapse.collapse {
+        display: none!important;
+    }
+    .navbar-nav {
+        float: none!important;
+        margin-top: 7.5px;
+    }
+    .navbar-nav>li {
+        float: none;
+    }
+    .navbar-nav>li>a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .collapse.in{
+        display:block !important;
+    }
+
+
+    .navbar-nav .open .dropdown-menu {
+        position: static;
+        float: none;
+        width: auto;
+        margin-top: 0;
+        background-color: transparent;
+        border: 0;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+
+    .navbar-default .navbar-nav .open .dropdown-menu>li>a {
+        color: #fff;
+    }
+    .navbar-default .navbar-nav .open .dropdown-menu>li>a:hover {
+        color: #222;
+        background-color: #d9edf7;
+    }
+    .navbar-nav .open .dropdown-menu>li>a {
+        line-height: 20px;
+    }
+    .navbar-nav .open .dropdown-menu .dropdown-header, .navbar-nav .open .dropdown-menu>li>a {
+        padding: 5px 15px 5px 25px;
+    }
+
+    .navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
+        color: #222;
+        background-color: #d9edf7;
+    }
+
+}

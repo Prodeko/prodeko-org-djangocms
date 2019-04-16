@@ -1,0 +1,151 @@
+/* COLOR */
+
+.text-primary, .text-primary a {
+  color: rgba(255, 255, 255, 0.87);
+}
+
+.text-p50 {
+  color: #E8EAF6;
+}
+.text-p100 {
+  color: #C5CAE9;
+}
+.text-p200 {
+  color: #9FA8DA;
+}
+.text-p300 {
+  color: #7986CB;
+}
+.text-p400 {
+  color: #5C6BC0;
+}
+.text-p500 {
+  color: #3F51B5;
+}
+.text-p600 {
+  color: #3949AB;
+}
+.text-p700 {
+  color: #303F9F;
+}
+.text-p800 {
+  color: #283593;
+}
+.text-p900 {
+  color: #1A237E;
+}
+.text-pa100 {
+  color: #8C9EFF;
+}
+.text-pa200 {
+  color: #536DFE;
+}
+.text-pa400 {
+  color: #3D5AFE;
+}
+.text-pa700 {
+  color: #304FFE;
+}
+
+.bg-p50 {
+  background-color: #E8EAF6;
+}
+.bg-p100 {
+  background-color: #C5CAE9;
+}
+.bg-p200 {
+  background-color: #9FA8DA;
+}
+.bg-p300 {
+  background-color: #7986CB;
+}
+.bg-p400 {
+  background-color: #5C6BC0;
+}
+.bg-p500 {
+  background-color: #3F51B5;
+}
+.bg-p600 {
+  background-color: #3949AB;
+}
+.bg-p700 {
+  background-color: #223551;
+}
+.bg-p800 {
+  background-color: #283593;
+}
+.bg-p900 {
+  background-color: #1E3553;
+}
+.bg-pa100 {
+  background-color: #8C9EFF;
+}
+.bg-pa200 {
+  background-color: #536DFE;
+}
+.bg-pa400 {
+  background-color: #3D5AFE;
+}
+.bg-pa700 {
+  background-color: #304FFE;
+}
+
+.btn-p700 {
+    color: #fff;
+    background-color: #303F9F;
+    border-color: #1A237E;
+}
+.btn-p700:hover {
+    color: #fff;
+    background-color: #283593;
+    border-color: #1A237E;
+}
+
+
+.form-primary textarea:focus,
+.form-primary input[type="text"]:focus,
+.form-primary input[type="password"]:focus,
+.form-primary input[type="datetime"]:focus,
+.form-primary input[type="datetime-local"]:focus,
+.form-primary input[type="date"]:focus,
+.form-primary input[type="month"]:focus,
+.form-primary input[type="time"]:focus,
+.form-primary input[type="week"]:focus,
+.form-primary input[type="number"]:focus,
+.form-primary input[type="email"]:focus,
+.form-primary input[type="url"]:focus,
+.form-primary input[type="search"]:focus,
+.form-primary input[type="tel"]:focus,
+.form-primary input[type="color"]:focus,
+.form-primary .uneditable-input:focus {
+  border-color: #8C9EFF;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(126, 239, 104, 0.6);
+  outline: 0 none;
+}
+
+
+/* PADDING */
+.padding-5 {
+  padding: 5px;
+}
+.padding-10 {
+  padding: 10px;
+}
+.padding-15 {
+  padding: 15px;
+}
+.padding-20 {
+  padding: 20px;
+}
+
+/* ELEVATION */
+
+.elevation-1 {
+  box-shadow: 0 1px 2.5px rgba(0,0,0,0.26);
+}
+.elevation-2 {
+  box-shadow: 0 2px 5px rgba(0,0,0,0.26);
+}
+.elevation-3 {
+  box-shadow: 0 3px 7.5px rgba(0,0,0,0.26);
+}

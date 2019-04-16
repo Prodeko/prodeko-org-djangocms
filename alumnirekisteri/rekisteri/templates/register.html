@@ -1,0 +1,193 @@
+{% extends "ar_base.html" %}
+
+{% block body %}
+
+<div class="bg">
+<div class="container">
+
+  <div id="signupbox" style="margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="panel-title">Rekisteröityminen</div>
+        <div style="float:right; font-size: 85%; position: relative; top:-10px"><a id="signinlink" href="{% url 'alumnirekisteri:login' %}" >Kirjaudu sisään</a></div>
+      </div>
+      <div class="panel-body" >
+        <form id="signupform" class="form-horizontal" role="form" method="post" action="{% url 'alumnirekisteri:register' %}">
+          {% csrf_token %}
+          {% if form.non_field_errors %}
+          <div class="alert alert-danger">
+            {% for key, value in form.errors.items %}
+              {{ value }}
+            {% endfor %}
+          </div>
+          {% endif %}
+          <div class="form-group">
+            <label for="{{ form.email.id_for_label }}" class="col-md-3 control-label">Sähköpostiosoite</label>
+            <div class="col-md-9">
+              {{ form.email }}
+              {% if form.email.errors %}
+              <div class="alert alert-danger">
+                {{ form.email.errors }}
+              </div>
+              {% endif %}
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="{{ form.first_name.id_for_label }}" class="col-md-3 control-label">{{ form.first_name.label }}</label>
+            <div class="col-md-9">
+              {{ form.first_name }}
+              {% if form.first_name.errors %}
+              <div class="alert alert-danger">
+                {{ form.first_name.errors }}
+              </div>
+              {% endif %}
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="{{ form.last_name.id_for_label }}" class="col-md-3 control-label">{{ form.last_name.label }}</label>
+            <div class="col-md-9">
+              {{ form.last_name }}
+              {% if form.last_name.errors %}
+              <div class="alert alert-danger">
+                {{ form.last_name.errors }}
+              </div>
+              {% endif %}
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="{{ form.password1.id_for_label }}" class="col-md-3 control-label">{{ form.password1.label }}</label>
+            <div class="col-md-9">
+              {{ form.password1 }}
+              {% if form.password1.errors %}
+              <div class="alert alert-danger">
+                {{ form.password1.errors }}
+              </div>
+              {% endif %}
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="{{ form.password2.id_for_label }}" class="col-md-3 control-label">{{ form.password2.label }}</label>
+            <div class="col-md-9">
+              {{ form.password2 }}
+              {% if form.password2.errors %}
+              <div class="alert alert-danger">
+                {{ form.password2.errors }}
+              </div>
+              {% endif %}
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="{{ form.city.id_for_label }}" class="col-md-3 control-label">{{ form.city.label }}</label>
+            <div class="col-md-9">
+              {{ form.city }}
+              {% if form.city.errors %}
+              <div class="alert alert-danger">
+                {{ form.city.errors }}
+              </div>
+              {% endif %}
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="{{ form.member_until.id_for_label }}" class="col-md-3 control-label">{{ form.member_until.label }}</label>
+            <div class="col-md-9">
+              {{ form.member_until }}
+              {% if form.member_until.errors %}
+              <div class="alert alert-danger">
+                {{ form.member_until.errors }}
+              </div>
+              {% endif %}
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="{{ form.class_of_year.id_for_label }}" class="col-md-3 control-label">{{ form.class_of_year.label }}</label>
+            <div class="col-md-9">
+              {{ form.class_of_year }}
+              {% if form.class_of_year.errors %}
+              <div class="alert alert-danger">
+                {{ form.class_of_year.errors }}
+              </div>
+              {% endif %}
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="{{ form.country.id_for_label }}" class="col-md-3 control-label">{{ form.country.label }}</label>
+            <div class="col-md-9">
+              {{ form.country }}
+              {% if form.country.errors %}
+              <div class="alert alert-danger">
+                {{ form.country.errors }}
+              </div>
+              {% endif %}
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="{{ form.xq_year.id_for_label }}" class="col-md-3 control-label">{{ form.xq_year.label }}</label>
+            <div class="col-md-9">
+              {{ form.xq_year }}
+              {% if form.xq_year.errors %}
+              <div class="alert alert-danger">
+                {{ form.xq_year.errors }}
+              </div>
+              {% endif %}
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="{{ form.ayy_member.id_for_label }}" class="col-md-3 control-label">{{ form.ayy_member.label }}</label>
+            <div class="col-md-9">
+              {{ form.ayy_member }}
+              {% if form.ayy_member.errors %}
+              <div class="alert alert-danger">
+                {{ form.ayy_member.errors }}
+              </div>
+              {% endif %}
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="{{ form.member_type.id_for_label }}" class="col-md-3 control-label">{{ form.member_type.label }}</label>
+            <div class="col-md-9">
+              {{ form.member_type }}
+              {% if form.member_type.errors %}
+              <div class="alert alert-danger">
+                {{ form.member_type.errors }}
+              </div>
+              {% endif %}
+            </div>
+          </div>
+          <div class="form-group">
+            <!-- Button -->
+            <div class="text-center">
+              <input id="btn-signup" type="submit" value="Lähetä" class="btn btn-primary" style="width:180px;"><i class="icon-hand-right"></i></input>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="container footer footer-blue">
+      <div class="row" style="padding-top:15px;">
+        <div class="col-md-2 col-md-offset-2 contact-info">
+          <p>Käyttäjäongelmat ja bugit: <br><a href="mailto:alumnirekisteri@prodeko.org">alumnirekisteri@prodeko.org</a></p>
+        </div>
+        <div class="col-md-2 contact-info">
+          <p>Jäsenille: <br><a href="mailto:hallitus@prodeko.org">hallitus@prodeko.org</a></p>
+        </div>
+        <div class="col-md-2 contact-info">
+          <p>Alumnille: <br><a href="mailto:alumni@prodeko.org">alumni@prodeko.org</a></p>
+        </div>
+        <div class="col-md-2 contact-info" align="right" style="margin-bottom:12px;">
+          <a href="https://www.linkedin.com/company-beta/16188688/"><img src="../static/alumnirekisteri_images/linkedin.png" style="width:30px;"/></a>
+          <a href="https://www.facebook.com/prodeko/"><img src="../static/alumnirekisteri_images/facebook.png" style="width:30px;"/></a>
+          <a href="https://www.instagram.com/prodeko/"><img src="../static/alumnirekisteri_images/instagram.png" style="width:30px;"/></a>
+        </div>
+      </div>
+    </div>
+
+
+
+
+  </div>
+</div>
+</div>
+
+
+{% endblock %}

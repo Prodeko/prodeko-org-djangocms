@@ -1,0 +1,98 @@
+{%load custom_tags %}
+
+{% for person in persons %}
+\section*{ {% if not person.dont_publish_in_book %}{{person.user.last_name }}, {{person.user.first_name}} {% if person.middle_names %}{{ person.middle_names }}{% endif %}{% if person.nickname %} "{{person.nickname}}"{% endif %}{% else %}Nomen Nescitur{% endif %}{% if person.is_dead %} \dag{% endif %}}
+{% if person|person_category == category %}
+{% if not person.dont_publish_in_book %}%
+{% if person.picture %}\begin{picture}(0,0)%
+\put(100,-35){\includegraphics[width=1.5cm]{% templatetag openvariable %}{{person.picture.url|get_image_filename}}{% templatetag closevariable %}}
+\end{picture}
+\vspace{-15pt}
+{% endif %}{% if not person|person_is_empty %}
+\begin{description}
+{% if person.birthdate %}
+\item [Syntymäaika]\begin{flushleft}{{ person.birthdate }}\end{flushleft}
+{% endif %}{% if person.address or person.postal_code or person.city %}{%if person.picture %}\begin{minipage}{3cm}{% endif %}
+\item [Osoite]
+\begin{flushleft}{%if person.address|test_empty %}{{ person.address|latex_escape }} \\
+{%endif%}{%if person.postal_code|test_empty %}{{ person.postal_code|latex_escape }} \\
+{%endif%}{%if person.city|test_empty %}{{ person.city|latex_escape }} \\
+{%endif%}{% if person.is_foreign %}{{person.country|latex_escape}}
+{% endif %}\end{flushleft}{%if person.picture %}\end{minipage}{% endif %}
+{% endif %}{% if person.preferred_name %}
+\item [Kutsumanimi] {{ person.preferred_name }}
+{% endif %}{% if person.gender %}
+\item [Sukupuoli] {{ person.get_gender_display }}
+{% endif %}{% if person.marital_status %}
+\item [Siviilisääty] {{ person.get_marital_status_display }}
+{% endif %}{% if person.military_rank %}
+\item [Sotilasarvo] {{ person.military_rank }}
+{% endif %}{% if person.class_of_year %}
+  \item [Vuosikurssi] {{ person.class_of_year }}
+  {% endif %}{% if person.phones.all %}
+  \item [Puhelin-\\numero]
+        \begin{flushleft}{% if person.picture and not person.address and not person.postal_code and not person.city %}\begin{minipage}{3cm}{% endif %}{% for phone in person.phones.all %}
+           {{ phone.phone_number }} ({{ phone.get_number_type_display }})
+        {% endfor %}{% if person.picture and not person.address and not person.postal_code and not person.city %}\end{minipage}{% endif %}\end{flushleft}{% endif %}
+  {% if person.educations.all %}
+\item [Opinnot]
+\begin{flushleft}{% for x in person.educations.all|sortedByEndDate %}{% if person.picture and not person.address and not person.postal_code and not person.city and not person.person.phones.all %}{% if forloop.first %}\begin{minipage}{3cm}{% endif %}{% endif %}
+{% if x.school or x.field or x.major or x.minor or x.description %}{{ x.school|latex_escape }}: {% if x.start_year %}{{ x.start_year }}{% endif %}--{% if x.end_year %}{{ x.end_year }}{% endif %}, {{ x.field|latex_escape }} {% if x.major %}{{ x.major|latex_escape }}, {% endif %} {% if x.minor %}{{ x.minor|latex_escape }}{% endif %} {% if x.description %}{{ x.description|latex_escape }}{% endif %}{% endif %}
+{% if person.picture and not person.address and not person.postal_code and not person.city and not person.person.phones.all %}{% if forloop.first %}\end{minipage}
+
+{% endif %}{% endif %}{% endfor %}\end{flushleft}
+{% endif %}{% if person.work_experiences.all %}
+\item [Työhistoria]
+\begin{flushleft}{% for x in person.work_experiences.all|sortedByEndDate %}
+{% if x.start_year or x.end_year %}{% if x.start_month and x.start_year %}{{ x.get_start_month_display }}, {% endif %}{% if x.start_year %}{{ x.start_year }}{% endif %}--{% if x.end_month and x.end_year %}{{ x.get_end_month_display }}, {% endif %}{% if x.end_year %}{{ x.end_year }}{% endif %}{% endif %} {{ x.organisation|latex_escape }}: {% if x.position  %} {{ x.position|latex_escape }} {% endif %} {% if x.description %} {{ x.description|latex_escape }} {% endif %}
+{% endfor %}\end{flushleft}
+{% endif %}{% if person.positions_of_trust.all %}
+  \item [Luottamus-\\tehtävät]
+\begin{flushleft}{% for x in person.positions_of_trust.all|sortedByEndDate %}
+{% if x.start_year %}{{ x.start_year }}{% endif %}--{% if x.end_year %}{{ x.end_year }}{% endif %} {{ x.organisation|latex_escape }}{% if x.position %}: {{ x.position|latex_escape }}{% endif %}{% if x.description %}{{ x.description|latex_escape }}{% endif %}
+{% endfor %}\end{flushleft}
+{% endif %}{% if person.student_organizational_activities.all|sortedByEndDate %}
+  \item [Opiskelija-\\aktiivisuus]
+\begin{flushleft}{% for x in person.student_organizational_activities.all|sortedByEndDate %}
+{% if x.start_year %}{{ x.start_year }}{% endif %}--{% if x.end_year %}{{ x.end_year }}{% endif %} {{ x.organisation|latex_escape }}{% if x.position %}: {{ x.position|latex_escape }}{% endif %}{% if x.description %}; {{ x.description|latex_escape }}{% endif %}
+{% endfor %}\end{flushleft}
+{% endif %}{% if person.volunteers.all %}
+  \item [Vapaaehtois-\\toiminta]
+\begin{flushleft}{% for x in person.volunteers.all|sortedByEndDate %}
+{% if x.start_year %}{{ x.start_year }}{% endif %}--{% if x.end_year %}{{ x.end_year }} {% endif %}{{ x.organisation|latex_escape }}{% if x.position %}: {{ x.position|latex_escape }}{% endif %}{% if x.description %}{{ x.description|latex_escape }}{% endif %}
+{% endfor %}\end{flushleft}
+{% endif %}{% if person.honors.all %}
+  \item [Kunnian-\\osoitukset]
+\begin{flushleft}{% for x in person.honors.all|sortedByYear %}
+{% if x.year %}{{ x.year }} {% endif %}{{ x.organisation|latex_escape }}{% if x.title %}: {{ x.title|latex_escape }}{% endif %}{% if x.description %}{{ x.description|latex_escape }}{% endif %}
+{% endfor %}\end{flushleft}
+{% endif %}{% if person.interests.all %}
+  \item [Kiinnostukset]
+\begin{flushleft} {% for x in person.interests.all %}{{ x.title|latex_escape }}{% if x.description %} ({{ x.description|latex_escape }}){% endif %}{% if not forloop.last %}, {% endif %}
+{% endfor %} \end{flushleft}
+{% endif %}{% if person.languages.all %}
+  \item [Kielitaito]
+{% for x in person.languages.all %}{{ x.language }}{% if not forloop.last %}, {% endif %}
+{% endfor %}
+{% endif %}{% if person.get_family_members_sorted %}
+  \item [Perheen-\\jäsenet]
+\begin{flushleft} {% for x in person.get_family_members_sorted %}
+{{x.first_name|latex_escape}}{% if x.last_name %} {{ x.last_name|latex_escape }}{%endif%}{%if x.original_last_name %} (os. {{x.original_last_name|latex_escape}}){% endif %} ({{x.get_member_type_display}}{% if x.since %}, {{ x.since }}{% endif %})
+{% endfor %}\end{flushleft}
+{% endif %}
+\end{description}
+{% endif %}
+{% else %}%
+{% if person.get_tuta_educations %}
+\begin{description}
+\item [Opinnot]
+\begin{flushleft}{% for x in person.get_tuta_educations|sortedByEndDate %}
+{% if x.school or x.field or x.major or x.minor or x.description %}{{ x.school|latex_escape }}: {% if x.start_year %}{{ x.start_year }}{% endif %}--{% if x.end_year %}{{ x.end_year }}{% endif %}, {{ x.field|latex_escape }} {% if x.major %}{{ x.major|latex_escape }}, {% endif %} {% if x.minor %}{{ x.minor|latex_escape }}{% endif %} {% if x.description %}{{ x.description|latex_escape }}{% endif %}{% endif %}
+{% endfor %}\end{flushleft}
+\end{description}
+{% endif %}% tuta_educations
+{% endif %}% not don't publish
+{% else %}Katso {{person|person_category}}
+{% endif %}%category == category
+
+{% endfor %}

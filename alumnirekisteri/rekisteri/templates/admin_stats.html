@@ -1,0 +1,121 @@
+{% extends "ar_base.html" %}
+
+{% load staticfiles %}
+
+{% block body %}
+
+<section id="settings" class="">
+
+  <div class="container">
+
+    <div class="row">
+      <div class="col col-md-6">
+        Käyttäjiä yhteensä: {{ total_count }},
+      </div>
+      <div class="col-md-6">
+        <svg style="width: 100%; height: 30px;background-color:grey;">
+          <rect width="100%" style="fill:rgb(0,190,0); height:100%;" />
+          <text fill="#ffffff" x="5" y="20">100%</text>
+        </svg>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-md-6">
+        Joskus kirjautunut: {{ logged_in }},
+      </div>
+      <div class="col-md-6">
+        <svg style="width: 100%; height: 30px; background-color: grey;">
+          <rect width="{{ draw_logged }}" style="fill:rgb(0,190,0);height:100%;" />
+          <text fill="#ffffff" x="5" y="20">{{ draw_logged }}</text>
+        </svg>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-md-6">
+        Kiellä matrikkelissa julkaisu: {{ dont_publish_in_book }}
+      </div>
+      <div class="col-md-6">
+        <svg style="width: 100%; height: 30px; background-color: grey;">
+          <rect width="{{ draw_dont_publish_in_book }}" style="fill:rgb(190,0,0);height:100%;" />
+          <text fill="#ffffff" x="5" y="20">{{ draw_dont_publish_in_book }}</text>
+        </svg>
+      </div>
+      <div class="col-md-6">
+        Joista joskus kirjautunut sisään: {{ dont_publish_in_book_logged_in }}
+      </div>
+      <div class="col-md-6">
+        <svg style="width: 100%; height: 30px; background-color: grey;">
+          <rect width="{{ draw_dont_publish_in_book_logged }}" style="fill:rgb(190,0,0);height:100%;" />
+          <text fill="#ffffff" x="5" y="20">{{ draw_dont_publish_in_book_logged }}</text>
+        </svg>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-md-12">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-md-12">
+        'show_phones_category': {{ show_phones_category }},
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-md-12">
+    'show_emails_category': {{ show_emails_category }},
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-md-12">
+        'show_skills_category': {{ show_skills_category }},
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-md-12">
+        'show_languages_category': {{ show_languages_category }},
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-md-12">
+        'show_educations_category': {{ show_educations_category }},
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-md-12">
+        'show_work_experiences_category': {{ show_work_experiences_category }},
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-md-12">
+        'show_positions_of_trust_category': {{ show_positions_of_trust_category }},
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-md-12">
+        'show_volunteers_category': {{ show_volunteers_category }},
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-md-12">
+        'show_honors_category': {{ show_honors_category }},
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-md-12">
+        'show_interests_category': {{ show_interests_category }},
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-md-12">
+        'show_student_organizational_activities_category': {{ show_student_organizational_activities_category }},
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-md-12">
+        'show_family_members_category': {{ show_family_members_category }},
+      </div>
+    </div>
+</div>
+</section>
+
+
+{% endblock %}

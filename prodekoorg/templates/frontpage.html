@@ -23,6 +23,7 @@
 				 media="(min-width: 576px)">
 				<img srcset="{% static 'images/carusellimages/Fuksit_kuvat/fuksit_600x400.jpg' %}" alt="Carousel-3" class="img-fluid">
 			</picture>
+		</a>
 			<div class="carousel-caption">
 				<div>
 					<h1>{% trans welcome1 %}</h1>
@@ -69,10 +70,11 @@
 
 <div class="container frontpage-container">
   <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-7">
       {% placeholder "content" %}
     </div>
-    <div class="col-md-4">
+    <div class="col-md-5">
+			{% include "layout-components/instagram.html" %}
       {% placeholder "sidecontent" %}
     </div>
   </div>

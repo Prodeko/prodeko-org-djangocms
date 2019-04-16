@@ -65,12 +65,15 @@ urlpatterns += i18n_patterns(
     # ==== app_tiedostot ==== #
     url(r"^", include("prodekoorg.app_tiedostot.urls", namespace="app_tiedostot")),
     # ==== tiedotteet.prodeko.org ==== #
-    url(
-        _(r"^weekly-bulletin/"),
-        include("tiedotteet.Tiedotteet.urls", namespace="tiedotteet"),
-    ),
-    url(r"^admin/", include(admin.site.urls)),
-    url(r"^", include("cms.urls")),
+    url(_(r'^weekly-bulletin/'),
+        include('tiedotteet.Tiedotteet.urls', namespace='tiedotteet')),
+
+    # ==== matrikkeli.prodeko.org ==== #
+    url(_(r'^matrikkeli/'),
+        include('alumnirekisteri.alumnirekisteri.urls', namespace='alumnirekisteri')),
+
+    url(r'^admin/', include(admin.site.urls)),
+    url(r'^', include('cms.urls')),
 )
 
 # This is only needed when using runserver.

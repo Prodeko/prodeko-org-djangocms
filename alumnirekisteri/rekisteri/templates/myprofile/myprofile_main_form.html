@@ -1,0 +1,298 @@
+
+<div class="row">
+  <div class="col col-md-8 col-md-offset-2">
+    <div class="panel panel-default">
+      <div class="panel-heading ">
+        <b>Perustiedot</b>
+        <div class="pull-right">Tiedot näkyvät muille käyttäjille</div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="panel-body">
+
+        <div class="col-md-3">
+            <div class="row">
+                <img id="crop-image" src="{{ image_url }}">
+            </div>
+            <div class="row">
+                <a style="margin-top: 5px" href="#add-image" class="pull-right" data-toggle="modal" data-target="#add-image-modal"><i class="fa fa-plus"></i> Lisää kuva</a>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="form-group">
+              <label class="col col-md-3 control-label">{{ user_form.first_name.label }}</label>
+              <div class="col-md-9">
+                {{ user_form.first_name }}
+                {% if user_form.first_name.errors %}
+                <div class="alert alert-danger">
+                  {{ user_form.first_name.errors }}
+                </div>
+                {% endif %}
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col col-md-3 control-label">{{ user_form.last_name.label }}</label>
+              <div class="col-md-9">
+                {{ user_form.last_name }}
+                {% if user_form.last_name.errors %}
+                <div class="alert alert-danger">
+                  {{ user_form.last_name.errors }}
+                </div>
+                {% endif %}
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col col-md-3 control-label">{{ person_form.class_of_year.label }}</label>
+              <div class="col-md-9">
+                {{ person_form.class_of_year }}
+                {% if person_form.class_of_year.errors %}
+                <div class="alert alert-danger">
+                  {{ person_form.class_of_year.errors }}
+                </div>
+                {% endif %}
+              </div>
+            </div>
+         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col col-md-8 col-md-offset-2">
+    <div class="panel panel-default">
+      <div class="panel-heading ">
+        <b>Nimi</b>
+        <div class="pull-right">{{ person_form.show_name_category }}</div>
+        <div class="clearfix"></div>
+      </div>
+
+      <div class="panel-body">
+        <div class="form-group">
+          <label class="col col-md-3 control-label">{{ person_form.original_last_name.label }}</label>
+          <div class="col-md-9">
+            {{ person_form.original_last_name }}
+            {% if person_form.original_last_name.errors %}
+            <div class="alert alert-danger">
+              {{ person_form.original_last_name.errors }}
+            </div>
+            {% endif %}
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col col-md-3 control-label">{{ person_form.middle_names.label }}</label>
+          <div class="col-md-9">
+            {{ person_form.middle_names }}
+            {% if person_form.middle_names.errors %}
+            <div class="alert alert-danger">
+              {{ person_form.middle_names.errors }}
+            </div>
+            {% endif %}
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col col-md-3 control-label">{{ person_form.nickname.label }}</label>
+          <div class="col-md-9">
+            {{ person_form.nickname }}
+            {% if person_form.nickname.errors %}
+            <div class="alert alert-danger">
+              {{ person_form.nickname.errors }}
+            </div>
+            {% endif %}
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col col-md-3 control-label">{{ person_form.preferred_name.label }}</label>
+          <div class="col-md-9">
+            {{ person_form.preferred_name }}
+            {% if person_form.preferred_name.errors %}
+            <div class="alert alert-danger">
+              {{ person_form.preferred_name.errors }}
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col col-md-8 col-md-offset-2">
+    <div class="panel panel-default">
+      <div class="panel-heading ">
+        <b>Osoitetiedot</b>
+        <div class="pull-right"> {{ person_form.show_address_category }}</div>
+        <div class="clearfix"></div>
+      </div>
+
+      <div class="panel-body">
+        <div class="form-group">
+          <label class="col col-md-3 control-label">{{ person_form.address.label }}</label>
+          <div class="col-md-9">
+            {{ person_form.address }}
+            {% if person_form.address.errors %}
+            <div class="alert alert-danger">
+              {{ person_form.address.errors }}
+            </div>
+            {% endif %}
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col col-md-3 control-label">{{ person_form.postal_code.label }}</label>
+          <div class="col-md-9">
+            {{ person_form.postal_code }}
+            {% if person_form.postal_code.errors %}
+            <div class="alert alert-danger">
+              {{ person_form.postal_code.errors }}
+            </div>
+            {% endif %}
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col col-md-3 control-label">{{ person_form.city.label }}</label>
+          <div class="col-md-9">
+            {{ person_form.city }}
+            {% if person_form.city.errors %}
+            <div class="alert alert-danger">
+              {{ person_form.city.errors }}
+            </div>
+            {% endif %}
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col col-md-3 control-label">{{ person_form.country.label }}</label>
+          <div class="col-md-9">
+            {{ person_form.country }}
+            {% if person_form.country.errors %}
+            <div class="alert alert-danger">
+              {{ person_form.country.errors }}
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col col-md-8 col-md-offset-2">
+    <div class="panel panel-default">
+      <div class="panel-heading ">
+        <b>Yksityistiedot</b>
+        <div class="pull-right">{{ person_form.show_personal_category }}</div>
+        <div class="clearfix"></div>
+      </div>
+
+      <div class="panel-body">
+        <div class="form-group">
+          <label class="col col-md-3 control-label">{{ person_form.birthdate.label }}</label>
+          <div class="col-md-9">
+            {{ person_form.birthdate }}
+            {% if person_form.birthdate.errors %}
+            <div class="alert alert-danger">
+              {{ person_form.birthdate.errors }}
+            </div>
+            {% endif %}
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col col-md-3 control-label">{{ person_form.gender.label }}</label>
+          <div class="col-md-9">
+            {{ person_form.gender }}
+            {% if person_form.gender.errors %}
+            <div class="alert alert-danger">
+              {{ person_form.gender.errors }}
+            </div>
+            {% endif %}
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col col-md-3 control-label">{{ person_form.marital_status.label }}</label>
+          <div class="col-md-9">
+            {{ person_form.marital_status }}
+            {% if person_form.marital_status.errors %}
+            <div class="alert alert-danger">
+              {{ person_form.marital_status.errors }}
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col col-md-8 col-md-offset-2">
+    <div class="panel panel-default">
+      <div class="panel-heading ">
+        <b>Asepalvelus</b>
+        <div class="pull-right"> {{ person_form.show_military_category }}</div>
+        <div class="clearfix"></div>
+      </div>
+
+      <div class="panel-body">
+        <div class="form-group">
+          <label class="col col-md-3 control-label">{{ person_form.military_rank.label }}</label>
+          <div class="col-md-9">
+            {{ person_form.military_rank }}
+            {% if person_form.military_rank.errors %}
+            <div class="alert alert-danger">
+              {{ person_form.military_rank.errors }}
+            </div>
+            {% endif %}
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col col-md-3 control-label">{{ person_form.promotion_year.label }}</label>
+          <div class="col-md-9">
+            {{ person_form.promotion_year }}
+            {% if person_form.promotion_year.errors %}
+            <div class="alert alert-danger">
+              {{ person_form.promotion_year.errors }}
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col col-md-8 col-md-offset-2">
+    <div class="panel panel-default">
+      <div class="panel-heading ">
+        <b>Yhteystiedot</b>
+        <div class="pull-right"> {{ person_form.show_contact_category }}</div>
+        <div class="clearfix"></div>
+      </div>
+
+      <div class="panel-body">
+        <div class="form-group">
+          <label class="col col-md-3 control-label">{{ person_form.homepage.label }}</label>
+          <div class="col-md-9">
+            {{ person_form.homepage }}
+            {% if person_form.homepage.errors %}
+            <div class="alert alert-danger">
+              {{ person_form.homepage.errors }}
+            </div>
+            {% endif %}
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col col-md-3 control-label">{{ person_form.linkedin_profile.label }}</label>
+          <div class="col-md-9">
+            {{ person_form.linkedin_profile }}
+            {% if person_form.linkedin_profile.errors %}
+            <div class="alert alert-danger">
+              {{ person_form.linkedin_profile.errors }}
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

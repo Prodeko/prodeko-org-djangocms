@@ -1,0 +1,57 @@
+{% extends "ar_base.html" %}
+
+{% load staticfiles %}
+
+{% block body %}
+
+<section id="settings" class="">
+
+    <div class="container">
+        <div class="row">
+          <h3>Muistiinpanot</h3>
+          <div class="col-md-8" style="margin-bottom: 5px;">
+              Lataa csv-tiedosto, jossa ensimmäisessä sarakkeessa sähköposti, toisessa ja kolmannessa valinnaisesti etu- ja sukunimet.
+              Neljännessä sarakkeessa käyttäjään liitettävät ylläpitäjän muistiinpanot.
+          </div>
+          <div class="col-md-4">
+              <form method="POST" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  <input name="notes_file" type="file"/>
+                  <input style="margin-top: 5px;" class="btn btn-primary" type="submit" value="Aseta muistiinpanot"/>
+              </form>
+          </div>
+          <div class="col-md-12">
+              {{ notes_output }}
+          </div>
+        </div>
+
+        <div class="row settings-section">
+          <h3>Lisää jäseniä tai uusi jäsenmaksu</h3>
+          <div class="col-md-8" style="margin-bottom: 5px;">
+              Lataa csv-tiedosto, jossa sarakkeet ovat seuraavassa järjestyksessä: sukunimi, etunimet, kotipaikkakunta, sähköposti, liittymisvuosi, excuvuosikurssi ja jäsenyyden päättymispäivä (yyyy-mm-dd).
+              Jäsenrekisteristä puuttuvat käyttäjätunnukset luodaan rekisteriin annettujen tietojen mukaisesti. Jos excuvuosikurssia ei ole annettu, se generoidaan automaattisesti liittymisvuodesta.
+              Tietoja päivitetään sähköpostiosoitteen perusteella (sama kuin käyttäjätunnus). Tyhjät kentät eivät muuta tai lisää tietoja.
+              Jäsenyyksiä päivittäessä, tulee sähköpostiosoitteen ja päättymispäivän olla oikeissa sarakkeissaan, vaikka nimi- ja vuosikurssitietoja ei lähettäisiinkään.
+              Jäsenyyden päättymispäivän tulee olla muotota YYYY-MM-DD.
+          </div>
+          <div class="col-md-4">
+              <form method="POST" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  <input name="membership_file" type="file"/>
+                  <input style="margin-top: 5px;" class="btn btn-primary" type="submit" value="Aseta jäsentiedot"/>
+              </form>
+          </div>
+          <div class="col-md-12">
+              {{ membership_output }}
+          </div>
+
+          <div class="col-md-12">
+              {{ duplicate_output }}
+          </div>
+        </div>
+    </div>
+
+</section>
+
+
+{% endblock %}

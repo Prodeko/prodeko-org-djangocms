@@ -1,0 +1,82 @@
+{% extends "ar_base.html" %}
+{% load staticfiles %}
+
+{% block body %}
+
+<section id="edit-profile" class="">
+  <div class="container">
+
+    <form id="main-form" class="form-horizontal" method="post" enctype="multipart/form-data" action="{{form_action_url}}">
+      {% csrf_token %}
+      <input type="hidden" id="{{ user_form.username.id }}" name="user_form-{{user_form.username.name}}" value="{{user_form.username.value}}" />
+      <input type="hidden" id="{{ user_form.email.id }}" name="user_form-{{user_form.email.name}}" value="{{user_form.email.value}}" />
+      {% include 'settings/settings_main_form.html' %}
+      {% include 'myprofile/myprofile_main_form.html' %}
+      {% include 'myprofile/myprofile_additional_forms.html' %}
+    </form>
+    {% include 'myprofile/myprofile_additional_forms_modals.html' %}
+
+
+  </div>
+</section>
+
+<!-- Add Image Modal -->
+<div id="add-image-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content modal-form">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Lisää kuva</h4>
+        </div>
+      <div class="row">
+          <div class="col col-md-6" id="crop" style="width:100%;height:100%;text-align:center;">
+          </div>
+      </div>
+      <div class="row">
+          <div class="pull-right" style="margin-right:15px;padding:5px;">
+              <a id="upload-image" type="button" class="btn btn-default" data-dismiss="modal">Peru</a>
+              <a id="crop-save-image" type="button" class="btn btn-default" data-dismiss="modal">Hyväksy (kuva tallentuu alalaidan painikkeesta)</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Edit Modal -->
+<div id="edit-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content modal-form">
+      <!-- Form is rendered here -->
+    </div>
+  </div>
+</div>
+
+<!-- Delete Modal -->
+<div id="delete-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content modal-form">
+      <!-- Content is rendered here -->
+    </div>
+  </div>
+</div>
+
+<div id="profile-footer" class="footer footer-fixed footer-blue">
+  <div class="row col col-md-8 col-md-offset-2">
+    {% if messages %}
+      {% for m in messages %}
+        <span class="alert {% if m.tags %}alert-{{ m.tags }}{% endif %}">{{ m.message|striptags }}</span>
+      {% endfor %}
+    {% endif %}
+    <button type="submit" onclick="$('#main-form').submit();" class="btn-white btn-primary" style="float:right;margin-right:10px;margin-top: 8px;">Tallenna tiedot</button>
+  </div>
+</div>
+
+<div style="height:50px;width:100%;"></div> <!-- Makes page long enough to see behind footer -->
+
+<script type="text/javascript" src="{% static 'js/simple_crop.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/myprofile.js' %}"></script>
+
+{% endblock %}

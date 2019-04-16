@@ -1,0 +1,61 @@
+{% extends "ar_base.html" %}
+{% load staticfiles %}
+
+{% block local_styles %}
+<!-- <link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css"> -->
+{% endblock %}
+
+{% block body %}
+
+<section id="search" class="bg">
+
+	<div class="container" style="height: auto; padding-bottom: 60px">
+		<div class="row search-results">
+			{% if not persons %}
+				<h2 style="text-align:center;margin-top:30vh;">Ei tuloksia</h2>
+			{% else %}
+				{% for person in persons %}
+				<div class="col col-sm-6">
+					<div class="w3-container">
+						<a id="search-result-text" href="{{ person.get_absolute_url }}">
+							<div class="w3-container search-profile-card">
+								<table>
+									<tr>
+										<td style="width: 160px">
+											<span class="w3-left w3-margin-right search-profile-image" style="background-image: url({{ person.get_picture_url }}); width: 160px; height: 160px; margin: 5px;"></span>
+										</td>
+										<td style="width: 320px; vertical-align: top; padding-top: 40px;">
+											<h2>{{ person }}</h2>
+											<p>{% if person.class_of_year %}Liittynyt Prodekoon {{ person.class_of_year }}{% endif %}</p>
+										</td>
+									</tr>
+								</table>
+							</div>
+						</a>
+					</div>
+				</div>
+				{% endfor %}
+			{% endif %}
+		</div>
+	</div>
+	<div style="text-align:center;">
+      	<div class="col col-md-12">
+       		<div class="pagination footer">
+      			<span class="step-links">
+           			{% if persons.has_previous %}
+           			<a href="?page={{ persons.previous_page_number }}">Edellinen</a>
+           			{% endif %}
+           			<span class="current">
+           				Sivu {{ persons.number }}/{{ persons.paginator.num_pages }}
+           			</span>
+           			{% if persons.has_next %}
+           			<a href="?page={{ persons.next_page_number }}">Seuraava</a>
+           			{% endif %}
+           		</span>
+           		<div class="footer bottom-gradient" ></div>
+       		</div>
+   		</div>
+   	</div>
+</section>
+
+{% endblock %}

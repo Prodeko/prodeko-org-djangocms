@@ -1,0 +1,62 @@
+{% extends "ar_base.html" %}
+
+{% block body %}
+
+<section id="settings" class="">
+
+  <div class="container">
+
+    <div class="row">
+      <div class="col col-md-12">
+        <h2>Tietokannan muutokset</h2>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col col-md-12">
+        <table class="table">
+          <thead>
+            <th>Aika</th>
+            <th>Käyttäjä</th>
+            <th>Kohde</th>
+            <th>Toiminto</th>
+          </thead>
+          <tbody>
+            {% for entry in log %}
+            <tr>
+              <td>{{ entry.action_date }}</td>
+              <td>{{ entry.action_user_name }}</td>
+              <td>{{ entry.target }}</td>
+              <td>{{ entry.action_type }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col col-md-12">
+        <div class="pagination">
+          <span class="step-links">
+            {% if log.has_previous %}
+            <a href="?page={{ log.previous_page_number }}">edellinen</a>
+            {% endif %}
+
+            <span class="current">
+              Sivu {{ log.number }}/{{ log.paginator.num_pages }}.
+            </span>
+
+            {% if log.has_next %}
+            <a href="?page={{ log.next_page_number }}">seuraava</a>
+            {% endif %}
+          </span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,484 @@
+{% extends "ar_base.html" %}
+
+{% block body %}
+
+<section id="public-profile" class="bg">
+  <div class="container">
+    <div class="row">
+      <div class="col col-md-8 col-md-offset-2">
+        {% if messages %}
+          {% for m in messages %}
+            <div class="alert {% if m.tags %}alert-{{ m.tags }}{% endif %}">{{ m.message|striptags }}</div>
+          {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+
+    {% if user.is_admin %}
+    <div class="row">
+      <div class="col col-md-8 col-md-offset-2">
+        <a href="{% url 'admin_edit_person_view' profile.user.pk %}" class="btn btn-default btn-lg">Muokkaa</a>
+      </div>
+    </div>
+    {% endif %}
+
+    <div class="row">
+      <div align="center" class="col col-md-8 col-md-offset-2">
+            <img src="{{ profile.get_picture_url }}" class="public-profile-picture"/>
+            <h1 style="text-align: center;">{{ profile }}{% if profile.class_of_year %}, aloittanut {{ profile.class_of_year }}{% endif %}</h1>
+      </div>
+        {% if profile.get_name_info.items %}
+        <div class="row">
+          <div class="col col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+              <div class="panel-heading ">
+                Nimitiedot
+              </div>
+              <div class="panel-body">
+                {% for key, value in profile.get_name_info.items %}
+                    <div class="row">
+                        <label class="col col-md-3 control-label">{{ key }}</label>
+                        <div class="col-md-9">
+                          {{ value }}
+                        </div>
+                    </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+
+        {% if profile.get_address.items %}
+        <div class="row">
+          <div class="col col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+              <div class="panel-heading ">
+                  Osoitetiedot
+              </div>
+              <div class="panel-body">
+                {% for key, value in profile.get_address.items %}
+                    <div class="row">
+                        <label class="col col-md-3 control-label">{{ key }}</label>
+                        <div class="col-md-9">
+                          {{ value }}
+                        </div>
+                    </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+
+        {% if profile.get_personal.items %}
+        <div class="row">
+          <div class="col col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+              <div class="panel-heading ">
+                  Yksityistiedot
+              </div>
+              <div class="panel-body">
+                {% for key, value in profile.get_personal.items %}
+                    <div class="row">
+                        <label class="col col-md-3 control-label">{{ key }}</label>
+                        <div class="col-md-9">
+                          {{ value }}
+                        </div>
+                    </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+
+        {% if profile.get_military.items %}
+        <div class="row">
+          <div class="col col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+              <div class="panel-heading ">
+                  Asepalvelus
+              </div>
+              <div class="panel-body">
+                {% for key, value in profile.get_military.items %}
+                    <div class="row">
+                        <label class="col col-md-3 control-label">{{ key }}</label>
+                        <div class="col-md-9">
+                          {{ value }}
+                        </div>
+                    </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+
+        {% if profile.get_contact_info.items %}
+        <div class="row">
+          <div class="col col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+              <div class="panel-heading ">
+                  Yhteystiedot
+              </div>
+              <div class="panel-body">
+                {% for key, value in profile.get_contact_info.items %}
+                    <div class="row">
+                        <label class="col col-md-3 control-label">{{ key }}</label>
+                        <div class="col-md-9">
+                          {{ value }}
+                        </div>
+                    </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+
+
+
+
+
+
+        {% if profile.get_contact.items %}
+        <div class="row">
+          <div class="col col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+              <div class="panel-heading ">
+                  Yhteystiedot
+              </div>
+              <div class="panel-body">
+                {% for key, value in profile.get_contact.items %}
+                <div class="form-group">
+                    <div class="row">
+                        <label class="col col-md-3 control-label">{{ key }}</label>
+                        <div class="col-md-9">
+                          <a href="{{ value }}">{{ value }}</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+
+        {% if profile.show_phones_category and profile.phones.all %}
+        <div class="row">
+            <div class="col col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading ">
+                        Puhelinnumerot
+                    </div>
+                    <div class="panel-body">
+                        {% for phone in profile.phones.all %}
+                        <div class="form-group">
+                          <div class="row">
+                              <label class="col col-md-3 control-label">{{ phone.get_number_type_display }}</label>
+                              <div class="col-md-9"> {{ phone.phone_number }} </div>
+                          </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if profile.show_emails_category and profile.emails.all %}
+        <div class="row">
+            <div class="col col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading ">
+                        Sähköpostiosoitteet
+                    </div>
+                    <div class="panel-body">
+                        {% for email in profile.emails.all %}
+                        <div class="form-group">
+                          <div class="row">
+                              <label class="col col-md-3 control-label">{{ email.get_address_type_display }}</label>
+                              <div class="col-md-9"> {{ email.address }} </div>
+                          </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if profile.show_work_experiences_category and profile.work_experiences.all %}
+        <div class="row">
+            <div class="col col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading ">
+                        Työkokemus
+                    </div>
+                    <div class="panel-body">
+                      {% for x in profile.work_experiences.all %}
+                      <div class="panel panel-default">
+                        <div class="panel-body">
+                          <h3>{{ x.organisation }}</h3>
+                          <p>
+                            {% if x.start_year or x.end_year %}{% if x.start_month and x.start_year %}{{ x.get_start_month_display }}, {% endif %}{% if x.start_year %}{{ x.start_year }}{% endif %} - {% if x.end_month and x.end_year %}{{ x.get_end_month_display }}, {% endif %}{% if x.end_year %}{{ x.end_year }}{% endif %}{% endif %}
+                          </p>
+                          {% if x.position  %}
+                          <p>{{ x.position }}</p>
+                          {% endif %}
+                          {% if x.description  %}
+                          <p>{{ x.description }}</p>
+                          {% endif %}
+                          {% if x.address  %}
+                          <p>{{ x.address }}</p>
+                          {% endif %}
+                          {% if x.postal_code  %}
+                          <p>{{ x.postal_code }}</p>
+                          {% endif %}
+                          {% if x.city  %}
+                          <p>{{ x.city }}</p>
+                          {% endif %}
+                          {% if x.country  %}
+                          <p>{{ x.country }}</p>
+                          {% endif %}
+                        </div>
+                      </div>
+                      {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if profile.show_educations_category and profile.educations.all %}
+        <div class="row">
+            <div class="col col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading ">
+                        Koulutukset
+                    </div>
+                    <div class="panel-body">
+                        {% for x in profile.educations.all %}
+                        <div class="panel panel-default">
+                          <div class="panel-body">
+                            <h3>{{ x.school }}</h3>
+                            <p>
+                              {% if x.start_year %}{{ x.start_year }}{% endif %} - {% if x.end_year %}{{ x.end_year }}{% endif %}, {{ x.field }}
+                              {% if x.get_degree_level_display %}({{ x.get_degree_level_display }}){% endif %}
+                            </p>
+                            <p>{% if x.major %}Pääaine: {{ x.major }}{% endif %}</p>
+                            <p>{% if x.minor %}Sivuaine: {{ x.minor }}{% endif %}</p>
+                            <p>{% if x.description %}{{ x.description }}{% endif %}</p>
+                          </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if profile.show_skills_category and profile.skills.all %}
+        <div class="row">
+            <div class="col col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading ">
+                        Erityistaidot
+                    </div>
+                    <div class="panel-body">
+                        {% for x in profile.skills.all %}
+                        <div class="panel panel-default">
+                          <div class="panel-body">
+                            <h3>{{ x.title }}</h3>
+                            <p>{% if x.description %}{{ x.description }}{% endif %}</p>
+                          </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if profile.show_languages_category and profile.languages.all %}
+        <div class="row">
+            <div class="col col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading ">
+                        Kielitaito
+                    </div>
+                    <div class="panel-body">
+                        {% for language in profile.languages.all %}
+                        <div class="row">
+                            <label class="col col-md-3 control-label">{{ language.language }}</label>
+                            <div class="col-md-9">
+                              {% if language.get_level_display %}{{ language.get_level_display }} {% endif %}
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if profile.show_positions_of_trust_category and profile.positions_of_trust.all %}
+        <div class="row">
+            <div class="col col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading ">
+                        Luottamustehtävät
+                    </div>
+                    <div class="panel-body">
+                        {% for x in profile.positions_of_trust.all %}
+                        <div class="panel panel-default">
+                          <div class="panel-body">
+                            <h3>{{ x.organisation }}</h3>
+                            <p>
+                              {% if x.start_year or x.end_year %}{% if x.start_month and x.start_year %}{{ x.get_start_month_display }}, {% endif %}{% if x.start_year %}{{ x.start_year }}{% endif %} - {% if x.end_month and x.end_year %}{{ x.get_end_month_display }}, {% endif %}{% if x.end_year %}{{ x.end_year }}{% endif %}{% endif %}
+                            </p>
+                            <p>{% if x.position %}{{ x.position }}{% endif %}</p>
+                            <p>{% if x.description %}{{ x.description }}{% endif %}</p>
+                          </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if profile.show_student_organizational_activities_category and profile.student_organizational_activities.all %}
+        <div class="row">
+            <div class="col col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading ">
+                        Opiskelijajärjestöt
+                    </div>
+                    <div class="panel-body">
+                        {% for x in profile.student_organizational_activities.all %}
+                        <div class="panel panel-default">
+                          <div class="panel-body">
+                            <h3>{{ x.organisation }}</h3>
+                            <p>
+                              {% if x.start_year %}{{ x.start_year }}{% endif %} - {% if x.end_year %}{{ x.end_year }}{% endif %}
+                            </p>
+                            <p>{% if x.position %}{{ x.position }}{% endif %}</p>
+                            <p>{% if x.description %}{{ x.description }}{% endif %}</p>
+                          </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if profile.show_volunteers_category and profile.volunteers.all %}
+        <div class="row">
+            <div class="col col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading ">
+                        Vapaaehtoistehtävät
+                    </div>
+                    <div class="panel-body">
+                        {% for x in profile.volunteers.all %}
+                        <div class="panel panel-default">
+                          <div class="panel-body">
+                            <h3>{{ x.organisation }}</h3>
+                            <p>
+                              {% if x.start_year %}{{ x.start_year }}{% endif %} - {% if x.end_year %}{{ x.end_year }}{% endif %}
+                            </p>
+                            <p>{% if x.position %}{{ x.position }}{% endif %}</p>
+                            <p>{% if x.description %}{{ x.description }}{% endif %}</p>
+                          </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if profile.show_honors_category and profile.honors.all %}
+        <div class="row">
+            <div class="col col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading ">
+                        Kunnianosoitukset
+                    </div>
+                    <div class="panel-body">
+                        {% for x in profile.honors.all %}
+                        <div class="panel panel-default">
+                          <div class="panel-body">
+                            <h3>{{ x.title }}</h3>
+                            <p>
+
+                            </p>
+                            <p>{% if x.organisation %}{{ x.organisation }}{% endif %}{% if x.organisation and x.year %}, {% endif %}{% if x.year %}{{ x.year }}{% endif %}</p>
+                            <p>{% if x.description %}{{ x.description }}{% endif %}</p>
+                          </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if profile.show_interests_category and profile.interests.all %}
+        <div class="row">
+            <div class="col col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading ">
+                        Kiinnostuksenkohteet
+                    </div>
+                    <div class="panel-body">
+                        {% for x in profile.interests.all %}
+                        <div class="panel panel-default">
+                          <div class="panel-body">
+                            <h3>{{ x.title }}</h3>
+                            <p>{% if x.description %}{{ x.description }}{% endif %}</p>
+                          </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if profile.show_family_members_category and profile.family_members.all %}
+        <div class="row">
+            <div class="col col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading ">
+                        Perhe
+                    </div>
+                    <div class="panel-body">
+                        {% for family_member in profile.family_members.all %}
+                        <div class="panel panel-default">
+                          <div class="panel-body">
+                            <h3>{{ family_member.first_name }} {{ family_member.last_name }}</h3>
+                            <p>{% if family_member.member_type %}{{ family_member.get_member_type_display }}{% endif %}</p>
+                            <p>
+                              {% if family_member.since %}{{ family_member.since }}{% endif %} - {% if family_member.until %}{{ family_member.until }} - {% endif %}
+                            </p>
+                          </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+    </div>
+
+
+
+</section>
+
+{% endblock %}

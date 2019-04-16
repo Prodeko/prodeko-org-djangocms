@@ -22,11 +22,11 @@
                 <div class="navbar navbar-default">
                     <ul class="nav navbar-nav">
                         <li>
-                            <a href="/cp/messages/{{ filter }}/all/">{% trans "All" %}</a>
+                            <a href="{% url 'tiedotteet:control_messages' filter=filter category='all' %}">{% trans "All" %}</a>
                         </li>
                         {% for c in categories %}
                             <li>
-                                <a href="/cp/messages/{{ filter }}/{{ c.pk }}/">{{ c.title }}</a>
+                                <a href="{% url 'tiedotteet:control_messages' filter=filter category='all' %}">{{ c.title }}</a>
                             </li>
                         {% endfor %}
                     </ul>
@@ -62,13 +62,13 @@
                     <tbody>
                         {% for m in messages %}
                             <tr>
-                                <td><a href="/cp/messages/{{ m.pk }}/edit/">{{ m }}</a></td>
+                                <td><a href="{% url 'tiedotteet:edit_message' pk=m.pk %}">{{ m }}</a></td>
                                 <td>{{ m.category }}</td>
                                 <td>{{ m.start_date|date:"d.m.Y" }}</td>
                                 <td>{{ m.end_date|date:"d.m.Y" }}</td>
                                 <td>{% if m.show_deadline %}{{ m.deadline_date|date:"d.m.Y" }}{% endif %}</td>
                                 <td>
-                                    <form action="/cp/messages/{{ m.pk }}/hide/" method="post">
+                                    <form action="{% url 'tiedotteet:hide_message' pk=m.pk %}" method="post">
                                         {% csrf_token %}
                                         {% if m.visible %}
                                             <button class="btn btn-warning" type="submit">{% trans "Hide" %}</button>
@@ -78,7 +78,7 @@
                                     </form>
                                 </td>
                                 <td>
-                                    <form action="/cp/messages/{{ m.pk }}/delete/" method="post">
+                                    <form action="{% url 'tiedotteet:delete_message' pk=m.pk %}" method="post">
                                         {% csrf_token %}
                                         <button class="btn btn-danger delete-button" type="submit">{% trans "Delete" %}</button>
                                     </form>

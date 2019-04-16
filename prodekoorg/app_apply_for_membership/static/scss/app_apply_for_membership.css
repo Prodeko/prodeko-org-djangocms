@@ -1,0 +1,40 @@
+/*
+ * Usage: @include tablet {}
+ */
+#application-done,
+#application-error {
+  text-align: center; }
+  #application-done img,
+  #application-error img {
+    display: block;
+    max-width: 60%;
+    margin: 0 auto 2.5em auto; }
+  @media (max-width: 767px) {
+    #application-done img,
+    #application-error img {
+      display: block;
+      max-width: 90%;
+      margin: 0 auto 1.5em auto; } }
+
+#form-apply-wrapper {
+  font-size: 1em; }
+  #form-apply-wrapper .fa-minus-square {
+    color: #8d1f1f;
+    font-size: 25px;
+    vertical-align: middle; }
+  #form-apply-wrapper input[type="checkbox"] {
+    transform: scale(1.3); }
+  #form-apply-wrapper .receipt-btn-wrapper {
+    position: relative;
+    display: inline-block;
+    overflow: hidden; }
+    #form-apply-wrapper .receipt-btn-wrapper input[type="file"] {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0; }
+    #form-apply-wrapper .receipt-btn-wrapper .btn {
+      padding: 6px 15px;
+      color: white;
+      font-weight: bold;
+      background-color: #277027; }

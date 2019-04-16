@@ -75,19 +75,19 @@
 							Tiedotteet <i class="fa fa-fw fa-caret-down"></i></a>
 						<ul id="messages-control" class="collapse">
 							<li>
-								<a href="/tiedotteet/cp/messages/all/all/"><i class="fa fa-fw fa-reorder"></i> {% trans "All" %}</a>
+								<a href="{% url 'tiedotteet:control_messages' filter='all' category='all' %}"><i class="fa fa-fw fa-reorder"></i> {% trans "All" %}</a>
 							</li>
 							<li>
-								<a href="/tiedotteet/cp/messages/now/all/"><i class="fa fa-fw fa-square-o"></i> {% trans "Now" %}</a>
+								<a href="{% url 'tiedotteet:control_messages' filter='now' category='all' %}"><i class="fa fa-fw fa-square-o"></i> {% trans "Now" %}</a>
 							</li>
 							<li>
-								<a href="/tiedotteet/cp/messages/new/all/"><i class="fa fa-fw fa-flag"></i> {% trans "New" %}</a>
+								<a href="{% url 'tiedotteet:control_messages' filter='new' category='all' %}"><i class="fa fa-fw fa-flag"></i> {% trans "New" %}</a>
 							</li>
 							<li>
-								<a href="/tiedotteet/cp/messages/upcoming/all/"><i class="fa fa-fw fa-calendar"></i> {% trans "Upcoming" %}</a>
+								<a href="{% url 'tiedotteet:control_messages' filter='upcoming' category='all' %}"><i class="fa fa-fw fa-calendar"></i> {% trans "Upcoming" %}</a>
 							</li>
 							<li>
-								<a href="/tiedotteet/cp/messages/old/all/"><i class="fa fa-fw fa-history"></i> {% trans "Old" %}</a>
+								<a href="{% url 'tiedotteet:control_messages' filter='old' category='all' %}"><i class="fa fa-fw fa-history"></i> {% trans "Old" %}</a>
 							</li>
 						</ul>
 					</li>

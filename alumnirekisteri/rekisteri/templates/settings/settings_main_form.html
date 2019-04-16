@@ -1,0 +1,106 @@
+
+<div class="row">
+  <div class="col col-md-8 col-md-offset-2">
+    <div class="panel panel-default">
+      <div class="panel-heading ">
+        <b>Asetukset</b>
+      </div>
+      <div class="panel-body">
+        <div class="form-group margin-pois">
+          <div class="col-xs-12">
+            <div class="checkbox">
+              <label>{{ person_form.dont_publish_in_book.label }}</label>
+              <span class="pull-right">{{ person_form.dont_publish_in_book }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group margin-pois">
+          <div class="col-xs-12">
+            <div class="checkbox">
+              <label>{{ person_form.subscribe_alumnimail.label }}</label>
+              <span class="pull-right">{{ person_form.subscribe_alumnimail }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group margin-pois">
+          <div class="col-xs-12">
+            <div class="checkbox">
+              <label>{{ person_form.mentoring.label }}</label>
+              <span class="pull-right">{{ person_form.mentoring }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group margin-pois">
+          <div class="col-xs-12">
+            <div class="checkbox">
+              <label>{{ person_form.upper_management_mentoring.label }}</label>
+              <span class="pull-right">{{ person_form.upper_management_mentoring }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group margin-pois">
+          <div class="col-xs-12">
+            <div class="checkbox">
+              <label>{{ person_form.ventures.label }}</label>
+              <span class="pull-right">{{ person_form.ventures }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group margin-pois">
+          <div class="col-xs-12">
+            <div class="checkbox">
+              <label>{{ person_form.partner_contact.label }}</label>
+              <span class="pull-right">{{ person_form.partner_contact }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group margin-pois">
+          <div class="col-xs-12">
+            <div style="margin-top: 5px;">
+              <span class="pull-right">
+                  <a href="#" class="btn btn-danger btn-xs delete-link" modal="#delete-modal" url="{% url 'alumnirekisteri:delete_profile' %}">Poista profiili</a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col col-md-8 col-md-offset-2">
+    <div class="panel panel-default">
+      <div class="panel-heading ">
+        <b>Käyttäjätunnus</b>
+        <div class="pull-right">{{ person_form.show_email_address.label }} {{ person_form.show_email_address }}</div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="panel-body">
+        <div class="form-group">
+          <label class="col col-md-3 control-label">{{ user_form.email.label }}</label>
+          <div class="col-md-9">
+            {{ user_form.email }}
+            <small class="form-text text-danger">Tämä on se sähköposti mihin alumnikirje lähetetään.</small>
+            {% if user_form.email.errors %}
+            <div class="alert alert-danger">
+              {{ user_form.email.errors }}
+            </div>
+            {% endif %}
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col col-md-3 control-label">{{ user_form.username.label }}</label>
+          <div class="col-md-9">
+            {{ user_form.username }}
+            {% if user_form.username.errors %}
+            <div class="alert alert-danger">
+              {{ user_form.username.errors }}
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

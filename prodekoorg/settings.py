@@ -36,13 +36,13 @@ DB_USER = config["DB"]["USER"]
 DB_PSWD = config["DB"]["PASSWORD"]
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME": DB_NAME_DEFAULT,
-        "USER": DB_USER,
-        "PASSWORD": DB_PSWD,
-        "HOST": "db",
-        "PORT": "3306",
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': DB_NAME_DEFAULT,
+        'USER': DB_USER,
+        'PASSWORD': DB_PSWD,
+        'HOST': '',
+        'PORT': '3306',
     },
     "TEST": {"CHARSET": "utf8", "COLLATION": "utf8_unicode_ci"},
 }
@@ -134,8 +134,10 @@ STATICFILES_DIRS = [
     # seminaari.prodeko.org
     os.path.join(BASE_DIR, "seminaari", "static"),
     # tiedotteet.prodeko.org
-    os.path.join(BASE_DIR, "tiedotteet/info", "static"),
-    os.path.join(BASE_DIR, "tiedotteet", "public"),
+    os.path.join(BASE_DIR, 'tiedotteet/info', 'static'),
+    os.path.join(BASE_DIR, 'tiedotteet', 'public'),
+    # matrikkeli.prodeko.org
+    os.path.join(BASE_DIR, 'alumnirekisteri/rekisteri', 'static'),
 ]
 
 STATICFILES_FINDERS = [
@@ -150,36 +152,38 @@ SASS_PRECISION = 8
 # Template config
 TEMPLATES = [
     {
-        "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [
-            os.path.join(BASE_DIR, "prodekoorg", "templates"),
-            os.path.join(BASE_DIR, "abisivut", "templates"),
-            os.path.join(BASE_DIR, "lifelonglearning", "templates"),
-            os.path.join(BASE_DIR, "seminaari", "templates"),
-            os.path.join(BASE_DIR, "tiedotteet/info", "templates"),
-            os.path.join(BASE_DIR, "tiedotteet", "public"),
-            os.path.join(BASE_DIR, "prodekoorg/app_apply_for_membership", "templates"),
-            os.path.join(
-                BASE_DIR, "prodekoorg/app_apply_for_membership", "templates", "emails"
-            ),
-            os.path.join(BASE_DIR, "prodekoorg/app_kulukorvaus", "templates"),
-            os.path.join(BASE_DIR, "prodekoorg/app_kulukorvaus", "templates", "emails"),
-            os.path.join(BASE_DIR, "prodekoorg/app_poytakirjat", "templates"),
-            os.path.join(BASE_DIR, "prodekoorg/app_toimarit", "templates"),
-        ],
-        "OPTIONS": {
-            "context_processors": [
-                "django.contrib.auth.context_processors.auth",
-                "django.contrib.messages.context_processors.messages",
-                "django.template.context_processors.i18n",
-                "django.template.context_processors.debug",
-                "django.template.context_processors.request",
-                "django.template.context_processors.media",
-                "django.template.context_processors.csrf",
-                "django.template.context_processors.tz",
-                "sekizai.context_processors.sekizai",
-                "django.template.context_processors.static",
-                "cms.context_processors.cms_settings",
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [os.path.join(BASE_DIR, 'prodekoorg', 'templates'),
+                 os.path.join(BASE_DIR, 'abisivut', 'templates'),
+                 os.path.join(BASE_DIR, 'lifelonglearning', 'templates'),
+                 os.path.join(BASE_DIR, 'seminaari', 'templates'),
+                 os.path.join(BASE_DIR, 'tiedotteet/info', 'templates'),
+                 os.path.join(BASE_DIR, 'tiedotteet', 'public'),
+                 os.path.join(BASE_DIR, 'alumnirekisteri', 'rekisteri'),
+                 os.path.join(
+                     BASE_DIR, 'prodekoorg/app_apply_for_membership', 'templates'),
+                 os.path.join(
+                     BASE_DIR, 'prodekoorg/app_apply_for_membership', 'templates', 'emails'),
+                 os.path.join(
+                     BASE_DIR, 'prodekoorg/app_kulukorvaus', 'templates'),
+                 os.path.join(BASE_DIR, 'prodekoorg/app_kulukorvaus',
+                              'templates', 'emails'),
+                 os.path.join(
+                     BASE_DIR, 'prodekoorg/app_poytakirjat', 'templates'),
+                 os.path.join(BASE_DIR, 'prodekoorg/app_toimarit', 'templates')],
+        'OPTIONS': {
+            'context_processors': [
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.template.context_processors.media',
+                'django.template.context_processors.csrf',
+                'django.template.context_processors.tz',
+                'sekizai.context_processors.sekizai',
+                'django.template.context_processors.static',
+                'cms.context_processors.cms_settings',
             ],
             "loaders": [
                 "django.template.loaders.filesystem.Loader",
@@ -211,7 +215,9 @@ MIDDLEWARE = (
     "cms.middleware.page.CurrentPageMiddleware",
     "cms.middleware.toolbar.ToolbarMiddleware",
     # tiedotteet.prodeko.org
-    "corsheaders.middleware.CorsMiddleware",
+    'corsheaders.middleware.CorsMiddleware',
+    # matrikkeli.prodeko.org
+    #'audit_log.middleware.UserLoggingMiddleware',
 )
 
 INSTALLED_APPS = (
@@ -275,6 +281,11 @@ INSTALLED_APPS = (
     "rest_framework",
     "corsheaders",
     # ------------------------
+    # matrikkeli.prodeko.org
+    'alumnirekisteri',
+    'alumnirekisteri.rekisteri',
+    'alumnirekisteri.auth2',
+    # ------------------------
     # abit.prodeko.org
     "abisivut",
     # lifelonglearning.prodeko.org
@@ -282,12 +293,12 @@ INSTALLED_APPS = (
     # seminaari.prodeko.org
     "seminaari",
     # ------------------------
-    "prodekoorg.app_poytakirjat",
-    "prodekoorg.app_toimarit",
-    "prodekoorg.app_kulukorvaus",
-    "prodekoorg.app_vaalit",
-    "prodekoorg.app_tiedostot",
-    "prodekoorg.app_apply_for_membership",
+    'prodekoorg.app_apply_for_membership',
+    'prodekoorg.app_poytakirjat',
+    'prodekoorg.app_toimarit',
+    'prodekoorg.app_kulukorvaus',
+    'prodekoorg.app_vaalit',
+    'prodekoorg.app_tiedostot',
     # ------------------------
 )
 

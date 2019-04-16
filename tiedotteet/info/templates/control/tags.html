@@ -39,7 +39,7 @@
                             <li class="list-group-item">
                                 {{tag}}
                                 <div class="pull-right">
-                                    <form action="/cp/tags/{{ tag.pk }}/delete/" method="post">
+                                    <form action="{% url 'tiedotteet:delete_tag' pk=tag.pk %}" method="post">
                                         {% csrf_token %}
                                         <button type="submit" class="btn btn-danger btn-xs delete-button">
                                             {% trans "Delete" %} <i class="fa fa-times"></i>
