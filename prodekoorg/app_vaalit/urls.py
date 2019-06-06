@@ -1,4 +1,4 @@
-from django.conf.urls import url
+from django.urls import re_path
 from django.contrib.auth.decorators import login_required
 from django.utils.translation import ugettext_lazy as _
 
@@ -12,23 +12,23 @@ from .views import (
 
 app_name = "app_vaalit"
 urlpatterns = [
-    url(r"^elections/", main_view, name="vaalit"),
-    url(
+    re_path(r"^elections/", main_view, name="vaalit"),
+    re_path(
         r"^elections/delete-question/(?P<pk>\d+)/",
         login_required(delete_kysymys_view),
         name="delete_kysymys",
     ),
-    url(
+    re_path(
         r"^elections/update-question/(?P<pk>\d+)/",
         login_required(update_kysymys_view),
         name="update_kysymys",
     ),
-    url(
+    re_path(
         r"^elections/delete-nominee/(?P<pk>\d+)/",
         login_required(EhdokasDeleteView.as_view()),
         name="delete_ehdokas",
     ),
-    url(
+    re_path(
         r"^elections/update-nominee/(?P<pk>\d+)/",
         login_required(EhdokasUpdateView.as_view()),
         name="update_ehdokas",

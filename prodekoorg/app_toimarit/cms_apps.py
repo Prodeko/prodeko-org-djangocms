@@ -1,6 +1,6 @@
 from cms.app_base import CMSApp
 from cms.apphook_pool import apphook_pool
-from django.conf.urls import url
+from django.urls import re_path
 from django.utils.translation import ugettext_lazy as _
 from prodekoorg.app_toimarit.views import list_boardmembers, list_guildofficials
 
@@ -11,7 +11,7 @@ class ToimaritApphook(CMSApp):
     name = _("Guild officials application")
 
     def get_urls(self, page=None, language=None, **kwargs):
-        return [url(r"^$", list_guildofficials)]
+        return [re_path(r"^$", list_guildofficials)]
 
 
 @apphook_pool.register
@@ -20,4 +20,4 @@ class HallitusApphook(CMSApp):
     name = _("Board of Prodeko application")
 
     def get_urls(self, page=None, language=None, **kwargs):
-        return [url(r"^$", list_boardmembers)]
+        return [re_path(r"^$", list_boardmembers)]

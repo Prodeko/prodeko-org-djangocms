@@ -1,6 +1,6 @@
 from cms.app_base import CMSApp
 from cms.apphook_pool import apphook_pool
-from django.conf.urls import url
+from django.urls import re_path
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.utils.translation import ugettext_lazy as _
 
@@ -14,6 +14,6 @@ class LifelonglearningApphook(CMSApp):
 
     def get_urls(self, page=None, language=None, **kwargs):
         return [
-            url(r"^$", index, name="index"),
-            url(r"^(?P<pk>\d+)/$", coursepage, name="coursepage"),
+            re_path(r"^$", index, name="index"),
+            re_path(r"^(?P<pk>\d+)/$", coursepage, name="coursepage"),
         ]

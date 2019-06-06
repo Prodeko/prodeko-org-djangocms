@@ -1,28 +1,28 @@
-from django.conf.urls import url
+from django.urls import re_path
 from django.contrib.auth import views as auth_views
-from django.core.urlresolvers import reverse_lazy
+from django.urls import reverse_lazy
 from .views import profile
 
 app_name = "auth_prodeko"
 urlpatterns = [
-    url(r"^profile/$", profile, name="profile"),
-    url(
+    re_path(r"^profile/$", profile, name="profile"),
+    re_path(
         r"^login/$",
         auth_views.LoginView.as_view(template_name="prodeko_login.html"),
         name="login",
     ),
-    url(r"^logout/$", auth_views.LogoutView.as_view(next_page="/"), name="logout"),
-    url(
+    re_path(r"^logout/$", auth_views.LogoutView.as_view(next_page="/"), name="logout"),
+    re_path(
         r"^password_change/$",
         auth_views.PasswordChangeView.as_view(),
         name="password_change",
     ),
-    url(
+    re_path(
         r"^password_change/done/",
         auth_views.PasswordChangeDoneView.as_view(),
         name="password_change_done",
     ),
-    url(
+    re_path(
         r"^password_reset/$",
         auth_views.PasswordResetView.as_view(
             template_name="password_reset_form.html",
@@ -32,24 +32,21 @@ urlpatterns = [
         ),
         name="password_reset",
     ),
-    url(
+    re_path(
         r"^password_reset/done/",
         auth_views.PasswordResetDoneView.as_view(
             template_name="password_reset_done.html"
         ),
         name="password_reset_done",
     ),
-    # url(r'^reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$', auth_views.PasswordResetConfirmView.as_view(template_name='password_reset_confirm.html'), name='password_reset_confirm'),
-    url(
+    re_path(
         r"^reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$",
-        auth_views.password_reset_confirm,
-        {
-            "post_reset_redirect": "/reset/done/",
-            "template_name": "password_reset_confirm.html",
-        },
+        auth_views.PasswordResetConfirmView.as_view(
+            template_name="password_reset_confirm.html"
+        ),
         name="password_reset_confirm",
     ),
-    url(
+    re_path(
         r"^reset/done/$",
         auth_views.PasswordResetCompleteView.as_view(
             template_name="password_reset_complete.html"
