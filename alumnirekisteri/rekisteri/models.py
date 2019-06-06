@@ -1,8 +1,8 @@
-from audit_log.models.managers import AuditLog
+# from audit_log.models.managers import AuditLog
 import datetime
 from django.conf import settings
 from django.db import models
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.db.models import Q
 from django.template.defaultfilters import slugify
 
@@ -142,7 +142,7 @@ class Person(models.Model):
 
     slug = models.CharField(max_length=255, unique=True, null=True)
 
-    audit_log = AuditLog()
+    """ audit_log = AuditLog() """
 
     def __str__(self):
         nickname = ""
@@ -307,29 +307,29 @@ class Phone(models.Model):
         ('P', 'Henkilökohtainen'),
         ('W', 'Työ'),
     )
-    person = models.ForeignKey(Person, related_name="phones")
+    person = models.ForeignKey(Person, on_delete=models.CASCADE, related_name="phones")
     phone_number = models.CharField(max_length=250)
     number_type = models.CharField(max_length=1, choices=NUMBER_TYPE_CHOICES)
 
-    audit_log = AuditLog()
+    """ audit_log = AuditLog() """
 
 class Email(models.Model):
     ADDRESS_TYPE_CHOICES = (
         ('P', 'Henkilökohtainen'),
         ('W', 'Työ'),
     )
-    person = models.ForeignKey(Person, related_name="emails")
+    person = models.ForeignKey(Person, on_delete=models.CASCADE, related_name="emails")
     address = models.EmailField(max_length=250)
     address_type = models.CharField(max_length=1, choices=ADDRESS_TYPE_CHOICES)
 
-    audit_log = AuditLog()
+    """ audit_log = AuditLog() """
 
 class Skill(models.Model):
-    person = models.ForeignKey(Person, related_name="skills")
+    person = models.ForeignKey(Person, on_delete=models.CASCADE, related_name="skills")
     title = models.CharField(max_length=250)
     description = models.TextField()
 
-    audit_log = AuditLog()
+    """ audit_log = AuditLog() """
 
 class Language(models.Model):
     LEVEL_CHOICES = (
@@ -339,11 +339,11 @@ class Language(models.Model):
         (3, 'Tyydyttävä'),
         (4, 'Alkeet'),
     )
-    person = models.ForeignKey(Person, related_name="languages")
+    person = models.ForeignKey(Person, on_delete=models.CASCADE, related_name="languages")
     language = models.CharField(max_length=250)
     level = models.IntegerField(null=True, blank=True, choices=LEVEL_CHOICES)
 
-    audit_log = AuditLog()
+    """ audit_log = AuditLog() """
 
 class Education(models.Model):
     DEGREE_CHOICES = (
@@ -355,7 +355,7 @@ class Education(models.Model):
         (5, 'Tohtori'),
         (6, 'Dosentti')
     )
-    person = models.ForeignKey(Person, related_name="educations")
+    person = models.ForeignKey(Person, on_delete=models.CASCADE, related_name="educations")
     school = models.CharField(max_length=250)
     field = models.CharField(max_length=250, blank=True)
     degree_level = models.IntegerField(null=True, blank=True, choices=DEGREE_CHOICES)
@@ -365,7 +365,7 @@ class Education(models.Model):
     end_year = models.IntegerField(null=True, blank=True)
     description = models.TextField(max_length=500, blank=True, null=True)
 
-    audit_log = AuditLog()
+    """ audit_log = AuditLog() """
 
 class WorkExperience(models.Model):
     MONTH_CHOICES = (
@@ -382,7 +382,7 @@ class WorkExperience(models.Model):
         (10, 'Marraskuu'),
         (11, 'Joulukuu'),
     )
-    person = models.ForeignKey(Person, related_name="work_experiences")
+    person = models.ForeignKey(Person, on_delete=models.CASCADE, related_name="work_experiences")
     organisation = models.CharField(max_length=250)
     position = models.CharField(max_length=250)
     start_year = models.IntegerField(blank=True, null=True)
@@ -397,7 +397,7 @@ class WorkExperience(models.Model):
     country = models.CharField(max_length=250, null=True, blank=True)
     show_address_category = models.BooleanField(blank=False, default=True)
 
-    audit_log = AuditLog()
+    """ audit_log = AuditLog() """
 
 class PositionOfTrust(models.Model):
     MONTH_CHOICES = (
@@ -414,7 +414,7 @@ class PositionOfTrust(models.Model):
         (10, 'Marraskuu'),
         (11, 'Joulukuu'),
     )
-    person = models.ForeignKey(Person, related_name="positions_of_trust")
+    person = models.ForeignKey(Person, on_delete=models.CASCADE, related_name="positions_of_trust")
     organisation = models.CharField(max_length=250)
     position = models.CharField(max_length=250)
     start_year = models.IntegerField(blank=True, null=True)
@@ -423,50 +423,50 @@ class PositionOfTrust(models.Model):
     end_month = models.IntegerField(blank=True, null=True, choices=MONTH_CHOICES)
     description = models.CharField(max_length=1000, blank=True)
 
-    audit_log = AuditLog()
+    """ audit_log = AuditLog() """
 
 class StudentOrganizationalActivity(models.Model):
-    person = models.ForeignKey(Person, related_name="student_organizational_activities")
+    person = models.ForeignKey(Person, on_delete=models.CASCADE, related_name="student_organizational_activities")
     organisation = models.CharField(max_length=250)
     position = models.CharField(max_length=250)
     start_year = models.IntegerField(null=True, blank=True)
     end_year = models.IntegerField(blank=True, null=True)
     description = models.CharField(max_length=1000, blank=True)
 
-    audit_log = AuditLog()
+    """ audit_log = AuditLog() """
 
 class Volunteer(models.Model):
-    person = models.ForeignKey(Person, related_name="volunteers")
+    person = models.ForeignKey(Person, on_delete=models.CASCADE, related_name="volunteers")
     organisation = models.CharField(max_length=250)
     position = models.CharField(max_length=250)
     start_year = models.IntegerField(blank=True, null=True)
     end_year = models.IntegerField(blank=True, null=True)
     description = models.CharField(max_length=250, blank=True, null=True)
 
-    audit_log = AuditLog()
+    """ audit_log = AuditLog() """
 
     def ___str___(self):
         return (self.organisation, self.position)
 
 
 class Honor(models.Model):
-    person = models.ForeignKey(Person, related_name="honors")
+    person = models.ForeignKey(Person, on_delete=models.CASCADE, related_name="honors")
     title = models.CharField(max_length=250)
     year = models.IntegerField(blank=True, null=True)
     organisation = models.CharField(max_length=250, blank=True, null=True)
     description = models.CharField(max_length=2000, blank=True, null=True)
 
-    audit_log = AuditLog()
+    """ audit_log = AuditLog() """
 
     def ___str___(self):
         return (self.title)
 
 class Interest(models.Model):
-    person = models.ForeignKey(Person, related_name="interests")
+    person = models.ForeignKey(Person, on_delete=models.CASCADE, related_name="interests")
     title = models.CharField(max_length=250)
     description = models.CharField(max_length=2000, blank=True, null=True)
 
-    audit_log = AuditLog()
+    """ audit_log = AuditLog() """
 
     def ___str___(self):
         return (self.title)
@@ -479,7 +479,7 @@ class FamilyMember(models.Model):
         (3, 'Puoliso'),
         (4, 'Avopuoliso'),
     )
-    person = models.ForeignKey(Person, related_name="family_members")
+    person = models.ForeignKey(Person, on_delete=models.CASCADE, related_name="family_members")
     first_name = models.CharField(max_length=250)
     last_name = models.CharField(max_length=250)
     original_last_name = models.CharField(max_length=250, blank=True, null=True)
@@ -488,7 +488,7 @@ class FamilyMember(models.Model):
     member_type = models.IntegerField(null=True, choices=MEMBERTYPE_CHOICES)
     profession = models.CharField(max_length=250, null=True, blank=True)
 
-    audit_log = AuditLog()
+    """ audit_log = AuditLog() """
 
     def ___str___(self):
         return (self.first_name, self.last_name)

@@ -57,7 +57,7 @@ class PendingUser(models.Model):
 
     id = models.AutoField(primary_key=True)
     user = models.OneToOneField(
-        settings.AUTH_USER_MODEL, null=True, blank=True, on_delete=models.CASCADE
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True
     )
     first_name = models.CharField(max_length=50, verbose_name=_("First name"))
     last_name = models.CharField(max_length=50, verbose_name=_("Last name"))

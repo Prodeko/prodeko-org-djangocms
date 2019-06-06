@@ -20,17 +20,17 @@ class UserManager(BaseUserManager):
         email = self.normalize_email(email)
         user = self.model(email=email, **extra_fields)
         user.set_password(password)
-#        user.person = Person.objects.create(
-#            member_type='0',
-#            slug=user.pk
-#        )
+        #        user.person = Person.objects.create(
+        #            member_type='0',
+        #            slug=user.pk
+        #        )
         user.save(using=self._db)
         return user
 
     def create_user(self, email, password=None, **extra_fields):
         """Create and save a regular User with the given email and password."""
-        extra_fields.setdefault('is_staff', False)
-        extra_fields.setdefault('is_superuser', False)
+        extra_fields.setdefault("is_staff", False)
+        extra_fields.setdefault("is_superuser", False)
 
         return self._create_user(email, password, **extra_fields)
 
@@ -54,12 +54,21 @@ class User(AbstractUser):
     email = models.EmailField(verbose_name=_("email address"), unique=True)
     has_accepted_policies = models.BooleanField(
         default=False,
-        verbose_name=_('Accepted privacy and cookie policy'),
-        help_text=_('Designates whether the user has accepted Prodeko\'s privacy policy and cookie policy.'))
-    person = models.OneToOneField(Person, verbose_name=_('Alumn registry profile'), related_name="user", null=True)
+        verbose_name=_("Accepted privacy and cookie policy"),
+        help_text=_(
+            "Designates whether the user has accepted Prodeko's privacy policy and cookie policy."
+        ),
+    )
+    person = models.OneToOneField(
+        Person,
+        on_delete=models.CASCADE,
+        verbose_name=_("Alumn registry profile"),
+        related_name="user",
+        null=True,
+    )
 
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['']
+    USERNAME_FIELD = "email"
+    REQUIRED_FIELDS = [""]
 
     @receiver(post_save, sender=PendingUser)
     def create_user_profile(sender, instance, created, **kwargs):
@@ -79,10 +88,7 @@ class User(AbstractUser):
     @receiver(post_save, sender=settings.AUTH_USER_MODEL)
     def create_alumnregistry_profile(sender, instance, created, **kwargs):
         if created:
-            instance.person = Person.objects.create(
-                member_type='0',
-                slug=instance.pk
-            )
+            instance.person = Person.objects.create(member_type="0", slug=instance.pk)
             instance.save()
 
     objects = UserManager()

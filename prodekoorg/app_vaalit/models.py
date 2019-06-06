@@ -34,7 +34,7 @@ class Ehdokas(models.Model):
     )
     name = models.CharField(max_length=50, verbose_name=_("Name"))
     introduction = RichTextField(config_name="main_ckeditor")
-    virka = models.ForeignKey(Virka, related_name="ehdokkaat")
+    virka = models.ForeignKey(Virka, on_delete=models.CASCADE, related_name="ehdokkaat")
     pic = models.ImageField(blank=True, verbose_name=_("Picture"))
 
     def natural_key(self):
@@ -65,8 +65,8 @@ class Kysymys(models.Model):
     """
 
     created_at = models.DateTimeField(auto_now_add=True, verbose_name=_("Created at"))
-    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, blank=True, null=True)
-    to_virka = models.ForeignKey(Virka, related_name=_("questions"))
+    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, null=True)
+    to_virka = models.ForeignKey(Virka, on_delete=models.CASCADE, related_name=_("questions"))
     question = models.TextField(blank=False, verbose_name=_("Question"))
 
     def __str__(self):

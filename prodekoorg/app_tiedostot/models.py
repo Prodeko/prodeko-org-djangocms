@@ -22,7 +22,7 @@ class Tiedosto(models.Model):
         if self.thumbnail_image:
             return "{}".format(self.thumbnail_image.url)
         else:
-            return "{}{}".format(settings.STATIC_ROOT, "default_thumbnail.jpg")
+            return "{}{}".format(settings.STATIC_ROOT, "/misc/default_thumbnail.jpg")
 
     class Meta:
         # Correct spelling in Django admin

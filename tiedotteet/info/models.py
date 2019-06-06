@@ -64,7 +64,7 @@ class Message(models.Model):
     header = models.CharField(max_length=250)
     content = models.TextField()
     pub_date = models.DateTimeField(default=timezone.now)
-    category = models.ForeignKey(Category, related_name="messages", null=True)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name="messages", null=True)
     tags = models.ManyToManyField(Tag, related_name="messages", null=True, blank=True)
     start_date = models.DateField(default=timezone.now)
     end_date = models.DateField(default=timezone.now().date() + timedelta(days=7))
