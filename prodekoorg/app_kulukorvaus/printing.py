@@ -44,15 +44,10 @@ class KulukorvausPDF:
     def register_fonts(self):
         """Register fonts so reportlab can use them."""
         pdfmetrics.registerFont(
-            TTFont(
-                "Raleway Bold", settings.STATIC_ROOT + "/fonts/Raleway/Raleway-Bold.ttf"
-            )
+            TTFont("Raleway Bold", settings.STATIC_ROOT + "/fonts/Raleway-Bold.ttf")
         )
         pdfmetrics.registerFont(
-            TTFont(
-                "Raleway Medium",
-                settings.STATIC_ROOT + "/fonts/Raleway/Raleway-Medium.ttf",
-            )
+            TTFont("Raleway Medium", settings.STATIC_ROOT + "/fonts/Raleway-Medium.ttf")
         )
 
     def handle_receipt(self, img_receipt):
@@ -129,7 +124,8 @@ class KulukorvausPDF:
         ]
 
         Img = self.get_image(
-            settings.STATIC_ROOT + "/images/prodeko-logo-text-blue.png", width=10 * cm
+            settings.STATIC_ROOT + "/images/logos/prodeko-logo-text-blue.png",
+            width=10 * cm,
         )
         s05cm = Spacer(width=0, height=0.5 * cm)
         ptime = "<font name='Raleway Medium' size=8>{}</font>".format(formatted_time)
