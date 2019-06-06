@@ -1,6 +1,6 @@
 @import "../../../prodekoorg/static/scss/breakpoints_mixin.scss";
 
-// === GLOBAL UI SETUP === 
+// === GLOBAL UI SETUP ===
 .btn {
   display: inline-block;
   margin: 20px 20px;
@@ -17,7 +17,6 @@
     transform: translateY(-5px);
   }
 }
-
 
 //=== LOADING ===
 #loading {
@@ -41,11 +40,15 @@
   }
 
   @keyframes loading {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
   }
 }
-
 
 // === NAVBAR ===
 
@@ -101,7 +104,12 @@
       display: none;
       width: 100%;
       height: 160%;
-      background-image: linear-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
+      background-image:
+        linear-gradient(
+          rgba(255, 255, 255, 1),
+          rgba(255, 255, 255, 0.7),
+          rgba(255, 255, 255, 0)
+        );
     }
   }
 }
@@ -120,12 +128,12 @@
     width: 100%;
     height: 99.9%;
     margin-top: 0;
-    background: url('assets/2018/8.jpg');
+    object-fit: cover;
+    background: url("assets/2018/8.jpg");
     background-position: center center;
     background-size: cover;
     -webkit-border-radius: 1px;
     border-radius: 1px;
-    object-fit: cover;
   }
 
   .darkener {

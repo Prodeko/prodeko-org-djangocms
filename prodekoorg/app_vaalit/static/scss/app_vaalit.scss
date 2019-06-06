@@ -1,4 +1,16 @@
 #vaaliContainer {
+  .vaalitQuestions .vaalit-vastaus .img-container {
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    border-radius: 50%;
+  }
+
+  #confirmDeleteEhdokasModal .btn,
+  .vaalitQuestions .btn {
+    width: 85px;
+  }
+
   .btn {
     width: 140px;
     font-weight: 200;
@@ -12,11 +24,47 @@
   .modal-lg {
     max-width: 70%;
   }
-}
 
-#vaaliContainer #confirmDeleteEhdokasModal .btn,
-#vaaliContainer .vaalitQuestions .btn {
-  width: 85px;
+  #vaaliApplyForm {
+    display: none;
+  }
+
+  #vaalitKysymysForm {
+    a {
+      background-color: #e7e7e7;
+    }
+
+    .fa-chevron-down {
+      transition: all 0.3s ease-in-out;
+    }
+  }
+
+  #modalCrop .img-container img,
+  #vaalitModifyApplyModal .img-container img {
+    max-width: 100%;
+  }
+
+  .crop-preview,
+  #vaalitModifyApplyForm .crop-preview {
+    width: 100px;
+    height: 0;
+    overflow: hidden;
+    border-radius: 50%;
+  }
+
+  .img-container img {
+    display: inline;
+    margin: 0 auto;
+  }
+
+  .vaalitQuestions small {
+    font-weight: 200;
+    font-size: 0.7em;
+  }
+
+  form[id^="vaalitAnswerForm_"] .btn {
+    width: 150px;
+  }
 }
 
 #vaaliContainer .card .img-container,
@@ -27,42 +75,9 @@
   border-radius: 50%;
 }
 
-#vaaliContainer .vaalitQuestions .vaalit-vastaus .img-container {
-  width: 50px;
-  height: 50px;
-  overflow: hidden;
-  border-radius: 50%;
-}
-
 /* Height is set to 100px in 'vaalit_custom.js' once the
  * image file is selected and cropped.
  */
-#vaaliContainer .crop-preview,
-#vaalitModifyApplyForm .crop-preview {
-  width: 100px;
-  height: 0;
-  overflow: hidden;
-  border-radius: 50%;
-}
-
-#vaaliContainer .img-container img {
-  display: inline;
-  margin: 0 auto;
-}
-
-#vaaliContainer #modalCrop .img-container img,
-#vaalitModifyApplyModal .img-container img {
-  max-width: 100%;
-}
-
-#vaaliContainer #vaalitKysymysForm a {
-  background-color: #e7e7e7;
-}
-
-#vaaliContainer #vaalitKysymysForm .fa-chevron-down {
-  transition: all 0.3s ease-in-out;
-}
-
 #vaaliContainer #vaalitKysymysForm #btnHaeVirkaan.animate-chevron .fa-chevron-down {
   transform:
     rotate(
@@ -70,19 +85,6 @@
     ); /* For some reason there is a small wiggle if the rotation is 180 degrees */
 
   transition: all 0.3s ease-in-out;
-}
-
-#vaaliContainer #vaaliApplyForm {
-  display: none;
-}
-
-#vaaliContainer .vaalitQuestions small {
-  font-weight: 200;
-  font-size: 0.7em;
-}
-
-#vaaliContainer form[id^="vaalitAnswerForm_"] .btn {
-  width: 150px;
 }
 
 /* Bootstrap nested list group.
@@ -153,12 +155,4 @@
   #vaaliContainer #modalCrop button[class*="js-zoom"] {
     max-width: 50px;
   }
-}
-
-/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
-@media only screen and (min-width: 480px) and (max-width: 767px) {
-}
-
-/* Tablet Portrait size to standard 960 (devices and browsers) */
-@media only screen and (min-width: 768px) and (max-width: 959px) {
 }

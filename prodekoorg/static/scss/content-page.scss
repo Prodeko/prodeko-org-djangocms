@@ -86,8 +86,8 @@
   }
 
   ul:not(.page-breadcrumb):not(#sidenav) li::before {
-    content: "–";
     padding-right: 1em;
+    content: "–";
   }
 
   @include desktop {
