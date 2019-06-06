@@ -6,5 +6,17 @@
   "rules": {
     "at-rule-no-unknown": null,
   },
-  "ignoreFiles": ["./tiedotteet/info/static/**", "./prodekoorg/collected-static/**", "prodekoorg/static/scss/bs4_scss/**", "prodekoorg/static/scss/hamburgers.scss"]
+  "ignoreFiles": [
+    "prodekoorg/collected-static/**",
+    "prodekoorg/static/scss/bs4_scss/**", 
+    "prodekoorg/static/scss/hamburgers.scss",
+    "alumnirekisteri/rekisteri/static/icons/**",
+    "alumnirekisteri/rekisteri/static/css/**",
+    "!alumnirekisteri/rekisteri/static/css/ar_custom.css",
+    "lifelonglearning/staticcss/bootstrap.min.css",
+    "tiedotteet/info/static/**",
+    "!tiedotteet/info/static/css/custom.css",
+    "!tiedotteet/info/static/css/email.css",
+    "!tiedotteet/info/static/css/sidebar.css"
+  ]
 }

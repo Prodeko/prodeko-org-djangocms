@@ -54,6 +54,8 @@ coverage.xml
 
 # Django stuff:
 *.log
+*.log
+prodekoorg/collected-static
 rekisteri/migrations/
 auth2/migrations/
 
@@ -68,16 +70,13 @@ target/
 
 
 *.DS_Store
-initialise.sh
 venv/
-prodekoorg/collected-static
 
 *.db
 *.json
 !data.json
 !package.json
 !package-lock.json
-!eslintrc.json
 
 # tiedotteet.prodeko.org
 tiedotteet/static/
@@ -85,6 +84,3 @@ node_modules/
 yarn.lock
 dist/
 .idea/
-
-#auto migrations
-*_auto_*.py
