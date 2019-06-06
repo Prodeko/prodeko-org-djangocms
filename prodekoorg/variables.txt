@@ -4,7 +4,7 @@ SECRET = f9a6s5442hzHYv4f7TcYHdirQRzQeqJdE6MRLninfCcLB3Y8xo
 [DB]
 NAME_DEFAULT = prodekoorg
 USER = prodekoorg
-PASSWORD = prodekoorg
+PASSWORD = secret
 
 [DEBUG]
 MODE = True
