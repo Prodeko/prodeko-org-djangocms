@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 
 services:
   db:
@@ -18,4 +18,4 @@ services:
     depends_on:
       - db
     environment:
-     - DATABASE_URL=mysql://prodekoorg:secret@db/prodekoorg
+      - DATABASE_URL=mysql://prodekoorg:secret@db/prodekoorg
