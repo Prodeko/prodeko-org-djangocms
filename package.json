@@ -4,10 +4,10 @@
   "description": "Prodeko's website",
   "main": "index.js",
   "scripts": {
-    "lint:eslint": "./node_modules/.bin/eslint --ignore-path .gitignore ./tiedotteet --ext .js .",
-    "lint:eslint-fix": "./node_modules/.bin/eslint --ignore-path .gitignore ./tiedotteet --ext .js --fix .",
-    "lint:stylelint": "./node_modules/.bin/stylelint '**/*.scss'",
-    "lint:stylelint-fix": "./node_modules/.bin/stylelint **/*.scss --fix"
+    "lint:eslint": "eslint --ignore-path .gitignore --ext .html,.js prodekoorg",
+    "lint:eslint-fix": "eslint --ignore-path .gitignore ./tiedotteet --ext .html,.js --fix .",
+    "lint:css": "stylelint '**/*.scss', '**/*.css'",
+    "lint:css-fix": "stylelint **/*.scss --fix"
   },
   "repository": {
     "type": "git",
@@ -21,12 +21,15 @@
   "homepage": "https://github.com/Prodeko/prodeko-org-djangocms#readme",
   "devDependencies": {
     "babel-eslint": "^10.0.1",
-    "eslint": "^5.15.3",
-    "eslint-config-prettier": "^4.1.0",
-    "eslint-plugin-prettier": "^3.0.1",
-    "prettier": "^1.16.4",
-    "stylelint": "^9.10.1",
-    "stylelint-config-rational-order": "0.0.4",
-    "stylelint-config-standard": "^18.2.0"
+    "eslint": "^5.16.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-html": "^5.0.5",
+    "eslint-plugin-import": "^2.17.3",
+    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-promise": "^4.1.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "stylelint": "^10.0.1",
+    "stylelint-config-rational-order": "0.1.2",
+    "stylelint-config-standard": "^18.3.0"
   }
 }
