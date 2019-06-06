@@ -1,4 +1,4 @@
-from django.conf.urls import url
+from django.urls import re_path
 from django.contrib import admin
 from django.contrib.admin.views.decorators import staff_member_required
 from django.db import models
@@ -29,17 +29,17 @@ class PendingUserAdmin(admin.ModelAdmin):
     def get_urls(self):
         urls = super().get_urls()
         custom_urls = [
-            url(
+            re_path(
                 r"^(?P<account_id>.+)/view/$",
                 self.admin_site.admin_view(view_application),
                 name="application-view",
             ),
-            url(
+            re_path(
                 r"^(?P<account_id>.+)/accept/$",
                 self.admin_site.admin_view(accept_application),
                 name="application-accept",
             ),
-            url(
+            re_path(
                 r"^(?P<account_id>.+)/reject/$",
                 self.admin_site.admin_view(reject_application),
                 name="application-reject",

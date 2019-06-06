@@ -10,11 +10,11 @@ from django.test import TestCase
 
 from ..models import Dokumentti
 
-tmp_media_dir = "/tmp/django_test"
+TMP_MEDIA_DIR = "/tmp/django_test"
 # Creates a temporary folder for test file uploads
-if not os.path.exists(tmp_media_dir):
-    os.makedirs(tmp_media_dir)
-settings.MEDIA_ROOT = tmp_media_dir
+if not os.path.exists(TMP_MEDIA_DIR):
+    os.makedirs(TMP_MEDIA_DIR)
+settings.MEDIA_ROOT = TMP_MEDIA_DIR
 
 GDRIVE_ID = "1GUkGy5KDJ7HG9DNbbjUELs_KEBUcE-oV"
 

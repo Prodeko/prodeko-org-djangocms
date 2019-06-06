@@ -1,7 +1,7 @@
 import os
 from django.shortcuts import render, render_to_response, redirect, HttpResponse, HttpResponseRedirect
 from django.http import HttpResponseNotFound, HttpResponseForbidden, StreamingHttpResponse, JsonResponse
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.core.files.base import ContentFile
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.mail import EmailMultiAlternatives
@@ -70,42 +70,42 @@ def getAdminSearchQueryset(first_name, last_name, admin_note, member_until_type,
 def delete_user(user):
     if user.person:
         for x in user.person.phones.all():
-            x.audit_log.disable_tracking()
+            """ x.audit_log.disable_tracking() """
             x.delete()
         for x in user.person.emails.all():
-            x.audit_log.disable_tracking()
+            """ x.audit_log.disable_tracking() """
             x.delete()
         for x in user.person.skills.all():
-            x.audit_log.disable_tracking()
+            """ x.audit_log.disable_tracking() """
             x.delete()
         for x in user.person.languages.all():
-            x.audit_log.disable_tracking()
+            """ x.audit_log.disable_tracking() """
             x.delete()
         for x in user.person.educations.all():
-            x.audit_log.disable_tracking()
+            """ x.audit_log.disable_tracking() """
             x.delete()
         for x in user.person.work_experiences.all():
-            x.audit_log.disable_tracking()
+            """ x.audit_log.disable_tracking() """
             x.delete()
         for x in user.person.positions_of_trust.all():
-            x.audit_log.disable_tracking()
+            """ x.audit_log.disable_tracking() """
             x.delete()
         for x in user.person.student_organizational_activities.all():
-            x.audit_log.disable_tracking()
+            """ x.audit_log.disable_tracking() """
             x.delete()
         for x in user.person.volunteers.all():
-            x.audit_log.disable_tracking()
+            """ x.audit_log.disable_tracking() """
             x.delete()
         for x in user.person.honors.all():
-            x.audit_log.disable_tracking()
+            """ x.audit_log.disable_tracking() """
             x.delete()
         for x in user.person.interests.all():
-            x.audit_log.disable_tracking()
+            """ x.audit_log.disable_tracking() """
             x.delete()
         for x in user.person.family_members.all():
-            x.audit_log.disable_tracking()
+            """ x.audit_log.disable_tracking() """
             x.delete()
-        user.person.audit_log.disable_tracking()
+        """ user.person.audit_log.disable_tracking() """
         user.person.delete()
     user.delete()
 
