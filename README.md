@@ -16,10 +16,12 @@ Lataa [docker](https://docs.docker.com/install/).
 $ docker-compose up  # Kehitysympäristön käynnistys
 ```
 
-#### Vagrant 
+#### Vagrant
+
 Yhtenäisen kehitysympäristöön käytämme Virtualboxia ja vagranttia. Virtuaalikoneen versio on Ubuntu 16.04.4 LTS (Xenial Xerus).
 
 Lataa vagrant ja virtualbox:
+
 - [vagrant](https://www.vagrantup.com/downloads.html)
 - [virtualbox](https://www.virtualbox.org/wiki/Downloads)
 
@@ -30,7 +32,7 @@ $ vagrant ssh        # SSH yhteys virtuaalikoneeseen
 $ cd /vagrant        # Jaettu kansio
 ```
 
-Komento `vagrant up` käynnistää lokaalin serverin osoitteeseen localhost:9000 (sama kuin 127.0.0.1:9000). Lisäksi bootstrap.sh luo automaattisesti Django superuserin kirjautumista varten. Komento `vagrant provision` ajaa bootstrap.sh tiedoston komennot. 
+Komento `vagrant up` käynnistää lokaalin serverin osoitteeseen localhost:9000 (sama kuin 127.0.0.1:9000). Lisäksi bootstrap.sh luo automaattisesti Django superuserin kirjautumista varten. Komento `vagrant provision` ajaa bootstrap.sh tiedoston komennot.
 
 Jos vagrantin sisällä oleva serveri pysähtyy jostain syystä, sen saa uudestaan päälle esimerkiksi seuraavilla komennoilla
 
@@ -69,11 +71,12 @@ Testien kirjoittamiseen voi katsoa mallia prodekoorg/app_kulukorvaus/tests/ kans
 
 **Code compliance (PEP8)**
 
-Konfiguraatiotiedosto [.flake8](./.flake8).
+Konfiguraatiotiedosto [.pylintrc](./.pylintrc).
 
-Aja flake8:
+Aja pylint:
+
 ```shell
-$ flake8
+$ pylint --load-plugins pylint_django prodekoorg/
 ```
 
 **Code formatting**
@@ -81,6 +84,7 @@ $ flake8
 Konfiguraatiotiedosto [pyproject.toml](./pyproject.toml).
 
 Aja black:
+
 ```shell
 $ black .
 
@@ -90,16 +94,20 @@ All done! ✨ 🍰 ✨
 
 ### Rakennuspalikat
 
-* [Django](https://reactjs.org/) - Web development framework
-* [Django CMS](https://www.django-cms.org/en/) - Sisällönhallintajärjestelmä Djangolle
-  * [djangocms-bootstrap4](https://github.com/divio/djangocms-bootstrap4) - Bootstrap4 elementtien lisäys suoraan CMS:stä
+- [Django](https://reactjs.org/) - Web development framework
+- [Django CMS](https://www.django-cms.org/en/) - Sisällönhallintajärjestelmä Djangolle
+  - [djangocms-bootstrap4](https://github.com/divio/djangocms-bootstrap4) - Bootstrap4 elementtien lisäys suoraan CMS:stä
 
 ### Rakenne
+
     .
-    ├── ...
     ├── abisivut                       # abit.prodeko.org
     │   └── ...
+    ├── alumnirekisteri                # martrikkeli.prodeko.org
+    │   └── ...
     ├── auth_prodeko                   # Autentikaatio
+    │   └── ...
+    ├── documentation                  # Dokumentaatio
     │   └── ...
     ├── lifelonglearning               # lifelonglearning.prodeko.org
     │   └── ...
@@ -128,28 +136,32 @@ All done! ✨ 🍰 ✨
     │   │   ├── js
     │   │   ├── misc                   # site.webmanifest
     │   │   └── scss                   # Bootstrap4 scss, muut scss tiedostot
-    │   │──templates          # Suurin osa .html tiedostoista - appeilla (app_kulukorvaus jne.) on omat templatensa ja staattiset tiedostonsa (js, scss, kuvat)
+    │   │──templates                   # Suurin osa .html tiedostoista - appeilla (app_kulukorvaus jne.)
+    │   │   │                          # on omat templatensa ja staattiset tiedostonsa (js, scss, kuvat)
     │   │   └── ...
     │   └── ...
-    ├── seminaari             # Prodeko Seminaarin nettisivut
+    ├── seminaari                      # Prodeko Seminaarin nettisivut
     │   └── ...
-    ├── tiedotteet            # tiedotteet.prodeko.org verkkosivu
+    ├── tiedotteet                     # tiedotteet.prodeko.org verkkosivu
     │   └── ...
-    ├── README.md             # README
-    ├── bootstrap.sh          # Vagrant konfiguraatiotiedosto, jonka komennot käydään läpi `vagrant provision` komennolla
+    ├── README.md                      # README
+    ├── bootstrap.sh                   # Vagrant konfiguraatiotiedosto, jonka komennot käydään
+    │                                  # läpi `vagrant provision` ja `docker-compose up` komennoilla
     └── ...
 
 ### Printtaaminen konsoliin
-- Mikäli haluat printata jotain konsoliin, kommentoi `su - ubuntu -c "cd /vagrant && screen -S server -d -m python3 manage.py runserver 0.0.0.0:8000"` rivi pois bootstrap.sh tiedostosta ja aja `vagrant provision`. Vaihtoehtoisesti tapa runserver prosessi ajamalla virtuaalikoneen sisällä `sudo netstat -plten |grep python` ja `sudo kill $PID` ($PID tilalle laita netstatin kertoma prosessinumero).
+
+- Mikäli haluat printata jotain konsoliin, kommentoi `su - ubuntu -c "cd /vagrant && screen -S server -d -m python3 manage.py runserver 0.0.0.0:8000"` rivi pois bootstrap.sh tiedostosta ja aja `vagrant provision`. Vaihtoehtoisesti tapa runserver prosessi ajamalla virtuaalikoneen sisällä `sudo netstat -plten |grep python` ja `sudo kill $PID` (\$PID tilalle laita netstatin kertoma prosessinumero).
 
 ### Kääntäminen eri kielille
-1. importtaa ugettext_lazy: `from django.utils.translation import ugettext_lazy as _`. Käytä koodissa näin: _("First name")
+
+1. importtaa ugettext*lazy: `from django.utils.translation import ugettext_lazy as *`. Käytä koodissa näin: \_("First name")
 2. `python3 manage.py makemessages -l fi`. locale/ kansioon .po tiedostoon muodostuu käännettävä sana, esimerkin tapauksessa "First name".
-3. Käännä suomeksi .po tiedostossa ja aja `python3 manage.py compilemessages`. 
+3. Käännä suomeksi .po tiedostossa ja aja `python3 manage.py compilemessages`.
 
 Jos törmäät "CommandError: Can't find msgfmt. Make sure you have GNU gettext tools 0.15 or newer installed." virheeseen, aja sudo `apt-get install gettext` vagrantissa.
 
-.po tiedosto näyttää tältä: 
+.po tiedosto näyttää tältä:
 
 ```
 #: prodekoorg/app_apply_for_membership/models.py:37
@@ -158,12 +170,13 @@ msgstr "Etunimi"
 ```
 
 ### Jos scss ei meinaa toimia
+
 Scss:n pitäisi automaattisesti compilata silloin kun tiedosto tallennetaan ja sen aikaleima muuttuu. Tämä ei aina toimi. Workaround: poista tidostosta esim. yksi '{', jotta se on epäpätevä -> muodostuu error, jonka jälkeen compilaus toimii kun '{' lisätään takaisin.
 
 ### Kehittäjät
 
-* Timo Riski
-* Santeri Kivinen
-* Niko Kinnunen
-* Kalle Hiltunen
-* Leo Drosdek
+- Timo Riski
+- Santeri Kivinen
+- Niko Kinnunen
+- Kalle Hiltunen
+- Leo Drosdek
