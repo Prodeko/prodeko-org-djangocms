@@ -12,7 +12,7 @@ from django.urls import reverse
 from django.utils import timezone
 from django.utils.html import strip_tags
 from django.utils.translation import ugettext as _
-from tiedotteet.info.forms import (
+from tiedotteet.backend.forms import (
     CategoryForm,
     EditForm,
     MailConfigurationForm,
@@ -20,7 +20,7 @@ from tiedotteet.info.forms import (
     SendEmailForm,
     TagForm,
 )
-from tiedotteet.info.models import Category, MailConfiguration, Message, Tag
+from tiedotteet.backend.models import Category, MailConfiguration, Message, Tag
 
 
 def index(request):
@@ -39,11 +39,11 @@ def control_panel(request):
         if form.is_valid():
             form.save()
             messages.success(request, _("New bulletin added"))
-            return redirect('tiedotteet:cp')
-    return render(request, 'control/cp.html', {
-        'form': form,
-        'latest_messages': latest_messages,
-    })
+            return redirect("tiedotteet:cp")
+    return render(
+        request, "control/cp.html", {"form": form, "latest_messages": latest_messages}
+    )
+
 
 def control_messages(request, filter, category):
     """ control panel - list messages """
@@ -117,12 +117,12 @@ def categories(request):
                 category = cf.save()
                 if category.title == "":
                     category.delete()
-            return redirect('tiedotteet:categories')
-    return render(request, 'control/categories.html', {
-        'categories': categories,
-        'cforms': cforms,
-        'nform': nform,
-    })
+            return redirect("tiedotteet:categories")
+    return render(
+        request,
+        "control/categories.html",
+        {"categories": categories, "cforms": cforms, "nform": nform},
+    )
 
 
 def new_category(request):
@@ -133,7 +133,7 @@ def new_category(request):
         form = CategoryForm(request.POST)
         if form.is_valid():
             form.save()
-    return redirect('tiedotteet:categories')
+    return redirect("tiedotteet:categories")
 
 
 def tags(request):
@@ -146,11 +146,8 @@ def tags(request):
         form = TagForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('tiedotteet:tags')
-    return render(request, 'control/tags.html', {
-        'tags': tags,
-        'form': form,
-    })
+            return redirect("tiedotteet:tags")
+    return render(request, "control/tags.html", {"tags": tags, "form": form})
 
 
 def delete_tag(request, pk):
@@ -159,7 +156,7 @@ def delete_tag(request, pk):
     if request.method == "POST":
         tag = get_object_or_404(Tag, pk=pk)
         tag.delete()
-    return redirect('tiedotteet:tags')
+    return redirect("tiedotteet:tags")
 
 
 def email(request):
@@ -193,7 +190,7 @@ def delete_message(request, pk):
         message = get_object_or_404(Message, pk=pk)
         message.delete()
 
-    return redirect('tiedotteet:control_messages', filter="all", category="all")
+    return redirect("tiedotteet:control_messages", filter="all", category="all")
 
 
 def hide_message(request, pk):
@@ -206,7 +203,7 @@ def hide_message(request, pk):
         else:
             message.visible = True
         message.save()
-    return redirect('tiedotteet:control_messages', filter="all", category="all")
+    return redirect("tiedotteet:control_messages", filter="all", category="all")
 
 
 def edit_message(request, pk):

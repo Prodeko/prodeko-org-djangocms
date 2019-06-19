@@ -79,7 +79,9 @@ venv/
 !package-lock.json
 
 # tiedotteet.prodeko.org
-tiedotteet/static/
+tiedotteet/frontend/static/
+tiedotteet/frontend/public/
+!tiedotteet/frontend/src/manifest.json
 node_modules/
 yarn.lock
 dist/

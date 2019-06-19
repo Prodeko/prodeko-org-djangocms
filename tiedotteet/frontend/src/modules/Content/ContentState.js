@@ -49,7 +49,7 @@ export const fetchContent = () => dispatch => {
     process.env.NODE_ENV === "production"
       ? ""
       : "https://tiedotteet.prodeko.org"
-  }/api/content/`;
+  }/tiedotteet/api/content/`;
   fetch(url, {
     credentials: "same-origin",
     headers: {

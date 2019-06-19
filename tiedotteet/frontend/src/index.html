@@ -1,4 +1,4 @@
-{% load staticfiles %}
+<!-- {% load staticfiles %} -->
 
 <!DOCTYPE html>
 <html lang="fi">
@@ -10,7 +10,7 @@
     <meta name="theme-color" content="#1e3553">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    {# Favicon stuff #}
+    <!-- {# Favicon stuff #} -->
     <link rel="apple-touch-icon" sizes="180x180" href="{% static 'assets/favicons/apple-touch-icon.png' %}">
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'assets/favicons/favicon-32x32.png' %}">
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'assets/favicons/favicon-16x16.png' %}">
@@ -20,7 +20,7 @@
 
     <link rel="manifest" href="{% static 'manifest.json'%}">
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,600" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'style_k7jvy.css'%}">
+    <link rel="stylesheet" href="{% static '<%= htmlWebpackPlugin.options.styleSheetName %>'%}">
     <script>
         window.csrfToken = "{{csrf_token}}";
         window.user = "{{user}}";
@@ -40,7 +40,6 @@
 <body>
     <noscript>This site requires JavaScript turned on</noscript>
     <div id="root"></div>
-    <script type="text/javascript" src="{% static 'app.bundle_k7jvy.js' %}"></script>
 </body>
 
 </html>

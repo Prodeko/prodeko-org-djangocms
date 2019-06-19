@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-19 15:55+0000\n"
+"POT-Creation-Date: 2019-06-19 20:44+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,7 +26,7 @@ msgstr "Abisivut"
 msgid "The two password fields didn't match."
 msgstr "Salasanat eivät täsmää."
 
-#: alumnirekisteri/auth2/forms.py:41 tiedotteet/info/forms.py:132
+#: alumnirekisteri/auth2/forms.py:41 tiedotteet/backend/forms.py:132
 msgid "Password"
 msgstr "Salasana"
 
@@ -851,8 +851,8 @@ msgstr "Ei kysymyksiä"
 
 #: prodekoorg/app_vaalit/templates/vaalit_ehdokas.html:3
 #: prodekoorg/app_vaalit/templates/vaalit_modal_delete_ehdokas.html:5
-#: tiedotteet/info/templates/control/messages.html:83
-#: tiedotteet/info/templates/control/tags.html:45
+#: tiedotteet/backend/templates/control/messages.html:83
+#: tiedotteet/backend/templates/control/tags.html:45
 msgid "Delete"
 msgstr "Poista"
 
@@ -866,8 +866,8 @@ msgstr "Haluatko varmasti poistaa hakemuksesi?"
 
 #: prodekoorg/app_vaalit/templates/vaalit_modal_delete_ehdokas.html:4
 #: prodekoorg/app_vaalit/templates/vaalit_modal_photocrop.html:4
-#: tiedotteet/info/templates/control/categories.html:45
-#: tiedotteet/info/templates/control/email.html:117
+#: tiedotteet/backend/templates/control/categories.html:45
+#: tiedotteet/backend/templates/control/email.html:117
 msgid "Close"
 msgstr "Sulje"
 
@@ -888,7 +888,7 @@ msgid "Remove"
 msgstr "Poista"
 
 #: prodekoorg/app_vaalit/templates/vaalit_question.html:5
-#: tiedotteet/info/templates/control/editor.html:14
+#: tiedotteet/backend/templates/control/editor.html:14
 msgid "Edit"
 msgstr "Muokkaa"
 
@@ -968,246 +968,252 @@ msgstr ""
 msgid "Prodeko seminar page"
 msgstr "Prodeko-seminaari sivu"
 
-#: tiedotteet/info/forms.py:35 tiedotteet/info/forms.py:74
+#: tiedotteet/backend/forms.py:35 tiedotteet/backend/forms.py:74
 msgid "Header"
 msgstr "Otsikko"
 
-#: tiedotteet/info/forms.py:36 tiedotteet/info/forms.py:75
+#: tiedotteet/backend/forms.py:36 tiedotteet/backend/forms.py:75
 msgid "Content"
 msgstr "Sisältö"
 
-#: tiedotteet/info/forms.py:37 tiedotteet/info/forms.py:76
-#: tiedotteet/info/forms.py:102
-#: tiedotteet/info/templates/control/categories.html:57
+#: tiedotteet/backend/forms.py:37 tiedotteet/backend/forms.py:76
+#: tiedotteet/backend/forms.py:102
+#: tiedotteet/backend/templates/control/categories.html:57
 msgid "Category"
 msgstr "Kategoria"
 
-#: tiedotteet/info/forms.py:38 tiedotteet/info/forms.py:77
-#: tiedotteet/info/templates/control/base.html:71
-#: tiedotteet/info/templates/control/tags.html:10
+#: tiedotteet/backend/forms.py:38 tiedotteet/backend/forms.py:77
+#: tiedotteet/backend/templates/control/base.html:71
+#: tiedotteet/backend/templates/control/tags.html:10
 msgid "Tags"
 msgstr "Tagit"
 
-#: tiedotteet/info/forms.py:39 tiedotteet/info/forms.py:78
+#: tiedotteet/backend/forms.py:39 tiedotteet/backend/forms.py:78
 msgid "Start date"
 msgstr "Alkamispäivä"
 
-#: tiedotteet/info/forms.py:40 tiedotteet/info/forms.py:79
+#: tiedotteet/backend/forms.py:40 tiedotteet/backend/forms.py:79
 msgid "End date"
 msgstr "Päättymispäivä"
 
-#: tiedotteet/info/forms.py:41 tiedotteet/info/forms.py:80
+#: tiedotteet/backend/forms.py:41 tiedotteet/backend/forms.py:80
 msgid "Deadline"
 msgstr "Deadline"
 
-#: tiedotteet/info/forms.py:42 tiedotteet/info/forms.py:81
+#: tiedotteet/backend/forms.py:42 tiedotteet/backend/forms.py:81
 msgid "Show deadline"
 msgstr "Näytä deadline"
 
-#: tiedotteet/info/forms.py:43 tiedotteet/info/forms.py:82
-#: tiedotteet/info/templates/control/categories.html:59
+#: tiedotteet/backend/forms.py:43 tiedotteet/backend/forms.py:82
+#: tiedotteet/backend/templates/control/categories.html:59
 msgid "Visible"
 msgstr "Näytä"
 
-#: tiedotteet/info/forms.py:61 tiedotteet/info/views.py:221
+#: tiedotteet/backend/forms.py:61 tiedotteet/backend/views.py:218
 msgid "Bulletin updated"
 msgstr "Tiedote päivitetty"
 
-#: tiedotteet/info/forms.py:103
-#: tiedotteet/info/templates/control/categories.html:58
+#: tiedotteet/backend/forms.py:103
+#: tiedotteet/backend/templates/control/categories.html:58
 msgid "Order"
 msgstr "Järjestys"
 
-#: tiedotteet/info/forms.py:104
+#: tiedotteet/backend/forms.py:104
 msgid "Visibility"
 msgstr "Näkyvyys"
 
-#: tiedotteet/info/forms.py:111
+#: tiedotteet/backend/forms.py:111
 msgid "Public"
 msgstr "Julkinen"
 
-#: tiedotteet/info/forms.py:111
+#: tiedotteet/backend/forms.py:111
 msgid "Login required"
 msgstr "Vaatii kirjautumisen"
 
-#: tiedotteet/info/forms.py:120
+#: tiedotteet/backend/forms.py:120
 msgid "Add a new tag"
 msgstr "Lisää tagi"
 
-#: tiedotteet/info/forms.py:129 tiedotteet/info/templates/control/email.html:21
+#: tiedotteet/backend/forms.py:129
+#: tiedotteet/backend/templates/control/email.html:21
 msgid "Host"
 msgstr "Palvelin"
 
-#: tiedotteet/info/forms.py:130 tiedotteet/info/templates/control/email.html:25
+#: tiedotteet/backend/forms.py:130
+#: tiedotteet/backend/templates/control/email.html:25
 msgid "Port"
 msgstr "Portti"
 
-#: tiedotteet/info/forms.py:131
+#: tiedotteet/backend/forms.py:131
 msgid "Username (email)"
 msgstr "Käyttäjänimi (sähköpostiosoite)"
 
-#: tiedotteet/info/forms.py:133
+#: tiedotteet/backend/forms.py:133
 msgid "Use TLS Encryption"
 msgstr "TLS salaus päällä"
 
-#: tiedotteet/info/forms.py:146
+#: tiedotteet/backend/forms.py:146
 msgid "Title"
 msgstr "Otsikko"
 
-#: tiedotteet/info/forms.py:150
+#: tiedotteet/backend/forms.py:150
 msgid "Recipients (separated by comma)"
 msgstr "Vastaanottajat (pilkulla eroteltuna)"
 
-#: tiedotteet/info/templates/control/base.html:10
+#: tiedotteet/backend/templates/control/base.html:10
 msgid "Weekly Bulletin - Control Panel"
 msgstr "Tiedotteet - Hallintapaneeli"
 
-#: tiedotteet/info/templates/control/base.html:50
+#: tiedotteet/backend/templates/control/base.html:50
 msgid "Sign out"
 msgstr "Kirjaudu ulos"
 
-#: tiedotteet/info/templates/control/base.html:59
+#: tiedotteet/backend/templates/control/base.html:59
 msgid "Go to site"
 msgstr "Mene takaisin sivustolle"
 
-#: tiedotteet/info/templates/control/base.html:62
-#: tiedotteet/info/templates/control/cp.html:20
+#: tiedotteet/backend/templates/control/base.html:62
+#: tiedotteet/backend/templates/control/cp.html:20
 msgid "Publish"
 msgstr "Julkaise"
 
-#: tiedotteet/info/templates/control/base.html:65
-#: tiedotteet/info/templates/control/email.html:10
-#: tiedotteet/info/templates/control/email.html:56
+#: tiedotteet/backend/templates/control/base.html:65
+#: tiedotteet/backend/templates/control/email.html:10
+#: tiedotteet/backend/templates/control/email.html:56
 msgid "Send email"
 msgstr "Lähetä sähköposti"
 
-#: tiedotteet/info/templates/control/base.html:68
-#: tiedotteet/info/templates/control/categories.html:11
+#: tiedotteet/backend/templates/control/base.html:68
+#: tiedotteet/backend/templates/control/categories.html:11
 msgid "Categories"
 msgstr "Kategoriat"
 
-#: tiedotteet/info/templates/control/base.html:78
-#: tiedotteet/info/templates/control/messages.html:25
-#: tiedotteet/info/views.py:70
+#: tiedotteet/backend/templates/control/base.html:78
+#: tiedotteet/backend/templates/control/messages.html:25
+#: tiedotteet/backend/views.py:70
 msgid "All"
 msgstr "Kaikki"
 
-#: tiedotteet/info/templates/control/base.html:81 tiedotteet/info/views.py:54
+#: tiedotteet/backend/templates/control/base.html:81
+#: tiedotteet/backend/views.py:54
 msgid "Now"
 msgstr "Nykyiset"
 
-#: tiedotteet/info/templates/control/base.html:84 tiedotteet/info/views.py:59
+#: tiedotteet/backend/templates/control/base.html:84
+#: tiedotteet/backend/views.py:59
 msgid "New"
 msgstr "Uudet"
 
-#: tiedotteet/info/templates/control/base.html:87 tiedotteet/info/views.py:64
+#: tiedotteet/backend/templates/control/base.html:87
+#: tiedotteet/backend/views.py:64
 msgid "Upcoming"
 msgstr "Tulevat"
 
-#: tiedotteet/info/templates/control/base.html:90 tiedotteet/info/views.py:67
+#: tiedotteet/backend/templates/control/base.html:90
+#: tiedotteet/backend/views.py:67
 msgid "Old"
 msgstr "Menneet"
 
-#: tiedotteet/info/templates/control/categories.html:12
+#: tiedotteet/backend/templates/control/categories.html:12
 msgid "Edit categories"
 msgstr "Muokkaa kategorioita"
 
-#: tiedotteet/info/templates/control/categories.html:18
-#: tiedotteet/info/templates/control/categories.html:28
+#: tiedotteet/backend/templates/control/categories.html:18
+#: tiedotteet/backend/templates/control/categories.html:28
 msgid "Add a category"
 msgstr "Lisää kategoria"
 
-#: tiedotteet/info/templates/control/categories.html:19
+#: tiedotteet/backend/templates/control/categories.html:19
 msgid "You can delete a category by leaving it empty and clicking Save"
 msgstr ""
 "Voit poistaa kategorian jättämällä sen tyhjäksi ja klikkaamalla Tallenna"
 
-#: tiedotteet/info/templates/control/categories.html:40
+#: tiedotteet/backend/templates/control/categories.html:40
 msgid "Add"
 msgstr "Lisää"
 
-#: tiedotteet/info/templates/control/categories.html:76
-#: tiedotteet/info/templates/control/email.html:116
-#: tiedotteet/info/templates/control/tags.html:29
+#: tiedotteet/backend/templates/control/categories.html:76
+#: tiedotteet/backend/templates/control/email.html:116
+#: tiedotteet/backend/templates/control/tags.html:29
 msgid "Save"
 msgstr "Tallenna"
 
-#: tiedotteet/info/templates/control/cp.html:21
+#: tiedotteet/backend/templates/control/cp.html:21
 msgid "Publish a new bulletin"
 msgstr "Tiedotteiden julkaisu"
 
-#: tiedotteet/info/templates/control/cp.html:118
+#: tiedotteet/backend/templates/control/cp.html:118
 msgid "Latest bulletins"
 msgstr "Viimeisimmät julkaisut"
 
-#: tiedotteet/info/templates/control/editor.html:15
+#: tiedotteet/backend/templates/control/editor.html:15
 msgid "Edit bulletins"
 msgstr "Muokkaa tiedotteita"
 
-#: tiedotteet/info/templates/control/email.html:11
+#: tiedotteet/backend/templates/control/email.html:11
 msgid "Send a bulletin by email"
 msgstr "Lähetä tiedote sähköpostilla"
 
-#: tiedotteet/info/templates/control/email.html:17
+#: tiedotteet/backend/templates/control/email.html:17
 msgid "Edit settings"
 msgstr "Muokkaa asetuksia"
 
-#: tiedotteet/info/templates/control/email.html:18
+#: tiedotteet/backend/templates/control/email.html:18
 msgid "Email server settings"
 msgstr "Lähettävän palvelimen asetukset"
 
-#: tiedotteet/info/templates/control/email.html:29
+#: tiedotteet/backend/templates/control/email.html:29
 msgid "User"
 msgstr "Käyttäjä"
 
-#: tiedotteet/info/templates/control/email.html:54
+#: tiedotteet/backend/templates/control/email.html:54
 msgid "Preview"
 msgstr "Esikatselu"
 
-#: tiedotteet/info/templates/control/messages.html:11
+#: tiedotteet/backend/templates/control/messages.html:11
 msgid "Bulletins"
 msgstr "Tiedotteet"
 
-#: tiedotteet/info/templates/control/messages.html:19
+#: tiedotteet/backend/templates/control/messages.html:19
 msgid "No results"
 msgstr "Ei tuloksia"
 
-#: tiedotteet/info/templates/control/messages.html:41
-#: tiedotteet/info/templates/control/messages.html:96
+#: tiedotteet/backend/templates/control/messages.html:41
+#: tiedotteet/backend/templates/control/messages.html:96
 msgid "previous"
 msgstr "edellinen"
 
-#: tiedotteet/info/templates/control/messages.html:47
-#: tiedotteet/info/templates/control/messages.html:102
+#: tiedotteet/backend/templates/control/messages.html:47
+#: tiedotteet/backend/templates/control/messages.html:102
 msgid "next"
 msgstr "seuraava"
 
-#: tiedotteet/info/templates/control/messages.html:74
+#: tiedotteet/backend/templates/control/messages.html:74
 msgid "Hide"
 msgstr "Piilota"
 
-#: tiedotteet/info/templates/control/messages.html:76
+#: tiedotteet/backend/templates/control/messages.html:76
 msgid "Show"
 msgstr "Näytä"
 
-#: tiedotteet/info/templates/control/tags.html:11
+#: tiedotteet/backend/templates/control/tags.html:11
 msgid "Edit tags"
 msgstr "Muokkaa tageja"
 
-#: tiedotteet/info/templates/control/tags.html:35
+#: tiedotteet/backend/templates/control/tags.html:35
 msgid "No tags"
 msgstr "Ei tageja"
 
-#: tiedotteet/info/views.py:34 tiedotteet/info/views.py:51
-#: tiedotteet/info/views.py:107 tiedotteet/info/views.py:131
-#: tiedotteet/info/views.py:142 tiedotteet/info/views.py:158
-#: tiedotteet/info/views.py:168 tiedotteet/info/views.py:191
-#: tiedotteet/info/views.py:201 tiedotteet/info/views.py:214
-#: tiedotteet/info/views.py:229 tiedotteet/info/views.py:248
-#: tiedotteet/info/views.py:292
+#: tiedotteet/backend/views.py:34 tiedotteet/backend/views.py:51
+#: tiedotteet/backend/views.py:107 tiedotteet/backend/views.py:131
+#: tiedotteet/backend/views.py:142 tiedotteet/backend/views.py:155
+#: tiedotteet/backend/views.py:165 tiedotteet/backend/views.py:188
+#: tiedotteet/backend/views.py:198 tiedotteet/backend/views.py:211
+#: tiedotteet/backend/views.py:226 tiedotteet/backend/views.py:245
+#: tiedotteet/backend/views.py:289
 msgid "Admin login required"
 msgstr "Kirjautuminen ylläpitäjänä vaadittu"
 
-#: tiedotteet/info/views.py:41
+#: tiedotteet/backend/views.py:41
 msgid "New bulletin added"
 msgstr "Tiedote lisätty"
