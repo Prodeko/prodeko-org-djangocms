@@ -20,7 +20,9 @@
 
 		{% show_menu 0 1 100 100 "layout-components/navbar.html" %}
 		{% block content %}{% endblock content %}
+		<div class="col-sm-8 offset-sm-2">
 		{% include "layout-components/footer.html" %}
+		</div>
 
 		{% render_block "js" %}
   </body>

@@ -6,70 +6,74 @@
 
 <div class="container-fluid col-sm-8 p-0">
 	<nav class="navbar navbar-expand-lg navbar-light prodeko-navbar">
-		<a class="navbar-brand" id="prodeko-logo" href="/"></a>
+		<div style="flex:1; display:flex; flex-direction:row; justify-content: flex-end;">
+			<div style="width:8vw;">
+				<a class="navbar-brand" id="prodeko-logo" href="/"></a>
+			</div>
+			<button class="navbar-toggler hamburger hamburger--squeeze" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" aria-controls="collapsibleNavbar" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="hamburger-box">
+					<span class="hamburger-inner"></span>
+				</span>
+			</button>
 
-		<button class="navbar-toggler hamburger hamburger--squeeze" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" aria-controls="collapsibleNavbar" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="hamburger-box">
-				<span class="hamburger-inner"></span>
-			</span>
-		</button>
-
-		<div class="collapse navbar-collapse" id="collapsibleNavbar">
-			<ul class="navbar-nav mr-auto navigation-list">
-				{% for child in children %}
-				<!-- li element for open navbar -->
-				{% if child.get_descendants %}
-				<li class="d-none d-lg-block nav-item{% if child.selected %} active-menu-item{% endif %} mr-2" data-toggle="collapse" data-target="#dropdown-desktop-{{child.get_menu_title}}"><a class="nav-link nav-top dropdown-toggle">{{child.get_menu_title }}</a>
-					<ul class="collapse ul mr-auto navigation-list-child-desktop" id="dropdown-desktop-{{child.get_menu_title}}">
-						<li class="nav-item {% if child.selected %} active-menu-item{% endif %} mr-2"><a class="nav-sublink" href="{{ child.get_absolute_url }}">{{child.get_menu_title }}</a></li>
-						{% for kid in child.get_descendants %}
-							<li class="nav-item {% if kid.selected %} active-menu-item{% endif %}"><a class="nav-sublink" href="{{ kid.get_absolute_url }}">{{kid.get_menu_title }}</a></li>
-						{% endfor %}
-					</ul>
-				</li>
-				{% else %}
-				<li class="d-none d-lg-block nav-item{% if child.selected %} active-menu-item{% endif %} mr-2"><a class="nav-link nav-top" href="{{ child.get_absolute_url }}">{{child.get_menu_title }}</a></li>
-				{% endif %}
-
-				<!-- li element for dropdown navbar -->
-				{% if not child.is_leaf_node or child.ancestor %}
-					<li class="d-lg-none nav-item mr-2" data-toggle="collapse" data-target="#dropdown-{{child.get_menu_title}}"><a class="dropdown-toggle nav-link">{{child.get_menu_title }}
-					</a>
-						<ul class="collapse ul mr-auto navigation-list-child" id="dropdown-{{child.get_menu_title}}">
+			<div class="collapse navbar-collapse" id="collapsibleNavbar">
+				<div>
+				<ul class="navbar-nav mr-auto navigation-list">
+					{% for child in children %}
+					<!-- li element for open navbar -->
+					{% if child.get_descendants %}
+					<li class="d-none d-lg-block nav-item{% if child.selected %} active-menu-item{% endif %} mr-2" data-toggle="collapse" data-target="#dropdown-desktop-{{child.get_menu_title}}"><a class="nav-link nav-top dropdown-toggle">{{child.get_menu_title }}</a>
+						<ul class="collapse ul mr-auto navigation-list-child-desktop" id="dropdown-desktop-{{child.get_menu_title}}">
 							<li class="nav-item {% if child.selected %} active-menu-item{% endif %} mr-2"><a class="nav-sublink" href="{{ child.get_absolute_url }}">{{child.get_menu_title }}</a></li>
 							{% for kid in child.get_descendants %}
-								<li class="nav-item {% if kid.selected %} active-menu-item{% endif %} mr-2"><a class="nav-sublink" href="{{ kid.get_absolute_url }}">{{kid.get_menu_title }}</a></li>
+								<li class="nav-item {% if kid.selected %} active-menu-item{% endif %}"><a class="nav-sublink" href="{{ kid.get_absolute_url }}">{{kid.get_menu_title }}</a></li>
 							{% endfor %}
 						</ul>
 					</li>
-				{% else %}
-					<li class="d-lg-none nav-item{% if child.selected %} active-menu-item{% endif %} mr-2"><a class="nav-link" href="{{ child.get_absolute_url }}">{{child.get_menu_title }}</a></li>
-				{% endif %}
-				{% endfor %}
-				<!-- /end for child -->
+					{% else %}
+					<li class="d-none d-lg-block nav-item{% if child.selected %} active-menu-item{% endif %} mr-2"><a class="nav-link nav-top" href="{{ child.get_absolute_url }}">{{child.get_menu_title }}</a></li>
+					{% endif %}
+
+					<!-- li element for dropdown navbar -->
+					{% if not child.is_leaf_node or child.ancestor %}
+						<li class="d-lg-none nav-item mr-2" data-toggle="collapse" data-target="#dropdown-{{child.get_menu_title}}"><a class="dropdown-toggle nav-link">{{child.get_menu_title }}
+						</a>
+							<ul class="collapse ul mr-auto navigation-list-child" id="dropdown-{{child.get_menu_title}}">
+								<li class="nav-item {% if child.selected %} active-menu-item{% endif %} mr-2"><a class="nav-sublink" href="{{ child.get_absolute_url }}">{{child.get_menu_title }}</a></li>
+								{% for kid in child.get_descendants %}
+									<li class="nav-item {% if kid.selected %} active-menu-item{% endif %} mr-2"><a class="nav-sublink" href="{{ kid.get_absolute_url }}">{{kid.get_menu_title }}</a></li>
+								{% endfor %}
+							</ul>
+						</li>
+					{% else %}
+						<li class="d-lg-none nav-item{% if child.selected %} active-menu-item{% endif %} mr-2"><a class="nav-link" href="{{ child.get_absolute_url }}">{{child.get_menu_title }}</a></li>
+					{% endif %}
+					{% endfor %}
+				</ul>
+			</div>
+					<!-- /end for child -->
 
 				<!-- Authentication buttons -->
-				{% if not user.is_authenticated %}
-				<a href="{% url 'auth_prodeko:login' %}" class="btn btn-light mr-2">
-					{% trans login %}
-				</a>
-				<a href="{% url 'app_apply_for_membership:apply' %}" class="btn btn-primary mr-4">
-					{% trans apply %}
-				</a>
-				{% else %}
-				<a href="{% url 'auth_prodeko:logout' %}" class="btn btn-primary mr-4">
+				<div>
+					{% if not user.is_authenticated %}
+					<a href="{% url 'auth_prodeko:login' %}" class="btn btn-primary mr-2">
+						{% trans login %}
+					</a>
+					{% else %}
+					<a href="{% url 'auth_prodeko:logout' %}" class="btn btn-primary mr-4">
 					{% trans logout %}
-				</a>			
-				{% endif %}
-				<!-- End Authentication buttons-->
-
-			<ul class="navbar-nav">
-				<li class="nav-item nav-lang">
-          <a class="{% if LANGUAGE_CODE == 'fi' %}lang{% endif %} no-animation" href="{% page_language_url 'fi' %}">FI</a>
-					<span>/</span>
-					<a class="{% if LANGUAGE_CODE == 'en' %}lang{% endif %} no-animation" href="{% page_language_url 'en' %}">EN</a>
-				</li>
-			</ul>
+					</a>			
+					{% endif %}
+					<!-- End Authentication buttons-->
+					<ul class="navbar-nav">
+						<li class="nav-item nav-lang">
+							<a class="{% if LANGUAGE_CODE == 'fi' %}lang{% endif %} no-animation" href="{% page_language_url 'fi' %}">FI</a>
+								<span>/</span>
+							<a class="{% if LANGUAGE_CODE == 'en' %}lang{% endif %} no-animation" href="{% page_language_url 'en' %}">EN</a>
+						</li>
+					</ul>
+				</div>
+			</div>
 		</div>
 	</nav>
 </div>

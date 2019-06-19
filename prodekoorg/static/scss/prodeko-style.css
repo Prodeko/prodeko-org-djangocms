@@ -1018,7 +1018,7 @@ img {
     margin-top: 106px !important; } }
 
 .prodeko-navbar {
-  margin-bottom: 16px;
+  margin-bottom: 1.0vh;
   text-align: center;
   text-transform: uppercase;
   white-space: nowrap;
@@ -1041,6 +1041,10 @@ img {
     padding: 10px 0 10px 0;
     list-style-type: none;
     background-color: #c1ccd8; }
+  @media (min-width: 768px) {
+    .prodeko-navbar #collapsibleNavbar .navigation-list {
+      font-size: 0.7vw; } 
+    }
   .prodeko-navbar #collapsibleNavbar .navigation-list-child-desktop {
     padding: 10px 10px 10px 10px;
     border-style: solid;
@@ -1048,7 +1052,7 @@ img {
     border-color: #002851;
     list-style-type: none;
     background-color: #f1f1f1;
-    position: relative;
+    position: absolute;
     z-index: 1; }
   .prodeko-navbar #collapsibleNavbar .nav-link {
     font-size: 1.5em;
@@ -1057,7 +1061,11 @@ img {
     color: rgba(0, 0, 0, 0.65); }
   @media (min-width: 1024px) {
     .prodeko-navbar #collapsibleNavbar {
-      padding-right: 40px; } }
+      padding-right: 40px; 
+      flex: 1;
+      flex-direction: row;
+      justify-content: space-between;
+    } }
   @media (min-width: 1024px) {
     .prodeko-navbar #collapsibleNavbar form {
       width: 0; } }
