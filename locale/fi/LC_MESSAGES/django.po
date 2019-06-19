@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-16 10:04+0000\n"
+"POT-Creation-Date: 2019-06-19 15:55+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -313,8 +313,8 @@ msgstr "Kyllä"
 msgid "No"
 msgstr "Ei"
 
-#: prodekoorg/app_apply_for_membership/models.py:52 prodekoorg/settings.py:83
-#: prodekoorg/settings.py:93
+#: prodekoorg/app_apply_for_membership/models.py:52 prodekoorg/settings.py:84
+#: prodekoorg/settings.py:94
 msgid "Finnish"
 msgstr "Suomi"
 
@@ -892,7 +892,7 @@ msgstr "Poista"
 msgid "Edit"
 msgstr "Muokkaa"
 
-#: prodekoorg/settings.py:83 prodekoorg/settings.py:100
+#: prodekoorg/settings.py:84 prodekoorg/settings.py:101
 msgid "English"
 msgstr "Englanti"
 
