@@ -112,32 +112,33 @@ CMS_LANGUAGES = {
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 STATIC_URL = "/static/"
-STATIC_ROOT = os.path.join(BASE_DIR, "prodekoorg", "collected-static")
+STATIC_ROOT = os.path.join(BASE_DIR, "prodekoorg/collected-static")
 
 MEDIA_URL = "/media/"
-MEDIA_ROOT = os.path.join(BASE_DIR, "prodekoorg", "media")
+MEDIA_ROOT = os.path.join(BASE_DIR, "prodekoorg/media")
 
 # Directories where STATICFILES_FINDERS looks for static files
 # Custom apps serving static files need to be added here
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "prodekoorg", "static"),
-    os.path.join(BASE_DIR, "auth_prodeko", "static"),
-    os.path.join(BASE_DIR, "prodekoorg/app_kulukorvaus", "static"),
-    os.path.join(BASE_DIR, "prodekoorg/app_poytakirjat", "static"),
-    os.path.join(BASE_DIR, "prodekoorg/app_tiedostot", "static"),
-    os.path.join(BASE_DIR, "prodekoorg/app_toimarit", "static"),
-    os.path.join(BASE_DIR, "prodekoorg/app_vaalit", "static"),
+    os.path.join(BASE_DIR, "prodekoorg/static"),
+    os.path.join(BASE_DIR, "auth_prodeko/static"),
+    os.path.join(BASE_DIR, "prodekoorg/app_kulukorvaus/static"),
+    os.path.join(BASE_DIR, "prodekoorg/app_poytakirjat/static"),
+    os.path.join(BASE_DIR, "prodekoorg/app_tiedostot/static"),
+    os.path.join(BASE_DIR, "prodekoorg/app_toimarit/static"),
+    os.path.join(BASE_DIR, "prodekoorg/app_vaalit/static"),
     # abit.prodeko.org
-    os.path.join(BASE_DIR, "abisivut", "static"),
+    os.path.join(BASE_DIR, "abisivut/static"),
     # lifelonglearning.prodeko.org
-    os.path.join(BASE_DIR, "lifelonglearning", "static"),
+    os.path.join(BASE_DIR, "lifelonglearning/static"),
     # seminaari.prodeko.org
-    os.path.join(BASE_DIR, "seminaari", "static"),
+    os.path.join(BASE_DIR, "seminaari/static"),
     # tiedotteet.prodeko.org
-    os.path.join(BASE_DIR, "tiedotteet/info", "static"),
-    os.path.join(BASE_DIR, "tiedotteet", "public"),
+    os.path.join(BASE_DIR, "tiedotteet/frontend/static"),
+    os.path.join(BASE_DIR, "tiedotteet/frontend/public"),
+    os.path.join(BASE_DIR, "tiedotteet/backend/static"),
     # matrikkeli.prodeko.org
-    os.path.join(BASE_DIR, "alumnirekisteri/rekisteri", "static"),
+    os.path.join(BASE_DIR, "alumnirekisteri/rekisteri/static"),
 ]
 
 STATICFILES_FINDERS = [
@@ -154,21 +155,21 @@ TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         "DIRS": [
-            os.path.join(BASE_DIR, "prodekoorg", "templates"),
-            os.path.join(BASE_DIR, "abisivut", "templates"),
-            os.path.join(BASE_DIR, "lifelonglearning", "templates"),
-            os.path.join(BASE_DIR, "seminaari", "templates"),
-            os.path.join(BASE_DIR, "tiedotteet/info", "templates"),
-            os.path.join(BASE_DIR, "tiedotteet", "public"),
-            os.path.join(BASE_DIR, "alumnirekisteri", "rekisteri"),
-            os.path.join(BASE_DIR, "prodekoorg/app_apply_for_membership", "templates"),
+            os.path.join(BASE_DIR, "prodekoorg/templates"),
+            os.path.join(BASE_DIR, "abisivut/templates"),
+            os.path.join(BASE_DIR, "lifelonglearning/templates"),
+            os.path.join(BASE_DIR, "seminaari/templates"),
+            os.path.join(BASE_DIR, "tiedotteet/backend/templates"),
+            os.path.join(BASE_DIR, "tiedotteet/frontend/public"),
+            os.path.join(BASE_DIR, "alumnirekisteri/rekisteri"),
+            os.path.join(BASE_DIR, "prodekoorg/app_apply_for_membership/templates"),
             os.path.join(
-                BASE_DIR, "prodekoorg/app_apply_for_membership", "templates", "emails"
+                BASE_DIR, "prodekoorg/app_apply_for_membership/templates/emails"
             ),
-            os.path.join(BASE_DIR, "prodekoorg/app_kulukorvaus", "templates"),
-            os.path.join(BASE_DIR, "prodekoorg/app_kulukorvaus", "templates", "emails"),
-            os.path.join(BASE_DIR, "prodekoorg/app_poytakirjat", "templates"),
-            os.path.join(BASE_DIR, "prodekoorg/app_toimarit", "templates"),
+            os.path.join(BASE_DIR, "prodekoorg/app_kulukorvaus/templates"),
+            os.path.join(BASE_DIR, "prodekoorg/app_kulukorvaus/templates/emails"),
+            os.path.join(BASE_DIR, "prodekoorg/app_poytakirjat/templates"),
+            os.path.join(BASE_DIR, "prodekoorg/app_toimarit/templates"),
         ],
         "OPTIONS": {
             "context_processors": [
@@ -195,7 +196,7 @@ TEMPLATES = [
 # Common templatetags across different apps.
 OPTIONS = {
     "libraries": {
-        "common_tags": os.path.join(BASE_DIR, "prodekoorg", "templatetags/common_tags")
+        "common_tags": os.path.join(BASE_DIR, "prodekoorg/templatetags/common_tags")
     }
 }
 
@@ -464,6 +465,7 @@ SESSION_SAVE_EVERY_REQUEST = True
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False
 SESSION_COOKIE_AGE = 60 * 60 * 24 * 30  # 30 days
 
+CKEDITOR_BASEPATH = "/collected-static/ckeditor/ckeditor/"
 CKEDITOR_UPLOAD_PATH = "tiedotteet/uploads/"
 DJANGO_WYSIWYG_FLAVOR = "ckeditor"
 CORS_ORIGIN_ALLOW_ALL = True

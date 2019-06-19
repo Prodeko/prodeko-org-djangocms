@@ -14,9 +14,9 @@
     "alumnirekisteri/rekisteri/static/css/**",
     "!alumnirekisteri/rekisteri/static/css/ar_custom.css",
     "lifelonglearning/staticcss/bootstrap.min.css",
-    "tiedotteet/info/static/**",
-    "!tiedotteet/info/static/css/custom.css",
-    "!tiedotteet/info/static/css/email.css",
-    "!tiedotteet/info/static/css/sidebar.css"
+    "tiedotteet/backend/static/**",
+    "!tiedotteet/backend/static/css/custom.css",
+    "!tiedotteet/backend/static/css/email.css",
+    "!tiedotteet/backend/static/css/sidebar.css"
   ]
 }

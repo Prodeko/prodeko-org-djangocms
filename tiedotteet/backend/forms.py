@@ -14,7 +14,7 @@ from django.forms import (
     TextInput,
 )
 from django.utils.translation import ugettext_lazy as _
-from tiedotteet.info.models import Category, MailConfiguration, Message, Tag
+from tiedotteet.backend.models import Category, MailConfiguration, Message, Tag
 
 
 class PublishForm(ModelForm):
