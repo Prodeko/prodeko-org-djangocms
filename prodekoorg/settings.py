@@ -68,7 +68,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # Internationalization
-# https://docs.djangoproject.com/en/1.11/topics/i18n/
+# https://docs.djangoproject.com/en/dev/topics/i18n/
 LANGUAGE_CODE = "fi"
 TIME_ZONE = "Etc/UTC"
 USE_I18N = True
@@ -110,7 +110,7 @@ CMS_LANGUAGES = {
 }
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.11/howto/static-files/
+# https://docs.djangoproject.com/en/dev/howto/static-files/
 STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "prodekoorg/collected-static")
 
@@ -275,7 +275,7 @@ INSTALLED_APPS = (
     "djangocms_bootstrap4.contrib.bootstrap4_utilities",
     # ------------------------
     # tiedotteet.prodeko.org
-    "tiedotteet",
+    "tiedotteet.backend",
     "django_wysiwyg",
     "ckeditor",
     "rest_framework",

@@ -1,5 +1,5 @@
 from django.apps import AppConfig
 
 
-class TiedotteettConfig(AppConfig):
+class TiedotteetConfig(AppConfig):
     name = "tiedotteet"
