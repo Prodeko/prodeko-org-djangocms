@@ -294,11 +294,12 @@ INSTALLED_APPS = (
     "seminaari",
     # ------------------------
     "prodekoorg.app_apply_for_membership",
-    "prodekoorg.app_poytakirjat",
-    "prodekoorg.app_toimarit",
+    "prodekoorg.app_infoscreen",
     "prodekoorg.app_kulukorvaus",
-    # "prodekoorg.app_vaalit",
+    "prodekoorg.app_poytakirjat",
     "prodekoorg.app_tiedostot",
+    "prodekoorg.app_toimarit",
+    # "prodekoorg.app_vaalit",
     # ------------------------
 )
 
