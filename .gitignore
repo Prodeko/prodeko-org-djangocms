@@ -65,10 +65,6 @@ docs/_build/
 # PyBuilder
 target/
 
-# Vagrant stuff
-/.vagrant/
-
-
 *.DS_Store
 venv/
 
@@ -79,7 +75,6 @@ venv/
 !package-lock.json
 
 # tiedotteet.prodeko.org
-tiedotteet/frontend/static/
 tiedotteet/frontend/public/
 !tiedotteet/frontend/src/manifest.json
 node_modules/
