@@ -16,11 +16,6 @@ class PendingUser(models.Model):
     The PendingUser contains information about people who
     want to become Prodeko members. 
 
-    Kulukorvaus perustiedot model contains basic information
-    about the reimbursement claim as well as acts as a Foreign key to
-    bind togethen Kulukorvaus objects (defined below in another class)
-    under one KulukorvausPerustiedot object.
-
     Attributes:
         id: Primary key.
         user: Tracks which User created the membership application.

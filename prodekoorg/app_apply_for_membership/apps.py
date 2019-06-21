@@ -2,4 +2,5 @@ from django.apps import AppConfig
 
 
 class AppApplyForMembershipConfig(AppConfig):
-    name = "app_apply_for_membership"
+    name = "prodekoorg.app_apply_for_membership"
+    verbose_name = "Jäsenhakemukset"

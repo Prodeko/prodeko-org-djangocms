@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-21 17:51+0000\n"
+"POT-Creation-Date: 2019-06-21 23:05+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -115,7 +115,7 @@ msgstr "Nimi"
 
 #: auth_prodeko/templates/accounts/user_profile.html:11
 #: auth_prodeko/templates/accounts/user_profile.html:17
-#: prodekoorg/app_apply_for_membership/models.py:66
+#: prodekoorg/app_apply_for_membership/models.py:61
 #: prodekoorg/app_kulukorvaus/models.py:48
 #: prodekoorg/app_kulukorvaus/printing.py:95
 #: prodekoorg/app_toimarit/models.py:88
@@ -293,95 +293,95 @@ msgstr ""
 "Virheelliset tunnukset. Lue dokumentaatio uudestaan ja tarkista että G Suite "
 "sekä GCP API console on määritetty oikein."
 
-#: prodekoorg/app_apply_for_membership/models.py:45
+#: prodekoorg/app_apply_for_membership/models.py:40
 msgid "True member"
 msgstr "Varsinainen jäsen"
 
-#: prodekoorg/app_apply_for_membership/models.py:46
+#: prodekoorg/app_apply_for_membership/models.py:41
 msgid "Alumn"
 msgstr "Alumni"
 
-#: prodekoorg/app_apply_for_membership/models.py:47
+#: prodekoorg/app_apply_for_membership/models.py:42
 msgid "External member"
 msgstr "Ulkojäsen"
 
-#: prodekoorg/app_apply_for_membership/models.py:50
+#: prodekoorg/app_apply_for_membership/models.py:45
 msgid "Yes"
 msgstr "Kyllä"
 
-#: prodekoorg/app_apply_for_membership/models.py:50
+#: prodekoorg/app_apply_for_membership/models.py:45
 msgid "No"
 msgstr "Ei"
 
-#: prodekoorg/app_apply_for_membership/models.py:52 prodekoorg/settings.py:83
+#: prodekoorg/app_apply_for_membership/models.py:47 prodekoorg/settings.py:83
 #: prodekoorg/settings.py:93
 msgid "Finnish"
 msgstr "Suomi"
 
-#: prodekoorg/app_apply_for_membership/models.py:52
+#: prodekoorg/app_apply_for_membership/models.py:47
 msgid "Other (English)"
 msgstr "Englanti"
 
-#: prodekoorg/app_apply_for_membership/models.py:62
+#: prodekoorg/app_apply_for_membership/models.py:57
 #: prodekoorg/app_toimarit/models.py:36 prodekoorg/app_toimarit/models.py:80
 msgid "First name"
 msgstr "Etunimi"
 
-#: prodekoorg/app_apply_for_membership/models.py:63
+#: prodekoorg/app_apply_for_membership/models.py:58
 #: prodekoorg/app_toimarit/models.py:37 prodekoorg/app_toimarit/models.py:81
 msgid "Last name"
 msgstr "Sukunimi"
 
-#: prodekoorg/app_apply_for_membership/models.py:64
+#: prodekoorg/app_apply_for_membership/models.py:59
 msgid "Hometown"
 msgstr "Kotikaupunki"
 
-#: prodekoorg/app_apply_for_membership/models.py:65
+#: prodekoorg/app_apply_for_membership/models.py:60
 msgid "Field of study"
 msgstr "Opiskeluala"
 
-#: prodekoorg/app_apply_for_membership/models.py:68
+#: prodekoorg/app_apply_for_membership/models.py:63
 #: prodekoorg/app_kulukorvaus/admin.py:12
 msgid "Year"
 msgstr "Vuosi"
 
-#: prodekoorg/app_apply_for_membership/models.py:75
+#: prodekoorg/app_apply_for_membership/models.py:70
 msgid "Nationality (language)"
 msgstr "Kansallisuus (kieli)"
 
-#: prodekoorg/app_apply_for_membership/models.py:78
+#: prodekoorg/app_apply_for_membership/models.py:73
 msgid "Membership type"
 msgstr "Jäsentyyppi"
 
-#: prodekoorg/app_apply_for_membership/models.py:81
+#: prodekoorg/app_apply_for_membership/models.py:76
 msgid "Why do you want to become a member?"
 msgstr "Miksi haluat jäseneksi?"
 
-#: prodekoorg/app_apply_for_membership/models.py:86
+#: prodekoorg/app_apply_for_membership/models.py:81
 msgid "Are you an AYY (Aalto University Student Union) member?"
 msgstr "Oletko AYY:n jäsen?"
 
-#: prodekoorg/app_apply_for_membership/models.py:90
+#: prodekoorg/app_apply_for_membership/models.py:85
 msgid "Receipt of the membership payment"
 msgstr "Kuitti jäsenmaksusta"
 
-#: prodekoorg/app_apply_for_membership/models.py:94
+#: prodekoorg/app_apply_for_membership/models.py:89
 msgid "I accept Prodeko's privacy and cookie policies."
 msgstr "Hyväksynyt tietosuojalausekkeen ja evästeiden käytön"
 
-#: prodekoorg/app_apply_for_membership/models.py:103
+#: prodekoorg/app_apply_for_membership/models.py:98
 msgid "Membership application accepted."
 msgstr "Jäsenhakemus hyväsytty"
 
-#: prodekoorg/app_apply_for_membership/models.py:108
+#: prodekoorg/app_apply_for_membership/models.py:103
 msgid "Membership application rejected."
 msgstr "Jäsenhakemus hylätty"
 
-#: prodekoorg/app_apply_for_membership/models.py:149
+#: prodekoorg/app_apply_for_membership/models.py:144
 msgid "membership application"
 msgstr "jäsenhakemus"
 
-#: prodekoorg/app_apply_for_membership/models.py:150
+#: prodekoorg/app_apply_for_membership/models.py:145
 msgid "Membership applications"
 msgstr "Jäsenhakemukset"
 
@@ -443,6 +443,14 @@ msgstr "/keksit"
 #: prodekoorg/app_apply_for_membership/urls.py:7
 msgid "^apply/$"
 msgstr "^hae-jaseneksi/$"
+
+#: prodekoorg/app_infoscreen/models.py:45
+msgid "slide"
+msgstr ""
+
+#: prodekoorg/app_infoscreen/models.py:46
+msgid "Slides"
+msgstr ""
 
 #: prodekoorg/app_kulukorvaus/cms_apps.py:11
 msgid "Reimbursement application"
@@ -956,11 +964,11 @@ msgstr "Kirjaudu"
 msgid "Membership"
 msgstr "Hae jäsenyyttä"
 
-#: prodekoorg/urls.py:68
+#: prodekoorg/urls.py:70
 msgid "^weekly-bulletin/"
 msgstr "^tiedotteet/"
 
-#: prodekoorg/urls.py:70
+#: prodekoorg/urls.py:72
 msgid "^matrikkeli/"
 msgstr ""
 
@@ -1060,6 +1068,42 @@ msgstr "Otsikko"
 msgid "Recipients (separated by comma)"
 msgstr "Vastaanottajat (pilkulla eroteltuna)"
 
+#: tiedotteet/backend/models.py:21
+msgid "mailikonfiguraatio"
+msgstr ""
+
+#: tiedotteet/backend/models.py:22
+msgid "Mailikonfiguraatiot"
+msgstr ""
+
+#: tiedotteet/backend/models.py:33
+msgid "tagi"
+msgstr ""
+
+#: tiedotteet/backend/models.py:34
+msgid "Tagit"
+msgstr ""
+
+#: tiedotteet/backend/models.py:53
+#, fuzzy
+#| msgid "Category"
+msgid "category"
+msgstr "Kategoria"
+
+#: tiedotteet/backend/models.py:54
+#: tiedotteet/backend/templates/control/base.html:68
+#: tiedotteet/backend/templates/control/categories.html:11
+msgid "Categories"
+msgstr "Kategoriat"
+
+#: tiedotteet/backend/models.py:120
+msgid "tiedote"
+msgstr ""
+
+#: tiedotteet/backend/models.py:121
+msgid "Tiedotteet"
+msgstr ""
+
 #: tiedotteet/backend/templates/control/base.html:10
 msgid "Weekly Bulletin - Control Panel"
 msgstr "Tiedotteet - Hallintapaneeli"
@@ -1082,11 +1126,6 @@ msgstr "Julkaise"
 #: tiedotteet/backend/templates/control/email.html:56
 msgid "Send email"
 msgstr "Lähetä sähköposti"
-
-#: tiedotteet/backend/templates/control/base.html:68
-#: tiedotteet/backend/templates/control/categories.html:11
-msgid "Categories"
-msgstr "Kategoriat"
 
 #: tiedotteet/backend/templates/control/base.html:78
 #: tiedotteet/backend/templates/control/messages.html:25

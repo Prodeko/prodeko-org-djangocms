@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.admin import SimpleListFilter
-from prodekoorg.app_poytakirjat.models import Dokumentti
+from .models import Dokumentti
 
 
 class YearFilter(SimpleListFilter):

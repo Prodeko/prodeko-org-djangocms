@@ -2,4 +2,5 @@ from django.apps import AppConfig
 
 
 class AppTiedostotConfig(AppConfig):
-    name = "app_tiedostot"
+    name = "prodekoorg.app_tiedostot"
+    verbose_name = "Tiedostot"

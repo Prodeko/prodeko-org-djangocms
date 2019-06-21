@@ -2,4 +2,5 @@ from django.apps import AppConfig
 
 
 class AppPoytakirjatConfig(AppConfig):
-    name = "app_poytakirjat"
+    name = "prodekoorg.app_poytakirjat"
+    verbose_name = "Pöytäkirjat"

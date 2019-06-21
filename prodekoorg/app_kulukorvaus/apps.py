@@ -2,4 +2,5 @@ from django.apps import AppConfig
 
 
 class AppKulukorvausConfig(AppConfig):
-    name = "app_kulukorvaus"
+    name = "prodekoorg.app_kulukorvaus"
+    verbose_name = "Kulukorvaukset"

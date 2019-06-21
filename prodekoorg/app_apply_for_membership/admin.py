@@ -7,7 +7,7 @@ from django.shortcuts import redirect
 from django.urls import reverse
 from django.utils.html import format_html
 from django.utils.translation import gettext as _
-from prodekoorg.app_apply_for_membership.models import PendingUser
+from .models import PendingUser
 
 # from .groups_api import main_groups_api
 
