@@ -36,7 +36,9 @@ class Toimari(models.Model):
     firstname = models.CharField(max_length=30, verbose_name=_("First name"))
     lastname = models.CharField(max_length=30, verbose_name=_("Last name"))
     position = models.CharField(max_length=50, verbose_name=_("Position"))
-    section = models.ForeignKey(Jaosto, verbose_name=_("Section"), on_delete=models.CASCADE)
+    section = models.ForeignKey(
+        Jaosto, verbose_name=_("Section"), on_delete=models.CASCADE
+    )
 
     @property
     def name(self):
@@ -81,7 +83,11 @@ class HallituksenJasen(models.Model):
     lastname = models.CharField(max_length=30, verbose_name=_("Last name"))
     position = models.CharField(max_length=50, verbose_name=_("Position"))
     section = models.ForeignKey(
-        Jaosto, on_delete=models.CASCADE, blank=True, null=True, verbose_name=_("Section")
+        Jaosto,
+        on_delete=models.CASCADE,
+        blank=True,
+        null=True,
+        verbose_name=_("Section"),
     )
     position_eng = models.CharField(max_length=60, verbose_name=_("Position (English)"))
     mobilephone = models.CharField(max_length=20, verbose_name=_("Mobile phone"))

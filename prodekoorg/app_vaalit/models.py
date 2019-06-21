@@ -65,8 +65,12 @@ class Kysymys(models.Model):
     """
 
     created_at = models.DateTimeField(auto_now_add=True, verbose_name=_("Created at"))
-    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, null=True)
-    to_virka = models.ForeignKey(Virka, on_delete=models.CASCADE, related_name=_("questions"))
+    created_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, null=True
+    )
+    to_virka = models.ForeignKey(
+        Virka, on_delete=models.CASCADE, related_name=_("questions")
+    )
     question = models.TextField(blank=False, verbose_name=_("Question"))
 
     def __str__(self):

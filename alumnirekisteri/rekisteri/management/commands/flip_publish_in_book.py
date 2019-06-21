@@ -1,4 +1,4 @@
-#import numpy as np
+# import numpy as np
 import json
 import django
 import csv
@@ -16,14 +16,14 @@ from django.core.files.base import ContentFile
 
 class Command(BaseCommand):
 
-    help = 'Tulkkaa se vanha paskakasa'
+    help = "Tulkkaa se vanha paskakasa"
 
     def add_arguments(self, parser):
-        #parser.add_argument('poll_id', nargs='+', type=int)
+        # parser.add_argument('poll_id', nargs='+', type=int)
         pass
 
     def handle(self, *args, **options):
         for p in Person.objects.all():
-            if(p.user.last_login is not None):
+            if p.user.last_login is not None:
                 p.dont_publish_in_book = not p.dont_publish_in_book
                 p.save()

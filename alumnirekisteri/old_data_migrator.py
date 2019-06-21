@@ -1,22 +1,35 @@
 import numpy as np
-#from rekisteri.models import *
-#from auth2.models import *
+
+# from rekisteri.models import *
+# from auth2.models import *
 
 # Bring in data
-users = np.loadtxt('old_data_files/users_taulu.csv', delimiter=';', dtype='str')
-perus = np.loadtxt('old_data_files/perus_taulu.csv', delimiter=';', dtype='str')
-akatkunn = np.loadtxt('old_data_files/akatkunn_taulu.csv', delimiter=';', dtype='str')
-lapset = np.loadtxt('old_data_files/lapset_taulu.csv', delimiter=';', dtype='str')
-edelt_op = np.loadtxt('old_data_files/edelt-op_taulu.csv', delimiter=';', dtype='str')
-jatko_op = np.loadtxt('old_data_files/jatko-op_taulu.csv', delimiter=';', dtype='str')
-jarjestotoim = np.loadtxt('old_data_files/jarjestotoim_taulu.csv', delimiter=';', dtype='str')
-luottamusteht = np.loadtxt('old_data_files/luottamusteht_taulu.csv', delimiter=';', dtype='str')
-puolisot = np.loadtxt('old_data_files/puolisot_taulu.csv', delimiter=';', dtype='str')
-sivutoimet = np.loadtxt('old_data_files/sivutoimet_taulu.csv', delimiter=';', dtype='str')
-tekniset_op = np.loadtxt('old_data_files/tekniset-op_taulu.csv', delimiter=';', dtype='str')
-vanhatyo = np.genfromtxt('old_data_files/vanhatyo_taulu.csv', delimiter=';', dtype='str')
-vuorilinj = np.loadtxt('old_data_files/vuorilinj_taulu.csv', delimiter=';', dtype='str')
-yo_kunn = np.genfromtxt('old_data_files/yo_kunnianosoitukset_taulu.csv', delimiter=';', dtype='str')
+users = np.loadtxt("old_data_files/users_taulu.csv", delimiter=";", dtype="str")
+perus = np.loadtxt("old_data_files/perus_taulu.csv", delimiter=";", dtype="str")
+akatkunn = np.loadtxt("old_data_files/akatkunn_taulu.csv", delimiter=";", dtype="str")
+lapset = np.loadtxt("old_data_files/lapset_taulu.csv", delimiter=";", dtype="str")
+edelt_op = np.loadtxt("old_data_files/edelt-op_taulu.csv", delimiter=";", dtype="str")
+jatko_op = np.loadtxt("old_data_files/jatko-op_taulu.csv", delimiter=";", dtype="str")
+jarjestotoim = np.loadtxt(
+    "old_data_files/jarjestotoim_taulu.csv", delimiter=";", dtype="str"
+)
+luottamusteht = np.loadtxt(
+    "old_data_files/luottamusteht_taulu.csv", delimiter=";", dtype="str"
+)
+puolisot = np.loadtxt("old_data_files/puolisot_taulu.csv", delimiter=";", dtype="str")
+sivutoimet = np.loadtxt(
+    "old_data_files/sivutoimet_taulu.csv", delimiter=";", dtype="str"
+)
+tekniset_op = np.loadtxt(
+    "old_data_files/tekniset-op_taulu.csv", delimiter=";", dtype="str"
+)
+vanhatyo = np.genfromtxt(
+    "old_data_files/vanhatyo_taulu.csv", delimiter=";", dtype="str"
+)
+vuorilinj = np.loadtxt("old_data_files/vuorilinj_taulu.csv", delimiter=";", dtype="str")
+yo_kunn = np.genfromtxt(
+    "old_data_files/yo_kunnianosoitukset_taulu.csv", delimiter=";", dtype="str"
+)
 
 print(users[0])
 
@@ -39,9 +52,9 @@ vanhatyo_data = np.delete(vanhatyo, (0), axis=0)
 vuorilinj_data = np.delete(vuorilinj, (0), axis=0)
 yo_kunn_data = np.delete(yo_kunn, (0), axis=0)
 
-#print(users[:5])
+# print(users[:5])
 
-'''
+"""
 for useri in users:
     perus_object =
     u = User(email=useri[3], )
@@ -56,4 +69,4 @@ for useri in users:
     last_name = models.CharField(max_length=30, null=True)
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
-'''
+"""

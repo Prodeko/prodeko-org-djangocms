@@ -4,8 +4,10 @@ from django.contrib import admin
 
 from alumnirekisteri.rekisteri.models import *
 
+
 class PersonAdmin(admin.ModelAdmin):
-    list_display = ('user', 'fullname')
+    list_display = ("user", "fullname")
+
 
 admin.site.register(Person, PersonAdmin)
 admin.site.register(Email)

@@ -1,4 +1,4 @@
-#import numpy as np
+# import numpy as np
 import json
 import django
 from pprint import pprint
@@ -9,10 +9,10 @@ from auth2.models import *
 
 class Command(BaseCommand):
 
-    help = 'Tulkkaa se vanha paskakasa'
+    help = "Tulkkaa se vanha paskakasa"
 
     def add_arguments(self, parser):
-        #parser.add_argument('poll_id', nargs='+', type=int)
+        # parser.add_argument('poll_id', nargs='+', type=int)
         pass
 
     def handle(self, *args, **options):

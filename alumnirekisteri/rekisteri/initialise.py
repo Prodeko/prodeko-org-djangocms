@@ -3,7 +3,10 @@
 from auth2.models import User
 from rekisteri.models import Person
 
-def create_admin_profile(email="admin@admin.fi", password="salasana", first_name="Admin", last_name="Admin"):
+
+def create_admin_profile(
+    email="admin@admin.fi", password="salasana", first_name="Admin", last_name="Admin"
+):
     """ creates an admin profile with the given credentials """
     if not User.objects.filter(email=email).count() == 0:
         return False
