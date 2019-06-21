@@ -1,3 +1,12 @@
+# Stage 1 - build tiedotteet frontend
+FROM node:10 as tiedotteet-build
+WORKDIR /app
+COPY tiedotteet/frontend/package.json ./
+RUN npm install
+ADD tiedotteet/frontend /app
+RUN npm run build
+
+# Stage 2 - 
 FROM python:3
 
 ENV PYTHONUNBUFFERED 1
@@ -14,6 +23,7 @@ COPY requirements.txt requirements-dev.txt ./
 RUN pip install -r requirements-dev.txt
 
 COPY . /code/
+COPY --from=tiedotteet-build /app/public /code/tiedotteet/frontend/public
 COPY docker-entrypoint.sh /usr/local/bin/
 RUN dos2unix /usr/local/bin/docker-entrypoint.sh && apt-get --purge remove -y dos2unix && rm -rf /var/lib/apt/lists/*
 

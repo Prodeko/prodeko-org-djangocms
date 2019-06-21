@@ -22,11 +22,8 @@ EOF
 
 wait_for_mysql
 
-# Collect static for the django installation.
+# Create and run migrations
 python3 manage.py makemigrations
-
-python3 manage.py collectstatic --noinput > /dev/null 2>&1
-
 python3 manage.py migrate
 
 # Load sample data for development
@@ -37,6 +34,8 @@ python3 manage.py makemessages -l fi
 python3 manage.py compilemessages
 
 # Create a superuser for development
-python manage.py shell -c "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.filter(email='webbitiimi@prodeko.org').delete(); User.objects.create_superuser('webbitiimi@prodeko.org', 'kananugetti', has_accepted_policies=True)"
+python manage.py shell -c "from django.contrib.auth import get_user_model; \
+	User = get_user_model(); User.objects.filter(email='webbitiimi@prodeko.org').delete(); \
+	User.objects.create_superuser('webbitiimi@prodeko.org', 'kananugetti', has_accepted_policies=True)"
 
 exec "$@"
