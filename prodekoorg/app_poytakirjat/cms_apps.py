@@ -11,4 +11,4 @@ class MinutesApphook(CMSApp):
     name = _("Board meeting minutes application")
 
     def get_urls(self, page=None, language=None, **kwargs):
-        return [re_path(r"^$", docs)]
+        return [re_path(r"^", docs)]

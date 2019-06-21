@@ -11,7 +11,7 @@ class ToimaritApphook(CMSApp):
     name = _("Guild officials application")
 
     def get_urls(self, page=None, language=None, **kwargs):
-        return [re_path(r"^$", list_guildofficials)]
+        return [re_path(r"^", list_guildofficials)]
 
 
 @apphook_pool.register
@@ -20,4 +20,4 @@ class HallitusApphook(CMSApp):
     name = _("Board of Prodeko application")
 
     def get_urls(self, page=None, language=None, **kwargs):
-        return [re_path(r"^$", list_boardmembers)]
+        return [re_path(r"^", list_boardmembers)]
