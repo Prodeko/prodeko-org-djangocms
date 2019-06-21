@@ -77,7 +77,7 @@ class Person(models.Model):
 
     '''private info'''
     student_number = models.CharField(max_length=50, blank=True, null=True)
-    subscribed_lists = models.ManyToManyField(MailList, null=True, blank=True)
+    subscribed_lists = models.ManyToManyField(MailList, blank=True)
     dont_publish_in_book = models.NullBooleanField(null=True, blank=True, default=False)
     mentoring = models.NullBooleanField(null=True, blank=True, default=False)
     upper_management_mentoring = models.NullBooleanField(null=True, blank=True, default=False)

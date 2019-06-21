@@ -170,7 +170,7 @@ class Migration(migrations.Migration):
                 ('function_research', models.BooleanField(default=False)),
                 ('function_free', models.CharField(blank=True, max_length=1000, null=True)),
                 ('slug', models.CharField(max_length=255, null=True, unique=True)),
-                ('subscribed_lists', models.ManyToManyField(blank=True, null=True, to='rekisteri.MailList')),
+                ('subscribed_lists', models.ManyToManyField(blank=True, to='rekisteri.MailList')),
             ],
         ),
         migrations.CreateModel(
