@@ -5,8 +5,6 @@ app_name = "tiedotteet"
 urlpatterns = [
     # index
     re_path(r"^$", views.index, name="index"),
-    # ckeditor
-    re_path(r"^ckeditor/", include("ckeditor_uploader.urls")),
     # Control panel
     re_path(r"^cp/$", views.control_panel, name="cp"),
     re_path(

@@ -13,7 +13,7 @@
     "alumnirekisteri/rekisteri/static/icons/**",
     "alumnirekisteri/rekisteri/static/css/**",
     "!alumnirekisteri/rekisteri/static/css/ar_custom.css",
-    "lifelonglearning/staticcss/bootstrap.min.css",
+    "lifelonglearning/static/css/bootstrap.min.css",
     "tiedotteet/backend/static/**",
     "!tiedotteet/backend/static/css/custom.css",
     "!tiedotteet/backend/static/css/email.css",
