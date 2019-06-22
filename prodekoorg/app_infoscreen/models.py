@@ -1,9 +1,10 @@
 from datetime import timedelta
 
-from ckeditor.fields import RichTextField
+from django.core.validators import FileExtensionValidator
 from django.db import models
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
+from djangocms_text_ckeditor.fields import HTMLField
 
 
 def get_enddate():
@@ -25,15 +26,21 @@ class Slide(models.Model):
     """
 
     title = models.CharField(max_length=50)
-    description = RichTextField(config_name="main_ckeditor", blank=True)
+    description = HTMLField()
+    image = models.FileField(
+        upload_to="infoscreen",
+        validators=[FileExtensionValidator(["jpg", "png", "jpeg"])],
+        null=True,
+    )
     start_datetime = models.DateTimeField(default=timezone.now)
     end_datetime = models.DateTimeField(default=get_enddate)
+    highlight = models.BooleanField(default=False)
     visible = models.BooleanField(default=True)
 
     def is_active(self):
         return (
-            self.start_datetime <= timezone.now().date()
-            and self.end_datetime >= timezone.now().date()
+            self.start_datetime <= timezone.now()
+            and self.end_datetime >= timezone.now()
             and self.visible
         )
 

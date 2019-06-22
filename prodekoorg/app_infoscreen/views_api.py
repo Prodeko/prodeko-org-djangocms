@@ -5,9 +5,14 @@ from .models import Slide
 
 
 class SlideSerializer(serializers.ModelSerializer):
+    is_active = serializers.SerializerMethodField()
+
     class Meta:
         model = Slide
-        fields = "__all__"
+        fields = ["id", "title", "description", "highlight", "is_active"]
+
+    def get_is_active(self, slide):
+        return slide.is_active()
 
 
 class SlidesList(APIView):
