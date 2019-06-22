@@ -15,13 +15,8 @@ from django.views.static import serve
 from prodekoorg.app_poytakirjat.gdrive_api import run_app_poytakirjat
 from prodekoorg.app_toimarit.views import postcsv
 
-admin.autodiscover()
-
 urlpatterns = [
-    re_path(r"^sitemap\.xml$", sitemap, {"sitemaps": {"cmspages": CMSSitemap}})
-]
-
-urlpatterns += [
+    re_path(r"^sitemap\.xml$", sitemap, {"sitemaps": {"cmspages": CMSSitemap}}),
     re_path(
         r"^robots.txt$",
         TemplateView.as_view(
@@ -58,18 +53,13 @@ urlpatterns += i18n_patterns(
     ),
     # auth_prodeko
     re_path(r"", include("auth_prodeko.urls")),
-    # app_apply_for_membership
-    re_path(r"", include("prodekoorg.app_apply_for_membership.urls")),
     # app_infoscreen
     re_path(r"^infoscreen/", include("prodekoorg.app_infoscreen.urls")),
-    # app_kulukorvaus
-    re_path(r"", include("prodekoorg.app_kulukorvaus.urls")),
-    # app_tiedostot
-    re_path(r"", include("prodekoorg.app_tiedostot.urls")),
     # tiedotteet.prodeko.org
     re_path(_(r"^weekly-bulletin/"), include("tiedotteet.backend.urls")),
     # matrikkeli.prodeko.org
     re_path(_(r"^matrikkeli/"), include("alumnirekisteri.alumnirekisteri.urls")),
+    # Misc
     re_path(r"^admin/", admin.site.urls),
     re_path(r"", include("cms.urls")),
 )

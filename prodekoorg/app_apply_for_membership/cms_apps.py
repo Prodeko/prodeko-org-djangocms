@@ -11,4 +11,4 @@ class ApplyForMembershipApphook(CMSApp):
     name = _("Apply for Prodeko membership application")
 
     def get_urls(self, page=None, language=None, **kwargs):
-        return [re_path(r"^", main_form)]
+        return [re_path(r"^", main_form, name="apply")]

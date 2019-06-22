@@ -169,8 +169,8 @@ def main_form(request):
                 # Most likely the password to said account is configured incorrectly
                 return render(request, "kulukorvaus.html", {"error": True})
 
-                # Successfull form submission - render page displaying
-                # info and pdf download link.
+            # Successfull form submission - render page displaying
+            # info and pdf download link.
             return render(
                 request,
                 "kulukorvaus.html",
