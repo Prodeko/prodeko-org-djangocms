@@ -33,7 +33,7 @@
 	</div>
 	<div class="row frontpage-squarerow">
 		<div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-6 frontpage-square">
-			<a href="matrikkeli.prodeko.org">
+			<a href="/prospective-students/">
 				<img src="{% static 'images/landing_photos/abeille_smaller.jpg' %}" alt="{% trans for_abit %}" class="img-fluid">
 				<div class="mask flex-center frontpage-square-caption">
 					<h3>{% trans for_abit %}</h3>
@@ -41,7 +41,7 @@
 			</a>
 		</div>
 		<div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-6 view zoom frontpage-square">
-			<a href="matrikkeli.prodeko.org" target="_blank">
+			<a href="/guild/" target="_blank">
 				<img src="{% static 'images/landing_photos/kiltalaisille_smaller.jpg' %}" alt="{% trans for_guildmembers %}" class="img-fluid">
 				<div class="frontpage-square-caption">
 					<h3>{% trans for_guildmembers %}</h3>
@@ -49,7 +49,7 @@
 			</a>
 		</div>
 		<div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-6 frontpage-square">
-			<a href="matrikkeli.prodeko.org" target="_blank">
+			<a href="/alumni/" target="_blank">
 				<img src="{% static 'images/landing_photos/alumneille_smaller.jpg' %}" alt="{% trans for_alumni %}" class="img-fluid">
 				<div class="frontpage-square-caption">
 					<h3>{% trans for_alumni %}</h3>
@@ -57,7 +57,7 @@
 			</a>
 		</div>
 		<div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-6 frontpage-square">
-			<a href="matrikkeli.prodeko.org" target="_blank">
+			<a href="/corporate-relations/" target="_blank">
 				<img src="{% static 'images/landing_photos/yrityksille_smaller.jpg' %}" alt="{% trans for_businesses %}" class="img-fluid">
 				<div class="frontpage-square-caption">
 					<h3>{% trans for_businesses %}</h3>
@@ -75,33 +75,8 @@
     </div>
     <div class="col-md-4">
 			{% include "layout-components/instagram.html" %}
-      {% placeholder "sidecontent" %}
     </div>
   </div>
 </div>
-
-	<!--
-<div class="container-fluid">
-  <div class="row frontpage-category-squarerow">
-  	<div class="col-md" style="background-image: url({% static 'images/frontpage-square.png' %})">
-  		<h2>Kilta</h2>
-    </div>
-  	<div class="col-md" style="background-image: url({% static 'images/frontpage-square.png' %})">
-  		<h2>Fuksit</h2>
-    </div>
-  	<div class="col-md" style="background-image: url({% static 'images/frontpage-square.png' %})">
-  		<h2>Abit</h2>
-    </div>
-  	<div class="col-md" style="background-image: url({% static 'images/frontpage-square.png' %})">
-  	 <h2>Yrityssuhteet</h2>
-    </div>
-  	<div class="col-md" style="background-image: url({% static 'images/frontpage-square.png' %})">
-  	 <h2>Kansainvälisyys</h2>
-    </div>
-  	<div class="col-md" style="background-image: url({% static 'images/frontpage-square.png' %})">
-  	 <h2>Alumni</h2>
-  	</div>
-  </div>
-</div>-->
 
 {% endblock content %}
