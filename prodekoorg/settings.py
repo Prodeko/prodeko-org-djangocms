@@ -122,6 +122,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "prodekoorg/media")
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "prodekoorg/static"),
     os.path.join(BASE_DIR, "auth_prodeko/static"),
+    os.path.join(BASE_DIR, "prodekoorg/app_apply_for_membership/static"),
+    os.path.join(BASE_DIR, "prodekoorg/app_infoscreen/static"),
     os.path.join(BASE_DIR, "prodekoorg/app_kulukorvaus/static"),
     os.path.join(BASE_DIR, "prodekoorg/app_poytakirjat/static"),
     os.path.join(BASE_DIR, "prodekoorg/app_tiedostot/static"),
@@ -166,10 +168,12 @@ TEMPLATES = [
             os.path.join(
                 BASE_DIR, "prodekoorg/app_apply_for_membership/templates/emails"
             ),
+            os.path.join(BASE_DIR, "prodekoorg/app_infoscreen/templates"),
             os.path.join(BASE_DIR, "prodekoorg/app_kulukorvaus/templates"),
             os.path.join(BASE_DIR, "prodekoorg/app_kulukorvaus/templates/emails"),
             os.path.join(BASE_DIR, "prodekoorg/app_poytakirjat/templates"),
             os.path.join(BASE_DIR, "prodekoorg/app_toimarit/templates"),
+            os.path.join(BASE_DIR, "prodekoorg/app_tiedostot/templates"),
         ],
         "OPTIONS": {
             "context_processors": [
@@ -278,13 +282,14 @@ INSTALLED_APPS = (
     "tiedotteet.backend",
     "django_wysiwyg",
     "ckeditor",
+    "ckeditor_uploader",
     "rest_framework",
     "corsheaders",
     # ------------------------
     # matrikkeli.prodeko.org
     "alumnirekisteri",
     "alumnirekisteri.rekisteri",
-    "alumnirekisteri.auth2",
+    # "alumnirekisteri.auth2",
     # ------------------------
     # abit.prodeko.org
     "abisivut",
@@ -364,40 +369,35 @@ FILER_STORAGES = {
     },
 }
 
-# CKEditor config.
-# See https://ckeditor.com/docs/ckeditor4/latest/api/CKEDITOR_config.html
-# for available options
-CKEDITOR_CONFIGS = {
-    "main_ckeditor": {
-        "toolbar": [
-            ["Format", "Bold", "Italic", "Underline", "Strike"],
-            [
-                "NumberedList",
-                "BulletedList",
-                "Indent",
-                "Outdent",
-                "JustifyLeft",
-                "JustifyCenter",
-                "JustifyRight",
-                "JustifyBlock",
-            ],
-            [
-                "Table",
-                "Link",
-                "Unlink",
-                "Anchor",
-                "SectionLink",
-                "Subscript",
-                "Superscript",
-            ],
-            ["Undo", "Redo"],
-            ["Source"],
-            ["Maximize"],
+# Config for djangocms-text-ckeditor
+CKEDITOR_SETTINGS = {
+    "language": "en",
+    "toolbar_HTMLField": [
+        ["Format", "TextColor", "BGColor", "Bold", "Italic", "Underline", "Strike"],
+        [
+            "NumberedList",
+            "BulletedList",
+            "Indent",
+            "Outdent",
+            "JustifyLeft",
+            "JustifyCenter",
+            "JustifyRight",
+            "JustifyBlock",
         ],
-        "width": "auto",
-        "height": "auto",
-        "skin": "moono-lisa",
-    }
+        [
+            "Table",
+            "Link",
+            "Unlink",
+            "Anchor",
+            "SectionLink",
+            "Subscript",
+            "Superscript",
+        ],
+        ["Undo", "Redo"],
+        ["Source"],
+        ["Maximize"],
+    ],
+    "skin": "moono-lisa",
 }
 
 # Configure django messages framework to work with bootstrap
@@ -458,6 +458,7 @@ LOGGING = {
         },
     },
 }
+CKEDITOR_UPLOAD_PATH = "ckeditor_uploads/"
 
 CSRF_TRUSTED_ORIGINS = ".google.com"
 
@@ -466,7 +467,7 @@ SESSION_SAVE_EVERY_REQUEST = True
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False
 SESSION_COOKIE_AGE = 60 * 60 * 24 * 30  # 30 days
 
-CKEDITOR_BASEPATH = "/collected-static/ckeditor/ckeditor/"
+# CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
 CKEDITOR_UPLOAD_PATH = "tiedotteet/uploads/"
 DJANGO_WYSIWYG_FLAVOR = "ckeditor"
 CORS_ORIGIN_ALLOW_ALL = True
