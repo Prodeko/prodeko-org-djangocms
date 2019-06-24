@@ -991,8 +991,7 @@ img {
 
 /* SIDENAV */
 #sidenav {
-  position: fixed;
-  bottom: 40px;
+  position: relative;
   display: flex;
   justify-content: center;
   min-width: 15em;
@@ -1077,6 +1076,8 @@ img {
     list-style: none; }
   .prodeko-navbar li.active-menu-item a {
     font-weight: bold; }
+  .prodeko-navbar li.inactive-menu-item a {
+    font-weight: normal; }
   @media (max-width: 767px) {
     .prodeko-navbar {
       position: fixed !important;
