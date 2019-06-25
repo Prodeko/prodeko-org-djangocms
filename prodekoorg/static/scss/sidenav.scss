@@ -3,8 +3,7 @@
 @import 'variables.scss';
 
 #sidenav {
-  position: fixed;
-  bottom: 40px;
+  position: relative;
   display: flex;
   justify-content: center;
   min-width: 15em;

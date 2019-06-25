@@ -1,5 +1,5 @@
 $(document).scroll(function() {
-  checkOffset();
+  //checkOffset(); # Uncomment and update css files to enable scrolling sidenav
 });
 
 function checkOffset() {
