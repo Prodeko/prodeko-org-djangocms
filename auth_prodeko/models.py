@@ -68,7 +68,7 @@ class User(AbstractUser):
     )
 
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = [""]
+    REQUIRED_FIELDS = ['first_name', 'last_name']
 
     @receiver(post_save, sender=PendingUser)
     def create_user_profile(sender, instance, created, **kwargs):
