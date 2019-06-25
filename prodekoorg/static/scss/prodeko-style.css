@@ -1016,94 +1016,105 @@ img {
   body {
     margin-top: 106px !important; } }
 
-.prodeko-navbar {
-  margin-bottom: 16px;
-  white-space: nowrap;
-  text-align: center;
-  text-transform: uppercase;
-  /* Start animated underlines
-
-    Credits: http://tobiasahlin.com/blog/css-trick-animating-link-underlines/
-    */
-  /* End animated underlines */ }
-  .prodeko-navbar .nav-link {
-    font-size: 1.5em;
-    cursor: pointer; }
-  .prodeko-navbar #collapsibleNavbar .lang {
-    text-decoration: underline; }
-  @media (max-width: 767px) {
-    .prodeko-navbar #collapsibleNavbar .navbar-auth li {
-      margin-bottom: 5px; }
-      .prodeko-navbar #collapsibleNavbar .navbar-auth li a {
-        width: 165px;
-        margin-right: 0 !important; } }
-  .prodeko-navbar #collapsibleNavbar .navigation-list-child {
-    width: 80%;
-    margin: auto;
-    padding: 10px 0 10px 0;
-    list-style-type: none;
-    background-color: #c1ccd8; }
-  .prodeko-navbar #collapsibleNavbar .navigation-list-child-desktop {
-    position: relative;
-    z-index: 1;
-    padding: 10px 10px 10px 10px;
-    list-style-type: none;
-    background-color: #f1f1f1;
-    border-color: #002851;
-    border-style: solid;
-    border-width: 0.5px; }
-  .prodeko-navbar #collapsibleNavbar .nav-sublink {
-    color: rgba(0, 0, 0, 0.65); }
-  @media (min-width: 1024px) {
-    .prodeko-navbar #collapsibleNavbar {
-      padding-right: 40px; } }
-  @media (min-width: 1024px) {
-    .prodeko-navbar #collapsibleNavbar form {
-      width: 0; } }
-  .prodeko-navbar .nav-sublink {
-    color: rgba(0, 0, 0, 0.65); }
-  .prodeko-navbar .nav-ul {
-    list-style: none; }
-  .prodeko-navbar li.active-menu-item a {
-    font-weight: bold; }
-  @media (max-width: 767px) {
     .prodeko-navbar {
-      position: fixed !important;
-      top: 0;
-      right: 0;
-      left: 0;
-      z-index: 1030;
-      min-height: 90px;
-      max-height: 100vh;
-      overflow-y: auto;
-      background-color: white; } }
-  @media (min-width: 768px) and (max-width: 1023px) {
-    .prodeko-navbar .login-dropdown {
-      min-width: 22rem;
-      background-color: #002851; } }
-  .prodeko-navbar a.nav-top {
-    position: relative;
-    text-decoration: none; }
-  .prodeko-navbar .prodeko-navbar #collapsibleNavbar a.nav-top {
-    position: relative;
-    text-decoration: none; }
-  .prodeko-navbar a.nav-top:not(.no-animation)::before {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background-color: #002851;
-    -webkit-transform: scaleX(0);
-    transform: scaleX(0);
-    visibility: hidden;
-    -webkit-transition: all 0.3s ease-in-out 0s;
-    transition: all 0.3s ease-in-out 0s;
-    content: ""; }
-  .prodeko-navbar a.nav-top:not(.no-animation):hover::before {
-    -webkit-transform: scaleX(1);
-    transform: scaleX(1);
-    visibility: visible; }
+      margin-bottom: 1.0vh;
+      text-align: center;
+      text-transform: uppercase;
+      white-space: nowrap;
+      /* Start animated underlines
+        Credits: http://tobiasahlin.com/blog/css-trick-animating-link-underlines/
+        */
+      /* End animated underlines */ }
+      .prodeko-navbar #collapsibleNavbar .lang {
+        text-decoration: underline; }
+      @media (max-width: 767px) {
+        .prodeko-navbar #collapsibleNavbar .navbar-auth li {
+          margin-bottom: 5px; }
+          .prodeko-navbar #collapsibleNavbar .navbar-auth li a {
+            width: 165px;
+            margin-right: 0 !important; } }
+      .prodeko-navbar #collapsibleNavbar .navigation-list-child {
+        width: 80%;
+        margin: auto;
+        padding: 10px 0 10px 0;
+        list-style-type: none;
+        background-color: #c1ccd8; }
+      @media (min-width: 768px) {
+        .prodeko-navbar #collapsibleNavbar .navigation-list {
+          font-size: 0.7vw; } 
+        }
+      .prodeko-navbar #collapsibleNavbar .navigation-list-child-desktop {
+        padding: 10px 10px 10px 10px;
+        border-style: solid;
+        border-width: 0.5px;
+        border-color: #002851;
+        list-style-type: none;
+        background-color: #f1f1f1;
+        position: absolute;
+        z-index: 1; }
+      .prodeko-navbar #collapsibleNavbar .nav-link {
+        font-size: 1.5em;
+        cursor: pointer; }
+      .prodeko-navbar #collapsibleNavbar .nav-sublink {
+        color: rgba(0, 0, 0, 0.65); }
+      @media (min-width: 1024px) {
+        .prodeko-navbar #collapsibleNavbar {
+          padding-right: 40px; 
+          flex: 1;
+          flex-direction: row;
+          justify-content: space-between;
+        } }
+      @media (min-width: 1024px) {
+        .prodeko-navbar #collapsibleNavbar form {
+          width: 0; } }
+      .prodeko-navbar .nav-link {
+        font-size: 1.5em; }
+      .prodeko-navbar .nav-sublink {
+        color: rgba(0, 0, 0, 0.65); }
+      .prodeko-navbar .nav-ul {
+        list-style: none; }
+      .prodeko-navbar li.active-menu-item a {
+        font-weight: bold; }
+      .prodeko-navbar li.inactive-menu-item a {
+        font-weight: normal; }
+      @media (max-width: 767px) {
+        .prodeko-navbar {
+          position: fixed !important;
+          top: 0;
+          right: 0;
+          left: 0;
+          z-index: 1030;
+          min-height: 90px;
+          max-height: 100vh;
+          overflow-y: auto;
+          background-color: white; } }
+      @media (min-width: 768px) and (max-width: 1023px) {
+        .prodeko-navbar .login-dropdown {
+          min-width: 22rem;
+          background-color: #002851; } }
+      .prodeko-navbar a.nav-top {
+        position: relative;
+        text-decoration: none; }
+      .prodeko-navbar .prodeko-navbar #collapsibleNavbar a.nav-top {
+        position: relative;
+        text-decoration: none; }
+      .prodeko-navbar a.nav-top:not(.no-animation)::before {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background-color: #002851;
+        -webkit-transform: scaleX(0);
+        transform: scaleX(0);
+        visibility: hidden;
+        -webkit-transition: all 0.3s ease-in-out 0s;
+        transition: all 0.3s ease-in-out 0s;
+        content: ''; }
+      .prodeko-navbar a.nav-top:not(.no-animation):hover::before {
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1);
+        visibility: visible; }
 
 #prodeko-logo {
   display: block;
