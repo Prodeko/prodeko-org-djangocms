@@ -111,7 +111,7 @@ class HallituksenJasen(models.Model):
         )
 
     def photourl(self):
-        if os.path.isfile("prodekoorg/app_toimarit/static/images/hallitus_photos/{}_{}.jpg".format(self.firstname, self.lastname)):
+        if os.path.isfile("static/images/hallitus_photos/{}_{}.jpg".format(self.firstname, self.lastname)):
             return "%s_%s.jpg" % (self.firstname, self.lastname)
         else:
             return 'placeholder.jpg'
