@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-26 14:36+0000\n"
+"POT-Creation-Date: 2019-06-26 17:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -920,7 +920,7 @@ msgid "If you are a new student - click here!"
 msgstr "Klikkaa tästä uusien opiskelijoiden sivuille!"
 
 #: prodekoorg/templates/frontpage.html:10
-msgid "For high school students"
+msgid "For prospective students"
 msgstr "Abeille"
 
 #: prodekoorg/templates/frontpage.html:11
