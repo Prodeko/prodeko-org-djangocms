@@ -1,5 +1,6 @@
 import os.path
 
+from django.conf import settings
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
@@ -51,6 +52,18 @@ class Toimari(models.Model):
             + self.lastname
             + ".jpg"
         )
+
+    def photourl(self):
+        if settings.DEBUG:
+            if os.path.isfile("prodekoorg/app_toimarit/static/images/toimari_photos/{}_{}.jpg".format(self.firstname, self.lastname)):
+                return "%s_%s.jpg" % (self.firstname, self.lastname)
+            else:
+                return 'placeholder.jpg'
+        else:
+            if os.path.isfile(settings.STATIC_ROOT + "images/toimari_photos/{}_{}.jpg".format(self.firstname, self.lastname)):
+                return "%s_%s.jpg" % (self.firstname, self.lastname)
+            else:
+                return 'placeholder.jpg'
 
     def __str__(self):
         return self.name + ", " + self.position
@@ -110,10 +123,16 @@ class HallituksenJasen(models.Model):
         )
 
     def photourl(self):
-        if os.path.isfile("prodekoorg/app_toimarit/static/images/hallitus_photos/{}_{}.jpg".format(self.firstname, self.lastname)):
-            return "%s_%s.jpg" % (self.firstname, self.lastname)
+        if settings.DEBUG:
+            if os.path.isfile("prodekoorg/app_toimarit/static/images/hallitus_photos/{}_{}.jpg".format(self.firstname, self.lastname)):
+                return "%s_%s.jpg" % (self.firstname, self.lastname)
+            else:
+                return 'placeholder.jpg'
         else:
-            return 'placeholder.jpg'
+            if os.path.isfile(settings.STATIC_ROOT + "images/hallitus_photos/{}_{}.jpg".format(self.firstname, self.lastname)):
+                return "%s_%s.jpg" % (self.firstname, self.lastname)
+            else:
+                return 'placeholder.jpg'
 
     def __str__(self):
         return self.name + ", " + self.position
