@@ -14,6 +14,9 @@ Prodekon tummansininen: #002851
 /*
  * Usage: @include tablet {}
  */
+
+ @import 'variables.scss';
+
 h1,
 h2,
 h3,
@@ -1025,6 +1028,32 @@ img {
         Credits: http://tobiasahlin.com/blog/css-trick-animating-link-underlines/
         */
       /* End animated underlines */ }
+      @media (max-width: 991px) {
+        .prodeko-navbar .hamburger.is-active {
+          display: flex;
+          background: #002851;
+          opacity: 1.0;
+        }
+
+        .prodeko-navbar .hamburger.is-active .hamburger-inner::before {
+          background-color:white;
+          opacity: 1;
+        }
+        .prodeko-navbar .hamburger.is-active .hamburger-inner::after {
+          background-color:white;
+          opacity: 1;
+        }
+        .prodeko-navbar .hamburger.collapsed {
+          display: flex;
+        }
+
+      }
+      @media (min-width: 992px) {
+        .prodeko-navbar #navbar-toggleButton {
+          display: none;
+          background: transparent;
+        }
+      }
       .prodeko-navbar #collapsibleNavbar .lang {
         text-decoration: underline; }
       @media (max-width: 767px) {
@@ -1033,12 +1062,18 @@ img {
           .prodeko-navbar #collapsibleNavbar .navbar-auth li a {
             width: 165px;
             margin-right: 0 !important; } }
+      @media (max-width: 767px) {
+          .prodeko-navbar #collapsibleNavbar ul {
+            font-size: 0.75rem;
+          }
+      }
       .prodeko-navbar #collapsibleNavbar .navigation-list-child {
         width: 80%;
         margin: auto;
-        padding: 10px 0 10px 0;
-        list-style-type: none;
-        background-color: #c1ccd8; }
+        padding: 0.5rem;
+        color: white;
+        background: #002851;
+        list-style-type: none; }
       @media (min-width: 768px) {
         .prodeko-navbar #collapsibleNavbar .navigation-list {
           font-size: 0.7vw; } 
@@ -1051,12 +1086,28 @@ img {
         list-style-type: none;
         background-color: #f1f1f1;
         position: absolute;
-        z-index: 1; }
+        z-index: 1; 
+        min-width: 100%;
+      }
       .prodeko-navbar #collapsibleNavbar .nav-link {
-        font-size: 1.5em;
+        font-size: 1.0rem;
         cursor: pointer; }
+        @media(max-width: 991px) {
+          .prodeko-navbar #collapsibleNavbar .nav-sublink {
+            color: white;
+            font-size: 0.9rem;
+          }
+        }
+
+        @media(min-width: 768px) {
+          .prodeko-navbar #collapsibleNavbar .nav-link {
+            font-size: 1.2rem;
+          }
+        }
+        @media(min-width: 992px) {
       .prodeko-navbar #collapsibleNavbar .nav-sublink {
         color: rgba(0, 0, 0, 0.65); }
+        }
       @media (min-width: 1024px) {
         .prodeko-navbar #collapsibleNavbar {
           padding-right: 40px; 
@@ -1126,6 +1177,7 @@ img {
   background-origin: content-box; }
   @media (max-width: 767px) {
     #prodeko-logo {
+      display: none;
       max-width: 200px;
       height: 74px;
       margin-left: 0;
@@ -1133,11 +1185,13 @@ img {
       background-position-y: center; } }
   @media (min-width: 768px) and (max-width: 1023px) {
     #prodeko-logo {
+      display: none;
       max-width: 300px;
       height: 60px;
       background-image: url("/static/images/logos/prodeko-logo-text-blue.png"); } }
   @media (min-width: 1024px) {
     #prodeko-logo {
+      display: block;
       max-width: 150px;
       height: 75px;
       background-image: url("/static/images/logos/prodeko-logo-darkblue.png"); } }

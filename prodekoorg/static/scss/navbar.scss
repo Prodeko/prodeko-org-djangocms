@@ -45,12 +45,14 @@ body {
       position: relative;
       z-index: 1;
       //margin: 0px -30px;
-      padding: 10px 10px 10px 10px;
+      padding: 10px 15px 10px 15px;
+      font-size: 1.0rem;
       list-style-type: none;
       background-color: rgb(241, 241, 241);
       border-color: rgb(0, 40, 81);
       border-style: solid;
       border-width: 0.5px;
+      min-width: 100%;
     }
 
     .nav-sublink {
