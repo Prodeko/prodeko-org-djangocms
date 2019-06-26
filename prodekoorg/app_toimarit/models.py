@@ -60,7 +60,7 @@ class Toimari(models.Model):
             else:
                 return 'placeholder.jpg'
         else:
-            if os.path.isfile(settings.STATIC_ROOT + "images/toimari_photos/{}_{}.jpg".format(self.firstname, self.lastname)):
+            if os.path.isfile(settings.STATIC_ROOT + "/images/toimari_photos/{}_{}.jpg".format(self.firstname, self.lastname)):
                 return "%s_%s.jpg" % (self.firstname, self.lastname)
             else:
                 return 'placeholder.jpg'
@@ -129,7 +129,7 @@ class HallituksenJasen(models.Model):
             else:
                 return 'placeholder.jpg'
         else:
-            if os.path.isfile(settings.STATIC_ROOT + "images/hallitus_photos/{}_{}.jpg".format(self.firstname, self.lastname)):
+            if os.path.isfile(settings.STATIC_ROOT + "/images/hallitus_photos/{}_{}.jpg".format(self.firstname, self.lastname)):
                 return "%s_%s.jpg" % (self.firstname, self.lastname)
             else:
                 return 'placeholder.jpg'
