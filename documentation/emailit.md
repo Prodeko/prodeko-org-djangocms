@@ -8,15 +8,20 @@ Projektin automaattisesti lähetettävät sähköpostit kulkevat smtp-relay.gmai
 ## Setup
 
 1. Salli vähemmän turvalliset sovellukset osoitteessa https://myaccount.google.com/security
-![Vähemmän turvalliset sovellukset kuva 1](images/emails/emails-less-secure-apps.png)
+   ![Vähemmän turvalliset sovellukset kuva 1](images/emails/emails-less-secure-apps.png)
 2. Muokkaa G Suiten Gmail admin paneelista (Sovellukset > G Suite > Aetukset: Gmail > Lisäasetukset) SMTP-välityspalvelun sallitut IP-osoitteet.
-  - HUOM! Aallon verkossa olevat IP-osoitteet eivät toimi!
-![G Suiten asetukset kuva 1](images/emails/emails-g-suite-config-1.png)
-![G Suiten asetukset kuva 2](images/emails/emails-g-suite-config-2.png)
+
+- HUOM! Aallon verkossa olevat IP-osoitteet eivät toimi!
+  ![G Suiten asetukset kuva 1](images/emails/emails-g-suite-config-1.png)
+  ![G Suiten asetukset kuva 2](images/emails/emails-g-suite-config-2.png)
+
 3. Uudelleenohjaa no-reply@prodeko.org osoitteeseen lähetetyt mailit mediakeisarille (siltä varalta että joku vastaa tähän osoitteeseen)
+
 - https://support.google.com/mail/answer/10957?hl=en
-![Uudelleenohjaa sähköposti](images/emails/forward-mail.png)
+  ![Uudelleenohjaa sähköposti](images/emails/forward-mail.png)
+
 4. Muokkaa settings.py:
+
 ```
 # Email config. See documentation/app_apply_for_membership.md or emailit.md
 # on more details about how email sending works through G Suite.
@@ -37,6 +42,7 @@ EMAIL_USE_TLS = True
 Projekti lähettää sähköposteja kaikista ERROR tason virheistä sekä kaikista rikki olevista linkeista. Settings.py:ssä on määritetty ADMINS ja MANAGERS muuttujat, joihin sähköpostit pamahtavat.
 
 Settings.py:
+
 ```
 # When DEBUG = False, all errors with level ERROR or
 # higher get mailed to ADMINS according to LOGGING conf
@@ -48,13 +54,16 @@ MANAGERS = [('CTO', 'cto@prodeko.org'), ]
 **2. Appien lähettämät sähköpostit**
 
 auth_prodeko
+
 - Password reset maili
 
 app_apply_for_membership
+
 - Infomaili mediakeisarille
 - Hylkäys/hyväksymismaili hakijalle
 
 app_kulukorvaus
+
 - Yhteenvetomaili kulukorvauksen lähettämisen jälkeen
 
 ## Muuta
