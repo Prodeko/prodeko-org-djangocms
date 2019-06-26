@@ -106,7 +106,7 @@ class HallituksenJasen(models.Model):
     def photoExists(self):
         return os.path.isfile(
             "prodekoorg/app_toimarit/static/images/hallitus_photos/{}_{}.jpg".format(
-                self.first_name, self.last_name
+                self.firstname, self.lastname
             )
         )
 
