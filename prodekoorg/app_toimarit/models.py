@@ -46,7 +46,7 @@ class Toimari(models.Model):
 
     def photoExists(self):
         return os.path.isfile(
-            "prodekoorg/app/toimarit/static/images/toimari_photos/"
+            "prodekoorg/app_toimarit/static/images/toimari_photos/"
             + self.firstname
             + "_"
             + self.lastname
@@ -109,6 +109,12 @@ class HallituksenJasen(models.Model):
                 self.firstname, self.lastname
             )
         )
+
+    def photourl(self):
+        if os.path.isfile("prodekoorg/app_toimarit/static/images/hallitus_photos/{}_{}.jpg".format(self.firstname, self.lastname)):
+            return "%s_%s.jpg" % (self.firstname, self.lastname)
+        else:
+            return 'placeholder.jpg'
 
     def __str__(self):
         return self.name + ", " + self.position
