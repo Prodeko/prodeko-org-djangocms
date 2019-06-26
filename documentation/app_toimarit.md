@@ -4,6 +4,7 @@
 **Tekij�:** Kalle Hiltunen
 
 ## Asennus
+
 - Luo uusi sivu djangon admini-paneelissa
 - Mene sivun lis�asetuksiin
 - Valitse sovellukseksi (Application) joko Officials (toimarit) tai Board (hallituslaiset). T�m� m��ritt�� n�ytett�v�n sis�ll�n sivulla.
@@ -16,14 +17,14 @@
 - CSV-tiedoston voi ladata admin --> Guild Officials/Toimihenkil�t --> Lataa CSV
 - Vanhat toimarit eiv�t poistu CSV-tiedostoa ladatessa, joten tarvittaessa ne tulee poistaa ennen tiedoston lataamista
 - Toimarien kuvat linkittyv�t automaattisesti oikeisiin henkil�ihin, kun ne ladataan kansioon prodekoorg/app_toimarit/static/images/toimari_photos
-- Kuvien nime�misen tulee noudattaa muotoa Etunimi_Sukunimi.jpg 
+- Kuvien nime�misen tulee noudattaa muotoa Etunimi_Sukunimi.jpg
 - Oletuskuvaa voi vaihtaa samasta kansiosta tiedostosta anonyymi_uniseksi_maskulinoitu.jpg
 
 ## Hallituksen j�senten lis��minen
 
 - Manuaalisesti admin-paneelin kautta
 - Toimarien kuvat linkittyv�t automaattisesti oikeisiin henkil�ihin, kun ne ladataan kansioon prodekoorg/app_toimarit/static/images/hallitus_photos
-- Kuvien nime�misen tulee noudattaa muotoa Etunimi_Sukunimi.jpg 
+- Kuvien nime�misen tulee noudattaa muotoa Etunimi_Sukunimi.jpg
 - Oletuskuvaa voi vaihtaa samasta kansiosta tiedostosta placeholder.jpg
 
 ## Muut toiminnallisuudet
