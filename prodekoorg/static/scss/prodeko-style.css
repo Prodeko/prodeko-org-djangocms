@@ -1124,7 +1124,9 @@ img {
         color: rgba(0, 0, 0, 0.65); }
       .prodeko-navbar .nav-ul {
         list-style: none; }
-      .prodeko-navbar li.active-menu-item a {
+      .prodeko-navbar .navbar-submenu li.active-menu-item a {
+        font-weight: bold; }
+      .prodeko-navbar li.active-menu-item a.navbar-headtitle {
         font-weight: bold; }
       .prodeko-navbar li.inactive-menu-item a {
         font-weight: normal; }
