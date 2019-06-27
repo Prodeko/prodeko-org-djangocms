@@ -35,7 +35,7 @@
 									<a class="nav-link nav-top dropdown-toggle navbar-headtitle"
 										data-toggle="dropdown">{{child.get_menu_title }}</a>
 									<ul class="collapse ul mr-auto dropdown-menu navigation-list-child-desktop navbar-submenu"
-										id="dropdown-desktop-{{child.get_menu_title}}">
+										id="dropdown-desktop-{{child.get_menu_title|cut:' '}}">
 										<li class="nav-item {% if child.selected %} active-menu-item{% endif %} mr-2"><a
 												class="nav-sublink"
 												href="{{ child.get_absolute_url }}">{{child.get_menu_title }}</a></li>
@@ -56,11 +56,11 @@
 								<!-- li element for dropdown navbar -->
 								{% if not child.is_leaf_node or child.ancestor %}
 								<li class="d-lg-none nav-item mr-2" data-toggle="collapse"
-									data-target="#dropdown-{{child.get_menu_title}}"><a
+									data-target="#dropdown-{{child.get_menu_title|cut:' '}}"><a
 										class="dropdown-toggle nav-link">{{child.get_menu_title }}
 									</a>
 									<ul class="collapse ul mr-auto navigation-list-child"
-										id="dropdown-{{child.get_menu_title}}">
+										id="dropdown-{{child.get_menu_title|cut:' '}}">
 										<li class="nav-item {% if child.selected %} active-menu-item{% endif %} mr-2"><a
 												class="nav-sublink"
 												href="{{ child.get_absolute_url }}">{{child.get_menu_title }}</a></li>
