@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-27 09:19+0000\n"
+"POT-Creation-Date: 2019-06-27 20:26+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -313,8 +313,8 @@ msgstr "Kyllä"
 msgid "No"
 msgstr "Ei"
 
-#: prodekoorg/app_apply_for_membership/models.py:47 prodekoorg/settings.py:83
-#: prodekoorg/settings.py:93
+#: prodekoorg/app_apply_for_membership/models.py:47 prodekoorg/settings.py:85
+#: prodekoorg/settings.py:95
 msgid "Finnish"
 msgstr "Suomi"
 
@@ -899,7 +899,7 @@ msgstr "Poista"
 msgid "Edit"
 msgstr "Muokkaa"
 
-#: prodekoorg/settings.py:83 prodekoorg/settings.py:100
+#: prodekoorg/settings.py:85 prodekoorg/settings.py:102
 msgid "English"
 msgstr "Englanti"
 
@@ -954,10 +954,6 @@ msgstr "Jäsenhakemus"
 #: prodekoorg/templates/layout-components/footer.html:7
 msgid "Contact form"
 msgstr "Yhteydenottolomake"
-
-#: prodekoorg/templates/layout-components/footer.html:22
-msgid "/privacy"
-msgstr "/tietosuoja"
 
 #: prodekoorg/templates/layout-components/navbar.html:3
 msgid "Login"
@@ -1259,6 +1255,9 @@ msgstr "Kirjautuminen ylläpitäjänä vaadittu"
 #: tiedotteet/backend/views.py:41
 msgid "New bulletin added"
 msgstr "Tiedote lisätty"
+
+#~ msgid "/privacy"
+#~ msgstr "/tietosuoja"
 
 #~ msgid "^apply/$"
 #~ msgstr "^hae-jaseneksi/$"
