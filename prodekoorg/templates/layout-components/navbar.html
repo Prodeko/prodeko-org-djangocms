@@ -33,10 +33,10 @@
 								<!-- li element for open navbar -->
 								{% if child.get_descendants %}
 								<li
-									class="d-none d-lg-block dropdown nav-item{% if child.selected %} active-menu-item{% endif %} mr-2">
-									<a class="nav-link nav-top dropdown-toggle"
+									class="d-none d-lg-block dropdown nav-item{% for kid in child.get_descendants %}{% if kid.selected %} active-menu-item{% endif %}{% endfor %}{%if child.selected %} active-menu-item{% endif %} mr-2">
+									<a class="nav-link nav-top dropdown-toggle navbar-headtitle"
 										data-toggle="dropdown">{{child.get_menu_title }}</a>
-									<ul class="collapse ul mr-auto dropdown-menu navigation-list-child-desktop"
+									<ul class="collapse ul mr-auto dropdown-menu navigation-list-child-desktop navbar-submenu"
 										id="dropdown-desktop-{{child.get_menu_title}}">
 										<li class="nav-item {% if child.selected %} active-menu-item{% endif %} mr-2"><a
 												class="nav-sublink"
