@@ -1017,7 +1017,7 @@ img {
 
 @media (max-width: 767px) {
   body {
-    margin-top: 106px !important; } }
+    margin-top: 2rem !important; } }
 
     .prodeko-navbar {
       margin-bottom: 1.0vh;
@@ -1031,18 +1031,20 @@ img {
       @media (max-width: 991px) {
         .prodeko-navbar .hamburger.is-active {
           display: flex;
-          background: #002851;
-          opacity: 1.0;
+          margin-right: 0.5rem;
+          /**background: #002851;
+          opacity: 1.0; **/
         }
 
-        .prodeko-navbar .hamburger.is-active .hamburger-inner::before {
-          background-color:white;
+       /** .prodeko-navbar .hamburger.is-active .hamburger-inner::before {
+          /background-color:white;
           opacity: 1;
         }
         .prodeko-navbar .hamburger.is-active .hamburger-inner::after {
           background-color:white;
           opacity: 1;
         }
+        **/
         .prodeko-navbar .hamburger.collapsed {
           display: flex;
         }
@@ -1067,12 +1069,42 @@ img {
             font-size: 0.75rem;
           }
       }
+
+      @media (max-width: 991px) {
+        .prodeko-navbar #collapsibleNavbar ul {
+          margin: 2rem 2rem 1rem 2rem;
+        }
+
+        #language-selection-desktop {
+          display: none;
+        }
+
+        #auth-buttons-desktop {
+          display: none;
+        }
+    }
+
+    @media (min-width: 992px) {
+
+      #language-selection-mobile {
+        display: none;
+      }
+
+      #auth-buttons-mobile {
+        display: none;
+      }
+    }
+
+      @media (max-width: 991px) {
+        .prodeko-navbar #collapsibleNavbar ul {
+          margin: 2rem 2rem 1rem 2rem;
+        }
+    }
       .prodeko-navbar #collapsibleNavbar .navigation-list-child {
         width: 80%;
         margin: auto;
         padding: 0.5rem;
         color: white;
-        background: #002851;
         list-style-type: none; }
       @media (min-width: 768px) {
         .prodeko-navbar #collapsibleNavbar .navigation-list {
@@ -1091,11 +1123,15 @@ img {
       }
       .prodeko-navbar #collapsibleNavbar .nav-link {
         font-size: 1.0rem;
-        cursor: pointer; }
+        cursor: pointer; 
+        display: flex;
+      }
         @media(max-width: 991px) {
           .prodeko-navbar #collapsibleNavbar .nav-sublink {
-            color: white;
-            font-size: 0.9rem;
+            display: flex;
+            margin-left: 1rem;
+            color: rgba(0, 0, 0, 0.65);
+            font-size: 1.0rem;
           }
         }
 
@@ -1168,6 +1204,21 @@ img {
         -webkit-transform: scaleX(1);
         transform: scaleX(1);
         visibility: visible; }
+@media (max-width: 1023px) {
+  .prodeko-navbar .navbar-logo-container {
+  display: none; } 
+}
+
+@media (max-width: 767px) {
+#prodeko-logo-mobile {
+  background-image: url("/static/images/logos/prodeko-logo-text-blue.png");
+}
+}
+
+  .dropdown-toggle::after {
+    display: flex;
+    align-self: center;
+  }
 
 #prodeko-logo {
   display: block;
