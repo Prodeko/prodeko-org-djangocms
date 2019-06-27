@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-26 17:02+0000\n"
+"POT-Creation-Date: 2019-06-27 09:19+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -118,7 +118,7 @@ msgstr "Nimi"
 #: prodekoorg/app_apply_for_membership/models.py:61
 #: prodekoorg/app_kulukorvaus/models.py:48
 #: prodekoorg/app_kulukorvaus/printing.py:95
-#: prodekoorg/app_toimarit/models.py:94
+#: prodekoorg/app_toimarit/models.py:106
 msgid "Email"
 msgstr "Sähköposti"
 
@@ -323,12 +323,12 @@ msgid "Other (English)"
 msgstr "Englanti"
 
 #: prodekoorg/app_apply_for_membership/models.py:57
-#: prodekoorg/app_toimarit/models.py:36 prodekoorg/app_toimarit/models.py:82
+#: prodekoorg/app_toimarit/models.py:36 prodekoorg/app_toimarit/models.py:94
 msgid "First name"
 msgstr "Etunimi"
 
 #: prodekoorg/app_apply_for_membership/models.py:58
-#: prodekoorg/app_toimarit/models.py:37 prodekoorg/app_toimarit/models.py:83
+#: prodekoorg/app_toimarit/models.py:37 prodekoorg/app_toimarit/models.py:95
 msgid "Last name"
 msgstr "Sukunimi"
 
@@ -666,44 +666,44 @@ msgstr "jaosto"
 msgid "sections"
 msgstr "jaostot"
 
-#: prodekoorg/app_toimarit/models.py:38 prodekoorg/app_toimarit/models.py:84
+#: prodekoorg/app_toimarit/models.py:38 prodekoorg/app_toimarit/models.py:96
 #: prodekoorg/app_vaalit/models.py:12
 msgid "Position"
 msgstr "Virka"
 
-#: prodekoorg/app_toimarit/models.py:40 prodekoorg/app_toimarit/models.py:90
+#: prodekoorg/app_toimarit/models.py:40 prodekoorg/app_toimarit/models.py:102
 msgid "Section"
 msgstr "Jaosto"
 
-#: prodekoorg/app_toimarit/models.py:60
+#: prodekoorg/app_toimarit/models.py:72
 msgid "guild official"
 msgstr "toimari"
 
-#: prodekoorg/app_toimarit/models.py:61
+#: prodekoorg/app_toimarit/models.py:73
 msgid "guild officials"
 msgstr "toimarit"
 
-#: prodekoorg/app_toimarit/models.py:92
+#: prodekoorg/app_toimarit/models.py:104
 msgid "Position (English)"
 msgstr "Virka (Englanniksi)"
 
-#: prodekoorg/app_toimarit/models.py:93
+#: prodekoorg/app_toimarit/models.py:105
 msgid "Mobile phone"
 msgstr "Puhelinnumero"
 
-#: prodekoorg/app_toimarit/models.py:96
+#: prodekoorg/app_toimarit/models.py:108
 msgid "Telegram"
 msgstr "Telegram"
 
-#: prodekoorg/app_toimarit/models.py:99
+#: prodekoorg/app_toimarit/models.py:111
 msgid "Description"
 msgstr "Kuvaus"
 
-#: prodekoorg/app_toimarit/models.py:117
+#: prodekoorg/app_toimarit/models.py:141
 msgid "board member"
 msgstr "hallituksen jäsen"
 
-#: prodekoorg/app_toimarit/models.py:118
+#: prodekoorg/app_toimarit/models.py:142
 msgid "board members"
 msgstr "hallituksen jäsenet"
 
