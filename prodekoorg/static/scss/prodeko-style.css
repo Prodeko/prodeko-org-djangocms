@@ -1050,6 +1050,13 @@ img {
         }
 
       }
+      @media (max-width: 991px) {
+        .prodeko-navbar #navbar-toggleButton {
+          position: absolute;
+          top: 3rem;
+          left: 0rem;
+        }
+      }
       @media (min-width: 992px) {
         .prodeko-navbar #navbar-toggleButton {
           display: none;
@@ -1103,6 +1110,7 @@ img {
       .prodeko-navbar #collapsibleNavbar .navigation-list-child {
         width: 80%;
         margin: auto;
+        margin-left: 0rem;
         padding: 0.5rem;
         color: white;
         list-style-type: none; }
