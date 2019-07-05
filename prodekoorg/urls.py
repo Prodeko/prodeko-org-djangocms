@@ -14,6 +14,7 @@ from django.views.static import serve
 
 from prodekoorg.app_poytakirjat.gdrive_api import run_app_poytakirjat
 from prodekoorg.app_toimarit.views import postcsv
+from lifelonglearning.views import coursepage
 
 urlpatterns = [
     re_path(r"^sitemap\.xml$", sitemap, {"sitemaps": {"cmspages": CMSSitemap}}),
@@ -51,6 +52,8 @@ urlpatterns += i18n_patterns(
         run_app_poytakirjat,
         name="download_docs_from_gsuite",
     ),
+    # Lifelonglearning course page
+    re_path(r"^lifelonglearning/course/(?P<pk>\d+)/", coursepage, name="coursepage"),
     # auth_prodeko
     re_path(r"", include("auth_prodeko.urls")),
     # app_infoscreen

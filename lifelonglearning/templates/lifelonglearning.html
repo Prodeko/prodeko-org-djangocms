@@ -66,18 +66,9 @@
           <hr />
           <h2 class="center">Tulevat kurssit</h2>
           <br />
-          <p class="center">Syksyn 2019 kurssit julkaistaan kevään aikana, pysy kuulolla!</p>
-        </div>
-      </div>
-      <div id="third" class="section row">
-        <div id="courses">
-          {% if courses %}
-          <hr>
-          <h2 class="center">Menneet kurssit</h2>
-          {% endif %}
-
-          {% for course in courses %}
-          <a href="{% url 'lifelonglearning:coursepage' course.id %}">
+          
+          {% for course in openCourses %}
+          <a href="{% url 'coursepage' course.id %}">
             <div class="col-md-6">
               <div class="course">
                 <div class="course-banner" style="background-image: url('{{ course.get_banner_image }}')">
@@ -96,6 +87,40 @@
                     </div>
                   </div>
                   <a class="btn btn-success btn-block registration" href="{{ course.registration }}">Ilmoittaudu</a>
+                </div>
+              </div>
+            </div>
+          </a>
+        {% endfor %}
+
+        </div>
+      </div>
+      <div id="third" class="section row">
+        <div id="courses">
+          {% if openCourses %}
+          <hr>
+          <h2 class="center">Menneet kurssit</h2>
+          {% endif %}
+
+          {% for course in pastCourses %}
+          <a href="{% url 'lifelonglearning:coursepage' course.id %}">
+            <div class="col-md-6">
+              <div class="course">
+                <div class="course-banner" style="background-image: url('{{ course.get_banner_image }}')">
+                  <div class="bottom-gradient"></div>
+                </div>
+                <div class="course-text">
+                  <h3>{{ course.name }}</h3>
+                  {% if course.coaches %}<p class="addition clear">Valmentajat: <span class="black">{{ course.coaches }}</span></p>{% endif %}
+                  {% if course.groupsize %}<p class="addition">Kurssikoko: <span class="black">{{ course.groupsize }}</span></p>{% endif %}
+                  {% if course.timing %}<p class="addition">Ajankohta: <span class="black">{{ course.timing }}</span></p>{% endif %}
+                  <hr>
+                  <div class="course-ingress">
+                    <p>{% autoescape off %}{{ course.description | truncatechars:400 | safe }}{% endautoescape %}</p>
+                    <div class="read-more">
+                      <p class="read-more-text">Lue lisää...</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
