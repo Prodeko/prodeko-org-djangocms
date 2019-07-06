@@ -4,6 +4,7 @@ from django.db import models
 from django.utils import timezone
 from django.utils.encoding import smart_str
 from django.utils.translation import ugettext_lazy as _
+from ckeditor.fields import RichTextField
 
 
 class MailConfiguration(models.Model):
@@ -78,7 +79,6 @@ class OldMessageManager(models.Manager):
 
 class Message(models.Model):
     header = models.CharField(max_length=250)
-    content = models.TextField()
     pub_date = models.DateTimeField(default=timezone.now)
     category = models.ForeignKey(
         Category, on_delete=models.CASCADE, related_name="messages", null=True
@@ -91,6 +91,7 @@ class Message(models.Model):
     )
     show_deadline = models.BooleanField(default=False)
     visible = models.BooleanField(default=True)
+    content = RichTextField(blank=True)
 
     objects = models.Manager()
     visible_objects = MessageManager()

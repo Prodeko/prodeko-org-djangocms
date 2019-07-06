@@ -6,13 +6,13 @@ module.exports = {
   mode: "development",
   entry: "./src/index.js",
   output: {
-    path: path.resolve(__dirname, "public"),
+    path: path.resolve(__dirname, "public/tiedotteet"),
     filename: "bundle.js",
-    publicPath: "/static/"
+    publicPath: "/static/tiedotteet/"
   },
   devtool: "source-map",
   devServer: {
-    contentBase: path.resolve(__dirname, "public"),
+    contentBase: path.resolve(__dirname, "public/tiedotteet"),
     port: "3000"
   },
   module: {

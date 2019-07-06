@@ -5,15 +5,11 @@ import Article from "../../components/Article";
 import Header from "../../components/Header";
 import TableOfContents from "../../components/TableOfContents";
 import Footer from "../../components/Footer";
-import LoginForm from "../../components/LoginForm";
-import LogoutForm from "../../components/LogoutForm";
 
 class MainContent extends Component {
   render() {
     return (
       <div id="main-content" className={this.props.additionalClasses}>
-        {window.user === "AnonymousUser" ? <LoginForm /> : <LogoutForm />}
-
         <Header />
         <TableOfContents
           content={this.props.content}

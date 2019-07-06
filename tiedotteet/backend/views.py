@@ -6,6 +6,7 @@ from django.core.mail.backends.smtp import EmailBackend
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.http import HttpResponseForbidden, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
+from django.contrib.admin.views.decorators import staff_member_required
 from django.template import Context
 from django.template.loader import get_template
 from django.urls import reverse
@@ -25,13 +26,12 @@ from tiedotteet.backend.models import Category, MailConfiguration, Message, Tag
 
 def index(request):
     """ the public main page """
-    return render(request, "index.html")
+    return render(request, "tiedotteet/index.html")
 
 
+@staff_member_required(login_url="/login")
 def control_panel(request):
     """ site for publishing new messages """
-    if not request.user.is_superuser:
-        return HttpResponseForbidden(_("Admin login required"))
     form = PublishForm()
     latest_messages = Message.objects.filter(visible=True).order_by("-pk")[:10]
     if request.method == "POST":
@@ -45,10 +45,9 @@ def control_panel(request):
     )
 
 
+@staff_member_required(login_url="/login")
 def control_messages(request, filter, category):
     """ control panel - list messages """
-    if not request.user.is_superuser:
-        return HttpResponseForbidden(_("Admin login required"))
     if filter == "now":
         messages = Message.objects.filter(end_date__gte=timezone.now()).order_by("-pk")
         filter_label = _("Now")
@@ -101,10 +100,9 @@ def control_messages(request, filter, category):
     )
 
 
+@staff_member_required(login_url="/login")
 def categories(request):
     """ control panel - edit categories """
-    if not request.user.is_superuser:
-        return HttpResponseForbidden(_("Admin login required"))
     categories = Category.objects.all()
     cforms = [CategoryForm(prefix=str(x), instance=x) for x in categories]
     nform = CategoryForm()
@@ -125,10 +123,9 @@ def categories(request):
     )
 
 
+@staff_member_required(login_url="/login")
 def new_category(request):
     """ control panel - add new category """
-    if not request.user.is_superuser:
-        return HttpResponseForbidden(_("Admin login required"))
     if request.method == "POST":
         form = CategoryForm(request.POST)
         if form.is_valid():
@@ -136,10 +133,9 @@ def new_category(request):
     return redirect("tiedotteet:categories")
 
 
+@staff_member_required(login_url="/login")
 def tags(request):
     """ control panel - edit tags """
-    if not request.user.is_superuser:
-        return HttpResponseForbidden(_("Admin login required"))
     tags = Tag.objects.all()
     form = TagForm()
     if request.method == "POST":
@@ -150,19 +146,17 @@ def tags(request):
     return render(request, "control/tags.html", {"tags": tags, "form": form})
 
 
+@staff_member_required(login_url="/login")
 def delete_tag(request, pk):
-    if not request.user.is_superuser:
-        return HttpResponseForbidden(_("Admin login required"))
     if request.method == "POST":
         tag = get_object_or_404(Tag, pk=pk)
         tag.delete()
     return redirect("tiedotteet:tags")
 
 
+@staff_member_required(login_url="/login")
 def email(request):
     """ email template """
-    if not request.user.is_superuser:
-        return HttpResponseForbidden(_("Admin login required"))
     visible_messages = Message.visible_objects.order_by("end_date")
     categories = (
         Category.objects.filter(messages__in=visible_messages)
@@ -183,9 +177,8 @@ def toc(request):
     return render(request, "toc.html", {"categories": categories})
 
 
+@staff_member_required(login_url="/login")
 def delete_message(request, pk):
-    if not request.user.is_superuser:
-        return HttpResponseForbidden(_("Admin login required"))
     if request.method == "POST":
         message = get_object_or_404(Message, pk=pk)
         message.delete()
@@ -193,9 +186,8 @@ def delete_message(request, pk):
     return redirect("tiedotteet:control_messages", filter="all", category="all")
 
 
+@staff_member_required(login_url="/login")
 def hide_message(request, pk):
-    if not request.user.is_superuser:
-        return HttpResponseForbidden(_("Admin login required"))
     if request.method == "POST":
         message = get_object_or_404(Message, pk=pk)
         if message.visible:
@@ -206,9 +198,8 @@ def hide_message(request, pk):
     return redirect("tiedotteet:control_messages", filter="all", category="all")
 
 
+@staff_member_required(login_url="/login")
 def edit_message(request, pk):
-    if not request.user.is_superuser:
-        return HttpResponseForbidden(_("Admin login required"))
     form = EditForm(instance=get_object_or_404(Message, pk=pk))
     messages = {}
     if request.method == "POST":
@@ -220,10 +211,9 @@ def edit_message(request, pk):
     return render(request, "control/editor.html", {"form": form, "messages": messages})
 
 
+@staff_member_required(login_url="/login")
 def control_panel_email(request):
     """ control panel - send email page for sending emails and editing mail configurations """
-    if not request.user.is_superuser:
-        return HttpResponseForbidden(_("Admin login required"))
     config, created = MailConfiguration.objects.get_or_create(pk=1)
     config_form = MailConfigurationForm(instance=config)
     send_form = SendEmailForm()
@@ -239,10 +229,9 @@ def control_panel_email(request):
     )
 
 
+@staff_member_required(login_url="/login")
 def send_email(request):
     """ send infro letter via email """
-    if not request.user.is_superuser:
-        return HttpResponseForbidden(_("Admin login required"))
     if request.method == "POST":
         form = SendEmailForm(request.POST)
         if form.is_valid():

@@ -1,7 +1,7 @@
 <!-- {% load staticfiles %} -->
 
 <!DOCTYPE html>
-<html lang="fi">
+<html>
 
 <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
@@ -20,24 +20,19 @@
 
     <link rel="manifest" href="{% static 'manifest.json'%}">
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,600" rel="stylesheet">
-    <link rel="stylesheet" href="{% static '<%= htmlWebpackPlugin.options.styleSheetName %>'%}">
     <script>
         window.csrfToken = "{{csrf_token}}";
-        window.user = "{{user}}";
-        window.isAdmin = "{{user.is_superuser}}" === "True";
     </script>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131516572-1"></script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'UA-131516572-1');
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WV66B47');
     </script>
 </head>
 
 <body>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WV66B47" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <noscript>This site requires JavaScript turned on</noscript>
     <div id="root"></div>
 </body>

@@ -4,7 +4,10 @@ class Footer extends Component {
   render() {
     return (
       <div id="footer">
-        <img src="/static/assets/prodeko-logo-text-blue.png" alt="Prodeko" />
+        <img
+          src="/static/tiedotteet/assets/prodeko-logo-text-blue.png"
+          alt="Prodeko"
+        />
       </div>
     );
   }

@@ -1,6 +1,8 @@
 {% extends "control/base.html" %}
 {% load staticfiles i18n %}
+
 {% block body %}
+
 <div id="page-wrapper">
     <div class="container-fluid">
         <!-- Page Heading -->
@@ -77,29 +79,29 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label class="control-label col-sm-3" for="{{ config_form.host.id_for_label }}">{{
-                                config_form.host.label }}</label>
+                            <label class="control-label col-sm-3" for="{{ config_form.host.id_for_label }}">
+                                {{config_form.host.label }}</label>
                             <div class="col-sm-9">
                                 {{ config_form.host }}
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-sm-3" for="{{ config_form.port.id_for_label }}">{{
-                                config_form.port.label }}</label>
+                            <label class="control-label col-sm-3" for="{{ config_form.port.id_for_label }}">
+                                {{config_form.port.label }}</label>
                             <div class="col-sm-9">
                                 {{ config_form.port }}
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-sm-3" for="{{ config_form.username.id_for_label }}">{{
-                                config_form.username.label }}</label>
+                            <label class="control-label col-sm-3" for="{{ config_form.username.id_for_label }}">
+                                {{config_form.username.label }}</label>
                             <div class="col-sm-9">
                                 {{ config_form.username }}
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-sm-3" for="{{ config_form.password.id_for_label }}">{{
-                                config_form.password.label }}</label>
+                            <label class="control-label col-sm-3" for="{{ config_form.password.id_for_label }}">
+                                {{config_form.password.label }}</label>
                             <div class="col-sm-9">
                                 {{ config_form.password }}
                             </div>
@@ -121,5 +123,5 @@
 
         </div>
     </div>
-
-    {% endblock %}
+</div>
+{% endblock %}

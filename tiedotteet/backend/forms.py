@@ -15,9 +15,27 @@ from django.forms import (
 )
 from django.utils.translation import ugettext_lazy as _
 from tiedotteet.backend.models import Category, MailConfiguration, Message, Tag
+from ckeditor.widgets import CKEditorWidget
 
 
 class PublishForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        """Overrides the ModelForm __init__ method.
+
+        This way we can attach widgets and bootstrap classess
+        to certain form fields to make them look better in the UI.
+        Same technique is used for other forms below.
+        """
+
+        # Call ModelForm __init__ method.
+        super(PublishForm, self).__init__(*args, **kwargs)
+
+        for visible in self.visible_fields():
+            if visible.name not in ["show_deadline", "visible"]:
+                # 'form-control' is a bootstrap class used to style
+                # form fields appropriately.
+                visible.field.widget.attrs["class"] = "form-control"
+
     class Meta:
         model = Message
         fields = [
@@ -43,19 +61,26 @@ class PublishForm(ModelForm):
             "visible": _("Visible"),
         }
         widgets = {
-            "header": TextInput(attrs={"class": "form-control input-md"}),
-            "content": Textarea(attrs={"id": "foo"}),
-            "start_date": AdminDateWidget(attrs={"class": "form-control input-md"}),
-            "end_date": AdminDateWidget(attrs={"class": "form-control input-md"}),
-            "deadline_date": AdminDateWidget(attrs={"class": "form-control input-md"}),
-            "category": Select(attrs={"class": "form-control"}),
-            "tags": SelectMultiple(attrs={"class": "form-control"}),
+            "header": TextInput(),
+            "content": CKEditorWidget(),
+            "start_date": AdminDateWidget(),
+            "end_date": AdminDateWidget(),
+            "deadline_date": AdminDateWidget(),
+            "category": Select(),
+            "tags": SelectMultiple(),
             "show_deadline": CheckboxInput(),
             "visible": CheckboxInput(),
         }
 
 
 class EditForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(EditForm, self).__init__(*args, **kwargs)
+
+        for visible in self.visible_fields():
+            if visible.name not in ["show_deadline", "visible"]:
+                visible.field.widget.attrs["class"] = "form-control"
+
     class Meta:
         model = Message
         success_message = _("Bulletin updated")
@@ -82,19 +107,25 @@ class EditForm(ModelForm):
             "visible": _("Visible"),
         }
         widgets = {
-            "header": TextInput(attrs={"class": "form-control input-md"}),
-            "content": Textarea(attrs={"id": "foo"}),
-            "start_date": AdminDateWidget(attrs={"class": "form-control input-md"}),
-            "end_date": AdminDateWidget(attrs={"class": "form-control input-md"}),
-            "deadline_date": AdminDateWidget(attrs={"class": "form-control input-md"}),
-            "category": Select(attrs={"class": "form-control"}),
-            "tags": SelectMultiple(attrs={"class": "form-control"}),
+            "header": TextInput(),
+            "content": CKEditorWidget(),
+            "start_date": AdminDateWidget(),
+            "end_date": AdminDateWidget(),
+            "deadline_date": AdminDateWidget(),
+            "category": Select(),
+            "tags": SelectMultiple(),
             "show_deadline": CheckboxInput(),
             "visible": CheckboxInput(),
         }
 
 
 class CategoryForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(CategoryForm, self).__init__(*args, **kwargs)
+
+        for visible in self.visible_fields():
+            visible.field.widget.attrs["class"] = "form-control"
+
     class Meta:
         model = Category
         fields = ["title", "order", "login_required"]
@@ -104,11 +135,10 @@ class CategoryForm(ModelForm):
             "login_required": _("Visibility"),
         }
         widgets = {
-            "title": TextInput(attrs={"class": "form-control"}),
-            "order": NumberInput(attrs={"class": "form-control"}),
+            "title": TextInput(),
+            "order": NumberInput(),
             "login_required": Select(
-                attrs={"class": "form-control"},
-                choices=((False, _("Public")), (True, _("Login required"))),
+                choices=((False, _("Public")), (True, _("Login required")))
             ),
         }
 
@@ -122,6 +152,13 @@ class TagForm(ModelForm):
 
 
 class MailConfigurationForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(MailConfigurationForm, self).__init__(*args, **kwargs)
+
+        for visible in self.visible_fields():
+            if not visible.name == "use_tls":
+                visible.field.widget.attrs["class"] = "form-control"
+
     class Meta:
         model = MailConfiguration
         fields = ["host", "port", "username", "password", "use_tls"]
@@ -133,19 +170,20 @@ class MailConfigurationForm(ModelForm):
             "use_tls": _("Use TLS Encryption"),
         }
         widgets = {
-            "host": TextInput(attrs={"class": "form-control"}),
-            "port": NumberInput(attrs={"class": "form-control"}),
-            "username": TextInput(attrs={"class": "form-control"}),
-            "password": PasswordInput(attrs={"class": "form-control"}),
+            "host": TextInput(),
+            "port": NumberInput(),
+            "username": TextInput(),
+            "password": PasswordInput(),
             "use_tls": CheckboxInput(),
         }
 
 
 class SendEmailForm(Form):
-    subject = CharField(
-        widget=TextInput(attrs={"class": "form-control"}), label=_("Title")
-    )
-    to = CharField(
-        widget=TextInput(attrs={"class": "form-control"}),
-        label=_("Recipients (separated by comma)"),
-    )
+    def __init__(self, *args, **kwargs):
+        super(SendEmailForm, self).__init__(*args, **kwargs)
+
+        for visible in self.visible_fields():
+            visible.field.widget.attrs["class"] = "form-control"
+
+    subject = CharField(widget=TextInput(), label=_("Title"))
+    to = CharField(widget=TextInput(), label=_("Recipients (separated by comma)"))
