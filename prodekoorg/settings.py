@@ -123,7 +123,6 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "prodekoorg/static"),
     os.path.join(BASE_DIR, "auth_prodeko/static"),
     os.path.join(BASE_DIR, "prodekoorg/app_apply_for_membership/static"),
-    os.path.join(BASE_DIR, "prodekoorg/app_infoscreen/static"),
     os.path.join(BASE_DIR, "prodekoorg/app_kulukorvaus/static"),
     os.path.join(BASE_DIR, "prodekoorg/app_poytakirjat/static"),
     os.path.join(BASE_DIR, "prodekoorg/app_tiedostot/static"),
@@ -168,7 +167,6 @@ TEMPLATES = [
             os.path.join(
                 BASE_DIR, "prodekoorg/app_apply_for_membership/templates/emails"
             ),
-            os.path.join(BASE_DIR, "prodekoorg/app_infoscreen/templates"),
             os.path.join(BASE_DIR, "prodekoorg/app_kulukorvaus/templates"),
             os.path.join(BASE_DIR, "prodekoorg/app_kulukorvaus/templates/emails"),
             os.path.join(BASE_DIR, "prodekoorg/app_poytakirjat/templates"),
@@ -280,7 +278,6 @@ INSTALLED_APPS = (
     # ------------------------
     # tiedotteet.prodeko.org
     "tiedotteet.backend",
-    "django_wysiwyg",
     "ckeditor",
     "ckeditor_uploader",
     "rest_framework",
@@ -467,9 +464,6 @@ SESSION_SAVE_EVERY_REQUEST = True
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False
 SESSION_COOKIE_AGE = 60 * 60 * 24 * 30  # 30 days
 
-# CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
-CKEDITOR_UPLOAD_PATH = "tiedotteet/uploads/"
-DJANGO_WYSIWYG_FLAVOR = "ckeditor"
 CORS_ORIGIN_ALLOW_ALL = True
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (

@@ -4,7 +4,7 @@ from django.core.validators import FileExtensionValidator
 from django.db import models
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
-from djangocms_text_ckeditor.fields import HTMLField
+from ckeditor.fields import RichTextField
 
 
 def get_enddate():
@@ -25,17 +25,18 @@ class Slide(models.Model):
         visible: Boolean to show or hide the slide.
     """
 
-    title = models.CharField(max_length=50)
-    description = HTMLField()
-    image = models.FileField(
+    title = models.CharField(verbose_name=_("title"), max_length=50)
+    start_datetime = models.DateTimeField(verbose_name=_("start datetime"), default=timezone.now)
+    end_datetime = models.DateTimeField(verbose_name=_("end datetime"), default=get_enddate)
+    description = RichTextField(verbose_name=_("description"), blank=True)
+    image = models.FileField(verbose_name=_("image"),
         upload_to="infoscreen",
         validators=[FileExtensionValidator(["jpg", "png", "jpeg"])],
         null=True,
     )
-    start_datetime = models.DateTimeField(default=timezone.now)
-    end_datetime = models.DateTimeField(default=get_enddate)
-    highlight = models.BooleanField(default=False)
-    visible = models.BooleanField(default=True)
+    highlight = models.BooleanField(verbose_name=_("highlight"), default=False)
+    visible = models.BooleanField(verbose_name=_("visible"), default=True)
+    
 
     def is_active(self):
         return (
