@@ -25,5 +25,5 @@ class Course(models.Model):
             return "{}{}".format(settings.STATIC_URL, "img/default_thumbnail.jpg")
 
     class Meta:
-        verbose_name = _("courses")
+        verbose_name = _("course")
         verbose_name_plural = _("Courses")
