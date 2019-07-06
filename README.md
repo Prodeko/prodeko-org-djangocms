@@ -1,10 +1,10 @@
 # Prodeko.org :tv::rainbow:
 
-Tuotantotalouden kilta Prodekon Django pohjaiset nettisivut.
+Tuotantotalouden kilta Prodekon Django-pohjaiset nettisivut.
 
 ---
 
-Prodeko.org projekti käyttää Django versiota 1.11.11, sillä DjangoCMS ei ole vielä yhteensopiva version 2.0 kanssa.
+Prodeko.org projekti käyttää Django versiota 2.1.
 
 ### Vaatimukset
 
