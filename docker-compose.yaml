@@ -13,7 +13,7 @@ services:
     build: .
     volumes:
       - .:/code
-      - /code/tiedotteet/frontend/public
+      - /code/tiedotteet/frontend/public/tiedotteet
     ports:
       - "8000:8000"
     depends_on:

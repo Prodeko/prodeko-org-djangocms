@@ -6,7 +6,7 @@ RUN npm install
 ADD tiedotteet/frontend /app
 RUN npm run build
 
-# Stage 2 - 
+# Stage 2 - main container definition
 FROM python:3
 
 ENV PYTHONUNBUFFERED 1
@@ -23,7 +23,7 @@ COPY requirements.txt requirements-dev.txt ./
 RUN pip install -r requirements-dev.txt
 
 COPY . /code/
-COPY --from=tiedotteet-build /app/public /code/tiedotteet/frontend/public
+COPY --from=tiedotteet-build /app/public/tiedotteet /code/tiedotteet/frontend/public/tiedotteet
 COPY docker-entrypoint.sh /usr/local/bin/
 RUN dos2unix /usr/local/bin/docker-entrypoint.sh && apt-get --purge remove -y dos2unix && rm -rf /var/lib/apt/lists/*
 
