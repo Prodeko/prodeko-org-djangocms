@@ -16,7 +16,7 @@ from prodekoorg.settings_dev import *
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-LANGUAGE_CODE = 'fi-FI'
+LANGUAGE_CODE = "fi-FI"
 
 SITE_ID = 1
 # When DEBUG = False, all errors with level ERROR or
@@ -196,13 +196,6 @@ TEMPLATES = [
         },
     }
 ]
-
-# Common templatetags across different apps.
-OPTIONS = {
-    "libraries": {
-        "common_tags": os.path.join(BASE_DIR, "prodekoorg/templatetags/common_tags")
-    }
-}
 
 MIDDLEWARE = (
     "cms.middleware.utils.ApphookReloadMiddleware",
@@ -397,6 +390,33 @@ CKEDITOR_SETTINGS = {
         ["Maximize"],
     ],
     "skin": "moono-lisa",
+}
+
+# Config for django-ckeditor
+CKEDITOR_CONFIGS = {
+    "default": {
+        "toolbar": "Custom",
+        "width": "100%",
+        "toolbar_Custom": [
+            ["Bold", "Italic", "Underline"],
+            [
+                "NumberedList",
+                "BulletedList",
+                "-",
+                "Outdent",
+                "Indent",
+                "-",
+                "JustifyLeft",
+                "JustifyCenter",
+                "JustifyRight",
+                "JustifyBlock",
+            ],
+            ["Link", "Unlink"],
+            ["RemoveFormat", "Source"],
+            ["Styles", "Format", "Font", "FontSize"],
+            ["TextColor", "BGColor"],
+        ],
+    }
 }
 
 # Configure django messages framework to work with bootstrap
