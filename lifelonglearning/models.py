@@ -8,7 +8,7 @@ class Course(models.Model):
 
     name = models.CharField(max_length=255, default="", blank=False)
     coaches = models.CharField(max_length=255, default="", blank=True)
-    description = RichTextField(config_name="main_ckeditor", blank=True)
+    description = RichTextField(blank=True)
     registration = models.URLField(max_length=255)
     banner = models.ImageField(upload_to="", null=True, blank=True)
     groupsize = models.IntegerField(blank=True, null=True)

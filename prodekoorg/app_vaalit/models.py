@@ -33,7 +33,7 @@ class Ehdokas(models.Model):
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, null=True
     )
     name = models.CharField(max_length=50, verbose_name=_("Name"))
-    introduction = RichTextField(config_name="main_ckeditor")
+    introduction = RichTextField()
     virka = models.ForeignKey(Virka, on_delete=models.CASCADE, related_name="ehdokkaat")
     pic = models.ImageField(blank=True, verbose_name=_("Picture"))
 
