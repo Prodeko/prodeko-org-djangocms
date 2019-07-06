@@ -4,8 +4,9 @@ from .models import Course
 
 
 def index(request):
-    courses = Course.objects.filter(open=True)
-    return render(request, "lifelonglearning.html", {"courses": courses})
+    openCourses = Course.objects.filter(open=True)
+    pastCourses = Course.objects.filter(open=False)
+    return render(request, "lifelonglearning.html", {"openCourses": openCourses, "pastCourses": pastCourses})
 
 
 def coursepage(request, pk):

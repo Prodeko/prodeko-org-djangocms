@@ -8,7 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
+<<<<<<< HEAD
 "POT-Creation-Date: 2019-07-06 15:22+0000\n"
+=======
+"POT-Creation-Date: 2019-06-27 20:26+0000\n"
+>>>>>>> 4c11a1c3360212b3f406cecd645bba86a486ab7d
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -118,7 +122,11 @@ msgstr "Nimi"
 #: prodekoorg/app_apply_for_membership/models.py:61
 #: prodekoorg/app_kulukorvaus/models.py:48
 #: prodekoorg/app_kulukorvaus/printing.py:95
+<<<<<<< HEAD
 #: prodekoorg/app_toimarit/models.py:93
+=======
+#: prodekoorg/app_toimarit/models.py:106
+>>>>>>> 4c11a1c3360212b3f406cecd645bba86a486ab7d
 msgid "Email"
 msgstr "Sähköposti"
 
@@ -313,8 +321,8 @@ msgstr "Kyllä"
 msgid "No"
 msgstr "Ei"
 
-#: prodekoorg/app_apply_for_membership/models.py:47 prodekoorg/settings.py:83
-#: prodekoorg/settings.py:93
+#: prodekoorg/app_apply_for_membership/models.py:47 prodekoorg/settings.py:85
+#: prodekoorg/settings.py:95
 msgid "Finnish"
 msgstr "Suomi"
 
@@ -323,12 +331,20 @@ msgid "Other (English)"
 msgstr "Englanti"
 
 #: prodekoorg/app_apply_for_membership/models.py:57
+<<<<<<< HEAD
 #: prodekoorg/app_toimarit/models.py:35 prodekoorg/app_toimarit/models.py:81
+=======
+#: prodekoorg/app_toimarit/models.py:36 prodekoorg/app_toimarit/models.py:94
+>>>>>>> 4c11a1c3360212b3f406cecd645bba86a486ab7d
 msgid "First name"
 msgstr "Etunimi"
 
 #: prodekoorg/app_apply_for_membership/models.py:58
+<<<<<<< HEAD
 #: prodekoorg/app_toimarit/models.py:36 prodekoorg/app_toimarit/models.py:82
+=======
+#: prodekoorg/app_toimarit/models.py:37 prodekoorg/app_toimarit/models.py:95
+>>>>>>> 4c11a1c3360212b3f406cecd645bba86a486ab7d
 msgid "Last name"
 msgstr "Sukunimi"
 
@@ -692,11 +708,16 @@ msgstr "jaosto"
 msgid "sections"
 msgstr "jaostot"
 
+<<<<<<< HEAD
 #: prodekoorg/app_toimarit/models.py:37 prodekoorg/app_toimarit/models.py:83
+=======
+#: prodekoorg/app_toimarit/models.py:38 prodekoorg/app_toimarit/models.py:96
+>>>>>>> 4c11a1c3360212b3f406cecd645bba86a486ab7d
 #: prodekoorg/app_vaalit/models.py:12
 msgid "Position"
 msgstr "Virka"
 
+<<<<<<< HEAD
 #: prodekoorg/app_toimarit/models.py:39 prodekoorg/app_toimarit/models.py:89
 msgid "Section"
 msgstr "Jaosto"
@@ -730,6 +751,41 @@ msgid "board member"
 msgstr "hallituksen jäsen"
 
 #: prodekoorg/app_toimarit/models.py:123
+=======
+#: prodekoorg/app_toimarit/models.py:40 prodekoorg/app_toimarit/models.py:102
+msgid "Section"
+msgstr "Jaosto"
+
+#: prodekoorg/app_toimarit/models.py:72
+msgid "guild official"
+msgstr "toimari"
+
+#: prodekoorg/app_toimarit/models.py:73
+msgid "guild officials"
+msgstr "toimarit"
+
+#: prodekoorg/app_toimarit/models.py:104
+msgid "Position (English)"
+msgstr "Virka (Englanniksi)"
+
+#: prodekoorg/app_toimarit/models.py:105
+msgid "Mobile phone"
+msgstr "Puhelinnumero"
+
+#: prodekoorg/app_toimarit/models.py:108
+msgid "Telegram"
+msgstr "Telegram"
+
+#: prodekoorg/app_toimarit/models.py:111
+msgid "Description"
+msgstr "Kuvaus"
+
+#: prodekoorg/app_toimarit/models.py:141
+msgid "board member"
+msgstr "hallituksen jäsen"
+
+#: prodekoorg/app_toimarit/models.py:142
+>>>>>>> 4c11a1c3360212b3f406cecd645bba86a486ab7d
 msgid "board members"
 msgstr "hallituksen jäsenet"
 
@@ -925,7 +981,7 @@ msgstr "Poista"
 msgid "Edit"
 msgstr "Muokkaa"
 
-#: prodekoorg/settings.py:83 prodekoorg/settings.py:100
+#: prodekoorg/settings.py:85 prodekoorg/settings.py:102
 msgid "English"
 msgstr "Englanti"
 
@@ -980,10 +1036,6 @@ msgstr "Jäsenhakemus"
 #: prodekoorg/templates/layout-components/footer.html:7
 msgid "Contact form"
 msgstr "Yhteydenottolomake"
-
-#: prodekoorg/templates/layout-components/footer.html:22
-msgid "/privacy"
-msgstr "/tietosuoja"
 
 #: prodekoorg/templates/layout-components/navbar.html:3
 msgid "Login"
@@ -1285,6 +1337,9 @@ msgstr "Kirjautuminen ylläpitäjänä vaadittu"
 #: tiedotteet/backend/views.py:41
 msgid "New bulletin added"
 msgstr "Tiedote lisätty"
+
+#~ msgid "/privacy"
+#~ msgstr "/tietosuoja"
 
 #~ msgid "^apply/$"
 #~ msgstr "^hae-jaseneksi/$"

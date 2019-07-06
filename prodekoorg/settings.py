@@ -16,6 +16,8 @@ from prodekoorg.settings_dev import *
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+LANGUAGE_CODE = 'fi-FI'
+
 SITE_ID = 1
 # When DEBUG = False, all errors with level ERROR or
 # higher get mailed to ADMINS according to LOGGING conf

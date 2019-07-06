@@ -9,13 +9,10 @@
 		flex: 1;
 		display: flex;
 		flex-direction: row;
-		align-items: center;
 		" id="navbarHeader">
-		<div class="col-sm-2">
-		</div>
-		<div class="container-fluid col-sm-8 p-0">
+		<div class="container-fluid p-0">
 			<nav class="navbar navbar-expand-lg navbar-light prodeko-navbar">
-				<div style="flex:1; display:flex; flex-direction:row;">
+				<div style="flex:1; display:flex; align-items: center; background: transparent;">
 					<button class="navbar-toggler hamburger hamburger--squeeze" type="button" id="navbar-toggleButton" data-toggle="collapse"
 					data-target="#collapsibleNavbar" aria-controls="collapsibleNavbar" aria-expanded="false"
 					aria-label="Toggle navigation">
@@ -23,21 +20,22 @@
 							<span class="hamburger-inner"></span>
 						</span>
 					</button>
-					<div style="width:8vw; max-width: 150px;">
-						<a class="navbar-brand" id="prodeko-logo" href="/"></a>
+					<div class="prodeko-logo-mobile"></div>
+					<div class="navbar-logo-container" style="width:130px; max-width: 150px;">
+							<a class="navbar-brand" id="prodeko-logo" href="/"></a>
 					</div>
 					<div class="collapse navbar-collapse" id="collapsibleNavbar">
-						<div>
-							<ul class="navbar-nav mr-auto navigation-list">
+						<div style="flex:1; display:flex; margin-left: 1rem;">
+							<ul class="navbar-nav mr-auto navigation-list" style="display:flex; flex:1; justify-content: center;">
 								{% for child in children %}
 								<!-- li element for open navbar -->
 								{% if child.get_descendants %}
 								<li
-									class="d-none d-lg-block dropdown nav-item{% if child.selected %} active-menu-item{% endif %} mr-2">
-									<a class="nav-link nav-top dropdown-toggle"
+									class="d-none d-lg-block dropdown nav-item{% for kid in child.get_descendants %}{% if kid.selected %} active-menu-item{% endif %}{% endfor %}{%if child.selected %} active-menu-item{% endif %} mr-2">
+									<a class="nav-link nav-top dropdown-toggle navbar-headtitle"
 										data-toggle="dropdown">{{child.get_menu_title }}</a>
-									<ul class="collapse ul mr-auto dropdown-menu navigation-list-child-desktop"
-										id="dropdown-desktop-{{child.get_menu_title}}">
+									<ul class="collapse ul mr-auto dropdown-menu navigation-list-child-desktop navbar-submenu"
+										id="dropdown-desktop-{{child.get_menu_title|cut:' '}}">
 										<li class="nav-item {% if child.selected %} active-menu-item{% endif %} mr-2"><a
 												class="nav-sublink"
 												href="{{ child.get_absolute_url }}">{{child.get_menu_title }}</a></li>
@@ -58,11 +56,11 @@
 								<!-- li element for dropdown navbar -->
 								{% if not child.is_leaf_node or child.ancestor %}
 								<li class="d-lg-none nav-item mr-2" data-toggle="collapse"
-									data-target="#dropdown-{{child.get_menu_title}}"><a
+									data-target="#dropdown-{{child.get_menu_title|cut:' '}}"><a
 										class="dropdown-toggle nav-link">{{child.get_menu_title }}
 									</a>
 									<ul class="collapse ul mr-auto navigation-list-child"
-										id="dropdown-{{child.get_menu_title}}">
+										id="dropdown-{{child.get_menu_title|cut:' '}}">
 										<li class="nav-item {% if child.selected %} active-menu-item{% endif %} mr-2"><a
 												class="nav-sublink"
 												href="{{ child.get_absolute_url }}">{{child.get_menu_title }}</a></li>
@@ -79,35 +77,56 @@
 										href="{{ child.get_absolute_url }}">{{child.get_menu_title }}</a></li>
 								{% endif %}
 								{% endfor %}
+
+								<li class="d-lg-none nav-item auth-buttons-mobile" style="display: flex; margin-top: 1rem;">
+										{% if not user.is_authenticated %}
+										<a href="{% url 'auth_prodeko:login' %}" class="btn btn-primary">
+											{% trans login %}
+										</a>
+										{% else %}
+										<a href="{% url 'auth_prodeko:logout' %}" class="btn btn-primary">
+											{% trans logout %}
+										</a>
+										{% endif %}
+								</li>
+								<li class="d-lg-none nav-item nav-lang language-selection-mobile" style="display: flex; font-size: 1rem;">
+										<a class="{% if LANGUAGE_CODE == 'fi' %}lang{% endif %} no-animation"
+										href="{% page_language_url 'fi' %}">FI</a>
+									<span>/</span>
+									<a class="{% if LANGUAGE_CODE == 'en' %}lang{% endif %} no-animation"
+										href="{% page_language_url 'en' %}">EN</a>
+								</li>
 							</ul>
 						</div>
 						<!-- /end for child -->
 					</div>
+					<!-- Authentication buttons -->
+					<div class="text-center" id="auth-buttons-desktop">
+							{% if not user.is_authenticated %}
+							<a href="{% url 'auth_prodeko:login' %}" class="btn btn-primary mr-2">
+								{% trans login %}
+							</a>
+							{% else %}
+							<a href="{% url 'auth_prodeko:logout' %}" class="btn btn-primary mr-4">
+								{% trans logout %}
+							</a>
+							{% endif %}
+					<!-- End Authentication buttons-->
+					<!-- Language selection -->
+					<ul class="navbar-nav" id="language-selection-desktop">
+							<li class="nav-item nav-lang">
+								<a class="{% if LANGUAGE_CODE == 'fi' %}lang{% endif %} no-animation"
+									href="{% page_language_url 'fi' %}">FI</a>
+								<span>/</span>
+								<a class="{% if LANGUAGE_CODE == 'en' %}lang{% endif %} no-animation"
+									href="{% page_language_url 'en' %}">EN</a>
+							</li>
+						</ul>
+					<!-- End Language selection-->
 				</div>
 			</nav>
 		</div>
 
-		<!-- Authentication buttons -->
-		<div class="col-sm-2 text-center">
-			{% if not user.is_authenticated %}
-			<a href="{% url 'auth_prodeko:login' %}" class="btn btn-primary mr-2">
-				{% trans login %}
-			</a>
-			{% else %}
-			<a href="{% url 'auth_prodeko:logout' %}" class="btn btn-primary mr-4">
-				{% trans logout %}
-			</a>
-			{% endif %}
-			<!-- End Authentication buttons-->
-			<ul class="navbar-nav">
-				<li class="nav-item nav-lang">
-					<a class="{% if LANGUAGE_CODE == 'fi' %}lang{% endif %} no-animation"
-						href="{% page_language_url 'fi' %}">FI</a>
-					<span>/</span>
-					<a class="{% if LANGUAGE_CODE == 'en' %}lang{% endif %} no-animation"
-						href="{% page_language_url 'en' %}">EN</a>
-				</li>
-			</ul>
 		</div>
 	</div>
 </div>

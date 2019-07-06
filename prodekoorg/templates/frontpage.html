@@ -15,21 +15,19 @@
 
 <div class="container frontpage-headercontainer col-sm-8">
 	<div class="carousel-item active">
-		<a href="https://www.prodeko.org/fuksit-2">
-			<picture>
-				<source srcset="{% static 'images/carusellimages/Fuksit_kuvat/fuksit_1400x400.jpg' %}" alt="Carousel-1" class="img-fluid"
-				 media="(min-width: 768px)">
-				<source srcset="{% static 'images/carusellimages/Fuksit_kuvat/fuksit_800x400.jpg' %}" alt="Carousel-2" class="img-fluid"
-				 media="(min-width: 576px)">
-				<img srcset="{% static 'images/carusellimages/Fuksit_kuvat/fuksit_600x400.jpg' %}" alt="Carousel-3" class="img-fluid">
-			</picture>
-		</a>
-			<div class="carousel-caption">
-				<div>
-					<h1>{% trans welcome1 %}</h1>
-					<p>{% trans welcome2 %}</p>
-				</div>
+		<picture>
+			<source srcset="{% static 'images/carusellimages/Fuksit_kuvat/fuksit_1400x400.jpg' %}" alt="Carousel-1" class="img-fluid"
+			 media="(min-width: 768px)">
+			<source srcset="{% static 'images/carusellimages/Fuksit_kuvat/fuksit_800x400.jpg' %}" alt="Carousel-2" class="img-fluid"
+			 media="(min-width: 576px)">
+			<img srcset="{% static 'images/carusellimages/Fuksit_kuvat/fuksit_600x400.jpg' %}" alt="Carousel-3" class="img-fluid">
+		</picture>
+		<div class="carousel-caption">
+			<div>
+				<h1>{% trans welcome1 %}</h1>
+				<!---<p>{% trans welcome2 %}</p>-->
 			</div>
+		</div>
 	</div>
 	<div class="row frontpage-squarerow">
 		<div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-6 frontpage-square">
@@ -41,7 +39,7 @@
 			</a>
 		</div>
 		<div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-6 view zoom frontpage-square">
-			<a href="/guild/" target="_blank">
+			<a href="/guild/">
 				<img src="{% static 'images/landing_photos/kiltalaisille_smaller.jpg' %}" alt="{% trans for_guildmembers %}" class="img-fluid">
 				<div class="frontpage-square-caption">
 					<h3>{% trans for_guildmembers %}</h3>
@@ -49,7 +47,7 @@
 			</a>
 		</div>
 		<div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-6 frontpage-square">
-			<a href="/alumni/" target="_blank">
+			<a href="/alumni/">
 				<img src="{% static 'images/landing_photos/alumneille_smaller.jpg' %}" alt="{% trans for_alumni %}" class="img-fluid">
 				<div class="frontpage-square-caption">
 					<h3>{% trans for_alumni %}</h3>
@@ -57,7 +55,7 @@
 			</a>
 		</div>
 		<div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-6 frontpage-square">
-			<a href="/corporate-relations/" target="_blank">
+			<a href="/corporate-relations/">
 				<img src="{% static 'images/landing_photos/yrityksille_smaller.jpg' %}" alt="{% trans for_businesses %}" class="img-fluid">
 				<div class="frontpage-square-caption">
 					<h3>{% trans for_businesses %}</h3>

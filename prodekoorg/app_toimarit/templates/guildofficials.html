@@ -15,17 +15,13 @@
     {% include "layout-components/breadcrumb.html" %}
 		{% for section in sections %}
 			<div class="row">
-				<div>
+				<div style="margin-left:1rem;">
 					<h2>{{ section }}</h2>
 					<div class="row">
 					{% for official in guildofficials %}
 						{% if official.section == section %}
 							<div class="toimari">
-								{% if official.photoExists %}
-									<img src="{{ baseUrl }}/images/toimari_photos/{{official.firstname}}_{{official.lastname}}.jpg" />
-								{% else %}
-									<img src="{% static 'images/toimari_photos/anonyymi_uniseksi_maskulinoitu.jpg' %}" />
-								{% endif %}
+								<img src="{{ STATIC_URL }}images/toimari_photos/{{official.photourl}}" alt=""/>
 								<div class="description">
 									<strong>{{ official.name }}</strong><br />
 									{{ official.position }}
