@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-06 22:13+0000\n"
+"POT-Creation-Date: 2019-07-07 13:56+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -458,7 +458,7 @@ msgstr "kuvaus"
 
 #: prodekoorg/app_infoscreen/models.py:32
 msgid "image"
-msgstr "rajaa kuva"
+msgstr "kuva"
 
 #: prodekoorg/app_infoscreen/models.py:37
 msgid "highlight"

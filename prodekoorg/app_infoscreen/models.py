@@ -32,7 +32,7 @@ class Slide(models.Model):
     image = models.FileField(verbose_name=_("image"),
         upload_to="infoscreen",
         validators=[FileExtensionValidator(["jpg", "png", "jpeg"])],
-        null=True,
+        blank=True,
     )
     highlight = models.BooleanField(verbose_name=_("highlight"), default=False)
     visible = models.BooleanField(verbose_name=_("visible"), default=True)
