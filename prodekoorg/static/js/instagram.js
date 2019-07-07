@@ -8,7 +8,5 @@ window.onload = fetch(`https://api.instagram.com/v1/users/self/media/recent/?acc
         return response.json();
     })
     .then(function (myJson) {
-        //console.log(JSON.stringify(myJson));
-        console.log(JSON.stringify(myJson.data));
         myJson.data.map(image => $('div#instagram').append(`<a href=${image.link} target= "_blank"><img src=${image.images.low_resolution.url}></img></a>`));
     });
