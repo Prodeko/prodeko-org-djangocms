@@ -9,7 +9,7 @@ const sendEvent = (category, action, label, value) => ({
 });
 
 export const sendAnalyticsEvent = (category, action, label, value) => {
-  gtag("event", "event", {
+  dataLayer.push({
     event_category: category,
     event_action: action,
     event_label: label,

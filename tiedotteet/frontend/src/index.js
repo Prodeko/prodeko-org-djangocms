@@ -9,7 +9,7 @@ import { configureAnchors } from "react-scrollable-anchor";
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
     navigator.serviceWorker
-      .register("./static/tiedotteet/serviceworker.js")
+      .register("../static/tiedotteet/serviceworker.js")
       .then(
         registration => {
           // Registration was successful
