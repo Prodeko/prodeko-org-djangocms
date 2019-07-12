@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-07 13:56+0000\n"
+"POT-Creation-Date: 2019-07-12 17:47+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -660,15 +660,15 @@ msgstr "Sovellus - Tiedostot"
 msgid "^/download/(?P<pk>\\d+)/"
 msgstr "^tiedostot/download/(?P<pk>\\d+)/$"
 
-#: prodekoorg/app_tiedostot/models.py:29
+#: prodekoorg/app_tiedostot/models.py:28
 msgid "Files"
 msgstr "Tiedostot"
 
-#: prodekoorg/app_tiedostot/models.py:53
+#: prodekoorg/app_tiedostot/models.py:52
 msgid "file version"
 msgstr "tiedostoversio"
 
-#: prodekoorg/app_tiedostot/models.py:54
+#: prodekoorg/app_tiedostot/models.py:53
 msgid "File versions"
 msgstr "Tiedostoversiot"
 

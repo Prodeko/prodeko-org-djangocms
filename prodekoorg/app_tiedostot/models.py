@@ -18,7 +18,6 @@ class Tiedosto(models.Model):
         return self.title
 
     def get_thumbnail_image(self):
-        # return '{}{}'.format(settings.MEDIA_ROOT, str(self.thumbnail_image.url).split("media", 1)[1])
         if self.thumbnail_image:
             return "{}".format(self.thumbnail_image.url)
         else:
