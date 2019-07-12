@@ -1,0 +1,16 @@
+# Change variables, copy and rename this file to variables.txt
+[DJANGO]
+SECRET = longrandomstring
+
+[DB]
+NAME_DEFAULT = prodekoorg
+USER = prodekoorg
+PASSWORD = secret
+
+[DEBUG]
+MODE = True
+
+[EMAIL]
+USER = no-reply@prodeko.org
+PASSWORD = secret
+DEV_EMAIL = you.email@email.com

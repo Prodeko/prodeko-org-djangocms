@@ -68,6 +68,7 @@ target/
 *.DS_Store
 venv/
 
+prodekoorg/variables.txt
 *.db
 *.json
 !data.json
