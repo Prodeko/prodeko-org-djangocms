@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-12 17:47+0000\n"
+"POT-Creation-Date: 2019-07-14 19:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -66,23 +66,23 @@ msgstr "Oikeudet"
 msgid "Important dates"
 msgstr "Tärkeitä päivämääriä"
 
-#: auth_prodeko/forms.py:33
+#: auth_prodeko/forms.py:38
 msgid "Incorrect password"
 msgstr "Väärä salasana"
 
-#: auth_prodeko/forms.py:52 auth_prodeko/forms.py:53
+#: auth_prodeko/forms.py:57 auth_prodeko/forms.py:58
 msgid "Passwords don't match"
 msgstr "Salasanat eivät täsmää"
 
-#: auth_prodeko/models.py:54
+#: auth_prodeko/models.py:66
 msgid "email address"
 msgstr "sähköposti"
 
-#: auth_prodeko/models.py:57
+#: auth_prodeko/models.py:69
 msgid "Accepted privacy and cookie policy"
 msgstr "Hyväksynyt tietosuojalausekkeen ja evästeiden käytön"
 
-#: auth_prodeko/models.py:59
+#: auth_prodeko/models.py:71
 msgid ""
 "Designates whether the user has accepted Prodeko's privacy policy and cookie "
 "policy."
@@ -90,15 +90,15 @@ msgstr ""
 "Määrittää, onko käyttäjä hyväksynyt Prodekon tietosuojalausekkeen ja "
 "evästeiden käytön."
 
-#: auth_prodeko/models.py:65
+#: auth_prodeko/models.py:77
 msgid "Alumn registry profile"
 msgstr ""
 
-#: auth_prodeko/models.py:98
+#: auth_prodeko/models.py:118
 msgid "user"
 msgstr "käyttäjä"
 
-#: auth_prodeko/models.py:99
+#: auth_prodeko/models.py:119
 msgid "Users"
 msgstr "Käyttäjät"
 
@@ -265,11 +265,11 @@ msgstr "Hakemustoimenpiteet"
 msgid "Apply for Prodeko membership application"
 msgstr "Sovellus - Prodekon jäsenhakemus"
 
-#: prodekoorg/app_apply_for_membership/forms.py:47
+#: prodekoorg/app_apply_for_membership/forms.py:53
 msgid "An application or account associated with this email already exists"
 msgstr "Jäsenhakemus tai käyttäjä tällä sähköpostiosoitteella on jo olemassa."
 
-#: prodekoorg/app_apply_for_membership/forms.py:57
+#: prodekoorg/app_apply_for_membership/forms.py:63
 msgid ""
 "If you are studying at Aalto apply as a true member. Otherwise, apply as "
 "external member."
@@ -367,7 +367,7 @@ msgstr "Kuitti jäsenmaksusta"
 
 #: prodekoorg/app_apply_for_membership/models.py:89
 msgid "I accept Prodeko's privacy and cookie policies."
-msgstr "Hyväksynyt tietosuojalausekkeen ja evästeiden käytön"
+msgstr "Hyväksyn Prodekon tietosuojalausekkeen ja evästeiden käytön"
 
 #: prodekoorg/app_apply_for_membership/models.py:98
 msgid "Membership application accepted."
@@ -444,35 +444,31 @@ msgstr "/keksit"
 msgid "title"
 msgstr "otsikko"
 
-#: prodekoorg/app_infoscreen/models.py:29
+#: prodekoorg/app_infoscreen/models.py:30
 msgid "start datetime"
 msgstr "alkamispäivä"
 
-#: prodekoorg/app_infoscreen/models.py:30
+#: prodekoorg/app_infoscreen/models.py:33
 msgid "end datetime"
 msgstr "päättymispäivä"
 
-#: prodekoorg/app_infoscreen/models.py:31
+#: prodekoorg/app_infoscreen/models.py:35
 msgid "description"
 msgstr "kuvaus"
 
-#: prodekoorg/app_infoscreen/models.py:32
-msgid "image"
-msgstr "kuva"
-
-#: prodekoorg/app_infoscreen/models.py:37
+#: prodekoorg/app_infoscreen/models.py:36
 msgid "highlight"
 msgstr "korosta"
 
-#: prodekoorg/app_infoscreen/models.py:38
+#: prodekoorg/app_infoscreen/models.py:37
 msgid "visible"
 msgstr "näkyvissä"
 
-#: prodekoorg/app_infoscreen/models.py:53
+#: prodekoorg/app_infoscreen/models.py:51
 msgid "slide"
 msgstr ""
 
-#: prodekoorg/app_infoscreen/models.py:54
+#: prodekoorg/app_infoscreen/models.py:52
 msgid "Slides"
 msgstr ""
 
@@ -1271,6 +1267,9 @@ msgstr "Tiedote lisätty"
 #: tiedotteet/backend/views.py:278
 msgid "Admin login required"
 msgstr "Kirjautuminen ylläpitäjänä vaadittu"
+
+#~ msgid "image"
+#~ msgstr "kuva"
 
 #~ msgid "Sign out"
 #~ msgstr "Kirjaudu ulos"
