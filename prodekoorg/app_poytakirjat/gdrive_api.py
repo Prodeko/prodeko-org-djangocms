@@ -66,30 +66,6 @@ def merge_liitteet_to_doc(pdfs):
     return ret
 
 
-# TODO compress pdf using something. Now they are ~7MB and
-# can be reduced to ~500kb without visible changes
-def compress_pdf(fh_pdf):
-    import ghostscript
-
-    args = [
-        "ghostscript",  # actual value doesn't matter
-        "-dNOPAUSE",
-        "-dBATCH",
-        "-dSAFER",
-        "dQUIET",
-        "-sDEVICE=pdfwrite",
-        "-dCompatibilityLevel=1.4",
-        "-dPDFSETTINGS=/printer",
-        "-sOutputFile=test.pdf",
-        "-c",
-        ".setpdfwrite",
-        "-f",
-        fh_pdf,
-    ]
-
-    ghostscript.Ghostscript(*args)
-
-
 def get_gdrive_folders_dict(service, parent_folder_id):
     """Get a dictionary of files in a Google Drive folder.
 
