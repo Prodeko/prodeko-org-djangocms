@@ -14,7 +14,7 @@ class PendingUser(models.Model):
     """Basic information about the reimbursement claim as a whole.
 
     The PendingUser contains information about people who
-    want to become Prodeko members. 
+    have applied to become Prodeko members. 
 
     Attributes:
         id: Primary key.

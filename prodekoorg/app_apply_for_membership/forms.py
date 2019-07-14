@@ -37,6 +37,13 @@ class PendingUserForm(ModelForm):
                 visible.field.widget.attrs["class"] = "form-control"
 
     def clean(self):
+        """Overrides ModelForm's clean method
+        
+        This method is responsible for form validation. Check that
+        there doesn't exist a User with the same email address that
+        was submitted.
+        """
+
         # Verify that the email doesn't already exist
         cleaned_data = super().clean()
         email = cleaned_data.get("email")

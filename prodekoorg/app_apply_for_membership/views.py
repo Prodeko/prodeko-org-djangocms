@@ -9,7 +9,7 @@ from .forms import PendingUserForm
 
 
 def main_form(request):
-    """Processing logic behind the form at url /hae-jaseneksi.
+    """Business logic behind the membership application form.
 
     Handles form submission by POST & AJAX, model creation from form data,
     form error handling as well as redirecting the user to a new page after

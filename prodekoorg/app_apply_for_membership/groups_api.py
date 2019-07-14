@@ -50,7 +50,7 @@ def main_groups_api(request, email):
 
     Returns:
         Nothing, appends either a success or an error
-        messages to Django messages depending on the outcome.
+        message to Django messages depending on the outcome.
 
         A user must be a staff member to access this function.
     """

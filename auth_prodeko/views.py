@@ -7,6 +7,16 @@ from .forms import EditProfileForm
 
 @login_required(login_url="/login/")
 def profile(request):
+    """Business logic behind the EditProfileForm.
+
+    Args:
+        request: HttpRequest object from Django.
+
+    Returns:
+        A Django TemplateResponse object that renders a html template,
+        or refreshes the page on successful form submission.
+    """
+
     # Handle updating user profile
     if request.method == "POST":
         form = EditProfileForm(request.user, data=request.POST)

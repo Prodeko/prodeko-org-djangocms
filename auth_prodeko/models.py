@@ -48,7 +48,19 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractUser):
-    """User model."""
+    """Main user account model.  
+
+    Used for authenticating to Prodeko's services.
+
+    Attributes:
+        username: Not used, overrides Django's built in AbstractUser model's username field.
+        email: The user's email address.
+        has_accepted_policies: Whether the user has accepted Prodeko's privacy and cookie policies.
+        person: One to one foreign key relating user with alumnirekisteri's Person model.
+
+    Information on additional attributes (such as first_name, last_name etc.) inherited from Django User model available here:
+    https://docs.djangoproject.com/en/2.1/ref/contrib/auth/
+    """
 
     username = None
     email = models.EmailField(verbose_name=_("email address"), unique=True)
@@ -68,10 +80,14 @@ class User(AbstractUser):
     )
 
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = ['first_name', 'last_name']
+    REQUIRED_FIELDS = ["first_name", "last_name"]
 
     @receiver(post_save, sender=PendingUser)
     def create_user_profile(sender, instance, created, **kwargs):
+        """Creates User model when a PendingUser is created.
+        
+        Uses Django signals (https://docs.djangoproject.com/en/2.1/topics/signals/).
+        """
         if created:
             password = User.objects.make_random_password(length=14)
             usermodel = User.objects.create_user(
@@ -87,6 +103,10 @@ class User(AbstractUser):
 
     @receiver(post_save, sender=settings.AUTH_USER_MODEL)
     def create_alumnregistry_profile(sender, instance, created, **kwargs):
+        """Creates an alumnirekisteri Person model when a PendingUser is created.
+        
+        Uses Django signals (https://docs.djangoproject.com/en/2.1/topics/signals/).
+        """
         if created:
             instance.person = Person.objects.create(member_type="0", slug=instance.pk)
             instance.save()
