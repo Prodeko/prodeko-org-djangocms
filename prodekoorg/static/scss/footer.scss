@@ -10,6 +10,7 @@
   font-family: Raleway, Helvetica, sans-serif;
   background-color: $blue-dark;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin: 0 auto;
 
   @include phone {
     padding-top: 1em;
@@ -39,24 +40,30 @@
     height: 65px;
     margin: 10px;
 
+    img {
+      max-width: 100px;
+
+      @include phone {
+        max-width: 70px;
+      }
+    }
+
     @include phone {
       height: 50px;
-    }
-  }
-
-  img {
-    max-width: 5em;
-    height: 100%;
-
-    @include desktop {
-      max-width: 8em;
-      height: 100%;
     }
   }
 
   .social-row {
     a {
       padding: 1em;
+    }
+
+    .fab {
+      font-size: 50px;
+
+      @include phone {
+        font-size: 35px;
+      }
     }
   }
 }
