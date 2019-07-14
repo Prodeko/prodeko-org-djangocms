@@ -13,7 +13,6 @@ django-js-asset==1.2.2
 django-mptt==0.10.0
 django-polymorphic==2.0.3
 django-sekizai==1.0.0
-django-tinymce==2.8.0
 django-treebeard==4.3
 djangocms-admin-style==1.4.0
 djangocms-attributes-field==1.1.0
@@ -46,8 +45,7 @@ uritemplate==3.0.0
 
 # Google drive integration
 google-api-python-client==1.7.9
-google-auth-oauthlib==0.3.0
-pycrypto==2.6.1
+google-auth-oauthlib==0.4.0
 
 # SASS
 libsass==0.19.1
