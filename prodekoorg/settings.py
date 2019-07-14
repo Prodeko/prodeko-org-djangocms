@@ -415,6 +415,7 @@ CKEDITOR_CONFIGS = {
             ["RemoveFormat", "Source"],
             ["Styles", "Format", "Font", "FontSize"],
             ["TextColor", "BGColor"],
+            ["Image"],
         ],
     }
 }
@@ -478,6 +479,7 @@ LOGGING = {
     },
 }
 CKEDITOR_UPLOAD_PATH = "ckeditor_uploads/"
+CKEDITOR_IMAGE_BACKEND = "pillow"
 
 CSRF_TRUSTED_ORIGINS = ".google.com"
 

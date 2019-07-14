@@ -64,6 +64,7 @@ urlpatterns += i18n_patterns(
     re_path(_(r"^matrikkeli/"), include("alumnirekisteri.alumnirekisteri.urls")),
     # Misc
     re_path(r"^admin/", admin.site.urls),
+    re_path(r"^ckeditor/", include("ckeditor_uploader.urls")),
     re_path(r"", include("cms.urls")),
 )
 
