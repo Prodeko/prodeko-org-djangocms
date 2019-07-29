@@ -19,7 +19,7 @@ def main_form(request):
         request: HttpRequest object from Django.
 
     Returns:
-        A Django TemplateResponse object that renders a html template.
+        A Django TemplateResponse object that renders an html template.
     """
 
     if request.method == "POST" and request.is_ajax():

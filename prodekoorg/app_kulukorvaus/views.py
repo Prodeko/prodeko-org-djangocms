@@ -100,7 +100,7 @@ def main_form(request):
         request: HttpRequest object from Django.
 
     Returns:
-        A Django TemplateResponse object that renders a html template.
+        A Django TemplateResponse object that renders an html template.
 
         If the user isn't logged in, they are redirected to the login url.
     """

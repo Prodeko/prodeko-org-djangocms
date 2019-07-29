@@ -50,7 +50,7 @@ def list_guildofficials(request):
         request: HttpRequest object from Django.
 
     Returns:
-        A Django TemplateResponse object that renders a html template.
+        A Django TemplateResponse object that renders an html template.
     """
 
     guildofficials = Toimari.objects.all()
@@ -66,7 +66,7 @@ def list_boardmembers(request):
         request: HttpRequest object from Django.
 
     Returns:
-        A Django TemplateResponse object that renders a html template.
+        A Django TemplateResponse object that renders an html template.
     """
 
     boardmembers = HallituksenJasen.objects.all()
