@@ -2,126 +2,128 @@
 {% load staticfiles i18n %}
 
 {% block body %}
-
-<div id="page-wrapper">
-    <div class="container-fluid">
-        <!-- Page Heading -->
-        <div class="row">
-            <div class="col-md-12">
-                <h1 class="page-header">
-                    {% trans "Send email" %}
-                    <small>{% trans "Send a bulletin by email" %}</small>
-                </h1>
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="page-header">
+                        {% trans "Send email" %}
+                        <small>{% trans "Send a bulletin by email" %}</small>
+                    </h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col-md-8">
+                    <p class="pull-right"><a type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#email-settings">{% trans "Edit settings" %}</a></p>
+                    <p>{% trans "Email server settings" as emailserver_settings %}</p>
+                    <table class="table table-bordered">
+                        <tr>
+                            <td>{% trans "Host" %}</td>
+                            <td>{{ config.host }}</td>
+                        </tr>
+                        <tr>
+                            <td>{% trans "Port" %}</td>
+                            <td>{{ config.port }}</td>
+                        </tr>
+                        <tr>
+                            <td>{% trans "User" %}</td>
+                            <td>{{ config.username }}</td>
+                        </tr>
+                        <tr>
+                            <td>TLS</td>
+                            <td>{{ config.use_tls }}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col-md-8">
+                    <form class="send-email-form" action="{% url 'tiedotteet:send_email' %}" method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="{{ send_form.subject.id_for_label }}">
+                                {{ send_form.subject.label }}:
+                            </label>
+                            {{ send_form.subject }}
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ send_form.to.id_for_label }}">
+                                {{ send_form.to.label }}:
+                            </label>
+                            {{ send_form.to }}
+                        </div>
+                        <hr>
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <a href="{% url 'tiedotteet:email' %}" class="btn btn-default btn-lg">{% trans "Preview" %}</a>
+                                <button id="email-submit-button" type="submit" class="btn btn-success btn-lg">
+                                    {% trans "Send email" %}
+                                </button>
+                                <img id="email-spinner" class="hidden" src="{% static 'img/loading.svg' %}" style="width:30px;">
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col col-md-8">
-                <p class="pull-right"><a type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#email-settings">{% trans "Edit settings" %}</a></p>
-                <p>{% trans "Email server settings" as emailserver_settings %}</p>
-                <table class="table table-bordered">
-                    <tr>
-                        <td>{% trans "Host" %}</td>
-                        <td>{{ config.host }}</td>
-                    </tr>
-                    <tr>
-                        <td>{% trans "Port" %}</td>
-                        <td>{{ config.port }}</td>
-                    </tr>
-                    <tr>
-                        <td>{% trans "User" %}</td>
-                        <td>{{ config.username }}</td>
-                    </tr>
-                    <tr>
-                        <td>TLS</td>
-                        <td>{{ config.use_tls }}</td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col col-md-8">
-                <form class="send-email-form" action="{% url 'tiedotteet:send_email' %}" method="post">
-                    {% csrf_token %}
-                    <div class="form-group">
-                        <label for="{{ send_form.subject.id_for_label }}">{{ send_form.subject.label }}:</label>
-                        {{ send_form.subject }}
-                    </div>
-                    <div class="form-group">
-                        <label for="{{ send_form.to.id_for_label }}">{{ send_form.to.label }}:</label>
-                        {{ send_form.to }}
-                    </div>
-                    <hr>
-                    <div class="form-group">
-                        <div class="col-sm-12">
-                            <a href="{% url 'tiedotteet:email' %}" class="btn btn-default btn-lg">{% trans "Preview" %}</a>
-                            <button id="email-submit-button" type="submit" class="btn btn-success btn-lg">
-                                {% trans "Send email" %}
-                            </button>
-                            <img id="email-spinner" class="hidden" src="{% static 'img/loading.svg' %}" style="width:30px;">
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
 
-    <!-- Email Settings Modal -->
-    <div id="email-settings" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-
-            <!-- Modal content-->
-            <div class="modal-content">
-                <form class="form-horizontal" action="{% url 'tiedotteet:control_panel_email' %}" method="post">
-                    {% csrf_token %}
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">{% trans emailserver_settings %}</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label class="control-label col-sm-3" for="{{ config_form.host.id_for_label }}">
-                                {{config_form.host.label }}</label>
-                            <div class="col-sm-9">
-                                {{ config_form.host }}
-                            </div>
+        <div id="email-settings" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form class="form-horizontal" action="{% url 'tiedotteet:control_panel_email' %}" method="post">
+                        {% csrf_token %}
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">{% trans emailserver_settings %}</h4>
                         </div>
-                        <div class="form-group">
-                            <label class="control-label col-sm-3" for="{{ config_form.port.id_for_label }}">
-                                {{config_form.port.label }}</label>
-                            <div class="col-sm-9">
-                                {{ config_form.port }}
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label class="control-label col-sm-3" for="{{ config_form.host.id_for_label }}">
+                                    {{config_form.host.label }}
+                                </label>
+                                <div class="col-sm-9">
+                                    {{ config_form.host }}
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-sm-3" for="{{ config_form.username.id_for_label }}">
-                                {{config_form.username.label }}</label>
-                            <div class="col-sm-9">
-                                {{ config_form.username }}
+                            <div class="form-group">
+                                <label class="control-label col-sm-3" for="{{ config_form.port.id_for_label }}">
+                                    {{config_form.port.label }}
+                                </label>
+                                <div class="col-sm-9">
+                                    {{ config_form.port }}
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-sm-3" for="{{ config_form.password.id_for_label }}">
-                                {{config_form.password.label }}</label>
-                            <div class="col-sm-9">
-                                {{ config_form.password }}
+                            <div class="form-group">
+                                <label class="control-label col-sm-3" for="{{ config_form.username.id_for_label }}">
+                                    {{config_form.username.label }}
+                                </label>
+                                <div class="col-sm-9">
+                                    {{ config_form.username }}
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-offset-3 col-sm-9">
-                                <div class="checkbox">
-                                    <label>{{ config_form.use_tls }} {{ config_form.use_tls.label }}</label>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3" for="{{ config_form.password.id_for_label }}">
+                                    {{config_form.password.label }}
+                                </label>
+                                <div class="col-sm-9">
+                                    {{ config_form.password }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-3 col-sm-9">
+                                    <div class="checkbox">
+                                        <label>{{ config_form.use_tls }} {{ config_form.use_tls.label }}</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-success">{% trans "Save" %}</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">{% trans "Close" %}</button>
-                    </div>
-                </form>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-success">{% trans "Save" %}</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">{% trans "Close" %}</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-
         </div>
     </div>
-</div>
 {% endblock %}

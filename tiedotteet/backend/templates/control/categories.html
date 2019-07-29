@@ -2,84 +2,75 @@
 {% load i18n %}
 
 {% block body %}
-<div id="page-wrapper">
-    <div class="container-fluid">
-
-        <!-- Page Heading -->
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">
-                    {% trans "Categories" %}
-                    <small>{% trans "Edit categories" %}</small>
-                </h1>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-10">
-                <p><a href="#" data-target="#addCategory" data-toggle="modal">{% trans "Add a category" %}</a></p>
-                <p>{% trans "You can delete a category by leaving it empty and clicking Save" %}</p>
-                <!-- Modal -->
-                <div class="modal fade" id="addCategory" role="dialog">
-                    <div class="modal-dialog">
-
-                        <!-- Modal content-->
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title">{% trans "Add a category" %}</h4>
-                            </div>
-                            <div class="modal-body">
-                                <form action="{% url 'tiedotteet:new_category' %}" method="post">
-                                    {% csrf_token %}
-                                    {% for field in nform %}
-                                        <label>{{ field.label }}</label>
-                                        <div class="form-group">
-                                            {{ field }}
-                                        </div>
-                                    {% endfor %}
-                                    <div class="form-group">
-                                        <button class="btn btn-success" type="submit">{% trans "Add" %}</button>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">{% trans "Close" %}</button>
-                            </div>
-                        </div>
-
-                    </div>
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">
+                        {% trans "Categories" %}
+                        <small>{% trans "Edit categories" %}</small>
+                    </h1>
                 </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-10">
+                    <p><a href="#" data-target="#addCategory" data-toggle="modal">{% trans "Add a category" %}</a></p>
+                    <p>{% trans "You can delete a category by leaving it empty and clicking Save" %}</p>
+                    <div class="modal fade" id="addCategory" role="dialog">
+                        <div class="modal-dial">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">{% trans "Add a category" %}</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="{% url 'tiedotteet:new_category' %}" method="post">
+                                        {% csrf_token %}
+                                        {% for field in nform %}
+                                            <label>{{ field.label }}</label>
+                                            <div class="form-group">
+                                                {{ field }}
+                                            </div>
+                                        {% endfor %}
+                                        <div class="form-group">
+                                            <button class="btn btn-success" type="submit">{% trans "Add" %}</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">{% trans "Close" %}</button>
+                                </div>
+                            </div>
 
-
-                <form method="post">
-                    {% csrf_token %}
-                    <table class="table">
-                        <thead>
-                            <th>{% trans "Category" %}</th>
-                            <th>{% trans "Order" %}</th>
-                            <th>{% trans "Visible" %}</th>
-                        </thead>
-                        <tbody>
-                            {% for c in cforms %}
-                                <tr>
-                                    <td>{{ c.title }}</td>
-                                    <td>{{ c.order }}</td>
-                                    <td>{{ c.login_required }}</td>
-                                    <td>
-                                        {% if c.errors %}
-                                        <p class="text-danger">{% trans Error %}</p>
-                                        {% endif %}
-                                    </td>
-                                </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                    <button class="btn btn-success" type="submit">{% trans "Save" %}</button>
-                </form>
+                        </div>
+                    </div>
+                    <form method="post">
+                        {% csrf_token %}
+                        <table class="table">
+                            <thead>
+                                <th>{% trans "Category" %}</th>
+                                <th>{% trans "Order" %}</th>
+                                <th>{% trans "Visible" %}</th>
+                            </thead>
+                            <tbody>
+                                {% for c in cforms %}
+                                    <tr>
+                                        <td>{{ c.title }}</td>
+                                        <td>{{ c.order }}</td>
+                                        <td>{{ c.login_required }}</td>
+                                        <td>
+                                            {% if c.errors %}
+                                                <p class="text-danger">{% trans Error %}</p>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        <button class="btn btn-success" type="submit">{% trans "Save" %}</button>
+                    </form>
+                </div>
             </div>
         </div>
-        <!-- /.container-fluid -->
     </div>
-    <!-- /#page-wrapper -->
-</div>
 {% endblock %}

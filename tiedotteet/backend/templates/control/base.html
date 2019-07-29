@@ -2,151 +2,93 @@
 
 <!DOCTYPE html>
 <html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}{% trans "Weekly Bulletin - Control Panel" as weeklybulletin_title%}{% endblock %}</title>
 
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>{% block title %}{% trans "Weekly Bulletin - Control Panel" as weeklybulletin_title%}{% endblock %}</title>
+        <!-- Bootstrap Core CSS -->
+        <link href="{% static 'control/css/bootstrap.min.css' %}" rel="stylesheet">
 
-	<!-- Bootstrap Core CSS -->
-	<link href="{% static 'control/css/bootstrap.min.css' %}" rel="stylesheet">
+        <!-- Custom CSS -->
+        <link href="{% static 'control/css/sb-admin.css' %}" rel="stylesheet">
 
-	<!-- Custom CSS -->
-	<link href="{% static 'control/css/sb-admin.css' %}" rel="stylesheet">
+        <!-- Custom Fonts -->
+        <link href="{% static 'control/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
 
-	<!-- Custom Fonts -->
-	<link href="{% static 'control/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+            <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
 
-	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-	<!--[if lt IE 9]>
-			  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-			  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-			<![endif]-->
-</head>
+    <body>
+        <div id="wrapper">
+            <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    <ul class="nav navbar-nav side-nav">
+                        <li>
+                            <a href="{% url 'tiedotteet:index' %}"><i class="fa fa-fw fa-desktop"></i> {% trans "Go to site" %}</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'tiedotteet:cp' %}"><i class="fa fa-fw fa-edit"></i> {% trans "Publish" %}</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'tiedotteet:categories' %}"><i class="fa fa-fw fa-pie-chart"></i> {% trans "Categories" %}</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'tiedotteet:tags' %}"><i class="fa fa-fw fa-tag"></i> {% trans "Tags" %}</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" data-toggle="collapse" data-target="#messages-control">
+                                <i class="fa fa-fw fa-table"></i>
+                                Tiedotteet 
+                                <i class="fa fa-fw fa-caret-down"></i>
+                            </a>
+                            <ul id="messages-control" class="collapse">
+                                <li>
+                                    <a href="{% url 'tiedotteet:control_messages' filter='all' category='all' %}"><i class="fa fa-fw fa-reorder"></i> {% trans "All" %}</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'tiedotteet:control_messages' filter='now' category='all' %}"><i class="fa fa-fw fa-square-o"></i> {% trans "Now" %}</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'tiedotteet:control_messages' filter='new' category='all' %}"><i class="fa fa-fw fa-flag"></i> {% trans "New" %}</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'tiedotteet:control_messages' filter='upcoming' category='all' %}"><i class="fa fa-fw fa-calendar"></i> {% trans "Upcoming" %}</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'tiedotteet:control_messages' filter='old' category='all' %}"><i class="fa fa-fw fa-history"></i> {% trans "Old" %}</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            
+            {% block body %}{% endblock %}
 
-<body>
-
-	<div id="wrapper">
-
-		<!-- Navigation -->
-		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-			</div>
-			<!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-			<div class="collapse navbar-collapse navbar-ex1-collapse">
-				<ul class="nav navbar-nav side-nav">
-					<li>
-						<a href="{% url 'tiedotteet:index' %}"><i class="fa fa-fw fa-desktop"></i> {% trans "Go to site" %}</a>
-					</li>
-					<li>
-						<a href="{% url 'tiedotteet:cp' %}"><i class="fa fa-fw fa-edit"></i> {% trans "Publish" %}</a>
-					</li>
-					<li>
-						<a href="{% url 'tiedotteet:control_panel_email' %}"><i class="fa fa-fw fa-envelope"></i> {% trans "Send email" %}</a>
-					</li>
-					<li>
-						<a href="{% url 'tiedotteet:categories' %}"><i class="fa fa-fw fa-pie-chart"></i> {% trans "Categories" %}</a>
-					</li>
-					<li>
-						<a href="{% url 'tiedotteet:tags' %}"><i class="fa fa-fw fa-tag"></i> {% trans "Tags" %}</a>
-					</li>
-					<li>
-						<a href="javascript:;" data-toggle="collapse" data-target="#messages-control"><i class="fa fa-fw fa-table"></i>
-							Tiedotteet <i class="fa fa-fw fa-caret-down"></i></a>
-						<ul id="messages-control" class="collapse">
-							<li>
-								<a href="{% url 'tiedotteet:control_messages' filter='all' category='all' %}"><i class="fa fa-fw fa-reorder"></i> {% trans "All" %}</a>
-							</li>
-							<li>
-								<a href="{% url 'tiedotteet:control_messages' filter='now' category='all' %}"><i class="fa fa-fw fa-square-o"></i> {% trans "Now" %}</a>
-							</li>
-							<li>
-								<a href="{% url 'tiedotteet:control_messages' filter='new' category='all' %}"><i class="fa fa-fw fa-flag"></i> {% trans "New" %}</a>
-							</li>
-							<li>
-								<a href="{% url 'tiedotteet:control_messages' filter='upcoming' category='all' %}"><i class="fa fa-fw fa-calendar"></i> {% trans "Upcoming" %}</a>
-							</li>
-							<li>
-								<a href="{% url 'tiedotteet:control_messages' filter='old' category='all' %}"><i class="fa fa-fw fa-history"></i> {% trans "Old" %}</a>
-							</li>
-						</ul>
-					</li>
-				</ul>
-			</div>
-			<!-- /.navbar-collapse -->
-		</nav>
-
-		{% block body %}
-
-		{% endblock %}
-
-	</div>
-	<!-- /#wrapper -->
-
-	<!-- jQuery -->
-	<script src="{% static 'control/js/jquery.js' %}"></script>
-
-	<!-- Bootstrap Core JavaScript -->
-	<script src="{% static 'control/js/bootstrap.min.js' %}"></script>
-
-	<!-- Delete confirmation -->
-	<script>
-		$('.delete-button').on('click', function (e) {
-			var answer = confirm('Poistetaanko?');
-			if (!answer) {
-				e.preventDefault();
-			}
-		});
-	</script>
-
-	<!-- Handle email sending -->
-	<script>
-		$(document).ready(function () {
-			$(".send-email-form").submit(function (event) {
-				$("#email-spinner").removeClass("hidden");
-				event.preventDefault();
-				$(".error").remove();
-				var response = submitForm($(this).id, $(this).attr("action"), $(this).serialize());
-				if (response.success) {
-					location.reload();
-				} else {
-					$("#email-spinner").addClass("hidden");
-					$("#email-submit-button").removeClass("disabled");
-					for (var key in response.errors) {
-						if (key == 'mail') {
-							$(".send-email-form").parent().prepend("<div class='error alert alert-danger'>Sähköpostin lähetys epäonnistui</div>")
-						}
-						var errorElement = '<div class="error alert alert-danger">' + response.errors[key] + '</div>'
-						$('input[name=' + key + ']').after(errorElement);
-					}
-				};
-				return false;
-			});
-			/* submit the form, having the given formId as id attribute,
-			    without reloading the page */
-			function submitForm(formId, url, data) {
-				var form = document.getElementById(formId);
-				var responseText;
-				var jqXHR = $.ajax({
-					type: "POST",
-					url: url,
-					data: data,
-					dataType: "json",
-					async: false
-				});
-				return jqXHR.responseJSON;
-			}
-		})
-	</script>
-
-</body>
-
+        </div>
+        <script src="{% static 'control/js/jquery.js' %}"></script>
+        <script src="{% static 'control/js/bootstrap.min.js' %}"></script>
+        <script>
+          $('.delete-button').on('click', function (e) {
+            var answer = confirm('Poistetaanko?');
+            if (!answer) {
+              e.preventDefault();
+            }
+          });
+        </script>
+    </body>
 </html>

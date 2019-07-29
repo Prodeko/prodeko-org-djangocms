@@ -8,8 +8,6 @@ from ckeditor.fields import RichTextField
 
 
 class MailConfiguration(models.Model):
-    """ configuration for email backend """
-
     host = models.CharField(max_length=50, default="mail.aalto.fi")
     port = models.CharField(max_length=10, default="587")
     username = models.CharField(max_length=50, default="tiedottaja@aalto.fi")
@@ -31,8 +29,8 @@ class Tag(models.Model):
 
     class Meta:
         # Correct spelling in Django admin
-        verbose_name = _("tagi")
-        verbose_name_plural = _("Tagit")
+        verbose_name = _("tag")
+        verbose_name_plural = _("Tags")
 
 
 class Category(models.Model):
@@ -118,5 +116,5 @@ class Message(models.Model):
 
     class Meta:
         # Correct spelling in Django admin
-        verbose_name = _("tiedote")
-        verbose_name_plural = _("Tiedotteet")
+        verbose_name = _("bulletin")
+        verbose_name_plural = _("Bulletins")

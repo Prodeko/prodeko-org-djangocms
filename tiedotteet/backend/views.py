@@ -25,13 +25,32 @@ from tiedotteet.backend.models import Category, MailConfiguration, Message, Tag
 
 
 def index(request):
-    """ the public main page """
+    """The main public view.
+
+    Args:
+        request: HttpRequest object from Django.
+
+    Returns:
+        A Django TemplateResponse object that renders an html template.
+    """
+
     return render(request, "tiedotteet/index.html")
 
 
 @staff_member_required(login_url="/login")
 def control_panel(request):
-    """ site for publishing new messages """
+    """The main admin view.
+
+    Messages are published from this view.
+
+    Args:
+        request: HttpRequest object from Django.
+
+    Returns:
+        A Django TemplateResponse object that renders an html template.
+        The template is renders a PublishForm and shows latest messages.
+    """
+
     form = PublishForm()
     latest_messages = Message.objects.filter(visible=True).order_by("-pk")[:10]
     if request.method == "POST":
@@ -47,7 +66,17 @@ def control_panel(request):
 
 @staff_member_required(login_url="/login")
 def control_messages(request, filter, category):
-    """ control panel - list messages """
+    """Admin view - control messages.
+
+    Messages can be edited and deleted in this view.
+
+    Args:
+        request: HttpRequest object from Django.
+
+    Returns:
+        A Django TemplateResponse object that renders an html template.
+    """
+
     if filter == "now":
         messages = Message.objects.filter(end_date__gte=timezone.now()).order_by("-pk")
         filter_label = _("Now")
@@ -76,7 +105,7 @@ def control_messages(request, filter, category):
         if str(c.pk) == category:
             messages = messages.filter(category=c)
 
-    paginator = Paginator(messages, 100)  # 100 messages per page
+    paginator = Paginator(messages, 100)
     page = request.GET.get("page")
     try:
         messages = paginator.page(page)
@@ -102,7 +131,18 @@ def control_messages(request, filter, category):
 
 @staff_member_required(login_url="/login")
 def categories(request):
-    """ control panel - edit categories """
+    """Admin view - categories.
+
+    Message categories are controlled with this view. Their name, display order
+    and display type (public or logged in users) can be tweaked.
+
+    Args:
+        request: HttpRequest object from Django.
+
+    Returns:
+        A Django TemplateResponse object that renders an html template.
+    """
+
     categories = Category.objects.all()
     cforms = [CategoryForm(prefix=str(x), instance=x) for x in categories]
     nform = CategoryForm()
@@ -125,7 +165,18 @@ def categories(request):
 
 @staff_member_required(login_url="/login")
 def new_category(request):
-    """ control panel - add new category """
+    """Admin view - add categories.
+
+    New categories are added with via this view.
+
+    Args:
+        request: HttpRequest object from Django.
+
+    Returns:
+        A Django HttpResponseRedirect  object that redirects
+        back to the main categories page.
+    """
+    
     if request.method == "POST":
         form = CategoryForm(request.POST)
         if form.is_valid():
@@ -135,7 +186,16 @@ def new_category(request):
 
 @staff_member_required(login_url="/login")
 def tags(request):
-    """ control panel - edit tags """
+    """Admin view - tags.
+
+    Args:
+        request: HttpRequest object from Django.
+
+    Returns:
+        A Django TemplateResponse object that renders an html template or an
+        HttpResponseRedirect to the main tags page on valid TagForm submission.
+    """
+
     tags = Tag.objects.all()
     form = TagForm()
     if request.method == "POST":
@@ -148,6 +208,18 @@ def tags(request):
 
 @staff_member_required(login_url="/login")
 def delete_tag(request, pk):
+    """Admin view - delete tags.
+
+    Tags can be deleted with this view.
+
+    Args:
+        request: HttpRequest object from Django.
+
+    Returns:
+        A Django HttpResponseRedirect object that redirects
+        back to the main tags page.
+    """
+
     if request.method == "POST":
         tag = get_object_or_404(Tag, pk=pk)
         tag.delete()
@@ -156,7 +228,17 @@ def delete_tag(request, pk):
 
 @staff_member_required(login_url="/login")
 def email(request):
-    """ email template """
+    """Admin view - email.
+
+    Not used currently.
+
+    Args:
+        request: HttpRequest object from Django.
+
+    Returns:
+        A Django TemplateResponse object that renders an html template.
+    """
+
     visible_messages = Message.visible_objects.order_by("end_date")
     categories = (
         Category.objects.filter(messages__in=visible_messages)
@@ -167,7 +249,17 @@ def email(request):
 
 
 def toc(request):
-    """ toc """
+    """Public view - table of contents
+
+    Display a list of all messages.
+
+    Args:
+        request: HttpRequest object from Django.
+
+    Returns:
+        A Django TemplateResponse object that renders an html template.
+    """
+
     visible_messages = Message.visible_objects.order_by("end_date")
     categories = (
         Category.objects.filter(messages__in=visible_messages)
@@ -179,6 +271,16 @@ def toc(request):
 
 @staff_member_required(login_url="/login")
 def delete_message(request, pk):
+    """Admin view - delete a message.
+
+    Args:
+        request: HttpRequest object from Django.
+
+    Returns:
+        A Django HttpResponseRedirect object that redirects
+        back to messages control page.
+    """
+
     if request.method == "POST":
         message = get_object_or_404(Message, pk=pk)
         message.delete()
@@ -188,6 +290,16 @@ def delete_message(request, pk):
 
 @staff_member_required(login_url="/login")
 def hide_message(request, pk):
+    """Admin view - hide a message.
+
+    Args:
+        request: HttpRequest object from Django.
+
+    Returns:
+        A Django HttpResponseRedirect object that redirects
+        back to messages control page.
+    """
+
     if request.method == "POST":
         message = get_object_or_404(Message, pk=pk)
         if message.visible:
@@ -200,6 +312,15 @@ def hide_message(request, pk):
 
 @staff_member_required(login_url="/login")
 def edit_message(request, pk):
+    """Admin view - edit a message.
+
+    Args:
+        request: HttpRequest object from Django.
+
+    Returns:
+        A Django TemplateResponse object that renders an html template.
+    """
+
     form = EditForm(instance=get_object_or_404(Message, pk=pk))
     messages = {}
     if request.method == "POST":
@@ -213,7 +334,17 @@ def edit_message(request, pk):
 
 @staff_member_required(login_url="/login")
 def control_panel_email(request):
-    """ control panel - send email page for sending emails and editing mail configurations """
+    """Admin view - email.
+
+    Not used currently.
+
+    Args:
+        request: HttpRequest object from Django.
+
+    Returns:
+        A Django TemplateResponse object that renders an html template.
+    """
+
     config, created = MailConfiguration.objects.get_or_create(pk=1)
     config_form = MailConfigurationForm(instance=config)
     send_form = SendEmailForm()
@@ -231,7 +362,17 @@ def control_panel_email(request):
 
 @staff_member_required(login_url="/login")
 def send_email(request):
-    """ send infro letter via email """
+    """Admin view - email.
+
+    Not used currently.
+
+    Args:
+        request: HttpRequest object from Django.
+
+    Returns:
+        A Django TemplateResponse object that renders an html template.
+    """
+
     if request.method == "POST":
         form = SendEmailForm(request.POST)
         if form.is_valid():
