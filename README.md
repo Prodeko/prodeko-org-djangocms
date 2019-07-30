@@ -4,7 +4,7 @@ Tuotantotalouden kilta Prodekon Django-pohjaiset nettisivut.
 
 ---
 
-Prodeko.org projekti käyttää Django versiota 2.1.
+Prodeko.org projekti käyttää Django versiota 2.1.10
 
 ### Vaatimukset
 
@@ -28,21 +28,22 @@ Kehitysympäristön käynnistys luo uuden Django käyttäjän:
 1. Virtualenv päälle `source venv/bin/activate`
 2. Collectaa staattiset tiedostot `python3 manage.py collectstatic`
 3. Käynnistä apache uudestaan `sudo service apache2 restart`
-4. Tarkista näyttävätkö sivut toimivan [djangocms.prodeko.org](https://djangocms.prodeko.org)
+4. Tarkista näyttävätkö sivut toimivan oikein [prodeko.org](https://prodeko.org)
 
 Jos törmäät "ImportError: Couldn't import Django..." erroriin, vaihda käyttäjä roottiin (`sudo su`) ja tee kohdat 2. ja 3. uudestaan.
 
 ### Testaus
 
-Testit saa ajettua komennolla `python3 manage.py test -v=2"`
-
-Vain osan testeistä saa ajettua esimerkiksi näin: `python3 manage.py test -p=test_forms.py -v=2"`
-
-Tietyn appin testit saa ajettua näin: `python3 manage.py test prodekoorg.app_kulukorvaus.tests -v=2`
-
-Testien kirjoittamiseen voi katsoa mallia prodekoorg/app_kulukorvaus/tests/ kansiosta.
+- Testit saa ajettua komennolla `python3 manage.py test -v=2"`
+- Vain osan testeistä saa ajettua esimerkiksi näin: `python3 manage.py test -p=test_forms.py -v=2"`
+- Tietyn appin testit saa ajettua näin: `python3 manage.py test prodekoorg.app_kulukorvaus.tests -v=2`
+- Testien kirjoittamiseen voi katsoa mallia prodekoorg/app_kulukorvaus/tests/ kansiosta.
 
 ### Koodityyli
+
+#### Python
+
+Pylint ja black komennot on ajettava docker containerin sisällä toistaiseksi.
 
 **Code compliance (PEP8)**
 
@@ -65,6 +66,28 @@ $ black .
 
 All done! ✨ 🍰 ✨
 48 files left unchanged.
+```
+
+#### Javascript & CSS
+
+Muista asentaa tarvittavat packaget komennolla `npm i`.
+
+**Javascript**
+
+Konfiguraatiotiedosto [.eslintrc.js](./.eslintrc.js). Lisäksi käytössä on Prettier-integraatio [.prettierrc](./..prettierrc).
+
+```shell
+$ npm run lint:eslint      # Näytä virheet
+$ npm run lint:eslint-fix  # Korjaa virheet
+```
+
+**CSS**
+
+Konfiguraatiotiedosto [.stylelintrc](./.stylelintrc). Lisäksi käytössä on Prettier-integraatio [.prettierrc](./..prettierrc).
+
+```shell
+$ npm run lint:css      # Näytä virheet
+$ npm run lint:css-fix  # Korjaa virheet
 ```
 
 ### Rakennuspalikat
@@ -126,7 +149,7 @@ All done! ✨ 🍰 ✨
 
 ### Kääntäminen eri kielille
 
-1. importtaa ugettext*lazy: `from django.utils.translation import ugettext_lazy as *`. Käytä koodissa näin: \_("First name")
+1. importtaa ugettext_lazy: `from django.utils.translation import ugettext_lazy as *`. Käytä koodissa näin: \_("First name")
 2. `python3 manage.py makemessages -l fi`. locale/ kansioon .po tiedostoon muodostuu käännettävä sana, esimerkin tapauksessa "First name".
 3. Käännä suomeksi .po tiedostossa ja aja `python3 manage.py compilemessages`.
 
@@ -140,7 +163,7 @@ msgstr "Etunimi"
 
 ### Jos scss ei meinaa toimia
 
-Scss:n pitäisi automaattisesti compilata silloin kun tiedosto tallennetaan ja sen aikaleima muuttuu. Tämä ei aina toimi. Workaround: poista tidostosta esim. yksi '{', jotta se on epäpätevä -> muodostuu error, jonka jälkeen compilaus toimii kun '{' lisätään takaisin.
+Scss:n pitäisi automaattisesti compilata silloin kun tiedosto tallennetaan ja sen aikaleima muuttuu. Tämä ei aina toimi. Workaround: poista tiedostosta esim. yksi '{', jotta se on epäpätevä -> muodostuu error, jonka jälkeen kääntäminen toimii kun '{' lisätään takaisin.
 
 ### Kehittäjät
 
