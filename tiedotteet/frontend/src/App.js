@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import ContentContainer from "./modules/Content/ContentContainer";
-import "./styles/main.scss";
+import React, { Component } from 'react';
+import ContentContainer from './modules/Content/ContentContainer';
+import './styles/main.scss';
 
 class App extends Component {
   render() {

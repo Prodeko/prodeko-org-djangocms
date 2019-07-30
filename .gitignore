@@ -74,11 +74,3 @@ prodekoorg/variables.txt
 !data.json
 !package.json
 !package-lock.json
-
-# tiedotteet.prodeko.org
-tiedotteet/frontend/public/
-!tiedotteet/frontend/src/manifest.json
-node_modules/
-yarn.lock
-dist/
-.idea/

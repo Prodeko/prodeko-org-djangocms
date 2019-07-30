@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import ScrollableAnchor from "react-scrollable-anchor";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import ScrollableAnchor from 'react-scrollable-anchor';
 
 class Article extends Component {
   createMarkup = htmlStr => ({ __html: htmlStr });

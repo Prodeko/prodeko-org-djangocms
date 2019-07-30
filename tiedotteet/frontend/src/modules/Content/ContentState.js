@@ -1,4 +1,4 @@
-import { addToStorage, removeFromStorage } from "../../util/localStorage";
+import { addToStorage, removeFromStorage } from '../../util/localStorage';
 
 // Initial state
 const initialState = {
@@ -8,24 +8,24 @@ const initialState = {
 };
 
 // Actions
-const REQUEST_CONTENT = "CONTENT/REQUEST_CONTENT";
+const REQUEST_CONTENT = 'CONTENT/REQUEST_CONTENT';
 const requestContent = () => ({
   type: REQUEST_CONTENT
 });
 
-export const REQUEST_CONTENT_SUCCESS = "CONTENT/REQUEST_CONTENT_SUCCESS";
+export const REQUEST_CONTENT_SUCCESS = 'CONTENT/REQUEST_CONTENT_SUCCESS';
 const requestContentSuccess = payload => ({
   type: REQUEST_CONTENT_SUCCESS,
   payload
 });
 
-export const REQUEST_CONTENT_FAILURE = "CONTENT/REQUEST_CONTENT_FAILURE";
+export const REQUEST_CONTENT_FAILURE = 'CONTENT/REQUEST_CONTENT_FAILURE';
 const requestContentFailure = payload => ({
   type: REQUEST_CONTENT_FAILURE,
   payload
 });
 
-export const MARK_READ = "CONTENT/MARK_READ";
+export const MARK_READ = 'CONTENT/MARK_READ';
 export const markRead = payload => {
   addToStorage(payload);
   return {
@@ -34,7 +34,7 @@ export const markRead = payload => {
   };
 };
 
-export const MARK_UNREAD = "CONTENT/MARK_UNREAD";
+export const MARK_UNREAD = 'CONTENT/MARK_UNREAD';
 export const markUnRead = payload => {
   removeFromStorage(payload);
   return {
@@ -46,18 +46,18 @@ export const markUnRead = payload => {
 export const fetchContent = () => dispatch => {
   dispatch(requestContent());
   const url = `${
-    process.env.NODE_ENV === "production"
-      ? ""
-      : "https://tiedotteet.prodeko.org"
+    process.env.NODE_ENV === 'production'
+      ? ''
+      : 'https://tiedotteet.prodeko.org'
   }/tiedotteet/api/content/`;
   fetch(url, {
-    credentials: "same-origin",
+    credentials: 'same-origin',
     headers: {
-      "X-CSRFToken": window.csrfToken,
-      Accept: "application/json",
-      "Content-Type": "application/json"
+      'X-CSRFToken': window.csrfToken,
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
     },
-    method: "get"
+    method: 'get'
   })
     .then(response =>
       response.json().then(json => {

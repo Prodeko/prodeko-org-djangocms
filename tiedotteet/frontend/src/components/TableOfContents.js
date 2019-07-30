@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class TableOfContents extends Component {
   handleClick = (messageHeader, messageIsNew) => {
     this.props.sendAnalyticsEvent(
-      "table of contents link",
-      "click",
+      'table of contents link',
+      'click',
       messageHeader,
       messageIsNew ? 1 : 0
     );

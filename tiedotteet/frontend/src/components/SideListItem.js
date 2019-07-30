@@ -1,13 +1,13 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import Moment from "moment";
-import { isInStore } from "../util/localStorage";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import Moment from 'moment';
+import { isInStore } from '../util/localStorage';
 
 class SideListItem extends Component {
   handleClick = () => {
     this.props.sendAnalyticsEvent(
-      "Sidebar link",
-      "click",
+      'Sidebar link',
+      'click',
       this.props.message.header,
       this.props.message.isNew ? 1 : 0
     );
@@ -17,8 +17,8 @@ class SideListItem extends Component {
     const m = this.props.message;
     return (
       <li
-        className={`sidebar-list-item ${isInStore(m.id) ? "read" : ""} ${
-          m.isNew ? "new" : ""
+        className={`sidebar-list-item ${isInStore(m.id) ? 'read' : ''} ${
+          m.isNew ? 'new' : ''
         }`}
       >
         <a htmlFor={m.id} href={`#${m.id}`} onClick={this.handleClick}>
@@ -29,7 +29,7 @@ class SideListItem extends Component {
           )}
           {m.show_deadline && (
             <div className="icon-container text-light-grey">
-              <span>DL: {Moment(m.deadline_date).format("D.M.Y")}</span>
+              <span>DL: {Moment(m.deadline_date).format('D.M.Y')}</span>
             </div>
           )}
           <div className="text-container">{m.header}</div>

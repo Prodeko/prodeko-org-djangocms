@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import SideListItem from "../../components/SideListItem";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import SideListItem from '../../components/SideListItem';
 
 class Sidebar extends Component {
   render() {

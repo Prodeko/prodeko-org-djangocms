@@ -8,8 +8,8 @@
     "start": "webpack-dev-server --open --hot --mode development",
     "build": "webpack --mode production",
     "test": "find ./src -name '*.test.js' | xargs mocha --require ignore-styles ./test/configure.js -R spec",
-    "lint": "eslint .",
-    "lint:fix": "./node_modules/.bin/eslint --fix ."
+    "lint": "eslint --ignore-path .gitignore .",
+    "lint:fix": "eslint --ignore-path .gitignore --fix ."
   },
   "browserslist": "> 0.25%, not dead",
   "dependencies": {
@@ -36,7 +36,6 @@
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "eslint": "^5.16.0",
-    "eslint-config-prettier": "^5.0.0",
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-react": "^7.13.0",
     "file-loader": "^4.0.0",

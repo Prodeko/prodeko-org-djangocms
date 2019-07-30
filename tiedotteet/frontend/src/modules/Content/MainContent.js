@@ -1,10 +1,10 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import Moment from "moment";
-import Article from "../../components/Article";
-import Header from "../../components/Header";
-import TableOfContents from "../../components/TableOfContents";
-import Footer from "../../components/Footer";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import Moment from 'moment';
+import Article from '../../components/Article';
+import Header from '../../components/Header';
+import TableOfContents from '../../components/TableOfContents';
+import Footer from '../../components/Footer';
 
 class MainContent extends Component {
   render() {
@@ -25,10 +25,10 @@ class MainContent extends Component {
                   {c.messages.map((m, mkey) => (
                     <Article
                       key={mkey}
-                      pubDate={Moment(m.pub_date).format("DD.MM.")}
+                      pubDate={Moment(m.pub_date).format('DD.MM.')}
                       dlDate={
                         m.show_deadline
-                          ? Moment(m.deadline_date).format("DD.MM.")
+                          ? Moment(m.deadline_date).format('DD.MM.')
                           : null
                       }
                       id={m.id}

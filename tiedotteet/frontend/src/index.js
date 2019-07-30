@@ -1,26 +1,28 @@
-import React from "react";
-import { render } from "react-dom";
-import { Provider } from "react-redux";
-import store from "./redux/store";
-import App from "./App";
-import { configureAnchors } from "react-scrollable-anchor";
+/* eslint no-console: 0 */
+
+import React from 'react';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import store from './redux/store';
+import App from './App';
+import { configureAnchors } from 'react-scrollable-anchor';
 
 // register service worker
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
     navigator.serviceWorker
-      .register("../static/tiedotteet/serviceworker.js")
+      .register('../static/tiedotteet/serviceworker.js')
       .then(
         registration => {
           // Registration was successful
           console.log(
-            "ServiceWorker registration successful with scope: ",
+            'ServiceWorker registration successful with scope: ',
             registration.scope
           );
         },
         err => {
           // registration failed :(
-          console.log("ServiceWorker registration failed: ", err);
+          console.log('ServiceWorker registration failed: ', err);
         }
       );
   });
@@ -37,5 +39,5 @@ render(
   <Provider store={store}>
     <App />
   </Provider>,
-  document.getElementById("root")
+  document.getElementById('root')
 );

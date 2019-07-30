@@ -1,48 +1,48 @@
-const path = require("path");
-const webpack = require("webpack");
-const HtmlWebPackPlugin = require("html-webpack-plugin");
+const path = require('path');
+const webpack = require('webpack');
+const HtmlWebPackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  mode: "development",
-  entry: "./src/index.js",
+  mode: 'development',
+  entry: './src/index.js',
   output: {
-    path: path.resolve(__dirname, "public/tiedotteet"),
-    filename: "bundle.js",
-    publicPath: "/static/tiedotteet/"
+    path: path.resolve(__dirname, 'public/tiedotteet'),
+    filename: 'bundle.js',
+    publicPath: '/static/tiedotteet/'
   },
-  devtool: "source-map",
+  devtool: 'source-map',
   devServer: {
-    contentBase: path.resolve(__dirname, "public/tiedotteet"),
-    port: "3000"
+    contentBase: path.resolve(__dirname, 'public/tiedotteet'),
+    port: '3000'
   },
   module: {
     rules: [
       {
         test: /\.scss$/,
-        use: ["style-loader", "css-loader", "sass-loader"]
+        use: ['style-loader', 'css-loader', 'sass-loader']
       },
       {
         test: /\.js(x)?$/,
         exclude: /node_modules/,
-        use: ["babel-loader"]
+        use: ['babel-loader']
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
-        use: ["file-loader"]
+        use: ['file-loader']
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
-        use: ["file-loader"]
+        use: ['file-loader']
       }
     ]
   },
   resolve: {
-    extensions: [".js", ".jsx"]
+    extensions: ['.js', '.jsx']
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebPackPlugin({
-      template: "./src/index.html"
+      template: './src/index.html'
     })
   ]
 };

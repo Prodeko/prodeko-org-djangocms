@@ -1,5 +1,5 @@
 // Actions
-const SEND_EVENT = "ANALYTICS/SEND_EVENT";
+const SEND_EVENT = 'ANALYTICS/SEND_EVENT';
 const sendEvent = (category, action, label, value) => ({
   type: SEND_EVENT,
   category,
