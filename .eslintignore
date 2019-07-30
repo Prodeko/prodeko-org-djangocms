@@ -1,3 +1,13 @@
-prodekoorg/collected-static/*
+prodekoorg/collected-static/
+prodekoorg/app_vaalit/
 
-tiedotteet/*
+tiedotteet/backend/static/control/
+tiedotteet/frontend/node_modules/
+tiedotteet/frontend/public/
+
+alumnirekisteri/rekisteri/static/js/simple_crop.js
+
+bootstrap.min.js
+jquery.js
+jquery.min.js
+jquery.mobile.custom.min.js

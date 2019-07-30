@@ -67,6 +67,7 @@ target/
 
 *.DS_Store
 venv/
+node_modules/
 
 prodekoorg/variables.txt
 *.db
