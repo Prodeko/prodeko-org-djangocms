@@ -1,7 +1,7 @@
 .content-page-jumbotron {
   height: 30vh;
   margin-bottom: 0;
-  background-image: url("/static/images/backgrounds/content-page-bg-blue.jpg");
+  background-image: url('/static/images/backgrounds/content-page-bg-blue.jpg');
   background-repeat: no-repeat;
   background-size: cover;
 
@@ -87,7 +87,7 @@
 
   ul:not(.page-breadcrumb):not(#sidenav) li::before {
     padding-right: 1em;
-    content: "–";
+    content: '–';
   }
 
   @include desktop {

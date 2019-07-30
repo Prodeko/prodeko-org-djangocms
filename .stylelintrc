@@ -2,6 +2,7 @@
   "plugins": ["stylelint-prettier"],
   "extends": [
     "stylelint-config-prettier",
+    "stylelint-prettier/recommended",
     "stylelint-config-rational-order"
   ],
   "rules": {
@@ -14,10 +15,12 @@
     "alumnirekisteri/rekisteri/static/icons/**",
     "alumnirekisteri/rekisteri/static/css/**",
     "!alumnirekisteri/rekisteri/static/css/ar_custom.css",
+    "!alumnirekisteri/rekisteri/static/css/uii.css",
     "lifelonglearning/static/css/bootstrap.min.css",
     "tiedotteet/backend/static/**",
     "!tiedotteet/backend/static/css/custom.css",
     "!tiedotteet/backend/static/css/email.css",
-    "!tiedotteet/backend/static/css/sidebar.css"
+    "!tiedotteet/backend/static/css/sidebar.css",
+    "!tiedotteet/backend/static/css/palette.css"
   ]
 }

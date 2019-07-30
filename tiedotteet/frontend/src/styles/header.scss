@@ -1,4 +1,4 @@
-@import "variables.scss";
+@import 'variables.scss';
 
 #header {
   display: flex;
@@ -11,7 +11,7 @@
   margin-bottom: 3em;
 
   /* The image used */
-  background-image: url("../assets/banner.png");
+  background-image: url('../assets/banner.png');
   background-repeat: no-repeat;
 
   /* Center and scale the image nicely */

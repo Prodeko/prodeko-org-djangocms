@@ -44,15 +44,15 @@ body {
     .navigation-list-child-desktop {
       position: relative;
       z-index: 1;
+      min-width: 100%;
       //margin: 0px -30px;
       padding: 10px 15px 10px 15px;
-      font-size: 1.0rem;
+      font-size: 1rem;
       list-style-type: none;
       background-color: rgb(241, 241, 241);
       border-color: rgb(0, 40, 81);
       border-style: solid;
       border-width: 0.5px;
-      min-width: 100%;
     }
 
     .nav-sublink {
@@ -129,7 +129,7 @@ body {
     visibility: hidden;
     -webkit-transition: all 0.3s ease-in-out 0s;
     transition: all 0.3s ease-in-out 0s;
-    content: "";
+    content: '';
   }
 
   a.nav-top:not(.no-animation):hover::before {
@@ -154,19 +154,19 @@ body {
     max-width: 200px;
     height: $navbar-height - 2 * 8px;
     margin-left: 0;
-    background-image: url("/static/images/logos/prodeko-logo-text-blue.png");
+    background-image: url('/static/images/logos/prodeko-logo-text-blue.png');
     background-position-y: center;
   }
 
   @include tablet {
     max-width: 300px;
     height: 60px;
-    background-image: url("/static/images/logos/prodeko-logo-text-blue.png");
+    background-image: url('/static/images/logos/prodeko-logo-text-blue.png');
   }
 
   @include desktop {
     max-width: 150px;
     height: 75px;
-    background-image: url("/static/images/logos/prodeko-logo-darkblue.png");
+    background-image: url('/static/images/logos/prodeko-logo-darkblue.png');
   }
 }

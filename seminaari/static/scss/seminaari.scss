@@ -157,12 +157,11 @@ hr {
   text-align: center;
   text-transform: uppercase;
   text-shadow: 0 2px 10px #000;
-  background-image:
-    linear-gradient(
-      to bottom,
-      rgb(81, 49, 0),
-      rgba(0, 40, 81, 0)
-    );
+  background-image: linear-gradient(
+    to bottom,
+    rgb(81, 49, 0),
+    rgba(0, 40, 81, 0)
+  );
   background-repeat: no-repeat;
   background-position: center -300px;
   border: none;
@@ -337,7 +336,6 @@ hr {
     }
   }
 
-
   @media (max-width: 576px) {
     padding-top: 9rem;
 
@@ -422,12 +420,11 @@ hr {
   max-height: 70%;
   color: grey;
   text-align: center;
-  background-image:
-    linear-gradient(
-      to top,
-      rgba(255, 255, 255, 1),
-      rgba(255, 255, 255, 0)
-    );
+  background-image: linear-gradient(
+    to top,
+    rgba(255, 255, 255, 1),
+    rgba(255, 255, 255, 0)
+  );
 }
 
 .read-more-text {

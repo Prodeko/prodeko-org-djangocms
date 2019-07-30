@@ -1,4 +1,4 @@
-@import "../../../static/scss/breakpoints_mixin.scss";
+@import '../../../static/scss/breakpoints_mixin.scss';
 
 .kulukorvaus-container {
   .fa-plus {
@@ -20,7 +20,7 @@
     display: inline-block;
     overflow: hidden;
 
-    input[type="file"] {
+    input[type='file'] {
       position: absolute;
       top: 0;
       left: 0;

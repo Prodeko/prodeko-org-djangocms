@@ -1,10 +1,10 @@
-@import "loader.scss";
-@import "header.scss";
-@import "footer.scss";
-@import "sidebar.scss";
-@import "main_content.scss";
-@import "article.scss";
-@import "buttons.scss";
+@import 'loader.scss';
+@import 'header.scss';
+@import 'footer.scss';
+@import 'sidebar.scss';
+@import 'main_content.scss';
+@import 'article.scss';
+@import 'buttons.scss';
 
 html {
   height: 100%;
@@ -14,7 +14,7 @@ html {
 body {
   height: 100%;
   margin: 0;
-  font-family: "Raleway", Helvetica, Arial, sans-serif;
+  font-family: 'Raleway', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

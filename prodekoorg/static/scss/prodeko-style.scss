@@ -12,16 +12,16 @@ Prodekon keskisininen: #002e7d
 Prodekon tummansininen: #002851
 */
 
-@import "breakpoints_mixin";
-@import "typography";
-@import "variables";
-@import "hamburgers";
-@import "frontpage";
-@import "sidenav";
-@import "navbar";
-@import "footer";
-@import "content-page";
-@import "error_pages";
+@import 'breakpoints_mixin';
+@import 'typography';
+@import 'variables';
+@import 'hamburgers';
+@import 'frontpage';
+@import 'sidenav';
+@import 'navbar';
+@import 'footer';
+@import 'content-page';
+@import 'error_pages';
 
 body {
   min-height: 100%;
