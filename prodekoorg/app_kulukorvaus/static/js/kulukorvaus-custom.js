@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  var csrftoken = $("[name=csrfmiddlewaretoken]").val();
+  var csrftoken = $('[name=csrfmiddlewaretoken]').val();
   function csrfSafeMethod(method) {
     // these HTTP methods do not require CSRF protection
     return /^(GET|HEAD|OPTIONS|TRACE)$/.test(method);
@@ -7,39 +7,39 @@ $(document).ready(function() {
   $.ajaxSetup({
     beforeSend: function(xhr, settings) {
       if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-        xhr.setRequestHeader("X-CSRFToken", csrftoken);
+        xhr.setRequestHeader('X-CSRFToken', csrftoken);
       }
     }
   });
 
-  var formKulukorvaus = $("#form_kulukorvaus");
-  formKulukorvaus.on("submit", function(e) {
+  var formKulukorvaus = $('#form_kulukorvaus');
+  formKulukorvaus.on('submit', function(e) {
     e.preventDefault();
-    $("button[type=submit]").attr("disabled", "");
-    formData = new FormData(formKulukorvaus.get(0));
+    $('button[type=submit]').attr('disabled', '');
+    var formData = new FormData(formKulukorvaus.get(0));
 
     $.ajax({
-      url: "",
-      type: "POST",
+      url: '',
+      type: 'POST',
       data: formData,
       contentType: false, // Indicates 'multipart/form-data'
       processData: false,
       success: function(data) {
         // Google Analytics form submission tracking
         dataLayer.push({
-          event: "formSubmitted",
-          formName: "form_kulukorvaus"
+          event: 'formSubmitted',
+          formName: 'form_kulukorvaus'
         });
         document.write(data);
       },
 
       // Re-renders the same page with error texts.
-      error: function(xhr, errmsg, err) {
+      error: function(xhr) {
         if (xhr.status === 599) {
           // Google Analytics form error tracking
-          dataLayer.push({ event: "formError", formName: "form_kulukorvaus" });
-          $("#forms-wrapper").replaceWith(xhr.responseText);
-          new Formset(document.querySelector("#form_kulukorvaus"));
+          dataLayer.push({ event: 'formError', formName: 'form_kulukorvaus' });
+          $('#forms-wrapper').replaceWith(xhr.responseText);
+          new Formset(document.querySelector('#form_kulukorvaus'));
           handleFileUploads();
         }
       }
@@ -47,16 +47,16 @@ $(document).ready(function() {
   });
 
   function handleFileUploads() {
-    var arr = [].slice.call(document.querySelectorAll("[type*=file]"));
+    var arr = [].slice.call(document.querySelectorAll('[type*=file]'));
     arr.shift(); // Remove first element in the array which is the management form input button
 
     arr.forEach(function(el) {
-      el.addEventListener("change", showFileName);
+      el.addEventListener('change', showFileName);
     });
   }
 
   function removeReceiptName(e) {
-    e.target.parentElement.previousElementSibling.value = "";
+    e.target.parentElement.previousElementSibling.value = '';
     $(e.target.parentElement).remove();
   }
 
@@ -64,16 +64,16 @@ $(document).ready(function() {
     var input = e.srcElement;
     var filename = input.files[0].name;
 
-    var span = document.createElement("span");
-    span.classList.add("form-text", "receipt-name", "pr-2");
+    var span = document.createElement('span');
+    span.classList.add('form-text', 'receipt-name', 'pr-2');
     span.innerHTML = `<i id="removeReceptIcon" class="fas fa-minus-square fa-lg pr-2";"></i> ${filename}`;
-    span.firstElementChild.addEventListener("click", removeReceiptName);
+    span.firstElementChild.addEventListener('click', removeReceiptName);
 
-    parent = input.parentNode;
-    if (parent.children.length > 2) {
-      parent.removeChild(parent.children[2]);
+    var parentNode = input.parentNode;
+    if (parentNode.children.length > 2) {
+      parentNode.removeChild(parentNode.children[2]);
     }
-    parent.appendChild(span);
+    parentNode.appendChild(span);
   }
 
   // Add event listeners to receipt upload buttons
@@ -95,25 +95,24 @@ $(document).ready(function() {
     if (!(this instanceof Formset)) {
       return new Formset(element);
     }
-    var formset = this;
-    var emptyForm = element.querySelector(".empty-form").firstElementChild;
-    var formsList = element.querySelector(".forms");
+    var emptyForm = element.querySelector('.empty-form').firstElementChild;
+    var formsList = element.querySelector('.forms');
 
-    var initialForms = element.querySelector("[name$=INITIAL_FORMS]");
-    var totalForms = element.querySelector("[name$=TOTAL_FORMS]");
-    var prefix = initialForms.name.replace(/INITIAL_FORMS$/, "");
+    var initialForms = element.querySelector('[name$=INITIAL_FORMS]');
+    var totalForms = element.querySelector('[name$=TOTAL_FORMS]');
+    var prefix = initialForms.name.replace(/INITIAL_FORMS$/, '');
 
-    function addForm(event) {
+    function addForm() {
       // Duplicate empty form.
       var newForm = emptyForm.cloneNode(true);
       // Update all references to __prefix__ in the elements names.
-      renumberForm(newForm, "__prefix__", totalForms.value);
+      renumberForm(newForm, '__prefix__', totalForms.value);
       // Make it able to delete itself.
       newForm
-        .querySelector("[data-formset-remove-form]")
-        .addEventListener("click", removeForm);
+        .querySelector('[data-formset-remove-form]')
+        .addEventListener('click', removeForm);
       // Append the new form to the formsList.
-      formsList.insertAdjacentElement("beforeend", newForm);
+      formsList.insertAdjacentElement('beforeend', newForm);
       // Update the totalForms.value
       totalForms.value = Number(totalForms.value) + 1;
       handleFileUploads();
@@ -135,9 +134,9 @@ $(document).ready(function() {
       var match = new RegExp(matchValue);
       var replace = prefix + newValue.toString();
 
-      ["name", "id", "for"].forEach(function(attr) {
+      ['name', 'id', 'for'].forEach(function(attr) {
         form
-          .querySelectorAll("[" + attr + "*=" + matchValue + "]")
+          .querySelectorAll('[' + attr + '*=' + matchValue + ']')
           .forEach(function(el) {
             el.setAttribute(
               attr,
@@ -170,12 +169,12 @@ $(document).ready(function() {
     }
 
     element
-      .querySelector("[data-formset-add-form]")
-      .addEventListener("click", addForm);
+      .querySelector('[data-formset-add-form]')
+      .addEventListener('click', addForm);
     element.formset = this;
 
     this.addForm = addForm;
   }
 
-  new Formset(document.querySelector("#form_kulukorvaus"));
+  new Formset(document.querySelector('#form_kulukorvaus'));
 });

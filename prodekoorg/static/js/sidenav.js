@@ -1,3 +1,5 @@
+/* eslint no-unused-vars: 0 */
+
 $(document).scroll(function() {
   //checkOffset(); # Uncomment and update css files to enable scrolling sidenav
 });

@@ -1,10 +1,10 @@
 function csrfSafeMethod(method) {
   // these HTTP methods do not require CSRF protection
-  return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+  return /^(GET|HEAD|OPTIONS|TRACE)$/.test(method);
 }
 
 $.ajaxSetup({
-  beforeSend: function (xhr, settings) {
+  beforeSend: function(xhr, settings) {
     if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
       xhr.setRequestHeader("X-CSRFToken", csrftoken);
     }
@@ -12,18 +12,17 @@ $.ajaxSetup({
 });
 
 function updateTexts(virka) {
-  $('#vaalitKysymysForm small').html(virka + ' - Esitä kysymys');
-  $('#header').html(virka);
+  $("#vaalitKysymysForm small").html(virka + " - Esitä kysymys");
+  $("#header").html(virka);
   // Set hidden input field
-  $('.input-virka').val(virka);
+  $(".input-virka").val(virka);
 }
 
-var selectedTab_id = localStorage.getItem('selectedTab_id');
-var selectedVirka = localStorage.getItem('selectedVirka');
+var selectedTab_id = localStorage.getItem("selectedTab_id");
+var selectedVirka = localStorage.getItem("selectedVirka");
 var csrftoken = $("[name=csrfmiddlewaretoken]").val();
 
-$(document).ready(function () {
-
+$(document).ready(function() {
   /* START stay on same navigation tab with reload */
   var elem;
   var virka;
@@ -31,16 +30,18 @@ $(document).ready(function () {
   /* Use localStorage to display the tab that was open
    *  before the latest refresh.
    */
-  if ($('#vaalitNav').length > 0) {
+  if ($("#vaalitNav").length > 0) {
     if (selectedTab_id != null) {
-      elem = $('.list-group-root a[data-toggle="tab"][href="' + selectedTab_id + '"]');
+      elem = $(
+        '.list-group-root a[data-toggle="tab"][href="' + selectedTab_id + '"]'
+      );
 
       virka = elem.text().trim();
       updateTexts(virka);
       checkBtnHaeVirkaanVisibility(virka); // Defined in 'vaalit_question_form.html'
 
-      elem.addClass('.active');
-      elem.tab('show');
+      elem.addClass(".active");
+      elem.tab("show");
     } else {
       // No tab saved in localStorage
       elem = $('.list-group-root a[data-toggle="tab"][href="#_1"]');
@@ -49,46 +50,53 @@ $(document).ready(function () {
       checkBtnHaeVirkaanVisibility(virka);
       updateTexts(virka);
 
-      elem.addClass('.active');
-      elem.tab('show');
+      elem.addClass(".active");
+      elem.tab("show");
     }
   }
 
-  $('.list-group-root a[data-toggle="tab"]').click(function (e) {
+  $('.list-group-root a[data-toggle="tab"]').click(function(e) {
     var id = $(e.delegateTarget).attr("href");
-    var virka = $('.list-group-root a[data-toggle="tab"][href="' + id + '"]').text().trim();
+    var virka = $('.list-group-root a[data-toggle="tab"][href="' + id + '"]')
+      .text()
+      .trim();
     checkBtnHaeVirkaanVisibility(virka);
 
-    localStorage.setItem('selectedTab_id', id);
-    localStorage.setItem('selectedVirka', virka);
+    localStorage.setItem("selectedTab_id", id);
+    localStorage.setItem("selectedVirka", virka);
 
     updateTexts(virka);
 
-    var listType = $(e.delegateTarget).closest('div').attr('id');
-    if (listType == 'hallitusList') {
-      $('#toimaritList > a.active').removeClass('active');
-    } else if (listType == 'toimaritList') {
-      $('#hallitusList > a.active').removeClass('active');
+    var listType = $(e.delegateTarget)
+      .closest("div")
+      .attr("id");
+    if (listType == "hallitusList") {
+      $("#toimaritList > a.active").removeClass("active");
+    } else if (listType == "toimaritList") {
+      $("#hallitusList > a.active").removeClass("active");
     }
   });
   /* END stay on same navigation tab with reload */
 
   /* Ehdokas object delete confirmation in modal */
-  $(".showDeleteEhdokasModal").click(function (e) {
+  $(".showDeleteEhdokasModal").click(function(e) {
     e.preventDefault();
-    var ehdokasId = $(e.target).attr('ehdokas-id');
-    $('#formDeleteEhdokas').attr('action', '/vaalit/delete-nominee/' + ehdokasId + '/');
-    $('#confirmDeleteEhdokasModal').modal('toggle');
+    var ehdokasId = $(e.target).attr("ehdokas-id");
+    $("#formDeleteEhdokas").attr(
+      "action",
+      "/vaalit/delete-nominee/" + ehdokasId + "/"
+    );
+    $("#confirmDeleteEhdokasModal").modal("toggle");
   });
 
   /* Display apply form */
-  $('#btnHaeVirkaan').click(function () {
-    $('#btnHaeVirkaan').toggleClass('animate-chevron');
-    $('#vaaliApplyForm').slideToggle();
+  $("#btnHaeVirkaan").click(function() {
+    $("#btnHaeVirkaan").toggleClass("animate-chevron");
+    $("#vaaliApplyForm").slideToggle();
   });
 
   /* AJAX creation of kysymys objects */
-  $("#vaalitKysymysForm").submit(function (e) {
+  $("#vaalitKysymysForm").submit(function(e) {
     e.preventDefault();
     var formData = $(this).serialize();
     $.ajax({
@@ -96,15 +104,17 @@ $(document).ready(function () {
       type: "POST",
       // Add 'submitKysymys' to the POST data
       // to have correct handling in the views.py main view
-      data: formData + '&submitKysymys=',
+      data: formData + "&submitKysymys=",
       success: createKysymysSuccess,
-      error: createKysymysError,
+      error: createKysymysError
     });
   });
 
   function createKysymysSuccess(data, textStatus, jqXHR) {
-    $('#vaaliContent .tab-pane.active .vaalitKysymysList').prepend(data);
-    $("#vaaliContent .tab-pane.active .vaalitDeleteKysymysForm button").first().click(ajaxDeleteKysymys);
+    $("#vaaliContent .tab-pane.active .vaalitKysymysList").prepend(data);
+    $("#vaaliContent .tab-pane.active .vaalitDeleteKysymysForm button")
+      .first()
+      .click(ajaxDeleteKysymys);
   }
 
   function createKysymysError(jqXHR, textStatus, errorThrown) {
@@ -119,21 +129,25 @@ $(document).ready(function () {
   function ajaxDeleteKysymys(e) {
     e.preventDefault();
     $(this).prop("disabled", true); // Disallow the button so it can't be clicked twice
-    var formData = $(this).parent().serialize();
-    var kysymysId = $(this).siblings('input[name=hidden-kysymys-id]').val();
+    var formData = $(this)
+      .parent()
+      .serialize();
+    var kysymysId = $(this)
+      .siblings("input[name=hidden-kysymys-id]")
+      .val();
     $.ajax({
-      url: "/vaalit/delete-question/" + kysymysId + '/',
+      url: "/vaalit/delete-question/" + kysymysId + "/",
       type: "POST",
       // Add 'submitKysymys' to the POST data
       // to have correct handling in the views.py main view
       data: formData,
       success: deleteKysymysSuccess,
-      error: deleteKysymysError,
+      error: deleteKysymysError
     });
   }
 
   function deleteKysymysSuccess(data, textStatus, jqXHR) {
-    $('#kysymys_' + data.delete_kysymys_id).fadeOut(300, function () {
+    $("#kysymys_" + data.delete_kysymys_id).fadeOut(300, function() {
       $(this).remove();
     });
   }
@@ -144,15 +158,13 @@ $(document).ready(function () {
     console.log(errorThrown);
   }
 
-
   /* Ehdokas picture cropping */
-  $(function () {
-
+  $(function() {
     /* Open cropper modal with preview */
-    $("#id_pic").change(function () {
+    $("#id_pic").change(function() {
       if (this.files && this.files[0]) {
         var reader = new FileReader();
-        reader.onload = function (e) {
+        reader.onload = function(e) {
           $("#modalCrop #image").attr("src", e.target.result);
           $("#modalCrop").modal("show");
         };
@@ -164,43 +176,45 @@ $(document).ready(function () {
     var $image = $("#modalCrop #image");
     var cropBoxData;
     var canvasData;
-    $("#modalCrop").on("shown.bs.modal", function () {
-      $image.cropper({
-        viewMode: 2,
-        aspectRatio: 1 / 1,
-        minCropBoxWidth: 100,
-        minCropBoxHeight: 100,
-        ready: function () {
-          $image.cropper("setCanvasData", canvasData);
-          $image.cropper("setCropBoxData", cropBoxData);
-        },
+    $("#modalCrop")
+      .on("shown.bs.modal", function() {
+        $image.cropper({
+          viewMode: 2,
+          aspectRatio: 1 / 1,
+          minCropBoxWidth: 100,
+          minCropBoxHeight: 100,
+          ready: function() {
+            $image.cropper("setCanvasData", canvasData);
+            $image.cropper("setCropBoxData", cropBoxData);
+          }
+        });
+      })
+      .on("hidden.bs.modal", function() {
+        // Destroy previous cropper on modal hide
+        cropBoxData = $image.cropper("getCropBoxData");
+        canvasData = $image.cropper("getCanvasData");
+        $image.cropper("destroy");
       });
-    }).on("hidden.bs.modal", function () {
-      // Destroy previous cropper on modal hide
-      cropBoxData = $image.cropper("getCropBoxData");
-      canvasData = $image.cropper("getCanvasData");
-      $image.cropper("destroy");
-    });
 
-    $("#modalCrop .js-zoom-in").click(function () {
+    $("#modalCrop .js-zoom-in").click(function() {
       $image.cropper("zoom", 0.1);
     });
 
-    $("#modalCrop .js-zoom-out").click(function () {
+    $("#modalCrop .js-zoom-out").click(function() {
       $image.cropper("zoom", -0.1);
     });
 
     /* Handle cropped modal data */
-    $("#modalCrop .js-crop-and-upload").click(function () {
+    $("#modalCrop .js-crop-and-upload").click(function() {
       var cropData = $image.cropper("getData");
-      var cropDataURL = $image.cropper('getCroppedCanvas').toDataURL();
+      var cropDataURL = $image.cropper("getCroppedCanvas").toDataURL();
       $("#x").val(cropData.x);
       $("#y").val(cropData.y);
       $("#h").val(cropData.height);
       $("#w").val(cropData.width);
-      $('.crop-preview').height('100px');
-      $('.crop-preview').attr('src', cropDataURL);
-      $('#modalCrop').modal('hide');
+      $(".crop-preview").height("100px");
+      $(".crop-preview").attr("src", cropDataURL);
+      $("#modalCrop").modal("hide");
     });
   });
 });
