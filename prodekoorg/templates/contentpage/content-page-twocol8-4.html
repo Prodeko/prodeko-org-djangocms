@@ -1,21 +1,17 @@
 {% extends "base.html" %}
 {% load cms_tags %}
+
 {% block content %}
-
-{% include "layout-components/jumbotron.html" %}
-
-<div class="container page-container">
-
-{% include "layout-components/breadcrumb.html" %}
-
-	<div class="row">
-		<div class="col-md-8">
-			{% placeholder "content" %}
-		</div>
-		<div class="col-md-4">
-			{% placeholder "sidecontent" %}
-		</div>
-	</div>
-
-</div>
+    {% include "layout-components/jumbotron.html" %}
+    <div class="container page-container">
+        {% include "layout-components/breadcrumb.html" %}
+        <div class="row">
+            <div class="col-md-8">
+                {% placeholder "content" %}
+            </div>
+            <div class="col-md-4">
+                {% placeholder "sidecontent" %}
+            </div>
+        </div>
+    </div>
 {% endblock content %}

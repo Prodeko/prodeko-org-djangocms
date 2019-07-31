@@ -2,43 +2,40 @@
 {% load cms_tags menu_tags static sekizai_tags sass_tags %}
 
 {% block extra_head %}
-<link href="{% sass_src 'scss/app_toimarit.scss' %}" rel="stylesheet" type="text/css" />
+    <link href="{% sass_src 'scss/app_toimarit.scss' %}" rel="stylesheet" type="text/css" />
 {% endblock %}
 
 {% block content %}
-{% static "" as baseUrl %}
-
-<div class="container page-container">
-	<div class="row">
-		<div class="col-md-9">
-
-    {% include "layout-components/breadcrumb.html" %}
-		{% for section in sections %}
-			<div class="row">
-				<div style="margin-left:1rem;">
-					<h2>{{ section }}</h2>
-					<div class="row">
-					{% for official in guildofficials %}
-						{% if official.section == section %}
-							<div class="toimari">
-								<img src="{{ STATIC_URL }}images/toimari_photos/{{official.photourl}}" alt=""/>
-								<div class="description">
-									<strong>{{ official.name }}</strong><br />
-									{{ official.position }}
-								</div>
-							</div>
-						{% endif %}
-					{% endfor %}
-					</div>
-				</div>
-			</div>
-		{% endfor %}
-
-		</div>
-		<div class="col-md-3">
-			{% show_sub_menu 2 1 100 "layout-components/sidenav.html" %}
-		</div>
-	</div>
-</div>
-
+    {% static "" as baseUrl %}
+    <div class="container page-container">
+        <div class="row">
+            <div class="col-md-9">
+                {% include "layout-components/breadcrumb.html" %}
+                {% for section in sections %}
+                    <div class="row">
+                        <div style="margin-left:1rem;">
+                            <h2>{{ section }}</h2>
+                            <div class="row">
+                                {% for official in guildofficials %}
+                                    {% if official.section == section %}
+                                        <div class="toimari">
+                                            <img src="{{ STATIC_URL }}images/toimari_photos/{{official.photourl}}" alt=""/>
+                                            <div class="description">
+                                                <strong>{{ official.name }}</strong>
+                                                <br />
+                                                {{ official.position }}
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="col-md-3">
+                {% show_sub_menu 2 1 100 "layout-components/sidenav.html" %}
+            </div>
+        </div>
+    </div>
 {% endblock content %}

@@ -1,28 +1,28 @@
 {% load cms_tags menu_tags sekizai_tags sass_tags i18n staticfiles %}
 <!DOCTYPE html>
 <html lang="fi">
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title>{% block title %}Tuotantotalouden kilta Prodeko ry{% endblock title %}</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    {% include "snippets/ga-head.html" %}
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>{% block title %}Tuotantotalouden kilta Prodeko ry{% endblock title %}</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        {% include "snippets/ga-head.html" %}
 
-		{% render_block "css" %}
-		{% render_block "custom-css" %}
-		{% render_block "custom-js" %}
+        {% render_block "css" %}
+        {% render_block "custom-css" %}
+        {% render_block "custom-js" %}
 
-		{% block extra_head %}{% endblock %}
-	</head>
-	<body>
-    {% include "snippets/ga-body.html" %}
+        {% block extra_head %}{% endblock %}
+    </head>
+    <body>
+        {% include "snippets/ga-body.html" %}
 
-		{% cms_toolbar %}
+        {% cms_toolbar %}
 
-    {% block content %}{% endblock %}
+        {% block content %}{% endblock %}
 
-    {% render_block "js" %}
-	</body>
+        {% render_block "js" %}
+    </body>
 </html>
 
 
@@ -31,10 +31,10 @@
 <link href="{% sass_src 'scss/seminaari.scss' %}" rel="stylesheet" type="text/css" />
 <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
 <link
-  rel="stylesheet"
-  href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
-  integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
-  crossorigin="anonymous"
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+    crossorigin="anonymous"
 />
 {% endaddtoblock %}
 
@@ -46,7 +46,7 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 <script src="{% static 'js/navbar.js' %}"></script>
 <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 {% endaddtoblock %}

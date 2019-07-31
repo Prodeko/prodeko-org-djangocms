@@ -2,33 +2,25 @@
 {% load cms_tags sekizai_tags i18n sass_tags %}
 
 {% block extra_head %}
-<script src="/static/js/kulukorvaus-custom.js"></script>
-<link href="{% sass_src 'scss/app_kulukorvaus.scss' %}" rel="stylesheet" type="text/css" />
+    <script src="/static/js/kulukorvaus-custom.js"></script>
+    <link href="{% sass_src 'scss/app_kulukorvaus.scss' %}" rel="stylesheet" type="text/css" />
 {% endblock %}
 
 {% block content %}
-
-{% include "layout-components/jumbotron.html" %}
-
-<div class="container kulukorvaus-container mt-4">
-
-	{% if done %}
-    {% include "kulukorvaus_done.html" with perustiedot_id=perustiedot_id %}
-  {% elif policy_error %}
-    {% include "kulukorvaus_policy.html"%}
-  {% elif error %}
-    {% include "kulukorvaus_error.html"%}
-  {% else %}
-
-    {% placeholder "content" %}
-
-		<form method="POST" novalidate enctype="multipart/form-data" id="form_kulukorvaus">
-			{% csrf_token %}
-
-			{% include "kulukorvaus_forms.html" with form_perustiedot=form_perustiedot formset_kulu=formset_kulu %}
-
-		</form>
-  {% endif %}
-</div>
-
+    {% include "layout-components/jumbotron.html" %}
+    <div class="container kulukorvaus-container mt-4">
+        {% if done %}
+            {% include "kulukorvaus_done.html" with perustiedot_id=perustiedot_id %}
+        {% elif policy_error %}
+            {% include "kulukorvaus_policy.html"%}
+        {% elif error %}
+            {% include "kulukorvaus_error.html"%}
+        {% else %}
+            {% placeholder "content" %}
+            <form method="POST" novalidate enctype="multipart/form-data" id="form_kulukorvaus">
+                {% csrf_token %}
+                {% include "kulukorvaus_forms.html" with form_perustiedot=form_perustiedot formset_kulu=formset_kulu %}
+            </form>
+        {% endif %}
+    </div>
 {% endblock content %}

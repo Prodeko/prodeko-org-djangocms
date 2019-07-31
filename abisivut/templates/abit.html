@@ -2,46 +2,42 @@
 {% load cms_tags menu_tags staticfiles i18n %}
 
 {% block content %}
-
-<div id="loading">
-    <div id="loading-animation"></div>
-</div>
-
-<div id="navbar">
-    <div class="navbar-container">
-        <img id="navbar-logo" src="{% static 'images/logos/prodeko-logo-text-white.png' %}" />
-        <ul>
-            <a href="#"><li>Otsikko 1</li></a>
-            <a href="#"><li>Otsikko 2</li></a>
-            <a href="#"><li>Otsikko 3</li></a>
-            <a href="#"><li>Otsikko 4</li></a>
-        </ul>
-        <div id="navbar-background"></div>
+    <div id="loading">
+        <div id="loading-animation"></div>
     </div>
-</div>
-
-<div id="opener">
-    <div class="darkener"></div>
-    <video autoplay muted loop id="video">
-        <source src="/static/assets/LR-website-background-video-colory.webm" type="video/webm">
-    </video>
-
-    <div class="text-container">
-        <h2>Tuupa tutalle boi</h2>
-        <p>Boi, tuu opiskelee hauskassa seurassa - kui jees!??!?!!</p>
-
-        <a class="btn" href="#">Tutustu opiskelijatarinoihin</a>
-        <a class="btn" href="#contact">Lue alumnin uratarinoita</a>
-    </div>
-    <img class="transition-graphic" src="assets/transition.svg" />
-</div>
-
-<div class="container">
-	<div class="row">
-		<div class="col-md-9">
-            <div class="test">Tähän tulee perään sitten CMS contenttia:</div>
-            {% placeholder "content" %}
+    <div id="navbar">
+        <div class="navbar-container">
+            <img id="navbar-logo" src="{% static 'images/logos/prodeko-logo-text-white.png' %}" />
+            <ul>
+                <a href="#"><li>Otsikko 1</li></a>
+                <a href="#"><li>Otsikko 2</li></a>
+                <a href="#"><li>Otsikko 3</li></a>
+                <a href="#"><li>Otsikko 4</li></a>
+            </ul>
+            <div id="navbar-background"></div>
         </div>
     </div>
-</div>
+    <div id="opener">
+        <div class="darkener"></div>
+        <video autoplay muted loop id="video">
+            <source src="/static/assets/LR-website-background-video-colory.webm" type="video/webm">
+        </video>
+
+        <div class="text-container">
+            <h2>Tuupa tutalle boi</h2>
+            <p>Boi, tuu opiskelee hauskassa seurassa - kui jees!??!?!!</p>
+
+            <a class="btn" href="#">Tutustu opiskelijatarinoihin</a>
+            <a class="btn" href="#contact">Lue alumnin uratarinoita</a>
+        </div>
+        <img class="transition-graphic" src="assets/transition.svg" />
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="test">Tähän tulee perään sitten CMS contenttia:</div>
+                {% placeholder "content" %}
+            </div>
+        </div>
+    </div>
 {% endblock content %}

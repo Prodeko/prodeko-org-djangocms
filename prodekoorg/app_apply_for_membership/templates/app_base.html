@@ -2,49 +2,37 @@
 {% load cms_tags menu_tags sekizai_tags sass_tags i18n %}
 
 {% block extra_head %}
-
-{% if not done and not error %}
-  <script src="/static/js/apply_for_membership-custom.js"></script>
-{% endif %}
-<link href="{% sass_src 'scss/app_apply_for_membership.scss' %}" rel="stylesheet" type="text/css" />
-
+    {% if not done and not error %}
+        <script src="/static/js/apply_for_membership-custom.js"></script>
+    {% endif %}
+    <link href="{% sass_src 'scss/app_apply_for_membership.scss' %}" rel="stylesheet" type="text/css" />
 {% endblock %}
 
 {% block content %}
+    {% include "layout-components/jumbotron.html" %}
+    {% trans "Submit" as submit %}
+    {% trans "If you don't agree with Prodeko's privacy policy you can't use this online application form. Please contact Mediakeisari (mediakeisari@prodeko.org) if you still wish to apply to become a Prodeko member." as policy_not_accepted %}
+    <div class="container apply-container">
+        {% if done %}
+            {% include "application_complete.html" %}
+        {% elif error %}
+            {% include "application_error.html"%}
+        {% else %}
 
-{% include "layout-components/jumbotron.html" %}
+            {% placeholder "content" %}
 
-{% trans "Submit" as submit %}
-{% trans "If you don't agree with Prodeko's privacy policy you can't use this online application form. Please contact Mediakeisari (mediakeisari@prodeko.org) if you still wish to apply to become a Prodeko member." as policy_not_accepted %}
-
-<div class="container apply-container">
-
-	{% if done %}
-    {% include "application_complete.html" %}
-  {% elif error %}
-    {% include "application_error.html"%}
-  {% else %}
-  
-    {% placeholder "content" %}
-
-		<form method="POST" novalidate enctype="multipart/form-data" id="form_apply">
-			{% csrf_token %}
-
-      {% include "form_apply.html" %}
-      
-      <div class="row mb-4">
-        <div class="col-sm-3">
-          <button type="submit" class="btn btn-primary my-2" disabled>{% trans submit %}</button>
-        </div>
-        <div class="col-sm-9">
-          <small id="policy-not-accepted" class="form-text text-danger">{% trans policy_not_accepted%}</small>
-        </div>
-      </div>
-    </form>
-
-	{% endif %}
-
-
-</div>
-
-{% endblock content %}
+            <form method="POST" novalidate enctype="multipart/form-data" id="form_apply">
+                {% csrf_token %}
+                {% include "form_apply.html" %}
+                <div class="row mb-4">
+                    <div class="col-sm-3">
+                        <button type="submit" class="btn btn-primary my-2" disabled>{% trans submit %}</button>
+                    </div>
+                    <div class="col-sm-9">
+                        <small id="policy-not-accepted" class="form-text text-danger">{% trans policy_not_accepted%}</small>
+                    </div>
+                </div>
+            </form>
+        {% endif %}
+    </div>
+{% endblock %}

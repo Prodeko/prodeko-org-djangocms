@@ -2,49 +2,48 @@
 {% load cms_tags menu_tags sekizai_tags sass_tags i18n staticfiles %}
 
 {% block body %}
-<nav id="navbar">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="{% url 'lifelonglearning:index' %}"><img id="logo" src="{% static 'img/headerlogo.png' %}" alt="Prodeko logo"></a>
+    <nav id="navbar">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="{% url 'lifelonglearning:index' %}"><img id="logo" src="{% static 'img/headerlogo.png' %}" alt="Prodeko logo"></a>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="coursepage-banner" style="background-image: url('{{ course.get_banner_image }}')">
+        <div class="bottom-gradient"></div>
     </div>
-  </div>
-</nav>
 
+    <div id="scrollToTop"><i class="fas fa-arrow-circle-up"></i></div>
 
-<div class="coursepage-banner" style="background-image: url('{{ course.get_banner_image }}')">
-  <div class="bottom-gradient"></div>
-</div>
-
-<div id="scrollToTop"><i class="fas fa-arrow-circle-up"></i></div>
-
-<div class="container">
-  <div class="coursepage-card">
-    <h2>{{ course.name }}</h2>
-    <div class="course-specs">
-      {% if course.coaches %}<p class="addition clear">Valmentajat: <span class="black">{{ course.coaches }}</span></p>{% endif %}
-      {% if course.groupsize %}<p class="addition">Kurssikoko: <span class="black">{{ course.groupsize }}</span></p>{% endif %}
-      {% if course.timing %}<p class="addition">Kurssi alkaa: <span class="black">{{ course.timing }}</span></p>{% endif %}
+    <div class="container">
+        <div class="coursepage-card">
+            <h2>{{ course.name }}</h2>
+            <div class="course-specs">
+                {% if course.coaches %}<p class="addition clear">Valmentajat: <span class="black">{{ course.coaches }}</span></p>{% endif %}
+                {% if course.groupsize %}<p class="addition">Kurssikoko: <span class="black">{{ course.groupsize }}</span></p>{% endif %}
+                {% if course.timing %}<p class="addition">Kurssi alkaa: <span class="black">{{ course.timing }}</span></p>{% endif %}
+            </div>
+            <hr>
+            <div class="course-description">
+                <p>{% autoescape off %}{{ course.description }}{% endautoescape %}</p>
+            </div>
+            <a class="btn btn-success btn-block registration" href="{{ course.registration }}">Ilmoittaudu</a>
+        </div>
     </div>
-    <hr>
-    <div class="course-description">
-      <p>{% autoescape off %}{{ course.description }}{% endautoescape %}</p>
-    </div>
-    <a class="btn btn-success btn-block registration" href="{{ course.registration }}">Ilmoittaudu</a>
-  </div>
-</div>
 
-<footer>
-  <div class="social center white">
-    <h3 class="center ok-spacing">
-      <a href="https://www.facebook.com/prodeko/"><i class="fab fa-facebook"></i></a>
-      <a href="https://www.instagram.com/prodeko/"><i class="fab fa-instagram"></i></a>
-      <a href="https://www.linkedin.com/company/prodeko-guild-of-industrial-engineering-and-management/"><i class="fab fa-linkedin"></i></a>
-    </h3>
-    <hr>
-    <a href="www.prodeko.org"><p>Tuotantotalouden Kilta Prodeko</p></a>
-    <a href="alumni.prodeko.org"><p>Prodekon Alumni</p></a>
-    <p>Aalto-yliopiston tuotantotalouden laitos</p>
-  </div>
-</footer>
-
-  {% endblock %}
+    <footer>
+        <div class="social center white">
+            <h3 class="center ok-spacing">
+                <a href="https://www.facebook.com/prodeko/"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/prodeko/"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/company/prodeko-guild-of-industrial-engineering-and-management/"><i class="fab fa-linkedin"></i></a>
+            </h3>
+            <hr>
+            <a href="www.prodeko.org"><p>Tuotantotalouden Kilta Prodeko</p></a>
+            <a href="alumni.prodeko.org"><p>Prodekon Alumni</p></a>
+            <p>Aalto-yliopiston tuotantotalouden laitos</p>
+        </div>
+    </footer>
+{% endblock %}

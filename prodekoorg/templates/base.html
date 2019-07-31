@@ -2,29 +2,29 @@
 
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>{% block title %}Tuotantotalouden kilta Prodeko ry{% endblock title %}</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    {% include "snippets/ga-head.html" %}
+    <head>
+        <title>{% block title %}Tuotantotalouden kilta Prodeko ry{% endblock title %}</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        {% include "snippets/ga-head.html" %}
 
-		{% render_block "css" %}
-		{% render_block "custom-css" %}
-		{% render_block "custom-js" %}
+        {% render_block "css" %}
+        {% render_block "custom-css" %}
+        {% render_block "custom-js" %}
 
-    {% comment %} Javascript and SCSS included in separate apps {% endcomment %}
-		{% block extra_head %}{% endblock %}
-	</head>
-	<body>
-    {% include "snippets/ga-body.html" %}
+        {% comment %} Javascript and SCSS included in separate apps {% endcomment %}
+        {% block extra_head %}{% endblock %}
+    </head>
+    <body>
+        {% include "snippets/ga-body.html" %}
 
-		{% cms_toolbar %}
+        {% cms_toolbar %}
 
-		{% show_menu 0 1 100 100 "layout-components/navbar.html" %}
-		{% block content %}{% endblock content %}
-		{% include "layout-components/footer.html" %}
+        {% show_menu 0 1 100 100 "layout-components/navbar.html" %}
+        {% block content %}{% endblock content %}
+        {% include "layout-components/footer.html" %}
 
-		{% render_block "js" %}
-  </body>
+        {% render_block "js" %}
+    </body>
 </html>
 
 

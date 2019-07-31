@@ -2,11 +2,8 @@
 {% load cms_tags i18n staticfiles %}
 
 {% block content %}
-
-{% include "layout-components/jumbotron.html" %}
-
-<div class="container container-error">
-    <h1>403</h1>
-</div>
-
+    {% include "layout-components/jumbotron.html" %}
+    <div class="container container-error">
+        <h1>403</h1>
+    </div>
 {% endblock content %}

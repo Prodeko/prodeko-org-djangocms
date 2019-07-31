@@ -2,27 +2,25 @@
 
 <!DOCTYPE html>
 <html lang="fi">
-	<head>
-		  <meta charset="utf-8">
-			<meta http-equiv="X-UA-Compatible" content="IE=edge">
-			<meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>Prodeko - Aalto-yliopiston tuotantotalouden kilta</title>
-      {% include "snippets/ga-head.html" %}
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Prodeko - Aalto-yliopiston tuotantotalouden kilta</title>
+        {% include "snippets/ga-head.html" %}
 
-      {% render_block "css" %}
-      {% render_block "custom-css" %}
-      {% render_block "custom-js" %}
-	</head>
+        {% render_block "css" %}
+        {% render_block "custom-css" %}
+        {% render_block "custom-js" %}
+    </head>
 
-	<body>
-    {% include "snippets/ga-body.html" %}
+    <body>
+        {% include "snippets/ga-body.html" %}
 
-		{% cms_toolbar %}
-
-    {% block content %}{% endblock %}
-
-    {% render_block "js" %}
-	</body>
+        {% cms_toolbar %}
+        {% block content %}{% endblock %}
+        {% render_block "js" %}
+    </body>
 </html>
 
 {% addtoblock "custom-css" %}

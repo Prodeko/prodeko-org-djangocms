@@ -2,47 +2,48 @@
 {% load cms_tags menu_tags static sekizai_tags sass_tags %}
 
 {% block extra_head %}
-<link href="{% sass_src 'scss/app_toimarit.scss' %}" rel="stylesheet" type="text/css" />
+    <link href="{% sass_src 'scss/app_toimarit.scss' %}" rel="stylesheet" type="text/css" />
 {% endblock %}
 
 {% block content %}
-{% static "" as baseUrl %}
-
-<div class="container page-container">
-	<div class="row">
-		<div class="col-md-9">
-		
-		{% include "layout-components/breadcrumb.html" %}
-		<div class="hallituskuva">
-			<img src="{% static 'images/hallitus_photos/board_full.jpg' %}" style="width:100%; height:100%;" />
-		</div>
-			<div class="row">
-				<div>
-					<h2>Hallituksen jäsenet</h2>
-					<div class="row">
-					{% for boardmember in boardmembers %}
-						<div class="col-md-12 col-lg-6">
-								<div class="boardMember">
-									<img src="{{ STATIC_URL }}images/hallitus_photos/{{boardmember.photourl}}" alt="" style="width:100%; height:100%;"/>
-									<div class="description">
-										<strong>{{ boardmember.name }}</strong><br />
-										{{ boardmember.position }}<br />
-										{{ boardmember.position_eng }}<br />
-										{{ boardmember.mobilephone }}<br />
-										{{ boardmember.email }}<br />
-									</div>
-								</div>
-						</div>
-					{% endfor %}
-					</div>
-				</div>
-			</div>
-
-		</div>
-		<div class="col-md-3">
-			{% show_sub_menu 2 1 100 "layout-components/sidenav.html" %}
-		</div>
-	</div>
-</div>
-
+    {% static "" as baseUrl %}
+    <div class="container page-container">
+        <div class="row">
+            <div class="col-md-9">
+                {% include "layout-components/breadcrumb.html" %}
+                <div class="hallituskuva">
+                    <img src="{% static 'images/hallitus_photos/board_full.jpg' %}" style="width:100%; height:100%;" />
+                </div>
+                <div class="row">
+                    <div>
+                        <h2>Hallituksen jäsenet</h2>
+                        <div class="row">
+                            {% for boardmember in boardmembers %}
+                                <div class="col-md-12 col-lg-6">
+                                    <div class="boardMember">
+                                        <img src="{{ STATIC_URL }}images/hallitus_photos/{{boardmember.photourl}}" alt="" style="width:100%; height:100%;"/>
+                                        <div class="description">
+                                            <strong>{{ boardmember.name }}</strong>
+                                            <br />
+                                            {{ boardmember.position }}
+                                            <br />
+                                            {{ boardmember.position_eng }}
+                                            <br />
+                                            {{ boardmember.mobilephone }}
+                                            <br />
+                                            {{ boardmember.email }}
+                                            <br />
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                {% show_sub_menu 2 1 100 "layout-components/sidenav.html" %}
+            </div>
+        </div>
+    </div>
 {% endblock content %}

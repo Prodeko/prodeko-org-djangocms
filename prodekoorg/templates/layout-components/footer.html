@@ -9,77 +9,88 @@
 {% trans "Privacy policy" as privacy_policy%}
 
 <footer class="footer prodeko-footer container" id="footer">
-	<div class="row">
-		<div class="col-md-4 col-sm-4">
-			<div class="row">
-				<div class="col-12">
-					<h4><strong>{% trans contact_info %}</strong></h4>
-					<p>Tuotantotalouden kilta Prodeko ry</p>
-				</div>
-				<div class="col-5 pr-2">
-					<p><b>{% trans postal_address %}:</b><br>PL 15500<br>00076 Aalto</p>
-					<p><b>{% trans visiting_address %}:</b><br>TUAS-talo<br>Maarintie 8<br>02150 Espoo</p>
-				</div>
-				<div class="col-7 p-0">
-					<p><u><a href="https://docs.google.com/forms/d/e/1FAIpQLSc1ptM75jx9IUgMr6kD8puTKe4cOfrzwKO3Ae9s4nqYf17z9Q/viewform">{% trans contact_form %}</a></u></p>
-					<p><u><a href="{% trans '/reimbursement' %}">{% trans reimbursements %}</a></u></p>
-					<p><u><a href="/apply-membership">{% trans apply_for_membership %}</a></u></p>
-					<p><u><a href="/privacy-policy">{% trans privacy_policy %}</a></u></p>
-				</div>
-			</div>
-		</div>
-		<div class="col-md-8 col-sm-8">
-			<div class="row">
-				<div class="col">
-					<h4><strong>Prodeko Network</strong></h4>
-				</div>
-			</div>
-			<div class="row align-items-center">
-				<div class="network-div">
-					<img class="img-fluid" src="{% static 'images/network_images/abb.svg' %}" alt="ABB">
-				</div>
-				<div class="network-div">
-					<img class="img-fluid" src="{% static 'images/network_images/fujitsu.svg' %}" alt="Fujitsu">
-				</div>
-				<div class="network-div">
-					<img class="img-fluid" src="{% static 'images/network_images/kone.svg' %}" alt="Kone">
-				</div>
-				<div class="network-div">
-					<img class="img-fluid" src="{% static 'images/network_images/nordea.svg' %}" alt="Nordea">
-				</div>
-				<div class="network-div">
-					<img class="img-fluid" src="{% static 'images/network_images/metso.svg' %}" alt="Metso">
-				</div>
-				<div class="network-div">
-					<img class="img-fluid" src="{% static 'images/network_images/microsoft.svg' %}" alt="Microsoft">
-				</div>
-				<div class="network-div">
-					<img class="img-fluid" src="{% static 'images/network_images/neste.svg' %}" alt="Neste">
-				</div>
-				<div class="network-div">
-					<img class="img-fluid" src="{% static 'images/network_images/nokia.svg' %}" alt="Nokia">
-				</div>
-				<div class="network-div">
-					<img class="img-fluid" src="{% static 'images/network_images/telia.svg' %}" alt="Telia">
-				</div>
-				<div class="network-div">
-					<img class="img-fluid" src="{% static 'images/network_images/vaisala.svg' %}" alt="Vaisala">
-				</div>
-				<div class="network-div">
-					<img class="img-fluid" src="{% static 'images/network_images/smartly.svg' %}" alt="Smartly">
-				</div>
-				<div class="network-div">
-					<img class="img-fluid" src="{% static 'images/network_images/finnair.svg' %}" alt="Finnair">
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="d-flex pt-2 justify-content-center mt-4">
-		<div class="social-row d-inline-flex justify-content-around">
-			<div><a href="https://www.facebook.com/prodeko/"><i class="fab fa-facebook-f"></i></a></div>
-			<div><a href="https://www.linkedin.com/company/prodeko-guild-of-industrial-engineering-and-management/"><i class="fab fa-linkedin"></i></a></div>
-			<div><a href="https://www.instagram.com/prodeko/"><i class="fab fa-instagram"></i></a></div>
-			<!---<div><a href="https://www.instagram.com/prodeko/"><i class="fab fa-snapchat-ghost"></i></i></a></div>-->
-		</div>
-	</div>
+    <div class="row">
+        <div class="col-md-4 col-sm-4">
+            <div class="row">
+                <div class="col-12">
+                    <h4><strong>{% trans contact_info %}</strong></h4>
+                    <p>Tuotantotalouden kilta Prodeko ry</p>
+                </div>
+                <div class="col-5 pr-2">
+                    <p><b>{% trans postal_address %}:</b><br>PL 15500<br>00076 Aalto</p>
+                    <p><b>{% trans visiting_address %}:</b><br>TUAS-talo<br>Maarintie 8<br>02150 Espoo</p>
+                </div>
+                <div class="col-7 p-0">
+                    <p><u><a href="https://docs.google.com/forms/d/e/1FAIpQLSc1ptM75jx9IUgMr6kD8puTKe4cOfrzwKO3Ae9s4nqYf17z9Q/viewform">{% trans contact_form %}</a></u></p>
+                    <p><u><a href="{% trans '/reimbursement' %}">{% trans reimbursements %}</a></u></p>
+                    <p><u><a href="/apply-membership">{% trans apply_for_membership %}</a></u></p>
+                    <p><u><a href="/privacy-policy">{% trans privacy_policy %}</a></u></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 col-sm-8">
+            <div class="row">
+                <div class="col">
+                    <h4><strong>Prodeko Network</strong></h4>
+                </div>
+            </div>
+            <div class="row align-items-center">
+                <div class="network-div">
+                    <img class="img-fluid" src="{% static 'images/network_images/abb.svg' %}" alt="ABB">
+                </div>
+                <div class="network-div">
+                    <img class="img-fluid" src="{% static 'images/network_images/fujitsu.svg' %}" alt="Fujitsu">
+                </div>
+                <div class="network-div">
+                    <img class="img-fluid" src="{% static 'images/network_images/kone.svg' %}" alt="Kone">
+                </div>
+                <div class="network-div">
+                    <img class="img-fluid" src="{% static 'images/network_images/nordea.svg' %}" alt="Nordea">
+                </div>
+                <div class="network-div">
+                    <img class="img-fluid" src="{% static 'images/network_images/metso.svg' %}" alt="Metso">
+                </div>
+                <div class="network-div">
+                    <img class="img-fluid" src="{% static 'images/network_images/microsoft.svg' %}" alt="Microsoft">
+                </div>
+                <div class="network-div">
+                    <img class="img-fluid" src="{% static 'images/network_images/neste.svg' %}" alt="Neste">
+                </div>
+                <div class="network-div">
+                    <img class="img-fluid" src="{% static 'images/network_images/nokia.svg' %}" alt="Nokia">
+                </div>
+                <div class="network-div">
+                    <img class="img-fluid" src="{% static 'images/network_images/telia.svg' %}" alt="Telia">
+                </div>
+                <div class="network-div">
+                    <img class="img-fluid" src="{% static 'images/network_images/vaisala.svg' %}" alt="Vaisala">
+                </div>
+                <div class="network-div">
+                    <img class="img-fluid" src="{% static 'images/network_images/smartly.svg' %}" alt="Smartly">
+                </div>
+                <div class="network-div">
+                    <img class="img-fluid" src="{% static 'images/network_images/finnair.svg' %}" alt="Finnair">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex pt-2 justify-content-center mt-4">
+        <div class="social-row d-inline-flex justify-content-around">
+            <div>
+                <a href="https://www.facebook.com/prodeko/">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+            </div>
+            <div>
+                <a href="https://www.linkedin.com/company/prodeko-guild-of-industrial-engineering-and-management/">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            </div>
+            <div>
+                <a href="https://www.instagram.com/prodeko/">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+        </div>
+    </div>
 </footer>

@@ -1,54 +1,45 @@
 {% extends "base-seminaari.html" %} 
 {% load cms_tags menu_tags staticfiles i18n %}
 
-
 {% block content %}
-
-  <div class="banner" style="background-image: url({% static 'img/semmanettisivutausta.png' %})">
-    <img
-      src="{% static 'img/semmasivuteksti_ilmanpvm.png' %}"
-      class="seminaari-logo"
-      alt="Responsive image"
-    />
-    <div class="banner-content">
-      <h1 class="white ok-spacing">5.4.2019</h1>
-      <br />
-      <i class="fab fa-facebook-square"></i>
-      <a href="https://www.facebook.com/events/2320633134677418/">
-        Seuraa tapahtumaa Facebookissa!</a
-      >
+    <div class="banner" style="background-image: url({% static 'img/semmanettisivutausta.png' %})">
+        <img 
+            src="{% static 'img/semmasivuteksti_ilmanpvm.png' %}"
+            class="seminaari-logo"
+            alt="Responsive image"
+        />
+        <div class="banner-content">
+            <h1 class="white ok-spacing">5.4.2019</h1>
+            <br />
+            <i class="fab fa-facebook-square"></i>
+            <a href="https://www.facebook.com/events/2320633134677418/">
+                Seuraa tapahtumaa Facebookissa!
+            </a>
+        </div>
+        <i onclick="$('html, body').animate({scrollTop: $('#first').offset().top}, 1000);" class="fas fa-angle-down"></i>
     </div>
-      <i onclick="$('html, body').animate({scrollTop: $('#first').offset().top}, 1000);" class="fas fa-angle-down"></i>
-  </div>
 
+    {% placeholder "content" %}
 
-
-
-		{% placeholder "content" %}
-
-
-
-<footer>
-  <div class="social center white">
-    <h3 class="center ok-spacing">
-      <a href="https://www.facebook.com/prodeko/"
-        ><i class="fab fa-facebook"></i
-      ></a>
-      <a href="https://www.instagram.com/prodeko/"
-        ><i class="fab fa-instagram"></i
-      ></a>
-      <a
-        href="https://www.linkedin.com/company/prodeko-guild-of-industrial-engineering-and-management/"
-        ><i class="fab fa-linkedin"></i
-      ></a>
-    </h3>
-    <hr />
-    <a href="https://www.prodeko.org"><p>Tuotantotalouden Kilta Prodeko</p></a>
-    <a href="https://alumni.prodeko.org"><p>Prodekon Alumni</p></a>
-    <a href="http://tuta.aalto.fi"
-      ><p>Aalto-yliopiston tuotantotalouden laitos</p></a
-    >
-  </div>
-</footer>
-
+    <footer>
+        <div class="social center white">
+            <h3 class="center ok-spacing">
+                <a href="https://www.facebook.com/prodeko/">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="https://www.instagram.com/prodeko/">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.linkedin.com/company/prodeko-guild-of-industrial-engineering-and-management/">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            </h3>
+            <hr />
+            <a href="https://www.prodeko.org"><p>Tuotantotalouden Kilta Prodeko</p></a>
+            <a href="https://alumni.prodeko.org"><p>Prodekon Alumni</p></a>
+            <a href="http://tuta.aalto.fi">
+                <p>Aalto-yliopiston tuotantotalouden laitos</p>
+            </a>
+        </div>
+    </footer>
 {% endblock content %}
