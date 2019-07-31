@@ -41,9 +41,22 @@ Jos törmäät "ImportError: Couldn't import Django..." erroriin, vaihda käytt�
 
 ### Koodityyli
 
-#### Python
+Käytössä seuraavat työkalut:
 
-Pylint ja black komennot on ajettava docker containerin sisällä toistaiseksi.
+- python: pylint + black
+- html: jinjalint
+- javascript: eslint + prettier
+- css: stylelint + prettier
+
+Luo virtualenv Python ja HTML tiedostojen linttaamiseksi:
+
+```shell
+$ python3 -m venv venv
+$ source venv/bin/activate
+$ pip3 install -r requirements-dev.txt
+```
+
+#### Python
 
 **Code compliance (PEP8)**
 
@@ -66,6 +79,16 @@ $ black .
 
 All done! ✨ 🍰 ✨
 48 files left unchanged.
+```
+
+#### HTML
+
+HTML-templatejen linttaamiseen käytetään [Jinjalint](https://github.com/motet-a/jinjalint)
+
+Aja jinjalint:
+
+```shell
+$ jinjalint prodekoorg/templates
 ```
 
 #### Javascript & CSS

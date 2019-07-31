@@ -11,7 +11,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-push": "npm run lint:eslint-fix && npm run lint:css-fix"
+      "pre-commit": "npm run lint:eslint-fix && npm run lint:css-fix"
     }
   },
   "repository": {
