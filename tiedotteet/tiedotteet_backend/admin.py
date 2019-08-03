@@ -1,5 +1,6 @@
 from django.contrib import admin
-from tiedotteet.backend.models import Category, MailConfiguration, Message, Tag
+from tiedotteet.tiedotteet_backend.models import (Category, MailConfiguration,
+                                                  Message, Tag)
 
 admin.site.register(Message)
 admin.site.register(Category)

@@ -1,5 +1,5 @@
 from django.urls import include, re_path
-from tiedotteet.backend import views, views_api
+from tiedotteet.tiedotteet_backend import views, views_api
 
 app_name = "tiedotteet"
 urlpatterns = [

@@ -1,27 +1,24 @@
 from datetime import timedelta
 
 from django.contrib import messages
+from django.contrib.admin.views.decorators import staff_member_required
 from django.core.mail import EmailMultiAlternatives
 from django.core.mail.backends.smtp import EmailBackend
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.http import HttpResponseForbidden, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
-from django.contrib.admin.views.decorators import staff_member_required
 from django.template import Context
 from django.template.loader import get_template
 from django.urls import reverse
 from django.utils import timezone
 from django.utils.html import strip_tags
 from django.utils.translation import ugettext as _
-from tiedotteet.backend.forms import (
-    CategoryForm,
-    EditForm,
-    MailConfigurationForm,
-    PublishForm,
-    SendEmailForm,
-    TagForm,
-)
-from tiedotteet.backend.models import Category, MailConfiguration, Message, Tag
+from tiedotteet.tiedotteet_backend.forms import (CategoryForm, EditForm,
+                                                 MailConfigurationForm,
+                                                 PublishForm, SendEmailForm,
+                                                 TagForm)
+from tiedotteet.tiedotteet_backend.models import (Category, MailConfiguration,
+                                                  Message, Tag)
 
 
 def index(request):
@@ -72,6 +69,8 @@ def control_messages(request, filter, category):
 
     Args:
         request: HttpRequest object from Django.
+        filter: a string based on which to filter.
+        category: message category.
 
     Returns:
         A Django TemplateResponse object that renders an html template.
@@ -214,6 +213,7 @@ def delete_tag(request, pk):
 
     Args:
         request: HttpRequest object from Django.
+        pk: Primary key for a Tag object
 
     Returns:
         A Django HttpResponseRedirect object that redirects
@@ -275,6 +275,7 @@ def delete_message(request, pk):
 
     Args:
         request: HttpRequest object from Django.
+        pk: Primary key for a Message object.
 
     Returns:
         A Django HttpResponseRedirect object that redirects
@@ -294,6 +295,7 @@ def hide_message(request, pk):
 
     Args:
         request: HttpRequest object from Django.
+        pk: Primary key for a Message object.
 
     Returns:
         A Django HttpResponseRedirect object that redirects
@@ -316,6 +318,7 @@ def edit_message(request, pk):
 
     Args:
         request: HttpRequest object from Django.
+        pk: Primary key for a Message object.
 
     Returns:
         A Django TemplateResponse object that renders an html template.

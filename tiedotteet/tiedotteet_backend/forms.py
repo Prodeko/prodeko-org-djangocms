@@ -1,21 +1,13 @@
 # -*- coding: utf-8 -*-
 
-from django.contrib.admin.widgets import AdminDateWidget
-from django.forms import (
-    CharField,
-    CheckboxInput,
-    Form,
-    ModelForm,
-    NumberInput,
-    PasswordInput,
-    Select,
-    SelectMultiple,
-    Textarea,
-    TextInput,
-)
-from django.utils.translation import ugettext_lazy as _
-from tiedotteet.backend.models import Category, MailConfiguration, Message, Tag
 from ckeditor.widgets import CKEditorWidget
+from django.contrib.admin.widgets import AdminDateWidget
+from django.forms import (CharField, CheckboxInput, Form, ModelForm,
+                          NumberInput, PasswordInput, Select, SelectMultiple,
+                          Textarea, TextInput)
+from django.utils.translation import ugettext_lazy as _
+from tiedotteet.tiedotteet_backend.models import (Category, MailConfiguration,
+                                                  Message, Tag)
 
 
 class PublishForm(ModelForm):

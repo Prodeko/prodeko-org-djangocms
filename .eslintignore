@@ -1,9 +1,9 @@
 prodekoorg/collected-static/
 prodekoorg/app_vaalit/
 
-tiedotteet/backend/static/control/
-tiedotteet/frontend/node_modules/
-tiedotteet/frontend/public/
+tiedotteet/tiedotteet_backend/static/control/
+tiedotteet/tiedotteet_frontend/node_modules/
+tiedotteet/tiedotteet_frontend/public/
 
 alumnirekisteri/rekisteri/static/js/simple_crop.js
 

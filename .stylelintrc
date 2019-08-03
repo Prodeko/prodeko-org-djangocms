@@ -17,10 +17,10 @@
     "!alumnirekisteri/rekisteri/static/css/ar_custom.css",
     "!alumnirekisteri/rekisteri/static/css/uii.css",
     "lifelonglearning/static/css/bootstrap.min.css",
-    "tiedotteet/backend/static/**",
-    "!tiedotteet/backend/static/css/custom.css",
-    "!tiedotteet/backend/static/css/email.css",
-    "!tiedotteet/backend/static/css/sidebar.css",
-    "!tiedotteet/backend/static/css/palette.css"
+    "tiedotteet/tiedotteet_backend/static/**",
+    "!tiedotteet/tiedotteet_backend/static/css/custom.css",
+    "!tiedotteet/tiedotteet_backend/static/css/email.css",
+    "!tiedotteet/tiedotteet_backend/static/css/sidebar.css",
+    "!tiedotteet/tiedotteet_backend/static/css/palette.css"
   ]
 }

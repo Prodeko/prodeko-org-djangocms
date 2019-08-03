@@ -1,10 +1,10 @@
 from datetime import timedelta
 
+from ckeditor.fields import RichTextField
 from django.db import models
 from django.utils import timezone
 from django.utils.encoding import smart_str
 from django.utils.translation import ugettext_lazy as _
-from ckeditor.fields import RichTextField
 
 
 class MailConfiguration(models.Model):
@@ -22,6 +22,14 @@ class MailConfiguration(models.Model):
 
 
 class Tag(models.Model):
+    """A message category.
+
+    Attributes:
+    title: Category title.
+    order: Number representing category importance.
+    login_required: Boolean indicating public vs private categories.
+    """
+
     title = models.CharField(max_length=25, blank=True, null=True)
 
     def __str__(self):
@@ -34,6 +42,16 @@ class Tag(models.Model):
 
 
 class Category(models.Model):
+    """A message category.
+
+    For example, messages relating to studies, events or general information.
+
+    Attributes:
+    title: Category title.
+    order: Number representing category importance.
+    login_required: Boolean indicating public vs private categories.
+    """
+
     title = models.CharField(max_length=150, blank=True, null=True)
     order = models.IntegerField(default=0, blank=True, null=True)
     login_required = models.BooleanField(default=False)
@@ -76,6 +94,24 @@ class OldMessageManager(models.Manager):
 
 
 class Message(models.Model):
+    """A message containing some important information.
+
+    Attributes:
+    header: Message title.
+    pub_date: Publishing date of the message.
+    category: Message category.
+    tags: Tags associated with the message.
+    start_date: Date to start showing the message.
+    end_date: Date to end showing the message.
+    deadline_date: Signup deadline for event messages.
+    show_deadline: Boolean to show or hide the deadline date.
+    visible: Boolean to show or hide the message.
+    content: Message content.
+    objects: Custom manager.
+    visible_objects: Custom model manager that only returns visible objects.
+    old_objects: Custom model manager that only returns old objects.
+    """
+
     header = models.CharField(max_length=250)
     pub_date = models.DateTimeField(default=timezone.now)
     category = models.ForeignKey(
