@@ -1,0 +1,59 @@
+{% load i18n menu_tags static %}
+
+{% trans "Login" as login %}
+{% trans "Log out" as logout %}
+{% trans "Membership" as apply %}
+
+<nav id="navbar-mobile" class="d-flex justify-content-between navbar navbar-expand-lg navbar-light d-block d-lg-none">
+    <a class="navbar-brand" href="/">
+        <img id="navbar-logo" src="{% static 'images/logos/prodeko-logo-text-blue.png' %}" />
+    </a>
+    <button class="navbar-toggler hamburger hamburger--minus" type="button" data-toggle="collapse"data-target="#navbarMobile" aria-controls="navbarMobile" aria-expanded="false"aria-label="Toggle navigation">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+    <div class="collapse navbar-collapse pt-4" id="navbarMobile">
+        <div class="navbar-nav">
+            <div class="accordion" id="navAccordion">
+                {% for child in children %}
+                    {% if child.get_descendants %}
+                        <div id="heading-{{ forloop.counter }}" class="my-3 caret-container collapsed" data-toggle="collapse" data-target="#collapse-{{ forloop.counter }}" aria-expanded="false" aria-controls="collapse-{{ forloop.counter }}">
+                            <h4 class="ml-2">
+                                {{ child.get_menu_title }}
+                                <span class="fa fa-caret-up float-right mr-3"></span>
+                            </h4>
+                        </div>
+                        <div id="collapse-{{ forloop.counter }}" class="collapse text-center" aria-labelledby="heading-{{ forloop.counter }}" data-parent="#navAccordion">
+                            <ul class="list-group list-group-flush">
+                                {% for kid in child.get_descendants %}
+                                    <li class="list-group-item">
+                                        <a class="link" href="{{ kid.get_absolute_url }}">{{ kid.get_menu_title }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% else %}
+                        <h4 class="ml-2">
+                            <a class="link" href="{{ child.get_absolute_url }}">{{ child.get_menu_title }}</a>
+                        </h4>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div class="mb-2 lang-picker text-center">
+                <a class="{% if LANGUAGE_CODE == 'fi' %}lang{% endif %} mr-1" href="{% page_language_url 'fi' %}">FI</a>
+                <span>/</span>
+                <a class="{% if LANGUAGE_CODE == 'en' %}lang{% endif %} ml-1" href="{% page_language_url 'en' %}">EN</a>
+            </div>
+            {% if not user.is_authenticated %}
+                <a href="{% url 'auth_prodeko:login' %}" class="auth-btn btn btn-block btn-primary" role="button">
+                    {% trans login %}
+                </a>
+            {% else %}
+                <a href="{% url 'auth_prodeko:logout' %}" class="auth-btn btn btn-block btn-primary" role="button">
+                    {% trans logout %}
+                </a>
+            {% endif %}
+        </div>
+    </div>
+</nav>

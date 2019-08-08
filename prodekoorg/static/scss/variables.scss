@@ -2,4 +2,14 @@ $blue-light: #0053a0;
 $blue-normal: #002e7d;
 $blue-dark: #002851;
 
-$navbar-height: 90px;
+$navbar-height-mobile: 66px;
+$frontpage-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+$frontpage-img-text-shadow: 1px 2px 1px rgba(0, 0, 0, 0.8);
+
+// Bootstrap4 overrides
+
+$override-border-radius: 0;
+$override-heading-weight-bold: 800;
+$override-transition-collapse: 0.2s ease;
+$override-blue: $blue-dark;
+$override-form-group-margin-bottom: 0.9rem;

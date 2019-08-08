@@ -10,28 +10,28 @@
 
 <footer class="footer prodeko-footer container" id="footer">
     <div class="row">
-        <div class="col-md-4 col-sm-4">
+        <div class="col-sm-4">
             <div class="row">
-                <div class="col-12">
-                    <h4><strong>{% trans contact_info %}</strong></h4>
-                    <p>Tuotantotalouden kilta Prodeko ry</p>
+                <div class="col-12 pb-2">
+                    <h4 class="text-white"><strong>{% trans contact_info %}</strong></h4>
+                    <p>Tuotantotalouden kilta Prodeko&nbsp;ry</p>
                 </div>
-                <div class="col-5 pr-2">
+                <div class="col-lg-5 col-sm-12 col-5 pr-2 pb-2">
                     <p><b>{% trans postal_address %}:</b><br>PL 15500<br>00076 Aalto</p>
                     <p><b>{% trans visiting_address %}:</b><br>TUAS-talo<br>Maarintie 8<br>02150 Espoo</p>
                 </div>
-                <div class="col-7 p-0">
+                <div class="col-lg-7 col-sm-12 col-7 p-md-3 p-lg-0">
                     <p><u><a href="https://docs.google.com/forms/d/e/1FAIpQLSc1ptM75jx9IUgMr6kD8puTKe4cOfrzwKO3Ae9s4nqYf17z9Q/viewform">{% trans contact_form %}</a></u></p>
-                    <p><u><a href="{% trans '/reimbursement' %}">{% trans reimbursements %}</a></u></p>
-                    <p><u><a href="/apply-membership">{% trans apply_for_membership %}</a></u></p>
+                    <p><u><a href="{% url 'app_kulukorvaus:kulukorvaus' %}">{% trans reimbursements %}</a></u></p>
+                    <p><u><a href="{% url 'app_apply_for_membership:apply' %}">{% trans apply_for_membership %}</a></u></p>
                     <p><u><a href="/privacy-policy">{% trans privacy_policy %}</a></u></p>
                 </div>
             </div>
         </div>
-        <div class="col-md-8 col-sm-8">
+        <div class="col-sm-8">
             <div class="row">
                 <div class="col">
-                    <h4><strong>Prodeko Network</strong></h4>
+                    <h4 class="text-white"><strong>Prodeko Network</strong></h4>
                 </div>
             </div>
             <div class="row align-items-center">

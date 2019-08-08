@@ -1,172 +1,60 @@
-body {
-  @include phone {
-    margin-top: $navbar-height + 16px !important;
-  }
-}
+#navbar-full {
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
 
-.prodeko-navbar {
-  margin-bottom: 16px;
-  white-space: nowrap;
-  text-align: center;
-  text-transform: uppercase;
-
-  .nav-link {
-    font-size: 1.5em;
-    cursor: pointer;
+  #navbar-logo {
+    width: 40px;
+    height: 40px;
   }
 
-  #collapsibleNavbar {
-    .lang {
-      text-decoration: underline;
-    }
-
-    .navbar-auth {
-      @include phone {
-        li {
-          margin-bottom: 5px;
-
-          a {
-            width: 165px;
-            margin-right: 0 !important;
-          }
-        }
-      }
-    }
-
-    .navigation-list-child {
-      width: 80%;
-      margin: auto;
-      padding: 10px 0 10px 0;
-      list-style-type: none;
-      background-color: rgb(193, 204, 216);
-    }
-
-    .navigation-list-child-desktop {
-      position: relative;
-      z-index: 1;
-      min-width: 100%;
-      //margin: 0px -30px;
-      padding: 10px 15px 10px 15px;
-      font-size: 1rem;
-      list-style-type: none;
-      background-color: rgb(241, 241, 241);
-      border-color: rgb(0, 40, 81);
-      border-style: solid;
-      border-width: 0.5px;
-    }
-
-    .nav-sublink {
-      color: rgba(0, 0, 0, 0.65);
-    }
-
-    @include desktop {
-      padding-right: 40px;
-    }
-
-    @include desktop {
-      form {
-        width: 0;
-      }
-    }
-  }
-
-  .nav-sublink {
-    color: rgba(0, 0, 0, 0.65);
-  }
-
-  .nav-ul {
-    list-style: none;
-  }
-
-  li.active-menu-item a {
-    font-weight: bold;
-  }
-
-  @include phone {
-    // .fixed-top {
-    position: fixed !important;
-    top: 0;
-    right: 0;
-    left: 0;
-    z-index: 1030; // $zindex-fixed;
-    min-height: $navbar-height;
-    // }
-    max-height: 100vh; // enables overflow scrolling
-    overflow-y: auto;
-    background-color: white;
-  }
-
-  @include tablet {
-    .login-dropdown {
-      min-width: 22rem;
-      background-color: #002851;
-    }
-  }
-
-  /* Start animated underlines
-
-    Credits: http://tobiasahlin.com/blog/css-trick-animating-link-underlines/
-    */
-  a.nav-top {
-    position: relative;
-    text-decoration: none;
-  }
-
-  .prodeko-navbar #collapsibleNavbar a.nav-top {
-    position: relative;
-    text-decoration: none;
-  }
-
-  a.nav-top:not(.no-animation)::before {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background-color: #002851;
-    -webkit-transform: scaleX(0);
-    transform: scaleX(0);
-    visibility: hidden;
-    -webkit-transition: all 0.3s ease-in-out 0s;
-    transition: all 0.3s ease-in-out 0s;
-    content: '';
-  }
-
-  a.nav-top:not(.no-animation):hover::before {
-    -webkit-transform: scaleX(1);
-    transform: scaleX(1);
-    visibility: visible;
-  }
-
-  /* End animated underlines */
-}
-
-#prodeko-logo {
-  display: block;
-  flex-grow: 1;
-  margin-left: 1em;
-  padding: 5px;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-origin: content-box;
-
-  @include phone {
-    max-width: 200px;
-    height: $navbar-height - 2 * 8px;
-    margin-left: 0;
-    background-image: url('/static/images/logos/prodeko-logo-text-blue.png');
-    background-position-y: center;
-  }
-
-  @include tablet {
-    max-width: 300px;
-    height: 60px;
-    background-image: url('/static/images/logos/prodeko-logo-text-blue.png');
-  }
-
-  @include desktop {
+  .auth-btn {
     max-width: 150px;
-    height: 75px;
-    background-image: url('/static/images/logos/prodeko-logo-darkblue.png');
   }
+
+  .nav-item {
+    font-size: 20px;
+  }
+}
+
+#navbar-mobile {
+  position: absolute;
+  width: 100%;
+  z-index: 9999;
+  background-color: white;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+
+  #navbar-logo {
+    height: 40px;
+  }
+
+  .navbar-toggler {
+    border-color: white;
+  }
+
+  .caret-container {
+    .fa-caret-up {
+      color: rgba(0, 0, 0, 0.75);
+      font-size: 1rem;
+      transform: rotate(90deg);
+      transition: all 0.3s ease-in-out;
+    }
+
+    &.collapsed {
+      .fa-caret-up {
+        transform: rotate(180deg);
+        transition: all 0.3s ease-in-out;
+      }
+    }
+  }
+
+  .link {
+    font-size: 1.2rem;
+  }
+
+  .lang-picker {
+    font-size: 1.2rem;
+  }
+}
+
+.lang {
+  text-decoration: underline;
 }

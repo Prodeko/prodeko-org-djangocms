@@ -1,0 +1,47 @@
+{% load i18n menu_tags static %}
+
+{% trans "Login" as login %}
+{% trans "Log out" as logout %}
+{% trans "Membership" as apply %}
+
+<nav id="navbar-full" class="navbar navbar-expand-lg navbar-light d-none d-lg-block">
+    <div class="collapse navbar-collapse">
+        <a class="navbar-brand" href="/">
+            <img id="navbar-logo" src="{% static 'images/logos/prodeko-logo-middleblue.png' %}" />
+        </a>
+        <ul class="navbar-nav justify-content-center align-items-center w-100">
+            {% for child in children %}
+                {% if child.get_descendants %}
+                    <li class="nav-item dropdown mr-3">
+                        <a class="nav-link" id="navbarDropdown-{{ forloop.counter }}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ child.get_menu_title }}
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown-{{ forloop.counter }}">
+                            {% for kid in child.get_descendants %}
+                                <a class="dropdown-item" href="{{ kid.get_absolute_url }}">{{ kid.get_menu_title }}</a>
+                            {% endfor %}
+                        </div>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ child.get_absolute_url }}">{{ child.get_menu_title }}</a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+        <div class="d-flex flex-row justify-content-center">
+            <a class="{% if LANGUAGE_CODE == 'fi' %}lang{% endif %} mr-1" href="{% page_language_url 'fi' %}">FI</a>
+            <span>/</span>
+            <a class="{% if LANGUAGE_CODE == 'en' %}lang{% endif %} ml-1" href="{% page_language_url 'en' %}">EN</a>
+        </div>
+        {% if not user.is_authenticated %}
+            <a href="{% url 'auth_prodeko:login' %}" class="auth-btn btn btn-block btn-primary mx-4" role="button">
+                {% trans login %}
+            </a>
+        {% else %}
+            <a href="{% url 'auth_prodeko:logout' %}" class="auth-btn btn btn-block btn-primary mx-4" role="button">
+                {% trans logout %}
+            </a>
+        {% endif %}
+    </div>
+</nav>

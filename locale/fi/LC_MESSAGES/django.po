@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-03 10:21+0000\n"
+"POT-Creation-Date: 2019-08-08 18:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -766,7 +766,9 @@ msgstr "Dokumentaatio"
 
 #: prodekoorg/app_toimarit/templates/admin/base.html:43
 #: prodekoorg/templates/admin/inc/branding.html:29
-#: prodekoorg/templates/layout-components/navbar.html:4
+#: prodekoorg/templates/layout-components/navbar-full.html:4
+#: prodekoorg/templates/layout-components/navbar_new.html:4
+#: prodekoorg/templates/layout-components/navbar_old.html:4
 msgid "Log out"
 msgstr "Kirjaudu ulos"
 
@@ -977,11 +979,15 @@ msgstr "Jäsenhakemus"
 msgid "Contact form"
 msgstr "Yhteydenottolomake"
 
-#: prodekoorg/templates/layout-components/navbar.html:3
+#: prodekoorg/templates/layout-components/navbar-full.html:3
+#: prodekoorg/templates/layout-components/navbar_new.html:3
+#: prodekoorg/templates/layout-components/navbar_old.html:3
 msgid "Login"
 msgstr "Kirjaudu"
 
-#: prodekoorg/templates/layout-components/navbar.html:5
+#: prodekoorg/templates/layout-components/navbar-full.html:5
+#: prodekoorg/templates/layout-components/navbar_new.html:5
+#: prodekoorg/templates/layout-components/navbar_old.html:5
 msgid "Membership"
 msgstr "Hae jäsenyyttä"
 

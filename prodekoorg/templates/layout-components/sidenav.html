@@ -5,14 +5,14 @@
 {% if children %}
     <ul class="nav flex-column d-none d-lg-flex" id="sidenav">
         {% for child in children %}
-            <!-- no child pages  -->
+            {# No child pages #}
             {% if child.is_leaf_node %}
                 <li class="nav-item sidenav-highlink {% if child.selected %} active{% endif %}">
                     <a class="nav-link" href="{{ child.get_absolute_url }}">{{child.get_menu_title }}</a>
                 </li>
             {% endif %}
-            <!-- /no child pages  -->
-            <!-- has child pages  -->
+
+            {# Has child pages #}
             {% if not child.is_leaf_node or child.ancestor %}
                 <li class="nav-item{% if child.ancestor %} active{% endif %}">
                     <a href="#" class="nav-link sidenav-highlink" data-toggle="collapse" aria-expanded="false" data-target="#sidemenu-collapsable-{{child.get_menu_title}}" aria-controls="sidemenu-collapsable-{{child.get_menu_title}}">
@@ -29,9 +29,7 @@
                     </ul>
                 </li>
             {% endif %}
-            <!-- /has child pages  -->
         {% endfor %}
-        <!-- /end for child -->
     </ul>
 {% endif %}
 

@@ -1,37 +1,35 @@
+@import 'variables.scss';
+
 #instagram {
   display: block;
   width: 100%;
-}
-
-img {
-  display: block;
-  width: 100%;
-  margin-top: 0.6rem;
-  margin-right: auto;
-  margin-bottom: 0.6rem;
-  margin-left: auto;
-  object-fit: cover;
-}
-
-@media (min-width: 576px) {
-  #instagram {
-    display: grid;
-    grid-auto-rows: auto;
-    grid-row-gap: 1.2rem;
-    grid-column-gap: 1.2rem;
-    grid-template-columns: 1fr 1fr;
-    width: 30%;
-  }
-
-  .cms-placeholder-10 {
-    display: none;
-  }
 
   img {
-    width: 12rem;
-    height: 12rem;
-    margin: none;
-    margin-top: 0;
-    margin-top: none;
+    display: block;
+    width: 100%;
+    margin-top: 0.6rem;
+    margin-right: auto;
+    margin-bottom: 0.6rem;
+    margin-left: auto;
+    object-fit: cover;
+  }
+
+  @include phone {
+    #instagram {
+      display: grid;
+      grid-auto-rows: auto;
+      grid-row-gap: 1.2rem;
+      grid-column-gap: 1.2rem;
+      grid-template-columns: 1fr 1fr;
+      width: 30%;
+    }
+
+    img {
+      width: 12rem;
+      height: 12rem;
+      margin: none;
+      margin-top: 0;
+      margin-top: none;
+    }
   }
 }
