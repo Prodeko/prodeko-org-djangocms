@@ -4,35 +4,9 @@
 
 .frontpage-headercontainer {
   padding-top: 1.5rem;
-  /*
-  Forces image to be 100% width and not max width of 100%
-  */
-  .carousel {
-    padding-bottom: 2.5px;
-
-    .carousel-item {
-      .img-fluid {
-        width: 100%;
-      }
-
-      a {
-        display: block;
-        width: 100%;
-      }
-    }
-
-    .carousel-caption h1 {
-      color: white;
-      font-weight: 900;
-      font-size: 2rem;
-      letter-spacing: 2px;
-      text-shadow: $frontpage-img-text-shadow;
-      font-size: 1.5rem;
-    }
-  }
 
   @include underdesktop {
-    padding-top: $navbar-height-mobile;
+    padding-top: $nav-height-mobile + 10px;
   }
 }
 
@@ -45,7 +19,6 @@
 
   .frontpage-square {
     padding: 1rem 0.5rem;
-    transition: $frontpage-transition;
 
     @include phone {
       padding: 2.5px 2.5px;
@@ -53,23 +26,6 @@
 
     @include tablet {
       padding: 0.5rem 7.5px;
-    }
-
-    &::after {
-      top: 0;
-      left: 0;
-      z-index: -1;
-      opacity: 0;
-      transition: $frontpage-transition;
-    }
-
-    &:hover {
-      -webkit-transform: scale(1.03, 1.03);
-      transform: scale(1.03, 1.03);
-
-      &::after {
-        opacity: 1;
-      }
     }
 
     img {
@@ -82,15 +38,25 @@
       left: 50%;
       transform: translate(-50%, -50%);
 
+      h1 {
+        color: white;
+        font-weight: 900;
+        font-size: 2rem;
+        letter-spacing: 2px;
+        text-align: center;
+        text-shadow: $frontpage-img-text-shadow;
+      }
+
       h3 {
         color: white;
         font-weight: 900;
         font-size: 1.5rem;
         letter-spacing: 2px;
+        text-align: center;
         text-shadow: $frontpage-img-text-shadow;
 
         @include phone {
-          font-size: 1.3rem;
+          font-size: 0.95rem;
         }
 
         @include tablet {

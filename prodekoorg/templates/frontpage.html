@@ -12,33 +12,27 @@
     {% trans "For businesses" as for_businesses %}
 
     <div class="container frontpage-headercontainer col-sm-8">
-        <div class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <picture>
-                        <source srcset="{% static 'images/carusellimages/Fuksit_kuvat/fuksit_1400x400.jpg' %}" alt="Carousel-1" class="img-fluid" media="(min-width: 768px)">
-                        <source srcset="{% static 'images/carusellimages/Fuksit_kuvat/fuksit_800x400.jpg' %}" alt="Carousel-2" class="img-fluid" media="(min-width: 576px)">
-                        <img srcset="{% static 'images/carusellimages/Fuksit_kuvat/fuksit_600x400.jpg' %}" alt="Carousel-3" class="img-fluid">
-                    </picture>
-                    <div class="carousel-caption">
-                        <div>
-                            <h1>{% trans welcome1 %}</h1>
-                        </div>
-                    </div>
+        <div class="row frontpage-squarerow">
+            <div class="col-12 frontpage-square py-sm-0">
+                <picture>
+                    <source srcset="{% static 'images/carusellimages/Fuksit_kuvat/fuksit_1400x400.jpg' %}" alt="Carousel-1" class="img-fluid" media="(min-width: 768px)">
+                    <source srcset="{% static 'images/carusellimages/Fuksit_kuvat/fuksit_800x400.jpg' %}" alt="Carousel-2" class="img-fluid" media="(min-width: 576px)">
+                    <img srcset="{% static 'images/carusellimages/Fuksit_kuvat/fuksit_600x400.jpg' %}" alt="Carousel-3" class="img-fluid">
+                </picture>
+                <div class="frontpage-square-caption">
+                    <h1>{% trans welcome1 %}</h1>
                 </div>
             </div>
-        </div>
-        <div class="row frontpage-squarerow">
             <div class="col-md-3 col-6 frontpage-square">
-                <a href="/prospective-students/">
+                <a href="/{{ LANGUAGE_CODE }}/prospective-students/">
                     <img src="{% static 'images/landing_photos/abeille_smaller.jpg' %}" alt="{% trans for_abit %}" class="img-fluid">
-                    <div class="mask flex-center frontpage-square-caption">
+                    <div class="frontpage-square-caption">
                         <h3>{% trans for_abit %}</h3>
                     </div>
                 </a>
             </div>
             <div class="col-md-3 col-6 frontpage-square">
-                <a href="/guild/">
+                <a href="/{{ LANGUAGE_CODE }}/guild/">
                     <img src="{% static 'images/landing_photos/kiltalaisille_smaller.jpg' %}" alt="{% trans for_guildmembers %}" class="img-fluid">
                     <div class="frontpage-square-caption">
                         <h3>{% trans for_guildmembers %}</h3>
@@ -46,7 +40,7 @@
                 </a>
             </div>
             <div class="col-md-3 col-6 frontpage-square">
-                <a href="/alumni/">
+                <a href="/{{ LANGUAGE_CODE }}/alumni/">
                     <img src="{% static 'images/landing_photos/alumneille_smaller.jpg' %}" alt="{% trans for_alumni %}" class="img-fluid">
                     <div class="frontpage-square-caption">
                         <h3>{% trans for_alumni %}</h3>
@@ -54,7 +48,7 @@
                 </a>
             </div>
             <div class="col-md-3 col-6 frontpage-square">
-                <a href="/corporate-relations/">
+                <a href="/{{ LANGUAGE_CODE }}/corporate-relations/">
                     <img src="{% static 'images/landing_photos/yrityksille_smaller.jpg' %}" alt="{% trans for_businesses %}" class="img-fluid">
                     <div class="frontpage-square-caption">
                         <h3>{% trans for_businesses %}</h3>

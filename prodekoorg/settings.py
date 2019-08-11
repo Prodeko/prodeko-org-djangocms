@@ -19,11 +19,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LANGUAGE_CODE = "fi-FI"
 
 SITE_ID = 1
-# When DEBUG = False, all errors with level ERROR or
-# higher get mailed to ADMINS according to LOGGING conf
-ADMINS = [("CTO", "cto@prodeko.org")]
-# When DEBUG = False, all broken links get emailed to MANAGERS
-MANAGERS = [("CTO", "cto@prodeko.org")]
 
 config = configparser.ConfigParser()
 config.read(os.path.join(BASE_DIR, "prodekoorg/variables.txt"))
@@ -36,6 +31,13 @@ ALLOWED_HOSTS = ["new.prodeko.org", "prodeko.org", ".prodeko.org", "localhost"]
 DB_NAME_DEFAULT = config["DB"]["NAME_DEFAULT"]
 DB_USER = config["DB"]["USER"]
 DB_PSWD = config["DB"]["PASSWORD"]
+DEV_EMAIL = config["EMAIL"]["DEV_EMAIL"]
+
+# When DEBUG = False, all errors with level ERROR or
+# higher get mailed to ADMINS according to LOGGING conf
+ADMINS = [("DEV", DEV_EMAIL) if DEBUG else ("CTO", "cto@prodeko.org")]
+# When DEBUG = False, all broken links get emailed to MANAGERS
+MANAGERS = [("DEV", DEV_EMAIL) if DEBUG else ("CTO", "cto@prodeko.org")]
 
 DATABASES = {
     "default": {
@@ -433,7 +435,6 @@ DEFAULT_FROM_EMAIL = "no-reply@prodeko.org"
 SERVER_EMAIL = "no-reply@prodeko.org"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-DEV_EMAIL = config["EMAIL"]["DEV_EMAIL"]
 
 # Loggin config. On DEBUG = FALSE, email ADMINS
 # on ERROR (or higher) level events, otherwise log

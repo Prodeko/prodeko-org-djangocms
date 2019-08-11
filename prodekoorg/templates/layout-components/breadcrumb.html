@@ -1,7 +1,16 @@
 {% load menu_tags %}
 
-<ul class="page-breadcrumb">
-
-    {% show_breadcrumb %}
-
-</ul>
+<nav aria-label="breadcrumb">
+    <ul class="page-breadcrumb">
+        {% for ancestor in ancestors %}
+            <li>
+                {% if not forloop.last %}
+                    <a href="{{ ancestor.get_absolute_url }}">{{ ancestor.get_menu_title }}</a>
+                    <span class="px-1">/</span>
+                {% else %}
+                    <span aria-current="page">{{ ancestor.get_menu_title }}</span>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</nav>

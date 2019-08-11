@@ -3,9 +3,9 @@
 
 .prodeko-footer {
   margin: 0 auto;
-  padding-top: 3em;
+  padding-top: 3rem;
   padding-right: 0;
-  padding-bottom: 2em;
+  padding-bottom: 2rem;
   padding-left: 0;
   color: white;
   font-family: Raleway, Helvetica, sans-serif;
@@ -13,8 +13,8 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
   @include phone {
-    padding-top: 1em;
-    padding-bottom: 1em;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
   }
 
   a {
@@ -22,17 +22,14 @@
     font-weight: bold;
 
     &:hover {
-      color: grey;
-      -webkit-transition: 0.3s ease-out;
-      -moz-transition: 0.3s ease-out;
-      -o-transition: 0.3s ease-out;
-      transition: 0.3s ease-out;
+      color: rgb(230, 230, 230);
+      transition: 0.1s ease-out;
     }
   }
 
   h2,
   p {
-    font-size: 0.9em;
+    font-size: 0.9rem;
   }
 
   .network-div {
@@ -63,14 +60,14 @@
 
   .social-row {
     a {
-      padding: 1em;
+      margin: 1.5rem;
     }
 
     .fab {
       font-size: 50px;
 
       @include phone {
-        font-size: 35px;
+        font-size: 40px;
       }
     }
   }

@@ -1,5 +1,3 @@
-/* SIDENAV */
-
 @import 'variables.scss';
 
 #sidenav {
@@ -13,7 +11,7 @@
   background-color: $blue-dark;
 
   a {
-    color: lightgrey;
+    color: rgb(230, 230, 230);
     text-transform: uppercase;
 
     &:hover {

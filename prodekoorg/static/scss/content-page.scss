@@ -30,7 +30,7 @@
   }
 
   @include underdesktop {
-    padding-top: $navbar-height-mobile !important;
+    padding-top: $nav-height-mobile !important;
   }
 }
 
@@ -108,7 +108,7 @@
   }
 
   @include underdesktop {
-    padding-top: $navbar-height-mobile;
+    padding-top: $nav-height-mobile + 15px;
   }
 }
 
@@ -122,14 +122,5 @@
     a {
       color: #002851;
     }
-  }
-}
-
-.page-navigation-menu {
-  padding-left: 0;
-  font-family: Raleway, Helvetica, sans-serif;
-
-  li {
-    list-style: none;
   }
 }
