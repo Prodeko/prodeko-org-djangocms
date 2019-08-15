@@ -445,7 +445,7 @@ msgstr "/keksit"
 
 #: prodekoorg/app_contact/cms_apps.py:11
 msgid "Contact form application"
-msgstr "Ota yhteyttä"
+msgstr "Sovellus - Yhteydenottolomake"
 
 #: prodekoorg/app_contact/forms.py:31
 msgid "Optional. Fill if you want to be contacted back."
@@ -599,7 +599,7 @@ msgstr "Slides"
 
 #: prodekoorg/app_kulukorvaus/cms_apps.py:12
 msgid "Reimbursement form application"
-msgstr "Kulukorvauslomake"
+msgstr "Sovellus - Kulukorvauslomake"
 
 #: prodekoorg/app_kulukorvaus/cms_apps.py:21
 #: prodekoorg/app_tiedostot/cms_apps.py:16
