@@ -127,6 +127,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "prodekoorg/static"),
     os.path.join(BASE_DIR, "auth_prodeko/static"),
     os.path.join(BASE_DIR, "prodekoorg/app_apply_for_membership/static"),
+    os.path.join(BASE_DIR, "prodekoorg/app_contact/static"),
     os.path.join(BASE_DIR, "prodekoorg/app_kulukorvaus/static"),
     os.path.join(BASE_DIR, "prodekoorg/app_poytakirjat/static"),
     os.path.join(BASE_DIR, "prodekoorg/app_tiedostot/static"),
@@ -171,6 +172,8 @@ TEMPLATES = [
             os.path.join(
                 BASE_DIR, "prodekoorg/app_apply_for_membership/templates/emails"
             ),
+            os.path.join(BASE_DIR, "prodekoorg/app_contact/templates"),
+            os.path.join(BASE_DIR, "prodekoorg/app_contact/templates/emails"),
             os.path.join(BASE_DIR, "prodekoorg/app_kulukorvaus/templates"),
             os.path.join(BASE_DIR, "prodekoorg/app_kulukorvaus/templates/emails"),
             os.path.join(BASE_DIR, "prodekoorg/app_poytakirjat/templates"),
@@ -283,7 +286,6 @@ INSTALLED_APPS = (
     # matrikkeli.prodeko.org
     "alumnirekisteri",
     "alumnirekisteri.rekisteri",
-    # "alumnirekisteri.auth2",
     # ------------------------
     # abit.prodeko.org
     "abisivut",
@@ -293,6 +295,7 @@ INSTALLED_APPS = (
     "seminaari",
     # ------------------------
     "prodekoorg.app_apply_for_membership",
+    "prodekoorg.app_contact",
     "prodekoorg.app_infoscreen",
     "prodekoorg.app_kulukorvaus",
     "prodekoorg.app_poytakirjat",

@@ -1,0 +1,28 @@
+@import '../../../static/scss/breakpoints_mixin.scss';
+
+#contact-done,
+#contact-error {
+  text-align: center;
+
+  img {
+    display: block;
+    max-width: 60%;
+    margin: 0 auto 2.5em auto;
+  }
+
+  @include phone {
+    img {
+      display: block;
+      max-width: 90%;
+      margin: 0 auto 1.5em auto;
+    }
+  }
+}
+
+#form-contact-wrapper {
+  font-size: 1em;
+
+  input[type='checkbox'] {
+    transform: scale(1.3);
+  }
+}

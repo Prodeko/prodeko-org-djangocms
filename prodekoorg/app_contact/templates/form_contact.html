@@ -1,0 +1,71 @@
+{% load i18n prodekoorg_tags %}
+
+{% trans "Privacy policy" as privacy_policy %}
+{% trans "Cookie policy" as cookie_policy %}
+
+<div id="form-contact-wrapper">
+    <div class="form-group row">
+        <label class="col-sm-3 col-form-label" for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
+        <div class="col-sm-6">
+            {% if not form.email.errors and request.POST %}
+                {{ form.email|add_class:"is-valid" }}
+            {% elif form.email.errors %}
+                {{ form.email|add_class:"is-invalid" }}
+            {% else %}
+                {{ form.email }}
+            {% endif %}
+            {% if form.email.help_text %}
+                <small class="form-text text-muted">{{ form.email.help_text }}</small>
+            {% endif %}
+        </div>
+        <div class="col-sm-3">
+            {% if form.email.errors %}
+                <small class="form-text text-danger">{{ form.email.errors.as_text }}</small>
+            {% endif %}
+        </div>
+    </div>
+    <div class="form-group row">
+            <label class="col-sm-3 col-form-label" for="{{ form.contact_emails.id_for_label }}">{{ form.contact_emails.label }}</label>
+            <div class="col-sm-6">
+                {% if not form.contact_emails.errors and request.POST %}
+                    {{ form.contact_emails|add_class:"is-valid" }}
+                {% elif form.contact_emails.errors %}
+                    {{ form.contact_emails|add_class:"is-invalid" }}
+                {% else %}
+                    {{ form.contact_emails }}
+                {% endif %}
+            </div>
+            <div class="col-sm-3">
+                {% if form.contact_emails.errors %}
+                    <small class="form-text text-danger">{{ form.contact_emails.errors.as_text }}</small>
+                {% endif %}
+            </div>
+        </div>
+    <div class="form-group row">
+        <label class="col-sm-3 col-form-label pt-0" for="{{ form.message.id_for_label }}">{{ form.message.label }}</label>
+        <div class="col-sm-6">
+            {% if not form.message.errors and request.POST %}
+                {{ form.message|add_class:"is-valid" }}
+            {% elif form.message.errors %}
+                {{ form.message|add_class:"is-invalid" }}
+            {% else %}
+                {{ form.message }}
+            {% endif %}
+        </div>
+        <div class="col-sm-3">
+            {% if form.message.errors %}
+                <small class="form-text text-danger">{{ form.message.errors.as_text }}</small>
+            {% endif %}
+        </div>
+    </div>
+    <div class="d-none policy-container form-group row">
+        <legend class="col-sm-3 col-form-label pt-0" for="{{ form.has_accepted_policies.id_for_label }}">{{ form.has_accepted_policies.label }}</legend>
+        <div class="col-sm-1 mb-4">
+            {{ form.has_accepted_policies }}
+        </div>
+        <div class="col-sm-5">
+            <p class="mb-2"><a href="{% trans '/privacy' %}" target="_blank">{% trans privacy_policy %}</a></p>
+            <p><a href="{% trans '/cookies' %}" target="_blank">{% trans cookie_policy %}</a></p>
+        </div>
+    </div>
+</div>

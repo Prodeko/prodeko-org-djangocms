@@ -1,0 +1,5 @@
+<p>Yhteydenottolomakkeen kautta lähetetty viesti (lähetetty {{ message.created_at }}).</p>
+
+<p>Lähettäjä: {% if message.email|length > 0 %}{{ message.email }}{% else %}sähköpostiosoitetta ei annettu{% endif %}</p>
+<p>Viesti:</p>
+<p>"{{ message.message }}"</p>
