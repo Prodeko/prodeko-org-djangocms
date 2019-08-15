@@ -13,7 +13,7 @@ from django.utils.translation import ugettext_lazy as _
 class PendingUser(models.Model):
     """Basic information about the reimbursement claim as a whole.
 
-    The PendingUser contains information about people who
+    The PendingUser model contains information about people who
     have applied to become Prodeko members. 
 
     Attributes:
@@ -134,7 +134,7 @@ class PendingUser(models.Model):
         first_name = self.first_name
         last_name = self.last_name
         field_of_study = self.field_of_study
-        return "{} {} - {}".format(first_name, last_name, field_of_study)
+        return f"{first_name} {last_name} - {field_of_study}"
 
     def name(self):
         return "{} {}".format(self.first_name, self.last_name)

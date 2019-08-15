@@ -66,7 +66,7 @@ class Toimari(models.Model):
                 return 'placeholder.jpg'
 
     def __str__(self):
-        return self.name + ", " + self.position
+        return f"{self.name}, {self.position}"
 
     class Meta:
         verbose_name = _("guild official")
@@ -135,7 +135,7 @@ class HallituksenJasen(models.Model):
                 return 'placeholder.jpg'
 
     def __str__(self):
-        return self.name + ", " + self.position
+        return f"{self.name}, {self.position}"
 
     class Meta:
         verbose_name = _("board member")

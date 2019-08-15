@@ -45,22 +45,21 @@ $(document).ready(function() {
     hasAcceptedPolicies = false;
   }
 
-  document
-    .getElementById('id_receipt')
-    .addEventListener('change', showFileName);
-
-  var formApply = $('#form_apply');
-  var hasAcceptedPolicies = false;
-
-  document
-    .getElementById('id_has_accepted_policies')
-    .addEventListener('change', function() {
+  function registerEventListeners() {
+    $('#id_has_accepted_policies').change(function() {
       if (this.checked) {
         acceptPolicy();
       } else {
         denyPolicy();
       }
     });
+
+    $('#id_receipt').change(showFileName);
+  }
+
+  var formApply = $('#form_apply');
+  var hasAcceptedPolicies = false;
+  registerEventListeners();
 
   formApply.on('submit', function(e) {
     e.preventDefault();
@@ -88,9 +87,7 @@ $(document).ready(function() {
             // Google Analytics form error tracking
             dataLayer.push({ event: 'formError', formName: 'form_apply' });
             $('#form-apply-wrapper').replaceWith(xhr.responseText);
-            document
-              .getElementById('id_receipt')
-              .addEventListener('change', showFileName);
+            registerEventListeners();
           }
         }
       });

@@ -12,8 +12,7 @@ class Virka(models.Model):
     name = models.CharField(max_length=50, unique=True, verbose_name=_("Position"))
 
     def __str__(self):
-        nimi = self.name
-        return "{}".format(nimi)
+        return f"{self.name}"
 
     def natural_key(self):
         return self.name
@@ -51,7 +50,7 @@ class Ehdokas(models.Model):
     def __str__(self):
         v = self.virka
         nimi = self.name
-        return "{}, {}".format(v, nimi)
+        return f"{v}, {nimi}"
 
     class Meta:
         # Correct spelling in Django admin
@@ -74,8 +73,7 @@ class Kysymys(models.Model):
     question = models.TextField(blank=False, verbose_name=_("Question"))
 
     def __str__(self):
-        tv = self.to_virka
-        return "{}".format(tv)
+        return f"{self.to_virka}"
 
     class Meta:
         # Correct spelling in Django admin
@@ -99,8 +97,7 @@ class Vastaus(models.Model):
     answer = models.TextField(blank=False, verbose_name=_("Answer"))
 
     def __str__(self):
-        be = self.by_ehdokas
-        return "{}".format(be)
+        return f"{self.by_ehdokas}"
 
     class Meta:
         # Correct spelling in Django admin

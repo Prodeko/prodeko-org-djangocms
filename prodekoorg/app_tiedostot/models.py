@@ -45,7 +45,9 @@ class TiedostoVersio(models.Model):
         return extension
 
     def __str__(self):
-        return "{}: {}".format(self.tiedosto.title, self.file_extension())
+        title = self.tiedosto.title
+        ext = self.file_extension()
+        return f"{title}: {ext}"
 
     class Meta:
         # Correct spelling in Django admin
