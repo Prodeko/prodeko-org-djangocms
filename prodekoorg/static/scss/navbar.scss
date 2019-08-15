@@ -49,12 +49,18 @@
   .link {
     font-size: 1.2rem;
   }
+}
 
-  .lang-picker {
-    font-size: 1.2rem;
+.lang-picker {
+  font-size: 1.2rem;
+  font-weight: bold;
+
+  .lang {
+    text-decoration: underline;
   }
 }
 
-.lang {
-  text-decoration: underline;
+.auth-btn {
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
 }
