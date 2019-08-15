@@ -17,8 +17,8 @@ class MailConfiguration(models.Model):
 
     class Meta:
         # Correct spelling in Django admin
-        verbose_name = _("mailikonfiguraatio")
-        verbose_name_plural = _("Mailikonfiguraatiot")
+        verbose_name = _("mail configuration")
+        verbose_name_plural = _("Mail configuration")
 
 
 class Tag(models.Model):

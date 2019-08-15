@@ -40,8 +40,8 @@ class Migration(migrations.Migration):
                 ('fail_silently', models.BooleanField(default=True)),
             ],
             options={
-                'verbose_name': 'mailikonfiguraatio',
-                'verbose_name_plural': 'Mailikonfiguraatiot',
+                'verbose_name': 'mail configuration',
+                'verbose_name_plural': 'Mail configuration',
             },
         ),
         migrations.CreateModel(
