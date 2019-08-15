@@ -85,21 +85,24 @@ class KulukorvausPDF:
         phone_number = model_perustiedot.phone_number
         bank_number = model_perustiedot.bank_number
         bic = model_perustiedot.get_bic_display()
+        additional_info = model_perustiedot.additional_info
 
         # Container to hold table elements
         elements = []
 
         # Setup table data
-        t_data = [
+        t_basic_info = [
             [_("Name"), created_by],
             [_("Email"), email],
             [_("Position in guild"), position_in_guild],
             [_("Phone number"), phone_number],
             [_("Account number (IBAN)"), bank_number],
             ["BIC", bic],
+            [_("Additional info"), additional_info],
         ]
 
-        # Loop Kulukorvaus models and append to t_data
+        t_kulu = []
+        # Loop Kulukorvaus models and append to t_kulu
         for model in self.models_kulukorvaukset:
             fields = model._meta.get_fields()
             for field in fields:
@@ -113,7 +116,7 @@ class KulukorvausPDF:
                     if field.name == "receipt":
                         receipt = self.handle_receipt(value.file.read())
                         value = receipt
-                    t_data.append([verbose_name, value])
+                    t_kulu.append([verbose_name, value])
 
         # Styling for the table
         t_style = [
@@ -149,8 +152,10 @@ class KulukorvausPDF:
 
         # Setup paragraph of text before the table as well as the table
         P1 = Paragraph(ptext, styles["Normal"])
-        T = Table(t_data)
-        T.setStyle(TableStyle(t_style))
+        T_basic = Table(t_basic_info)
+        T_kulu = Table(t_kulu)
+        T_basic.setStyle(TableStyle(t_style))
+        T_kulu.setStyle(TableStyle(t_style))
 
         # Append pdf elements (time, image, spacers, paragraph, table)
         # to the container
@@ -161,7 +166,9 @@ class KulukorvausPDF:
         elements.append(s05cm)
         elements.append(P1)
         elements.append(s05cm)
-        elements.append(T)
+        elements.append(T_basic)
+        elements.append(s05cm)
+        elements.append(T_kulu)
 
         doc.build(elements)
 

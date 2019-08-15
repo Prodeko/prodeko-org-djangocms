@@ -35,6 +35,11 @@
     }
   }
 
+  .btn-add,
+  .btn-remove {
+    border: 1px solid black;
+  }
+
   #kulukorvaus-done,
   #kulukorvaus-error,
   #kulukorvaus-policies {

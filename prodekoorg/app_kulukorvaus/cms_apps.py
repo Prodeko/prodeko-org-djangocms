@@ -9,7 +9,7 @@ from .views import download_kulukorvaus_pdf, main_form
 @apphook_pool.register
 class KulukorvausApphook(CMSApp):
     app_name = "app_kulukorvaus"
-    name = _("Reimbursement application")
+    name = _("Reimbursement form application")
 
     def get_urls(self, page=None, language=None, **kwargs):
         return [

@@ -76,10 +76,10 @@ class KulukorvausPerustiedot(models.Model):
         return filename
 
     def __str__(self):
-        position_in_guild = self.position_in_guild
+        position_in_guild = self.get_position_in_guild_display()
         by = self.created_by
         s = self.sum_overall
-        return "{} - {}, ({}€)".format(position_in_guild, by, s)
+        return f"{position_in_guild} - {by}, ({s}€)"
 
     class Meta:
         # Correct spelling in Django admin
@@ -123,9 +123,7 @@ class Kulukorvaus(models.Model):
     )
 
     def __str__(self):
-        time = self.created_at.strftime("%Y-%m-%d %H:%M:%S")
-        explanation = self.explanation
-        return "{}-{}".format(time, explanation)
+        return f"{self.explanation} ({self.sum_euros}€)"
 
     class Meta:
         # Correct spelling in Django admin

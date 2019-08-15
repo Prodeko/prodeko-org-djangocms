@@ -7,13 +7,10 @@ from .models import Kulukorvaus, KulukorvausPerustiedot
 
 
 class YearFilter(SimpleListFilter):
-    """Filter for Django admin to"""
-
     title = _("Year")
     parameter_name = "vuosi"
 
     def lookups(self, request, model_admin):
-        """Allows filtering the reimbursements by year in Django admin"""
         years = set([d.created_at.year for d in model_admin.model.objects.all()])
         return [(y, y) for y in years]
 
