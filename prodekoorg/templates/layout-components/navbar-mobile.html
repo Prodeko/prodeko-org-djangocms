@@ -18,7 +18,7 @@
             <div class="accordion" id="navAccordion">
                 {% for child in children %}
                     {% if child.get_descendants %}
-                        <div id="heading-{{ forloop.counter }}" class="my-3 caret-container collapsed" data-toggle="collapse" data-target="#collapse-{{ forloop.counter }}" aria-expanded="false" aria-controls="collapse-{{ forloop.counter }}">
+                        <div id="heading-{{ forloop.counter }}" class="my-3 caret-container collapsed" role="button" data-toggle="collapse" data-target="#collapse-{{ forloop.counter }}" aria-expanded="false" aria-controls="collapse-{{ forloop.counter }}">
                             <h4 class="ml-2">
                                 {{ child.get_menu_title }}
                                 <span class="fa fa-caret-up float-right mr-3"></span>

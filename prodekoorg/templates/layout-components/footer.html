@@ -21,7 +21,7 @@
                     <p><b>{% trans visiting_address %}:</b><br>TUAS-talo<br>Maarintie 8<br>02150 Espoo</p>
                 </div>
                 <div class="col-lg-7 col-sm-12 col-7 p-md-3 p-lg-0">
-                    <p><u><a href="https://docs.google.com/forms/d/e/1FAIpQLSc1ptM75jx9IUgMr6kD8puTKe4cOfrzwKO3Ae9s4nqYf17z9Q/viewform">{% trans contact_form %}</a></u></p>
+                    <p><u><a href="{% url 'app_contact:contact' %}">{% trans contact_form %}</a></u></p>
                     <p><u><a href="{% url 'app_kulukorvaus:kulukorvaus' %}">{% trans reimbursements %}</a></u></p>
                     <p><u><a href="{% url 'app_apply_for_membership:apply' %}">{% trans apply_for_membership %}</a></u></p>
                     <p><u><a href="/privacy-policy">{% trans privacy_policy %}</a></u></p>
