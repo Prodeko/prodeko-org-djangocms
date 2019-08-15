@@ -19,10 +19,10 @@
                 {% for child in children %}
                     {% if child.get_descendants %}
                         <div id="heading-{{ forloop.counter }}" class="my-3 caret-container collapsed" role="button" data-toggle="collapse" data-target="#collapse-{{ forloop.counter }}" aria-expanded="false" aria-controls="collapse-{{ forloop.counter }}">
-                            <h4 class="ml-2">
+                            <h5 class="ml-2">
                                 {{ child.get_menu_title }}
                                 <span class="fa fa-caret-up float-right mr-3"></span>
-                            </h4>
+                            </h5>
                         </div>
                         <div id="collapse-{{ forloop.counter }}" class="collapse text-center" aria-labelledby="heading-{{ forloop.counter }}" data-parent="#navAccordion">
                             <ul class="list-group list-group-flush">
@@ -34,9 +34,9 @@
                             </ul>
                         </div>
                     {% else %}
-                        <h4 class="ml-2">
+                        <h5 class="ml-2">
                             <a class="link" href="{{ child.get_absolute_url }}">{{ child.get_menu_title }}</a>
-                        </h4>
+                        </h5>
                     {% endif %}
                 {% endfor %}
             </div>
