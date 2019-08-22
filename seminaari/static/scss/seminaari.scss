@@ -1,3 +1,5 @@
+@import '../../../prodekoorg/static/scss/error_pages';
+
 html,
 body {
   width: 100% !important;
@@ -57,9 +59,6 @@ h5 {
   padding: 10px;
   font-size: 1.2em;
   line-height: 25px;
-}
-
-p {
 }
 
 #first,
@@ -176,9 +175,6 @@ hr {
   display: block !important;
   float: none;
   text-align: center;
-}
-
-#myNavbar {
 }
 
 #logo {
