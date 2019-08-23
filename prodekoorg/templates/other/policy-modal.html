@@ -1,0 +1,30 @@
+{% load static i18n %}
+
+{% trans "Prodeko's data policies" as title %}
+{% trans "I agree" as agree %}
+{% trans "I disagre" as disagree %}
+{% trans "privacy policy" as privacy_policy %}
+
+{% if user.is_authenticated and not user.has_accepted_policies %}
+    <div id="policy-modal" class="modal" tabindex="-1" role="dialog" aria-labelledby="policy-modal-label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="policy-modal-label">{% trans title %}</h5>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        {% blocktrans trimmed %}
+                            In order to use Prodeko's online services, you must agree to our
+                        {% endblocktrans %}
+                        <a href="/privacy-policy">{% trans privacy_policy %}.</a>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <a href="{% url 'auth_prodeko:accept_policies' %}" class="btn btn-primary" role="button">{% trans agree %}</a>
+                    <a href="{% url 'auth_prodeko:logout' %}" class="btn btn-secondary" role="button">{% trans disagree %}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
