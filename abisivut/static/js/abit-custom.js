@@ -1,6 +1,4 @@
 $(document).ready(function() {
-  console.log('Penis');
-
   $(window).on('load', function() {
     $('#loading').fadeOut(400);
   });
