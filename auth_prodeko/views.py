@@ -38,3 +38,19 @@ def profile(request):
     else:
         form = EditProfileForm(request.user, initial={"email": request.user.email})
     return render(request, "accounts/user_profile.html", {"form": form})
+
+
+def accept_policies(request):
+    """Update user with has_accepted_policies = True
+
+    Args:
+        request: HttpRequest object from Django.
+
+    Returns:
+        Refreshes the page.
+    """
+
+    user = request.user
+    user.has_accepted_policies = True
+    user.save()
+    return redirect(".")

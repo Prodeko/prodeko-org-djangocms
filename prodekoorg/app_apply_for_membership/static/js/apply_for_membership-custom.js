@@ -18,7 +18,7 @@ $(document).ready(function() {
   }
 
   function showFileName(e) {
-    var input = e.srcElement;
+    var input = e.target;
     var filename = input.files[0].name;
 
     var span = document.createElement('span');

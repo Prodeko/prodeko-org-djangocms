@@ -4,13 +4,11 @@ from apiclient.discovery import build
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.admin.views.decorators import staff_member_required
-from django.db.models.signals import pre_delete
-from django.dispatch import receiver
 from django.utils.translation import ugettext_lazy as _
 from google.oauth2 import service_account
 from googleapiclient.http import HttpError
 
-MAILING_LIST = "jäsenet@prodeko.org" if not settings.DEBUG else "test@prodeko.org"
+from .constants import MAILING_LIST
 
 
 def initialize_service():
@@ -91,35 +89,3 @@ def main_groups_api(request, email):
                 ),
             )
             raise
-
-
-@receiver(pre_delete, sender=settings.AUTH_USER_MODEL)
-def delete_user_from_mailing_list(sender, instance, **kwargs):
-    """Remove a user from G Suite mailing list when a user model is deleted.
-
-    This routine gets called if a User model is deleted.
-    As a result the deleted user gets removed from Prodeko's
-    main mailing list (jäsenet@prodeko.org) that resides in G Suite.
-
-    Args:
-        sender: Model sending the signal.
-        instance: Instance of the model that sent the signal
-        **kwargs: Any additional arguments
-
-    Returns:
-        Nothing, either removes or fails to remove a user
-        from the mailing list.
-
-        A user must be a staff member to access this function.
-    """
-
-    try:
-        service = initialize_service()
-
-        # Call G Suite API and remove a member from the email list
-        service.members().delete(
-            groupKey=MAILING_LIST, memberKey=instance.email
-        ).execute()
-
-    except HttpError as e:
-        pass

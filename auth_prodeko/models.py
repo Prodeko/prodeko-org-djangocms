@@ -1,11 +1,8 @@
+from alumnirekisteri.rekisteri.models import Person
 from django.conf import settings
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.db import models
-from django.db.models.signals import post_save
-from django.dispatch import receiver
 from django.utils.translation import ugettext_lazy as _
-from prodekoorg.app_apply_for_membership.models import PendingUser
-from alumnirekisteri.rekisteri.models import Person
 
 
 class UserManager(BaseUserManager):
@@ -20,10 +17,6 @@ class UserManager(BaseUserManager):
         email = self.normalize_email(email)
         user = self.model(email=email, **extra_fields)
         user.set_password(password)
-        #        user.person = Person.objects.create(
-        #            member_type='0',
-        #            slug=user.pk
-        #        )
         user.save(using=self._db)
         return user
 
@@ -81,35 +74,6 @@ class User(AbstractUser):
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = ["first_name", "last_name"]
-
-    @receiver(post_save, sender=PendingUser)
-    def create_user_profile(sender, instance, created, **kwargs):
-        """Creates User model when a PendingUser is created.
-        
-        Uses Django signals (https://docs.djangoproject.com/en/2.1/topics/signals/).
-        """
-        if created:
-            password = User.objects.make_random_password(length=14)
-            usermodel = User.objects.create_user(
-                email=instance.email,
-                has_accepted_policies=True,
-                password=password,
-                is_active=False,
-                first_name=instance.first_name,
-                last_name=instance.last_name,
-            )
-            instance.user = usermodel
-            instance.save()
-
-    @receiver(post_save, sender=settings.AUTH_USER_MODEL)
-    def create_alumnregistry_profile(sender, instance, created, **kwargs):
-        """Creates an alumnirekisteri Person model when a PendingUser is created.
-        
-        Uses Django signals (https://docs.djangoproject.com/en/2.1/topics/signals/).
-        """
-        if created:
-            instance.person = Person.objects.create(member_type="0", slug=instance.pk)
-            instance.save()
 
     objects = UserManager()
 

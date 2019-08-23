@@ -7,8 +7,8 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1">
 
 		{% render_block "css" %}
-		{% render_block "custom-css" %}
 		{% render_block "custom-js" %}
+		{% render_block "custom-css" %}
 
 		{% block extra_head %}{% endblock %}
 	</head>
@@ -28,7 +28,6 @@
 
 		{% block content %}{% endblock content %}
 
-		{% comment %} Javascript included in separate apps {% endcomment %}
 		{% render_block "js" %}
 	</body>
 </html>
@@ -51,7 +50,7 @@
 <meta property="og:image:width" content="1652">
 <meta property="og:image:height" content="865">
 <meta property="og:title" content="Prodeko">
-<meta property="og:description" content="Tuotantotalouden kilta Prodeko ry on Aalto-yliopiston ylioppilaskunnan alaisuudessa toimiva tuotantotalouden opiskelijoiden ainej&auml;rjest&ouml;. Olemme sateenkaarenkirjava joukko iloista, innostavaa ja kunnianhimoista porukkaa ja nautimme yhdess&auml; tekemisest&auml; ja olemisesta. Muodostamme Prodeko-yhteis&ouml;n yhdess&auml; Aalto-yliopiston tuotantotalouden laitoksen sek&auml; alumnij&auml;rjest&ouml;mme, Prodeko Alumnin kanssa. Prodeko-yhteis&ouml; on sek&auml; suurenmoinen verkosto monipuolisia ja uniikkeja ihmisi&auml;, mutta my&ouml;s suuri voimavara ja inspiraation l&auml;hde monille prodekolaisille.">
+<meta property="og:description" content="Tuotantotalouden kilta Prodeko ry on Aalto-yliopiston ylioppilaskunnan alaisuudessa toimiva tuotantotalouden opiskelijoiden ainej&auml;rjest&ouml;.">
 <meta property="og:url" content="http://prodeko.org">
 <meta property="og:image" content="http://prodeko.org/static/images/misc/og-image.jpg">
 {% endaddtoblock %}

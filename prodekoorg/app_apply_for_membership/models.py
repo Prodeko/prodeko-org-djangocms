@@ -102,6 +102,7 @@ class PendingUser(models.Model):
         self.send_reject_email(self.user)
         messages.success(request, _("Membership application rejected."))
         self.user.delete()
+        self.user.person.delete()
         self.delete()
 
     def send_accept_email(self, user, password):
