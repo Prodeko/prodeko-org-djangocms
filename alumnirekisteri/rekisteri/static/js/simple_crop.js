@@ -210,7 +210,6 @@ function SimpleCrop(element, settings){
         imageLocation.x *= scaleFactor;           imageLocation.y *= scaleFactor;
         imageLocation.x += wholeCanvas.width / 2; imageLocation.y += wholeCanvas.height / 2;
         updateImage();
-        console.log(imageScale)
         updateZoomslider();
     }
 
