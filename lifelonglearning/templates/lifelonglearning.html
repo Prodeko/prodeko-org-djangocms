@@ -114,7 +114,7 @@
                                             {% if course.timing %}<p class="addition">Ajankohta: <span class="black">{{ course.timing }}</span></p>{% endif %}
                                             <hr>
                                             <div class="course-ingress">
-                                                <p>{% autoescape off %}{{ course.description | truncatechars: 400 | safe }}{% endautoescape %}</p>
+                                                <p>{% autoescape off %}{{ course.description | truncatechars:400 | safe }}{% endautoescape %}</p>
                                                 <div class="read-more">
                                                     <p class="read-more-text">Lue lisää...</p>
                                                 </div>
