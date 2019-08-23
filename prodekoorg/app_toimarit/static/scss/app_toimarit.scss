@@ -1,3 +1,5 @@
+@import '../../../static/scss/variables.scss';
+
 .toimari {
   float: left;
   width: 150px;
@@ -16,7 +18,7 @@
   }
 
   strong {
-    color: #002851;
+    color: $blue-dark;
     font-size: 1rem;
   }
 }
@@ -40,7 +42,7 @@
   }
 
   strong {
-    color: #002851;
+    color: $blue-dark;
     font-size: 1.1rem;
   }
 }
