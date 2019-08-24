@@ -35,6 +35,11 @@ def create_alumnregistry_profile(user, pendinguser):
         member_until=member_until,
         member_type=member_type,
         slug=user.pk,
+        show_name_category=False,
+        show_address_category=False,
+        show_personal_category=False,
+        show_military_category=False,
+        show_contact_category=False,
     )
     user.save()
 
