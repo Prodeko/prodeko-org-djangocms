@@ -54,8 +54,10 @@ class PendingUserAdmin(admin.ModelAdmin):
         """
         return format_html(
             '<a class="button" href="{}">' + _("View") + "</a>&nbsp;"
-            '<a class="button" href="{}">' + _("Accept") + "</a>&nbsp;"
-            '<a class="button" href="{}">' + _("Reject") + "</a>",
+            '<a class="button btn-accept-membership" href="{}">'
+            + _("Accept")
+            + "</a>&nbsp;"
+            '<a class="button btn-reject-membership" href="{}">' + _("Reject") + "</a>",
             reverse("admin:application-view", args=[obj.pk]),
             reverse("admin:application-accept", args=[obj.pk]),
             reverse("admin:application-reject", args=[obj.pk]),

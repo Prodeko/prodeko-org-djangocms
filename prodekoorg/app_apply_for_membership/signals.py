@@ -1,8 +1,10 @@
 from django.conf import settings
 from django.db.models.signals import pre_delete
 from django.dispatch import receiver
+from googleapiclient.http import HttpError
 
 from .constants import MAILING_LIST
+from .groups_api import initialize_service
 
 
 @receiver(pre_delete, sender=settings.AUTH_USER_MODEL)
