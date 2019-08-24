@@ -2,24 +2,31 @@
 
 .field-application_actions,
 .deletelink-box {
-  .btn-accept-membership {
+  a.btn-accept-membership {
     color: white !important;
     background-color: $green !important;
+    border: 1px solid $green !important;
 
-    &:hover {
+    &:hover,
+    &:active,
+    &:focus {
       color: white !important;
       background-color: darken($green, 5%) !important;
+      border: 1px solid $green !important;
     }
   }
 
-  .btn-reject-membership {
+  a.btn-reject-membership {
     color: white !important;
     background-color: $red !important;
+    border: 1px solid $red !important;
 
     &:hover,
+    &:active,
     &:focus {
       color: white !important;
       background-color: darken($red, 5%) !important;
+      border: 1px solid $red !important;
     }
   }
 }
@@ -77,9 +84,16 @@
   color: $override-admin-green !important;
 }
 
-input[type='submit'].default {
+.djangocms-admin-style .submit-row input[type='submit'].default {
   background-color: $blue-dark !important;
   border: 1px solid $blue-dark !important;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: darken($override-admin-blue, 5%) !important;
+    border: solid 1px $override-admin-blue !important;
+  }
 }
 
 input[type='submit'] {
@@ -212,4 +226,12 @@ form {
       color: lighten($override-admin-blue, 15%) !important;
     }
   }
+}
+
+#change-history tr.selected,
+.change-list table tr.selected,
+.dashboard table tr.selected,
+.results table tr.selected,
+.tabular table tr.selected {
+  background: lighten($override-admin-blue, 40%) !important;
 }
