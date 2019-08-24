@@ -90,6 +90,7 @@ class Migration(migrations.Migration):
             name='Person',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('user', models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
                 ('is_hidden', models.BooleanField(default=False)),
                 ('middle_names', models.CharField(blank=True, max_length=250, null=True)),
                 ('original_last_name', models.CharField(blank=True, max_length=250, null=True)),

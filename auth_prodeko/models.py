@@ -49,7 +49,6 @@ class User(AbstractUser):
         username: Not used, overrides Django's built in AbstractUser model's username field.
         email: The user's email address.
         has_accepted_policies: Whether the user has accepted Prodeko's privacy and cookie policies.
-        person: One to one foreign key relating user with alumnirekisteri's Person model.
 
     Information on additional attributes (such as first_name, last_name etc.) inherited from Django User model available here:
     https://docs.djangoproject.com/en/2.1/ref/contrib/auth/
@@ -63,13 +62,6 @@ class User(AbstractUser):
         help_text=_(
             "Designates whether the user has accepted Prodeko's privacy policy and cookie policy."
         ),
-    )
-    person = models.OneToOneField(
-        Person,
-        on_delete=models.CASCADE,
-        verbose_name=_("Alumn registry profile"),
-        related_name="user",
-        null=True,
     )
 
     USERNAME_FIELD = "email"
