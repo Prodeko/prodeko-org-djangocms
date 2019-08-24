@@ -1,0 +1,150 @@
+@import 'variables';
+
+.field-application_actions,
+.deletelink-box {
+  .btn-accept-membership {
+    color: white !important;
+    background-color: $green !important;
+
+    &:hover {
+      color: white !important;
+      background-color: darken($green, 5%) !important;
+    }
+  }
+
+  .btn-reject-membership {
+    color: white !important;
+    background-color: $red !important;
+
+    &:hover {
+      color: white !important;
+      background-color: darken($red, 5%) !important;
+    }
+  }
+}
+
+.breadcrumbs {
+  a {
+    color: $override-admin-blue !important;
+
+    &:hover {
+      color: darken($override-admin-blue, 5%) !important;
+    }
+  }
+}
+
+.dashboard {
+  #container {
+    #content-main {
+      table {
+        th {
+          a {
+            color: $override-admin-blue;
+          }
+        }
+        td {
+          a.addlink {
+            color: $override-admin-green;
+          }
+
+          a.changelink {
+            color: $override-admin-blue;
+          }
+        }
+      }
+    }
+  }
+}
+
+.cms-btn {
+  background-color: $blue-dark !important;
+}
+
+.addlink,
+.addlink a {
+  color: $override-admin-green !important;
+}
+
+input[type='submit'].default {
+  background-color: $blue-dark !important;
+  border: 1px solid $blue-dark !important;
+}
+
+input[type='submit'] {
+  background-color: white;
+  border: 1px solid black;
+}
+
+.cms-pagetree {
+  &.cms-pagetree-header {
+    .cms-pagetree-header-cell {
+      button.cms-pagetree-header-search-btn {
+        background: $override-admin-blue !important;
+      }
+
+      .cms-btn-action {
+        background-color: $override-admin-blue !important;
+        border: 1px solid $override-admin-blue !important;
+      }
+    }
+  }
+
+  .cms-pagetree-node-state-published {
+    border: none;
+    background: $override-admin-green;
+    background-color: $override-admin-green;
+  }
+  .cms-pagetree-node-state-dirty {
+    border: none;
+    background: $override-admin-blue;
+    background-color: $override-admin-blue;
+  }
+
+  .cms-tree-item-menu {
+    .cms-icon-check-square::before {
+      color: green;
+    }
+  }
+
+  &.cms-pagetree-legend {
+    .cms-pagetree-legend-title-wrap {
+      .cms-icon {
+        color: $override-admin-blue;
+      }
+    }
+  }
+}
+
+#page_form_lang_tabs input.current,
+#page_form_lang_tabs input.selected,
+.parler-language-tabs span.current,
+.parler-language-tabs span.selected {
+  color: $override-admin-blue !important;
+  border-bottom: solid 3px $override-admin-blue !important;
+}
+
+.change-list #changelist table tbody th a,
+.change-list #changelist table tbody th a:link,
+.change-list #changelist table {
+  color: $override-admin-blue !important;
+}
+
+#content-main .object-tools .addlink {
+  background-color: $override-admin-blue !important;
+  border: solid 3px $override-admin-blue !important;
+}
+
+.change-list #changelist #changelist-filter li.selected a {
+  color: $override-admin-blue !important;
+}
+
+.change-list #changelist-search input[type='submit'] {
+  background-color: $override-admin-blue !important;
+  border: solid 3px $override-admin-blue !important;
+}
+
+a:link,
+.selector a.selector-chooseall.active::before,
+span.datetimeshortcuts a::before {
+  color: $override-admin-blue !important;
+}

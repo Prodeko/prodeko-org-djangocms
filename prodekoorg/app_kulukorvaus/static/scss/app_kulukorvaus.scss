@@ -1,16 +1,17 @@
 @import '../../../static/scss/breakpoints_mixin.scss';
+@import '../../../static/scss/variables.scss';
 
 .kulukorvaus-container {
   .fa-plus {
-    color: rgb(31, 88, 31);
+    color: $green;
   }
 
   .fa-minus {
-    color: rgb(119, 22, 22);
+    color: $red;
   }
 
   .fa-minus-square {
-    color: rgb(141, 31, 31);
+    color: $red;
     font-size: 25px;
     vertical-align: middle;
   }
@@ -31,7 +32,7 @@
       padding: 6px 15px;
       color: white;
       font-weight: bold;
-      background-color: #277027;
+      background-color: $green;
     }
   }
 
@@ -47,7 +48,7 @@
       padding: 6px 15px;
       color: white;
       font-weight: bold;
-      background-color: #277027;
+      background-color: $green;
     }
 
     img {
