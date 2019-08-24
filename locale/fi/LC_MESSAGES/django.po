@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-15 13:21+0000\n"
+"POT-Creation-Date: 2019-08-24 15:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -66,6 +66,10 @@ msgstr "Oikeudet"
 msgid "Important dates"
 msgstr "Tärkeitä päivämääriä"
 
+#: auth_prodeko/apps.py:7
+msgid "Prodeko authentication"
+msgstr "Prodeko kirjautuminen"
+
 #: auth_prodeko/forms.py:38
 msgid "Incorrect password"
 msgstr "Väärä salasana"
@@ -74,15 +78,15 @@ msgstr "Väärä salasana"
 msgid "Passwords don't match"
 msgstr "Salasanat eivät täsmää"
 
-#: auth_prodeko/models.py:66
+#: auth_prodeko/models.py:58
 msgid "email address"
 msgstr "sähköposti"
 
-#: auth_prodeko/models.py:69
+#: auth_prodeko/models.py:61
 msgid "Accepted privacy and cookie policy"
 msgstr "Hyväksynyt tietosuojalausekkeen ja evästeiden käytön"
 
-#: auth_prodeko/models.py:71
+#: auth_prodeko/models.py:63
 msgid ""
 "Designates whether the user has accepted Prodeko's privacy policy and cookie "
 "policy."
@@ -90,15 +94,11 @@ msgstr ""
 "Määrittää, onko käyttäjä hyväksynyt Prodekon tietosuojalausekkeen ja "
 "evästeiden käytön."
 
-#: auth_prodeko/models.py:77
-msgid "Alumn registry profile"
-msgstr ""
-
-#: auth_prodeko/models.py:118
+#: auth_prodeko/models.py:74
 msgid "user"
 msgstr "käyttäjä"
 
-#: auth_prodeko/models.py:119
+#: auth_prodeko/models.py:75
 msgid "Users"
 msgstr "Käyttäjät"
 
@@ -164,7 +164,6 @@ msgid "Go back to the website"
 msgstr "Mene takaisin sivustolle"
 
 #: auth_prodeko/templates/password_reset_confirm.html:12
-#: prodekoorg/app_toimarit/templates/admin/base.html:41
 #: prodekoorg/templates/admin/inc/branding.html:23
 msgid "Change password"
 msgstr "Vaihda salasana"
@@ -250,17 +249,22 @@ msgstr "Kurssit"
 msgid "View"
 msgstr "Katsele"
 
-#: prodekoorg/app_apply_for_membership/admin.py:57
+#: prodekoorg/app_apply_for_membership/admin.py:58
 msgid "Accept"
 msgstr "Hyväksy"
 
-#: prodekoorg/app_apply_for_membership/admin.py:58
+#: prodekoorg/app_apply_for_membership/admin.py:60
 msgid "Reject"
 msgstr "Hylkää"
 
-#: prodekoorg/app_apply_for_membership/admin.py:64
+#: prodekoorg/app_apply_for_membership/admin.py:66
 msgid "Application actions"
 msgstr "Hakemustoimenpiteet"
+
+#: prodekoorg/app_apply_for_membership/apps.py:7
+#: prodekoorg/app_apply_for_membership/models.py:146
+msgid "Membership applications"
+msgstr "Jäsenhakemukset"
 
 #: prodekoorg/app_apply_for_membership/cms_apps.py:11
 msgid "Apply for Prodeko membership application"
@@ -278,15 +282,15 @@ msgstr ""
 "Mikäli opiskelet Aalto-yliopistossa hae varsinaiseksi jäseneksi. Muuten hae "
 "ulkojäseneksi"
 
-#: prodekoorg/app_apply_for_membership/groups_api.py:69
+#: prodekoorg/app_apply_for_membership/groups_api.py:67
 msgid "Successfully added {} to {} mailing list."
 msgstr "Lisätty {} onnistuneesti {} sähköpostilistalle."
 
-#: prodekoorg/app_apply_for_membership/groups_api.py:78
+#: prodekoorg/app_apply_for_membership/groups_api.py:76
 msgid "Error adding a member to {}: {} is already a member."
 msgstr "Virhe lisättäessä listalle {}: {} on jo listan jäsen."
 
-#: prodekoorg/app_apply_for_membership/groups_api.py:88
+#: prodekoorg/app_apply_for_membership/groups_api.py:86
 msgid ""
 "Invalid credentials. Check documentation and validate setup in G Suite and "
 "GCP API console."
@@ -378,13 +382,9 @@ msgstr "Jäsenhakemus hyväsytty"
 msgid "Membership application rejected."
 msgstr "Jäsenhakemus hylätty"
 
-#: prodekoorg/app_apply_for_membership/models.py:144
+#: prodekoorg/app_apply_for_membership/models.py:145
 msgid "membership application"
 msgstr "jäsenhakemus"
-
-#: prodekoorg/app_apply_for_membership/models.py:145
-msgid "Membership applications"
-msgstr "Jäsenhakemukset"
 
 #: prodekoorg/app_apply_for_membership/templates/admin/app_apply_for_membership/PendingUser/change_form.html:6
 msgid "Accept application"
@@ -442,6 +442,11 @@ msgstr "/kulukorvaus"
 #: prodekoorg/app_contact/templates/form_contact.html:68
 msgid "/cookies"
 msgstr "/keksit"
+
+#: prodekoorg/app_contact/apps.py:7 prodekoorg/app_contact/models.py:104
+#: prodekoorg/templates/layout-components/footer.html:7
+msgid "Contact form"
+msgstr "Yhteydenottolomake"
 
 #: prodekoorg/app_contact/cms_apps.py:11
 msgid "Contact form application"
@@ -534,11 +539,6 @@ msgstr ""
 msgid "contact form application"
 msgstr "yhteydenottolomake"
 
-#: prodekoorg/app_contact/models.py:104
-#: prodekoorg/templates/layout-components/footer.html:7
-msgid "Contact form"
-msgstr "Yhteydenottolomake"
-
 #: prodekoorg/app_contact/templates/app_contact_base.html:14
 msgid "Contact us"
 msgstr "Ota yhteyttä"
@@ -564,6 +564,10 @@ msgstr "️⚠️ Jotakin meni pieleen. Ota yhteyttä sähköpostitse."
 #: prodekoorg/app_contact/templates/form_contact.html:67
 msgid "/privacy"
 msgstr "/tietosuoja"
+
+#: prodekoorg/app_infoscreen/apps.py:7
+msgid "Infoscreen"
+msgstr "Infoscreeni"
 
 #: prodekoorg/app_infoscreen/models.py:28
 msgid "title"
@@ -596,6 +600,12 @@ msgstr "slide"
 #: prodekoorg/app_infoscreen/models.py:52
 msgid "Slides"
 msgstr "Slides"
+
+#: prodekoorg/app_kulukorvaus/apps.py:7
+#: prodekoorg/app_kulukorvaus/models.py:131
+#: prodekoorg/templates/layout-components/footer.html:8
+msgid "Reimbursements"
+msgstr "Kulukorvaukset"
 
 #: prodekoorg/app_kulukorvaus/cms_apps.py:12
 msgid "Reimbursement form application"
@@ -675,14 +685,7 @@ msgstr "Summa (euroissa)"
 msgid "reimbursement"
 msgstr "kulukorvaus"
 
-#: prodekoorg/app_kulukorvaus/models.py:131
-#: prodekoorg/templates/layout-components/footer.html:8
-msgid "Reimbursements"
-msgstr "Kulukorvaukset"
-
 #: prodekoorg/app_kulukorvaus/printing.py:101
-#, fuzzy
-#| msgid "Additional information"
 msgid "Additional info"
 msgstr "Lisätietoja, kulujen perusteita"
 
@@ -746,6 +749,10 @@ msgstr ""
 "kulukorvauslomaketta sinun on hyväksyttävä tietosuojalauseke "
 "profiilisivultasi."
 
+#: prodekoorg/app_poytakirjat/apps.py:7
+msgid "Board meeting documents"
+msgstr "Hallituksen pöytäkirjat"
+
 #: prodekoorg/app_poytakirjat/cms_apps.py:11
 msgid "Board meeting minutes application"
 msgstr "Sovellus - Hallituksen pöytäkirjojen lataaminen"
@@ -774,6 +781,10 @@ msgstr "Lataa pöytäkirjat Drivestä"
 msgid "How does this work"
 msgstr "Miten lataaminen toimii"
 
+#: prodekoorg/app_tiedostot/apps.py:7 prodekoorg/app_tiedostot/models.py:28
+msgid "Files"
+msgstr "Tiedostot"
+
 #: prodekoorg/app_tiedostot/cms_apps.py:12
 msgid "Files application"
 msgstr "Sovellus - Tiedostot"
@@ -781,10 +792,6 @@ msgstr "Sovellus - Tiedostot"
 #: prodekoorg/app_tiedostot/cms_apps.py:17
 msgid "^/download/(?P<pk>\\d+)/"
 msgstr "^tiedostot/download/(?P<pk>\\d+)/$"
-
-#: prodekoorg/app_tiedostot/models.py:28
-msgid "Files"
-msgstr "Tiedostot"
 
 #: prodekoorg/app_tiedostot/models.py:54
 msgid "file version"
@@ -797,6 +804,10 @@ msgstr "Tiedostoversiot"
 #: prodekoorg/app_toimarit/admin.py:49 prodekoorg/app_toimarit/admin.py:64
 msgid "Export selected as CSV"
 msgstr "Vie valitut CSV:hen"
+
+#: prodekoorg/app_toimarit/apps.py:7
+msgid "Board and guild officials"
+msgstr "Hallitus ja toimihenkilöt"
 
 #: prodekoorg/app_toimarit/cms_apps.py:11
 msgid "Guild officials application"
@@ -856,7 +867,6 @@ msgid "board members"
 msgstr "hallituksen jäsenet"
 
 #: prodekoorg/app_toimarit/templates/admin/app_toimarit/Toimari/change_list.html:31
-#: prodekoorg/app_toimarit/templates/admin/base.html:52
 msgid "Home"
 msgstr "Kotisivu"
 
@@ -877,26 +887,6 @@ msgstr "Korjaa allaolevat virheet."
 msgid "Filter"
 msgstr "Filtteri"
 
-#: prodekoorg/app_toimarit/templates/admin/base.html:27
-msgid "Welcome,"
-msgstr "Tervetuloa,"
-
-#: prodekoorg/app_toimarit/templates/admin/base.html:32
-msgid "View site"
-msgstr "Mene sivustolle"
-
-#: prodekoorg/app_toimarit/templates/admin/base.html:37
-#: prodekoorg/templates/admin/inc/branding.html:16
-msgid "Documentation"
-msgstr "Dokumentaatio"
-
-#: prodekoorg/app_toimarit/templates/admin/base.html:43
-#: prodekoorg/templates/admin/inc/branding.html:29
-#: prodekoorg/templates/layout-components/navbar-full.html:4
-#: prodekoorg/templates/layout-components/navbar-mobile.html:4
-msgid "Log out"
-msgstr "Kirjaudu ulos"
-
 #: prodekoorg/app_toimarit/views.py:38
 msgid "CSV imported successfully."
 msgstr "CSV-tiedosto ladattu onnistuneesti"
@@ -904,6 +894,10 @@ msgstr "CSV-tiedosto ladattu onnistuneesti"
 #: prodekoorg/app_toimarit/views.py:41
 msgid "Error downloading CSV: {}"
 msgstr "Virhe csv:tä ladattaessa: {}"
+
+#: prodekoorg/app_vaalit/apps.py:7
+msgid "Elections"
+msgstr "Vaalit"
 
 #: prodekoorg/app_vaalit/models.py:22
 msgid "position"
@@ -1056,6 +1050,16 @@ msgstr "Englanti"
 msgid "Django Administration"
 msgstr "Django - hallintapaneeli"
 
+#: prodekoorg/templates/admin/inc/branding.html:16
+msgid "Documentation"
+msgstr "Dokumentaatio"
+
+#: prodekoorg/templates/admin/inc/branding.html:29
+#: prodekoorg/templates/layout-components/navbar-full.html:4
+#: prodekoorg/templates/layout-components/navbar-mobile.html:4
+msgid "Log out"
+msgstr "Kirjaudu ulos"
+
 #: prodekoorg/templates/admin/inc/branding.html:37
 msgid "Open"
 msgstr "Avaa"
@@ -1109,6 +1113,26 @@ msgstr "Kirjaudu"
 #: prodekoorg/templates/layout-components/navbar-mobile.html:5
 msgid "Membership"
 msgstr "Hae jäsenyyttä"
+
+#: prodekoorg/templates/other/policy-modal.html:3
+msgid "Prodeko's data policies"
+msgstr "Prodekon"
+
+#: prodekoorg/templates/other/policy-modal.html:4
+msgid "I agree"
+msgstr "Hyväksyn"
+
+#: prodekoorg/templates/other/policy-modal.html:5
+msgid "I disagre"
+msgstr "En hyväksy"
+
+#: prodekoorg/templates/other/policy-modal.html:6
+msgid "privacy policy"
+msgstr "tietosuojalausekkeemme"
+
+#: prodekoorg/templates/other/policy-modal.html:17
+msgid "In order to use Prodeko's online services, you must agree to our"
+msgstr "Käyttääksesi Prodekon sähköisiä palveluita, sinun on hyväksyttävä"
 
 #: prodekoorg/urls.py:62
 msgid "^weekly-bulletin/"
@@ -1393,3 +1417,9 @@ msgstr "Tiedote lisätty"
 #: tiedotteet/tiedotteet_backend/views.py:422
 msgid "Admin login required"
 msgstr "Kirjautuminen ylläpitäjänä vaadittu"
+
+#~ msgid "Welcome,"
+#~ msgstr "Tervetuloa,"
+
+#~ msgid "View site"
+#~ msgstr "Mene sivustolle"
