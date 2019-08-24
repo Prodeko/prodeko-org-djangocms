@@ -141,7 +141,8 @@ input[type='submit'] {
   color: $override-admin-blue !important;
 }
 
-#content #content-main .object-tools a.addlink {
+#content #content-main .object-tools a.addlink,
+.object-tools .viewsitelink {
   background-color: $override-admin-blue !important;
   border: solid 1px $override-admin-blue !important;
 
@@ -170,4 +171,45 @@ input[type='submit'] {
 .selector a.selector-chooseall.active::before,
 span.datetimeshortcuts a::before {
   color: $override-admin-blue !important;
+}
+
+body.login.djangocms-admin-style
+  #container
+  #content
+  #content-main
+  .submit-row
+  input,
+body.login.djangocms-admin-style
+  #container
+  #content
+  #content-main
+  .submit-row
+  input[type='submit'] {
+  background-color: $override-admin-blue !important;
+  border: solid 3px $override-admin-blue !important;
+}
+
+body.login.djangocms-admin-style {
+  background: white !important;
+}
+
+form {
+  span.datetimeshortcuts a {
+    color: #454545 !important;
+
+    &:hover,
+    &:active {
+      color: #454545 !important;
+    }
+  }
+
+  a,
+  a:link {
+    color: $override-admin-blue !important;
+
+    &:hover,
+    &:active {
+      color: lighten($override-admin-blue, 15%) !important;
+    }
+  }
 }
