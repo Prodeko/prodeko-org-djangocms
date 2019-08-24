@@ -16,19 +16,21 @@
     color: white !important;
     background-color: $red !important;
 
-    &:hover {
+    &:hover,
+    &:focus {
       color: white !important;
       background-color: darken($red, 5%) !important;
     }
   }
 }
 
-.breadcrumbs {
+#container div.breadcrumbs {
   a {
     color: $override-admin-blue !important;
 
-    &:hover {
-      color: darken($override-admin-blue, 5%) !important;
+    &:hover,
+    &:active {
+      color: lighten($override-admin-blue, 15%) !important;
     }
   }
 }
@@ -40,6 +42,11 @@
         th {
           a {
             color: $override-admin-blue;
+
+            &:hover,
+            &:active {
+              color: lighten($override-admin-blue, 15%) !important;
+            }
           }
         }
         td {
@@ -49,6 +56,11 @@
 
           a.changelink {
             color: $override-admin-blue;
+
+            &:hover,
+            &:active {
+              color: lighten($override-admin-blue, 15%) !important;
+            }
           }
         }
       }
@@ -129,9 +141,21 @@ input[type='submit'] {
   color: $override-admin-blue !important;
 }
 
-#content-main .object-tools .addlink {
+#content #content-main .object-tools a.addlink {
   background-color: $override-admin-blue !important;
-  border: solid 3px $override-admin-blue !important;
+  border: solid 1px $override-admin-blue !important;
+
+  &:hover {
+    background-color: darken($override-admin-blue, 5%) !important;
+    border: solid 1px $override-admin-blue !important;
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: darken($override-admin-blue, 5%) !important;
+    border: solid 1px $override-admin-blue !important;
+  }
 }
 
 .change-list #changelist #changelist-filter li.selected a {
@@ -143,7 +167,6 @@ input[type='submit'] {
   border: solid 3px $override-admin-blue !important;
 }
 
-a:link,
 .selector a.selector-chooseall.active::before,
 span.datetimeshortcuts a::before {
   color: $override-admin-blue !important;
