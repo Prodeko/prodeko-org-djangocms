@@ -129,6 +129,3 @@ class Kulukorvaus(models.Model):
         # Correct spelling in Django admin
         verbose_name = _("reimbursement")
         verbose_name_plural = _("Reimbursements")
-
-    def get_absolute_url(self):
-        return "kulukorvaukset/{}/{}".format(self.created_at.year, self.id)
