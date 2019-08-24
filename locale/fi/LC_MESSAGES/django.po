@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-24 15:11+0000\n"
+"POT-Creation-Date: 2019-08-24 21:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -188,34 +188,20 @@ msgstr ""
 msgid "Go back to login"
 msgstr "Takaisin kirjautumiseen"
 
-#: auth_prodeko/templates/password_reset_email.html:2
-#: auth_prodeko/templates/password_reset_html_email.html:2
-#, python-format
-msgid ""
-"You're receiving this email because you requested a password reset for your "
-"user account at %(site_name)s."
-msgstr ""
+#: auth_prodeko/templates/password_reset_email.html:5
+#: auth_prodeko/templates/password_reset_html_email.html:5
+msgid "You have requested a password reset for"
+msgstr "Olet resetoimassa käyttäjän"
 
-#: auth_prodeko/templates/password_reset_email.html:4
-#: auth_prodeko/templates/password_reset_html_email.html:4
+#: auth_prodeko/templates/password_reset_email.html:5
+#: auth_prodeko/templates/password_reset_html_email.html:6
+msgid "account at prodeko.org"
+msgstr "salasanaa prodeko.org sivulle."
+
+#: auth_prodeko/templates/password_reset_email.html:7
+#: auth_prodeko/templates/password_reset_html_email.html:13
 msgid "Please go to the following page and choose a new password:"
-msgstr ""
-
-#: auth_prodeko/templates/password_reset_email.html:8
-#: auth_prodeko/templates/password_reset_html_email.html:8
-msgid "Your username, in case you've forgotten:"
-msgstr ""
-
-#: auth_prodeko/templates/password_reset_email.html:10
-#: auth_prodeko/templates/password_reset_html_email.html:10
-msgid "Thanks for using our site!"
-msgstr ""
-
-#: auth_prodeko/templates/password_reset_email.html:12
-#: auth_prodeko/templates/password_reset_html_email.html:12
-#, python-format
-msgid "The %(site_name)s team"
-msgstr ""
+msgstr "Vaihda salasana tästä linkistä:"
 
 #: auth_prodeko/templates/password_reset_form.html:10
 #: auth_prodeko/templates/prodeko_login.html:10
@@ -1417,6 +1403,9 @@ msgstr "Tiedote lisätty"
 #: tiedotteet/tiedotteet_backend/views.py:422
 msgid "Admin login required"
 msgstr "Kirjautuminen ylläpitäjänä vaadittu"
+
+#~ msgid "account at {{ site_name }}"
+#~ msgstr "käyttäjän salasanaa {{ site_name }}-sivustolle."
 
 #~ msgid "Welcome,"
 #~ msgstr "Tervetuloa,"
