@@ -32,7 +32,7 @@ python3 manage.py migrate
 # Create a superuser for development
 echo "Creating superuser..."
 python manage.py shell -c "from django.contrib.auth import get_user_model; \
-	User = get_user_model(); User.objects.filter(email='webbitiimi@prodeko.org').delete(); \
+	User = get_user_model(); User.objects.filter(email='webbitiimi@prodeko.org').exists() or \
 	User.objects.create_superuser('webbitiimi@prodeko.org', 'kananugetti', has_accepted_policies=True)"
 
 # Load sample data for development
