@@ -107,12 +107,13 @@ class PendingUser(models.Model):
 
     def send_accept_email(self, user, password):
         # Inform user about accepted application
-        subject = "Your Application to Prodeko has been accepted"
+        subject = "Your application to Prodeko has been accepted"
+        template = "accept_mail_en" if self.language == "EN" else "accept_mail_fi"
         text_content = render_to_string(
-            "accept_mail.txt", {"user": user, "password": password}
+            f"{template}.txt", {"user": user, "password": password}
         )
         html_content = render_to_string(
-            "accept_mail.html", {"user": user, "password": password}
+            f"{template}.html", {"user": user, "password": password}
         )
         email_to = user.email
         from_email = settings.DEFAULT_FROM_EMAIL
@@ -122,9 +123,10 @@ class PendingUser(models.Model):
 
     def send_reject_email(self, user):
         # Inform user about rejected application
-        subject = "Your Application to Prodeko has been rejected"
-        text_content = render_to_string("reject_mail.txt", {"user": user})
-        html_content = render_to_string("reject_mail.html", {"user": user})
+        subject = "Your application to Prodeko has been rejected"
+        template = "reject_mail_en" if self.language == "EN" else "reject_mail_fi"
+        text_content = render_to_string(f"{template}.txt", {"user": user})
+        html_content = render_to_string(f"{template}.html", {"user": user})
         email_to = user.email
         from_email = settings.DEFAULT_FROM_EMAIL
         msg = EmailMultiAlternatives(subject, text_content, from_email, [email_to])

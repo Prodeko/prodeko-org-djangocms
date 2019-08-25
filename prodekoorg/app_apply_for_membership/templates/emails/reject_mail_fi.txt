@@ -1,0 +1,3 @@
+Hei, {{ user.first_name }} {{ user.last_name }}!
+
+Hakemuksesi Prodekon jäseneksi on hylätty. Tämä voi johtua jäsenmaksukuitin puuttumisesta. Lisätietoja sähköpostitse osoitteesta mediakeisari@prodeko.org.

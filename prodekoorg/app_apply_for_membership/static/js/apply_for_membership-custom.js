@@ -88,6 +88,7 @@ $(document).ready(function() {
             dataLayer.push({ event: 'formError', formName: 'form_apply' });
             $('#form-apply-wrapper').replaceWith(xhr.responseText);
             registerEventListeners();
+            acceptPolicy();
           }
         }
       });

@@ -13,4 +13,4 @@ Tiedot:
 {% endif %}
 
 
-https://prodeko.org/fi/admin/app_apply_for_membership/pendinguser/{{ user.id }}/change/ - Hyväksy tai hylkää hakemus.
+https://www.prodeko.org/fi/admin/app_apply_for_membership/pendinguser/{{ user.id }}/change/ - Hyväksy tai hylkää hakemus.

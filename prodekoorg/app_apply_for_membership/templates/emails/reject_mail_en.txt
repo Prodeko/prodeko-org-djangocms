@@ -1,0 +1,3 @@
+Hello, {{ user.first_name }} {{ user.last_name }}!
+
+Your application to join Prodeko has been rejected. This can be due to lack of membership payment receipt. If you want to try another time or are not sure why your joining application got rejected, please send an email to mediakeisari@prodeko.org
