@@ -30,6 +30,7 @@ class PendingUser(models.Model):
         additional_info: Any additional information about the membership application.
         is_ayy_member: Boolen indicating whether the person is part of AYY student union or not.
         receipt: Receipt for the membership payment.
+        has_accepted_policies: Designates whether the user has accepted Prodeko's privacy policy.
     """
 
     TRUE_MEMBER = "TR"
@@ -65,9 +66,7 @@ class PendingUser(models.Model):
         default=datetime.datetime.now().year,
     )
     language = models.CharField(
-        max_length=50,
-        choices=LANGUAGE_CHOICES,
-        verbose_name=_("Nationality (language)"),
+        max_length=50, choices=LANGUAGE_CHOICES, verbose_name=_("Preferred language")
     )
     membership_type = models.CharField(
         max_length=2, choices=MEMBERSHIP_TYPE_CHOICES, verbose_name=_("Membership type")
@@ -86,7 +85,7 @@ class PendingUser(models.Model):
         validators=[FileExtensionValidator(["jpg", "png", "jpeg"])],
     )
     has_accepted_policies = models.BooleanField(
-        default=False, verbose_name=_("I accept Prodeko's privacy and cookie policies.")
+        default=False, verbose_name=_("I accept Prodeko's privacy policy")
     )
 
     def accept_membership(self, request, account_id, *args, **kwargs):

@@ -53,4 +53,4 @@ def accept_policies(request):
     user = request.user
     user.has_accepted_policies = True
     user.save()
-    return redirect(".")
+    return redirect("/")

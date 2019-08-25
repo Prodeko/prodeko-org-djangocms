@@ -2,7 +2,6 @@
 
 {% trans "Receipt" as receipt %}
 {% trans "Privacy policy" as privacy_policy %}
-{% trans "Cookie policy" as cookie_policy %}
 
 <div id="form-apply-wrapper">
     <div class="form-group row">
@@ -212,8 +211,7 @@
             {{ form.has_accepted_policies }}
         </div>
         <div class="col-sm-5">
-            <p class="mb-2"><a href="{% trans '/reimbursement' %}" target="_blank">{% trans privacy_policy %}</a></p>
-            <p><a href="{% trans '/cookies' %}" target="_blank">{% trans cookie_policy %}</a></p>
+            <p class="mb-2"><a href="{% trans '/privacy-policy' %}" target="_blank">{% trans privacy_policy %}</a></p>
         </div>
     </div>
 </div>

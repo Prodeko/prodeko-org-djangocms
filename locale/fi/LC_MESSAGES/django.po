@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-24 21:02+0000\n"
+"POT-Creation-Date: 2019-08-25 14:20+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -83,16 +83,12 @@ msgid "email address"
 msgstr "sähköposti"
 
 #: auth_prodeko/models.py:61
-msgid "Accepted privacy and cookie policy"
-msgstr "Hyväksynyt tietosuojalausekkeen ja evästeiden käytön"
+msgid "Accepted privacy policy"
+msgstr "Hyväksynyt tietosuojalausekkeen"
 
 #: auth_prodeko/models.py:63
-msgid ""
-"Designates whether the user has accepted Prodeko's privacy policy and cookie "
-"policy."
-msgstr ""
-"Määrittää, onko käyttäjä hyväksynyt Prodekon tietosuojalausekkeen ja "
-"evästeiden käytön."
+msgid "Designates whether the user has accepted Prodeko's privacy policy."
+msgstr "Määrittää, onko käyttäjä hyväksynyt Prodekon tietosuojalausekkeen."
 
 #: auth_prodeko/models.py:74
 msgid "user"
@@ -115,7 +111,7 @@ msgstr "Nimi"
 
 #: auth_prodeko/templates/accounts/user_profile.html:11
 #: auth_prodeko/templates/accounts/user_profile.html:17
-#: prodekoorg/app_apply_for_membership/models.py:61
+#: prodekoorg/app_apply_for_membership/models.py:62
 #: prodekoorg/app_contact/models.py:82 prodekoorg/app_kulukorvaus/models.py:48
 #: prodekoorg/app_kulukorvaus/printing.py:96
 #: prodekoorg/app_toimarit/models.py:106
@@ -248,7 +244,7 @@ msgid "Application actions"
 msgstr "Hakemustoimenpiteet"
 
 #: prodekoorg/app_apply_for_membership/apps.py:7
-#: prodekoorg/app_apply_for_membership/models.py:146
+#: prodekoorg/app_apply_for_membership/models.py:147
 msgid "Membership applications"
 msgstr "Jäsenhakemukset"
 
@@ -284,99 +280,99 @@ msgstr ""
 "Virheelliset tunnukset. Lue dokumentaatio uudestaan ja tarkista että G Suite "
 "sekä GCP API console on määritetty oikein."
 
-#: prodekoorg/app_apply_for_membership/models.py:40
+#: prodekoorg/app_apply_for_membership/models.py:41
 msgid "True member"
 msgstr "Varsinainen jäsen"
 
-#: prodekoorg/app_apply_for_membership/models.py:41
+#: prodekoorg/app_apply_for_membership/models.py:42
 msgid "Alumn"
 msgstr "Alumni"
 
-#: prodekoorg/app_apply_for_membership/models.py:42
+#: prodekoorg/app_apply_for_membership/models.py:43
 msgid "External member"
 msgstr "Ulkojäsen"
 
-#: prodekoorg/app_apply_for_membership/models.py:45
+#: prodekoorg/app_apply_for_membership/models.py:46
 msgid "Yes"
 msgstr "Kyllä"
 
-#: prodekoorg/app_apply_for_membership/models.py:45
+#: prodekoorg/app_apply_for_membership/models.py:46
 msgid "No"
 msgstr "Ei"
 
-#: prodekoorg/app_apply_for_membership/models.py:47 prodekoorg/settings.py:87
+#: prodekoorg/app_apply_for_membership/models.py:48 prodekoorg/settings.py:87
 #: prodekoorg/settings.py:97
 msgid "Finnish"
 msgstr "Suomi"
 
-#: prodekoorg/app_apply_for_membership/models.py:47
+#: prodekoorg/app_apply_for_membership/models.py:48
 msgid "Other (English)"
 msgstr "Englanti"
 
-#: prodekoorg/app_apply_for_membership/models.py:57
+#: prodekoorg/app_apply_for_membership/models.py:58
 #: prodekoorg/app_toimarit/models.py:36 prodekoorg/app_toimarit/models.py:94
 msgid "First name"
 msgstr "Etunimi"
 
-#: prodekoorg/app_apply_for_membership/models.py:58
+#: prodekoorg/app_apply_for_membership/models.py:59
 #: prodekoorg/app_toimarit/models.py:37 prodekoorg/app_toimarit/models.py:95
 msgid "Last name"
 msgstr "Sukunimi"
 
-#: prodekoorg/app_apply_for_membership/models.py:59
+#: prodekoorg/app_apply_for_membership/models.py:60
 msgid "Hometown"
 msgstr "Kotikaupunki"
 
-#: prodekoorg/app_apply_for_membership/models.py:60
+#: prodekoorg/app_apply_for_membership/models.py:61
 msgid "Field of study"
 msgstr "Opiskeluala"
 
-#: prodekoorg/app_apply_for_membership/models.py:63
+#: prodekoorg/app_apply_for_membership/models.py:64
 #: prodekoorg/app_contact/admin.py:10 prodekoorg/app_kulukorvaus/admin.py:10
 msgid "Year"
 msgstr "Vuosi"
 
-#: prodekoorg/app_apply_for_membership/models.py:70
-msgid "Nationality (language)"
-msgstr "Kansallisuus (kieli)"
+#: prodekoorg/app_apply_for_membership/models.py:69
+msgid "Preferred language"
+msgstr "Kieli"
 
-#: prodekoorg/app_apply_for_membership/models.py:73
+#: prodekoorg/app_apply_for_membership/models.py:72
 msgid "Membership type"
 msgstr "Jäsentyyppi"
 
-#: prodekoorg/app_apply_for_membership/models.py:76
+#: prodekoorg/app_apply_for_membership/models.py:75
 msgid "Why do you want to become a member?"
 msgstr "Miksi haluat jäseneksi?"
 
-#: prodekoorg/app_apply_for_membership/models.py:81
+#: prodekoorg/app_apply_for_membership/models.py:80
 msgid "Are you an AYY (Aalto University Student Union) member?"
 msgstr "Oletko AYY:n jäsen?"
 
-#: prodekoorg/app_apply_for_membership/models.py:85
+#: prodekoorg/app_apply_for_membership/models.py:84
 msgid "Receipt of the membership payment"
 msgstr "Kuitti jäsenmaksusta"
 
-#: prodekoorg/app_apply_for_membership/models.py:89
-msgid "I accept Prodeko's privacy and cookie policies."
-msgstr "Hyväksyn Prodekon tietosuojalausekkeen ja evästeiden käytön"
+#: prodekoorg/app_apply_for_membership/models.py:88
+msgid "I accept Prodeko's privacy policy"
+msgstr "Hyväksyn Prodekon tietosuojalausekkeen"
 
-#: prodekoorg/app_apply_for_membership/models.py:98
+#: prodekoorg/app_apply_for_membership/models.py:97
 msgid "Membership application accepted."
 msgstr "Jäsenhakemus hyväsytty"
 
-#: prodekoorg/app_apply_for_membership/models.py:103
+#: prodekoorg/app_apply_for_membership/models.py:102
 msgid "Membership application rejected."
 msgstr "Jäsenhakemus hylätty"
 
-#: prodekoorg/app_apply_for_membership/models.py:145
+#: prodekoorg/app_apply_for_membership/models.py:146
 msgid "membership application"
 msgstr "jäsenhakemus"
 
-#: prodekoorg/app_apply_for_membership/templates/admin/app_apply_for_membership/PendingUser/change_form.html:6
+#: prodekoorg/app_apply_for_membership/templates/admin/app_apply_for_membership/pendinguser/change_form.html:6
 msgid "Accept application"
 msgstr "Hyväksy hakemus"
 
-#: prodekoorg/app_apply_for_membership/templates/admin/app_apply_for_membership/PendingUser/change_form.html:7
+#: prodekoorg/app_apply_for_membership/templates/admin/app_apply_for_membership/pendinguser/change_form.html:7
 msgid "Reject application"
 msgstr "Hylkää hakemus"
 
@@ -415,19 +411,10 @@ msgstr "Kuitti"
 msgid "Privacy policy"
 msgstr "Tietosuoja"
 
-#: prodekoorg/app_apply_for_membership/templates/form_apply.html:5
-#: prodekoorg/app_contact/templates/form_contact.html:4
-msgid "Cookie policy"
-msgstr "Evästekäytäntö"
-
-#: prodekoorg/app_apply_for_membership/templates/form_apply.html:215
-msgid "/reimbursement"
-msgstr "/kulukorvaus"
-
-#: prodekoorg/app_apply_for_membership/templates/form_apply.html:216
-#: prodekoorg/app_contact/templates/form_contact.html:68
-msgid "/cookies"
-msgstr "/keksit"
+#: prodekoorg/app_apply_for_membership/templates/form_apply.html:214
+#: prodekoorg/app_contact/templates/form_contact.html:66
+msgid "/privacy-policy"
+msgstr "/tietosuoja"
 
 #: prodekoorg/app_contact/apps.py:7 prodekoorg/app_contact/models.py:104
 #: prodekoorg/templates/layout-components/footer.html:7
@@ -546,10 +533,6 @@ msgid ""
 "⚠️ Something went wrong. Contact mediakeisari@prodeko.org or send your "
 "message directly via email."
 msgstr "️⚠️ Jotakin meni pieleen. Ota yhteyttä sähköpostitse."
-
-#: prodekoorg/app_contact/templates/form_contact.html:67
-msgid "/privacy"
-msgstr "/tietosuoja"
 
 #: prodekoorg/app_infoscreen/apps.py:7
 msgid "Infoscreen"
@@ -759,11 +742,11 @@ msgstr "pöytäkirja"
 msgid "Minutes"
 msgstr "Pöytäkirjat"
 
-#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/Dokumentti/change_list.html:55
+#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/dokumentti/change_list.html:55
 msgid "Download minutes from Drive"
 msgstr "Lataa pöytäkirjat Drivestä"
 
-#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/Dokumentti/change_list.html:56
+#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/dokumentti/change_list.html:56
 msgid "How does this work"
 msgstr "Miten lataaminen toimii"
 
@@ -852,24 +835,24 @@ msgstr "hallituksen jäsen"
 msgid "board members"
 msgstr "hallituksen jäsenet"
 
-#: prodekoorg/app_toimarit/templates/admin/app_toimarit/Toimari/change_list.html:31
+#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:31
 msgid "Home"
 msgstr "Kotisivu"
 
-#: prodekoorg/app_toimarit/templates/admin/app_toimarit/Toimari/change_list.html:49
+#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:49
 #, python-format
 msgid "Add %(name)s"
 msgstr "Lisää %(name)s"
 
-#: prodekoorg/app_toimarit/templates/admin/app_toimarit/Toimari/change_list.html:65
+#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:65
 msgid "Please correct the error below."
 msgstr "Korjaa allaolevat virheet."
 
-#: prodekoorg/app_toimarit/templates/admin/app_toimarit/Toimari/change_list.html:65
+#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:65
 msgid "Please correct the errors below."
 msgstr "Korjaa allaolevat virheet."
 
-#: prodekoorg/app_toimarit/templates/admin/app_toimarit/Toimari/change_list.html:76
+#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:76
 msgid "Filter"
 msgstr "Filtteri"
 
@@ -1404,11 +1387,5 @@ msgstr "Tiedote lisätty"
 msgid "Admin login required"
 msgstr "Kirjautuminen ylläpitäjänä vaadittu"
 
-#~ msgid "account at {{ site_name }}"
-#~ msgstr "käyttäjän salasanaa {{ site_name }}-sivustolle."
-
-#~ msgid "Welcome,"
-#~ msgstr "Tervetuloa,"
-
-#~ msgid "View site"
-#~ msgstr "Mene sivustolle"
+#~ msgid "/reimbursement"
+#~ msgstr "/kulukorvaus"
