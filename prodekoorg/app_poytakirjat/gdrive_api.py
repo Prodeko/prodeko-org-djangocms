@@ -29,9 +29,7 @@ def initialize_service():
     SERVICE_ACCOUNT_FILE = os.path.join(
         settings.BASE_DIR, "prodekoorg/service_account.json"
     )
-
     SCOPES = ["https://www.googleapis.com/auth/drive"]
-
     credentials = service_account.Credentials.from_service_account_file(
         SERVICE_ACCOUNT_FILE, subject="mediakeisari@prodeko.org", scopes=SCOPES
     )
@@ -131,7 +129,7 @@ def filter_gdrive_folders_dict(folders_dict):
     return filtered_dict
 
 
-def create_models_from_folders(service, request, folders_dict):
+def create_models_from_folders(service, folders_dict):
     """Create Django objects from folders_dict
 
     Args:
@@ -313,7 +311,7 @@ def run_app_poytakirjat(request):
         service = initialize_service()
         # Returns a dict of folders inside the folder_id above
         folders_dict = get_gdrive_folders_dict(service, folder_id)
-        success_count = create_models_from_folders(service, request, folders_dict)
+        success_count = create_models_from_folders(service, folders_dict)
         messages.add_message(
             request,
             messages.INFO,
