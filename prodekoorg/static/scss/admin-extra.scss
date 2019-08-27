@@ -1,4 +1,5 @@
 @import 'variables';
+@import 'breakpoints_mixin';
 
 .field-application_actions,
 .deletelink-box {
@@ -234,4 +235,19 @@ form {
 .results table tr.selected,
 .tabular table tr.selected {
   background: lighten($override-admin-blue, 40%) !important;
+}
+
+body.login.djangocms-admin-style #container {
+  overflow: auto !important;
+  min-width: 280px !important;
+
+  @include phone {
+    margin-top: 70px;
+  }
+}
+
+body.login.djangocms-admin-style #container #content #content-main .submit-row {
+  @include phone {
+    margin-bottom: 10px;
+  }
 }
