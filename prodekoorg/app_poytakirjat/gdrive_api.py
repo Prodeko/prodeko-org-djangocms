@@ -167,7 +167,7 @@ def create_models_from_folders(service, folders_dict):
         doc = Dokumentti.objects.create(
             gdrive_id=parent_id, name=name, number=number, date=date
         )
-        doc.doc_file.save("{}.pdf".format(name), final_pdf)
+        doc.doc_file.save(f"{name}.pdf", final_pdf)
         success_count += 1
     return success_count
 
@@ -188,9 +188,7 @@ def download_files_as_pdf(service, parent_id):
         service.files()
         .list(
             corpora="teamDrive",
-            q="mimeType='application/vnd.google-apps.document' and name contains 'Pöytäkirja' and parents in '{}'".format(
-                parent_id
-            ),
+            q=f"mimeType='application/vnd.google-apps.document' and name contains 'Pöytäkirja' and parents in '{parent_id}'",
             supportsTeamDrives=True,
             includeTeamDriveItems=True,
             pageSize=1,  # Only return one file at max
@@ -205,9 +203,7 @@ def download_files_as_pdf(service, parent_id):
         service.files()
         .list(
             corpora="teamDrive",
-            q="mimeType='application/pdf' and name contains 'LIITE' and parents in '{}'".format(
-                parent_id
-            ),
+            q=f"mimeType='application/pdf' and name contains 'LIITE' and parents in '{parent_id}'",
             supportsTeamDrives=True,
             includeTeamDriveItems=True,
             teamDriveId=TEAM_DRIVE_ID,
@@ -315,14 +311,10 @@ def run_app_poytakirjat(request):
         messages.add_message(
             request,
             messages.INFO,
-            _(
-                "Downloaded {} proceedings documents from G Drive.".format(
-                    success_count
-                )
-            ),
+            _(f"Downloaded {success_count} proceedings documents from G Drive."),
         )
     except Exception as e:
         messages.add_message(
-            request, messages.ERROR, _("Error downloading documents: {}".format(e))
+            request, messages.ERROR, _(f"Error downloading documents: {e}")
         )
     return redirect("/admin/app_poytakirjat/dokumentti/")
