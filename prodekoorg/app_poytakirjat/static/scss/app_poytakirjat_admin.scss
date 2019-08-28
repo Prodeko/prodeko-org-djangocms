@@ -1,9 +1,15 @@
 @import '../../../static/scss/variables.scss';
+@import '../../../static/scss/breakpoints_mixin.scss';
 
 #folderIdForm {
   margin: 0 !important;
   padding: 0 !important;
   background-color: transparent !important;
+  max-width: 260px !important;
+
+  .input-folderid {
+    min-width: 260px;
+  }
 }
 
 #download-button {
@@ -37,8 +43,15 @@
   text-align: left;
 }
 
-.object-tools > li {
-  float: left !important;
+.object-tools {
+  & > li {
+    float: left !important;
+  }
+
+  @include phone {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 @keyframes spin {

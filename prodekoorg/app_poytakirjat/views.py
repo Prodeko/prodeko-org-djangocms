@@ -19,6 +19,11 @@ def docs(request):
         If the user isn't logged in, they are redirected to the login url.
     """
 
+    # If the user hasn't accepted Prodeko's privacy policy
+    # return a 'policy error' page.
+    if not request.user.has_accepted_policies:
+        return render(request, "documents.html", {"policy_error": True})
+
     docs = Dokumentti.objects.all().order_by("date")
     iterable = [(str(doc.date.year), doc) for doc in docs]
     context = defaultdict(list)

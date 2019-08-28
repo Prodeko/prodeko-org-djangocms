@@ -9,26 +9,30 @@
 
     {% include "layout-components/jumbotron.html" %}
 
-    <div class="container">
-        {% show_breadcrumb 0 "layout-components/breadcrumb.html" %}
-        {% placeholder "content" %}
-        <div id="documents-container">
-            {% for year, doclist in context.items %}
-                <a class="btn btn-primary w-100 text-left mb-2" data-toggle="collapse" href="#collapse{{ year }}">
-                    {{ year }}
-                    <i class="fa fa-fw fa-chevron-down pt-1"></i>
-                </a>
-                <div class="collapse {% if forloop.first %}show{% endif %}" id="collapse{{ year }}">
-                    <div class="card card-body mb-3">
-                        {% for doc in doclist reversed %}
-                            <div class="mb-2">
-                                <p class="d-inline mr-2">Hallituksen kokous {{ doc.number }}/{{ year }}</p>
-                                <a class="d-inline" href="{{ doc.doc_file.url }}">(pdf)</a>
-                            </div>
-                        {% endfor %}
+    <div class="container mt-4">
+        {% if policy_error %}
+            {% include "other/policy-error.html"%}
+        {% else %}
+            {% show_breadcrumb 0 "layout-components/breadcrumb.html" %}
+            {% placeholder "content" %}
+            <div id="documents-container">
+                {% for year, doclist in context.items %}
+                    <a class="btn btn-primary w-100 text-left mb-2" data-toggle="collapse" href="#collapse{{ year }}">
+                        {{ year }}
+                        <i class="fa fa-fw fa-chevron-down pt-1"></i>
+                    </a>
+                    <div class="collapse {% if forloop.first %}show{% endif %}" id="collapse{{ year }}">
+                        <div class="card card-body mb-3">
+                            {% for doc in doclist reversed %}
+                                <div class="mb-2">
+                                    <p class="d-inline mr-2">Hallituksen kokous {{ doc.number }}/{{ year }}</p>
+                                    <a class="d-inline" href="{{ doc.doc_file.url }}">(pdf)</a>
+                                </div>
+                            {% endfor %}
+                        </div>
                     </div>
-                </div>
-            {% endfor %}
-        </div>
+                {% endfor %}
+            </div>
+        {% endif %}
     </div>
 {% endblock content %}
