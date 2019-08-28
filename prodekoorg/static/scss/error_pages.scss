@@ -1,3 +1,6 @@
+@import 'variables.scss';
+@import 'breakpoints_mixin';
+
 .container-error {
   h1 {
     padding: 100px;
