@@ -1,12 +1,12 @@
 from django.urls import re_path
 from django.contrib.auth import views as auth_views
 from django.urls import reverse_lazy
-from .views import profile
+from .views import profile, accept_policies
 
 app_name = "auth_prodeko"
 urlpatterns = [
     re_path(r"^profile/$", profile, name="profile"),
-    re_path(r"^accept_policies/$", profile, name="accept_policies"),
+    re_path(r"^accept_policies/$", accept_policies, name="accept_policies"),
     re_path(
         r"^login/$",
         auth_views.LoginView.as_view(template_name="prodeko_login.html"),

@@ -1,0 +1,11 @@
+{% load static i18n %}
+
+<div id="policy-error">
+    <img src="{% static 'images/logos/prodeko-logo-text-blue.png' %}" />
+    <p>
+        {% blocktrans trimmed %}
+            📝 You have not accepted Prodeko's privacy policy. Please 
+            accept our privacy policy in order to use the site while logged in.
+        {% endblocktrans %}
+    </p>
+</div>

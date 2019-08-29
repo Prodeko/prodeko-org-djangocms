@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-25 14:20+0000\n"
+"POT-Creation-Date: 2019-08-28 20:32+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -301,7 +301,8 @@ msgid "No"
 msgstr "Ei"
 
 #: prodekoorg/app_apply_for_membership/models.py:48 prodekoorg/settings.py:87
-#: prodekoorg/settings.py:97
+#: prodekoorg/settings.py:97 prodekoorg/settings/base.py:84
+#: prodekoorg/settings/base.py:94
 msgid "Finnish"
 msgstr "Suomi"
 
@@ -709,30 +710,23 @@ msgstr ""
 msgid "Add reimbursement"
 msgstr "Lisää kulu"
 
-#: prodekoorg/app_kulukorvaus/templates/kulukorvaus_policy.html:6
-msgid ""
-"📝 You have not accepted Prodeko's privacy policy. Please go to your profile "
-"and accept the policy in order to use the reimbursement form."
-msgstr ""
-"📝 Et ole hyväksynyt Prodekon tietosuojalauseketta. Käyttääksesi "
-"kulukorvauslomaketta sinun on hyväksyttävä tietosuojalauseke "
-"profiilisivultasi."
-
 #: prodekoorg/app_poytakirjat/apps.py:7
 msgid "Board meeting documents"
 msgstr "Hallituksen pöytäkirjat"
 
 #: prodekoorg/app_poytakirjat/cms_apps.py:11
 msgid "Board meeting minutes application"
-msgstr "Sovellus - Hallituksen pöytäkirjojen lataaminen"
+msgstr "Sovellus - Hallituksen pöytäkirjat"
 
-#: prodekoorg/app_poytakirjat/gdrive_api.py:321
-msgid "Downloaded {} proceedings documents from G Drive."
-msgstr "Ladattu {} pöytäkirjaa G Drivestä."
+#: prodekoorg/app_poytakirjat/gdrive_api.py:314
+#, python-brace-format
+msgid "Downloaded {success_count} proceedings documents from G Drive."
+msgstr "Ladattu {success_count} pöytäkirjaa G Drivestä."
 
-#: prodekoorg/app_poytakirjat/gdrive_api.py:328
-msgid "Error downloading documents: {}"
-msgstr "Virhe pöytäkirjoja ladattaessa: {}"
+#: prodekoorg/app_poytakirjat/gdrive_api.py:318
+#, python-brace-format
+msgid "Error downloading documents: {e}"
+msgstr "Virhe pöytäkirjoja ladattaessa: {e}"
 
 #: prodekoorg/app_poytakirjat/models.py:57
 msgid "minutes"
@@ -1012,6 +1006,7 @@ msgid "Edit"
 msgstr "Muokkaa"
 
 #: prodekoorg/settings.py:87 prodekoorg/settings.py:104
+#: prodekoorg/settings/base.py:84 prodekoorg/settings/base.py:101
 msgid "English"
 msgstr "Englanti"
 
@@ -1083,6 +1078,14 @@ msgstr "Kirjaudu"
 msgid "Membership"
 msgstr "Hae jäsenyyttä"
 
+#: prodekoorg/templates/other/policy-error.html:6
+msgid ""
+"📝 You have not accepted Prodeko's privacy policy. Please accept our privacy "
+"policy in order to use the site while logged in."
+msgstr ""
+"📝 Et ole hyväksynyt Prodekon tietosuojalauseketta. Käyttääksesi "
+"sivustoa sinun on hyväksyttävä tietosuojalauseke."
+
 #: prodekoorg/templates/other/policy-modal.html:3
 msgid "Prodeko's data policies"
 msgstr "Prodekon"
@@ -1092,7 +1095,7 @@ msgid "I agree"
 msgstr "Hyväksyn"
 
 #: prodekoorg/templates/other/policy-modal.html:5
-msgid "I disagre"
+msgid "I disagree"
 msgstr "En hyväksy"
 
 #: prodekoorg/templates/other/policy-modal.html:6
@@ -1102,6 +1105,14 @@ msgstr "tietosuojalausekkeemme"
 #: prodekoorg/templates/other/policy-modal.html:17
 msgid "In order to use Prodeko's online services, you must agree to our"
 msgstr "Käyttääksesi Prodekon sähköisiä palveluita, sinun on hyväksyttävä"
+
+#: prodekoorg/templates/other/policy-modal.html:23
+msgid ""
+"If you do not agree you will be logged out. Logging back in displays this "
+"dialog again."
+msgstr ""
+"Mikäli et hyväksy tietosuojalauseketta, sinut kirjataan ulos. Kirjautumalla "
+"sisään näet tämän saman valintaikkunan."
 
 #: prodekoorg/urls.py:62
 msgid "^weekly-bulletin/"
@@ -1386,6 +1397,3 @@ msgstr "Tiedote lisätty"
 #: tiedotteet/tiedotteet_backend/views.py:422
 msgid "Admin login required"
 msgstr "Kirjautuminen ylläpitäjänä vaadittu"
-
-#~ msgid "/reimbursement"
-#~ msgstr "/kulukorvaus"
