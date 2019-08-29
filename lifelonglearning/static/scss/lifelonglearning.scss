@@ -145,7 +145,7 @@ hr {
   z-index: 999;
   width: 100%;
   margin-top: 0;
-  padding: 15px 0;
+  padding-bottom: 15px 0;
   color: white;
   font-weight: 800;
   text-align: center;
@@ -161,6 +161,11 @@ hr {
   border: none;
   border-radius: 0;
   transition: background-position 0.5s ease;
+
+  .container-fluid {
+    padding-left: 0rem;
+    padding-right: 0rem;
+  }
 }
 
 .nav,
@@ -170,11 +175,13 @@ hr {
   display: block !important;
   float: none;
   text-align: center;
+  background: $blue-normal;
 }
 
-#myNavbar {
-  opacity: 0;
+#lll-navbar {
+  opacity: 0.8;
   transition: all 0.5s ease;
+  background: $blue-normal;
 }
 
 #logo {
