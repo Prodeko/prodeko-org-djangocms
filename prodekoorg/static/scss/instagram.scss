@@ -4,32 +4,36 @@
   display: block;
   width: 100%;
 
+  grid-template-columns: 0fr 0fr;
+  display: grid;
+
   img {
     display: block;
     width: 100%;
     margin-top: 0.6rem;
-    margin-right: auto;
+    margin-right: 1rem;
     margin-bottom: 0.6rem;
     margin-left: auto;
     object-fit: cover;
+    width: 15rem;
+    height: 15rem;
   }
+}
 
-  @include phone {
-    #instagram {
-      display: grid;
-      grid-auto-rows: auto;
-      grid-row-gap: 1.2rem;
-      grid-column-gap: 1.2rem;
-      grid-template-columns: 1fr 1fr;
-      width: 30%;
-    }
+@include phone {
+  #instagram {
+    display: grid;
+    grid-auto-rows: auto;
+    grid-row-gap: 1.2rem;
+    grid-column-gap: 1.2rem;
+    grid-template-columns: 0fr;
+    width: 30%;
 
     img {
-      width: 12rem;
-      height: 12rem;
+      width: 75vw;
+      height: auto;
       margin: none;
-      margin-top: 0;
-      margin-top: none;
+      margin-top: 0rem;
     }
   }
 }
