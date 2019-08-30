@@ -2,6 +2,8 @@ import json
 import os
 from io import BytesIO
 
+from sys import stderr
+
 from django.conf import settings
 from django.contrib import messages, auth
 from django.contrib.auth.decorators import login_required
@@ -22,12 +24,16 @@ from django.http import (
 from django.shortcuts import get_object_or_404, redirect, render
 from django.template.loader import render_to_string
 from django.urls import reverse_lazy
-from django.views.generic.edit import DeleteView, UpdateView
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from PIL import Image
 
 from .forms import EhdokasForm, KysymysForm, VastausForm
 from .models import Ehdokas, Kysymys, Vastaus, Virka
 
+class EhdokasCreateView(SuccessMessageMixin, CreateView):
+    model = Ehdokas
+    success_url = reverse_lazy("app_vaalit:vaalit")
+    success_message = "Hakemuksesi virkaan on lähetetty."
 
 class EhdokasDeleteView(SuccessMessageMixin, DeleteView):
     """ Handles 'Ehdokas' model application deleting.
@@ -52,7 +58,6 @@ class EhdokasDeleteView(SuccessMessageMixin, DeleteView):
         obj = self.get_object()
         messages.success(self.request, self.success_message % obj.__dict__)
         return super(EhdokasDeleteView, self).delete(request, *args, **kwargs)
-
 
 class EhdokasUpdateView(UpdateView):
     """ Handles 'Ehdokas' model application updates.
@@ -92,8 +97,7 @@ def delete_kysymys_view(request, pk):
         kysymys.delete()
         return JsonResponse({"delete_kysymys_id": id})
     else:
-        raise Http404
-
+        return JsonResponse({"delete_kysymys_id": 1})
 
 def update_kysymys_view(request, pk):
     """Handle question deletions."""
@@ -102,7 +106,7 @@ def update_kysymys_view(request, pk):
         raise PermissionDenied
     if request.method == "POST":
         kysymys.delete()
-        return redirect("/vaalit")
+        return redirect('app_vaalit:vaalit')
     else:
         raise Http404
 
@@ -119,7 +123,7 @@ def crop_pic(uploaded_img, x, y, w, h):
     cropped_img = img.crop(area)
     img_io = BytesIO()
     # Have to use because people might upload them anyways...
-    # We get an error if forma='JPEG' because png's have alpha channel
+    # We get an error if format='JPEG' because png's have alpha channel
     cropped_img.save(fp=img_io, format="PNG")
     buff_val = img_io.getvalue()
     contentFile = ContentFile(buff_val)
@@ -184,7 +188,7 @@ def handle_submit_ehdokas(request, context):
 
         # Check for duplicate application to one Virka by the same Ehdokas
         if is_duplicate_application(request, hidden_virka):
-            return redirect("/vaalit")
+            return redirect('app_vaalit:vaalit')
 
         # Crop the image using the hidden input x, y, w and h coordinates
         cropped_pic = crop_pic(request.FILES.get("pic"), x, y, w, h)
@@ -236,10 +240,7 @@ def handle_submit_kysymys(request, context):
     # Form validation
     if form_kysymys.is_valid():
         kysymys = form_kysymys.save(commit=False)
-        if request.user.is_anonymous():
-            kysymys_created_by = None
-        else:
-            kysymys.created_by = request.user
+        kysymys.created_by = request.user
 
         virka = get_object_or_404(Virka, name=hidden_virka)
         kysymys.to_virka = virka
@@ -269,7 +270,7 @@ def handle_submit_answer(request, context):
 
         # return HttpResponse(html)
 
-        return redirect("/vaalit")
+        return redirect('app_vaalit:vaalit')
     else:
         print("went here")
         # Return form with error and render vaalit main page

@@ -84,7 +84,7 @@ $(document).ready(function() {
     var ehdokasId = $(e.target).attr("ehdokas-id");
     $("#formDeleteEhdokas").attr(
       "action",
-      "/vaalit/delete-nominee/" + ehdokasId + "/"
+      "../elections/delete-nominee/" + ehdokasId + "/"
     );
     $("#confirmDeleteEhdokasModal").modal("toggle");
   });
@@ -100,7 +100,7 @@ $(document).ready(function() {
     e.preventDefault();
     var formData = $(this).serialize();
     $.ajax({
-      url: "vaalit/",
+      url: "",
       type: "POST",
       // Add 'submitKysymys' to the POST data
       // to have correct handling in the views.py main view
@@ -135,8 +135,10 @@ $(document).ready(function() {
     var kysymysId = $(this)
       .siblings("input[name=hidden-kysymys-id]")
       .val();
+
+      console.log(formData)
     $.ajax({
-      url: "/vaalit/delete-question/" + kysymysId + "/",
+      url: "../elections/delete-question/" + kysymysId + "/",
       type: "POST",
       // Add 'submitKysymys' to the POST data
       // to have correct handling in the views.py main view
@@ -147,12 +149,14 @@ $(document).ready(function() {
   }
 
   function deleteKysymysSuccess(data, textStatus, jqXHR) {
+    console.log("succ")
     $("#kysymys_" + data.delete_kysymys_id).fadeOut(300, function() {
       $(this).remove();
     });
   }
 
   function deleteKysymysError(jqXHR, textStatus, errorThrown) {
+    console.log("err")
     console.log(jqXHR);
     console.log(textStatus);
     console.log(errorThrown);

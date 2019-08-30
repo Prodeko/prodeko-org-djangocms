@@ -9,6 +9,7 @@
   #confirmDeleteEhdokasModal .btn,
   .vaalitQuestions .btn {
     width: 85px;
+    margin-left: 1rem;
   }
 
   .btn {
@@ -36,6 +37,15 @@
 
     .fa-chevron-down {
       transition: all 0.3s ease-in-out;
+    }
+  }
+
+  .vaalitKysymysList {
+    .questionHeader {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
     }
   }
 
@@ -139,6 +149,7 @@
   transform: rotate(-90deg);
   transition: all 0.4s ease-in-out;
 }
+
 
 .list-group-root .list-group-item.active {
   background-color: #0053a0 !important;

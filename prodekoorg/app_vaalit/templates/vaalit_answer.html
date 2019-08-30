@@ -3,10 +3,10 @@
 {% trans "since" as since %}
 
 <li class="vaalit-vastaus px-0 list-group-item list-group-item-action d-flex">
-  <div class="img-container">
-    <img class="mr-3" src="{{ vastaus.by_ehdokas.pic.url }}" alt="{{ vastaus.by_ehdokas.name }}" />
-  </div>
   <div class="d-flex flex-column align-items-start mx-4 col-3 col-sm-1">
+      <div class="img-container">
+          <img class="mr-3" src="{{ vastaus.by_ehdokas.pic.url }}" alt="{{ vastaus.by_ehdokas.name }}" />
+        </div>
     <p class="mb-0"><em>{{ vastaus.by_ehdokas.name }}</em></p>
     <small>{{ vastaus.created_at|timesince }} {% trans since %}</small>
   </div>

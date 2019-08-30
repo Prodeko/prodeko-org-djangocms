@@ -6,9 +6,13 @@
 
 {% load sekizai_tags %}
 <li id="kysymys_{{ kysymys.pk }}" class="list-group-item align-items-start mb-2">
+  <a href="#vastaukset_{{ kysymys.pk }}" class="list-group-item list-group-item-action" data-toggle="collapse" aria-expanded="true">
   <div class="row">
     <div class="col-md-12 pl-0">
+      <div class="questionHeader">
       <p class="my-2"><strong>{{ kysymys.question }}</strong></p>
+      <i class="fa fa-fw fa-chevron-down"></i>
+      </div>
       <div class="row">
         {% for ehdokas in virka.ehdokkaat.all %}
           {% if request.user == ehdokas.auth_prodeko_user %}
@@ -24,7 +28,6 @@
            <input type="hidden" name="hidden-kysymys-id" value="{{ kysymys.pk }}"/>
            <button type="submit" class="btn btn-outline-danger btn-xs mt-2 mr-2"><i class="fas fa-times mr-2"></i>{% trans remove %}</button>
         </form>
-        <a href="{% url 'app_vaalit:update_kysymys' pk=kysymys.id %}" class="btn btn-outline-success btn-xs my-2"><i class="far fa-edit mr-2"></i>{% trans edit %}</a>
         {% endif %}
       </div>
     </div>
@@ -36,5 +39,6 @@
       <small>{{ kysymys.created_at|timesince }} sitten</small>
     </div>
   </div>
+  </a>
 </li>
 {% include "forms/vaalit_answer_form.html" %}
