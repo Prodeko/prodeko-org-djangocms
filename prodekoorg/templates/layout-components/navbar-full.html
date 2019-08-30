@@ -1,5 +1,6 @@
 {% load i18n menu_tags static %}
 
+{% trans "Profile" as profile %}
 {% trans "Login" as login %}
 {% trans "Log out" as logout %}
 {% trans "Membership" as apply %}
@@ -41,6 +42,9 @@
         {% else %}
             <a href="{% url 'auth_prodeko:logout' %}" class="auth-btn btn btn-block btn-primary mx-4" role="button">
                 {% trans logout %}
+            </a>
+            <a href="{% url 'auth_prodeko:profile' %}">
+                <img class="profile-icon" src="{% static 'images/icons/user.png' %}" />
             </a>
         {% endif %}
     </div>
