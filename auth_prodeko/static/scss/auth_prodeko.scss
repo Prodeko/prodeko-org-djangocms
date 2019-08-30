@@ -81,6 +81,8 @@
       display: inline-block;
       margin: 2px;
       padding: 3px;
+      width: 20rem;
+      height: 3rem;
 
       input {
         display: block;
@@ -90,12 +92,16 @@
         border: none;
         border-bottom: 1.5px solid gray;
         outline: none;
+        padding: 0.25rem;
+        width: 100%;
+        height: 100%;
       }
 
       label {
         display: block;
         color: $blue-normal;
         font-size: 12px;
+        margin-top: 1.5rem;
       }
     }
 
@@ -113,7 +119,7 @@
   }
 
   input[type='submit'] {
-    margin: 15px 2px;
+    margin: 3rem 0rem;
     padding: 10px 30px;
     color: white;
     background-color: $blue-normal;
