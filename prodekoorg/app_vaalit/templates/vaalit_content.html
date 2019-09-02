@@ -6,6 +6,8 @@
 {% trans "Questions" as questions %}
 {% trans "No questions" as no_questions %}
 
+{% trans "No Responses" as no_responses %}
+
 <h2 class="py-3" id="header">{{ virat.0.name }}</h2>
 <div id="vaaliKysymysForm">
   {% include "forms/vaalit_question_form.html" %}
@@ -36,10 +38,13 @@
           {% include "vaalit_question.html" %}
 
           {# VASTAUKSET #}
-          <div class="list-group">
+          <div class="list-group collapse" id="vastaukset_{{ kysymys.pk }}">
             {% for vastaus in kysymys.vastaukset.all %}
               {% include "vaalit_answer.html" %}
             {% endfor %}
+            {% if not kysymys.vastaukset.all %}
+            <p class="ml-5">{% trans no_responses %}</p> <!-- TODO: Better styling-->
+            {% endif %}
           </div>
 
         {% empty %}

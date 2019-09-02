@@ -3,8 +3,10 @@ from django.contrib.auth.decorators import login_required
 from django.utils.translation import ugettext_lazy as _
 
 from .views import (
+    EhdokasCreateView,
     EhdokasDeleteView,
     EhdokasUpdateView,
+    handle_submit_ehdokas,
     delete_kysymys_view,
     main_view,
     update_kysymys_view,
@@ -12,24 +14,24 @@ from .views import (
 
 app_name = "app_vaalit"
 urlpatterns = [
-    re_path(r"^elections/", main_view, name="vaalit"),
+    re_path(r"^$", main_view, name="vaalit"),
     re_path(
-        r"^elections/delete-question/(?P<pk>\d+)/",
-        login_required(delete_kysymys_view),
+        r"delete-question/(?P<pk>\d+)/",
+        delete_kysymys_view,
         name="delete_kysymys",
     ),
     re_path(
-        r"^elections/update-question/(?P<pk>\d+)/",
+        r"^update-question/(?P<pk>\d+)/",
         login_required(update_kysymys_view),
         name="update_kysymys",
     ),
     re_path(
-        r"^elections/delete-nominee/(?P<pk>\d+)/",
+        r"^delete-nominee/(?P<pk>\d+)/",
         login_required(EhdokasDeleteView.as_view()),
         name="delete_ehdokas",
     ),
     re_path(
-        r"^elections/update-nominee/(?P<pk>\d+)/",
+        r"^update-nominee/(?P<pk>\d+)/",
         login_required(EhdokasUpdateView.as_view()),
         name="update_ehdokas",
     ),

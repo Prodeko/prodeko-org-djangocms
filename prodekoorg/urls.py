@@ -62,10 +62,12 @@ urlpatterns += i18n_patterns(
     re_path(_(r"^weekly-bulletin/"), include("tiedotteet.tiedotteet_backend.urls")),
     # matrikkeli.prodeko.org
     re_path(_(r"^matrikkeli/"), include("alumnirekisteri.alumnirekisteri.urls")),
+    re_path(_(r"^elections/"), include("prodekoorg.app_vaalit.urls")),
     # Misc
     re_path(r"^admin/", admin.site.urls),
     re_path(r"^ckeditor/", include("ckeditor_uploader.urls")),
     re_path(r"", include("cms.urls")),
+
 )
 
 # This is only needed when using runserver.
