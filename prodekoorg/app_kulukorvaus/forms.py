@@ -65,6 +65,9 @@ class KulukorvausForm(ModelForm):
     class Meta:
         model = Kulukorvaus
         fields = "__all__"  # Use all model fields in form creation.
+        exclude = [
+            "status"
+        ] 
         localized_fields = (
             "sum_euros",
         )  # Use ',' as a decimal separator for Finnish and '.' in English

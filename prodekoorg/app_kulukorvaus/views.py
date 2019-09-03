@@ -136,6 +136,7 @@ def main_form(request):
             for form in formset:
                 model = form.save(commit=False)
                 model.info = model_perustiedot
+                #model.status = "NEW"
                 model.save()
 
             # Helper function to generate a pdf representing
@@ -200,11 +201,11 @@ def main_form(request):
 
 
 def send_email(user, perustiedot_id, template, email_to):
-    """Informs the user or rahastonhoitaja, by email, of successfull kulukorvaus submission.
+    """Informs the user or rahastonhoitaja, by email, of successful kulukorvaus submission.
 
     Args:
         user: Django user
-        perustiedot_id: id of KulukorvauPerustiedot model
+        perustiedot_id: id of KulukorvausPerustiedot model
 
     Returns:
       Nothing, sends an email to the right user.

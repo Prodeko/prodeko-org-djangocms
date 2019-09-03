@@ -121,6 +121,13 @@ class Kulukorvaus(models.Model):
         verbose_name=_("Receipt"),
         validators=[FileExtensionValidator(["png", "jpg", "jpeg"])],
     )
+    
+    STATUS_CHOICES  = (("NEW", _("New")), ("IP", _("In process")), ("PR", _("Processed")))
+
+    status = models.CharField(
+        max_length=50, choices=STATUS_CHOICES, verbose_name=_("Status"), default="NEW"
+    )
+
 
     def __str__(self):
         return f"{self.explanation} ({self.sum_euros}€)"
