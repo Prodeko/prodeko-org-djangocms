@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  $(".profile-icon").popover({ trigger: "hover", placement: "left" });
+  $('.profile-icon').popover({ trigger: 'hover', placement: 'left' });
 
   var hamburger = $('.hamburger');
 
