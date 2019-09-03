@@ -136,7 +136,6 @@ def main_form(request):
             for form in formset:
                 model = form.save(commit=False)
                 model.info = model_perustiedot
-                #model.status = "NEW"
                 model.save()
 
             # Helper function to generate a pdf representing
