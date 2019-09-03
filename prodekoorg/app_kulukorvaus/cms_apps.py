@@ -14,7 +14,7 @@ class KulukorvausApphook(CMSApp):
     def get_urls(self, page=None, language=None, **kwargs):
         return [
             re_path(
-                r"^/download(?P<perustiedot_id>[0-9]+)",
+                r"^download/(?P<perustiedot_id>[0-9]+)/",
                 download_kulukorvaus_pdf,
                 name="download_kulukorvaus",
             ),
