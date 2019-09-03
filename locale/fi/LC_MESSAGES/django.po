@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-03 13:06+0000\n"
+"POT-Creation-Date: 2019-09-03 13:31+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -304,7 +304,8 @@ msgid "No"
 msgstr "Ei"
 
 #: prodekoorg/app_apply_for_membership/models.py:48 prodekoorg/settings.py:87
-#: prodekoorg/settings.py:97
+#: prodekoorg/settings.py:97 prodekoorg/settings/base.py:84
+#: prodekoorg/settings/base.py:94
 msgid "Finnish"
 msgstr "Suomi"
 
@@ -371,11 +372,11 @@ msgstr "Jäsenhakemus hylätty"
 msgid "membership application"
 msgstr "jäsenhakemus"
 
-#: prodekoorg/app_apply_for_membership/templates/admin/app_apply_for_membership/PendingUser/change_form.html:6
+#: prodekoorg/app_apply_for_membership/templates/admin/app_apply_for_membership/pendinguser/change_form.html:6
 msgid "Accept application"
 msgstr "Hyväksy hakemus"
 
-#: prodekoorg/app_apply_for_membership/templates/admin/app_apply_for_membership/PendingUser/change_form.html:7
+#: prodekoorg/app_apply_for_membership/templates/admin/app_apply_for_membership/pendinguser/change_form.html:7
 msgid "Reject application"
 msgstr "Hylkää hakemus"
 
@@ -763,11 +764,11 @@ msgstr "pöytäkirja"
 msgid "Minutes"
 msgstr "Pöytäkirjat"
 
-#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/Dokumentti/change_list.html:55
+#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/dokumentti/change_list.html:54
 msgid "Download minutes from Drive"
 msgstr "Lataa pöytäkirjat Drivestä"
 
-#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/Dokumentti/change_list.html:56
+#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/dokumentti/change_list.html:55
 msgid "How does this work"
 msgstr "Miten lataaminen toimii"
 
@@ -856,24 +857,24 @@ msgstr "hallituksen jäsen"
 msgid "board members"
 msgstr "hallituksen jäsenet"
 
-#: prodekoorg/app_toimarit/templates/admin/app_toimarit/Toimari/change_list.html:31
+#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:31
 msgid "Home"
 msgstr "Kotisivu"
 
-#: prodekoorg/app_toimarit/templates/admin/app_toimarit/Toimari/change_list.html:49
+#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:49
 #, python-format
 msgid "Add %(name)s"
 msgstr "Lisää %(name)s"
 
-#: prodekoorg/app_toimarit/templates/admin/app_toimarit/Toimari/change_list.html:65
+#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:65
 msgid "Please correct the error below."
 msgstr "Korjaa allaolevat virheet."
 
-#: prodekoorg/app_toimarit/templates/admin/app_toimarit/Toimari/change_list.html:65
+#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:65
 msgid "Please correct the errors below."
 msgstr "Korjaa allaolevat virheet."
 
-#: prodekoorg/app_toimarit/templates/admin/app_toimarit/Toimari/change_list.html:76
+#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:76
 msgid "Filter"
 msgstr "Filtteri"
 
@@ -1037,6 +1038,7 @@ msgid "Edit"
 msgstr "Muokkaa"
 
 #: prodekoorg/settings.py:87 prodekoorg/settings.py:104
+#: prodekoorg/settings/base.py:84 prodekoorg/settings/base.py:101
 msgid "English"
 msgstr "Englanti"
 
@@ -1153,10 +1155,8 @@ msgid "^matrikkeli/"
 msgstr ""
 
 #: prodekoorg/urls.py:65
-#, fuzzy
-#| msgid "Elections"
 msgid "^elections/"
-msgstr "Vaalit"
+msgstr "^vaalit/"
 
 #: seminaari/cms_apps.py:11
 msgid "Prodeko seminar page"
