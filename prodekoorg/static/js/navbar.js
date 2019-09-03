@@ -1,4 +1,6 @@
 $(document).ready(function() {
+  $(".profile-icon").popover({ trigger: "hover", placement: "left" });
+
   var hamburger = $('.hamburger');
 
   function preventScrolling() {

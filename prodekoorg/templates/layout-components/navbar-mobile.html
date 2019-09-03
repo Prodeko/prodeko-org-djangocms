@@ -3,6 +3,7 @@
 {% trans "Login" as login %}
 {% trans "Log out" as logout %}
 {% trans "Membership" as apply %}
+{% trans "Profile" as profile %}
 
 <div id="navbar-mobile" class="d-flex justify-content-between navbar navbar-expand-lg navbar-light d-lg-none">
     <a class="navbar-brand" href="/">
@@ -40,11 +41,19 @@
                     {% endif %}
                 {% endfor %}
             </div>
-            <div class="lang-picker my-2 text-center">
+            <div class="lang-picker mb-3 text-center">
                 <a class="{% if LANGUAGE_CODE == 'fi' %}lang{% endif %} mr-1" href="{% page_language_url 'fi' %}">FI</a>
                 <span>/</span>
                 <a class="{% if LANGUAGE_CODE == 'en' %}lang{% endif %} ml-1" href="{% page_language_url 'en' %}">EN</a>
             </div>
+            {% if user.is_authenticated %}
+                <div class="profile-container d-flex flex-row justify-content-center mb-3">
+                    <a href="{% url 'auth_prodeko:profile' %}" class="profile-icon btn btn-outline-primary" role="button">
+                        <i class="fas fa-user-circle"></i>
+                        <span>{% trans profile %}</span>
+                    </a>
+                </div>
+            {% endif %}
             {% if not user.is_authenticated %}
                 <a href="{% url 'auth_prodeko:login' %}" class="auth-btn btn btn-block btn-primary" role="button">
                     {% trans login %}
