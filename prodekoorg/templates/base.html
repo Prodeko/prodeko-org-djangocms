@@ -33,30 +33,15 @@
 <link href="https://fonts.googleapis.com/css?family=Raleway:200,400,600,800" rel="stylesheet">
 <link href="{% sass_src 'scss/prodeko-style.scss' %}" rel="stylesheet" type="text/css" />
 
-{# Favicon stuff #}
-<link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/favicons/apple-touch-icon.png' %}">
-<link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicons/favicon-32x32.png' %}">
-<link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicons/favicon-16x16.png' %}">
-<link rel="manifest" href="{% static 'misc/site.webmanifest' %}">
-<link rel="mask-icon" href="{% static 'images/favicons/safari-pinned-tab.svg' %}" color="#002e7d">
-<meta name="msapplication-TileColor" content="#2b5797">
-<meta name="theme-color" content="#ffffff">
+{% include "snippets/favicongenerator.html" %}
 
-{# SEO stuff #}
-<meta property="og:image:width" content="1652">
-<meta property="og:image:height" content="865">
-<meta property="og:title" content="Prodeko">
-<meta property="og:description" content="Tuotantotalouden kilta Prodeko ry on Aalto-yliopiston ylioppilaskunnan alaisuudessa toimiva tuotantotalouden opiskelijoiden ainej&auml;rjest&ouml;.">
-<meta property="og:url" content="http://prodeko.org">
-<meta property="og:image" content="http://prodeko.org/static/images/misc/og-image.jpg">
-
-<link href="{% sass_src 'scss/bs4_scss/bootstrap.scss' %}" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css">
+{% include "libraries/bootstrap_scss.html" %}
+{% include "libraries/fontawesome.html" %}
 {% endaddtoblock %}
 
 {% addtoblock "custom-js" %}
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-<script src="{% static 'js/vendor/bootstrap.bundle.min.js' %}"></script>
+{% include "libraries/jquery.html" %}
+{% include "libraries/bootstrap.html" %}
 <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>

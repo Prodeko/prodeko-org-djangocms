@@ -100,6 +100,8 @@ msgstr "Käyttäjät"
 
 #: auth_prodeko/templates/accounts/user_profile.html:9
 #: prodekoorg/templates/layout-components/navbar-full.html:3
+#: prodekoorg/templates/layout-components/navbar-full.html:7
+#: prodekoorg/templates/layout-components/navbar-mobile.html:6
 msgid "Profile"
 msgstr "Profiili"
 
@@ -989,7 +991,7 @@ msgstr "Ei kysymyksiä"
 
 #: prodekoorg/app_vaalit/templates/vaalit_content.html:9
 msgid "No Responses"
-msgstr ""
+msgstr "Ei vastauksia"
 
 #: prodekoorg/app_vaalit/templates/vaalit_ehdokas.html:3
 #: prodekoorg/app_vaalit/templates/vaalit_modal_delete_ehdokas.html:5
