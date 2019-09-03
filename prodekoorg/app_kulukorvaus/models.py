@@ -60,6 +60,13 @@ class KulukorvausPerustiedot(models.Model):
     additional_info = models.TextField(
         blank=True, verbose_name=_("Additional information")
     )
+
+    STATUS_CHOICES  = (("NEW", _("New")), ("IP", _("In process")), ("PR", _("Processed")))
+
+    status = models.CharField(
+        max_length=50, choices=STATUS_CHOICES, verbose_name=_("Status"), default="NEW"
+    )
+
     pdf = models.FileField(
         blank=True,
         null=True,

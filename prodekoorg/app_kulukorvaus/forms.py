@@ -34,7 +34,8 @@ class KulukorvausPerustiedotForm(ModelForm):
     class Meta:
         model = KulukorvausPerustiedot
         exclude = [
-            "created_by_user"
+            "created_by_user", 
+            "status"
         ]  # Don't include 'created_by_user' in the form. It is inferred from the HttpRequest.
         localized_fields = (
             "sum_overall",
