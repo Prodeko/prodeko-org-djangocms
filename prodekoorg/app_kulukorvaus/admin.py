@@ -21,9 +21,23 @@ class YearFilter(SimpleListFilter):
             return queryset
 
 
+class StatusFilter(SimpleListFilter):
+    title = _("Status")
+    parameter_name = "status"
+
+    def lookups(self, request, model_admin):
+        return (('NEW', _('New')), ('IP', _('In Process')), ('PR', _('Processed')))
+
+    def queryset(self, request, queryset):
+        if self.value() is not None:
+            return queryset.filter(status=self.value())
+        else:
+            return queryset
+
+
 class KulukorvausAdmin(admin.ModelAdmin):
-    list_display = ("created_at", "explanation")
-    list_filter = (YearFilter,)
+    list_display = ("created_at", "explanation", "status")
+    list_filter = (StatusFilter, YearFilter)
 
     formfield_overrides = {
         models.TextField: {
