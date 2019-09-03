@@ -38,11 +38,11 @@ def download_kulukorvaus_pdf(request, perustiedot_id):
     """
 
     # Try to fetch the KulukorvausPerustiedot object. If it doesn't
-    # exist, raise HTTP404. If the user doesn't own the object
+    # exist, raise HTTP404. If the user doesn't own the object or if they do not have admin permissions
     # raise PermissionDenied.
     try:
         model_perustiedot = KulukorvausPerustiedot.objects.get(id=perustiedot_id)
-        if not request.user == model_perustiedot.created_by_user:
+        if not request.user == model_perustiedot.created_by_user and request.user.is_staff:
             raise PermissionDenied
     except KulukorvausPerustiedot.DoesNotExist:
         raise Http404("Reimbursement does not exist")
