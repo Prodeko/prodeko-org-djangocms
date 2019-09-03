@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-02 12:11+0000\n"
+"POT-Creation-Date: 2019-09-03 13:06+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -99,6 +99,7 @@ msgid "Users"
 msgstr "Käyttäjät"
 
 #: auth_prodeko/templates/accounts/user_profile.html:9
+#: prodekoorg/templates/layout-components/navbar-full.html:3
 msgid "Profile"
 msgstr "Profiili"
 
@@ -244,7 +245,7 @@ msgid "Application actions"
 msgstr "Hakemustoimenpiteet"
 
 #: prodekoorg/app_apply_for_membership/apps.py:7
-#: prodekoorg/app_apply_for_membership/models.py:147
+#: prodekoorg/app_apply_for_membership/models.py:146
 msgid "Membership applications"
 msgstr "Jäsenhakemukset"
 
@@ -301,8 +302,7 @@ msgid "No"
 msgstr "Ei"
 
 #: prodekoorg/app_apply_for_membership/models.py:48 prodekoorg/settings.py:87
-#: prodekoorg/settings.py:97 prodekoorg/settings/base.py:84
-#: prodekoorg/settings/base.py:94
+#: prodekoorg/settings.py:97
 msgid "Finnish"
 msgstr "Suomi"
 
@@ -365,15 +365,15 @@ msgstr "Jäsenhakemus hyväsytty"
 msgid "Membership application rejected."
 msgstr "Jäsenhakemus hylätty"
 
-#: prodekoorg/app_apply_for_membership/models.py:146
+#: prodekoorg/app_apply_for_membership/models.py:145
 msgid "membership application"
 msgstr "jäsenhakemus"
 
-#: prodekoorg/app_apply_for_membership/templates/admin/app_apply_for_membership/pendinguser/change_form.html:6
+#: prodekoorg/app_apply_for_membership/templates/admin/app_apply_for_membership/PendingUser/change_form.html:6
 msgid "Accept application"
 msgstr "Hyväksy hakemus"
 
-#: prodekoorg/app_apply_for_membership/templates/admin/app_apply_for_membership/pendinguser/change_form.html:7
+#: prodekoorg/app_apply_for_membership/templates/admin/app_apply_for_membership/PendingUser/change_form.html:7
 msgid "Reject application"
 msgstr "Hylkää hakemus"
 
@@ -401,7 +401,7 @@ msgstr ""
 "selvittämiseksi."
 
 #: prodekoorg/app_apply_for_membership/templates/form_apply.html:3
-#: prodekoorg/app_kulukorvaus/models.py:121
+#: prodekoorg/app_kulukorvaus/models.py:128
 #: prodekoorg/app_kulukorvaus/templates/form_kulukorvaus_kulu.html:4
 msgid "Receipt"
 msgstr "Kuitti"
@@ -489,7 +489,7 @@ msgstr "ESTIEM (ulkoministeri@prodeko.org)"
 msgid "Tutoring (isovastaava@prodeko.org)"
 msgstr "ISO-toiminta (isovastaava@prodeko.org)"
 
-#: prodekoorg/app_contact/models.py:81 prodekoorg/app_kulukorvaus/models.py:103
+#: prodekoorg/app_contact/models.py:81 prodekoorg/app_kulukorvaus/models.py:110
 #: prodekoorg/app_vaalit/models.py:66 prodekoorg/app_vaalit/models.py:90
 msgid "Created at"
 msgstr "Luotu"
@@ -571,8 +571,29 @@ msgstr "slide"
 msgid "Slides"
 msgstr "Slides"
 
+#: prodekoorg/app_kulukorvaus/admin.py:25
+#: prodekoorg/app_kulukorvaus/models.py:67
+msgid "Status"
+msgstr ""
+
+#: prodekoorg/app_kulukorvaus/admin.py:29
+#: prodekoorg/app_kulukorvaus/models.py:64
+#: tiedotteet/tiedotteet_backend/templates/control/base.html:66
+#: tiedotteet/tiedotteet_backend/views.py:86
+msgid "New"
+msgstr "Uudet"
+
+#: prodekoorg/app_kulukorvaus/admin.py:29
+msgid "In Process"
+msgstr ""
+
+#: prodekoorg/app_kulukorvaus/admin.py:29
+#: prodekoorg/app_kulukorvaus/models.py:64
+msgid "Processed"
+msgstr ""
+
 #: prodekoorg/app_kulukorvaus/apps.py:7
-#: prodekoorg/app_kulukorvaus/models.py:131
+#: prodekoorg/app_kulukorvaus/models.py:138
 #: prodekoorg/templates/layout-components/footer.html:8
 msgid "Reimbursements"
 msgstr "Kulukorvaukset"
@@ -586,13 +607,13 @@ msgstr "Sovellus - Kulukorvauslomake"
 msgid "^"
 msgstr "^"
 
-#: prodekoorg/app_kulukorvaus/forms.py:78
+#: prodekoorg/app_kulukorvaus/forms.py:79
 msgid ""
 "e.g. \"Food expenses\", \"Coffee to the guildroom\" or \"Mileage allowance\""
 msgstr ""
 "esim. \"Ruokakulut\", \"Kahvia kiltahuoneelle\" tai \"Kilometrikorvaus\""
 
-#: prodekoorg/app_kulukorvaus/forms.py:81
+#: prodekoorg/app_kulukorvaus/forms.py:82
 msgid "e.g. \"Fall sitz\", \"Freshmen meetup\" or \"Guildroom renovations\""
 msgstr ""
 "e.g. \"Syyssitsit\", \"Fuksiryhmätapaaminen\" tai \"Kiltahuoneen uudistaminen"
@@ -627,31 +648,35 @@ msgid "Total reimbursement (in €)"
 msgstr "Korvaussumma yhteensä (euroissa)"
 
 #: prodekoorg/app_kulukorvaus/models.py:61
-#: prodekoorg/app_kulukorvaus/models.py:117
+#: prodekoorg/app_kulukorvaus/models.py:124
 msgid "Additional information"
 msgstr "Lisätietoja, kulujen perusteita"
 
-#: prodekoorg/app_kulukorvaus/models.py:86
+#: prodekoorg/app_kulukorvaus/models.py:64
+msgid "In process"
+msgstr ""
+
+#: prodekoorg/app_kulukorvaus/models.py:93
 msgid "reimbursement basic information"
 msgstr "kulukorvaus perustiedot"
 
-#: prodekoorg/app_kulukorvaus/models.py:87
+#: prodekoorg/app_kulukorvaus/models.py:94
 msgid "Reimbursement basic information"
 msgstr "Kulukorvaus perustiedot"
 
-#: prodekoorg/app_kulukorvaus/models.py:109
+#: prodekoorg/app_kulukorvaus/models.py:116
 msgid "Expense explanation"
 msgstr "Kulun selite"
 
-#: prodekoorg/app_kulukorvaus/models.py:111
+#: prodekoorg/app_kulukorvaus/models.py:118
 msgid "Event / expense target"
 msgstr "Tapahtuma / kulun kohde"
 
-#: prodekoorg/app_kulukorvaus/models.py:114
+#: prodekoorg/app_kulukorvaus/models.py:121
 msgid "Sum (in €)"
 msgstr "Summa (euroissa)"
 
-#: prodekoorg/app_kulukorvaus/models.py:130
+#: prodekoorg/app_kulukorvaus/models.py:137
 msgid "reimbursement"
 msgstr "kulukorvaus"
 
@@ -736,11 +761,11 @@ msgstr "pöytäkirja"
 msgid "Minutes"
 msgstr "Pöytäkirjat"
 
-#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/dokumentti/change_list.html:55
+#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/Dokumentti/change_list.html:55
 msgid "Download minutes from Drive"
 msgstr "Lataa pöytäkirjat Drivestä"
 
-#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/dokumentti/change_list.html:56
+#: prodekoorg/app_poytakirjat/templates/admin/app_poytakirjat/Dokumentti/change_list.html:56
 msgid "How does this work"
 msgstr "Miten lataaminen toimii"
 
@@ -829,24 +854,24 @@ msgstr "hallituksen jäsen"
 msgid "board members"
 msgstr "hallituksen jäsenet"
 
-#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:31
+#: prodekoorg/app_toimarit/templates/admin/app_toimarit/Toimari/change_list.html:31
 msgid "Home"
 msgstr "Kotisivu"
 
-#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:49
+#: prodekoorg/app_toimarit/templates/admin/app_toimarit/Toimari/change_list.html:49
 #, python-format
 msgid "Add %(name)s"
 msgstr "Lisää %(name)s"
 
-#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:65
+#: prodekoorg/app_toimarit/templates/admin/app_toimarit/Toimari/change_list.html:65
 msgid "Please correct the error below."
 msgstr "Korjaa allaolevat virheet."
 
-#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:65
+#: prodekoorg/app_toimarit/templates/admin/app_toimarit/Toimari/change_list.html:65
 msgid "Please correct the errors below."
 msgstr "Korjaa allaolevat virheet."
 
-#: prodekoorg/app_toimarit/templates/admin/app_toimarit/toimari/change_list.html:76
+#: prodekoorg/app_toimarit/templates/admin/app_toimarit/Toimari/change_list.html:76
 msgid "Filter"
 msgstr "Filtteri"
 
@@ -954,13 +979,17 @@ msgid "since"
 msgstr "sitten"
 
 #: prodekoorg/app_vaalit/templates/vaalit_content.html:4
-#: prodekoorg/app_vaalit/templates/vaalit_content.html:33
+#: prodekoorg/app_vaalit/templates/vaalit_content.html:35
 msgid "No applicants"
 msgstr "Ei hakijoita"
 
 #: prodekoorg/app_vaalit/templates/vaalit_content.html:7
 msgid "No questions"
 msgstr "Ei kysymyksiä"
+
+#: prodekoorg/app_vaalit/templates/vaalit_content.html:9
+msgid "No Responses"
+msgstr ""
 
 #: prodekoorg/app_vaalit/templates/vaalit_ehdokas.html:3
 #: prodekoorg/app_vaalit/templates/vaalit_modal_delete_ehdokas.html:5
@@ -1006,7 +1035,6 @@ msgid "Edit"
 msgstr "Muokkaa"
 
 #: prodekoorg/settings.py:87 prodekoorg/settings.py:104
-#: prodekoorg/settings/base.py:84 prodekoorg/settings/base.py:101
 msgid "English"
 msgstr "Englanti"
 
@@ -1019,7 +1047,7 @@ msgid "Documentation"
 msgstr "Dokumentaatio"
 
 #: prodekoorg/templates/admin/inc/branding.html:29
-#: prodekoorg/templates/layout-components/navbar-full.html:4
+#: prodekoorg/templates/layout-components/navbar-full.html:5
 #: prodekoorg/templates/layout-components/navbar-mobile.html:4
 msgid "Log out"
 msgstr "Kirjaudu ulos"
@@ -1068,12 +1096,12 @@ msgstr "Käyntiosoite"
 msgid "Apply for membership"
 msgstr "Jäsenhakemus"
 
-#: prodekoorg/templates/layout-components/navbar-full.html:3
+#: prodekoorg/templates/layout-components/navbar-full.html:4
 #: prodekoorg/templates/layout-components/navbar-mobile.html:3
 msgid "Login"
 msgstr "Kirjaudu"
 
-#: prodekoorg/templates/layout-components/navbar-full.html:5
+#: prodekoorg/templates/layout-components/navbar-full.html:6
 #: prodekoorg/templates/layout-components/navbar-mobile.html:5
 msgid "Membership"
 msgstr "Hae jäsenyyttä"
@@ -1121,6 +1149,12 @@ msgstr "^tiedotteet/"
 #: prodekoorg/urls.py:64
 msgid "^matrikkeli/"
 msgstr ""
+
+#: prodekoorg/urls.py:65
+#, fuzzy
+#| msgid "Elections"
+msgid "^elections/"
+msgstr "Vaalit"
 
 #: seminaari/cms_apps.py:11
 msgid "Prodeko seminar page"
@@ -1283,11 +1317,6 @@ msgstr "Kaikki"
 #: tiedotteet/tiedotteet_backend/views.py:81
 msgid "Now"
 msgstr "Nykyiset"
-
-#: tiedotteet/tiedotteet_backend/templates/control/base.html:66
-#: tiedotteet/tiedotteet_backend/views.py:86
-msgid "New"
-msgstr "Uudet"
 
 #: tiedotteet/tiedotteet_backend/templates/control/base.html:69
 #: tiedotteet/tiedotteet_backend/views.py:91
