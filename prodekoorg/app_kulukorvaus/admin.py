@@ -36,8 +36,8 @@ class StatusFilter(SimpleListFilter):
 
 
 class KulukorvausAdmin(admin.ModelAdmin):
-    list_display = ("created_at", "explanation", "status")
-    list_filter = (StatusFilter, YearFilter)
+    list_display = ("created_at", "explanation")
+    list_filter = (YearFilter,)
 
     formfield_overrides = {
         models.TextField: {
@@ -47,6 +47,8 @@ class KulukorvausAdmin(admin.ModelAdmin):
 
 
 class KulukorvausPerustiedotAdmin(admin.ModelAdmin):
+    list_display = ("created_by_user", "sum_overall", "status")
+    list_filter = (StatusFilter,)
     formfield_overrides = {
         models.TextField: {
             "widget": Textarea(attrs={"rows": 1, "cols": 1})

@@ -34,7 +34,8 @@ class KulukorvausPerustiedotForm(ModelForm):
     class Meta:
         model = KulukorvausPerustiedot
         exclude = [
-            "created_by_user"
+            "created_by_user", 
+            "status"
         ]  # Don't include 'created_by_user' in the form. It is inferred from the HttpRequest.
         localized_fields = (
             "sum_overall",
@@ -65,9 +66,6 @@ class KulukorvausForm(ModelForm):
     class Meta:
         model = Kulukorvaus
         fields = "__all__"  # Use all model fields in form creation.
-        exclude = [
-            "status"
-        ] 
         localized_fields = (
             "sum_euros",
         )  # Use ',' as a decimal separator for Finnish and '.' in English
