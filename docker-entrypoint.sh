@@ -22,9 +22,6 @@ EOF
 
 wait_for_mysql
 
-# Collect static files
-python3 manage.py collectstatic --noinput > /dev/null 2>&1
-
 # Create and run migrations
 python3 manage.py makemigrations
 python3 manage.py migrate
