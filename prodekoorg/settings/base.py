@@ -10,46 +10,23 @@ import os
 from django.contrib.messages import constants as messages
 from django.utils.translation import gettext_lazy as _
 
-# Change the line below to 'prodekoorg.settings_prod' in production
-from prodekoorg.settings_dev import *
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 LANGUAGE_CODE = "fi-FI"
 
 SITE_ID = 1
 
 config = configparser.ConfigParser()
-config.read(os.path.join(BASE_DIR, "prodekoorg/variables.txt"))
+config.read(os.path.join(BASE_DIR, "prodekoorg/settings/variables.txt"))
 
 # SECURITY WARNING: keep the secret keys used in production secret!
 # Use configparser to read environment variables from variables.txt file
 SECRET_KEY = config["DJANGO"]["SECRET"]
-DEBUG = config["DEBUG"]["MODE"]
-ALLOWED_HOSTS = ["prodeko.org", ".prodeko.org", "localhost"]
 DB_NAME_DEFAULT = config["DB"]["NAME_DEFAULT"]
 DB_USER = config["DB"]["USER"]
 DB_PSWD = config["DB"]["PASSWORD"]
 DEV_EMAIL = config["EMAIL"]["DEV_EMAIL"]
-
-# When DEBUG = False, all errors with level ERROR or
-# higher get mailed to ADMINS according to LOGGING conf
-ADMINS = [("DEV", DEV_EMAIL) if DEBUG else ("CTO", "cto@prodeko.org")]
-# When DEBUG = False, all broken links get emailed to MANAGERS
-MANAGERS = [("DEV", DEV_EMAIL) if DEBUG else ("CTO", "cto@prodeko.org")]
-
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME": DB_NAME_DEFAULT,
-        "USER": DB_USER,
-        "PASSWORD": DB_PSWD,
-        "HOST": "db",
-        "PORT": "3306",
-    },
-    "TEST": {"CHARSET": "utf8", "COLLATION": "utf8_unicode_ci"},
-}
 
 # Application definition
 ROOT_URLCONF = "prodekoorg.urls"
@@ -301,7 +278,6 @@ INSTALLED_APPS = (
     "prodekoorg.app_poytakirjat",
     "prodekoorg.app_tiedostot",
     "prodekoorg.app_toimarit",
-    "prodekoorg.app_vaalit",
     # ------------------------
 )
 
@@ -439,49 +415,6 @@ SERVER_EMAIL = "no-reply@prodeko.org"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
-# Loggin config. On DEBUG = FALSE, email ADMINS
-# on ERROR (or higher) level events, otherwise log
-# to standard output.
-LOGGING = {
-    "version": 1,
-    "disable_existing_loggers": False,
-    "filters": {
-        "require_debug_false": {"()": "django.utils.log.RequireDebugFalse"},
-        "require_debug_true": {"()": "django.utils.log.RequireDebugTrue"},
-    },
-    "formatters": {
-        "django.server": {
-            "()": "django.utils.log.ServerFormatter",
-            "format": "[{server_time}] {message}",
-            "style": "{",
-        }
-    },
-    "handlers": {
-        "console": {
-            "level": "INFO",
-            "filters": ["require_debug_true"],
-            "class": "logging.StreamHandler",
-        },
-        "django.server": {
-            "level": "INFO",
-            "class": "logging.StreamHandler",
-            "formatter": "django.server",
-        },
-        "mail_admins": {
-            "level": "ERROR",
-            "filters": ["require_debug_false"],
-            "class": "django.utils.log.AdminEmailHandler",
-        },
-    },
-    "loggers": {
-        "django": {"handlers": ["console", "mail_admins"], "level": "INFO"},
-        "django.server": {
-            "handlers": ["django.server"],
-            "level": "INFO",
-            "propagate": False,
-        },
-    },
-}
 CKEDITOR_UPLOAD_PATH = "ckeditor_uploads/"
 CKEDITOR_IMAGE_BACKEND = "pillow"
 

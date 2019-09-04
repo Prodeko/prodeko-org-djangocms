@@ -69,7 +69,7 @@ target/
 venv/
 node_modules/
 
-prodekoorg/variables.txt
+prodekoorg/settings/variables.txt
 *.db
 *.json
 !data.json
