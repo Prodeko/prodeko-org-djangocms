@@ -17,17 +17,17 @@ class KulukorvausPerustiedot(models.Model):
         created_by_user: Tracks which User created the reimbursement.
         created_by: Name of the person who created the claim.
         email: Email address.
-        position_in_guild: Position in the guild, either 'Hallitus' or 'Toimihenkilö'.
         phone_number: Phone number.
         bank_number: Bank account number. Finnish IBAN numbers are 18 chars,
             Saint Lucia is 32 (https://www.iban.com/structure.html).
         bic: Bank identification code. It is 8-11 characters long (https://fi.wikipedia.org/wiki/ISO_9362).
         sum_overall: Total reimbursement claim sum.
         additional_info: Any additional information about the claim.
+        status: The status of the reimbursement claim (new, in process or procesed).
         pdf: PDF file representing the reimbursement claim.
     """
 
-    POSITION_CHOICES = (("H", _("Board")), ("T", _("Guild official")))
+    STATUS_CHOICES  = (("NEW", _("New")), ("IP", _("In process")), ("PR", _("Processed")))
 
     BIC_CHOICES = (
         ("OP", "OKOYFIHH"),
@@ -46,9 +46,6 @@ class KulukorvausPerustiedot(models.Model):
     )
     created_by = models.CharField(max_length=50, verbose_name=_("Name"))
     email = models.EmailField(verbose_name=_("Email"))
-    position_in_guild = models.CharField(
-        max_length=12, choices=POSITION_CHOICES, verbose_name=_("Position in guild")
-    )
     phone_number = models.CharField(max_length=15, verbose_name=_("Phone number"))
     bank_number = models.CharField(
         max_length=32, verbose_name=_("Account number (IBAN)")
@@ -60,13 +57,9 @@ class KulukorvausPerustiedot(models.Model):
     additional_info = models.TextField(
         blank=True, verbose_name=_("Additional information")
     )
-
-    STATUS_CHOICES  = (("NEW", _("New")), ("IP", _("In process")), ("PR", _("Processed")))
-
     status = models.CharField(
         max_length=50, choices=STATUS_CHOICES, verbose_name=_("Status"), default="NEW"
     )
-
     pdf = models.FileField(
         blank=True,
         null=True,
@@ -83,10 +76,9 @@ class KulukorvausPerustiedot(models.Model):
         return filename
 
     def __str__(self):
-        position_in_guild = self.get_position_in_guild_display()
         by = self.created_by
         s = self.sum_overall
-        return f"{position_in_guild} - {by}, ({s}€)"
+        return f"{by}, ({s}€)"
 
     class Meta:
         # Correct spelling in Django admin

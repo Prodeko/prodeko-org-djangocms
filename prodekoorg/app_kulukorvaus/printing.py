@@ -81,7 +81,6 @@ class KulukorvausPDF:
         # Extract data from model
         created_by = model_perustiedot.created_by
         email = model_perustiedot.email
-        position_in_guild = model_perustiedot.get_position_in_guild_display()
         phone_number = model_perustiedot.phone_number
         bank_number = model_perustiedot.bank_number
         bic = model_perustiedot.get_bic_display()
@@ -94,7 +93,6 @@ class KulukorvausPDF:
         t_basic_info = [
             [_("Name"), created_by],
             [_("Email"), email],
-            [_("Position in guild"), position_in_guild],
             [_("Phone number"), phone_number],
             [_("Account number (IBAN)"), bank_number],
             ["BIC", bic],

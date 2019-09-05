@@ -20,22 +20,16 @@ class KulukorvausPerustiedotForm(ModelForm):
         # Call ModelForm __init__ method.
         super(KulukorvausPerustiedotForm, self).__init__(*args, **kwargs)
 
-        if "position_in_guild" in self.fields:
-            # Attach a RadioSelect widget to the position_in_guild for field
-            self.fields["position_in_guild"].widget = RadioSelect(
-                choices=KulukorvausPerustiedot.POSITION_CHOICES
-            )
         for visible in self.visible_fields():
-            if not visible.name == "position_in_guild":
-                # 'form-control' is a bootstrap class used to style
-                # form fields appropriately.
-                visible.field.widget.attrs["class"] = "form-control"
+            # 'form-control' is a bootstrap class used to style
+            # form fields appropriately.
+            visible.field.widget.attrs["class"] = "form-control"
 
     class Meta:
         model = KulukorvausPerustiedot
         exclude = [
-            "created_by_user", 
-            "status"
+            "created_by_user",
+            "status",
         ]  # Don't include 'created_by_user' in the form. It is inferred from the HttpRequest.
         localized_fields = (
             "sum_overall",

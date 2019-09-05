@@ -42,26 +42,6 @@ class KulukorvausPerustiedotModelTest(TestData):
         self.assertEquals(field_label, "Sähköposti")
 
     @english
-    def test_position_in_guild_label_english(self):
-        field_label = self.test_perustiedot_model._meta.get_field(
-            "position_in_guild"
-        ).verbose_name
-        self.assertEquals(field_label, "Position in guild")
-
-    @finnish
-    def test_position_in_guild_label_finnish(self):
-        field_label = self.test_perustiedot_model._meta.get_field(
-            "position_in_guild"
-        ).verbose_name
-        self.assertEquals(field_label, "Virka")
-
-    def test_position_in_guild_max_length(self):
-        max_length = self.test_perustiedot_model._meta.get_field(
-            "position_in_guild"
-        ).max_length
-        self.assertEquals(max_length, 12)
-
-    @english
     def test_phone_number_label_english(self):
         field_label = self.test_perustiedot_model._meta.get_field(
             "phone_number"
@@ -151,17 +131,13 @@ class KulukorvausPerustiedotModelTest(TestData):
     @english
     def test_object_name_english(self):
         model = self.test_perustiedot_model
-        expected_object_name = "{} - {}, ({}€)".format(
-            model.position_in_guild, model.created_by, model.sum_overall
-        )
+        expected_object_name = f"{model.created_by}, ({model.sum_overall}€)"
         self.assertEquals(expected_object_name, str(model))
 
     @finnish
     def test_object_name_finnish(self):
         model = self.test_perustiedot_model
-        expected_object_name = "{} - {}, ({}€)".format(
-            model.position_in_guild, model.created_by, model.sum_overall
-        )
+        expected_object_name = f"{model.created_by}, ({model.sum_overall}€)"
         self.assertEquals(expected_object_name, str(model))
 
     @english
@@ -288,15 +264,13 @@ class KulukorvausModelTest(TestData):
     @english
     def test_object_name_english(self):
         model = self.test_kulukorvaus_model
-        time = model.created_at.strftime("%Y-%m-%d %H:%M:%S")
-        expected_object_name = "{}-{}".format(time, model.explanation)
+        expected_object_name = f"{model.explanation} ({model.sum_euros}€)"
         self.assertEquals(expected_object_name, str(model))
 
     @finnish
     def test_object_name_finnish(self):
         model = self.test_kulukorvaus_model
-        time = model.created_at.strftime("%Y-%m-%d %H:%M:%S")
-        expected_object_name = "{}-{}".format(time, model.explanation)
+        expected_object_name = f"{model.explanation} ({model.sum_euros}€)"
         self.assertEquals(expected_object_name, str(model))
 
     @english

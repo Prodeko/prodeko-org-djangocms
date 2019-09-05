@@ -45,7 +45,6 @@ class TestData(TestCase):
             created_by_user=cls.test_user1,
             created_by="webbitiimi",
             email="webbitiimi@prodeko.org",
-            position_in_guild="T",
             phone_number="999888777666",
             bank_number="FI239482340924092",
             bic="SPANKKI",

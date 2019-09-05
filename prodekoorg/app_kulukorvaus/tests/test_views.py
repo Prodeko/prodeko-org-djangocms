@@ -1,12 +1,15 @@
 import os
 
+from cms.test_utils.testcases import CMSTestCase
 from django.core.files.uploadedfile import SimpleUploadedFile
+from django.test.utils import override_settings
 from django.urls import reverse
 
 from .test_data import TestData
 
 
-class KulukorvausViewTest(TestData):
+@override_settings(ROOT_URLCONF="prodekoorg.app_kulukorvaus.tests.test_urls")
+class KulukorvausViewTest(TestData, CMSTestCase):
     """Tests for views in the app_kulukorvaus app."""
 
     def test_kulukorvaus_and_redirect_if_not_logged_in(self):
@@ -14,7 +17,8 @@ class KulukorvausViewTest(TestData):
         Tests redirect to login page if the main kulukorvaus page is
         accessed and the user is not logged in.
         """
-        response = self.client.get(reverse("app_kulukorvaus:kulukorvaus"))
+        print(reverse("kulukorvaus"))
+        response = self.client.get(reverse("kulukorvaus"))
         self.assertRedirects(response, "/fi/login/?next=/fi/kulukorvaus/")
 
     def test_download_and_redirect_if_not_logged_in(self):
@@ -24,7 +28,7 @@ class KulukorvausViewTest(TestData):
         """
         response = self.client.get(
             reverse(
-                "app_kulukorvaus:download_kulukorvaus",
+                "download_kulukorvaus",
                 kwargs={"perustiedot_id": self.test_perustiedot_model.id},
             )
         )
@@ -37,7 +41,7 @@ class KulukorvausViewTest(TestData):
         self.client.login(email="test2@test.com", password='q"WaXkcB>7')
         response = self.client.get(
             reverse(
-                "app_kulukorvaus:download_kulukorvaus",
+                "download_kulukorvaus",
                 kwargs={"perustiedot_id": self.test_perustiedot_model.id},
             )
         )
@@ -50,7 +54,7 @@ class KulukorvausViewTest(TestData):
         self.client.login(email="test1@test.com", password="Ukc55Has-@")
         response = self.client.get(
             reverse(
-                "app_kulukorvaus:download_kulukorvaus",
+                "download_kulukorvaus",
                 kwargs={"perustiedot_id": self.test_perustiedot_model.id},
             )
         )
@@ -63,9 +67,7 @@ class KulukorvausViewTest(TestData):
         """
         self.client.login(email="test1@test.com", password="Ukc55Has-@")
         response = self.client.get(
-            reverse(
-                "app_kulukorvaus:download_kulukorvaus", kwargs={"perustiedot_id": 999}
-            )
+            reverse("download_kulukorvaus", kwargs={"perustiedot_id": 999})
         )
         self.assertEqual(response.status_code, 404)
 
@@ -90,7 +92,6 @@ class KulukorvausViewTest(TestData):
             # KulukorvausPerustiedotForm
             "created_by": "Mediakeisari Timo Riski",
             "email": "webbitiimi@prodeko.org",
-            "position_in_guild": "H",
             "phone_number": "123456789",
             "bank_number": "FI21 1234 5600 0007 85",
             "bic": "NORDEA",
@@ -111,7 +112,7 @@ class KulukorvausViewTest(TestData):
         }
 
         response = self.client.post(
-            reverse("app_kulukorvaus:kulukorvaus"),
+            reverse("kulukorvaus"),
             data=test_data,
             HTTP_X_REQUESTED_WITH="XMLHttpRequest",
         )
@@ -119,7 +120,7 @@ class KulukorvausViewTest(TestData):
 
     def test_invalid_form_submission(self):
         """
-        Test invalid form submission. The position_in_guild is invalid.
+        Test invalid form submission. The email is invalid.
         """
         self.client.login(email="test1@test.com", password="Ukc55Has-@")
 
@@ -137,8 +138,7 @@ class KulukorvausViewTest(TestData):
             "form-MAX_NUM_FORMS": "1000",
             # KulukorvausPerustiedotForm
             "created_by": "Mediakeisari Timo Riski",
-            "email": "webbitiimi@prodeko.org",
-            "position_in_guild": "A",  # This is incorrect
+            "email": "webbitiimi",  # This is incorrect
             "phone_number": "123456789",
             "bank_number": "FI21 1234 5600 0007 85",
             "bic": "NORDEA",
@@ -159,7 +159,7 @@ class KulukorvausViewTest(TestData):
         }
 
         response = self.client.post(
-            reverse("app_kulukorvaus:kulukorvaus"),
+            reverse("kulukorvaus"),
             data=test_data,
             HTTP_X_REQUESTED_WITH="XMLHttpRequest",
         )

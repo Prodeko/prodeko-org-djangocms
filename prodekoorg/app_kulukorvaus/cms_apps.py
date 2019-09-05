@@ -18,5 +18,5 @@ class KulukorvausApphook(CMSApp):
                 download_kulukorvaus_pdf,
                 name="download_kulukorvaus",
             ),
-            re_path(_(r"^"), main_form, name="kulukorvaus"),
+            re_path(r"^", main_form, name="kulukorvaus"),
         ]

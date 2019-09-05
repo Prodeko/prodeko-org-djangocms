@@ -13,7 +13,6 @@ class KulukorvausPerustiedotFormTest(TestData):
             "created_by_user": "webbitiimi@prodeko.org",
             "created_by": "Mediakeisari",
             "email": "webbitiimi@prodeko.org",
-            "position_in_guild": "H",
             "phone_number": "123456789",
             "bank_number": "FI21 1234 5600 0007 85",
             "bic": "NORDEA",
@@ -30,7 +29,6 @@ class KulukorvausPerustiedotFormTest(TestData):
             "created_by_user": "webbitiimi@prodeko.org",
             "created_by": "Mediakeisari",
             "email": "webbitiimi@prodeko.org",
-            "position_in_guild": "H",
             "phone_number": "123456789",
             "bank_number": "FI21 1234 5600 0007 85",
             "bic": "NORDEA",
@@ -47,7 +45,6 @@ class KulukorvausPerustiedotFormTest(TestData):
             "created_by_user": "webbitiimi@prodeko.org",
             "created_by": "Mediakeisari",
             "email": "invalid",
-            "position_in_guild": "H",
             "phone_number": "123456789",
             "bank_number": "FI21 1234 5600 0007 85",
             "bic": "NORDEA",
@@ -57,24 +54,6 @@ class KulukorvausPerustiedotFormTest(TestData):
         file_data = {"pdf": SimpleUploadedFile("test.pdf", b"a")}
         form = KulukorvausPerustiedotForm(data=form_data, files=file_data)
         self.assertFalse(form.is_valid())
-
-    def test_kulukorvaus_form_invalid_position_in_guild(self):
-        form_data = {
-            "id": 1,
-            "created_by_user": "webbitiimi@prodeko.org",
-            "created_by": "Mediakeisari",
-            "email": "webbitiimi@prodeko.org",
-            "position_in_guild": "A",
-            "phone_number": "123456789",
-            "bank_number": "FI21 1234 5600 0007 85",
-            "bic": "NORDEA",
-            "sum_overall": 1.51,
-            "additional_info": "Tämä on testi!",
-        }
-        file_data = {"pdf": SimpleUploadedFile("test.pdf", b"a")}
-        form = KulukorvausPerustiedotForm(data=form_data, files=file_data)
-        self.assertFalse(form.is_valid())
-
 
 class KulukorvausFormTest(TestData):
     """Tests for KulukorvausForm."""

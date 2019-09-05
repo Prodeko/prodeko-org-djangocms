@@ -7,9 +7,14 @@ from .test_data import TestData
 class EmailTest(TestData):
     def test_send_email(self):
         user = self.test_user1
+        model_perustiedot = self.test_perustiedot_model
 
         # Send message.
-        send_email(user, 1)
+        send_email(user,
+                    model_perustiedot.id,
+                    "kulukorvaus.txt",
+                    model_perustiedot.email,
+                )
 
         # Test that one message has been sent.
         self.assertEqual(len(mail.outbox), 1)
