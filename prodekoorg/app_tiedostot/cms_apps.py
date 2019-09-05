@@ -13,6 +13,6 @@ class TiedostotApphook(CMSApp):
 
     def get_urls(self, page=None, language=None, **kwargs):
         return [
-            re_path(_(r"^"), main, name="files"),
-            re_path(_(r"^/download/(?P<pk>\d+)/"), download, name="download_files"),
+            re_path(r"^", main, name="files"),
+            re_path(r"^/download/(?P<pk>\d+)/", download, name="download_files"),
         ]
