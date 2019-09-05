@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-03 13:31+0000\n"
+"POT-Creation-Date: 2019-09-05 21:36+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -107,7 +107,7 @@ msgstr "Profiili"
 
 #: auth_prodeko/templates/accounts/user_profile.html:10
 #: prodekoorg/app_kulukorvaus/models.py:47
-#: prodekoorg/app_kulukorvaus/printing.py:95
+#: prodekoorg/app_kulukorvaus/printing.py:94
 #: prodekoorg/app_toimarit/models.py:16 prodekoorg/app_vaalit/models.py:34
 msgid "Name"
 msgstr "Nimi"
@@ -116,7 +116,7 @@ msgstr "Nimi"
 #: auth_prodeko/templates/accounts/user_profile.html:17
 #: prodekoorg/app_apply_for_membership/models.py:62
 #: prodekoorg/app_contact/models.py:82 prodekoorg/app_kulukorvaus/models.py:48
-#: prodekoorg/app_kulukorvaus/printing.py:96
+#: prodekoorg/app_kulukorvaus/printing.py:95
 #: prodekoorg/app_toimarit/models.py:106
 msgid "Email"
 msgstr "Sähköposti"
@@ -303,9 +303,8 @@ msgstr "Kyllä"
 msgid "No"
 msgstr "Ei"
 
-#: prodekoorg/app_apply_for_membership/models.py:48 prodekoorg/settings.py:87
-#: prodekoorg/settings.py:97 prodekoorg/settings/base.py:84
-#: prodekoorg/settings/base.py:94
+#: prodekoorg/app_apply_for_membership/models.py:48
+#: prodekoorg/settings/base.py:64 prodekoorg/settings/base.py:74
 msgid "Finnish"
 msgstr "Suomi"
 
@@ -404,7 +403,7 @@ msgstr ""
 "selvittämiseksi."
 
 #: prodekoorg/app_apply_for_membership/templates/form_apply.html:3
-#: prodekoorg/app_kulukorvaus/models.py:128
+#: prodekoorg/app_kulukorvaus/models.py:120
 #: prodekoorg/app_kulukorvaus/templates/form_kulukorvaus_kulu.html:4
 msgid "Receipt"
 msgstr "Kuitti"
@@ -492,7 +491,7 @@ msgstr "ESTIEM (ulkoministeri@prodeko.org)"
 msgid "Tutoring (isovastaava@prodeko.org)"
 msgstr "ISO-toiminta (isovastaava@prodeko.org)"
 
-#: prodekoorg/app_contact/models.py:81 prodekoorg/app_kulukorvaus/models.py:110
+#: prodekoorg/app_contact/models.py:81 prodekoorg/app_kulukorvaus/models.py:102
 #: prodekoorg/app_vaalit/models.py:66 prodekoorg/app_vaalit/models.py:90
 msgid "Created at"
 msgstr "Luotu"
@@ -575,12 +574,12 @@ msgid "Slides"
 msgstr "Slides"
 
 #: prodekoorg/app_kulukorvaus/admin.py:25
-#: prodekoorg/app_kulukorvaus/models.py:67
+#: prodekoorg/app_kulukorvaus/models.py:61
 msgid "Status"
-msgstr ""
+msgstr "Tila"
 
 #: prodekoorg/app_kulukorvaus/admin.py:29
-#: prodekoorg/app_kulukorvaus/models.py:64
+#: prodekoorg/app_kulukorvaus/models.py:30
 #: tiedotteet/tiedotteet_backend/templates/control/base.html:66
 #: tiedotteet/tiedotteet_backend/views.py:86
 msgid "New"
@@ -588,15 +587,15 @@ msgstr "Uudet"
 
 #: prodekoorg/app_kulukorvaus/admin.py:29
 msgid "In Process"
-msgstr ""
+msgstr "Käsittelyssä"
 
 #: prodekoorg/app_kulukorvaus/admin.py:29
-#: prodekoorg/app_kulukorvaus/models.py:64
+#: prodekoorg/app_kulukorvaus/models.py:30
 msgid "Processed"
-msgstr ""
+msgstr "Valmis"
 
 #: prodekoorg/app_kulukorvaus/apps.py:7
-#: prodekoorg/app_kulukorvaus/models.py:138
+#: prodekoorg/app_kulukorvaus/models.py:130
 #: prodekoorg/templates/layout-components/footer.html:8
 msgid "Reimbursements"
 msgstr "Kulukorvaukset"
@@ -605,89 +604,70 @@ msgstr "Kulukorvaukset"
 msgid "Reimbursement form application"
 msgstr "Sovellus - Kulukorvauslomake"
 
-#: prodekoorg/app_kulukorvaus/cms_apps.py:21
-#: prodekoorg/app_tiedostot/cms_apps.py:16
-msgid "^"
-msgstr "^"
-
-#: prodekoorg/app_kulukorvaus/forms.py:79
+#: prodekoorg/app_kulukorvaus/forms.py:73
 msgid ""
 "e.g. \"Food expenses\", \"Coffee to the guildroom\" or \"Mileage allowance\""
 msgstr ""
 "esim. \"Ruokakulut\", \"Kahvia kiltahuoneelle\" tai \"Kilometrikorvaus\""
 
-#: prodekoorg/app_kulukorvaus/forms.py:82
+#: prodekoorg/app_kulukorvaus/forms.py:76
 msgid "e.g. \"Fall sitz\", \"Freshmen meetup\" or \"Guildroom renovations\""
 msgstr ""
-"e.g. \"Syyssitsit\", \"Fuksiryhmätapaaminen\" tai \"Kiltahuoneen uudistaminen"
-"\""
-
-#: prodekoorg/app_kulukorvaus/models.py:30 prodekoorg/app_vaalit/models.py:11
-#: prodekoorg/app_vaalit/templates/vaalit_nav.html:3
-msgid "Board"
-msgstr "Hallitus"
+"esim. \"Syyssitsit\", \"Fuksiryhmätapaaminen\" tai \"Kiltahuoneen "
+"uudistaminen\""
 
 #: prodekoorg/app_kulukorvaus/models.py:30
-msgid "Guild official"
-msgstr "Toimihenkilö"
+msgid "In process"
+msgstr "Käsittelyssä"
 
-#: prodekoorg/app_kulukorvaus/models.py:50
-#: prodekoorg/app_kulukorvaus/printing.py:97
-msgid "Position in guild"
-msgstr "Virka"
-
-#: prodekoorg/app_kulukorvaus/models.py:52
-#: prodekoorg/app_kulukorvaus/printing.py:98
+#: prodekoorg/app_kulukorvaus/models.py:49
+#: prodekoorg/app_kulukorvaus/printing.py:96
 msgid "Phone number"
 msgstr "Puhelinnumero"
 
-#: prodekoorg/app_kulukorvaus/models.py:54
-#: prodekoorg/app_kulukorvaus/printing.py:99
+#: prodekoorg/app_kulukorvaus/models.py:51
+#: prodekoorg/app_kulukorvaus/printing.py:97
 msgid "Account number (IBAN)"
 msgstr "Tilinumero (IBAN)"
 
-#: prodekoorg/app_kulukorvaus/models.py:58
+#: prodekoorg/app_kulukorvaus/models.py:55
 msgid "Total reimbursement (in €)"
 msgstr "Korvaussumma yhteensä (euroissa)"
 
-#: prodekoorg/app_kulukorvaus/models.py:61
-#: prodekoorg/app_kulukorvaus/models.py:124
+#: prodekoorg/app_kulukorvaus/models.py:58
+#: prodekoorg/app_kulukorvaus/models.py:116
 msgid "Additional information"
 msgstr "Lisätietoja, kulujen perusteita"
 
-#: prodekoorg/app_kulukorvaus/models.py:64
-msgid "In process"
-msgstr ""
-
-#: prodekoorg/app_kulukorvaus/models.py:93
+#: prodekoorg/app_kulukorvaus/models.py:85
 msgid "reimbursement basic information"
 msgstr "kulukorvaus perustiedot"
 
-#: prodekoorg/app_kulukorvaus/models.py:94
+#: prodekoorg/app_kulukorvaus/models.py:86
 msgid "Reimbursement basic information"
 msgstr "Kulukorvaus perustiedot"
 
-#: prodekoorg/app_kulukorvaus/models.py:116
+#: prodekoorg/app_kulukorvaus/models.py:108
 msgid "Expense explanation"
 msgstr "Kulun selite"
 
-#: prodekoorg/app_kulukorvaus/models.py:118
+#: prodekoorg/app_kulukorvaus/models.py:110
 msgid "Event / expense target"
 msgstr "Tapahtuma / kulun kohde"
 
-#: prodekoorg/app_kulukorvaus/models.py:121
+#: prodekoorg/app_kulukorvaus/models.py:113
 msgid "Sum (in €)"
 msgstr "Summa (euroissa)"
 
-#: prodekoorg/app_kulukorvaus/models.py:137
+#: prodekoorg/app_kulukorvaus/models.py:129
 msgid "reimbursement"
 msgstr "kulukorvaus"
 
-#: prodekoorg/app_kulukorvaus/printing.py:101
+#: prodekoorg/app_kulukorvaus/printing.py:99
 msgid "Additional info"
 msgstr "Lisätietoja, kulujen perusteita"
 
-#: prodekoorg/app_kulukorvaus/printing.py:138
+#: prodekoorg/app_kulukorvaus/printing.py:136
 msgid ""
 "Your reimbursement claim has been received. The claim will be processed in "
 "the next Prodeko board meeting."
@@ -695,7 +675,7 @@ msgstr ""
 "Kulukorvauksesi on vastaanotettu. Hakemus käsitellään seuraavassa "
 "hallituksen kokouksessa."
 
-#: prodekoorg/app_kulukorvaus/printing.py:141
+#: prodekoorg/app_kulukorvaus/printing.py:139
 msgid ""
 "If you notice any errors in the information below, contact Prodeko's "
 "treasurer immediately at rahastonhoitaja@prodeko.org."
@@ -779,10 +759,6 @@ msgstr "Tiedostot"
 #: prodekoorg/app_tiedostot/cms_apps.py:12
 msgid "Files application"
 msgstr "Sovellus - Tiedostot"
-
-#: prodekoorg/app_tiedostot/cms_apps.py:17
-msgid "^/download/(?P<pk>\\d+)/"
-msgstr "^tiedostot/download/(?P<pk>\\d+)/$"
 
 #: prodekoorg/app_tiedostot/models.py:54
 msgid "file version"
@@ -889,6 +865,11 @@ msgstr "Virhe csv:tä ladattaessa: {}"
 #: prodekoorg/app_vaalit/apps.py:7
 msgid "Elections"
 msgstr "Vaalit"
+
+#: prodekoorg/app_vaalit/models.py:11
+#: prodekoorg/app_vaalit/templates/vaalit_nav.html:3
+msgid "Board"
+msgstr "Hallitus"
 
 #: prodekoorg/app_vaalit/models.py:22
 msgid "position"
@@ -1037,8 +1018,7 @@ msgstr "Poista"
 msgid "Edit"
 msgstr "Muokkaa"
 
-#: prodekoorg/settings.py:87 prodekoorg/settings.py:104
-#: prodekoorg/settings/base.py:84 prodekoorg/settings/base.py:101
+#: prodekoorg/settings/base.py:64 prodekoorg/settings/base.py:81
 msgid "English"
 msgstr "Englanti"
 
