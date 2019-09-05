@@ -6,7 +6,7 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('app_kulukorvaus', '0004_kulukorvausperustiedot_status'),
+        ('app_kulukorvaus', '0002_kulukorvausperustiedot_status'),
     ]
 
     operations = [
