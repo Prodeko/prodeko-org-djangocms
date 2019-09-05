@@ -141,10 +141,14 @@ def main_form(request):
                 model.info = model_perustiedot
                 model.save()
 
-            # Helper function to generate a pdf representing
-            # the whole reimbursemet. Adds the generated pdf
-            # to the KulukorvausPerustiedot object created above.
-            add_pdf_to_model(model_perustiedot.id)
+            try:
+                # Helper function to generate a pdf representing
+                # the whole reimbursemet. Adds the generated pdf
+                # to the KulukorvausPerustiedot object created above.
+                add_pdf_to_model(model_perustiedot.id)
+            except:
+                # Something went wrong in PDF generation
+                return render(request, "kulukorvaus.html", {"error": True})
 
             try:
                 # Send email to the person who submitted the kulukorvaus

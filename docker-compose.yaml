@@ -4,7 +4,7 @@ services:
   db:
     image: mysql:5.7
     environment:
-      - MYSQL_RANDOM_ROOT_PASSWORD=yes
+      - MYSQL_ROOT_PASSWORD=secret
       - MYSQL_DATABASE=prodekoorg
       - MYSQL_USER=prodekoorg
       - MYSQL_PASSWORD=secret

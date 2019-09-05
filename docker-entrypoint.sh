@@ -22,6 +22,13 @@ EOF
 
 wait_for_mysql
 
+# Create test database
+mysql -h db -P 3306 -u root -p$*secret -e "CREATE DATABASE test_prodekoorg;"
+mysql -h db -P 3306 -u root -p$*secret -e "GRANT ALL PRIVILEGES ON test_prodekoorg.* TO prodekoorg@localhost IDENTIFIED BY 'secret';"
+
+# Collect static files
+python3 manage.py collectstatic --noinput > /dev/null 2>&1
+
 # Create and run migrations
 python3 manage.py makemigrations
 python3 manage.py migrate
