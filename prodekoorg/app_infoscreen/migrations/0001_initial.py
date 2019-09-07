@@ -22,7 +22,7 @@ class Migration(migrations.Migration):
                 ('start_datetime', models.DateTimeField(default=django.utils.timezone.now, verbose_name='start datetime')),
                 ('end_datetime', models.DateTimeField(default=prodekoorg.app_infoscreen.models.get_enddate, verbose_name='end datetime')),
                 ('description', ckeditor_uploader.fields.RichTextUploadingField(blank=True, verbose_name='description')),
-                ('image', models.ImageField(blank=True, null=True, upload_to='infoscreen', verbose_name='image')),
+                ('image', models.ImageField(blank=True, null=True, upload_to='infoscreen', verbose_name='banner image')),
                 ('highlight', models.BooleanField(default=False, verbose_name='highlight')),
                 ('visible', models.BooleanField(default=True, verbose_name='visible')),
             ],
