@@ -1,16 +1,16 @@
-# SOME DESCRIPTIVE TITLE.
+# Prodeko.org käännökset.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Webbitiimi <cto@prodeko.org>, 2019.
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-05 21:36+0000\n"
+"POT-Creation-Date: 2019-09-07 15:55+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Last-Translator: Timo Riski <timo@prodeko.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -222,11 +222,43 @@ msgstr "Sähköposti ja salasana eivät täsmänneet. Yritä uudestaan"
 msgid "Lifelonglearning page"
 msgstr "Lifelonglearning sivu"
 
-#: lifelonglearning/models.py:28
+#: lifelonglearning/models.py:24
+msgid "name"
+msgstr "nimi"
+
+#: lifelonglearning/models.py:27
+msgid "coaches"
+msgstr "valmentajat"
+
+#: lifelonglearning/models.py:29 prodekoorg/app_infoscreen/models.py:35
+msgid "description"
+msgstr "kuvaus"
+
+#: lifelonglearning/models.py:30
+msgid "registration url"
+msgstr ""
+
+#: lifelonglearning/models.py:32 prodekoorg/app_infoscreen/models.py:37
+msgid "banner image"
+msgstr "kuva"
+
+#: lifelonglearning/models.py:37
+msgid "group size"
+msgstr "kurssin koko"
+
+#: lifelonglearning/models.py:39
+msgid "timing"
+msgstr "ajankohta"
+
+#: lifelonglearning/models.py:41
+msgid "open"
+msgstr "auki"
+
+#: lifelonglearning/models.py:53
 msgid "course"
 msgstr "kurssi"
 
-#: lifelonglearning/models.py:29
+#: lifelonglearning/models.py:54
 msgid "Courses"
 msgstr "Kurssit"
 
@@ -553,23 +585,19 @@ msgstr "alkamispäivä"
 msgid "end datetime"
 msgstr "päättymispäivä"
 
-#: prodekoorg/app_infoscreen/models.py:35
-msgid "description"
-msgstr "kuvaus"
-
-#: prodekoorg/app_infoscreen/models.py:36
+#: prodekoorg/app_infoscreen/models.py:39
 msgid "highlight"
 msgstr "korosta"
 
-#: prodekoorg/app_infoscreen/models.py:37
+#: prodekoorg/app_infoscreen/models.py:40
 msgid "visible"
 msgstr "näkyvissä"
 
-#: prodekoorg/app_infoscreen/models.py:51
+#: prodekoorg/app_infoscreen/models.py:54
 msgid "slide"
 msgstr "slide"
 
-#: prodekoorg/app_infoscreen/models.py:52
+#: prodekoorg/app_infoscreen/models.py:55
 msgid "Slides"
 msgstr "Slides"
 
