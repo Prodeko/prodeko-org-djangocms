@@ -12,7 +12,7 @@ from .models import Slide
 class SlideSerializer(serializers.ModelSerializer):
     class Meta:
         model = Slide
-        fields = ["id", "title", "description", "highlight"]
+        fields = ["id", "title", "description", "highlight", "image"]
 
 
 class SlidesList(APIView):

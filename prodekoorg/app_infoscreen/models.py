@@ -33,6 +33,9 @@ class Slide(models.Model):
         verbose_name=_("end datetime"), default=get_enddate
     )
     description = RichTextUploadingField(verbose_name=_("description"), blank=True)
+    image = models.ImageField(
+        verbose_name=_("banner image"), upload_to="infoscreen", null=True, blank=True
+    )
     highlight = models.BooleanField(verbose_name=_("highlight"), default=False)
     visible = models.BooleanField(verbose_name=_("visible"), default=True)
 
