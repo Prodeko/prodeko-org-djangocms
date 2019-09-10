@@ -27,6 +27,7 @@ DB_NAME_DEFAULT = config["DB"]["NAME_DEFAULT"]
 DB_USER = config["DB"]["USER"]
 DB_PSWD = config["DB"]["PASSWORD"]
 DEV_EMAIL = config["EMAIL"]["DEV_EMAIL"]
+STORAGE_KEY = config["STORAGE"]["KEY"]
 
 # Application definition
 ROOT_URLCONF = "prodekoorg.urls"
@@ -92,10 +93,8 @@ CMS_LANGUAGES = {
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/dev/howto/static-files/
-STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "prodekoorg/collected-static")
 
-MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "prodekoorg/media")
 
 # Directories where STATICFILES_FINDERS looks for static files

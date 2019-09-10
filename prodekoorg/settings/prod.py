@@ -1,7 +1,7 @@
 from .base import *
 
 DEBUG = False
-ALLOWED_HOSTS = ["prodeko.org", ".prodeko.org"]
+ALLOWED_HOSTS = ["localhost", "prodeko.org", ".prodeko.org"]
 
 # When DEBUG = False, all errors with level ERROR or
 # higher get mailed to ADMINS according to LOGGING conf
@@ -15,7 +15,7 @@ DATABASES = {
         "NAME": DB_NAME_DEFAULT,
         "USER": DB_USER,
         "PASSWORD": DB_PSWD,
-        "HOST": "localhost",
+        "HOST": "db",
         "PORT": "3306",
     },
     "TEST": {"CHARSET": "utf8", "COLLATION": "utf8_unicode_ci"},
@@ -23,8 +23,12 @@ DATABASES = {
 
 INSTALLED_APPS += ("storages",)
 
-DEFAULT_FILE_STORAGE = "backend.custom_azure.AzureMediaStorage"
-STATICFILES_STORAGE = "backend.custom_azure.AzureStaticStorage"
+CKEDITOR_BASEPATH = (
+    "https://prodekostorage.blob.core.windows.net/static/ckeditor/ckeditor/"
+)
+
+DEFAULT_FILE_STORAGE = "prodekoorg.custom_azure.AzureMediaStorage"
+STATICFILES_STORAGE = "prodekoorg.custom_azure.AzureStaticStorage"
 
 STATIC_LOCATION = "static"
 MEDIA_LOCATION = "media"

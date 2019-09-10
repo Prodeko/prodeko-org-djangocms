@@ -14,3 +14,6 @@ MODE = True
 USER = no-reply@prodeko.org
 PASSWORD = secret
 DEV_EMAIL = you.email@email.com
+
+[STORAGE]
+KEY = longrandomstring
