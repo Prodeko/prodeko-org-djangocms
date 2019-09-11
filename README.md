@@ -10,7 +10,9 @@ Prodeko.org projekti käyttää Django versiota 2.1.10
 
 #### Docker
 
-Lataa [docker](https://docs.docker.com/install/).
+1. Lataa [docker](https://docs.docker.com/install/).
+2. Kopioi prodekoorg/settings/variables.sample.txt ja nimeä se variables.txt nimiseksi
+3. Täytä variables.txt tiedostoon puuttuvat muuttujat.
 
 ```
 $ docker-compose up  # Kehitysympäristön käynnistys
@@ -25,8 +27,10 @@ Kehitysympäristön käynnistys luo uuden Django käyttäjän:
 
 ### Deployas palvelimelle
 
+Azuressa hostataan media ja static tiedostot. Lisäksi käytössä on Azuren CDN. Azuren infrastruktuurin saa pystytettyä infrastructure/deploy.sh skriptillä.
+
 1. Virtualenv päälle `source venv/bin/activate`
-2. Collectaa staattiset tiedostot `python3 manage.py collectstatic`
+2. Aja bash deploy.sh
 3. Käynnistä apache uudestaan `sudo service apache2 restart`
 4. Tarkista näyttävätkö sivut toimivan oikein [prodeko.org](https://prodeko.org)
 
