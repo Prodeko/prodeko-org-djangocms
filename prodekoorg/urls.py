@@ -16,6 +16,8 @@ from prodekoorg.app_poytakirjat.gdrive_api import run_app_poytakirjat
 from prodekoorg.app_toimarit.views import postcsv
 from lifelonglearning.views import coursepage
 
+handler500 = "prodekoorg.views.handler500"
+
 urlpatterns = [
     re_path(r"^sitemap\.xml$", sitemap, {"sitemaps": {"cmspages": CMSSitemap}}),
     re_path(
