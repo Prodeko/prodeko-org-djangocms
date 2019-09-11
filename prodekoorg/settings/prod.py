@@ -15,7 +15,7 @@ DATABASES = {
         "NAME": DB_NAME_DEFAULT,
         "USER": DB_USER,
         "PASSWORD": DB_PSWD,
-        "HOST": "db",
+        "HOST": "localhost",
         "PORT": "3306",
     },
     "TEST": {"CHARSET": "utf8", "COLLATION": "utf8_unicode_ci"},
@@ -34,7 +34,7 @@ STATIC_LOCATION = "static"
 MEDIA_LOCATION = "media"
 
 STATIC_URL = f"https://{CDN_URL}/{STATIC_LOCATION}/"
-MEDIA_URL = f"https://{CDN_URL}/{MEDIA_LOCATION}/"
+MEDIA_URL = f"https://prodekostorage.blob.core.windows.net/{MEDIA_LOCATION}/"
 
 # Loggin config. On DEBUG = FALSE, email ADMINS
 # on ERROR (or higher) level events, otherwise log
