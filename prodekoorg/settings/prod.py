@@ -23,9 +23,9 @@ DATABASES = {
 
 INSTALLED_APPS += ("storages",)
 
-CKEDITOR_BASEPATH = (
-    "https://prodekostorage.blob.core.windows.net/static/ckeditor/ckeditor/"
-)
+CDN_URL = "static.prodeko.org"
+
+CKEDITOR_BASEPATH = f"https://{CDN_URL}/static/ckeditor/ckeditor/"
 
 DEFAULT_FILE_STORAGE = "prodekoorg.custom_azure.AzureMediaStorage"
 STATICFILES_STORAGE = "prodekoorg.custom_azure.AzureStaticStorage"
@@ -33,10 +33,8 @@ STATICFILES_STORAGE = "prodekoorg.custom_azure.AzureStaticStorage"
 STATIC_LOCATION = "static"
 MEDIA_LOCATION = "media"
 
-AZURE_ACCOUNT_NAME = "prodekostorage"
-AZURE_CUSTOM_DOMAIN = f"{AZURE_ACCOUNT_NAME}.blob.core.windows.net"
-STATIC_URL = f"https://{AZURE_CUSTOM_DOMAIN}/{STATIC_LOCATION}/"
-MEDIA_URL = f"https://{AZURE_CUSTOM_DOMAIN}/{MEDIA_LOCATION}/"
+STATIC_URL = f"https://{CDN_URL}/{STATIC_LOCATION}/"
+MEDIA_URL = f"https://{CDN_URL}/{MEDIA_LOCATION}/"
 
 # Loggin config. On DEBUG = FALSE, email ADMINS
 # on ERROR (or higher) level events, otherwise log
