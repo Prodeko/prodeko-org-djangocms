@@ -1,7 +1,7 @@
 from .base import *
 
 DEBUG = False
-ALLOWED_HOSTS = ["localhost", "prodeko.org", ".prodeko.org"]
+ALLOWED_HOSTS = ["prodeko.org", ".prodeko.org"]
 
 # When DEBUG = False, all errors with level ERROR or
 # higher get mailed to ADMINS according to LOGGING conf
