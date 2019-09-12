@@ -6,7 +6,6 @@
 {% endblock %}
 
 {% block content %}
-    {% static "" as baseUrl %}
     <div class="container page-container">
         <div class="row">
             <div class="col-md-9">
@@ -19,7 +18,7 @@
                                 {% for official in guildofficials %}
                                     {% if official.section == section %}
                                         <div class="toimari">
-                                            <img src="{{ STATIC_URL }}images/toimari_photos/{{official.photourl}}" alt=""/>
+                                            <img src="{% static 'images/toimari_photos/' %}/{{official.photourl}}" alt="{{official.name}}"/>
                                             <div class="description">
                                                 <strong>{{ official.name }}</strong>
                                                 <br />

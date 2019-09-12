@@ -1,8 +1,32 @@
 import os.path
+import unicodedata
 
 from django.conf import settings
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+
+
+def remove_accents(input_str):
+    nfkd_form = unicodedata.normalize("NFKD", input_str)
+    return "".join([c for c in nfkd_form if not unicodedata.combining(c)])
+
+
+def get_photo_url(board_or_official, object):
+    if settings.DEBUG:
+        if os.path.isfile(
+            f"prodekoorg/app_toimarit/static/images/{board_or_official}/{object.firstname}_{object.lastname}.jpg"
+        ):
+            return remove_accents(f"{object.firstname}_{object.lastname}.jpg")
+        else:
+            return "placeholder.jpg"
+    else:
+        if os.path.isfile(
+            f"{settings.STATIC_ROOT}/images/{board_or_official}/{object.firstname}_{object.lastname}.jpg"
+        ):
+            return remove_accents(f"{object.firstname}_{object.lastname}.jpg")
+        else:
+            return "placeholder.jpg"
+
 
 class Jaosto(models.Model):
     """Prodeko board proceedings documents.
@@ -42,28 +66,10 @@ class Toimari(models.Model):
 
     @property
     def name(self):
-        return "%s %s" % (self.firstname, self.lastname)
-
-    def photoExists(self):
-        return os.path.isfile(
-            "prodekoorg/app_toimarit/static/images/toimari_photos/"
-            + self.firstname
-            + "_"
-            + self.lastname
-            + ".jpg"
-        )
+        return f"{self.firstname} {self.lastname}"
 
     def photourl(self):
-        if settings.DEBUG:
-            if os.path.isfile("prodekoorg/app_toimarit/static/images/toimari_photos/{}_{}.jpg".format(self.firstname, self.lastname)):
-                return "%s_%s.jpg" % (self.firstname, self.lastname)
-            else:
-                return 'placeholder.jpg'
-        else:
-            if os.path.isfile(settings.STATIC_ROOT + "/images/toimari_photos/{}_{}.jpg".format(self.firstname, self.lastname)):
-                return "%s_%s.jpg" % (self.firstname, self.lastname)
-            else:
-                return 'placeholder.jpg'
+        return get_photo_url("toimari_photos", self)
 
     def __str__(self):
         return f"{self.name}, {self.position}"
@@ -113,26 +119,10 @@ class HallituksenJasen(models.Model):
 
     @property
     def name(self):
-        return "%s %s" % (self.firstname, self.lastname)
-
-    def photoExists(self):
-        return os.path.isfile(
-            "prodekoorg/app_toimarit/static/images/hallitus_photos/{}_{}.jpg".format(
-                self.firstname, self.lastname
-            )
-        )
+        return f"{self.firstname} {self.lastname}"
 
     def photourl(self):
-        if settings.DEBUG:
-            if os.path.isfile("prodekoorg/app_toimarit/static/images/hallitus_photos/{}_{}.jpg".format(self.firstname, self.lastname)):
-                return "%s_%s.jpg" % (self.firstname, self.lastname)
-            else:
-                return 'placeholder.jpg'
-        else:
-            if os.path.isfile(settings.STATIC_ROOT + "/images/hallitus_photos/{}_{}.jpg".format(self.firstname, self.lastname)):
-                return "%s_%s.jpg" % (self.firstname, self.lastname)
-            else:
-                return 'placeholder.jpg'
+        return get_photo_url("hallitus_photos", self)
 
     def __str__(self):
         return f"{self.name}, {self.position}"

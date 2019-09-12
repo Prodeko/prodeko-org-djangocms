@@ -6,13 +6,12 @@
 {% endblock %}
 
 {% block content %}
-    {% static "" as baseUrl %}
     <div class="container page-container">
         <div class="row">
             <div class="col-md-9">
                 {% show_breadcrumb 0 "layout-components/breadcrumb.html" %}
                 <div class="hallituskuva">
-                    <img src="{% static 'images/hallitus_photos/board_full.jpg' %}" style="width:100%; height:100%;" />
+                    <img class="w-100 h-100" src="{% static 'images/hallitus_photos/board_full.jpg' %}" alt="Prodeko board" />
                 </div>
                 <div class="row">
                     <div>
@@ -21,7 +20,7 @@
                             {% for boardmember in boardmembers %}
                                 <div class="col-md-12 col-lg-6">
                                     <div class="boardMember">
-                                        <img src="{{ STATIC_URL }}images/hallitus_photos/{{boardmember.photourl}}" alt="" style="width:100%; height:100%;"/>
+                                        <img class="w-100 h-100" src="{% static 'images/hallitus_photos/' %}/{{boardmember.photourl}}" alt="{{boardmember.name}}"/>
                                         <div class="description">
                                             <strong>{{ boardmember.name }}</strong>
                                             <br />
