@@ -1,29 +1,32 @@
 import os.path
-import unicodedata
+import unidecode
 
 from django.conf import settings
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
 
-def remove_accents(input_str):
-    nfkd_form = unicodedata.normalize("NFKD", input_str)
-    return "".join([c for c in nfkd_form if not unicodedata.combining(c)])
+def remove_äö(input_str):
+    return unidecode.unidecode(input_str)
 
 
 def get_photo_url(board_or_official, object):
     if settings.DEBUG:
         if os.path.isfile(
-            f"prodekoorg/app_toimarit/static/images/{board_or_official}/{object.firstname}_{object.lastname}.jpg"
+            remove_äö(
+                f"prodekoorg/app_toimarit/static/images/{board_or_official}/{object.firstname}_{object.lastname}.jpg"
+            )
         ):
-            return remove_accents(f"{object.firstname}_{object.lastname}.jpg")
+            return remove_äö(f"{object.firstname}_{object.lastname}.jpg")
         else:
             return "placeholder.jpg"
     else:
         if os.path.isfile(
-            f"{settings.STATIC_ROOT}/images/{board_or_official}/{object.firstname}_{object.lastname}.jpg"
+            remove_äö(
+                f"{settings.STATIC_ROOT}/images/{board_or_official}/{object.firstname}_{object.lastname}.jpg"
+            )
         ):
-            return remove_accents(f"{object.firstname}_{object.lastname}.jpg")
+            return remove_äö(f"{object.firstname}_{object.lastname}.jpg")
         else:
             return "placeholder.jpg"
 
