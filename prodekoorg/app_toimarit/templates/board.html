@@ -13,30 +13,28 @@
                 <div class="hallituskuva">
                     <img class="w-100 h-100" src="{% static 'images/hallitus_photos/board_full.jpg' %}" alt="Prodeko board" />
                 </div>
-                <div class="row">
-                    <div>
-                        <h2>Hallituksen jäsenet</h2>
-                        <div class="row">
-                            {% for boardmember in boardmembers %}
-                                <div class="col-md-12 col-lg-6">
-                                    <div class="boardMember">
-                                        <img class="w-100 h-100" src="{% static 'images/hallitus_photos/' %}/{{boardmember.photourl}}" alt="{{boardmember.name}}"/>
-                                        <div class="description">
-                                            <strong>{{ boardmember.name }}</strong>
-                                            <br />
-                                            {{ boardmember.position }}
-                                            <br />
-                                            {{ boardmember.position_eng }}
-                                            <br />
-                                            {{ boardmember.mobilephone }}
-                                            <br />
-                                            {{ boardmember.email }}
-                                            <br />
-                                        </div>
+                <div>
+                    <h3>Hallituksen jäsenet</h3>
+                    <div class="row justify-content-center justify-content-sm-start">
+                        {% for boardmember in boardmembers %}
+                            <div class="col-md-6 col-lg-4">
+                                <div class="boardMember">
+                                    <img class="w-100 h-100" src="{% static 'images/hallitus_photos/' %}/{{boardmember.photourl}}" alt="{{boardmember.name}}"/>
+                                    <div class="description">
+                                        <strong>{{ boardmember.name }}</strong>
+                                        <br />
+                                        {{ boardmember.position }}
+                                        <br />
+                                        {{ boardmember.position_eng }}
+                                        <br />
+                                        {{ boardmember.mobilephone }}
+                                        <br />
+                                        {{ boardmember.email }}
+                                        <br />
                                     </div>
                                 </div>
-                            {% endfor %}
-                        </div>
+                            </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
