@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-10 15:38+0000\n"
+"POT-Creation-Date: 2019-09-25 20:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Timo Riski <timo@prodeko.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -98,46 +98,46 @@ msgstr "käyttäjä"
 msgid "Users"
 msgstr "Käyttäjät"
 
-#: auth_prodeko/templates/accounts/user_profile.html:9
+#: auth_prodeko/templates/accounts/user_profile.html:13
 #: prodekoorg/templates/layout-components/navbar-full.html:3
 #: prodekoorg/templates/layout-components/navbar-full.html:7
 #: prodekoorg/templates/layout-components/navbar-mobile.html:6
 msgid "Profile"
 msgstr "Profiili"
 
-#: auth_prodeko/templates/accounts/user_profile.html:10
+#: auth_prodeko/templates/accounts/user_profile.html:14
 #: prodekoorg/app_kulukorvaus/models.py:47
 #: prodekoorg/app_kulukorvaus/printing.py:94
-#: prodekoorg/app_toimarit/models.py:16 prodekoorg/app_vaalit/models.py:34
+#: prodekoorg/app_toimarit/models.py:43 prodekoorg/app_vaalit/models.py:34
 msgid "Name"
 msgstr "Nimi"
 
-#: auth_prodeko/templates/accounts/user_profile.html:11
-#: auth_prodeko/templates/accounts/user_profile.html:17
+#: auth_prodeko/templates/accounts/user_profile.html:15
+#: auth_prodeko/templates/accounts/user_profile.html:21
 #: prodekoorg/app_apply_for_membership/models.py:62
 #: prodekoorg/app_contact/models.py:82 prodekoorg/app_kulukorvaus/models.py:48
 #: prodekoorg/app_kulukorvaus/printing.py:95
-#: prodekoorg/app_toimarit/models.py:106
+#: prodekoorg/app_toimarit/models.py:115
 msgid "Email"
 msgstr "Sähköposti"
 
-#: auth_prodeko/templates/accounts/user_profile.html:12
+#: auth_prodeko/templates/accounts/user_profile.html:16
 msgid "Edit profile"
 msgstr "Muokkaa profiilia"
 
-#: auth_prodeko/templates/accounts/user_profile.html:26
+#: auth_prodeko/templates/accounts/user_profile.html:30
 msgid "New Password"
 msgstr "Uusi salasana"
 
-#: auth_prodeko/templates/accounts/user_profile.html:35
+#: auth_prodeko/templates/accounts/user_profile.html:39
 msgid "Confirm New Password"
 msgstr "Vahvista Uusi salasana"
 
-#: auth_prodeko/templates/accounts/user_profile.html:44
+#: auth_prodeko/templates/accounts/user_profile.html:48
 msgid "Current Password"
 msgstr "Nykyinen Salasana"
 
-#: auth_prodeko/templates/accounts/user_profile.html:54
+#: auth_prodeko/templates/accounts/user_profile.html:58
 msgid "Save changes"
 msgstr "Tallenna muutokset"
 
@@ -204,7 +204,7 @@ msgstr "Vaihda salasana tästä linkistä:"
 
 #: auth_prodeko/templates/password_reset_form.html:10
 #: auth_prodeko/templates/prodeko_login.html:10
-#: prodekoorg/app_apply_for_membership/templates/app_apply_for_membership_base.html:13
+#: prodekoorg/app_apply_for_membership/templates/app_apply_for_membership_base.html:12
 #: prodekoorg/app_contact/templates/app_contact_base.html:13
 #: prodekoorg/app_kulukorvaus/templates/kulukorvaus_forms.html:4
 msgid "Submit"
@@ -345,12 +345,12 @@ msgid "Other (English)"
 msgstr "Englanti"
 
 #: prodekoorg/app_apply_for_membership/models.py:58
-#: prodekoorg/app_toimarit/models.py:36 prodekoorg/app_toimarit/models.py:94
+#: prodekoorg/app_toimarit/models.py:63 prodekoorg/app_toimarit/models.py:103
 msgid "First name"
 msgstr "Etunimi"
 
 #: prodekoorg/app_apply_for_membership/models.py:59
-#: prodekoorg/app_toimarit/models.py:37 prodekoorg/app_toimarit/models.py:95
+#: prodekoorg/app_toimarit/models.py:64 prodekoorg/app_toimarit/models.py:104
 msgid "Last name"
 msgstr "Sukunimi"
 
@@ -411,7 +411,7 @@ msgstr "Hyväksy hakemus"
 msgid "Reject application"
 msgstr "Hylkää hakemus"
 
-#: prodekoorg/app_apply_for_membership/templates/app_apply_for_membership_base.html:14
+#: prodekoorg/app_apply_for_membership/templates/app_apply_for_membership_base.html:13
 msgid ""
 "If you don't agree with Prodeko's privacy policy you can't use this online "
 "application form. Please contact Mediakeisari (mediakeisari@prodeko.org) if "
@@ -812,52 +812,52 @@ msgstr "Sovellus - Toimarisivu"
 msgid "Board of Prodeko application"
 msgstr "Sovellus - Hallitussivu"
 
-#: prodekoorg/app_toimarit/models.py:22
+#: prodekoorg/app_toimarit/models.py:49
 msgid "section"
 msgstr "jaosto"
 
-#: prodekoorg/app_toimarit/models.py:23
+#: prodekoorg/app_toimarit/models.py:50
 msgid "sections"
 msgstr "jaostot"
 
-#: prodekoorg/app_toimarit/models.py:38 prodekoorg/app_toimarit/models.py:96
+#: prodekoorg/app_toimarit/models.py:65 prodekoorg/app_toimarit/models.py:105
 #: prodekoorg/app_vaalit/models.py:12
 msgid "Position"
 msgstr "Virka"
 
-#: prodekoorg/app_toimarit/models.py:40 prodekoorg/app_toimarit/models.py:102
+#: prodekoorg/app_toimarit/models.py:67 prodekoorg/app_toimarit/models.py:111
 msgid "Section"
 msgstr "Jaosto"
 
-#: prodekoorg/app_toimarit/models.py:72
+#: prodekoorg/app_toimarit/models.py:81
 msgid "guild official"
 msgstr "toimari"
 
-#: prodekoorg/app_toimarit/models.py:73
+#: prodekoorg/app_toimarit/models.py:82
 msgid "guild officials"
 msgstr "toimarit"
 
-#: prodekoorg/app_toimarit/models.py:104
+#: prodekoorg/app_toimarit/models.py:113
 msgid "Position (English)"
 msgstr "Virka (Englanniksi)"
 
-#: prodekoorg/app_toimarit/models.py:105
+#: prodekoorg/app_toimarit/models.py:114
 msgid "Mobile phone"
 msgstr "Puhelinnumero"
 
-#: prodekoorg/app_toimarit/models.py:108
+#: prodekoorg/app_toimarit/models.py:117
 msgid "Telegram"
 msgstr "Telegram"
 
-#: prodekoorg/app_toimarit/models.py:111
+#: prodekoorg/app_toimarit/models.py:120
 msgid "Description"
 msgstr "Kuvaus"
 
-#: prodekoorg/app_toimarit/models.py:141
+#: prodekoorg/app_toimarit/models.py:134
 msgid "board member"
 msgstr "hallituksen jäsen"
 
-#: prodekoorg/app_toimarit/models.py:142
+#: prodekoorg/app_toimarit/models.py:135
 msgid "board members"
 msgstr "hallituksen jäsenet"
 
@@ -1154,15 +1154,15 @@ msgstr ""
 "Mikäli et hyväksy tietosuojalauseketta, sinut kirjataan ulos. Kirjautumalla "
 "sisään näet tämän saman valintaikkunan."
 
-#: prodekoorg/urls.py:62
+#: prodekoorg/urls.py:64
 msgid "^weekly-bulletin/"
 msgstr "^tiedotteet/"
 
-#: prodekoorg/urls.py:64
+#: prodekoorg/urls.py:66
 msgid "^matrikkeli/"
 msgstr ""
 
-#: prodekoorg/urls.py:65
+#: prodekoorg/urls.py:67
 msgid "^elections/"
 msgstr "^vaalit/"
 
