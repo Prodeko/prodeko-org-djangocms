@@ -1,7 +1,8 @@
 @import 'variables.scss';
 
 #sidenav {
-  position: relative;
+  position: sticky;
+  top: 20px;
   display: flex;
   justify-content: center;
   min-width: 15em;
@@ -22,11 +23,9 @@
   .sidemenu-collapsable {
     justify-content: center;
     padding-left: 0;
-    line-height: 50%;
   }
 
   .sidenav-highlink {
     font-weight: bold;
-    line-height: 200%;
   }
 }

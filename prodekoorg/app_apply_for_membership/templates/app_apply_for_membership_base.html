@@ -9,9 +9,11 @@
 {% endblock %}
 
 {% block content %}
-    {% include "layout-components/jumbotron.html" %}
     {% trans "Submit" as submit %}
     {% trans "If you don't agree with Prodeko's privacy policy you can't use this online application form. Please contact Mediakeisari (mediakeisari@prodeko.org) if you still wish to apply to become a Prodeko member." as policy_not_accepted %}
+
+    {% include "layout-components/jumbotron.html" %}
+
     <div class="container apply-container">
         {% if done %}
             {% include "application_complete.html" %}

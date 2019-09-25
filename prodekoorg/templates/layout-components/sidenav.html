@@ -14,14 +14,12 @@
 
             {# Has child pages #}
             {% if not child.is_leaf_node or child.ancestor %}
-                <li class="nav-item{% if child.ancestor %} active{% endif %}">
-                    <a href="#" class="nav-link sidenav-highlink" data-toggle="collapse" aria-expanded="false" data-target="#sidemenu-collapsable-{{child.get_menu_title}}" aria-controls="sidemenu-collapsable-{{child.get_menu_title}}">
-                        {{child.get_menu_title }}<b class="caret"></b>
-                    </a>
-                    <ul id="sidemenu-collapsable-{{child.get_menu_title}}" class="collapse sidemenu-collapsable{% if child.ancestor %} show{% endif %}">
+                <li class="nav-item">
+                    <a href="{{ child.get_absolute_url }}" class="nav-link sidenav-highlink">{{child.get_menu_title }}</a>
+                    <ul class="collapse sidemenu-collapsable show">
                         {% if child.get_descendants %}
                             {% for kid in child.get_descendants %}
-                                <li class="nav-item{% if child.ancestor %} active{% endif %}">
+                                <li class="nav-item active">
                                     <a href="{{ kid.get_absolute_url }}" class="nav-link">{{kid.get_menu_title }}</a>
                                 </li>
                             {% endfor %}

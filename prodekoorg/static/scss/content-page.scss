@@ -2,10 +2,14 @@
 
 .content-page-jumbotron {
   .jumbotron {
-    height: 30vh;
+    height: 25vh;
     background-image: url('/static/images/backgrounds/content-page-bg-blue.jpg');
     background-repeat: no-repeat;
     background-size: cover;
+
+    @include phone {
+       height: 100px;
+    }
 
     h1 {
       color: white;
@@ -100,11 +104,6 @@
     margin: 0;
     padding: 0 0 0 1.5em;
     list-style-type: none;
-  }
-
-  ul:not(.page-breadcrumb):not(#sidenav) li::before {
-    padding-right: 1em;
-    content: '–';
   }
 
   @include underdesktop {

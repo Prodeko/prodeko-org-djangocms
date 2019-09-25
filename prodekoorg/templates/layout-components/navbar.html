@@ -1,4 +1,6 @@
+{% load menu_tags %}
+
 <nav>
-    {% include "layout-components/navbar-full.html" %}
-    {% include "layout-components/navbar-mobile.html" %}
+    {% show_menu 0 1 100 100 "layout-components/navbar-full.html" %}
+    {% show_menu 0 2 100 100 "layout-components/navbar-mobile.html" %}
 </nav>

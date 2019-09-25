@@ -1,58 +1,62 @@
 {% extends "base.html" %}
 {% load cms_tags sekizai_tags i18n sass_tags %}
+
 {% block extra_head %}
 <link href="{% sass_src 'scss/auth_prodeko.scss' %}" rel="stylesheet" type="text/css" />
 {% endblock %}
+
 {% block content %}
-{% include "layout-components/jumbotron.html" %}
-<div class="container">
-    <h1>{% trans "Profile" %}</h1>
-    <strong>{% trans "Name" %}: </strong> {{ user.first_name }} {{ user.last_name }} <br />
-    <strong>{% trans "Email" %}: </strong> {{ user.email }} <br /> <br />
-    <h2>{% trans "Edit profile" %}</h2>
-    <form method="POST" action="." class="form-wrapper">
-        {% csrf_token %}
-        <div class="fieldWrapper">
-            <div class='field-input'>
-                <label for='{{ form.email.id_for_label }}'>{% trans "Email" %}</label>
-                {{ form.email }}
+
+    {% include "layout-components/jumbotron.html" %}
+
+    <div class="container">
+        <h1>{% trans "Profile" %}</h1>
+        <strong>{% trans "Name" %}: </strong> {{ user.first_name }} {{ user.last_name }} <br />
+        <strong>{% trans "Email" %}: </strong> {{ user.email }} <br /> <br />
+        <h2>{% trans "Edit profile" %}</h2>
+        <form method="POST" action="." class="form-wrapper">
+            {% csrf_token %}
+            <div class="fieldWrapper">
+                <div class='field-input'>
+                    <label for='{{ form.email.id_for_label }}'>{% trans "Email" %}</label>
+                    {{ form.email }}
+                </div>
+                <div class="field-error">
+                    {{ form.email.errors }}
+                </div>
             </div>
-            <div class="field-error">
-                {{ form.email.errors }}
+            <div class="fieldWrapper">
+                <div class='field-input'>
+                    <label for='{{ form.newpassword.id_for_label }}'>{% trans "New Password" %}</label>
+                    {{ form.newpassword }}
+                </div>
+                <div class="field-error">
+                    {{ form.newpassword.errors }}
+                </div>
             </div>
-        </div>
-        <div class="fieldWrapper">
-            <div class='field-input'>
-                <label for='{{ form.newpassword.id_for_label }}'>{% trans "New Password" %}</label>
-                {{ form.newpassword }}
+            <div class="fieldWrapper">
+                <div class='field-input'>
+                    <label for='{{ form.newpassword_confirm.id_for_label }}'>{% trans "Confirm New Password" %}</label>
+                    {{ form.newpassword_confirm }}
+                </div>
+                <div class="field-error">
+                    {{ form.newpassword_confirm.errors }}
+                </div>
             </div>
-            <div class="field-error">
-                {{ form.newpassword.errors }}
+            <div class="fieldWrapper">
+                <div class='field-input'>
+                    <label for='{{ form.password.id_for_label }}'>{% trans "Current Password" %}</label>
+                    {{ form.password }}
+                </div>
+                <div class="field-error">
+                    {{ form.password.errors }}
+                </div>
             </div>
-        </div>
-        <div class="fieldWrapper">
-            <div class='field-input'>
-                <label for='{{ form.newpassword_confirm.id_for_label }}'>{% trans "Confirm New Password" %}</label>
-                {{ form.newpassword_confirm }}
+            <div class="other-errors">
+                {{ form.non_field_errors }}
             </div>
-            <div class="field-error">
-                {{ form.newpassword_confirm.errors }}
-            </div>
-        </div>
-        <div class="fieldWrapper">
-            <div class='field-input'>
-                <label for='{{ form.password.id_for_label }}'>{% trans "Current Password" %}</label>
-                {{ form.password }}
-            </div>
-            <div class="field-error">
-                {{ form.password.errors }}
-            </div>
-        </div>
-        <div class="other-errors">
-            {{ form.non_field_errors }}
-        </div>
-        <input type="Submit" value="{% trans 'Save changes' %}"/>
-    </form>
-    <br />
-</div>
+            <input type="Submit" value="{% trans 'Save changes' %}"/>
+        </form>
+        <br />
+    </div>
 {% endblock content %}

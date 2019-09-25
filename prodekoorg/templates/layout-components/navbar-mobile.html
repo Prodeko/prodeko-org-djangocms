@@ -16,21 +16,41 @@
     </button>
     <div class="collapse navbar-collapse pt-4" id="navbarMobile">
         <div class="navbar-nav">
-            <div class="accordion" id="navAccordion">
+            <div id="navAccordion">
                 {% for child in children %}
                     {% if child.get_descendants %}
-                        <div id="heading-{{ forloop.counter }}" class="my-3 caret-container collapsed" role="button" data-toggle="collapse" data-target="#collapse-{{ forloop.counter }}" aria-expanded="false" aria-controls="collapse-{{ forloop.counter }}">
+                        <div id="heading-{{forloop.counter}}-{{child.level}}" class="my-3 caret-container collapsed" role="button" data-toggle="collapse" data-target="#collapse-{{forloop.counter}}-{{child.level}}" aria-expanded="false" aria-controls="collapse-{{forloop.counter}}-{{child.level}}">
                             <h5 class="ml-2 uppercase">
                                 {{ child.get_menu_title }}
                                 <span class="fa fa-caret-up float-right mr-3"></span>
                             </h5>
                         </div>
-                        <div id="collapse-{{ forloop.counter }}" class="collapse text-center" aria-labelledby="heading-{{ forloop.counter }}" data-parent="#navAccordion">
+                        <div id="collapse-{{forloop.counter}}-{{child.level}}" class="collapse text-center" aria-labelledby="heading-{{forloop.counter}}-{{child.level}}" data-parent="#navAccordion">
                             <ul class="list-group list-group-flush">
                                 {% for kid in child.get_descendants %}
-                                    <li class="list-group-item">
-                                        <a class="link" href="{{ kid.get_absolute_url }}">{{ kid.get_menu_title }}</a>
-                                    </li>
+                                    {% if not kid.is_leaf_node %}
+                                        <li id="navAccordion-{{forloop.counter}}" class="list-group-item">
+                                            <div id="heading-{{forloop.counter}}-{{kid.level}}" class="submenu-heading collapsed" role="button" data-toggle="collapse" data-target="#collapse-{{forloop.counter}}-{{kid.level}}" aria-expanded="false" aria-controls="collapse-{{forloop.counter}}-{{kid.level}}">
+                                                <span>{{ kid.get_menu_title }}</span>
+                                            </div>
+                                            <div id="collapse-{{forloop.counter}}-{{kid.level}}" class="collapse text-center" aria-labelledby="heading-{{forloop.counter}}-{{kid.level}}" data-parent="#navAccordion-{{forloop.counter}}">
+                                                <ul class="list-group list-group-flush">
+                                                    <li class="list-group-item">
+                                                        <a class="link" href="{{ kid.get_absolute_url }}">{{ kid.get_menu_title }}</a>
+                                                    </li>
+                                                    {% for grandchild in kid.get_descendants %}
+                                                        <li class="list-group-item">
+                                                            <a class="link" href="{{ grandchild.get_absolute_url }}">{{ grandchild.get_menu_title }}</a>
+                                                        </li>
+                                                    {% endfor %}
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    {% elif kid.level < 2 %}
+                                        <li class="list-group-item">
+                                            <a class="link" href="{{ kid.get_absolute_url }}">{{ kid.get_menu_title }}</a>
+                                        </li>
+                                    {% endif %}
                                 {% endfor %}
                             </ul>
                         </div>
