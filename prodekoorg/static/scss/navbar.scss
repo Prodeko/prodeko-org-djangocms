@@ -39,10 +39,6 @@
   overflow-y: auto;
   max-height: 100vh;
 
-  .submenu-heading + div {
-    margin: 12px 0;
-  }
-
   [data-toggle~='collapse'] {
     cursor: pointer;
   }
