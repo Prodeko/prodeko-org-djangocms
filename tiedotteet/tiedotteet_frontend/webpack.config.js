@@ -9,7 +9,7 @@ module.exports = env => {
     output: {
       path: path.resolve(__dirname, 'public/tiedotteet'),
       filename: 'tiedotteet-bundle.js',
-      publicPath: '/tiedotteet/'
+      publicPath: '/static/tiedotteet/'
     },
     devtool: 'source-map',
     devServer: {

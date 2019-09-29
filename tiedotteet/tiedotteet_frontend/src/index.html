@@ -1,5 +1,3 @@
-{% load staticfiles %}
-
 <!DOCTYPE html>
 <html>
 
@@ -30,9 +28,7 @@
     {% include "snippets/ga-body.html" %}
     <noscript>This site requires JavaScript turned on</noscript>
     <div id="root"></div>
-    <% for (var jsfile in htmlWebpackPlugin.files.js) { %>
-    <script src="{% static '<%= htmlWebpackPlugin.files.js[jsfile] %>' %}"></script>
-    <% } %>
+    <script src="/static/tiedotteet/tiedotteet-bundle.js"></script>
 </body>
 
 </html>
