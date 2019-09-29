@@ -4,7 +4,7 @@ WORKDIR /app
 COPY tiedotteet/tiedotteet_frontend/package.json ./
 RUN npm install
 ADD tiedotteet/tiedotteet_frontend /app
-RUN npm run build
+RUN npm run build:dev
 
 # Stage 2 - main container definition
 FROM python:3

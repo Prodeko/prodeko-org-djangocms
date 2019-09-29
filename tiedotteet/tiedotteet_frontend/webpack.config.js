@@ -1,16 +1,15 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
-const publicPathProd = 'https://static.prodeko.org/';
 
 module.exports = env => {
   return {
-    mode: 'development',
+    mode: env.production ? 'production' : 'development',
     entry: './src/index.js',
     output: {
       path: path.resolve(__dirname, 'public/tiedotteet'),
       filename: 'tiedotteet-bundle.js',
-      publicPath: env.production ? publicPathProd : '/tiedotteet/'
+      publicPath: '/tiedotteet/'
     },
     devtool: 'source-map',
     devServer: {
