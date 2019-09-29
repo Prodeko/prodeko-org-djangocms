@@ -6,7 +6,8 @@
   "license": "MIT",
   "scripts": {
     "start": "webpack-dev-server --open --hot --mode development",
-    "build": "webpack --mode production",
+    "build:local": "webpack --mode production",
+    "build:prod": "webpack --mode production --env.production",
     "test": "find ./src -name '*.test.js' | xargs mocha --require ignore-styles ./test/configure.js -R spec",
     "lint": "eslint --ignore-path .gitignore .",
     "lint:fix": "eslint --ignore-path .gitignore --fix ."
