@@ -358,6 +358,9 @@ CKEDITOR_CONFIGS = {
     }
 }
 
+# Filer global options
+FILER_PAGINATE_BY = 50
+
 # Configure django messages framework to work with bootstrap
 MESSAGE_TAGS = {messages.ERROR: "danger"}
 

@@ -7,6 +7,8 @@ class AzureMediaStorage(AzureStorage):
     account_key = settings.STORAGE_KEY
     azure_container = "media"
     expiration_secs = None
+    # This is needed for django-filer
+    base_url = "media"
 
 
 class AzureStaticStorage(AzureStorage):
