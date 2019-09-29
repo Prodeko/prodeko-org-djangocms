@@ -1,7 +1,11 @@
 {% extends "base.html" %}
-{% load cms_tags i18n staticfiles %}
+{% load cms_tags sekizai_tags i18n staticfiles %}
 
 {% block title %}{% page_attribute "page_title" %}{% endblock title %}
+
+{% block extra_head %}
+<script src="{% static 'js/instagram.js' %}"></script>
+{% endblock %}
 
 {% block content %}
     {% trans "Welcome to Aalto IEM" as welcome1 %}
