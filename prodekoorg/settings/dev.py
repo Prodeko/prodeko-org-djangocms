@@ -11,6 +11,7 @@ DATABASES = {
         "PASSWORD": DB_PSWD,
         "HOST": "db",
         "PORT": "3306",
+        "OPTIONS": {"charset": "utf8mb4"},
     },
     "TEST": {"CHARSET": "utf8", "COLLATION": "utf8_unicode_ci"},
 }
