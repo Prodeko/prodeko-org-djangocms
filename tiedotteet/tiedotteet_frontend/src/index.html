@@ -1,4 +1,4 @@
-<!-- {% load staticfiles %} -->
+{% load staticfiles %}
 
 <!DOCTYPE html>
 <html>
@@ -23,18 +23,16 @@
     <script>
         window.csrfToken = "{{csrf_token}}";
     </script>
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-WV66B47');
-    </script>
+    {% include "snippets/ga-head.html" %}
 </head>
 
 <body>
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WV66B47" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    {% include "snippets/ga-body.html" %}
     <noscript>This site requires JavaScript turned on</noscript>
     <div id="root"></div>
+    <% for (var jsfile in htmlWebpackPlugin.files.js) { %>
+    <script src="{% static '<%= htmlWebpackPlugin.files.js[jsfile] %>' %}"></script>
+    <% } %>
 </body>
 
 </html>

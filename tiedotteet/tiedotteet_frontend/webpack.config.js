@@ -7,8 +7,8 @@ module.exports = {
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'public/tiedotteet'),
-    filename: 'bundle.js',
-    publicPath: '/static/tiedotteet/'
+    filename: 'tiedotteet-bundle.js',
+    publicPath: '/tiedotteet/'
   },
   devtool: 'source-map',
   devServer: {
@@ -42,6 +42,7 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebPackPlugin({
+      inject: false,
       template: './src/index.html'
     })
   ]
