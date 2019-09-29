@@ -37,6 +37,28 @@ MEDIA_LOCATION = "media"
 STATIC_URL = f"https://{CDN_URL}/{STATIC_LOCATION}/"
 MEDIA_URL = f"https://{CDN_URL}/{MEDIA_LOCATION}/"
 
+# Django filer config
+FILER_STORAGES = {
+    "public": {
+        "main": {
+            "ENGINE": "prodekoorg.custom_azure.AzureMediaStorage",
+            "OPTIONS": {
+                "location": "/media/files"),
+                "base_url": "/media/files/",
+            },
+            "UPLOAD_TO": "filer.utils.generate_filename.by_date",
+            "UPLOAD_TO_PREFIX": "public",
+        },
+        "thumbnails": {
+            "ENGINE": "prodekoorg.custom_azure.AzureMediaStorage",
+            "OPTIONS": {
+                "location": "/media/thumbnails"),
+                "base_url": "/media/thumbnails/",
+            },
+        },
+    },
+}
+
 # Loggin config. On DEBUG = FALSE, email ADMINS
 # on ERROR (or higher) level events, otherwise log
 # to standard output.

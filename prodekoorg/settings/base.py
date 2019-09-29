@@ -299,48 +299,6 @@ THUMBNAIL_PROCESSORS = (
     "easy_thumbnails.processors.filters",
 )
 
-# Django filer config
-FILER_STORAGES = {
-    "public": {
-        "main": {
-            "ENGINE": "filer.storage.PublicFileSystemStorage",
-            "OPTIONS": {
-                "location": os.path.join(BASE_DIR, "prodekoorg/media/filer"),
-                "base_url": "/media/filer/",
-            },
-            "UPLOAD_TO": "filer.utils.generate_filename.by_date",
-            "UPLOAD_TO_PREFIX": "filer_public",
-        },
-        "thumbnails": {
-            "ENGINE": "filer.storage.PublicFileSystemStorage",
-            "OPTIONS": {
-                "location": os.path.join(BASE_DIR, "prodekoorg/media/filer_thumbnails"),
-                "base_url": "/media/filer_thumbnails/",
-            },
-        },
-    },
-    "private": {
-        "main": {
-            "ENGINE": "filer.storage.PrivateFileSystemStorage",
-            "OPTIONS": {
-                "location": os.path.join(BASE_DIR, "prodekoorg/smedia/filer"),
-                "base_url": "/smedia/filer/",
-            },
-            "UPLOAD_TO": "filer.utils.generate_filename.randomized",
-            "UPLOAD_TO_PREFIX": "filer_public",
-        },
-        "thumbnails": {
-            "ENGINE": "filer.storage.PrivateFileSystemStorage",
-            "OPTIONS": {
-                "location": os.path.join(
-                    BASE_DIR, "prodekoorg/smedia/filer_thumbnails"
-                ),
-                "base_url": "/smedia/filer_thumbnails/",
-            },
-        },
-    },
-}
-
 # Config for djangocms-text-ckeditor
 CKEDITOR_SETTINGS = {
     "language": "en",
