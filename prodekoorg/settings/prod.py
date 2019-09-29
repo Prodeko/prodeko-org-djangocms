@@ -42,21 +42,18 @@ FILER_STORAGES = {
     "public": {
         "main": {
             "ENGINE": "prodekoorg.custom_azure.AzureMediaStorage",
-            "OPTIONS": {
-                "location": "/media/files"),
-                "base_url": "/media/files/",
-            },
+            "OPTIONS": {"location": "/media/files", "base_url": "/media/files/"},
             "UPLOAD_TO": "filer.utils.generate_filename.by_date",
             "UPLOAD_TO_PREFIX": "public",
         },
         "thumbnails": {
             "ENGINE": "prodekoorg.custom_azure.AzureMediaStorage",
             "OPTIONS": {
-                "location": "/media/thumbnails"),
+                "location": "/media/thumbnails",
                 "base_url": "/media/thumbnails/",
             },
         },
-    },
+    }
 }
 
 # Loggin config. On DEBUG = FALSE, email ADMINS
