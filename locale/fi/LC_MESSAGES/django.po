@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-25 20:16+0000\n"
+"POT-Creation-Date: 2019-09-29 18:03+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Timo Riski <timo@prodeko.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1107,6 +1107,10 @@ msgstr "Käyntiosoite"
 #: prodekoorg/templates/layout-components/footer.html:6
 msgid "Apply for membership"
 msgstr "Jäsenhakemus"
+
+#: prodekoorg/templates/layout-components/instagram.html:3
+msgid "Social media"
+msgstr "Sosiaalinen media"
 
 #: prodekoorg/templates/layout-components/navbar-full.html:4
 #: prodekoorg/templates/layout-components/navbar-mobile.html:3
