@@ -289,7 +289,7 @@ CMS_TEMPLATES = (
     ("contentpage/content-page-twocol6-6.html", "Content page with 1:1 split"),
     ("contentpage/content-page-twocol8-4.html", "Content page with 2:1 split"),
 )
-CMS_PERMISSION = False
+CMS_PERMISSION = True
 CMS_PLACEHOLDER_CONF = {}
 
 THUMBNAIL_PROCESSORS = (
