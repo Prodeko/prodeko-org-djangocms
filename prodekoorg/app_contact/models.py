@@ -38,7 +38,9 @@ class Message(models.Model):
         (
             "AB",
             "abivastaava@prodeko.org",
-            "Marketing to high school students and questions relating applying (abivastaava@prodeko.org)",
+            _(
+                "Marketing to high school students and questions relating applying (abivastaava@prodeko.org)"
+            ),
         ),
         (
             "FK",
