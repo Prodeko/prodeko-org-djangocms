@@ -2,18 +2,18 @@
 {% load staticfiles i18n %}
 
 {% block body %}
-    <div id="page-wrapper">
+    <div id="content-wrapper">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <h1 class="page-header">
+                    <h1 class="pb-2 mt-4 mb-4 border-bottom">
                         {% trans "Send email" %}
                         <small>{% trans "Send a bulletin by email" %}</small>
                     </h1>
                 </div>
             </div>
             <div class="row">
-                <div class="col col-md-8">
+                <div class="col-md-8">
                     <p class="pull-right"><a type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#email-settings">{% trans "Edit settings" %}</a></p>
                     <p>{% trans "Email server settings" as emailserver_settings %}</p>
                     <table class="table table-bordered">
@@ -37,7 +37,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col col-md-8">
+                <div class="col-md-8">
                     <form class="send-email-form" action="{% url 'tiedotteet:send_email' %}" method="post">
                         {% csrf_token %}
                         <div class="form-group">

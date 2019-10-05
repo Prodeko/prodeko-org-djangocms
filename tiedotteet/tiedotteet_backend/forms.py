@@ -140,7 +140,11 @@ class TagForm(ModelForm):
         model = Tag
         fields = ["title"]
         labels = {"title": _("Add a new tag")}
-        widgets = {"title": TextInput(attrs={"class": "form-control"})}
+        widgets = {
+            "title": TextInput(
+                attrs={"class": "form-control", "placeholder": _("Add tag")}
+            )
+        }
 
 
 class MailConfigurationForm(ModelForm):

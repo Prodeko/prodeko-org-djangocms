@@ -46,9 +46,7 @@ export const markUnRead = payload => {
 export const fetchContent = () => dispatch => {
   dispatch(requestContent());
   const url = `${
-    process.env.NODE_ENV === 'production'
-      ? ''
-      : 'https://tiedotteet.prodeko.org'
+    process.env.NODE_ENV === 'production' ? '' : 'https://prodeko.org/fi'
   }/tiedotteet/api/content/`;
   fetch(url, {
     credentials: 'same-origin',

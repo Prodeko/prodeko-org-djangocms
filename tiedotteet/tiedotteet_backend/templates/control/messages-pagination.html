@@ -1,0 +1,22 @@
+{% load i18n %}
+
+<nav aria-label="Pagination">
+    <ul class="pagination">
+        {% if messages.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?{{queries.urlencode}}&amp;page={{ messages.previous_page_number }}" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+        {% endif %}
+        <li class="page-item">{{ messages.number }}/{{ messages.paginator.num_pages }}</li>
+        {% if messages.has_next %}
+            <a href="?{{queries.urlencode}}&amp;page={{ messages.next_page_number }}">{% trans "next" %}</a>
+            <li class="page-item">
+                <a class="page-link" href="?{{queries.urlencode}}&amp;page={{ messages.next_page_number }}" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        {% endif %}
+    </ul>
+</nav>

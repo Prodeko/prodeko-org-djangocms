@@ -2,14 +2,14 @@
 {% load i18n %}
 
 {% block body %}
-    <div id="page-wrapper">
+    <div id="content-wrapper">
         <div class="container-fluid">
             {% for key, value in messages.items %}
                 <h5 class="alert alert-{{ key }}">{{ value }}</h5>
             {% endfor %}
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">
+                    <h1 class="pb-2 mt-4 mb-4 border-bottom">
                         {% trans "Publish" %}
                         <small>{% trans "Publish a new bulletin" %}</small>
                     </h1>
@@ -17,100 +17,13 @@
             </div>
             <div class="row">
                 <div class="col-lg-10">
-                    <form role="form" action="{% url 'tiedotteet:cp' %}" method="post">
-                        {{ form.media }}
-                        <div class="form-group col col-md-4">
-                            <label>{{ form.header.label }}</label>
-                            {{ form.header }}
-                            {% if form.header.errors %}
-                                <div class="alert alert-danger">
-                                    {{ form.header.errors }}
-                                </div>
-                            {% endif %}
-                        </div>
-                        <div class="form-group col col-md-4">
-                            <label>{{ form.category.label }}</label>
-                            {{ form.category }}
-                            {% if form.category.errors %}
-                                <div class="alert alert-danger">
-                                    {{ form.category.errors }}
-                                </div>
-                            {% endif %}
-                        </div>
-                        <div class="form-group col col-md-4">
-                            <label>{{ form.tags.label }}</label>
-                            {{ form.tags }}
-                            {% if form.tags.errors %}
-                                <div class="alert alert-danger">
-                                    {{ form.tags.errors }}
-                                </div>
-                            {% endif %}
-                        </div>
-                        <div class="form-group col col-md-4">
-                            <label>{{ form.start_date.label }}</label>
-                            {{ form.start_date }}
-                            {% if form.start_date.errors %}
-                                <div class="alert alert-danger">
-                                    {{ form.start_date.errors }}
-                                </div>
-                            {% endif %}
-                        </div>
-                        <div class="form-group col col-md-4">
-                            <label>{{ form.end_date.label }}</label>
-                            {{ form.end_date }}
-                            {% if form.end_date.errors %}
-                                <div class="alert alert-danger">
-                                    {{ form.end_date.errors }}
-                                </div>
-                            {% endif %}
-                        </div>
-                        <div class="form-group col col-md-4">
-                            <label>{{ form.deadline_date.label }}</label>
-                            {{ form.deadline_date }}
-                            {% if form.deadline_date.errors %}
-                                <div class="alert alert-danger">
-                                    {{ form.deadline_date.errors }}
-                                </div>
-                            {% endif %}
-                        </div>
-                        <div class="form-group col col-md-12">
-                            <label>{{ form.show_deadline.label }}</label>
-                            {{ form.show_deadline }}
-                            {% if form.show_deadline.errors %}
-                                <div class="alert alert-danger">
-                                    {{ form.show_deadline.errors }}
-                                </div>
-                            {% endif %}
-                        </div>
-                        <div class="form-group col col-md-12">
-                            <label>{{ form.visible.label }}</label>
-                            {{ form.visible }}
-                            {% if form.visible.errors %}
-                                <div class="alert alert-danger">
-                                    {{ form.visible.errors }}
-                                </div>
-                            {% endif %}
-                        </div>
-                        <div class="form-group col col-md-12">
-                            <label>{{ form.content.label }}</label>
-                            <div>
-                                {{ form.content }}
-                                {% if form.content.errors %}
-                                    <div class="alert alert-danger">
-                                        {{ form.content.errors }}
-                                    </div>
-                                {% endif %}
-                            </div>
-                        </div>
-                        <div class="form-group col col-md-12">
-                            <input type="submit" name="submit" id="submit" value="Julkaise" class="btn btn-success">
-                        </div>
-                        {{ form.form_valid_message }}
-                        {{ form.form_invalid_message }}
+                    <form role="form" action="{% url 'tiedotteet:cp' %}" method="post" novalidate>
                         {% csrf_token %}
+                        {{ form.media }}
+                        {% include 'control/bulletin-form.html' with form=form label="Julkaise" %}
                     </form>
                 </div>
-                <div class="col col-lg-2" style="border-left:1px solid #000000;">
+                <div class="col-lg-2" style="border-left:1px solid #000000;">
                     <h4>{% trans "Latest bulletins" %}</h4>
                     <ul>
                         {% for m in latest_messages %}
