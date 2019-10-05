@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-06 01:50+0300\n"
+"POT-Creation-Date: 2019-10-06 02:11+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Timo Riski <timo@prodeko.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1390,10 +1390,6 @@ msgstr "Käyttäjä"
 msgid "Preview"
 msgstr "Esikatselu"
 
-#: tiedotteet/tiedotteet_backend/templates/control/messages-pagination.html:14
-msgid "next"
-msgstr "seuraava"
-
 #: tiedotteet/tiedotteet_backend/templates/control/messages.html:17
 msgid "No results"
 msgstr "Ei tuloksia"
@@ -1446,6 +1442,3 @@ msgstr "Tiedote lisätty"
 #: tiedotteet/tiedotteet_backend/views.py:422
 msgid "Admin login required"
 msgstr "Kirjautuminen ylläpitäjänä vaadittu"
-
-#~ msgid "previous"
-#~ msgstr "edellinen"

@@ -9,9 +9,10 @@
                 </a>
             </li>
         {% endif %}
-        <li class="page-item">{{ messages.number }}/{{ messages.paginator.num_pages }}</li>
+        <li class="page-item {% if messages.has_previous %}ml-2{% endif %} mr-2">
+            <span class="page-link">{{ messages.number }}/{{ messages.paginator.num_pages }}</span>
+        </li>
         {% if messages.has_next %}
-            <a href="?{{queries.urlencode}}&amp;page={{ messages.next_page_number }}">{% trans "next" %}</a>
             <li class="page-item">
                 <a class="page-link" href="?{{queries.urlencode}}&amp;page={{ messages.next_page_number }}" aria-label="Next">
                     <span aria-hidden="true">&raquo;</span>
