@@ -321,7 +321,7 @@ def admin_export_data(request):
             request.POST.get("member_until_search"),
             request.POST.get("member_type_search"),
         )
-        queryset = queryset.exclude(is_hidden=True).exclude(is_active=False)
+        queryset = queryset.exclude(person__is_hidden=True).exclude(is_active=False)
 
         if request.POST.get("alive"):
             queryset = queryset.exclude(person__is_dead=True)
