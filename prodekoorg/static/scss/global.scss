@@ -1,0 +1,9 @@
+@import 'variables.scss';
+
+body {
+  #cms-top + nav {
+    #navbar-mobile {
+      max-height: calc(100vh - #{$cms-toolbar-height});
+    }
+  }
+}
