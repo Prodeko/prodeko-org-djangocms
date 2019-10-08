@@ -1,5 +1,5 @@
 {% extends "contentpage/content-page.html" %}
-{% load cms_tags menu_tags static sekizai_tags sass_tags %}
+{% load cms_tags menu_tags static sekizai_tags sass_tags thumbnail %}
 
 {% block extra_head %}
     <link href="{% sass_src 'scss/app_toimarit.scss' %}" rel="stylesheet" type="text/css" />
@@ -18,7 +18,7 @@
                                 {% for official in guildofficials %}
                                     {% if official.section == section %}
                                         <div class="toimari">
-                                            <img src="{% static 'images/toimari_photos/' %}/{{official.photourl}}" alt="{{official.name}}"/>
+                                            <img src="{% static 'images/toimari_photos/' %}/{{official.photourl|thumbnail_url:'avatar'}}" alt="{{official.name}}"/>
                                             <div class="description">
                                                 <strong>{{ official.name }}</strong>
                                                 <br />

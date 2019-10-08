@@ -299,6 +299,13 @@ THUMBNAIL_PROCESSORS = (
     "easy_thumbnails.processors.filters",
 )
 
+THUMBNAIL_ALIASES = {
+    "": {
+        "avatar": {"size": (50, 50), "crop": True},
+        "toimari": {"size": (150, 150), "crop": True},
+    }
+}
+
 # Config for djangocms-text-ckeditor
 CKEDITOR_SETTINGS = {
     "language": "en",

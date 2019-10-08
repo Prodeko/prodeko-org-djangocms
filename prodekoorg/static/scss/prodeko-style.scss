@@ -12,7 +12,7 @@ Prodekon keskisininen: #002e7d
 Prodekon tummansininen: #002851
 */
 
-@import 'breakpoints_mixin';
+@import 'breakpoints-mixin';
 @import 'typography';
 @import 'variables';
 @import 'hamburgers';
@@ -21,4 +21,4 @@ Prodekon tummansininen: #002851
 @import 'navbar';
 @import 'footer';
 @import 'content-page';
-@import 'error_pages';
+@import 'error-pages';
