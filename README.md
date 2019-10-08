@@ -4,7 +4,7 @@ Tuotantotalouden kilta Prodekon Django-pohjaiset nettisivut.
 
 ---
 
-Prodeko.org projekti käyttää Django versiota 2.1.10
+Prodeko.org projekti käyttää Django versiota 2.2.5.
 
 ### Vaatimukset
 
@@ -176,9 +176,9 @@ $ npm run lint:css-fix  # Korjaa virheet
     ├── seminaari                      # Prodeko Seminaarin nettisivut
     │   └── ...
     ├── tiedotteet                     # tiedotteet.prodeko.org verkkosivu
-    │   │── tiedotteet_backend         # Tiedotteet django backend
+    │   │── backend                    # Tiedotteet django backend
     │   │   └── ...
-    │   │── tiedotteet_frontend        # Tiedotteet React frontend
+    │   │── frontend                   # Tiedotteet React frontend
     │   │   └── ...
     ├── README.md                      # README
     └── ...

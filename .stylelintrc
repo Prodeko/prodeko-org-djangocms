@@ -17,6 +17,6 @@
     "!alumnirekisteri/rekisteri/static/css/ar_custom.css",
     "!alumnirekisteri/rekisteri/static/css/ui.css",
     "lifelonglearning/static/css/bootstrap.min.css",
-    "tiedotteet/tiedotteet_backend/static/**",
+    "tiedotteet/backend/static/**",
   ]
 }

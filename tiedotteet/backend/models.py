@@ -19,6 +19,7 @@ class MailConfiguration(models.Model):
         # Correct spelling in Django admin
         verbose_name = _("mail configuration")
         verbose_name_plural = _("Mail configuration")
+        db_table = "tiedotteet_mailconfiguration"
 
 
 class Tag(models.Model):
@@ -39,6 +40,7 @@ class Tag(models.Model):
         # Correct spelling in Django admin
         verbose_name = _("tag")
         verbose_name_plural = _("Tags")
+        db_table = "tiedotteet_tag"
 
 
 class Category(models.Model):
@@ -69,6 +71,7 @@ class Category(models.Model):
         # Correct spelling in Django admin
         verbose_name = _("category")
         verbose_name_plural = _("Categories")
+        db_table = "tiedotteet_category"
 
 
 class MessageManager(models.Manager):
@@ -154,3 +157,5 @@ class Message(models.Model):
         # Correct spelling in Django admin
         verbose_name = _("bulletin")
         verbose_name_plural = _("Bulletins")
+        db_table = "tiedotteet_message"
+

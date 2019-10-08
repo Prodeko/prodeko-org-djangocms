@@ -116,9 +116,9 @@ STATICFILES_DIRS = [
     # seminaari.prodeko.org
     os.path.join(BASE_DIR, "seminaari/static"),
     # tiedotteet.prodeko.org
-    os.path.join(BASE_DIR, "tiedotteet/tiedotteet_frontend/static"),
-    os.path.join(BASE_DIR, "tiedotteet/tiedotteet_frontend/public"),
-    os.path.join(BASE_DIR, "tiedotteet/tiedotteet_backend/static"),
+    os.path.join(BASE_DIR, "tiedotteet/frontend/static"),
+    os.path.join(BASE_DIR, "tiedotteet/frontend/public"),
+    os.path.join(BASE_DIR, "tiedotteet/backend/static"),
     # matrikkeli.prodeko.org
     os.path.join(BASE_DIR, "alumnirekisteri/rekisteri/static"),
 ]
@@ -141,8 +141,8 @@ TEMPLATES = [
             os.path.join(BASE_DIR, "abisivut/templates"),
             os.path.join(BASE_DIR, "lifelonglearning/templates"),
             os.path.join(BASE_DIR, "seminaari/templates"),
-            os.path.join(BASE_DIR, "tiedotteet/tiedotteet_backend/templates"),
-            os.path.join(BASE_DIR, "tiedotteet/tiedotteet_frontend/public"),
+            os.path.join(BASE_DIR, "tiedotteet/backend/templates"),
+            os.path.join(BASE_DIR, "tiedotteet/frontend/public"),
             os.path.join(BASE_DIR, "alumnirekisteri/rekisteri"),
             os.path.join(BASE_DIR, "prodekoorg/app_apply_for_membership/templates"),
             os.path.join(
@@ -253,7 +253,7 @@ INSTALLED_APPS = (
     "djangocms_bootstrap4.contrib.bootstrap4_utilities",
     # ------------------------
     # tiedotteet.prodeko.org
-    "tiedotteet.tiedotteet_backend",
+    "tiedotteet.backend",
     "ckeditor",
     "ckeditor_uploader",
     "rest_framework",

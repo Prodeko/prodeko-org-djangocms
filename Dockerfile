@@ -1,9 +1,9 @@
 # Stage 1 - build tiedotteet frontend
 FROM node:10 as tiedotteet-build
 WORKDIR /app
-COPY tiedotteet/tiedotteet_frontend/package.json ./
+COPY tiedotteet/frontend/package.json ./
 RUN npm install
-ADD tiedotteet/tiedotteet_frontend /app
+ADD tiedotteet/frontend /app
 RUN npm run build:dev
 
 # Stage 2 - main container definition
@@ -23,7 +23,7 @@ COPY requirements.txt requirements.txt ./
 RUN pip install -r requirements.txt
 
 COPY . /code/
-COPY --from=tiedotteet-build /app/public/tiedotteet /code/tiedotteet/tiedotteet_frontend/public/tiedotteet
+COPY --from=tiedotteet-build /app/public/tiedotteet /code/tiedotteet/frontend/public/tiedotteet
 COPY docker-entrypoint.sh /usr/local/bin/
 RUN dos2unix /usr/local/bin/docker-entrypoint.sh && apt-get --purge remove -y dos2unix && rm -rf /var/lib/apt/lists/*
 

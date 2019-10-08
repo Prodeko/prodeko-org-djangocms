@@ -61,7 +61,7 @@ urlpatterns += i18n_patterns(
     # app_infoscreen
     re_path(r"^infoscreen/", include("prodekoorg.app_infoscreen.urls")),
     # tiedotteet.prodeko.org
-    re_path(_(r"^weekly-bulletin/"), include("tiedotteet.tiedotteet_backend.urls")),
+    re_path(_(r"^weekly-bulletin/"), include("tiedotteet.backend.urls")),
     # matrikkeli.prodeko.org
     re_path(_(r"^matrikkeli/"), include("alumnirekisteri.alumnirekisteri.urls")),
     re_path(_(r"^elections/"), include("prodekoorg.app_vaalit.urls")),

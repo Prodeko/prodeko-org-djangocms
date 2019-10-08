@@ -13,11 +13,11 @@ from django.urls import reverse
 from django.utils import timezone
 from django.utils.html import strip_tags
 from django.utils.translation import ugettext as _
-from tiedotteet.tiedotteet_backend.forms import (CategoryForm, EditForm,
+from tiedotteet.backend.forms import (CategoryForm, EditForm,
                                                  MailConfigurationForm,
                                                  PublishForm, SendEmailForm,
                                                  TagForm)
-from tiedotteet.tiedotteet_backend.models import (Category, MailConfiguration,
+from tiedotteet.backend.models import (Category, MailConfiguration,
                                                   Message, Tag)
 
 

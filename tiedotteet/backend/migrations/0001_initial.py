@@ -56,7 +56,7 @@ class Migration(migrations.Migration):
                 ('deadline_date', models.DateField(blank=True, default=datetime.date(2019, 7, 13), null=True)),
                 ('show_deadline', models.BooleanField(default=False)),
                 ('visible', models.BooleanField(default=True)),
-                ('category', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, related_name='messages', to='tiedotteet_backend.Category')),
+                ('category', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, related_name='messages', to='backend.Category')),
             ],
             options={
                 'verbose_name': 'tiedote',
@@ -77,6 +77,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='message',
             name='tags',
-            field=models.ManyToManyField(blank=True, related_name='messages', to='tiedotteet_backend.Tag'),
+            field=models.ManyToManyField(blank=True, related_name='messages', to='backend.Tag'),
         ),
     ]
