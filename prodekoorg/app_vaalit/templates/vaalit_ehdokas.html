@@ -2,14 +2,18 @@
 
 {% trans "Delete" as delete %}
 {% trans "Modify" as modify %}
+{% trans "View Introduction" as view_introduction %}
 
 <div class="card mr-3 rounded col-md-6">
   <div class="img-container mx-auto mt-3">
     <img src="{{ ehdokas.pic.url }}" alt="{{ ehdokas.name }}" />
   </div>
-  <p class="card-text text-center">{{ ehdokas.name }}</p>
+  <p class="card-text text-center" id="ehdokasName">{{ ehdokas.name }}</p>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+      {% trans view_introduction %}
+    </button>
+    {% include "vaalit_modal_ehdokas_description.html" %}
   <div class="card-body p-1">
-    {% autoescape off %}{{ ehdokas.introduction }}{% endautoescape %}
     {% if request.user == ehdokas.auth_prodeko_user %}
     <hr class="mb-3" />
     <div class="d-flex flex-column align-items-center">

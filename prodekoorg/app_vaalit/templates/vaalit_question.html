@@ -1,6 +1,7 @@
 {% load i18n %}
 
 {% trans "Answer" as answer %}
+{% trans "Answers" as answers %}
 {% trans "Remove" as remove %}
 {% trans "Edit" as edit %}
 
@@ -11,7 +12,10 @@
     <div class="col-md-12 pl-0">
       <div class="questionHeader">
       <p class="my-2"><strong>{{ kysymys.question }}</strong></p>
-      <i class="fa fa-fw fa-chevron-down"></i>
+      <div>
+        <p style="display: inline-block; margin-right: 1rem;">{% trans answers %}: {{kysymys.vastaukset.count}}</p>
+        <i class="fa fa-fw fa-chevron-down" style="display: inline-block;"></i>
+      </div>
       </div>
       <div class="row">
         {% for ehdokas in virka.ehdokkaat.all %}

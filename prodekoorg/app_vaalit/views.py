@@ -86,7 +86,7 @@ class EhdokasUpdateView(UpdateView):
         response = handle_modify_ehdokas(request, context=context, ehdokas=ehdokas)
         return HttpResponseRedirect(self.get_success_url())
 
-
+@login_required
 def delete_kysymys_view(request, pk):
     """Handle question deletions."""
     kysymys = get_object_or_404(Kysymys, pk=pk)
@@ -99,6 +99,7 @@ def delete_kysymys_view(request, pk):
     else:
         return JsonResponse({"delete_kysymys_id": 1})
 
+@login_required
 def update_kysymys_view(request, pk):
     """Handle question deletions."""
     kysymys = get_object_or_404(Kysymys, pk=pk)
@@ -175,7 +176,7 @@ def get_ehdokkaat_json(context, ehdokas):
     ehdokkaat_json.extend(ehdokas_new)  # Extend operates in-place and returns none
     return json.dumps(ehdokkaat_json)
 
-
+@login_required
 def handle_submit_ehdokas(request, context):
     form_ehdokas = EhdokasForm(request.POST, request.FILES)
     # Store the form in context in case there were errors
@@ -210,7 +211,7 @@ def handle_submit_ehdokas(request, context):
         # Return the form with error messages and reder vaalit main page
         return render(request, "vaalit.html", context)
 
-
+@login_required
 def handle_modify_ehdokas(request, context, ehdokas):
     # Get hidden input values from POST
     hidden_virka, x, y, w, h = get_hidden_inputs(request.POST)
@@ -227,7 +228,7 @@ def handle_modify_ehdokas(request, context, ehdokas):
     ehdokas.save()
     render(request, "vaalit.html", context)
 
-
+@login_required
 def handle_submit_kysymys(request, context):
     """Process posted questions.
 
@@ -249,12 +250,11 @@ def handle_submit_kysymys(request, context):
         context["kysymys"] = kysymys
         context["virka"] = virka
         html = render_to_string("vaalit_question.html", context, request)
-
         return HttpResponse(html)
     else:
         raise Http404
 
-
+@login_required
 def handle_submit_answer(request, context):
     form_vastaus = VastausForm(request.POST)
     hidden_kysymys_id = request.POST.get("hidden-input-kysymys")
@@ -276,7 +276,7 @@ def handle_submit_answer(request, context):
         # Return form with error and render vaalit main page
         return render(request, "vaalit.html", context)
 
-
+@login_required
 def main_view(request):
     context = {}
     ehdokkaat = Ehdokas.objects.all()
@@ -306,5 +306,5 @@ def main_view(request):
         else:
             raise Http404
     else:
-        context["form_ehdokas"] = EhdokasForm()
+        context["form_ehdokas"] = EhdokasForm(initial={'name': request.user.first_name + " " + request.user.last_name})
         return render(request, "vaalit.html", context)

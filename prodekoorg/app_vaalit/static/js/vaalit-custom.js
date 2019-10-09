@@ -84,7 +84,7 @@ $(document).ready(function() {
     var ehdokasId = $(e.target).attr("ehdokas-id");
     $("#formDeleteEhdokas").attr(
       "action",
-      "../elections/delete-nominee/" + ehdokasId + "/"
+      "../../fi/vaalit/delete-nominee/" + ehdokasId + "/"
     );
     $("#confirmDeleteEhdokasModal").modal("toggle");
   });
@@ -115,6 +115,7 @@ $(document).ready(function() {
     $("#vaaliContent .tab-pane.active .vaalitDeleteKysymysForm button")
       .first()
       .click(ajaxDeleteKysymys);
+    $("[name='question']").val('');
   }
 
   function createKysymysError(jqXHR, textStatus, errorThrown) {
@@ -138,7 +139,7 @@ $(document).ready(function() {
 
       console.log(formData)
     $.ajax({
-      url: "../elections/delete-question/" + kysymysId + "/",
+      url: "../../fi/vaalit/delete-question/" + kysymysId + "/",
       type: "POST",
       // Add 'submitKysymys' to the POST data
       // to have correct handling in the views.py main view
@@ -151,6 +152,9 @@ $(document).ready(function() {
   function deleteKysymysSuccess(data, textStatus, jqXHR) {
     console.log("succ")
     $("#kysymys_" + data.delete_kysymys_id).fadeOut(300, function() {
+      $(this).remove();
+    });
+    $("#vastaukset_" + data.delete_kysymys_id).fadeOut(300, function() {
       $(this).remove();
     });
   }

@@ -9,6 +9,9 @@
 {% trans "No Responses" as no_responses %}
 
 <h2 class="py-3" id="header">{{ virat.0.name }}</h2>
+<div id="roleDescription">
+  {{ virat.0.description }}
+</div>
 <div id="vaaliKysymysForm">
   {% include "forms/vaalit_question_form.html" %}
 </div>

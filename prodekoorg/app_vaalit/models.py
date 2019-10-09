@@ -10,6 +10,7 @@ class Virka(models.Model):
 
     is_hallitus = models.BooleanField(default=False, verbose_name=_("Board"))
     name = models.CharField(max_length=50, unique=True, verbose_name=_("Position"))
+    description = models.TextField(default="", verbose_name=_("Description"))
 
     def __str__(self):
         return f"{self.name}"

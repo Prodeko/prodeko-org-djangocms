@@ -1,0 +1,28 @@
+{% load i18n %}
+
+{% trans "Are you sure you want to remove your application?" as confirm_delete %}
+{% trans "Close" as close %}
+{% trans "Delete" as delete %}
+
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header" style="display: flex; flex-direction: column;">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+              <div class="img-container mx-auto mt-3">
+                    <img src="{{ ehdokas.pic.url }}" alt="{{ ehdokas.name }}" />
+                  </div>
+                  <br />
+               <h5 class="modal-title" id="exampleModalLongTitle" style="margin: auto;">{{ ehdokas.name }}</h5>
+            </div>
+            <div class="modal-body">
+                {% autoescape off %}{{ ehdokas.introduction }}{% endautoescape %}
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal">{% trans close %}</button>
+            </div>
+          </div>
+        </div>
+      </div>
