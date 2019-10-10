@@ -80,11 +80,11 @@ $(document).ready(function() {
     $('#id_has_accepted_policies').prop('checked', false);
 
     if ($('#id_email').val().length > 0) {
-        showPolicy();
-        $('button[type=submit]').prop('disabled', true);
+      showPolicy();
+      $('button[type=submit]').prop('disabled', true);
     } else {
-        hidePolicy();
-        $('button[type=submit]').prop('disabled', false);
+      hidePolicy();
+      $('button[type=submit]').prop('disabled', false);
     }
 
     // Show correct labels
