@@ -187,7 +187,7 @@ $ npm run lint:css-fix  # Korjaa virheet
 
 1. importtaa ugettext_lazy: `from django.utils.translation import ugettext_lazy as *`. Käytä koodissa näin: \_("First name")
 2. `python3 manage.py makemessages -l fi`. locale/ kansioon .po tiedostoon muodostuu käännettävä sana, esimerkin tapauksessa "First name".
-3. Käännä suomeksi .po tiedostossa ja aja `python3 manage.py compilemessages`.
+3. Käännä suomeksi .po tiedostossa ja aja `python3 manage.py compilemessages -l fi`.
 4. (Valinnainen) Javascript tiedostojen sisältämät käännöset saa muodostettua seuraavalla komennolla: `python3 manage.py makemessages -d djangojs -l fi -i tiedotteet -i node_modules`
 
 .po tiedosto näyttää tältä:
