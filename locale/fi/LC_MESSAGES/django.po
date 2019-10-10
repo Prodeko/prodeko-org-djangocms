@@ -8,10 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-08 23:25+0300\n"
+"POT-Creation-Date: 2019-10-10 10:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Timo Riski <timo@prodeko.org>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -115,7 +114,7 @@ msgstr "Nimi"
 #: auth_prodeko/templates/accounts/user_profile.html:15
 #: auth_prodeko/templates/accounts/user_profile.html:21
 #: prodekoorg/app_apply_for_membership/models.py:62
-#: prodekoorg/app_contact/models.py:84 prodekoorg/app_kulukorvaus/models.py:48
+#: prodekoorg/app_contact/models.py:91 prodekoorg/app_kulukorvaus/models.py:48
 #: prodekoorg/app_kulukorvaus/printing.py:95
 #: prodekoorg/app_toimarit/models.py:115
 msgid "Email"
@@ -451,7 +450,7 @@ msgstr "Tietosuoja"
 msgid "/privacy-policy"
 msgstr "/tietosuoja"
 
-#: prodekoorg/app_contact/apps.py:7 prodekoorg/app_contact/models.py:106
+#: prodekoorg/app_contact/apps.py:7 prodekoorg/app_contact/models.py:113
 #: prodekoorg/templates/layout-components/footer.html:7
 msgid "Contact form"
 msgstr "Yhteydenottolomake"
@@ -470,86 +469,93 @@ msgstr "Palaute ja yleiset asiat (hallitus@prodeko.org)"
 
 #: prodekoorg/app_contact/models.py:30
 msgid ""
+"PTER (Prodekoian activities encouragement fund) grants (hallitus@prodeko.org)"
+msgstr ""
+"PTER (Prodekolaistoiminnan edistämisrahasto) hakemukset (hallitus@prodeko."
+"org)"
+
+#: prodekoorg/app_contact/models.py:37
+msgid ""
 "Alumni, department and stakeholder relations (puheenjohtaja@prodeko.org)"
 msgstr "Alumni-, laitos- ja muut sidosryhmäsuhteet (puheenjohtaja@prodeko.org)"
 
-#: prodekoorg/app_contact/models.py:36
+#: prodekoorg/app_contact/models.py:43
 msgid "Cooperation with fellow guilds (ulkoministeri@prodeko.org)"
 msgstr ""
 "Yhteistyö ja yhteistyöpyynnöt toisten kiltojen ja ainejärjestöjen kanssa "
 "(ulkoministeri@prodeko.org)"
 
-#: prodekoorg/app_contact/models.py:42
+#: prodekoorg/app_contact/models.py:49
 msgid ""
 "Marketing to high school students and questions relating applying "
 "(abivastaava@prodeko.org)"
 msgstr "Abimarkkinointi ja hakeminen opiskelijaksi"
 
-#: prodekoorg/app_contact/models.py:49
+#: prodekoorg/app_contact/models.py:56
 msgid "New students, freshmen events and education (fuksikapteeni@prodeko.org)"
 msgstr ""
 "Uudet opiskelijat, fuksitapahtumat, opiskelun aloittaminen "
 "(fuksikapteeni@prodeko.org)"
 
-#: prodekoorg/app_contact/models.py:55
+#: prodekoorg/app_contact/models.py:62
 msgid "Master and exchange students (maisterikvkapteeni@prodeko.org)"
 msgstr "Maisteri- ja vaihto-opiskelijat (maisterikvkapteeni@prodeko.org)"
 
-#: prodekoorg/app_contact/models.py:60
+#: prodekoorg/app_contact/models.py:67
 msgid "Communications, email lists and brand (mediakeisari@prodeko.org)"
 msgstr ""
 "Jäsenistölle tiedottaminen, sähköpostilistat, brändi ja viestintä "
 "(mediakeisari@prodeko.org)"
 
-#: prodekoorg/app_contact/models.py:62
+#: prodekoorg/app_contact/models.py:69
 msgid "IT related questions (cto@prodeko.org)"
 msgstr "Tietotekniset kysymykset (cto@prodeko.org)"
 
-#: prodekoorg/app_contact/models.py:67
+#: prodekoorg/app_contact/models.py:74
 msgid "Corporate Relations (yrityssuhdevastaava@prodeko.org)"
 msgstr "Yrityssuhteet (yrityssuhdevastaava@prodeko.org)"
 
-#: prodekoorg/app_contact/models.py:69
+#: prodekoorg/app_contact/models.py:76
 msgid "Excursions (excumestari@prodeko.org)"
 msgstr "Excursiot (excumestari@prodeko.org)"
 
-#: prodekoorg/app_contact/models.py:70
+#: prodekoorg/app_contact/models.py:77
 msgid "Student events (sisakumi@prodeko.org)"
 msgstr "Tapahtumat, tapahtumaehdotukset (sisakumi@prodeko.org)"
 
-#: prodekoorg/app_contact/models.py:74
+#: prodekoorg/app_contact/models.py:81
 msgid "Billing and finances (rahastonhoitaja@prodeko.org)"
 msgstr "Laskut, kulukorvaukset, raha-asiat (rahastonhoitaja@prodeko.org)"
 
-#: prodekoorg/app_contact/models.py:76
+#: prodekoorg/app_contact/models.py:83
 msgid "ESTIEM (ulkoministeri@prodeko.org)"
 msgstr "ESTIEM (ulkoministeri@prodeko.org)"
 
-#: prodekoorg/app_contact/models.py:77
+#: prodekoorg/app_contact/models.py:84
 msgid "Tutoring (isovastaava@prodeko.org)"
 msgstr "ISO-toiminta (isovastaava@prodeko.org)"
 
-#: prodekoorg/app_contact/models.py:83 prodekoorg/app_kulukorvaus/models.py:102
+#: prodekoorg/app_contact/models.py:90 prodekoorg/app_kulukorvaus/models.py:102
 #: prodekoorg/app_vaalit/models.py:66 prodekoorg/app_vaalit/models.py:90
 msgid "Created at"
 msgstr "Luotu"
 
-#: prodekoorg/app_contact/models.py:89
+#: prodekoorg/app_contact/models.py:96
 msgid "Who do you wish to contact?"
 msgstr "Keneen haluat olla yhteydessä?"
 
-#: prodekoorg/app_contact/models.py:91
+#: prodekoorg/app_contact/models.py:98
 msgid "Your message"
 msgstr "Viestisi"
 
-#: prodekoorg/app_contact/models.py:96
+#: prodekoorg/app_contact/models.py:103
 msgid ""
 "I accept that my email address is stored in order to be contacted regarding "
 "my message."
 msgstr ""
 "Hyväksyn sähköpostiosoitteeni tallentamisen, jotta viestiini voidaan vastata."
 
-#: prodekoorg/app_contact/models.py:105
+#: prodekoorg/app_contact/models.py:112
 msgid "contact form application"
 msgstr "yhteydenottolomake"
 
@@ -1164,15 +1170,15 @@ msgstr ""
 "Mikäli et hyväksy tietosuojalauseketta, sinut kirjataan ulos. Kirjautumalla "
 "sisään näet tämän saman valintaikkunan."
 
-#: prodekoorg/urls.py:64
+#: prodekoorg/urls.py:81
 msgid "^weekly-bulletin/"
 msgstr "^tiedotteet/"
 
-#: prodekoorg/urls.py:66
+#: prodekoorg/urls.py:83
 msgid "^matrikkeli/"
 msgstr ""
 
-#: prodekoorg/urls.py:67
+#: prodekoorg/urls.py:84
 msgid "^elections/"
 msgstr "^vaalit/"
 
@@ -1248,8 +1254,6 @@ msgid "Add a new tag"
 msgstr "Lisää tagi"
 
 #: tiedotteet/backend/forms.py:145
-#, fuzzy
-#| msgid "Add a new tag"
 msgid "Add tag"
 msgstr "Lisää tagi"
 
