@@ -3,7 +3,7 @@
 
 {% block extra_head %}
     {% if not done and not error %}
-        <script src="{% static 'js/apply_for_membership-custom.js'"></script>
+        <script src="{% static 'js/apply_for_membership-custom.js' %}"></script>
     {% endif %}
     <link href="{% sass_src 'scss/app_apply_for_membership.scss' %}" rel="stylesheet" type="text/css" />
 {% endblock %}
