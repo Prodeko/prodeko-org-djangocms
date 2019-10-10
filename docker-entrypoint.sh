@@ -46,6 +46,6 @@ python3 manage.py loaddata --app cms --app menus --verbosity 3 data.json
 
 # Translations
 python3 manage.py makemessages -l fi
-python3 manage.py compilemessages
+python3 manage.py compilemessages -l fi
 
 exec "$@"
