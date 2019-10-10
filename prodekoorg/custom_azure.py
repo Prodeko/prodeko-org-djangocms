@@ -12,8 +12,18 @@ class AzureMediaStorage(AzureStorage):
     base_url = "media"
 
 
-class AzureStaticStorage(ManifestFilesMixin, AzureStorage):
+class AzureStaticStorage(AzureStorage):
     account_name = "prodekostorage"
     account_key = settings.STORAGE_KEY
     azure_container = "static"
     expiration_secs = None
+
+    def read_manifest(self):
+        """Handle a workaround to make Azure work with Django on the first 'collectstatic'
+        
+           See https://github.com/jschneier/django-storages/issues/630 for details.
+        """
+        try:
+            return super(AzureStaticStorage, self).read_manifest()
+        except AzureMissingResourceHttpError:
+            return None
