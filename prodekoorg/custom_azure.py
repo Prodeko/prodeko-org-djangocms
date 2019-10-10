@@ -1,5 +1,6 @@
 from django.conf import settings
 from storages.backends.azure_storage import AzureStorage
+from django.contrib.staticfiles.storage import ManifestFilesMixin
 
 
 class AzureMediaStorage(AzureStorage):
@@ -11,7 +12,7 @@ class AzureMediaStorage(AzureStorage):
     base_url = "media"
 
 
-class AzureStaticStorage(AzureStorage):
+class AzureStaticStorage(ManifestFilesMixin, AzureStorage):
     account_name = "prodekostorage"
     account_key = settings.STORAGE_KEY
     azure_container = "static"

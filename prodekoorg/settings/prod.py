@@ -24,12 +24,6 @@ DATABASES = {
 
 INSTALLED_APPS += ("storages",)
 
-# ManifestStaticFilesStorage stores the file names it handles
-# by appending the MD5 hash of the file’s content to the filename.
-# We use that for CDN caching.
-# https://docs.djangoproject.com/en/2.2/ref/contrib/staticfiles/#django.contrib.staticfiles.storage.ManifestStaticFilesStorage
-STATICFILES_STORAGE = "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"
-
 CDN_URL = "static.prodeko.org"
 
 CKEDITOR_BASEPATH = f"https://{CDN_URL}/static/ckeditor/ckeditor/"
