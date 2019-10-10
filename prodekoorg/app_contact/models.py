@@ -24,6 +24,13 @@ class Message(models.Model):
             _("Feedback and general questions (hallitus@prodeko.org)"),
         ),
         (
+            "PT",
+            "hallitus@prodeko.org",
+            _(
+                "PTER (Prodekoian activities encouragement fund) grants (hallitus@prodeko.org)"
+            ),
+        ),
+        (
             "AL",
             "puheenjohtaja@prodeko.org",
             _(
