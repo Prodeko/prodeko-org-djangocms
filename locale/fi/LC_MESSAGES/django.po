@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-10 10:52+0300\n"
+"POT-Creation-Date: 2019-10-11 12:07+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Timo Riski <timo@prodeko.org>\n"
 "Language: \n"
@@ -202,12 +202,17 @@ msgid "Please go to the following page and choose a new password:"
 msgstr "Vaihda salasana tästä linkistä:"
 
 #: auth_prodeko/templates/password_reset_form.html:10
-#: auth_prodeko/templates/prodeko_login.html:10
 #: prodekoorg/app_apply_for_membership/templates/app_apply_for_membership_base.html:12
 #: prodekoorg/app_contact/templates/app_contact_base.html:13
 #: prodekoorg/app_kulukorvaus/templates/kulukorvaus_forms.html:4
 msgid "Submit"
 msgstr "Lähetä"
+
+#: auth_prodeko/templates/prodeko_login.html:10
+#: prodekoorg/templates/layout-components/navbar-full.html:4
+#: prodekoorg/templates/layout-components/navbar-mobile.html:3
+msgid "Login"
+msgstr "Kirjaudu"
 
 #: auth_prodeko/templates/prodeko_login.html:11
 msgid "Password forgotten?"
@@ -1123,11 +1128,6 @@ msgstr "Jäsenhakemus"
 #: prodekoorg/templates/layout-components/instagram.html:3
 msgid "Social media"
 msgstr "Sosiaalinen media"
-
-#: prodekoorg/templates/layout-components/navbar-full.html:4
-#: prodekoorg/templates/layout-components/navbar-mobile.html:3
-msgid "Login"
-msgstr "Kirjaudu"
 
 #: prodekoorg/templates/layout-components/navbar-full.html:6
 #: prodekoorg/templates/layout-components/navbar-mobile.html:5
