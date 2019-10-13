@@ -65,7 +65,7 @@ def send_email(message):
     text_content = render_to_string("message_mail.txt", {"message": message})
     html_content = render_to_string("message_mail.html", {"message": message})
 
-    # If DEBUG = True, email to DEV_EMAIl else email to selected contact email
+    # If DEBUG = True, email to DEV_EMAIL else email to selected contact email
     email_to = (
         message.get_contact_emails_display()
         if not settings.DEBUG

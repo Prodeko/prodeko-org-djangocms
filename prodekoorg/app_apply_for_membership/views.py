@@ -70,7 +70,7 @@ def send_email(user):
     text_content = render_to_string("info_mail.txt", {"user": user})
     html_content = render_to_string("info_mail.html", {"user": user})
 
-    # If DEBUG = True, email to DEV_EMAIl else email to mediakeisari@prodeko.org
+    # If DEBUG = True, email to DEV_EMAIL else email to mediakeisari@prodeko.org
     email_to = "mediakeisari@prodeko.org" if not settings.DEBUG else settings.DEV_EMAIL
     from_email = settings.DEFAULT_FROM_EMAIL
     msg = EmailMultiAlternatives(subject, text_content, from_email, [email_to])

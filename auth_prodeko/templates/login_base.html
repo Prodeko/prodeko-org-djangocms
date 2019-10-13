@@ -42,7 +42,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicons/favicon-32x32.png' %}">
 <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicons/favicon-16x16.png' %}">
 <link rel="manifest" href="{% static 'misc/site.webmanifest' %}">
-<link rel="mask-icon" href="{% static 'misc/favicons/safari-pinned-tab.svg' %}" color="#002e7d">
+<link rel="mask-icon" href="{% static 'images/favicons/safari-pinned-tab.svg' %}" color="#002e7d">
 <meta name="msapplication-TileColor" content="#2b5797">
 <meta name="theme-color" content="#ffffff">
 
@@ -52,7 +52,7 @@
 <meta property="og:title" content="Prodeko">
 <meta property="og:description" content="Tuotantotalouden kilta Prodeko ry on Aalto-yliopiston ylioppilaskunnan alaisuudessa toimiva tuotantotalouden opiskelijoiden ainej&auml;rjest&ouml;.">
 <meta property="og:url" content="http://prodeko.org">
-<meta property="og:image" content="http://prodeko.org/static/images/misc/og-image.jpg">
+<meta property="og:image" content="{% static 'images/misc/og-image.jpg' %}">
 {% endaddtoblock %}
 
 {% addtoblock "custom-js" %}
