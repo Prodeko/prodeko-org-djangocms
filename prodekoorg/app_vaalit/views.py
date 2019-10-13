@@ -12,6 +12,7 @@ from django.contrib.staticfiles.templatetags.staticfiles import static
 from django.core.exceptions import PermissionDenied
 from django.core.files.base import ContentFile
 from django.core.files.uploadedfile import InMemoryUploadedFile
+from django.core import serializers
 from django.core.serializers import serialize
 from django.core.serializers.json import DjangoJSONEncoder
 from django.http import (
@@ -202,6 +203,8 @@ def handle_submit_ehdokas(request, context):
         ehdokas.virka = get_object_or_404(Virka, name=hidden_virka)
         ehdokas.save()
 
+        mark_as_unread(ehdokas.virka.pk)
+
         context["ehdokkaat_json"] = get_ehdokkaat_json(context, ehdokas)
         context["form_ehdokas"] = form_ehdokas
         return render(request, "vaalit.html", context)
@@ -221,7 +224,6 @@ def handle_modify_ehdokas(request, context, ehdokas):
 
     # Get the ehdokas object without committing changes to the database.
     # We still need to append pic, user object and foreign key virka object to the ehdokas object.
-    # TODO handle name once auth_prodeko is ready
     ehdokas.pic = cropped_pic
     ehdokas.introduction = request.POST.get("introduction")
     ehdokas.virka = get_object_or_404(Virka, name=hidden_virka)
@@ -249,6 +251,7 @@ def handle_submit_kysymys(request, context):
 
         context["kysymys"] = kysymys
         context["virka"] = virka
+        mark_as_unread(virka.pk)
         html = render_to_string("vaalit_question.html", context, request)
         return HttpResponse(html)
     else:
@@ -266,6 +269,7 @@ def handle_submit_answer(request, context):
         vastaus.to_question = get_object_or_404(Kysymys, id=hidden_kysymys_id)
         vastaus.save()
 
+        mark_as_unread(vastaus.to_question.to_virka.pk)
         html = render_to_string("vaalit_answer.html", context, request)
 
         # return HttpResponse(html)
@@ -277,9 +281,25 @@ def handle_submit_answer(request, context):
         return render(request, "vaalit.html", context)
 
 @login_required
+def mark_as_read(request, pk):
+    # Remove "NEW" marking of virka for the user
+    virka = get_object_or_404(Virka, pk=pk)
+    virka.read_by.add(request.user)
+    virka.save()
+    return JsonResponse({"mark_as_read": pk})
+
+def mark_as_unread(pk):
+    # Mark virka as "NEW" for all users
+    virka = get_object_or_404(Virka, pk=pk)
+    virka.read_by.clear()
+    virka.save()
+    return JsonResponse({"mark_as_unread": pk})
+
+@login_required
 def main_view(request):
     context = {}
     ehdokkaat = Ehdokas.objects.all()
+    virat = Virka.objects.all()
     # ehdokkaat_json is parsed to JSON in the template 'vaalit_question_form.html'
     ehdokkaat_python = serialize(
         "python",
@@ -287,8 +307,16 @@ def main_view(request):
         use_natural_foreign_keys=True,
         fields=("auth_prodeko_user", "virka"),
     )
+    virat_description_python = serialize(
+        "python",
+        virat,
+        use_natural_foreign_keys=True,
+        fields=("description"),
+    )
     ehdokkaat_json = json.dumps([d["fields"] for d in ehdokkaat_python])
-    context["virat"] = Virka.objects.all()
+    virat_description_json = json.dumps([d["fields"] for d in virat_description_python])
+    context["virat_description_json"] = virat_description_json
+    context["virat"] = virat
     context["ehdokkaat"] = ehdokkaat
     context["ehdokkaat_json"] = ehdokkaat_json
     context["count_ehdokkaat_hallitus"] = Virka.objects.filter(is_hallitus=True).count()

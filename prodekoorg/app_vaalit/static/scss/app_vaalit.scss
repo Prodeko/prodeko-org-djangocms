@@ -169,8 +169,14 @@
   border-color: #0053a0 !important;
 }
 
-.list-group-root .virka-name {
-  font-size: 0.8em;
+.list-group-root {
+  .virka-name {
+    font-size: 0.8em;
+  }
+  .virka-unread {
+    font-size: 0.8em;
+    color: green;
+  }
 }
 
 /* MEDIA QUERIES */

@@ -13,10 +13,12 @@ $.ajaxSetup({
 
 function updateTexts(virka) {
   $("#vaalitKysymysForm small").html(virka + " - Esitä kysymys");
+  updateDescription(virka)
   $("#header").html(virka);
   // Set hidden input field
   $(".input-virka").val(virka);
 }
+
 
 var selectedTab_id = localStorage.getItem("selectedTab_id");
 var selectedVirka = localStorage.getItem("selectedVirka");
@@ -33,7 +35,7 @@ $(document).ready(function() {
   if ($("#vaalitNav").length > 0) {
     if (selectedTab_id != null) {
       elem = $(
-        '.list-group-root a[data-toggle="tab"][href="' + selectedTab_id + '"]'
+        '.list-group-root a[data-toggle="tab"][href="' + selectedTab_id + '"] .virka-name'
       );
 
       virka = elem.text().trim();
@@ -57,7 +59,7 @@ $(document).ready(function() {
 
   $('.list-group-root a[data-toggle="tab"]').click(function(e) {
     var id = $(e.delegateTarget).attr("href");
-    var virka = $('.list-group-root a[data-toggle="tab"][href="' + id + '"]')
+    var virka = $('.list-group-root a[data-toggle="tab"][href="' + id + '"] .virka-name')
       .text()
       .trim();
     checkBtnHaeVirkaanVisibility(virka);
@@ -66,6 +68,8 @@ $(document).ready(function() {
     localStorage.setItem("selectedVirka", virka);
 
     updateTexts(virka);
+    $("#vaaliApplyForm").hide(); // Hide "apply to virka form" when changing tabs if it's open
+    markRead(id.slice(2));      // Mark viewed "virka" as read
 
     var listType = $(e.delegateTarget)
       .closest("div")
@@ -160,6 +164,28 @@ $(document).ready(function() {
   }
 
   function deleteKysymysError(jqXHR, textStatus, errorThrown) {
+    console.log("err")
+    console.log(jqXHR);
+    console.log(textStatus);
+    console.log(errorThrown);
+  }
+
+  function markRead(virka_id) {
+    $.ajax({
+      url: "../../fi/vaalit/mark-read/" + virka_id + "/",
+      type: "POST",
+      success: markReadSuccess(virka_id),
+      error: markReadError
+    });
+  }
+
+  function markReadSuccess(virka_id) {
+    $('.list-group-root a[data-toggle="tab"][href="' + "#_" + virka_id + '"] .virka-unread').fadeOut(200, function() {
+      $(this).remove();
+    })
+  }
+
+  function markReadError(jqXHR, textStatus, errorThrown) {
     console.log("err")
     console.log(jqXHR);
     console.log(textStatus);

@@ -9,7 +9,8 @@ from .views import (
     handle_submit_ehdokas,
     delete_kysymys_view,
     main_view,
-    update_kysymys_view,
+    mark_as_read,
+    update_kysymys_view
 )
 
 app_name = "app_vaalit"
@@ -35,4 +36,9 @@ urlpatterns = [
         login_required(EhdokasUpdateView.as_view()),
         name="update_ehdokas",
     ),
+    re_path(
+        r"^mark-read/(?P<pk>\d+)/",
+        login_required(mark_as_read),
+        name="mark_as_read",
+    )
 ]

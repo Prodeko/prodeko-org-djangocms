@@ -8,6 +8,9 @@
 
 {% trans "No Responses" as no_responses %}
 
+
+{% load sekizai_tags %}
+
 <h2 class="py-3" id="header">{{ virat.0.name }}</h2>
 <div id="roleDescription">
   {{ virat.0.description }}
@@ -23,7 +26,7 @@
   <div id="_{{ forloop.counter }}" class="tab-pane fade{% if forloop.first %} active show{% endif %}" role="tabpanel">
 
     {# EHDOKKAAT #}
-    <h3>{% trans applicants %}</h3>
+    <h3>{% trans applicants %} ({{ virka.ehdokkaat.all.count }})</h3>
     <div class="card-group">
     {% for ehdokas in virka.ehdokkaat.all %}
       {% include "vaalit_ehdokas.html" %}
@@ -34,7 +37,7 @@
 
     {# KYSYMYKSET #}
     <div class="vaalitQuestions">
-      <h3 class="mt-4">{% trans questions %}
+      <h3 class="mt-4">{% trans questions %} ({{ virka.kysymykset.all.count }})
           {% trans "No applicants" as no_applicant %}</h3>
       <div class="vaalitKysymysList list-group list-group-root">
         {% for kysymys in virka.kysymykset.all %}
@@ -62,3 +65,20 @@
 
 {% include "vaalit_modal_delete_ehdokas.html" %}
 {% include "vaalit_modal_photocrop.html" %}
+
+
+{% addtoblock "js" %}
+<script type="text/javascript">
+  var csrftoken = $("[name=csrfmiddlewaretoken]").val();
+  var user = "{{request.user}}";
+  var ehdokkaatJSON = JSON.parse('{{ ehdokkaat_json|safe }}');
+  var descriptions = {{virat_description_json|safe}}
+
+  function updateDescription(virka) {
+    selectedVirka = localStorage.getItem('selectedTab_id');
+    description = descriptions[selectedVirka.slice(2)-1].description
+    $("#roleDescription").html(description);
+  }
+</script>
+{% endaddtoblock %}
+

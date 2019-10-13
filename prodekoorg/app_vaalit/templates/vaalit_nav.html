@@ -2,6 +2,7 @@
 
 {% trans "Board" as board %}
 {% trans "Officials" as officials %}
+{% trans "NEW" as new %}
 
 <div id="vaalitNav" class="list-group list-group-root">
   <a href="#hallitusList" class="list-group-item list-group-item-action" data-toggle="collapse">
@@ -15,6 +16,9 @@
       <a href="#_{{ forloop.counter }}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" data-toggle="tab">
         <span class="virka-name">{{ virka.name }}</span>
         <span class="badge badge-primary badge-pill">{{ virka.ehdokkaat_set.count }}</span>
+        {% if not request.user in virka.read_by.all %}
+        <span class="virka-unread">{% trans new %}</span>
+        {% endif %}
       </a>
       {% endif %}
     {% endfor %}
