@@ -13,7 +13,7 @@ $.ajaxSetup({
 
 function updateTexts(virka) {
   $("#vaalitKysymysForm small").html(virka + " - Esitä kysymys");
-  updateDescription(virka)
+  updateDescription(virka) // Defined in vaalit_content.html
   $("#header").html(virka);
   // Set hidden input field
   $(".input-virka").val(virka);

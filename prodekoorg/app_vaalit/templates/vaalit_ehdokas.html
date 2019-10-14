@@ -2,15 +2,15 @@
 
 {% trans "Delete" as delete %}
 {% trans "Modify" as modify %}
-{% trans "View Introduction" as view_introduction %}
+{% trans "Read Application" as read_application %}
 
-<div class="card mr-3 rounded col-md-6">
+<div class="card mr-3 rounded col-sm-6 col-md-4 col-xl-3">
   <div class="img-container mx-auto mt-3">
     <img src="{{ ehdokas.pic.url }}" alt="{{ ehdokas.name }}" />
   </div>
   <p class="card-text text-center" id="ehdokasName">{{ ehdokas.name }}</p>
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
-      {% trans view_introduction %}
+  <button type="button" class="btn btn-primary read-application" data-toggle="modal" data-target="#hakijaModal">
+      {% trans read_application %}
     </button>
     {% include "vaalit_modal_ehdokas_description.html" %}
   <div class="card-body p-1">

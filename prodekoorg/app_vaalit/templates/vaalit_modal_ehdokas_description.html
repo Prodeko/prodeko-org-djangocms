@@ -4,7 +4,7 @@
 {% trans "Close" as close %}
 {% trans "Delete" as delete %}
 
-<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+<div class="modal fade" id="hakijaModal" tabindex="-1" role="dialog" aria-labelledby="hakijaModal" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header" style="display: flex; flex-direction: column;">
@@ -15,7 +15,7 @@
                     <img src="{{ ehdokas.pic.url }}" alt="{{ ehdokas.name }}" />
                   </div>
                   <br />
-               <h5 class="modal-title" id="exampleModalLongTitle" style="margin: auto;">{{ ehdokas.name }}</h5>
+               <h5 class="modal-title" id="hakijaModalLongTitle" style="margin: auto;">{{ ehdokas.name }}</h5>
             </div>
             <div class="modal-body">
                 {% autoescape off %}{{ ehdokas.introduction }}{% endautoescape %}

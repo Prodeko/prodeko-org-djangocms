@@ -1,3 +1,5 @@
+@import '../static/scss/variables.scss';
+
 #vaaliContainer {
   #roleDescription {
     margin-bottom: 2rem;
@@ -6,17 +8,29 @@
   .vaalitQuestions {
     margin-bottom: 3rem;
 
-    .vaalit-vastaus .img-container {
-      width: 50px;
-      height: 50px;
+    .vaalit-vastaus {
+
+    .img-container {
+      width: 5rem;
+      height: 5rem;
       overflow: hidden;
       border-radius: 50%;
     }
+
+    p.vastaus-text {
+      margin-right: 5rem;
+      margin-left: 1rem;
+    }
+  }
 }
 
   #ehdokasName {
     font-weight: bold;
     margin-top: 1rem;
+  }
+
+  .read-application {
+    margin: 0 auto;
   }
 
   #confirmDeleteEhdokasModal .btn,
@@ -78,6 +92,8 @@
   .img-container img {
     display: inline;
     margin: 0 auto;
+    width: 100%;
+    height: auto;
   }
 
   .vaalitQuestions small {
@@ -130,6 +146,18 @@
   border-radius: 0;
 }
 
+.answers-container {
+  background: #e8e8e8;
+  margin: 0rem auto 0rem 4rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-top: #c3c3c3 1px solid;
+}
+
+a.list-group-item-action:hover {
+  color: $blue-light;
+}
+
 .list-group.list-group-root > .list-group-item:first-child {
   border-top-width: 0;
 }
@@ -167,6 +195,10 @@
 .list-group-root .list-group-item.active {
   background-color: #0053a0 !important;
   border-color: #0053a0 !important;
+}
+
+.list-group-root .list-group-item.active:hover {
+  color: white;
 }
 
 .list-group-root {

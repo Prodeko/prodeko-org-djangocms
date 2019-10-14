@@ -17,6 +17,13 @@
         <i class="fa fa-fw fa-chevron-down" style="display: inline-block;"></i>
       </div>
       </div>
+      <div class="col-5 flex-column">
+        {% if kysymys.created_by %}
+        <small class="mb-0"><em>{{ kysymys.created_by.first_name }} {{ kysymys.created_by.last_name }}</em></small>
+        <br />
+        {% endif %}
+        <small>{{ kysymys.created_at|timesince }} sitten</small>
+      </div>
       <div class="row">
         {% for ehdokas in virka.ehdokkaat.all %}
           {% if request.user == ehdokas.auth_prodeko_user %}
@@ -34,13 +41,6 @@
         </form>
         {% endif %}
       </div>
-    </div>
-    <div class="col-5 d-none d-md-block d-lg-none flex-column">
-      {% if kysymys.created_by %}
-      <small class="mb-0"><em>{{ kysymys.created_by }}</em></small>
-      <br />
-      {% endif %}
-      <small>{{ kysymys.created_at|timesince }} sitten</small>
     </div>
   </div>
   </a>
