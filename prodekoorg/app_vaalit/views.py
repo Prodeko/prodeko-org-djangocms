@@ -265,8 +265,8 @@ def handle_submit_answer(request, context):
     # Form validation
     if form_vastaus.is_valid():
         vastaus = form_vastaus.save(commit=False)
-        vastaus.by_ehdokas = get_object_or_404(Ehdokas, auth_prodeko_user=request.user)
         vastaus.to_question = get_object_or_404(Kysymys, id=hidden_kysymys_id)
+        vastaus.by_ehdokas = get_object_or_404(Ehdokas.objects.filter(virka = vastaus.to_question.to_virka), auth_prodeko_user=request.user)
         vastaus.save()
 
         mark_as_unread(vastaus.to_question.to_virka.pk)
