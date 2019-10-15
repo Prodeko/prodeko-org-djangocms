@@ -2,6 +2,7 @@ from django.conf import settings
 from django.core.validators import FileExtensionValidator
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from uuid import uuid4
 
 
 class KulukorvausPerustiedot(models.Model):
@@ -27,7 +28,11 @@ class KulukorvausPerustiedot(models.Model):
         pdf: PDF file representing the reimbursement claim.
     """
 
-    STATUS_CHOICES  = (("NEW", _("New")), ("IP", _("In process")), ("PR", _("Processed")))
+    STATUS_CHOICES = (
+        ("NEW", _("New")),
+        ("IP", _("In process")),
+        ("PR", _("Processed")),
+    )
 
     BIC_CHOICES = (
         ("OP", "OKOYFIHH"),
@@ -63,7 +68,7 @@ class KulukorvausPerustiedot(models.Model):
     pdf = models.FileField(
         blank=True,
         null=True,
-        upload_to="kulukorvaukset/%Y-%m",
+        upload_to=f"kulukorvaukset/%Y-%m/{uuid4()}",
         verbose_name="PDF",
         validators=[FileExtensionValidator(["pdf"])],
     )
@@ -116,7 +121,7 @@ class Kulukorvaus(models.Model):
         blank=True, verbose_name=_("Additional information")
     )
     receipt = models.FileField(
-        upload_to="kulukorvaukset/%Y-%m",
+        upload_to=f"kulukorvaukset/%Y-%m/{uuid4()}",
         verbose_name=_("Receipt"),
         validators=[FileExtensionValidator(["png", "jpg", "jpeg"])],
     )
