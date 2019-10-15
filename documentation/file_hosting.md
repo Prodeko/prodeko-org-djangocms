@@ -28,8 +28,7 @@ azcopy copy "media/filer/filer_public/*" "https://prodekostorage.blob.core.windo
 Ja poistettua seuraavasti:
 
 ```
-azcopy rm "https://prodekostorage.blob.core.windows.net/media/filer_public_thumbnails/
-filer_public" --recursive=true
+azcopy rm "https://prodekostorage.blob.core.windows.net/media/filer_public_thumbnails/filer_public" --recursive=true
 ```
 
 ## Muuta
