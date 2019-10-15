@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-15 17:38+0300\n"
+"POT-Creation-Date: 2019-10-15 17:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Timo Riski <timo@prodeko.org>\n"
 "Language: \n"
@@ -906,6 +906,10 @@ msgstr "CSV-tiedosto ladattu onnistuneesti"
 #: prodekoorg/app_toimarit/views.py:41
 msgid "Error downloading CSV: {}"
 msgstr "Virhe csv:tä ladattaessa: {}"
+
+#: prodekoorg/app_utils/apps.py:7
+msgid "Utilities"
+msgstr "Työkalut"
 
 #: prodekoorg/app_vaalit/apps.py:7
 msgid "Elections"
