@@ -30,7 +30,7 @@ CKEDITOR_BASEPATH = f"https://{CDN_URL}/static/ckeditor/ckeditor/"
 
 DEFAULT_FILE_STORAGE = "prodekoorg.custom_azure.AzureMediaStorage"
 STATICFILES_STORAGE = "prodekoorg.custom_azure.AzureStaticStorage"
-THUMBNAIL_DEFAULT_STORAGE = "prodekoorg.custom_azure.AzureStaticStorage"
+THUMBNAIL_DEFAULT_STORAGE = "prodekoorg.custom_azure.AzureMediaStorage"
 
 STATIC_LOCATION = "static"
 MEDIA_LOCATION = "media"
