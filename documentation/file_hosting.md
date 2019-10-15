@@ -15,6 +15,23 @@ Prodissa prodeko.org static- ja mediatiedostot hostataan Azure Storagessa. Stora
 
 Asetuksen settings/prod.py FILER_STORAGES muuttuja osoittaa Azureen, devissä lokaaliin filesystemiin. Jos fileriin lähettää kuvatiedotoja, niistä muodostuu automaattisesti thumbnailit mediastorageen. Thumbnailit ovat optimoituja kuvia, jotta täysikokoisia ei lähetetä clientille.
 
+## AzCopy
+
+"AzCopy is a command-line utility that you can use to copy blobs or files to or from a storage account." AzCopyn saa ladattua [täältä](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10)
+
+Komentoriviltä Azureen saa lähetettyä tiedostoja seuraavasti:
+
+```
+azcopy copy "media/filer/filer_public/*" "https://prodekostorage.blob.core.windows.net/media/filer/filer_public" --recursive
+```
+
+Ja poistettua seuraavasti:
+
+```
+azcopy rm "https://prodekostorage.blob.core.windows.net/media/filer_public_thumbnails/
+filer_public" --recursive=true
+```
+
 ## Muuta
 
 Mikäli modelissa käytetään FileFieldiä tai ImageFieldiä ja näihin liittyvä objekti poistetaan, kuvat/tiedostot eivät automaattisesti poistu Azuresta. Jotta turhia tiedostoja ei jää lojumaan Azureen, on modeleille määritettävä post_delete-hook. Esimerkkiä määritykseen voi katsoa prodekoorg/app_infoscreen/models.py tiedostosta:
