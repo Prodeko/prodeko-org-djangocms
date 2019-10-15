@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-11 12:07+0300\n"
+"POT-Creation-Date: 2019-10-15 17:38+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Timo Riski <timo@prodeko.org>\n"
 "Language: \n"
@@ -105,18 +105,18 @@ msgid "Profile"
 msgstr "Profiili"
 
 #: auth_prodeko/templates/accounts/user_profile.html:14
-#: prodekoorg/app_kulukorvaus/models.py:47
+#: prodekoorg/app_kulukorvaus/models.py:52
 #: prodekoorg/app_kulukorvaus/printing.py:94
-#: prodekoorg/app_toimarit/models.py:43 prodekoorg/app_vaalit/models.py:34
+#: prodekoorg/app_toimarit/models.py:32 prodekoorg/app_vaalit/models.py:34
 msgid "Name"
 msgstr "Nimi"
 
 #: auth_prodeko/templates/accounts/user_profile.html:15
 #: auth_prodeko/templates/accounts/user_profile.html:21
 #: prodekoorg/app_apply_for_membership/models.py:62
-#: prodekoorg/app_contact/models.py:91 prodekoorg/app_kulukorvaus/models.py:48
+#: prodekoorg/app_contact/models.py:91 prodekoorg/app_kulukorvaus/models.py:53
 #: prodekoorg/app_kulukorvaus/printing.py:95
-#: prodekoorg/app_toimarit/models.py:115
+#: prodekoorg/app_toimarit/models.py:116
 msgid "Email"
 msgstr "Sähköposti"
 
@@ -234,15 +234,15 @@ msgstr "nimi"
 msgid "coaches"
 msgstr "valmentajat"
 
-#: lifelonglearning/models.py:29 prodekoorg/app_infoscreen/models.py:35
+#: lifelonglearning/models.py:29 prodekoorg/app_infoscreen/models.py:37
 msgid "description"
 msgstr "kuvaus"
 
 #: lifelonglearning/models.py:30
 msgid "registration url"
-msgstr ""
+msgstr "ilmoittautumislinkki"
 
-#: lifelonglearning/models.py:32 prodekoorg/app_infoscreen/models.py:37
+#: lifelonglearning/models.py:32 prodekoorg/app_infoscreen/models.py:39
 msgid "banner image"
 msgstr "kuva"
 
@@ -349,12 +349,12 @@ msgid "Other (English)"
 msgstr "Englanti"
 
 #: prodekoorg/app_apply_for_membership/models.py:58
-#: prodekoorg/app_toimarit/models.py:63 prodekoorg/app_toimarit/models.py:103
+#: prodekoorg/app_toimarit/models.py:53 prodekoorg/app_toimarit/models.py:104
 msgid "First name"
 msgstr "Etunimi"
 
 #: prodekoorg/app_apply_for_membership/models.py:59
-#: prodekoorg/app_toimarit/models.py:64 prodekoorg/app_toimarit/models.py:104
+#: prodekoorg/app_toimarit/models.py:54 prodekoorg/app_toimarit/models.py:105
 msgid "Last name"
 msgstr "Sukunimi"
 
@@ -439,7 +439,7 @@ msgstr ""
 "selvittämiseksi."
 
 #: prodekoorg/app_apply_for_membership/templates/form_apply.html:3
-#: prodekoorg/app_kulukorvaus/models.py:120
+#: prodekoorg/app_kulukorvaus/models.py:125
 #: prodekoorg/app_kulukorvaus/templates/form_kulukorvaus_kulu.html:4
 msgid "Receipt"
 msgstr "Kuitti"
@@ -540,7 +540,7 @@ msgstr "ESTIEM (ulkoministeri@prodeko.org)"
 msgid "Tutoring (isovastaava@prodeko.org)"
 msgstr "ISO-toiminta (isovastaava@prodeko.org)"
 
-#: prodekoorg/app_contact/models.py:90 prodekoorg/app_kulukorvaus/models.py:102
+#: prodekoorg/app_contact/models.py:90 prodekoorg/app_kulukorvaus/models.py:107
 #: prodekoorg/app_vaalit/models.py:66 prodekoorg/app_vaalit/models.py:90
 msgid "Created at"
 msgstr "Luotu"
@@ -590,41 +590,41 @@ msgstr "️⚠️ Jotakin meni pieleen. Ota yhteyttä sähköpostitse."
 msgid "Infoscreen"
 msgstr "Infoscreeni"
 
-#: prodekoorg/app_infoscreen/models.py:28
+#: prodekoorg/app_infoscreen/models.py:30
 msgid "title"
 msgstr "otsikko"
 
-#: prodekoorg/app_infoscreen/models.py:30
+#: prodekoorg/app_infoscreen/models.py:32
 msgid "start datetime"
 msgstr "alkamispäivä"
 
-#: prodekoorg/app_infoscreen/models.py:33
+#: prodekoorg/app_infoscreen/models.py:35
 msgid "end datetime"
 msgstr "päättymispäivä"
 
-#: prodekoorg/app_infoscreen/models.py:39
+#: prodekoorg/app_infoscreen/models.py:41
 msgid "highlight"
 msgstr "korosta"
 
-#: prodekoorg/app_infoscreen/models.py:40
+#: prodekoorg/app_infoscreen/models.py:42
 msgid "visible"
 msgstr "näkyvissä"
 
-#: prodekoorg/app_infoscreen/models.py:54
+#: prodekoorg/app_infoscreen/models.py:56
 msgid "slide"
 msgstr "slide"
 
-#: prodekoorg/app_infoscreen/models.py:55
+#: prodekoorg/app_infoscreen/models.py:57
 msgid "Slides"
 msgstr "Slides"
 
 #: prodekoorg/app_kulukorvaus/admin.py:25
-#: prodekoorg/app_kulukorvaus/models.py:61
+#: prodekoorg/app_kulukorvaus/models.py:66
 msgid "Status"
 msgstr "Tila"
 
 #: prodekoorg/app_kulukorvaus/admin.py:29
-#: prodekoorg/app_kulukorvaus/models.py:30
+#: prodekoorg/app_kulukorvaus/models.py:32
 #: tiedotteet/backend/templates/control/nav.html:43
 #: tiedotteet/backend/views.py:86
 msgid "New"
@@ -635,12 +635,12 @@ msgid "In Process"
 msgstr "Käsittelyssä"
 
 #: prodekoorg/app_kulukorvaus/admin.py:29
-#: prodekoorg/app_kulukorvaus/models.py:30
+#: prodekoorg/app_kulukorvaus/models.py:34
 msgid "Processed"
 msgstr "Valmis"
 
 #: prodekoorg/app_kulukorvaus/apps.py:7
-#: prodekoorg/app_kulukorvaus/models.py:130
+#: prodekoorg/app_kulukorvaus/models.py:135
 #: prodekoorg/templates/layout-components/footer.html:8
 msgid "Reimbursements"
 msgstr "Kulukorvaukset"
@@ -661,50 +661,50 @@ msgstr ""
 "esim. \"Syyssitsit\", \"Fuksiryhmätapaaminen\" tai \"Kiltahuoneen "
 "uudistaminen\""
 
-#: prodekoorg/app_kulukorvaus/models.py:30
+#: prodekoorg/app_kulukorvaus/models.py:33
 msgid "In process"
 msgstr "Käsittelyssä"
 
-#: prodekoorg/app_kulukorvaus/models.py:49
+#: prodekoorg/app_kulukorvaus/models.py:54
 #: prodekoorg/app_kulukorvaus/printing.py:96
 msgid "Phone number"
 msgstr "Puhelinnumero"
 
-#: prodekoorg/app_kulukorvaus/models.py:51
+#: prodekoorg/app_kulukorvaus/models.py:56
 #: prodekoorg/app_kulukorvaus/printing.py:97
 msgid "Account number (IBAN)"
 msgstr "Tilinumero (IBAN)"
 
-#: prodekoorg/app_kulukorvaus/models.py:55
+#: prodekoorg/app_kulukorvaus/models.py:60
 msgid "Total reimbursement (in €)"
 msgstr "Korvaussumma yhteensä (euroissa)"
 
-#: prodekoorg/app_kulukorvaus/models.py:58
-#: prodekoorg/app_kulukorvaus/models.py:116
+#: prodekoorg/app_kulukorvaus/models.py:63
+#: prodekoorg/app_kulukorvaus/models.py:121
 msgid "Additional information"
 msgstr "Lisätietoja, kulujen perusteita"
 
-#: prodekoorg/app_kulukorvaus/models.py:85
+#: prodekoorg/app_kulukorvaus/models.py:90
 msgid "reimbursement basic information"
 msgstr "kulukorvaus perustiedot"
 
-#: prodekoorg/app_kulukorvaus/models.py:86
+#: prodekoorg/app_kulukorvaus/models.py:91
 msgid "Reimbursement basic information"
 msgstr "Kulukorvaus perustiedot"
 
-#: prodekoorg/app_kulukorvaus/models.py:108
+#: prodekoorg/app_kulukorvaus/models.py:113
 msgid "Expense explanation"
 msgstr "Kulun selite"
 
-#: prodekoorg/app_kulukorvaus/models.py:110
+#: prodekoorg/app_kulukorvaus/models.py:115
 msgid "Event / expense target"
 msgstr "Tapahtuma / kulun kohde"
 
-#: prodekoorg/app_kulukorvaus/models.py:113
+#: prodekoorg/app_kulukorvaus/models.py:118
 msgid "Sum (in €)"
 msgstr "Summa (euroissa)"
 
-#: prodekoorg/app_kulukorvaus/models.py:129
+#: prodekoorg/app_kulukorvaus/models.py:134
 msgid "reimbursement"
 msgstr "kulukorvaus"
 
@@ -781,11 +781,11 @@ msgstr "Ladattu {success_count} pöytäkirjaa G Drivestä."
 msgid "Error downloading documents: {e}"
 msgstr "Virhe pöytäkirjoja ladattaessa: {e}"
 
-#: prodekoorg/app_poytakirjat/models.py:57
+#: prodekoorg/app_poytakirjat/models.py:67
 msgid "minutes"
 msgstr "pöytäkirja"
 
-#: prodekoorg/app_poytakirjat/models.py:58
+#: prodekoorg/app_poytakirjat/models.py:68
 msgid "Minutes"
 msgstr "Pöytäkirjat"
 
@@ -829,20 +829,20 @@ msgstr "Sovellus - Toimarisivu"
 msgid "Board of Prodeko application"
 msgstr "Sovellus - Hallitussivu"
 
-#: prodekoorg/app_toimarit/models.py:49
+#: prodekoorg/app_toimarit/models.py:38
 msgid "section"
 msgstr "jaosto"
 
-#: prodekoorg/app_toimarit/models.py:50
+#: prodekoorg/app_toimarit/models.py:39
 msgid "sections"
 msgstr "jaostot"
 
-#: prodekoorg/app_toimarit/models.py:65 prodekoorg/app_toimarit/models.py:105
+#: prodekoorg/app_toimarit/models.py:55 prodekoorg/app_toimarit/models.py:106
 #: prodekoorg/app_vaalit/models.py:12
 msgid "Position"
 msgstr "Virka"
 
-#: prodekoorg/app_toimarit/models.py:67 prodekoorg/app_toimarit/models.py:111
+#: prodekoorg/app_toimarit/models.py:57 prodekoorg/app_toimarit/models.py:112
 msgid "Section"
 msgstr "Jaosto"
 
@@ -854,27 +854,27 @@ msgstr "toimari"
 msgid "guild officials"
 msgstr "toimarit"
 
-#: prodekoorg/app_toimarit/models.py:113
+#: prodekoorg/app_toimarit/models.py:114
 msgid "Position (English)"
 msgstr "Virka (Englanniksi)"
 
-#: prodekoorg/app_toimarit/models.py:114
+#: prodekoorg/app_toimarit/models.py:115
 msgid "Mobile phone"
 msgstr "Puhelinnumero"
 
-#: prodekoorg/app_toimarit/models.py:117
+#: prodekoorg/app_toimarit/models.py:118
 msgid "Telegram"
 msgstr "Telegram"
 
-#: prodekoorg/app_toimarit/models.py:120
+#: prodekoorg/app_toimarit/models.py:121
 msgid "Description"
 msgstr "Kuvaus"
 
-#: prodekoorg/app_toimarit/models.py:134
+#: prodekoorg/app_toimarit/models.py:145
 msgid "board member"
 msgstr "hallituksen jäsen"
 
-#: prodekoorg/app_toimarit/models.py:135
+#: prodekoorg/app_toimarit/models.py:146
 msgid "board members"
 msgstr "hallituksen jäsenet"
 
