@@ -12,7 +12,7 @@
                 <ul>
                     {% for m in c.visible_messages %}
                         <li>
-                            <a href="../#{{m.id}}">{{ m.header }} {% if m.is_new %}(new){% endif %}</a>
+                            <a href="../#{{m.id}}">{{ m.header }} {% if m.is_new %}<b>(new)</b>{% endif %}</a>
                         </li>
                     {% endfor %}
                 </ul>
