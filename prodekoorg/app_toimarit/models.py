@@ -1,34 +1,23 @@
-import os.path
 import unidecode
-
 from django.conf import settings
+from django.contrib.staticfiles.storage import staticfiles_storage
+from django.core.files import File
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from easy_thumbnails.fields import ThumbnailerImageField
 
 
 def remove_äö(input_str):
     return unidecode.unidecode(input_str)
 
 
-def get_photo_url(board_or_official, object):
-    if settings.DEBUG:
-        if os.path.isfile(
-            remove_äö(
-                f"prodekoorg/app_toimarit/static/images/{board_or_official}/{object.firstname}_{object.lastname}.jpg"
-            )
-        ):
-            return remove_äö(f"{object.firstname}_{object.lastname}.jpg")
-        else:
-            return "placeholder.jpg"
-    else:
-        if os.path.isfile(
-            remove_äö(
-                f"{settings.STATIC_ROOT}/images/{board_or_official}/{object.firstname}_{object.lastname}.jpg"
-            )
-        ):
-            return remove_äö(f"{object.firstname}_{object.lastname}.jpg")
-        else:
-            return "placeholder.jpg"
+def get_photo_url(board_or_official, filename):
+    photo_url = "images/toimari_photos/placeholder.jpg"
+    photo_exists = staticfiles_storage.exists(f"images/{board_or_official}/{filename}")
+    if photo_exists:
+        photo_url = f"images/{board_or_official}/{filename}"
+
+    return remove_äö(photo_url)
 
 
 class Jaosto(models.Model):
@@ -56,8 +45,9 @@ class Toimari(models.Model):
     Attributes:
         firstname: First name of the Guild Official
         lastname: Last name of the Guild Official
-        Position: Current position as a Guild Official
-        Section: The section in which the Guild Official belongs to based on their position
+        position: Current position as a Guild Official
+        section: The section in which the Guild Official belongs to based on their position
+        photo: Toimari photo
     """
 
     firstname = models.CharField(max_length=30, verbose_name=_("First name"))
@@ -66,16 +56,26 @@ class Toimari(models.Model):
     section = models.ForeignKey(
         Jaosto, verbose_name=_("Section"), on_delete=models.CASCADE
     )
+    photo = ThumbnailerImageField(default="images/toimari_photos/placeholder.jpg")
 
     @property
     def name(self):
         return f"{self.firstname} {self.lastname}"
+
+    @property
+    def filename(self):
+        return f"{self.firstname}_{self.lastname}.jpg"
 
     def photourl(self):
         return get_photo_url("toimari_photos", self)
 
     def __str__(self):
         return f"{self.name}, {self.position}"
+
+    def save(self, *args, **kwargs):
+        img = staticfiles_storage.open(get_photo_url("toimari_photos", self.filename))
+        self.photo.save(self.filename, img, save=False)
+        super(Toimari, self).save(*args, **kwargs)
 
     class Meta:
         verbose_name = _("guild official")
@@ -98,6 +98,7 @@ class HallituksenJasen(models.Model):
           Not currently displayed anywhere.
         description: A short description of the role.
           Not currenly displayed anywhere.
+        photo: HallituksenJasen photo
     """
 
     firstname = models.CharField(max_length=30, verbose_name=_("First name"))
@@ -119,16 +120,26 @@ class HallituksenJasen(models.Model):
     description = models.CharField(
         max_length=255, verbose_name=_("Description"), blank=True, null=True
     )
+    photo = ThumbnailerImageField(default="images/hallitus_photos/placeholder.jpg")
 
     @property
     def name(self):
         return f"{self.firstname} {self.lastname}"
+
+    @property
+    def filename(self):
+        return f"{self.firstname}_{self.lastname}.jpg"
 
     def photourl(self):
         return get_photo_url("hallitus_photos", self)
 
     def __str__(self):
         return f"{self.name}, {self.position}"
+
+    def save(self, *args, **kwargs):
+        img = staticfiles_storage.open(get_photo_url("hallitus_photos", self.filename))
+        self.photo.save(self.filename, img, save=False)
+        super(HallituksenJasen, self).save(*args, **kwargs)
 
     class Meta:
         verbose_name = _("board member")
