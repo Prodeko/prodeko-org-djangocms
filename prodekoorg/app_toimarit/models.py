@@ -56,7 +56,10 @@ class Toimari(models.Model):
     section = models.ForeignKey(
         Jaosto, verbose_name=_("Section"), on_delete=models.CASCADE
     )
-    photo = ThumbnailerImageField(default="images/toimari_photos/placeholder.jpg")
+    photo = ThumbnailerImageField(
+        upload_to="app_toimarit/toimari_photos",
+        default="images/toimari_photos/placeholder.jpg",
+    )
 
     @property
     def name(self):
@@ -120,7 +123,10 @@ class HallituksenJasen(models.Model):
     description = models.CharField(
         max_length=255, verbose_name=_("Description"), blank=True, null=True
     )
-    photo = ThumbnailerImageField(default="images/hallitus_photos/placeholder.jpg")
+    photo = ThumbnailerImageField(
+        upload_to="app_toimarit/hallitus_photos",
+        default="images/hallitus_photos/placeholder.jpg",
+    )
 
     @property
     def name(self):
