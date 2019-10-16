@@ -28,6 +28,8 @@ CDN_URL = "static.prodeko.org"
 
 CKEDITOR_BASEPATH = f"https://{CDN_URL}/static/ckeditor/ckeditor/"
 
+AZURE_CUSTOM_DOMAIN = CDN_URL
+
 DEFAULT_FILE_STORAGE = "prodekoorg.custom_azure.AzureMediaStorage"
 STATICFILES_STORAGE = "prodekoorg.custom_azure.AzureStaticStorage"
 THUMBNAIL_DEFAULT_STORAGE = "prodekoorg.custom_azure.AzureMediaStorage"
