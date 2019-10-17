@@ -15,6 +15,22 @@ Prodissa prodeko.org static- ja mediatiedostot hostataan Azure Storagessa. Stora
 
 Asetuksen settings/prod.py FILER_STORAGES muuttuja osoittaa Azureen, devissä lokaaliin filesystemiin. Jos fileriin lähettää kuvatiedotoja, niistä muodostuu automaattisesti thumbnailit mediastorageen. Thumbnailit ovat optimoituja kuvia, jotta täysikokoisia ei lähetetä clientille.
 
+## Kuvien optimointi
+
+Kuvat on optimoitu käyttäen ImageMagick ja pngquant työkaluja. `brew install imagemagic && brew install pngquant`.
+
+.jpg-kuvat (ImageMagick)
+
+```
+convert prodeko-logo-text-blue.png -resize 700x200 test.png
+```
+
+.png-kuvat (pngquant)
+
+```
+for X in *.png; do pngquant "$X"; done
+```
+
 ## AzCopy
 
 "AzCopy is a command-line utility that you can use to copy blobs or files to or from a storage account." AzCopyn saa ladattua [täältä](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10)
