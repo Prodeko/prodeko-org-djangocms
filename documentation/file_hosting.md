@@ -22,13 +22,23 @@ Kuvat on optimoitu käyttäen ImageMagick ja pngquant työkaluja. `brew install 
 .jpg-kuvat (ImageMagick)
 
 ```
-convert prodeko-logo-text-blue.png -resize 700x200 test.png
+# Single file
+convert prodeko-logo-text-blue.png -resize 700x200 test.png     # Create a new file
+magick mogrify -resize 20% test.png                             # Overwrite existing file
+
+# Multiple files
+magick mogrify -resize 70% -path . *.png
 ```
 
 .png-kuvat (pngquant)
 
 ```
-for X in *.png; do pngquant "$X"; done
+# Single file
+pngquant file.png
+
+# Multiple files
+for X in *.png; do pngquant "$X"; done                          # Create new files
+for X in *.png; do pngquant "$X" --ext .png --force; done       # Overwrite existing files
 ```
 
 ## AzCopy
