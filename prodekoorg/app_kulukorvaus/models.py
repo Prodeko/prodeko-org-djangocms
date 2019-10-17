@@ -5,6 +5,10 @@ from django.utils.translation import ugettext_lazy as _
 from uuid import uuid4
 
 
+def upload_url(instance, filename):
+    return f"kulukorvaukset/%Y-%m/{uuid4()}/{filename}"
+
+
 class KulukorvausPerustiedot(models.Model):
     """Basic information about the reimbursement claim as a whole.
 
@@ -68,7 +72,7 @@ class KulukorvausPerustiedot(models.Model):
     pdf = models.FileField(
         blank=True,
         null=True,
-        upload_to=f"kulukorvaukset/%Y-%m/{uuid4()}",
+        upload_to=upload_url,
         verbose_name="PDF",
         validators=[FileExtensionValidator(["pdf"])],
     )
@@ -121,7 +125,7 @@ class Kulukorvaus(models.Model):
         blank=True, verbose_name=_("Additional information")
     )
     receipt = models.FileField(
-        upload_to=f"kulukorvaukset/%Y-%m/{uuid4()}",
+        upload_to=upload_url,
         verbose_name=_("Receipt"),
         validators=[FileExtensionValidator(["png", "jpg", "jpeg"])],
     )
