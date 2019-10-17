@@ -1,4 +1,4 @@
-const ACCESS_TOKEN = '2398789603.1677ed0.0f8cf3e0b2684743a9ea6b9a9636dadb';
+const ACCESS_TOKEN = '2398789603.1677ed0.d61f066776bb4a068b1952be09c2265d';
 var num = 4;
 
 if (window.innerWidth >= 576) {
