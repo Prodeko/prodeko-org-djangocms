@@ -13,7 +13,9 @@ def remove_äö(input_str):
 
 def get_photo_url(board_or_official, filename):
     photo_url = "images/toimari_photos/placeholder.jpg"
-    photo_exists = staticfiles_storage.exists(f"images/{board_or_official}/{filename}")
+    photo_exists = staticfiles_storage.exists(
+        f"images/{board_or_official}/{remove_äö(filename)}"
+    )
     if photo_exists:
         photo_url = f"images/{board_or_official}/{filename}"
 
@@ -68,9 +70,6 @@ class Toimari(models.Model):
     @property
     def filename(self):
         return f"{self.firstname}_{self.lastname}.jpg"
-
-    def photourl(self):
-        return get_photo_url("toimari_photos", self)
 
     def __str__(self):
         return f"{self.name}, {self.position}"
@@ -135,9 +134,6 @@ class HallituksenJasen(models.Model):
     @property
     def filename(self):
         return f"{self.firstname}_{self.lastname}.jpg"
-
-    def photourl(self):
-        return get_photo_url("hallitus_photos", self)
 
     def __str__(self):
         return f"{self.name}, {self.position}"
