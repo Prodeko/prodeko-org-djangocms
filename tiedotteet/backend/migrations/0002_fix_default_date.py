@@ -29,20 +29,4 @@ class Migration(migrations.Migration):
             name='end_date',
             field=models.DateField(default=tiedotteet.backend.models.default_date),
         ),
-        migrations.AlterModelTable(
-            name='category',
-            table='tiedotteet_category',
-        ),
-        migrations.AlterModelTable(
-            name='mailconfiguration',
-            table='tiedotteet_mailconfiguration',
-        ),
-        migrations.AlterModelTable(
-            name='message',
-            table='tiedotteet_message',
-        ),
-        migrations.AlterModelTable(
-            name='tag',
-            table='tiedotteet_tag',
-        ),
     ]
