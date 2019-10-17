@@ -24,8 +24,6 @@ DATABASES = {
 
 INSTALLED_APPS += ("storages",)
 
-CKEDITOR_BASEPATH = f"https://{CDN_URL}/static/ckeditor/ckeditor/"
-
 CDN_URL = "static.prodeko.org"
 AZURE_CUSTOM_DOMAIN = CDN_URL
 AZURE_CACHE_CONTROL = "public,max-age=31536000,immutable"
@@ -39,6 +37,8 @@ MEDIA_LOCATION = "media"
 
 STATIC_URL = f"https://{CDN_URL}/{STATIC_LOCATION}/"
 MEDIA_URL = f"https://{CDN_URL}/{MEDIA_LOCATION}/"
+
+CKEDITOR_BASEPATH = f"https://{CDN_URL}/static/ckeditor/ckeditor/"
 
 # Django filer config
 FILER_STORAGES = {
