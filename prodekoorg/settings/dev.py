@@ -31,14 +31,17 @@ FILER_STORAGES = {
                 "base_url": "/media/filer/",
             },
             "UPLOAD_TO": "filer.utils.generate_filename.by_date",
-            "UPLOAD_TO_PREFIX": "files/public",
+            "UPLOAD_TO_PREFIX": "public",
         },
         "thumbnails": {
             "ENGINE": "filer.storage.PublicFileSystemStorage",
             "OPTIONS": {
-                "location": os.path.join(BASE_DIR, "prodekoorg/media/filer/filer_thumbnails"),
+                "location": os.path.join(
+                    BASE_DIR, "prodekoorg/media/filer/filer_thumbnails"
+                ),
                 "base_url": MEDIA_URL + "thumbnails",
             },
+            "UPLOAD_TO_PREFIX": "public",
         },
     },
     "private": {
@@ -49,7 +52,7 @@ FILER_STORAGES = {
                 "base_url": "/smedia/filer/",
             },
             "UPLOAD_TO": "filer.utils.generate_filename.randomized",
-            "UPLOAD_TO_PREFIX": "files/private",
+            "UPLOAD_TO_PREFIX": "private",
         },
         "thumbnails": {
             "ENGINE": "filer.storage.PrivateFileSystemStorage",
@@ -59,6 +62,7 @@ FILER_STORAGES = {
                 ),
                 "base_url": MEDIA_URL + "thumbnails",
             },
+            "UPLOAD_TO_PREFIX": "private",
         },
     },
 }

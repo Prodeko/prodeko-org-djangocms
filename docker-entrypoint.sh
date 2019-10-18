@@ -46,6 +46,7 @@ python3 manage.py loaddata --app cms --app menus --verbosity 3 data.json
 
 # Translations
 python3 manage.py makemessages -l fi
+python3 manage.py makemessages -d djangojs -l fi -i tiedotteet -i node_modules
 python3 manage.py compilemessages -l fi
 
 exec "$@"

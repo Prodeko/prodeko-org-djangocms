@@ -25,17 +25,20 @@ DATABASES = {
 INSTALLED_APPS += ("storages",)
 
 CDN_URL = "static.prodeko.org"
-
-CKEDITOR_BASEPATH = f"https://{CDN_URL}/static/ckeditor/ckeditor/"
+AZURE_CUSTOM_DOMAIN = CDN_URL
+AZURE_CACHE_CONTROL = "public,max-age=31536000,immutable"
 
 DEFAULT_FILE_STORAGE = "prodekoorg.custom_azure.AzureMediaStorage"
 STATICFILES_STORAGE = "prodekoorg.custom_azure.AzureStaticStorage"
+THUMBNAIL_DEFAULT_STORAGE = "prodekoorg.custom_azure.AzureMediaStorage"
 
 STATIC_LOCATION = "static"
 MEDIA_LOCATION = "media"
 
 STATIC_URL = f"https://{CDN_URL}/{STATIC_LOCATION}/"
 MEDIA_URL = f"https://{CDN_URL}/{MEDIA_LOCATION}/"
+
+CKEDITOR_BASEPATH = f"https://{CDN_URL}/static/ckeditor/ckeditor/"
 
 # Django filer config
 FILER_STORAGES = {

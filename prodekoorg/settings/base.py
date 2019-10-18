@@ -277,6 +277,7 @@ INSTALLED_APPS = (
     "prodekoorg.app_poytakirjat",
     "prodekoorg.app_tiedostot",
     "prodekoorg.app_toimarit",
+    "prodekoorg.app_utils",
     # ------------------------
 )
 
@@ -302,9 +303,13 @@ THUMBNAIL_PROCESSORS = (
 THUMBNAIL_ALIASES = {
     "": {
         "avatar": {"size": (50, 50), "crop": True},
-        "toimari": {"size": (150, 150), "crop": True},
+        "toimari": {"size": (350, 350), "crop": True},
+        "hallitus": {"size": (400, 400), "crop": True},
     }
 }
+
+THUMBNAIL_BASEDIR = "image_thumbnails"
+THUMBNAIL_HIGH_RESOLUTION = True
 
 # Config for djangocms-text-ckeditor
 CKEDITOR_SETTINGS = {

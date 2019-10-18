@@ -96,6 +96,10 @@ class OldMessageManager(models.Manager):
         )
 
 
+def default_date():
+    return timezone.now().date() + timedelta(days=7)
+
+
 class Message(models.Model):
     """A message containing some important information.
 
@@ -122,10 +126,8 @@ class Message(models.Model):
     )
     tags = models.ManyToManyField(Tag, related_name="messages", blank=True)
     start_date = models.DateField(default=timezone.now)
-    end_date = models.DateField(default=timezone.now().date() + timedelta(days=7))
-    deadline_date = models.DateField(
-        default=timezone.now().date() + timedelta(days=7), blank=True, null=True
-    )
+    end_date = models.DateField(default=default_date)
+    deadline_date = models.DateField(default=default_date, blank=True, null=True)
     show_deadline = models.BooleanField(default=False)
     visible = models.BooleanField(default=True)
     content = RichTextField(blank=True)

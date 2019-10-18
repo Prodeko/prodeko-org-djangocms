@@ -1,5 +1,5 @@
 {% extends "contentpage/content-page.html" %}
-{% load cms_tags menu_tags static sekizai_tags sass_tags %}
+{% load cms_tags menu_tags thumbnail static sekizai_tags sass_tags %}
 
 {% block extra_head %}
     <link href="{% sass_src 'scss/app_toimarit.scss' %}" rel="stylesheet" type="text/css" />
@@ -19,7 +19,7 @@
                         {% for boardmember in boardmembers %}
                             <div class="col-md-6 col-lg-4">
                                 <div class="boardMember">
-                                    <img class="w-100 h-100" src="{% static 'images/hallitus_photos/' %}/{{boardmember.photourl}}" alt="{{boardmember.name}}"/>
+                                    <img class="w-100 h-100" src="{{ boardmember.photo|thumbnail_url:'hallitus' }}" alt="{{ boardmember.name }}"/>
                                     <div class="description">
                                         <strong>{{ boardmember.name }}</strong>
                                         <br />

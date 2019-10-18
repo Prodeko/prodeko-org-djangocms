@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from uuid import uuid4
 
 
 def content_directory(instance, filename):
@@ -14,6 +15,9 @@ def content_directory(instance, filename):
     things organized. The '/2' folder is needed since
     proceedings documents regularly have attachments.
 
+    A unique identifier is added to the path to prevent
+    public access to the files.
+
     Args:
         instance: Dokumentti object instance.
         filename: Filename.
@@ -23,7 +27,13 @@ def content_directory(instance, filename):
     """
 
     return "/".join(
-        ["dokumentit", str(instance.date.year), str(instance.number), filename]
+        [
+            "dokumentit",
+            str(instance.date.year),
+            str(instance.number),
+            str(uuid4()),
+            filename,
+        ]
     )
 
 
