@@ -10,5 +10,5 @@
     <p class="mb-0"><em>{{ vastaus.by_ehdokas.name }}</em></p>
     <small>{{ vastaus.created_at|timesince }} {% trans since %}</small>
   </div>
-  <p class="vastaus-text col-sm-7 col-md-7 col-lg-8 col-xl-9">{{ vastaus.answer }}</p>
+  <p class="vastaus-text col-sm-7 col-md-7 col-lg-8 col-xl-9">{{ vastaus.answer|linebreaksbr }}</p>
 </li>

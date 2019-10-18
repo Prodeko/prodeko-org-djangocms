@@ -13,7 +13,7 @@
 
 <h2 class="py-3" id="header">{{ virat.0.name }}</h2>
 <div id="roleDescription">
-  {{ virat.0.description }}
+  {{ virat.0.description|linebreaks }}
 </div>
 <div id="vaaliKysymysForm">
   {% include "forms/vaalit_question_form.html" %}
@@ -44,10 +44,14 @@
           {% include "vaalit_question.html" %}
 
           {# VASTAUKSET #}
-          <div class="list-group collapse" id="vastaukset_{{ kysymys.pk }}">
+          <div class="list-group collapse answersList" id="vastaukset_{{ kysymys.pk }}">
+            <div class="answersContainer">
+            
             {% for vastaus in kysymys.vastaukset.all %}
               {% include "vaalit_answer.html" %}
             {% endfor %}
+            {% include "forms/vaalit_answer_form.html" %}
+            </div>
             {% if not kysymys.vastaukset.all %}
             <p class="ml-5">{% trans no_responses %}</p> <!-- TODO: Better styling-->
             {% endif %}
@@ -76,7 +80,8 @@
     selectedVirka = localStorage.getItem('selectedTab_id');
     if (selectedVirka == null) return;
     description = descriptions[selectedVirka.slice(2)-1].description
-    $("#roleDescription").html(description);
+    console.log(description)
+    $("#roleDescription").text(description);
   }
 </script>
 {% endaddtoblock %}

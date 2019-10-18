@@ -3,6 +3,7 @@
 #vaaliContainer {
   #roleDescription {
     margin-bottom: 2rem;
+    white-space: pre-wrap; /** Enables linebreaks while using jquery to render description texts **/
   }
 
   .vaalitQuestions {
@@ -67,14 +68,43 @@
     }
   }
 
+  .no-border {
+    border: none;
+  }
+
   .vaalitKysymysList {
     .questionHeader {
       display: flex;
       flex-direction: row;
       align-items: center;
       justify-content: space-between;
+
+      .my-2 {
+        width: 90%;
+      }
+    }
+
+    .questionBox {
+      border-left: 0.5rem #002e7d solid;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+      border-right: 1px solid rgba(0, 0, 0, 0.125);
+      border-top: 1px solid rgba(0, 0, 0, 0.125);
+    }
+    
+    .answersList {
+      padding-right: 8rem;
     }
   }
+
+
+  #responseButton {
+    border: 1px solid #05006d;
+  }
+
+.answerForm {
+  margin-top: 2rem;
+  margin-left: 4rem;
+}
 
   #modalCrop .img-container img,
   #vaalitModifyApplyModal .img-container img {
@@ -148,7 +178,7 @@
 
 .answers-container {
   background: #e8e8e8;
-  margin: 0rem auto 0rem 4rem;
+  margin: 0.5rem auto 0rem 4rem;
   padding-top: 1rem;
   padding-bottom: 1rem;
   border-top: #c3c3c3 1px solid;

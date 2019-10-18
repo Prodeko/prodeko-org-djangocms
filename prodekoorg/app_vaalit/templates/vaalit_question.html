@@ -6,8 +6,8 @@
 {% trans "Edit" as edit %}
 
 {% load sekizai_tags %}
-<li id="kysymys_{{ kysymys.pk }}" class="list-group-item align-items-start mb-2">
-  <a href="#vastaukset_{{ kysymys.pk }}" class="list-group-item list-group-item-action" data-toggle="collapse" aria-expanded="true">
+<li id="kysymys_{{ kysymys.pk }}" class="list-group-item align-items-start mb-2 no-border">
+  <a href="#vastaukset_{{ kysymys.pk }}" class="list-group-item list-group-item-action questionBox" data-toggle="collapse" aria-expanded="false" aria-controls="vastaukset_1">
   <div class="row">
     <div class="col-md-12 pl-0">
       <div class="questionHeader">
@@ -26,15 +26,17 @@
       </div>
       <div class="row">
         {% for ehdokas in virka.ehdokkaat.all %}
-          {% if request.user == ehdokas.auth_prodeko_user %}
-          <button type="button" class="btn btn-default btn-sm btn-xs my-2 mr-2" data-toggle="collapse" data-target="#vaalitAnswerForm_{{ forloop.parentloop.counter }}">
+         <!--  {% if request.user == ehdokas.auth_prodeko_user %}
+         <a href="#vaalitAnswerForm_1" class="list-group-item list-group-item-action" data-toggle="collapse" aria-expanded="false" aria-controls="vaalitAnswerForm_1">asd</a>
+          <button type="button" class="btn btn-default btn-md btn-xs my-2 mr-2" id="responseButton" data-toggle="collapse" aria-expanded="false" data-target="#vaalitAnswerForm_1">
             <i class="mr-2 fa fa-reply"></i>
             {% trans answer %}
           </button>
           {% endif %}
+          -->
         {% endfor %}
         {% if request.user == kysymys.created_by %}
-        <form class="vaalitDeleteKysymysForm" novalidate method="POST">
+        <form class="vaalitDeleteKysymysForm"  novalidate method="POST">
            {% csrf_token %}
            <input type="hidden" name="hidden-kysymys-id" value="{{ kysymys.pk }}"/>
            <button type="submit" class="btn btn-outline-danger btn-xs mt-2 mr-2"><i class="fas fa-times mr-2"></i>{% trans remove %}</button>
@@ -45,4 +47,3 @@
   </div>
   </a>
 </li>
-{% include "forms/vaalit_answer_form.html" %}
