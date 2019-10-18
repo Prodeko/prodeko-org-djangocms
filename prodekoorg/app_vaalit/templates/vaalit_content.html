@@ -74,6 +74,7 @@
 
   function updateDescription(virka) {
     selectedVirka = localStorage.getItem('selectedTab_id');
+    if (selectedVirka == null) return;
     description = descriptions[selectedVirka.slice(2)-1].description
     $("#roleDescription").html(description);
   }
