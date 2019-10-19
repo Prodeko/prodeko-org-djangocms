@@ -5,6 +5,7 @@
 {% trans "Apply" as apply %}
 
 {% load sekizai_tags %}
+<h3>{% trans question_ask %}</h3>
 <form novalidate method="POST" id="vaalitKysymysForm">
   {% csrf_token %}
   <div class="form-group row">

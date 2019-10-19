@@ -324,7 +324,6 @@ def main_view(request):
     context["count_ehdokkaat_toimarit"] = Virka.objects.filter(
         is_hallitus=False
     ).count()
-    context["page_title"] = "Prodeko Vaalit"
     print(request.POST)
     if request.method == "POST":
         if "submitVirka" in request.POST:

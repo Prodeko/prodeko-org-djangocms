@@ -11,32 +11,48 @@
 
 {% load sekizai_tags %}
 
+<div class="row">
+  <div class="col-xl-8 col-sm-12">
 <h2 class="py-3" id="header">{{ virat.0.name }}</h2>
 <div id="roleDescription">
   {{ virat.0.description|linebreaks }}
 </div>
-<div id="vaaliKysymysForm">
-  {% include "forms/vaalit_question_form.html" %}
+</div>  
+<div class="col-xl-4 col-sm-12 ehdokasList">
+{% for virka in virat %}
+<div id="_{{ forloop.counter }}" class="tab-pane fade{% if forloop.first %} active show{% endif %}" role="tabpanel">
+<h3>{% trans applicants %} ({{ virka.ehdokkaat.all.count }})</h3>
+{% for ehdokas in virka.ehdokkaat.all %}
+{% include "vaalit_ehdokas_alternative.html" %}
+{%endfor %}
 </div>
-<div id="vaaliApplyForm" style="{{style_vaaliApplyForm}}">
-  {% include "forms/vaalit_apply_form.html" %}
+{% endfor %}
 </div>
+</div>
+<div id="vaaliKysymysForm" class="my-4">
+    {% include "forms/vaalit_question_form.html" %}
+  </div>
+  <div id="vaaliApplyForm" style="{{style_vaaliApplyForm}}">
+    {% include "forms/vaalit_apply_form.html" %}
+  </div>
 <div id="vaaliContent" class="tab-content">
-  {% for virka in virat %}
+  <!--{% for virka in virat %}
   <div id="_{{ forloop.counter }}" class="tab-pane fade{% if forloop.first %} active show{% endif %}" role="tabpanel">
 
     {# EHDOKKAAT #}
     <h3>{% trans applicants %} ({{ virka.ehdokkaat.all.count }})</h3>
     <div class="card-group">
     {% for ehdokas in virka.ehdokkaat.all %}
-      {% include "vaalit_ehdokas.html" %}
+      {% include "vaalit_ehdokas_alternative.html" %}
     {% empty %}
       <p>{% trans no_applicants %}</p>
     {% endfor %}
     </div>
 
+  -->
+
     {# KYSYMYKSET #}
-    <div class="vaalitQuestions">
+    <div class="vaalitQuestions col-xl-8 col-lg-10 col-xs-12">
       <h3 class="mt-4">{% trans questions %} ({{ virka.kysymykset.all.count }})
           {% trans "No applicants" as no_applicant %}</h3>
       <div class="vaalitKysymysList list-group list-group-root">
@@ -80,7 +96,6 @@
     selectedVirka = localStorage.getItem('selectedTab_id');
     if (selectedVirka == null) return;
     description = descriptions[selectedVirka.slice(2)-1].description
-    console.log(description)
     $("#roleDescription").text(description);
   }
 </script>
