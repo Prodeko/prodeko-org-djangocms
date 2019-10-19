@@ -78,10 +78,14 @@
       flex-direction: row;
       align-items: center;
       justify-content: space-between;
+      background: #0028510d;
+      padding-left: 0.5rem;
+      margin-bottom: 0.5rem;
+      
+        .my-2 {
+          width: 90%;
+        }
 
-      .my-2 {
-        width: 90%;
-      }
     }
 
     .questionBox {
@@ -93,6 +97,7 @@
     
     .answersList {
       padding-right: 8rem;
+      border-bottom: 2px solid $blue-normal;
     }
   }
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-18 17:10+0300\n"
+"POT-Creation-Date: 2019-10-19 11:07+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Timo Riski <timo@prodeko.org>\n"
 "Language: \n"
@@ -988,6 +988,12 @@ msgstr "Vastaukset"
 #: prodekoorg/app_vaalit/templates/forms/vaalit_answer_form.html:3
 msgid "Submit answer"
 msgstr "Lähetä"
+
+#: prodekoorg/app_vaalit/templates/forms/vaalit_answer_form.html:4
+#, fuzzy
+#| msgid "answer"
+msgid "Post an answer"
+msgstr "vastaus"
 
 #: prodekoorg/app_vaalit/templates/forms/vaalit_apply_form.html:3
 #: prodekoorg/app_vaalit/templates/forms/vaalit_modify_application_form.html:13
