@@ -10,9 +10,9 @@ Prodeko.org projekti käyttää Django versiota 2.2.5.
 
 #### Docker
 
-1. Lataa [docker](https://docs.docker.com/install/).
+1. Lataa [docker](https://docs.docker.com/install/)
 2. Kopioi prodekoorg/settings/variables.sample.txt ja nimeä se variables.txt nimiseksi
-3. Täytä variables.txt tiedostoon puuttuvat muuttujat.
+3. Täytä variables.txt tiedostoon puuttuvat muuttujat
 
 ```
 $ docker-compose up  # Kehitysympäristön käynnistys
@@ -30,7 +30,7 @@ Kehitysympäristön käynnistys luo uuden Django käyttäjän:
 Azuressa hostataan media ja static tiedostot. Lisäksi käytössä on Azuren CDN. Azuren infrastruktuurin saa pystytettyä infrastructure/deploy.sh skriptillä.
 
 1. Virtualenv päälle `source venv/bin/activate`
-2. Aja bash deploy.sh
+2. Aja `bash deploy.sh` projektin juuressa
 3. Käynnistä apache uudestaan `sudo service apache2 restart`
 4. Tarkista näyttävätkö sivut toimivan oikein [prodeko.org](https://prodeko.org)
 
@@ -41,7 +41,7 @@ Jos törmäät "ImportError: Couldn't import Django..." erroriin, vaihda käytt�
 - Testit saa ajettua komennolla `python3 manage.py test -v=2"`
 - Vain osan testeistä saa ajettua esimerkiksi näin: `python3 manage.py test -p=test_forms.py -v=2"`
 - Tietyn appin testit saa ajettua näin: `python3 manage.py test prodekoorg.app_kulukorvaus.tests -v=2`
-- Testien kirjoittamiseen voi katsoa mallia prodekoorg/app_kulukorvaus/tests/ kansiosta.
+- Testien kirjoittamiseen voi katsoa mallia prodekoorg/app_kulukorvaus/tests/ kansiosta
 
 ### Koodityyli
 
@@ -119,7 +119,8 @@ $ npm run lint:css-fix  # Korjaa virheet
 
 ### Rakennuspalikat
 
-- [Django](https://reactjs.org/) - Web development framework
+- [Django](https://www.djangoproject.com/) - Web development framework
+- [React](https://reactjs.org/) - Web development framework
 - [Django CMS](https://www.django-cms.org/en/) - Sisällönhallintajärjestelmä Djangolle
   - [djangocms-bootstrap4](https://github.com/divio/djangocms-bootstrap4) - Bootstrap4 elementtien lisäys suoraan CMS:stä
 
@@ -153,29 +154,35 @@ $ npm run lint:css-fix  # Korjaa virheet
     │   │   └── ...
     │   │── app_tiedostot              # Prodekon brändiin liittyviä tiedostoja
     │   │   └── ...
-    │   │── app_toimarit               # .csv toimarilistan uploadaus muodostaa automaattisesti templaten jossa on listattuna prodekon toimarit kuvineen
+    │   │── app_toimarit               # Mahdollistaa vuoden toimihenkilöiden päivittämisen sivuille .csv-tiedoston avulla.
+    │   │   └── ...
+    │   │── app_utils                  # Kolmannen osapuolen appien poistaminen administa
     │   │   └── ...
     │   │── app_vaalit                 # Vaaliplatform
     │   │   └── ...
-    │   │── collected-static           # `python3 manage.py collectstatic` kerää tiedostot tänne
+    │   │── collected-static           # Kerätyt staattiset tiedostot dev-asetuksilla. Komento `python3 manage.py collectstatic` kerää tiedostot tänne
     │   │   └── ...
-    │   │── media                      # Palvelimelle lähetetyt tiedostot kerääntyvät tänne
+    │   │── media                      # Palvelimelle lähetetyt tiedostot kerääntyvät tänne dev-asetuksilla
     │   │   └── ...
+    │   │── settings                   # Django globaalit asetukset
+    │   │   ├── base.py
+    │   │   ├── dev.py
+    │   │   ├── prod.py
     │   │── static                     # Staattiset tiedostot
     │   │   ├── fonts
     │   │   ├── images
     │   │   ├── js
-    │   │   ├── misc                   # site.webmanifest
+    │   │   ├── misc
     │   │   └── scss                   # Bootstrap4 scss, muut scss tiedostot
-    │   │──templates                   # Suurin osa .html tiedostoista - appeilla (app_kulukorvaus jne.)
+    │   │──templates                   # Suurin osa html-tiedostoista. Sovelluksilla (app_kulukorvaus jne.)
     │   │   │                          # on omat templatensa ja staattiset tiedostonsa (js, scss, kuvat)
     │   │   └── ...
     │   └── ...
     ├── scripts                        # Python skriptejä
     │   └── ...
-    ├── seminaari                      # Prodeko Seminaarin nettisivut
+    ├── seminaari                      # seminaari.prodeko.org
     │   └── ...
-    ├── tiedotteet                     # tiedotteet.prodeko.org verkkosivu
+    ├── tiedotteet                     # tiedotteet.prodeko.org
     │   │── backend                    # Tiedotteet django backend
     │   │   └── ...
     │   │── frontend                   # Tiedotteet React frontend
