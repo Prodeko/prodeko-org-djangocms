@@ -16,13 +16,17 @@
 <div id="vaaliContainer" class="container-fluid">
 
 	{% placeholder "content" %}
-
 	<div class="row">
 	  <div class="col-lg-2 col-12">
 			{% include "vaalit_nav.html" %}
 		</div>
 		<div class="col-lg-10 col-12">
-			{% include "vaalit_content.html" %}
+			<div id="landingpageContent">
+					{% include "vaalit_landingpage.html" %}
+			</div>
+			<div id="electionsContent" class="hidden">
+				{% include "vaalit_content.html" %}
+			</div>
 		</div>
 	</div>
 </div>

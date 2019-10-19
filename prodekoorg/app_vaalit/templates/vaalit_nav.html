@@ -1,10 +1,12 @@
 {% load i18n %}
 
+{% trans "Tietoa vaaleista" as elections_information %}
 {% trans "Board" as board %}
 {% trans "Officials" as officials %}
 {% trans "NEW" as new %}
 
 <div id="vaalitNav" class="list-group list-group-root">
+  <a href="#" class="vaalitFrontpageLink"><strong>{% trans elections_information %}</strong></a><br/>
   <a href="#hallitusList" class="list-group-item list-group-item-action" data-toggle="collapse">
     <i class="fa fa-fw fa-chevron-down"></i>
     <strong>{% trans board %}</strong>

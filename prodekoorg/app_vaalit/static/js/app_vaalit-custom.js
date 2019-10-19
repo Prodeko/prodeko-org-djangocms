@@ -12,6 +12,9 @@ $.ajaxSetup({
 });
 
 function updateTexts(virka) {
+  if (!virka) {
+    return;
+  }
   $("#vaalitKysymysForm small").html(virka + " - Esitä kysymys");
   updateDescription(virka) // Defined in vaalit_content.html
   $("#header").html(virka);
@@ -28,6 +31,7 @@ $(document).ready(function() {
   /* START stay on same navigation tab with reload */
   var elem;
   var virka;
+  //$('#electionsContent').addClass('hidden');
 
   /* Use localStorage to display the tab that was open
    *  before the latest refresh.
@@ -38,6 +42,9 @@ $(document).ready(function() {
         '.list-group-root a[data-toggle="tab"][href="' + selectedTab_id + '"] .virka-name'
       );
 
+      $('#electionsContent').removeClass('hidden');
+      $('#landingpageContent').addClass('hidden');
+
       virka = elem.text().trim();
       updateTexts(virka);
       checkBtnHaeVirkaanVisibility(virka); // Defined in 'vaalit_question_form.html'
@@ -46,6 +53,9 @@ $(document).ready(function() {
       elem.tab("show");
     } else {
       // No tab saved in localStorage
+       $('#electionsContent').addClass('hidden');
+       console.log("d")
+
       elem = $('.list-group-root a[data-toggle="tab"][href="#_1"]');
 
       virka = elem.text().trim();
@@ -57,6 +67,14 @@ $(document).ready(function() {
     }
   }
 
+  $('.vaalitFrontpageLink').click(function(e) {
+    $('#electionsContent').addClass('hidden');
+    $('#landingpageContent').removeClass('hidden');
+    localStorage.setItem("selectedTab_id", null);
+    localStorage.setItem("selectedVirka", null);
+    console.log("d")
+  })
+
   $('.list-group-root a[data-toggle="tab"]').click(function(e) {
     var id = $(e.delegateTarget).attr("href");
     var virka = $('.list-group-root a[data-toggle="tab"][href="' + id + '"] .virka-name')
@@ -66,6 +84,9 @@ $(document).ready(function() {
 
     localStorage.setItem("selectedTab_id", id);
     localStorage.setItem("selectedVirka", virka);
+
+    $('#electionsContent').removeClass('hidden');
+    $('#landingpageContent').addClass('hidden');
 
     updateTexts(virka);
     $("#vaaliApplyForm").hide(); // Hide "apply to virka form" when changing tabs if it's open
