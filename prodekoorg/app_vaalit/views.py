@@ -214,7 +214,7 @@ def handle_submit_ehdokas(request, context):
         # Return the form with error messages and reder vaalit main page
         return render(request, "vaalit.html", context)
 
-@login_required
+
 def handle_modify_ehdokas(request, context, ehdokas):
     # Get hidden input values from POST
     hidden_virka, x, y, w, h = get_hidden_inputs(request.POST)
@@ -226,6 +226,7 @@ def handle_modify_ehdokas(request, context, ehdokas):
     # We still need to append pic, user object and foreign key virka object to the ehdokas object.
     ehdokas.pic = cropped_pic
     ehdokas.introduction = request.POST.get("introduction")
+    ehdokas.name = request.POST.get("name")
     ehdokas.virka = get_object_or_404(Virka, name=hidden_virka)
     ehdokas.save()
     render(request, "vaalit.html", context)
@@ -323,6 +324,7 @@ def main_view(request):
     context["count_ehdokkaat_toimarit"] = Virka.objects.filter(
         is_hallitus=False
     ).count()
+    context["page_title"] = "Prodeko Vaalit"
     print(request.POST)
     if request.method == "POST":
         if "submitVirka" in request.POST:

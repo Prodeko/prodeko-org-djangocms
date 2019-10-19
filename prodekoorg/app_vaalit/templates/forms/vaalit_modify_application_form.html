@@ -2,19 +2,19 @@
 {% load cms_tags menu_tags sekizai_tags i18n %}
 
 {% block extra_head %}
-<script src="/static/js/vaalit-custom.js"></script>
+<script src="/static/js/app_vaalit-custom.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/cropper/4.0.0/cropper.min.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/cropper/4.0.0/cropper.min.css" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
+{% include "layout-components/jumbotron_small.html" %}
 
 {% trans "Modify application" as modify %}
 {% trans "Introduction" as introduction %}
 
 <div class="container">
 
-	{% show_breadcrumb 0 "layout-components/breadcrumb.html" %}
 	{% placeholder "content" %}
 	<div class="row">
 		<div class="col-9 mx-auto">
@@ -78,6 +78,7 @@
 	</div>
 </div>
 <div id="vaalitModifyApplyModal">
-	{% include "vaalit_modal_photocrop.html" %}
+
 </div>
+{% include "vaalit_modal_photocrop.html" %}
 {% endblock content %}

@@ -81,7 +81,7 @@
       background: #0028510d;
       padding-left: 0.5rem;
       margin-bottom: 0.5rem;
-      
+
         .my-2 {
           width: 90%;
         }
@@ -109,6 +109,10 @@
 .answerForm {
   margin-top: 2rem;
   margin-left: 4rem;
+}
+
+.content-page-jumbotron .jumbotron {
+height: 10vh !important;
 }
 
   #modalCrop .img-container img,
