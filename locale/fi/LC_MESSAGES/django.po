@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-16 21:48+0300\n"
+"POT-Creation-Date: 2019-10-17 23:29+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Timo Riski <timo@prodeko.org>\n"
 "Language: \n"
@@ -107,7 +107,7 @@ msgstr "Profiili"
 #: auth_prodeko/templates/accounts/user_profile.html:14
 #: prodekoorg/app_kulukorvaus/models.py:52
 #: prodekoorg/app_kulukorvaus/printing.py:94
-#: prodekoorg/app_toimarit/models.py:32 prodekoorg/app_vaalit/models.py:34
+#: prodekoorg/app_toimarit/models.py:33 prodekoorg/app_vaalit/models.py:34
 msgid "Name"
 msgstr "Nimi"
 
@@ -116,7 +116,7 @@ msgstr "Nimi"
 #: prodekoorg/app_apply_for_membership/models.py:62
 #: prodekoorg/app_contact/models.py:91 prodekoorg/app_kulukorvaus/models.py:53
 #: prodekoorg/app_kulukorvaus/printing.py:95
-#: prodekoorg/app_toimarit/models.py:119
+#: prodekoorg/app_toimarit/models.py:117
 msgid "Email"
 msgstr "Sähköposti"
 
@@ -349,12 +349,12 @@ msgid "Other (English)"
 msgstr "Englanti"
 
 #: prodekoorg/app_apply_for_membership/models.py:58
-#: prodekoorg/app_toimarit/models.py:53 prodekoorg/app_toimarit/models.py:107
+#: prodekoorg/app_toimarit/models.py:54 prodekoorg/app_toimarit/models.py:105
 msgid "First name"
 msgstr "Etunimi"
 
 #: prodekoorg/app_apply_for_membership/models.py:59
-#: prodekoorg/app_toimarit/models.py:54 prodekoorg/app_toimarit/models.py:108
+#: prodekoorg/app_toimarit/models.py:55 prodekoorg/app_toimarit/models.py:106
 msgid "Last name"
 msgstr "Sukunimi"
 
@@ -829,52 +829,52 @@ msgstr "Sovellus - Toimarisivu"
 msgid "Board of Prodeko application"
 msgstr "Sovellus - Hallitussivu"
 
-#: prodekoorg/app_toimarit/models.py:38
+#: prodekoorg/app_toimarit/models.py:39
 msgid "section"
 msgstr "jaosto"
 
-#: prodekoorg/app_toimarit/models.py:39
+#: prodekoorg/app_toimarit/models.py:40
 msgid "sections"
 msgstr "jaostot"
 
-#: prodekoorg/app_toimarit/models.py:55 prodekoorg/app_toimarit/models.py:109
+#: prodekoorg/app_toimarit/models.py:56 prodekoorg/app_toimarit/models.py:107
 #: prodekoorg/app_vaalit/models.py:12
 msgid "Position"
 msgstr "Virka"
 
-#: prodekoorg/app_toimarit/models.py:57 prodekoorg/app_toimarit/models.py:115
+#: prodekoorg/app_toimarit/models.py:58 prodekoorg/app_toimarit/models.py:113
 msgid "Section"
 msgstr "Jaosto"
 
-#: prodekoorg/app_toimarit/models.py:84
+#: prodekoorg/app_toimarit/models.py:82
 msgid "guild official"
 msgstr "toimari"
 
-#: prodekoorg/app_toimarit/models.py:85
+#: prodekoorg/app_toimarit/models.py:83
 msgid "guild officials"
 msgstr "toimarit"
 
-#: prodekoorg/app_toimarit/models.py:117
+#: prodekoorg/app_toimarit/models.py:115
 msgid "Position (English)"
 msgstr "Virka (Englanniksi)"
 
-#: prodekoorg/app_toimarit/models.py:118
+#: prodekoorg/app_toimarit/models.py:116
 msgid "Mobile phone"
 msgstr "Puhelinnumero"
 
-#: prodekoorg/app_toimarit/models.py:121
+#: prodekoorg/app_toimarit/models.py:119
 msgid "Telegram"
 msgstr "Telegram"
 
-#: prodekoorg/app_toimarit/models.py:124
+#: prodekoorg/app_toimarit/models.py:122
 msgid "Description"
 msgstr "Kuvaus"
 
-#: prodekoorg/app_toimarit/models.py:151
+#: prodekoorg/app_toimarit/models.py:146
 msgid "board member"
 msgstr "hallituksen jäsen"
 
-#: prodekoorg/app_toimarit/models.py:152
+#: prodekoorg/app_toimarit/models.py:147
 msgid "board members"
 msgstr "hallituksen jäsenet"
 
