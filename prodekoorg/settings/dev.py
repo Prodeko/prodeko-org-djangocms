@@ -16,8 +16,6 @@ DATABASES = {
     "TEST": {"CHARSET": "utf8", "COLLATION": "utf8_unicode_ci"},
 }
 
-INSTALLED_APPS += ("prodekoorg.app_vaalit",)
-
 STATIC_URL = "/static/"
 MEDIA_URL = "/media/"
 

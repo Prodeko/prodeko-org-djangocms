@@ -1,8 +1,10 @@
 {% load i18n %}
 
 {% trans "Submit answer" as submit_answer %}
+{% trans "Post an answer" as submit_answer_title %}
 
-<form action="" method="POST" class="collapse" id="vaalitAnswerForm_{{ forloop.counter }}">
+<form action="" method="POST" class="answerForm" id="vaalitAnswerForm_{{ forloop.counter }}">
+    <p><strong>{% trans submit_answer_title %}</strong></p>
   {% csrf_token %}
   <div class="form-group row">
     <div class="col-lg-6 col-sm-12">

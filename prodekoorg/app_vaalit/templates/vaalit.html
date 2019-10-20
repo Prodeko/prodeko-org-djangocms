@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load cms_tags menu_tags sekizai_tags sass_tags staticfiles %}
+{% page_attribute "page_title" "Prodeko Vaalit" %}
 
 {% block extra_head %}
 <script src="{% static 'js/app_vaalit-custom.js' %}"></script>
@@ -10,17 +11,22 @@
 
 {% block content %}
 
+{% include "layout-components/jumbotron_small.html" %}
+
 <div id="vaaliContainer" class="container-fluid">
 
-	{% show_breadcrumb 0 "layout-components/breadcrumb.html" %}
 	{% placeholder "content" %}
-
 	<div class="row">
-	  <div class="col-md-3 col-12">
+	  <div class="col-lg-2 col-12">
 			{% include "vaalit_nav.html" %}
 		</div>
-		<div class="col-md-8 col-12">
-			{% include "vaalit_content.html" %}
+		<div class="col-lg-10 col-12">
+			<div id="landingpageContent" class="col-10">
+					{% include "vaalit_landingpage.html" %}
+			</div>
+			<div id="electionsContent" class="hidden">
+				{% include "vaalit_content.html" %}
+			</div>
 		</div>
 	</div>
 </div>

@@ -278,6 +278,7 @@ INSTALLED_APPS = (
     "prodekoorg.app_tiedostot",
     "prodekoorg.app_toimarit",
     "prodekoorg.app_utils",
+    "prodekoorg.app_vaalit",
     # ------------------------
 )
 

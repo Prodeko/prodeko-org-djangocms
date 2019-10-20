@@ -12,11 +12,16 @@ $.ajaxSetup({
 });
 
 function updateTexts(virka) {
+  if (!virka) {
+    return;
+  }
   $("#vaalitKysymysForm small").html(virka + " - Esitä kysymys");
+  updateDescription(virka) // Defined in vaalit_content.html
   $("#header").html(virka);
   // Set hidden input field
   $(".input-virka").val(virka);
 }
+
 
 var selectedTab_id = localStorage.getItem("selectedTab_id");
 var selectedVirka = localStorage.getItem("selectedVirka");
@@ -26,6 +31,7 @@ $(document).ready(function() {
   /* START stay on same navigation tab with reload */
   var elem;
   var virka;
+  //$('#electionsContent').addClass('hidden');
 
   /* Use localStorage to display the tab that was open
    *  before the latest refresh.
@@ -33,17 +39,26 @@ $(document).ready(function() {
   if ($("#vaalitNav").length > 0) {
     if (selectedTab_id != null) {
       elem = $(
-        '.list-group-root a[data-toggle="tab"][href="' + selectedTab_id + '"]'
+        '.list-group-root a[data-toggle="tab"][href="' + selectedTab_id + '"] .virka-name'
       );
+
+      $('#electionsContent').removeClass('hidden');
+      $('#landingpageContent').addClass('hidden');
+
+      $('#q_' + selectedTab_id.slice(2)).addClass("active show");
 
       virka = elem.text().trim();
       updateTexts(virka);
       checkBtnHaeVirkaanVisibility(virka); // Defined in 'vaalit_question_form.html'
+      
+      markRead(selectedTab_id.slice(2));      // Mark viewed "virka" as read
 
       elem.addClass(".active");
       elem.tab("show");
     } else {
       // No tab saved in localStorage
+       $('#electionsContent').addClass('hidden');
+
       elem = $('.list-group-root a[data-toggle="tab"][href="#_1"]');
 
       virka = elem.text().trim();
@@ -55,17 +70,41 @@ $(document).ready(function() {
     }
   }
 
+  $('.vaalitFrontpageLink').click(function(e) {
+    $('#electionsContent').addClass('hidden');
+    $('#landingpageContent').removeClass('hidden');
+    var previousId = localStorage.getItem("selectedTab_id")
+    if (previousId != null) {
+      $('#q_' + previousId.slice(2)).removeClass("active show");
+    }
+
+    localStorage.setItem("selectedTab_id", null);
+    localStorage.setItem("selectedVirka", null);
+  })
+
   $('.list-group-root a[data-toggle="tab"]').click(function(e) {
     var id = $(e.delegateTarget).attr("href");
-    var virka = $('.list-group-root a[data-toggle="tab"][href="' + id + '"]')
+    var virka = $('.list-group-root a[data-toggle="tab"][href="' + id + '"] .virka-name')
       .text()
       .trim();
     checkBtnHaeVirkaanVisibility(virka);
 
+    var previousId = localStorage.getItem("selectedTab_id")
+    if (previousId != null) {
+      $('#q_' + previousId.slice(2)).removeClass("active show");
+    }
+
     localStorage.setItem("selectedTab_id", id);
     localStorage.setItem("selectedVirka", virka);
 
+    $('#electionsContent').removeClass('hidden');
+    $('#landingpageContent').addClass('hidden');
+
+    $('#q_' + id.slice(2)).addClass("active show");
+
     updateTexts(virka);
+    $("#vaaliApplyForm").hide(); // Hide "apply to virka form" when changing tabs if it's open
+    markRead(id.slice(2));      // Mark viewed "virka" as read
 
     var listType = $(e.delegateTarget)
       .closest("div")
@@ -84,7 +123,7 @@ $(document).ready(function() {
     var ehdokasId = $(e.target).attr("ehdokas-id");
     $("#formDeleteEhdokas").attr(
       "action",
-      "../elections/delete-nominee/" + ehdokasId + "/"
+      "../../fi/vaalit/delete-nominee/" + ehdokasId + "/"
     );
     $("#confirmDeleteEhdokasModal").modal("toggle");
   });
@@ -115,6 +154,7 @@ $(document).ready(function() {
     $("#vaaliContent .tab-pane.active .vaalitDeleteKysymysForm button")
       .first()
       .click(ajaxDeleteKysymys);
+    $("[name='question']").val('');
   }
 
   function createKysymysError(jqXHR, textStatus, errorThrown) {
@@ -138,7 +178,7 @@ $(document).ready(function() {
 
       console.log(formData)
     $.ajax({
-      url: "../elections/delete-question/" + kysymysId + "/",
+      url: "../../fi/vaalit/delete-question/" + kysymysId + "/",
       type: "POST",
       // Add 'submitKysymys' to the POST data
       // to have correct handling in the views.py main view
@@ -153,9 +193,34 @@ $(document).ready(function() {
     $("#kysymys_" + data.delete_kysymys_id).fadeOut(300, function() {
       $(this).remove();
     });
+    $("#vastaukset_" + data.delete_kysymys_id).fadeOut(300, function() {
+      $(this).remove();
+    });
   }
 
   function deleteKysymysError(jqXHR, textStatus, errorThrown) {
+    console.log("err")
+    console.log(jqXHR);
+    console.log(textStatus);
+    console.log(errorThrown);
+  }
+
+  function markRead(virka_id) {
+    $.ajax({
+      url: "../../fi/vaalit/mark-read/" + virka_id + "/",
+      type: "POST",
+      success: markReadSuccess(virka_id),
+      error: markReadError
+    });
+  }
+
+  function markReadSuccess(virka_id) {
+    $('.list-group-root a[data-toggle="tab"][href="' + "#_" + virka_id + '"] .virka-unread').fadeOut(200, function() {
+      $(this).remove();
+    })
+  }
+
+  function markReadError(jqXHR, textStatus, errorThrown) {
     console.log("err")
     console.log(jqXHR);
     console.log(textStatus);

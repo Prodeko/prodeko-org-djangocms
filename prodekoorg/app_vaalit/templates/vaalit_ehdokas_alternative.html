@@ -1,0 +1,36 @@
+{% load i18n %}
+
+{% trans "Delete" as delete %}
+{% trans "Modify" as modify %}
+{% trans "Read Application" as read_application %}
+
+<div class="card my-1" style="">
+        <div class="list-group list-group-flush">
+          <div class="list-group-item" style="
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+      ">
+            <div style="
+            flex-direction: row;
+            display: flex;
+            align-items: center;
+        ">
+              <div class="img-container mr-2">
+                  <img src="http://localhost:8000/media/anonymous_prodeko_kJq3q33.jpg" alt="" />
+                </div>
+                <p style="margin-bottom: 0rem;">{{ ehdokas.name }}</p>
+              </div>
+              <div>
+                <a href="#hakijaModal_{{ehdokas.pk}}" data-toggle="modal" data-target="#hakijaModal_{{ehdokas.pk}}">{% trans read_application %}</a>
+                {% include "vaalit_modal_ehdokas_description.html" %}
+              </div>
+          </div>
+        </div>
+        {% if request.user == ehdokas.auth_prodeko_user %}
+        <div class="d-flex flex-column align-items-center">
+            <button ehdokas-id="{{ehdokas.id}}" class="showDeleteEhdokasModal btn btn-outline-danger btn-xs my-1"><i class="fas fa-times mr-2"></i>{% trans delete %}</button>
+            <a href="{% url 'app_vaalit:update_ehdokas' pk=ehdokas.pk %}" class="btn btn-outline-success btn-xs my-1"><i class="far fa-edit mr-2"></i>{% trans modify %}</a>
+          </div>
+        {%endif%}
+      </div>
