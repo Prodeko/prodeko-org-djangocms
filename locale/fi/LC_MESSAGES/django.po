@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-20 11:20+0300\n"
+"POT-Creation-Date: 2019-10-20 22:49+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Timo Riski <timo@prodeko.org>\n"
 "Language: \n"
@@ -1023,7 +1023,7 @@ msgid "since"
 msgstr "sitten"
 
 #: prodekoorg/app_vaalit/templates/vaalit_content.html:4
-#: prodekoorg/app_vaalit/templates/vaalit_content.html:57
+#: prodekoorg/app_vaalit/templates/vaalit_content.html:44
 msgid "No applicants"
 msgstr "Ei hakijoita"
 
@@ -1051,10 +1051,8 @@ msgstr "Muokkaa"
 
 #: prodekoorg/app_vaalit/templates/vaalit_ehdokas.html:5
 #: prodekoorg/app_vaalit/templates/vaalit_ehdokas_alternative.html:5
-#, fuzzy
-#| msgid "Reject application"
 msgid "Read Application"
-msgstr "Hylkää hakemus"
+msgstr "Lue Hakemus"
 
 #: prodekoorg/app_vaalit/templates/vaalit_modal_delete_ehdokas.html:3
 #: prodekoorg/app_vaalit/templates/vaalit_modal_ehdokas_description.html:3
