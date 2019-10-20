@@ -246,3 +246,14 @@ body.login.djangocms-admin-style #container #content #content-main .submit-row {
     margin-bottom: 10px;
   }
 }
+
+.delete-confirmation {
+  .colM input[type='submit'] {
+    background-color: $override-admin-blue !important;
+    border: 1px solid $override-admin-blue !important;
+  }
+
+  a {
+    color: $override-admin-blue !important;
+  }
+}
