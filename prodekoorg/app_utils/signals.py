@@ -1,12 +1,13 @@
+from alumnirekisteri.rekisteri.models import Person
 from django.db.models.signals import post_delete
 from django.dispatch import receiver
 from lifelonglearning.models import Course
 from prodekoorg.app_apply_for_membership.models import PendingUser
 from prodekoorg.app_infoscreen.models import Slide
 from prodekoorg.app_kulukorvaus.models import Kulukorvaus, KulukorvausPerustiedot
+from prodekoorg.app_poytakirjat.models import Dokumentti
 from prodekoorg.app_tiedostot.models import Tiedosto, TiedostoVersio
 from prodekoorg.app_vaalit.models import Ehdokas
-from prodekoorg.app_poytakirjat.models import Dokumentti
 
 
 @receiver(post_delete, sender=Slide)
@@ -53,3 +54,7 @@ def slide_delete(sender, instance, **kwargs):
 def slide_delete(sender, instance, **kwargs):
     instance.file.delete(False)
 
+
+@receiver(post_delete, sender=Person)
+def slide_delete(sender, instance, **kwargs):
+    instance.picture.delete(False)
