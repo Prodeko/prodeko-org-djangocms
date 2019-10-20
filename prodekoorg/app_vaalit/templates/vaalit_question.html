@@ -13,19 +13,16 @@
       <div class="questionHeader">
       <p class="my-2"><strong>{{ kysymys.question }}</strong></p>
       </div>
-      <div style="
-      display: flex;
-      justify-content: space-between;
-  ">
-      <div class="col-5 flex-column">
+      <div class="questionFooter">
+      <div class="col-6 flex-column QuestionAskerContainer">
         {% if kysymys.created_by %}
         <small class="mb-0"><em>{{ kysymys.created_by.first_name }} {{ kysymys.created_by.last_name }}</em></small>
         <br />
         {% endif %}
-        <small>{{ kysymys.created_at|timesince }} sitten</small>
+        <small class="hidden-mobile">{{ kysymys.created_at|timesince }} sitten</small>
       </div>
-              <div>
-          <p style="display: inline-block; margin-right: 1rem;">{% trans answers %}: {{kysymys.vastaukset.count}}</p>
+        <div class="answersCountContainer">
+          <p style="display: inline-block; margin-right: 1rem;" class="smaller-text-mobile">{% trans answers %}: {{kysymys.vastaukset.count}}</p>
           <i class="fa fa-fw fa-chevron-down" style="display: inline-block;"></i>
         </div>
     </div>

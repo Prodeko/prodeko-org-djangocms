@@ -20,7 +20,7 @@
 
     p.vastaus-text {
       margin-right: 5rem;
-      margin-left: 1rem;
+      margin-left: 2rem;
     }
   }
 }
@@ -87,6 +87,11 @@
 
     }
 
+    .questionFooter {
+      display: flex;
+      justify-content: space-between;
+    }
+
     .questionBox {
       border-left: 0.5rem #002e7d solid;
       border-bottom: 1px solid rgba(0, 0, 0, 0.125);
@@ -146,10 +151,15 @@ height: 10vh !important;
 
 #vaaliContainer .card .img-container,
 #vaalitModifyApplyForm .img-preview {
-  width: 40px;
-  height: 40px;
+  width: 2.5rem;
+  height: 2.5rem;
   overflow: hidden;
   border-radius: 50%;
+}
+
+.card .modal-content .modal-header .img-container {
+  width: 5rem !important;
+  height: 5rem !important;
 }
 
 /* Height is set to 100px in 'vaalit_custom.js' once the
@@ -190,6 +200,27 @@ height: 10vh !important;
   padding-top: 1rem;
   padding-bottom: 1rem;
   border-top: #c3c3c3 1px solid;
+
+  .answers-container-desktop {
+    display: flex;
+  }
+
+  .answers-container-mobile {
+    display: flex;
+    font-size: 1.0rem;
+
+    .answers-header-mobile {
+      margin-bottom: 0.5rem;
+      padding-bottom: 0.5rem;
+      //border-bottom: 1px solid $blue-normal;
+    }
+    .img-container {
+      margin-left: 1rem;
+      margin-right: 1rem;
+      width: 3rem !important;
+      height: 3rem !important;
+    }
+  }
 }
 
 a.list-group-item-action:hover {
@@ -265,6 +296,94 @@ a.list-group-item-action:hover {
 @media only screen and (max-width: 479px) {
   #vaaliContainer #modalCrop button[class*='js-zoom'] {
     max-width: 50px;
+  }
+}
+
+@media only screen and (min-width: 469px) {
+  #vaaliContainer .answers-container-mobile {
+    display: none;
+  }
+}
+
+/* MOBILE */
+@media only screen and (max-width: 468px) {
+  #vaaliContainer .answers-container-desktop {
+    display: none;
+  }
+
+  #vaaliContainer .answers-container {
+    margin-left: 0rem;
+    font-size: small;
+  }
+
+  .vastaus-text {
+    font-size: small;
+    margin: 0.5rem !important;
+  }
+
+  #vaaliContainer .vaalitQuestions {
+    padding-right: 0rem;
+    padding-left: 0rem;
+    font-size: small;
+  }
+
+  .questionFooter {
+    flex-direction: column;
+  }
+
+  .hidden-mobile {
+    display: none !important;
+  }
+
+  .small-text-mobile {
+    font-size: smaller !important;
+  }
+
+  .smaller-text-mobile {
+    font-size: smaller !important;
+  }
+
+  .QuestionAskerContainer {
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    font-size: large;
+    margin-top: 0.5rem;
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .answersCountContainer {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+  }
+
+  #vaaliContainer .vaalitKysymysList .answersList {
+    padding-right: 0rem;
+
+    .answerForm {
+      margin-left: 0rem;
+    }
+  }
+
+}
+
+@media only screen and (max-width: 320px) {
+  #vaaliContainer .vaalitQuestions {
+    font-size: x-small;
+  }
+
+  .answersCountContainer {
+    font-size: small;
+  }
+
+  .answers-container-mobile {
+    font-size: x-small !important;
+  }
+
+  .tab-pane .card .list-group-item {
+    padding: 0.5rem;
   }
 }
 

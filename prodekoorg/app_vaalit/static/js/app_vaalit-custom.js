@@ -45,16 +45,19 @@ $(document).ready(function() {
       $('#electionsContent').removeClass('hidden');
       $('#landingpageContent').addClass('hidden');
 
+      $('#q_' + selectedTab_id.slice(2)).addClass("active show");
+
       virka = elem.text().trim();
       updateTexts(virka);
       checkBtnHaeVirkaanVisibility(virka); // Defined in 'vaalit_question_form.html'
+      
+      markRead(selectedTab_id.slice(2));      // Mark viewed "virka" as read
 
       elem.addClass(".active");
       elem.tab("show");
     } else {
       // No tab saved in localStorage
        $('#electionsContent').addClass('hidden');
-       console.log("d")
 
       elem = $('.list-group-root a[data-toggle="tab"][href="#_1"]');
 
@@ -70,9 +73,13 @@ $(document).ready(function() {
   $('.vaalitFrontpageLink').click(function(e) {
     $('#electionsContent').addClass('hidden');
     $('#landingpageContent').removeClass('hidden');
+    var previousId = localStorage.getItem("selectedTab_id")
+    if (previousId != null) {
+      $('#q_' + previousId.slice(2)).removeClass("active show");
+    }
+
     localStorage.setItem("selectedTab_id", null);
     localStorage.setItem("selectedVirka", null);
-    console.log("d")
   })
 
   $('.list-group-root a[data-toggle="tab"]').click(function(e) {
@@ -82,11 +89,18 @@ $(document).ready(function() {
       .trim();
     checkBtnHaeVirkaanVisibility(virka);
 
+    var previousId = localStorage.getItem("selectedTab_id")
+    if (previousId != null) {
+      $('#q_' + previousId.slice(2)).removeClass("active show");
+    }
+
     localStorage.setItem("selectedTab_id", id);
     localStorage.setItem("selectedVirka", virka);
 
     $('#electionsContent').removeClass('hidden');
     $('#landingpageContent').addClass('hidden');
+
+    $('#q_' + id.slice(2)).addClass("active show");
 
     updateTexts(virka);
     $("#vaaliApplyForm").hide(); // Hide "apply to virka form" when changing tabs if it's open

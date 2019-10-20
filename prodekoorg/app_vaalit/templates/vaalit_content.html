@@ -14,18 +14,18 @@
 <div class="row">
   <div class="col-xl-8 col-sm-12">
 <h2 class="py-3" id="header">{{ virat.0.name }}</h2>
-<div id="roleDescription">
+<div id="roleDescription" class="small-text-mobile">
   {{ virat.0.description|linebreaks }}
 </div>
 </div>  
 <div class="col-xl-4 col-sm-12 ehdokasList">
 {% for virka in virat %}
 <div id="_{{ forloop.counter }}" class="tab-pane fade{% if forloop.first %} active show{% endif %}" role="tabpanel">
-<h3>{% trans applicants %} ({{ virka.ehdokkaat.all.count }})</h3>
-{% for ehdokas in virka.ehdokkaat.all %}
-{% include "vaalit_ehdokas_alternative.html" %}
-{%endfor %}
-</div>
+  <h3>{% trans applicants %} ({{ virka.ehdokkaat.all.count }})</h3>
+  {% for ehdokas in virka.ehdokkaat.all %}
+    {% include "vaalit_ehdokas_alternative.html" %}
+  {% endfor %}
+  </div>
 {% endfor %}
 </div>
 </div>
@@ -36,21 +36,8 @@
     {% include "forms/vaalit_apply_form.html" %}
   </div>
 <div id="vaaliContent" class="tab-content">
-  <!--{% for virka in virat %}
-  <div id="_{{ forloop.counter }}" class="tab-pane fade{% if forloop.first %} active show{% endif %}" role="tabpanel">
-
-    {# EHDOKKAAT #}
-    <h3>{% trans applicants %} ({{ virka.ehdokkaat.all.count }})</h3>
-    <div class="card-group">
-    {% for ehdokas in virka.ehdokkaat.all %}
-      {% include "vaalit_ehdokas_alternative.html" %}
-    {% empty %}
-      <p>{% trans no_applicants %}</p>
-    {% endfor %}
-    </div>
-
-  -->
-
+  {% for virka in virat %}
+  <div id="q_{{ forloop.counter }}" class="tab-pane fade" role="tabpanel">
     {# KYSYMYKSET #}
     <div class="vaalitQuestions col-xl-8 col-lg-10 col-xs-12">
       <h3 class="mt-4">{% trans questions %} ({{ virka.kysymykset.all.count }})
@@ -66,11 +53,15 @@
             {% for vastaus in kysymys.vastaukset.all %}
               {% include "vaalit_answer.html" %}
             {% endfor %}
-            {% include "forms/vaalit_answer_form.html" %}
-            </div>
             {% if not kysymys.vastaukset.all %}
             <p class="ml-5">{% trans no_responses %}</p> <!-- TODO: Better styling-->
             {% endif %}
+            {% for ehdokas in virka.ehdokkaat.all %} <!-- TODO: Better implementation-->
+            {% if request.user == ehdokas.auth_prodeko_user %}
+              {% include "forms/vaalit_answer_form.html" %}
+            {% endif %}
+            {%endfor %}
+            </div>
           </div>
 
         {% empty %}
@@ -81,6 +72,8 @@
 
   </div>
   {% endfor %}
+</div>
+
 </div>
 
 {% include "vaalit_modal_delete_ehdokas.html" %}

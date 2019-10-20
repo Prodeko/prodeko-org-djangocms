@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-17 23:29+0300\n"
+"POT-Creation-Date: 2019-10-20 11:20+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Timo Riski <timo@prodeko.org>\n"
 "Language: \n"
@@ -107,7 +107,7 @@ msgstr "Profiili"
 #: auth_prodeko/templates/accounts/user_profile.html:14
 #: prodekoorg/app_kulukorvaus/models.py:56
 #: prodekoorg/app_kulukorvaus/printing.py:94
-#: prodekoorg/app_toimarit/models.py:33 prodekoorg/app_vaalit/models.py:34
+#: prodekoorg/app_toimarit/models.py:34 prodekoorg/app_vaalit/models.py:36
 msgid "Name"
 msgstr "Nimi"
 
@@ -116,7 +116,7 @@ msgstr "Nimi"
 #: prodekoorg/app_apply_for_membership/models.py:62
 #: prodekoorg/app_contact/models.py:91 prodekoorg/app_kulukorvaus/models.py:57
 #: prodekoorg/app_kulukorvaus/printing.py:95
-#: prodekoorg/app_toimarit/models.py:117
+#: prodekoorg/app_toimarit/models.py:118
 msgid "Email"
 msgstr "Sähköposti"
 
@@ -349,12 +349,12 @@ msgid "Other (English)"
 msgstr "Englanti"
 
 #: prodekoorg/app_apply_for_membership/models.py:58
-#: prodekoorg/app_toimarit/models.py:54 prodekoorg/app_toimarit/models.py:105
+#: prodekoorg/app_toimarit/models.py:55 prodekoorg/app_toimarit/models.py:106
 msgid "First name"
 msgstr "Etunimi"
 
 #: prodekoorg/app_apply_for_membership/models.py:59
-#: prodekoorg/app_toimarit/models.py:55 prodekoorg/app_toimarit/models.py:106
+#: prodekoorg/app_toimarit/models.py:56 prodekoorg/app_toimarit/models.py:107
 msgid "Last name"
 msgstr "Sukunimi"
 
@@ -829,52 +829,52 @@ msgstr "Sovellus - Toimarisivu"
 msgid "Board of Prodeko application"
 msgstr "Sovellus - Hallitussivu"
 
-#: prodekoorg/app_toimarit/models.py:39
+#: prodekoorg/app_toimarit/models.py:40
 msgid "section"
 msgstr "jaosto"
 
-#: prodekoorg/app_toimarit/models.py:40
+#: prodekoorg/app_toimarit/models.py:41
 msgid "sections"
 msgstr "jaostot"
 
-#: prodekoorg/app_toimarit/models.py:56 prodekoorg/app_toimarit/models.py:107
+#: prodekoorg/app_toimarit/models.py:57 prodekoorg/app_toimarit/models.py:108
 #: prodekoorg/app_vaalit/models.py:12
 msgid "Position"
 msgstr "Virka"
 
-#: prodekoorg/app_toimarit/models.py:58 prodekoorg/app_toimarit/models.py:113
+#: prodekoorg/app_toimarit/models.py:59 prodekoorg/app_toimarit/models.py:114
 msgid "Section"
 msgstr "Jaosto"
 
-#: prodekoorg/app_toimarit/models.py:82
+#: prodekoorg/app_toimarit/models.py:83
 msgid "guild official"
 msgstr "toimari"
 
-#: prodekoorg/app_toimarit/models.py:83
+#: prodekoorg/app_toimarit/models.py:84
 msgid "guild officials"
 msgstr "toimarit"
 
-#: prodekoorg/app_toimarit/models.py:115
+#: prodekoorg/app_toimarit/models.py:116
 msgid "Position (English)"
 msgstr "Virka (Englanniksi)"
 
-#: prodekoorg/app_toimarit/models.py:116
+#: prodekoorg/app_toimarit/models.py:117
 msgid "Mobile phone"
 msgstr "Puhelinnumero"
 
-#: prodekoorg/app_toimarit/models.py:119
+#: prodekoorg/app_toimarit/models.py:120
 msgid "Telegram"
 msgstr "Telegram"
 
-#: prodekoorg/app_toimarit/models.py:122
+#: prodekoorg/app_toimarit/models.py:123 prodekoorg/app_vaalit/models.py:13
 msgid "Description"
 msgstr "Kuvaus"
 
-#: prodekoorg/app_toimarit/models.py:146
+#: prodekoorg/app_toimarit/models.py:147
 msgid "board member"
 msgstr "hallituksen jäsen"
 
-#: prodekoorg/app_toimarit/models.py:147
+#: prodekoorg/app_toimarit/models.py:148
 msgid "board members"
 msgstr "hallituksen jäsenet"
 
@@ -916,7 +916,7 @@ msgid "Elections"
 msgstr "Vaalit"
 
 #: prodekoorg/app_vaalit/models.py:11
-#: prodekoorg/app_vaalit/templates/vaalit_nav.html:3
+#: prodekoorg/app_vaalit/templates/vaalit_nav.html:4
 msgid "Board"
 msgstr "Hallitus"
 
@@ -996,7 +996,7 @@ msgid "Post an answer"
 msgstr "vastaus"
 
 #: prodekoorg/app_vaalit/templates/forms/vaalit_apply_form.html:3
-#: prodekoorg/app_vaalit/templates/forms/vaalit_modify_application_form.html:13
+#: prodekoorg/app_vaalit/templates/forms/vaalit_modify_application_form.html:14
 msgid "Introduction"
 msgstr "Esittely"
 
@@ -1009,7 +1009,7 @@ msgstr "Hae virkaan"
 msgid "Note! You can modify your application later."
 msgstr "Huom! Voit muokata hakemustasi myöhemmin."
 
-#: prodekoorg/app_vaalit/templates/forms/vaalit_modify_application_form.html:12
+#: prodekoorg/app_vaalit/templates/forms/vaalit_modify_application_form.html:13
 msgid "Modify application"
 msgstr "Muokkaa hakemusta"
 
@@ -1023,7 +1023,7 @@ msgid "since"
 msgstr "sitten"
 
 #: prodekoorg/app_vaalit/templates/vaalit_content.html:4
-#: prodekoorg/app_vaalit/templates/vaalit_content.html:41
+#: prodekoorg/app_vaalit/templates/vaalit_content.html:57
 msgid "No applicants"
 msgstr "Ei hakijoita"
 
@@ -1036,6 +1036,7 @@ msgid "No Responses"
 msgstr "Ei vastauksia"
 
 #: prodekoorg/app_vaalit/templates/vaalit_ehdokas.html:3
+#: prodekoorg/app_vaalit/templates/vaalit_ehdokas_alternative.html:3
 #: prodekoorg/app_vaalit/templates/vaalit_modal_delete_ehdokas.html:5
 #: prodekoorg/app_vaalit/templates/vaalit_modal_ehdokas_description.html:5
 #: tiedotteet/backend/templates/control/messages.html:67
@@ -1044,10 +1045,12 @@ msgid "Delete"
 msgstr "Poista"
 
 #: prodekoorg/app_vaalit/templates/vaalit_ehdokas.html:4
+#: prodekoorg/app_vaalit/templates/vaalit_ehdokas_alternative.html:4
 msgid "Modify"
 msgstr "Muokkaa"
 
 #: prodekoorg/app_vaalit/templates/vaalit_ehdokas.html:5
+#: prodekoorg/app_vaalit/templates/vaalit_ehdokas_alternative.html:5
 #, fuzzy
 #| msgid "Reject application"
 msgid "Read Application"
@@ -1074,13 +1077,17 @@ msgstr "Rajaa kuva"
 msgid "Crop"
 msgstr "Rajaa"
 
-#: prodekoorg/app_vaalit/templates/vaalit_nav.html:4
+#: prodekoorg/app_vaalit/templates/vaalit_nav.html:3
+msgid "Tietoa vaaleista"
+msgstr ""
+
+#: prodekoorg/app_vaalit/templates/vaalit_nav.html:5
 msgid "Officials"
 msgstr "Toimarit"
 
-#: prodekoorg/app_vaalit/templates/vaalit_nav.html:5
+#: prodekoorg/app_vaalit/templates/vaalit_nav.html:6
 msgid "NEW"
-msgstr ""
+msgstr "UUSI"
 
 #: prodekoorg/app_vaalit/templates/vaalit_question.html:5
 msgid "Remove"
