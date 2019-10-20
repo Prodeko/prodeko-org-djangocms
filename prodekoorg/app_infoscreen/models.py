@@ -3,8 +3,6 @@ from datetime import timedelta
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.core.validators import FileExtensionValidator
 from django.db import models
-from django.db.models.signals import post_delete
-from django.dispatch import receiver
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 
@@ -55,9 +53,3 @@ class Slide(models.Model):
         # Correct spelling in Django admin
         verbose_name = _("slide")
         verbose_name_plural = _("Slides")
-
-
-@receiver(post_delete, sender=Slide)
-def slide_delete(sender, instance, **kwargs):
-    instance.image.delete(False)
-
