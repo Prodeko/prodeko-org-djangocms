@@ -71,6 +71,9 @@ $(document).ready(function() {
   }
 
   $('.vaalitFrontpageLink').click(function(e) {
+    e.preventDefault();
+    $("#toimaritList > a.active").removeClass("active");
+    $("#hallitusList > a.active").removeClass("active");
     $('#electionsContent').addClass('hidden');
     $('#landingpageContent').removeClass('hidden');
     var previousId = localStorage.getItem("selectedTab_id")
@@ -176,7 +179,7 @@ $(document).ready(function() {
       .siblings("input[name=hidden-kysymys-id]")
       .val();
 
-      console.log(formData)
+      //console.log(formData)
     $.ajax({
       url: "../../fi/vaalit/delete-question/" + kysymysId + "/",
       type: "POST",
@@ -189,7 +192,6 @@ $(document).ready(function() {
   }
 
   function deleteKysymysSuccess(data, textStatus, jqXHR) {
-    console.log("succ")
     $("#kysymys_" + data.delete_kysymys_id).fadeOut(300, function() {
       $(this).remove();
     });
