@@ -11,50 +11,50 @@ from prodekoorg.app_vaalit.models import Ehdokas
 
 
 @receiver(post_delete, sender=Slide)
-def slide_delete(sender, instance, **kwargs):
+def slide_image_delete(sender, instance, **kwargs):
     instance.image.delete(False)
 
 
 @receiver(post_delete, sender=Course)
-def slide_delete(sender, instance, **kwargs):
+def course_banner_delete(sender, instance, **kwargs):
     instance.banner.delete(False)
 
 
 @receiver(post_delete, sender=Ehdokas)
-def slide_delete(sender, instance, **kwargs):
+def ehdokas_pic_delete(sender, instance, **kwargs):
     instance.pic.delete(False)
 
 
 @receiver(post_delete, sender=PendingUser)
-def slide_delete(sender, instance, **kwargs):
+def pendinguser_receipt_delete(sender, instance, **kwargs):
     instance.receipt.delete(False)
 
 
 @receiver(post_delete, sender=KulukorvausPerustiedot)
-def slide_delete(sender, instance, **kwargs):
+def kulukorvausperustiedot_pdf_delete(sender, instance, **kwargs):
     instance.pdf.delete(False)
 
 
 @receiver(post_delete, sender=Kulukorvaus)
-def slide_delete(sender, instance, **kwargs):
+def kulukorvaus_receipt_delete(sender, instance, **kwargs):
     instance.receipt.delete(False)
 
 
 @receiver(post_delete, sender=Dokumentti)
-def slide_delete(sender, instance, **kwargs):
+def dokumentti_doc_file_delete(sender, instance, **kwargs):
     instance.doc_file.delete(False)
 
 
 @receiver(post_delete, sender=Tiedosto)
-def slide_delete(sender, instance, **kwargs):
+def tiedosto_thumbnail_image_delete(sender, instance, **kwargs):
     instance.thumbnail_image.delete(False)
 
 
 @receiver(post_delete, sender=TiedostoVersio)
-def slide_delete(sender, instance, **kwargs):
+def tiedostoversio_file_delete(sender, instance, **kwargs):
     instance.file.delete(False)
 
 
 @receiver(post_delete, sender=Person)
-def slide_delete(sender, instance, **kwargs):
+def person_picture_delete(sender, instance, **kwargs):
     instance.picture.delete(False)
