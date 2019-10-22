@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-20 22:49+0300\n"
+"POT-Creation-Date: 2019-10-22 19:50+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Timo Riski <timo@prodeko.org>\n"
 "Language: \n"
@@ -234,7 +234,7 @@ msgstr "nimi"
 msgid "coaches"
 msgstr "valmentajat"
 
-#: lifelonglearning/models.py:29 prodekoorg/app_infoscreen/models.py:37
+#: lifelonglearning/models.py:29 prodekoorg/app_infoscreen/models.py:35
 msgid "description"
 msgstr "kuvaus"
 
@@ -242,7 +242,7 @@ msgstr "kuvaus"
 msgid "registration url"
 msgstr "ilmoittautumislinkki"
 
-#: lifelonglearning/models.py:32 prodekoorg/app_infoscreen/models.py:39
+#: lifelonglearning/models.py:32 prodekoorg/app_infoscreen/models.py:37
 msgid "banner image"
 msgstr "kuva"
 
@@ -590,31 +590,31 @@ msgstr "️⚠️ Jotakin meni pieleen. Ota yhteyttä sähköpostitse."
 msgid "Infoscreen"
 msgstr "Infoscreeni"
 
-#: prodekoorg/app_infoscreen/models.py:30
+#: prodekoorg/app_infoscreen/models.py:28
 msgid "title"
 msgstr "otsikko"
 
-#: prodekoorg/app_infoscreen/models.py:32
+#: prodekoorg/app_infoscreen/models.py:30
 msgid "start datetime"
 msgstr "alkamispäivä"
 
-#: prodekoorg/app_infoscreen/models.py:35
+#: prodekoorg/app_infoscreen/models.py:33
 msgid "end datetime"
 msgstr "päättymispäivä"
 
-#: prodekoorg/app_infoscreen/models.py:41
+#: prodekoorg/app_infoscreen/models.py:39
 msgid "highlight"
 msgstr "korosta"
 
-#: prodekoorg/app_infoscreen/models.py:42
+#: prodekoorg/app_infoscreen/models.py:40
 msgid "visible"
 msgstr "näkyvissä"
 
-#: prodekoorg/app_infoscreen/models.py:56
+#: prodekoorg/app_infoscreen/models.py:54
 msgid "slide"
 msgstr "slide"
 
-#: prodekoorg/app_infoscreen/models.py:57
+#: prodekoorg/app_infoscreen/models.py:55
 msgid "Slides"
 msgstr "Slides"
 
