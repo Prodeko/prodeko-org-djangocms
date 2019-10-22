@@ -28,14 +28,6 @@
     </div>
       <div class="row">
         {% for ehdokas in virka.ehdokkaat.all %}
-         <!--  {% if request.user == ehdokas.auth_prodeko_user %}
-         <a href="#vaalitAnswerForm_1" class="list-group-item list-group-item-action" data-toggle="collapse" aria-expanded="false" aria-controls="vaalitAnswerForm_1">asd</a>
-          <button type="button" class="btn btn-default btn-md btn-xs my-2 mr-2" id="responseButton" data-toggle="collapse" aria-expanded="false" data-target="#vaalitAnswerForm_1">
-            <i class="mr-2 fa fa-reply"></i>
-            {% trans answer %}
-          </button>
-          {% endif %}
-          -->
         {% endfor %}
         {% if request.user == kysymys.created_by %}
         <form class="vaalitDeleteKysymysForm"  novalidate method="POST">
