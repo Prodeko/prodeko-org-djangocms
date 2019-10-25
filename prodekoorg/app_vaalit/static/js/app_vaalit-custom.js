@@ -37,11 +37,13 @@ $(document).ready(function() {
    *  before the latest refresh.
    */
   if ($("#vaalitNav").length > 0) {
-    if (selectedTab_id != null) {
+    if (selectedTab_id != null && selectedTab_id != "null") {
       elem = $(
         '.list-group-root a[data-toggle="tab"][href="' + selectedTab_id + '"] .virka-name'
       );
-
+      elem2 = $(selectedTab_id);
+      elem2.addClass("active show");
+      
       $('#electionsContent').removeClass('hidden');
       $('#landingpageContent').addClass('hidden');
 
@@ -53,25 +55,16 @@ $(document).ready(function() {
       
       markRead(selectedTab_id.slice(2));      // Mark viewed "virka" as read
 
-      elem.addClass(".active");
+      elem.addClass("active show");
       elem.tab("show");
     } else {
       // No tab saved in localStorage
-       $('#electionsContent').addClass('hidden');
-
-      elem = $('.list-group-root a[data-toggle="tab"][href="#_1"]');
-
-      virka = elem.text().trim();
-      checkBtnHaeVirkaanVisibility(virka);
-      updateTexts(virka);
-
-      elem.addClass(".active");
-      elem.tab("show");
+       //$('#electionsContent').addClass('hidden');
+       openFrontPage();
     }
   }
 
-  $('.vaalitFrontpageLink').click(function(e) {
-    e.preventDefault();
+  function openFrontPage() {
     $("#toimaritList > a.active").removeClass("active");
     $("#hallitusList > a.active").removeClass("active");
     $('#electionsContent').addClass('hidden');
@@ -83,6 +76,11 @@ $(document).ready(function() {
 
     localStorage.setItem("selectedTab_id", null);
     localStorage.setItem("selectedVirka", null);
+  }
+
+  $('.vaalitFrontpageLink').click(function(e) {
+    e.preventDefault();
+    openFrontPage();
   })
 
   $('.list-group-root a[data-toggle="tab"]').click(function(e) {
