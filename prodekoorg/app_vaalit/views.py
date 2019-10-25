@@ -117,7 +117,11 @@ def crop_pic(uploaded_img, x, y, w, h):
     if not uploaded_img:
         img_url_prt = static("images/misc/anonymous_prodeko.jpg")
         x, y, w, h = 0, 0, 150, 150
-        img_url_full = settings.BASE_DIR + "/prodekoorg" + img_url_prt
+        # Image URL in production
+        img_url_full = settings.BASE_DIR + "/prodekoorg/collected-static/images/misc/anonymous_prodeko.jpg"
+        # Image URL in development
+        if settings.DEBUG:
+            img_url_full = settings.BASE_DIR + "/prodekoorg" + img_url_prt
         img = Image.open(img_url_full)
     else:
         img = Image.open(uploaded_img.file)
