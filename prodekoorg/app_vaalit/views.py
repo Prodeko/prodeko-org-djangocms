@@ -198,7 +198,8 @@ def handle_submit_ehdokas(request, context):
         # Get the ehdokas object without committing changes to the database.
         # We still need to append pic, user object and foreign key virka object to the ehdokas object.
         ehdokas = form_ehdokas.save(commit=False)
-        ehdokas.pic = cropped_pic
+        if cropped_pic:
+            ehdokas.pic = cropped_pic
         ehdokas.auth_prodeko_user = request.user
         ehdokas.virka = get_object_or_404(Virka, name=hidden_virka)
         ehdokas.save()
