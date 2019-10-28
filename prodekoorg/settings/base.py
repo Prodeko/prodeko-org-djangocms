@@ -220,6 +220,7 @@ INSTALLED_APPS = (
     "djangocms_text_ckeditor",
     "filer",
     "easy_thumbnails",
+    "meta",
     # Django CMS plugins
     "djangocms_column",
     "djangocms_file",
@@ -228,6 +229,7 @@ INSTALLED_APPS = (
     "djangocms_style",
     "djangocms_snippet",
     "djangocms_video",
+    "djangocms_page_meta",
     # SASS
     "sass_processor",
     # ------------------------
@@ -393,9 +395,6 @@ CKEDITOR_IMAGE_BACKEND = "pillow"
 
 CSRF_TRUSTED_ORIGINS = ".google.com"
 
-# tiedotteet.prodeko.org settings
-SESSION_SAVE_EVERY_REQUEST = True
-SESSION_EXPIRE_AT_BROWSER_CLOSE = False
 SESSION_COOKIE_AGE = 60 * 60 * 24 * 30  # 30 days
 
 CORS_ORIGIN_ALLOW_ALL = True
@@ -405,3 +404,10 @@ REST_FRAMEWORK = {
         "rest_framework.authentication.SessionAuthentication",
     )
 }
+
+META_SITE_PROTOCOL = "https"
+META_SITE_DOMAIN = "https://prodeko.org"
+META_SITE_NAME = "Tuotantotalouden kilta Prodeko ry"
+META_USE_OG_PROPERTIES = True
+META_FB_AUTHOR_URL = "https://www.facebook.com/prodeko"
+META_FB_PUBLISHER = "https://www.facebook.com/prodeko"

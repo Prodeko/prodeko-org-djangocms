@@ -26,6 +26,7 @@ djangocms-snippet==2.2.0
 djangocms-style==2.2.0
 djangocms-text-ckeditor==3.8.0
 djangocms-video==2.1.1
+djangocms-page-meta==0.9.0
 djangorestframework==3.10.3
 django-storages==1.7.2
 django-pipeline==1.6.14
