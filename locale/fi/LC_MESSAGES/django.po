@@ -1203,15 +1203,15 @@ msgstr ""
 "Mikäli et hyväksy tietosuojalauseketta, sinut kirjataan ulos. Kirjautumalla "
 "sisään näet tämän saman valintaikkunan."
 
-#: prodekoorg/urls.py:81
+#: prodekoorg/urls.py:79
 msgid "^weekly-bulletin/"
 msgstr "^tiedotteet/"
 
-#: prodekoorg/urls.py:83
+#: prodekoorg/urls.py:81
 msgid "^matrikkeli/"
 msgstr ""
 
-#: prodekoorg/urls.py:84
+#: prodekoorg/urls.py:82
 msgid "^elections/"
 msgstr "^vaalit/"
 
