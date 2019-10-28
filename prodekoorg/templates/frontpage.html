@@ -1,8 +1,6 @@
 {% extends "base.html" %}
 {% load cms_tags sekizai_tags i18n staticfiles %}
 
-{% block title %}{% page_attribute "page_title" %}{% endblock title %}
-
 {% block extra_head %}
 <script src="{% static 'js/instagram.js' %}"></script>
 {% endblock %}
@@ -29,7 +27,7 @@
                 </div>
             </div>
             <div class="col-md-3 col-6 frontpage-square">
-                <a href="/{{ LANGUAGE_CODE }}/prospective-students/">
+                <a href="{% page_url 'prospective-students' %}">
                     <img src="{% static 'images/frontpage/abeille.jpg' %}" alt="{% trans for_abit %}" class="img-fluid">
                     <div class="frontpage-square-caption">
                         <h3>{% trans for_abit %}</h3>
@@ -37,7 +35,7 @@
                 </a>
             </div>
             <div class="col-md-3 col-6 frontpage-square">
-                <a href="/{{ LANGUAGE_CODE }}/guild/">
+                <a href="{% page_url 'guild' %}">
                     <img src="{% static 'images/frontpage/kiltalaisille.jpg' %}" alt="{% trans for_guildmembers %}" class="img-fluid">
                     <div class="frontpage-square-caption">
                         <h3>{% trans for_guildmembers %}</h3>
@@ -45,7 +43,7 @@
                 </a>
             </div>
             <div class="col-md-3 col-6 frontpage-square">
-                <a href="/{{ LANGUAGE_CODE }}/alumni/">
+                <a href="{% page_url 'alumni' %}">
                     <img src="{% static 'images/frontpage/alumneille.jpg' %}" alt="{% trans for_alumni %}" class="img-fluid">
                     <div class="frontpage-square-caption">
                         <h3>{% trans for_alumni %}</h3>
@@ -53,7 +51,7 @@
                 </a>
             </div>
             <div class="col-md-3 col-6 frontpage-square">
-                <a href="/{{ LANGUAGE_CODE }}/corporate-relations/">
+                <a href="{% page_url 'corporate-relations' %}">
                     <img src="{% static 'images/frontpage/yrityksille.jpg' %}" alt="{% trans for_businesses %}" class="img-fluid">
                     <div class="frontpage-square-caption">
                         <h3>{% trans for_businesses %}</h3>

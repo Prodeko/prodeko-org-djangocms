@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import, print_function, unicode_literals
 
-import uuid
-
 from cms.sitemaps import CMSSitemap
 from django.conf import settings
 from django.conf.urls.i18n import i18n_patterns

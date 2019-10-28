@@ -1,0 +1,7 @@
+{% load i18n menu_tags %}
+
+{% if LANGUAGE_CODE == 'fi' %}
+    <link rel="alternate" href="{% page_language_url 'en' %}" hreflang="en" />
+{% elif LANGUAGE_CODE == 'en' %}
+    <link rel="alternate" href="{% page_language_url 'fi' %}" hreflang="fi" />
+{% endif %}

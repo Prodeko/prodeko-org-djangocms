@@ -1,0 +1,3 @@
+{% load cms_tags %}
+
+<title>{% page_attribute "page_title" %} | {% if request.current_page != request.current_page.get_root  %}{% page_attribute "page_title" request.current_page.get_root %} | {% endif %}Prodeko</title>
