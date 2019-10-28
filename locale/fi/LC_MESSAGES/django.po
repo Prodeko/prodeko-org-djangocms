@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-22 19:50+0300\n"
+"POT-Creation-Date: 2019-10-28 17:08+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Timo Riski <timo@prodeko.org>\n"
 "Language: \n"
@@ -959,7 +959,7 @@ msgid "question"
 msgstr "kysymys"
 
 #: prodekoorg/app_vaalit/models.py:83
-#: prodekoorg/app_vaalit/templates/vaalit_content.html:6
+#: prodekoorg/app_vaalit/templates/vaalit_content.html:5
 msgid "Questions"
 msgstr "Kysymykset"
 
@@ -990,10 +990,8 @@ msgid "Submit answer"
 msgstr "Lähetä"
 
 #: prodekoorg/app_vaalit/templates/forms/vaalit_answer_form.html:4
-#, fuzzy
-#| msgid "answer"
 msgid "Post an answer"
-msgstr "vastaus"
+msgstr "Vastaa"
 
 #: prodekoorg/app_vaalit/templates/forms/vaalit_apply_form.html:3
 #: prodekoorg/app_vaalit/templates/forms/vaalit_modify_application_form.html:14
@@ -1023,20 +1021,19 @@ msgid "since"
 msgstr "sitten"
 
 #: prodekoorg/app_vaalit/templates/vaalit_content.html:4
-#: prodekoorg/app_vaalit/templates/vaalit_content.html:44
+#: prodekoorg/app_vaalit/templates/vaalit_content.html:39
 msgid "No applicants"
 msgstr "Ei hakijoita"
 
-#: prodekoorg/app_vaalit/templates/vaalit_content.html:7
+#: prodekoorg/app_vaalit/templates/vaalit_content.html:6
 msgid "No questions"
 msgstr "Ei kysymyksiä"
 
-#: prodekoorg/app_vaalit/templates/vaalit_content.html:9
+#: prodekoorg/app_vaalit/templates/vaalit_content.html:7
 msgid "No Responses"
 msgstr "Ei vastauksia"
 
 #: prodekoorg/app_vaalit/templates/vaalit_ehdokas.html:3
-#: prodekoorg/app_vaalit/templates/vaalit_ehdokas_alternative.html:3
 #: prodekoorg/app_vaalit/templates/vaalit_modal_delete_ehdokas.html:5
 #: prodekoorg/app_vaalit/templates/vaalit_modal_ehdokas_description.html:5
 #: tiedotteet/backend/templates/control/messages.html:67
@@ -1045,12 +1042,10 @@ msgid "Delete"
 msgstr "Poista"
 
 #: prodekoorg/app_vaalit/templates/vaalit_ehdokas.html:4
-#: prodekoorg/app_vaalit/templates/vaalit_ehdokas_alternative.html:4
 msgid "Modify"
 msgstr "Muokkaa"
 
 #: prodekoorg/app_vaalit/templates/vaalit_ehdokas.html:5
-#: prodekoorg/app_vaalit/templates/vaalit_ehdokas_alternative.html:5
 msgid "Read Application"
 msgstr "Lue Hakemus"
 
@@ -1118,27 +1113,27 @@ msgstr "Kirjaudu ulos"
 msgid "Open"
 msgstr "Avaa"
 
-#: prodekoorg/templates/frontpage.html:11
+#: prodekoorg/templates/frontpage.html:9
 msgid "Welcome to Aalto IEM"
 msgstr "Tervetuloa opiskelemaan Aallon tutalle"
 
-#: prodekoorg/templates/frontpage.html:12
+#: prodekoorg/templates/frontpage.html:10
 msgid "If you are a new student - click here!"
 msgstr "Klikkaa tästä uusien opiskelijoiden sivuille!"
 
-#: prodekoorg/templates/frontpage.html:13
+#: prodekoorg/templates/frontpage.html:11
 msgid "For prospective students"
 msgstr "Abeille"
 
-#: prodekoorg/templates/frontpage.html:14
+#: prodekoorg/templates/frontpage.html:12
 msgid "For guild members"
 msgstr "Kiltalaisille"
 
-#: prodekoorg/templates/frontpage.html:15
+#: prodekoorg/templates/frontpage.html:13
 msgid "For alumni"
 msgstr "Alumneille"
 
-#: prodekoorg/templates/frontpage.html:16
+#: prodekoorg/templates/frontpage.html:14
 msgid "For businesses"
 msgstr "Yrityksille"
 
@@ -1469,8 +1464,3 @@ msgstr "Tiedote lisätty"
 #: tiedotteet/backend/views.py:422
 msgid "Admin login required"
 msgstr "Kirjautuminen ylläpitäjänä vaadittu"
-
-#, fuzzy
-#~| msgid "Introduction"
-#~ msgid "View Introduction"
-#~ msgstr "Esittely"
