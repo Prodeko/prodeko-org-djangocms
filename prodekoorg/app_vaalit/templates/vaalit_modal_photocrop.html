@@ -1,33 +1,36 @@
 {% load i18n %}
 
 {% trans "Crop image" as crop_image %}
-{% trans "Close" as close %}
+{% trans "Close" as close%}
 {% trans "Crop" as crop %}
 
-<!-- Modal to crop the image -->
 <div class="modal fade" id="modalCrop">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">{% trans crop_image %}</h4>
-      </div>
-      <div class="modal-body">
-        <div class="img-container">
-          <img src="" id="image">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">{% trans crop_image %}</h4>
+            </div>
+        <div class="modal-body">
+            <div class="img-container">
+                <img src="" id="image" />
+            </div>
         </div>
-      </div>
-      <div class="modal-footer">
-        <div class="btn-group pull-left" role="group">
-          <button type="button" class="btn btn-default js-zoom-in mr-1">
-            <i class="fas fa-search-plus"></i>
-          </button>
-          <button type="button" class="btn btn-default js-zoom-out">
-            <i class="fas fa-search-minus"></i>
-          </button>
+        <div class="modal-footer">
+            <div class="btn-group pull-left" role="group">
+                <button type="button" class="btn btn-default js-zoom-in mr-1">
+                    <i class="fas fa-search-plus"></i>
+                </button>
+                <button type="button" class="btn btn-default js-zoom-out">
+                    <i class="fas fa-search-minus"></i>
+                </button>
+            </div>
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+                {% trans close %}
+            </button>
+            <button type="button" class="btn btn-primary js-crop-and-upload">
+                {% trans crop %}
+            </button>
         </div>
-        <button type="button" class="btn btn-default" data-dismiss="modal">{% trans close %}</button>
-        <button type="button" class="btn btn-primary js-crop-and-upload">{% trans crop %}</button>
-      </div>
+        </div>
     </div>
-  </div>
 </div>

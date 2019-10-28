@@ -1,15 +1,10 @@
-{% load i18n %}
+{% load i18n sekizai_tags %}
 
 {% trans "Applicants" as applicants %}
 {% trans "No applicants" as no_applicant %}
-
 {% trans "Questions" as questions %}
 {% trans "No questions" as no_questions %}
-
 {% trans "No Responses" as no_responses %}
-
-
-{% load sekizai_tags %}
 
 <div class="row">
   <div class="col-xl-8 col-sm-12">
@@ -23,7 +18,7 @@
 <div id="_{{ forloop.counter }}" class="tab-pane fade" role="tabpanel">
   <h3>{% trans applicants %} ({{ virka.ehdokkaat.all.count }})</h3>
   {% for ehdokas in virka.ehdokkaat.all %}
-    {% include "vaalit_ehdokas_alternative.html" %}
+    {% include "vaalit_ehdokas.html" %}
   {% endfor %}
   </div>
 {% endfor %}
@@ -72,8 +67,6 @@
 
   </div>
   {% endfor %}
-</div>
-
 </div>
 
 {% include "vaalit_modal_delete_ehdokas.html" %}

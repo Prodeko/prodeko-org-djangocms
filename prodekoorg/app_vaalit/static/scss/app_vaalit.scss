@@ -10,20 +10,19 @@
     margin-bottom: 3rem;
 
     .vaalit-vastaus {
+      .img-container {
+        width: 5rem;
+        height: 5rem;
+        overflow: hidden;
+        border-radius: 50%;
+      }
 
-    .img-container {
-      width: 5rem;
-      height: 5rem;
-      overflow: hidden;
-      border-radius: 50%;
-    }
-
-    p.vastaus-text {
-      margin-right: 5rem;
-      margin-left: 2rem;
+      p.vastaus-text {
+        margin-right: 5rem;
+        margin-left: 2rem;
+      }
     }
   }
-}
   #ehdokasName {
     font-weight: bold;
     margin-top: 1rem;
@@ -47,10 +46,6 @@
   .btn-xs {
     width: 90px;
     font-size: 0.7em;
-  }
-
-  .modal-lg {
-    max-width: 70%;
   }
 
   #vaaliApplyForm {
@@ -81,10 +76,9 @@
       padding-left: 0.5rem;
       margin-bottom: 0.5rem;
 
-        .my-2 {
-          width: 90%;
-        }
-
+      .my-2 {
+        width: 90%;
+      }
     }
 
     .questionFooter {
@@ -98,26 +92,25 @@
       border-right: 1px solid rgba(0, 0, 0, 0.125);
       border-top: 1px solid rgba(0, 0, 0, 0.125);
     }
-    
+
     .answersList {
       padding-right: 8rem;
       border-bottom: 2px solid $blue-normal;
     }
   }
 
-
   #responseButton {
     border: 1px solid #05006d;
   }
 
-.answerForm {
-  margin-top: 2rem;
-  margin-left: 4rem;
-}
+  .answerForm {
+    margin-top: 2rem;
+    margin-left: 4rem;
+  }
 
-.content-page-jumbotron .jumbotron {
-height: 10vh !important;
-}
+  .content-page-jumbotron .jumbotron {
+    height: 10vh !important;
+  }
 
   #modalCrop .img-container img,
   #vaalitModifyApplyModal .img-container img {
@@ -207,7 +200,7 @@ height: 10vh !important;
 
   .answers-container-mobile {
     display: flex;
-    font-size: 1.0rem;
+    font-size: 1rem;
 
     .answers-header-mobile {
       margin-bottom: 0.5rem;
@@ -259,7 +252,6 @@ a.list-group-item-action:hover {
   transform: rotate(-90deg);
   transition: all 0.4s ease-in-out;
 }
-
 
 .list-group-root .list-group-item.active {
   background-color: #0053a0 !important;
@@ -366,7 +358,6 @@ a.list-group-item-action:hover {
       margin-left: 0rem;
     }
   }
-
 }
 
 @media only screen and (max-width: 320px) {
