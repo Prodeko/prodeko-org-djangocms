@@ -7,52 +7,52 @@
 {% load sekizai_tags %}
 <h3>{% trans question_ask %}</h3>
 <form novalidate method="POST" id="vaalitKysymysForm">
-  {% csrf_token %}
-  <div class="form-group row">
-    <div class="col-lg-8 col-sm-12">
-      <textarea name="question" rows="3" id="id_question" class="form-control" required=""></textarea>
-      {% if form_kysymys.question.errors %}
-        <small class="form-text text-danger">{{ form_kysymys.question.errors.as_text }}</small>
-      {% endif %}
-      <small class="form-text text-muted">{% trans question_ask %}</small>
+    {% csrf_token %}
+    <div class="form-group row">
+        <div class="col-lg-8 col-sm-12">
+            <textarea name="question" rows="3" id="id_question" class="form-control" required=""></textarea>
+            {% if form_kysymys.question.errors %}
+            <small class="form-text text-danger">{{ form_kysymys.question.errors.as_text }}</small>
+            {% endif %}
+            <small class="form-text text-muted">{% trans question_ask %}</small>
+        </div>
     </div>
-  </div>
-  <div class="form-group">
-    <input type="hidden" class="input-virka" name="hidden-input-virka" value="{{virat.0.name}}"/>
-    <button name="submitKysymys" type="submit" class="btn btn-primary my-2">{% trans question_submit %}</button>
-    <a role="button" id="btnHaeVirkaan" class="btn btn-default">
-      {% trans apply %}
-      <span class="mr-1 fas fa-chevron-down rotate-fa"></span>
-    </a>
-  </div>
+    <div class="form-group">
+        <input type="hidden" class="input-virka" name="hidden-input-virka" value="{{virat.0.name}}"/>
+        <button name="submitKysymys" type="submit" class="btn btn-primary my-2">{% trans question_submit %}</button>
+        <a role="button" id="btnHaeVirkaan" class="btn btn-default">
+            {% trans apply %}
+            <span class="mr-1 fas fa-chevron-down rotate-fa"></span>
+        </a>
+    </div>
 </form>
 
 {% addtoblock "js" %}
 <script type="text/javascript">
-  var csrftoken = $("[name=csrfmiddlewaretoken]").val();
-  var user = "{{request.user}}";
-  var ehdokkaatJSON = JSON.parse('{{ ehdokkaat_json|safe }}');
-  var firstVirka = "{{virat.0}}";
-  // Need to check the first virka when the site renders
-  selectedVirka = localStorage.getItem('selectedVirka');
-  checkBtnHaeVirkaanVisibility(selectedVirka);
+    var csrftoken = $("[name=csrfmiddlewaretoken]").val();
+    var user = "{{request.user}}";
+    var ehdokkaatJSON = JSON.parse('{{ ehdokkaat_json|safe }}');
+    var firstVirka = "{{virat.0}}";
+    // Need to check the first virka when the site renders
+    selectedVirka = localStorage.getItem('selectedVirka');
+    checkBtnHaeVirkaanVisibility(selectedVirka);
 
-  function checkBtnHaeVirkaanVisibility(virka) {
+    function checkBtnHaeVirkaanVisibility(virka) {
     var virka = virka;
 
     ehdokkaatForVirka = $.grep(ehdokkaatJSON, function(e, i) {
-      return e.virka == virka;
+        return e.virka == virka;
     });
     // If the current user is already an ehdokas for this virka...
     if (ehdokkaatForVirka.some(item => item.auth_prodeko_user[0] == user)) {
-      // ... don't display the "Hae virkaan" button
-      $('#btnHaeVirkaan').hide();
-      // and hide the apply form if it was visible
-      $('#vaaliWrapperApplyForm').hide();
+        // ... don't display the "Hae virkaan" button
+        $('#btnHaeVirkaan').hide();
+        // and hide the apply form if it was visible
+        $('#vaaliWrapperApplyForm').hide();
     } else {
-      // ... otherwise show the button
-      $('#btnHaeVirkaan').show();
+        // ... otherwise show the button
+        $('#btnHaeVirkaan').show();
     }
-  }
+    }
 </script>
 {% endaddtoblock %}

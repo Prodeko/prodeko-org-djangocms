@@ -308,7 +308,7 @@ THUMBNAIL_ALIASES = {
         "avatar": {"size": (50, 50), "crop": True},
         "toimari": {"size": (350, 350), "crop": True},
         "hallitus": {"size": (400, 400), "crop": True},
-        "ehdokas": {"size": (120, 120), "crop": True},
+        "ehdokas": {"size": (150, 150), "crop": True},
     }
 }
 
