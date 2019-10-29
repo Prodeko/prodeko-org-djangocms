@@ -3,10 +3,14 @@ from django.core.validators import FileExtensionValidator
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from uuid import uuid4
+from datetime import datetime
+from time import strftime
 
 
 def upload_url(instance, filename):
-    return f"kulukorvaukset/%Y-%m/{uuid4()}/{filename}"
+    date = datetime.now()
+    yearmonth = date.strftime("%Y-%m")
+    return f"kulukorvaukset/{yearmonth}/{uuid4()}/{filename}"
 
 
 class KulukorvausPerustiedot(models.Model):
