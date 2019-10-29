@@ -1,4 +1,4 @@
-{% load i18n %}
+{% load i18n thumbnail %}
 
 {% trans "Are you sure you want to remove your application?" as confirm_delete %}
 {% trans "Close" as close %}
@@ -12,7 +12,7 @@
                 <span aria-hidden="true">&times;</span>
             </button>
             <div class="img-container mx-auto mt-3">
-                <img src="{{ ehdokas.pic.url }}" alt="{{ ehdokas.name }}" />
+                    <img src="{{ ehdokas.pic|thumbnail_url:'ehdokas' }}" alt="{{ ehdokas.name }}"/>
                 </div>
                 <br />
             <h5 class="modal-title" id="hakijaModalLongTitle" style="margin: auto;">{{ ehdokas.name }}</h5>

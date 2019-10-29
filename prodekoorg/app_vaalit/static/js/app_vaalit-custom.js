@@ -124,7 +124,7 @@ $(document).ready(function() {
     var ehdokasId = $(e.target).attr("ehdokas-id");
     $("#formDeleteEhdokas").attr(
       "action",
-      "../../fi/vaalit/delete-nominee/" + ehdokasId + "/"
+      "delete-nominee/" + ehdokasId + "/"
     );
     $("#confirmDeleteEhdokasModal").modal("toggle");
   });
@@ -177,9 +177,8 @@ $(document).ready(function() {
       .siblings("input[name=hidden-kysymys-id]")
       .val();
 
-      //console.log(formData)
     $.ajax({
-      url: "../../fi/vaalit/delete-question/" + kysymysId + "/",
+      url: "delete-question/" + kysymysId + "/",
       type: "POST",
       // Add 'submitKysymys' to the POST data
       // to have correct handling in the views.py main view
@@ -207,7 +206,7 @@ $(document).ready(function() {
 
   function markRead(virka_id) {
     $.ajax({
-      url: "../../fi/vaalit/mark-read/" + virka_id + "/",
+      url: "mark-read/" + virka_id + "/",
       type: "POST",
       success: markReadSuccess(virka_id),
       error: markReadError

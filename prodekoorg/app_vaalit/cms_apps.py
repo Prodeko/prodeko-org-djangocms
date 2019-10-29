@@ -16,27 +16,31 @@ from .views import (
 
 @apphook_pool.register
 class VaalitApphook(CMSApp):
-    app_name = "app_vaait"
+    app_name = "app_vaalit"
     name = _("Elections application")
 
     def get_urls(self, page=None, language=None, **kwargs):
         return [
             path("", main_view, name="vaalit"),
-            path("delete-question/<pk>/", delete_kysymys_view, name="delete_kysymys"),
             path(
-                "update-question/<pk>/",
+                "delete-question/<int:pk>/", delete_kysymys_view, name="delete_kysymys"
+            ),
+            path(
+                "update-question/<int:pk>/",
                 login_required(update_kysymys_view),
                 name="update_kysymys",
             ),
             path(
-                "delete-nominee/<pk>/",
+                "delete-nominee/<int:pk>/",
                 login_required(EhdokasDeleteView.as_view()),
                 name="delete_ehdokas",
             ),
             path(
-                "update-nominee/<pk>/",
+                "update-nominee/<int:pk>/",
                 login_required(EhdokasUpdateView.as_view()),
                 name="update_ehdokas",
             ),
-            path("mark-read/<pk>/", login_required(mark_as_read), name="mark_as_read"),
+            path(
+                "mark-read/<int:pk>/", login_required(mark_as_read), name="mark_as_read"
+            ),
         ]
