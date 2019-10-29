@@ -13,12 +13,15 @@ from django.urls import reverse
 from django.utils import timezone
 from django.utils.html import strip_tags
 from django.utils.translation import ugettext as _
-from tiedotteet.backend.forms import (CategoryForm, EditForm,
-                                                 MailConfigurationForm,
-                                                 PublishForm, SendEmailForm,
-                                                 TagForm)
-from tiedotteet.backend.models import (Category, MailConfiguration,
-                                                  Message, Tag)
+from tiedotteet.backend.forms import (
+    CategoryForm,
+    EditForm,
+    MailConfigurationForm,
+    PublishForm,
+    SendEmailForm,
+    TagForm,
+)
+from tiedotteet.backend.models import Category, MailConfiguration, Message, Tag
 
 
 def index(request):
@@ -175,7 +178,7 @@ def new_category(request):
         A Django HttpResponseRedirect  object that redirects
         back to the main categories page.
     """
-    
+
     if request.method == "POST":
         form = CategoryForm(request.POST)
         if form.is_valid():

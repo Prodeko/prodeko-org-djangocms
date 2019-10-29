@@ -31,10 +31,12 @@ from PIL import Image
 from .forms import EhdokasForm, KysymysForm, VastausForm
 from .models import Ehdokas, Kysymys, Vastaus, Virka
 
+
 class EhdokasCreateView(SuccessMessageMixin, CreateView):
     model = Ehdokas
     success_url = reverse_lazy("app_vaalit:vaalit")
     success_message = "Hakemuksesi virkaan on lähetetty."
+
 
 class EhdokasDeleteView(SuccessMessageMixin, DeleteView):
     """ Handles 'Ehdokas' model application deleting.
@@ -59,6 +61,7 @@ class EhdokasDeleteView(SuccessMessageMixin, DeleteView):
         obj = self.get_object()
         messages.success(self.request, self.success_message % obj.__dict__)
         return super(EhdokasDeleteView, self).delete(request, *args, **kwargs)
+
 
 class EhdokasUpdateView(UpdateView):
     """ Handles 'Ehdokas' model application updates.
@@ -87,6 +90,7 @@ class EhdokasUpdateView(UpdateView):
         response = handle_modify_ehdokas(request, context=context, ehdokas=ehdokas)
         return HttpResponseRedirect(self.get_success_url())
 
+
 @login_required
 def delete_kysymys_view(request, pk):
     """Handle question deletions."""
@@ -100,6 +104,7 @@ def delete_kysymys_view(request, pk):
     else:
         return JsonResponse({"delete_kysymys_id": 1})
 
+
 @login_required
 def update_kysymys_view(request, pk):
     """Handle question deletions."""
@@ -108,7 +113,7 @@ def update_kysymys_view(request, pk):
         raise PermissionDenied
     if request.method == "POST":
         kysymys.delete()
-        return redirect('app_vaalit:vaalit')
+        return redirect("app_vaalit:vaalit")
     else:
         raise Http404
 
@@ -118,7 +123,10 @@ def crop_pic(uploaded_img, x, y, w, h):
         img_url_prt = static("images/misc/anonymous_prodeko.jpg")
         x, y, w, h = 0, 0, 150, 150
         # Image URL in production
-        img_url_full = settings.BASE_DIR + "/prodekoorg/collected-static/images/misc/anonymous_prodeko.jpg"
+        img_url_full = (
+            settings.BASE_DIR
+            + "/prodekoorg/collected-static/images/misc/anonymous_prodeko.jpg"
+        )
         # Image URL in development
         if settings.DEBUG:
             img_url_full = settings.BASE_DIR + "/prodekoorg" + img_url_prt
@@ -181,6 +189,7 @@ def get_ehdokkaat_json(context, ehdokas):
     ehdokkaat_json.extend(ehdokas_new)  # Extend operates in-place and returns none
     return json.dumps(ehdokkaat_json)
 
+
 @login_required
 def handle_submit_ehdokas(request, context):
     form_ehdokas = EhdokasForm(request.POST, request.FILES)
@@ -194,7 +203,7 @@ def handle_submit_ehdokas(request, context):
 
         # Check for duplicate application to one Virka by the same Ehdokas
         if is_duplicate_application(request, hidden_virka):
-            return redirect('app_vaalit:vaalit')
+            return redirect("app_vaalit:vaalit")
 
         # Crop the image using the hidden input x, y, w and h coordinates
         cropped_pic = crop_pic(request.FILES.get("pic"), x, y, w, h)
@@ -236,6 +245,7 @@ def handle_modify_ehdokas(request, context, ehdokas):
     ehdokas.save()
     render(request, "vaalit.html", context)
 
+
 @login_required
 def handle_submit_kysymys(request, context):
     """Process posted questions.
@@ -263,6 +273,7 @@ def handle_submit_kysymys(request, context):
     else:
         raise Http404
 
+
 @login_required
 def handle_submit_answer(request, context):
     form_vastaus = VastausForm(request.POST)
@@ -272,7 +283,10 @@ def handle_submit_answer(request, context):
     if form_vastaus.is_valid():
         vastaus = form_vastaus.save(commit=False)
         vastaus.to_question = get_object_or_404(Kysymys, id=hidden_kysymys_id)
-        vastaus.by_ehdokas = get_object_or_404(Ehdokas.objects.filter(virka = vastaus.to_question.to_virka), auth_prodeko_user=request.user)
+        vastaus.by_ehdokas = get_object_or_404(
+            Ehdokas.objects.filter(virka=vastaus.to_question.to_virka),
+            auth_prodeko_user=request.user,
+        )
         vastaus.save()
 
         mark_as_unread(vastaus.to_question.to_virka.pk)
@@ -280,11 +294,12 @@ def handle_submit_answer(request, context):
 
         # return HttpResponse(html)
 
-        return redirect('app_vaalit:vaalit')
+        return redirect("app_vaalit:vaalit")
     else:
         print("went here")
         # Return form with error and render vaalit main page
         return render(request, "vaalit.html", context)
+
 
 @login_required
 def mark_as_read(request, pk):
@@ -294,12 +309,14 @@ def mark_as_read(request, pk):
     virka.save()
     return JsonResponse({"mark_as_read": pk})
 
+
 def mark_as_unread(pk):
     # Mark virka as "NEW" for all users
     virka = get_object_or_404(Virka, pk=pk)
     virka.read_by.clear()
     virka.save()
     return JsonResponse({"mark_as_unread": pk})
+
 
 @login_required
 def main_view(request):
@@ -314,10 +331,7 @@ def main_view(request):
         fields=("auth_prodeko_user", "virka"),
     )
     virat_description_python = serialize(
-        "python",
-        virat,
-        use_natural_foreign_keys=True,
-        fields=("description"),
+        "python", virat, use_natural_foreign_keys=True, fields=("description"),
     )
     ehdokkaat_json = json.dumps([d["fields"] for d in ehdokkaat_python])
     virat_description_json = json.dumps([d["fields"] for d in virat_description_python])
@@ -340,5 +354,7 @@ def main_view(request):
         else:
             raise Http404
     else:
-        context["form_ehdokas"] = EhdokasForm(initial={'name': request.user.first_name + " " + request.user.last_name})
+        context["form_ehdokas"] = EhdokasForm(
+            initial={"name": request.user.first_name + " " + request.user.last_name}
+        )
         return render(request, "vaalit.html", context)

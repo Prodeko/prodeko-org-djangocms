@@ -55,6 +55,7 @@ class KulukorvausPerustiedotFormTest(TestData):
         form = KulukorvausPerustiedotForm(data=form_data, files=file_data)
         self.assertFalse(form.is_valid())
 
+
 class KulukorvausFormTest(TestData):
     """Tests for KulukorvausForm."""
 

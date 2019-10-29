@@ -10,16 +10,14 @@ from .views import (
     delete_kysymys_view,
     main_view,
     mark_as_read,
-    update_kysymys_view
+    update_kysymys_view,
 )
 
 app_name = "app_vaalit"
 urlpatterns = [
     re_path(r"^$", main_view, name="vaalit"),
     re_path(
-        r"delete-question/(?P<pk>\d+)/",
-        delete_kysymys_view,
-        name="delete_kysymys",
+        r"delete-question/(?P<pk>\d+)/", delete_kysymys_view, name="delete_kysymys",
     ),
     re_path(
         r"^update-question/(?P<pk>\d+)/",
@@ -37,8 +35,6 @@ urlpatterns = [
         name="update_ehdokas",
     ),
     re_path(
-        r"^mark-read/(?P<pk>\d+)/",
-        login_required(mark_as_read),
-        name="mark_as_read",
-    )
+        r"^mark-read/(?P<pk>\d+)/", login_required(mark_as_read), name="mark_as_read",
+    ),
 ]

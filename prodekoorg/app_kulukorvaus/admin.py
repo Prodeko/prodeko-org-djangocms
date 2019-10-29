@@ -26,7 +26,7 @@ class StatusFilter(SimpleListFilter):
     parameter_name = "status"
 
     def lookups(self, request, model_admin):
-        return (('NEW', _('New')), ('IP', _('In Process')), ('PR', _('Processed')))
+        return (("NEW", _("New")), ("IP", _("In Process")), ("PR", _("Processed")))
 
     def queryset(self, request, queryset):
         if self.value() is not None:

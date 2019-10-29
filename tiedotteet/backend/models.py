@@ -160,4 +160,3 @@ class Message(models.Model):
         verbose_name = _("bulletin")
         verbose_name_plural = _("Bulletins")
         db_table = "tiedotteet_message"
-

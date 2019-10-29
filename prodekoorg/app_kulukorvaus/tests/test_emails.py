@@ -10,11 +10,9 @@ class EmailTest(TestData):
         model_perustiedot = self.test_perustiedot_model
 
         # Send message.
-        send_email(user,
-                    model_perustiedot.id,
-                    "kulukorvaus.txt",
-                    model_perustiedot.email,
-                )
+        send_email(
+            user, model_perustiedot.id, "kulukorvaus.txt", model_perustiedot.email,
+        )
 
         # Test that one message has been sent.
         self.assertEqual(len(mail.outbox), 1)

@@ -8,5 +8,5 @@ urlpatterns = [
     re_path(r"^super-admin/", include(admin.site.urls)),
     re_path(r"^", include(rekisteri_urls)),
     # REST API
-    #re_path(r"^api-auth/", include("rest_framework.urls")),
+    # re_path(r"^api-auth/", include("rest_framework.urls")),
 ]

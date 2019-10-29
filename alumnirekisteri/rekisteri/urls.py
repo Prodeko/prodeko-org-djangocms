@@ -255,9 +255,9 @@ urlpatterns = [
         name="password_reset_complete",
     ),
     # API
-    #re_path(r"^api/users/$", views_api.UserList.as_view()),
-    #re_path(r"^api/persons/$", views_api.PersonList.as_view()),
-    #re_path(r"^api/persons/(?P<pk>[0-9]+)$", views_api.PersonDetail.as_view()),
+    # re_path(r"^api/users/$", views_api.UserList.as_view()),
+    # re_path(r"^api/persons/$", views_api.PersonList.as_view()),
+    # re_path(r"^api/persons/(?P<pk>[0-9]+)$", views_api.PersonDetail.as_view()),
     re_path(
         r"^robots.txt$",
         TemplateView.as_view(template_name="robots.txt", content_type="text/plain"),

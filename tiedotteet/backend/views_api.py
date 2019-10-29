@@ -41,7 +41,6 @@ class CategorySerializer(serializers.ModelSerializer):
 
 
 class ContentList(APIView):
-    
     def get(self, request, format=None):
         queryset = Category.objects.all().order_by("order")
         if not request.user.is_authenticated:

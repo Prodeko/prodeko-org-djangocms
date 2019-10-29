@@ -25,7 +25,9 @@ class Person(models.Model):
         (5, "Eronnut"),
     )
 
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True
+    )
     is_hidden = models.BooleanField(default=False)
 
     """name settings"""
