@@ -292,11 +292,8 @@ def handle_submit_answer(request, context):
         mark_as_unread(vastaus.to_question.to_virka.pk)
         html = render_to_string("vaalit_answer.html", context, request)
 
-        # return HttpResponse(html)
-
         return redirect("app_vaalit:vaalit")
     else:
-        print("went here")
         # Return form with error and render vaalit main page
         return render(request, "vaalit.html", context)
 
@@ -331,7 +328,7 @@ def main_view(request):
         fields=("auth_prodeko_user", "virka"),
     )
     virat_description_python = serialize(
-        "python", virat, use_natural_foreign_keys=True, fields=("description"),
+        "python", virat, use_natural_foreign_keys=True, fields=("description")
     )
     ehdokkaat_json = json.dumps([d["fields"] for d in ehdokkaat_python])
     virat_description_json = json.dumps([d["fields"] for d in virat_description_python])
@@ -343,7 +340,6 @@ def main_view(request):
     context["count_ehdokkaat_toimarit"] = Virka.objects.filter(
         is_hallitus=False
     ).count()
-    print(request.POST)
     if request.method == "POST":
         if "submitVirka" in request.POST:
             return handle_submit_ehdokas(request, context)

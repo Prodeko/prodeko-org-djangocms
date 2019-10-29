@@ -2,6 +2,7 @@ from ckeditor.fields import RichTextField
 from django.conf import settings
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from easy_thumbnails.fields import ThumbnailerImageField
 
 
 class Virka(models.Model):
@@ -38,7 +39,12 @@ class Ehdokas(models.Model):
     name = models.CharField(max_length=50, verbose_name=_("Name"))
     introduction = RichTextField()
     virka = models.ForeignKey(Virka, on_delete=models.CASCADE, related_name="ehdokkaat")
-    pic = models.ImageField(blank=True, verbose_name=_("Picture"))
+    pic = ThumbnailerImageField(
+        blank=True,
+        upload_to="app_vaalit/ehdokas_photos",
+        default="images/toimari_photos/placeholder.jpg",
+        verbose_name=_("Picture"),
+    )
 
     def natural_key(self):
         """ String based representation of this object when accessed through

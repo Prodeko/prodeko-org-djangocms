@@ -1,23 +1,17 @@
-{% load i18n %}
+{% load i18n thumbnail %}
 
 {% trans "Delete" as delete %}
 {% trans "Modify" as modify %}
-{% trans "Read Application" as read_application %}
+{% trans "Read application" as read_application %}
 
-<div class="card my-1" style="">
+<div class="card my-1">
     <div class="list-group list-group-flush">
-        <div class="list-group-item" style="
-        display: flex;
-        justify-content: space-between;
-        align-items: center;">
-        <div style="
-        flex-direction: row;
-        display: flex;
-        align-items: center;">
+        <div class="list-group-item d-flex justify-content-between align-items-center">
+        <div class="d-flex flex-row align-items-center">
             <div class="img-container mr-2">
-                <img src="{{ ehdokas.pic.url }}" alt="{{ ehdokas.name }}" />
+                <img src="{{ ehdokas.pic|thumbnail_url:'ehdokas' }}" alt="{{ ehdokas.name }}"/>
             </div>
-            <p style="margin-bottom: 0rem;">{{ ehdokas.name }}</p>
+            <p class="mb-0">{{ ehdokas.name }}</p>
             </div>
             <div>
                 <a href="#hakijaModal_{{ehdokas.pk}}" data-toggle="modal" data-target="#hakijaModal_{{ehdokas.pk}}">{% trans read_application %}</a>
@@ -27,8 +21,14 @@
     </div>
     {% if request.user == ehdokas.auth_prodeko_user %}
         <div class="d-flex flex-row justify-content-center">
-            <button ehdokas-id="{{ehdokas.id}}" class="showDeleteEhdokasModal btn btn-outline-danger btn-xs my-2 mx-1"><i class="fas fa-times mr-2"></i>{% trans delete %}</button>
-            <a href="{% url 'app_vaalit:update_ehdokas' pk=ehdokas.pk %}" class="btn btn-outline-success btn-xs my-2 mx-1"><i class="far fa-edit mr-2"></i>{% trans modify %}</a>
+            <button ehdokas-id="{{ehdokas.id}}" class="showDeleteEhdokasModal btn btn-outline-danger btn-xs my-2 mx-1">
+                <i class="fas fa-times mr-2"></i>
+                {% trans delete %}
+            </button>
+            <a href="{% url 'app_vaalit:update_ehdokas' pk=ehdokas.pk %}" class="btn btn-outline-success btn-xs my-2 mx-1">
+                <i class="far fa-edit mr-2"></i>
+                {% trans modify %}
+            </a>
         </div>
-    {%endif%}
+    {% endif %}
 </div>
