@@ -67,7 +67,7 @@
                         <br />
                         
                         {% for course in openCourses %}
-                            <a href="{% url 'coursepage' course.id %}">
+                            <a href="{% url 'lifelonglearning:coursepage' course.id %}">
                                 <div class="col-md-6">
                                     <div class="course">
                                         <div class="course-banner" style="background-image: url('{{ course.get_banner_image }}')">

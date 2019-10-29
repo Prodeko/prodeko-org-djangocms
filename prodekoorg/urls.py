@@ -13,7 +13,6 @@ from django.views.decorators.cache import cache_page
 from django.views.generic.base import TemplateView
 from django.views.i18n import JavaScriptCatalog
 from django.views.static import serve
-from lifelonglearning.views import coursepage
 from prodekoorg.app_poytakirjat.gdrive_api import run_app_poytakirjat
 from prodekoorg.app_toimarit.views import postcsv
 
@@ -69,8 +68,6 @@ urlpatterns += i18n_patterns(
         run_app_poytakirjat,
         name="download_docs_from_gsuite",
     ),
-    # Lifelonglearning course page
-    re_path(r"^lifelonglearning/course/(?P<pk>\d+)/", coursepage, name="coursepage"),
     # auth_prodeko
     re_path(r"", include("auth_prodeko.urls")),
     # app_infoscreen
@@ -79,7 +76,6 @@ urlpatterns += i18n_patterns(
     re_path(_(r"^weekly-bulletin/"), include("tiedotteet.backend.urls")),
     # matrikkeli.prodeko.org
     re_path(_(r"^matrikkeli/"), include("alumnirekisteri.alumnirekisteri.urls")),
-    re_path(_(r"^elections/"), include("prodekoorg.app_vaalit.urls")),
     # Misc
     re_path(r"^admin/", admin.site.urls),
     re_path(r"^ckeditor/", include("ckeditor_uploader.urls")),
