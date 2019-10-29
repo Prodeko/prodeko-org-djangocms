@@ -7,66 +7,67 @@
 {% trans "No Responses" as no_responses %}
 
 <div class="row">
-  <div class="col-xl-8 col-sm-12">
-<h2 class="py-3" id="header">{{ virat.0.name }}</h2>
-<div id="roleDescription" class="small-text-mobile">
-  {{ virat.0.description|linebreaks }}
+    <div class="col-xl-8 col-sm-12">
+        <h2 class="py-3" id="header">{{ virat.0.name }}</h2>
+        <div id="roleDescription" class="small-text-mobile">
+            {{ virat.0.description|linebreaks }}
+        </div>
+    </div>  
+    <div class="col-xl-4 col-sm-12 ehdokasList">
+        {% for virka in virat %}
+            <div id="_{{ forloop.counter }}" class="tab-pane fade" role="tabpanel">
+                <h3>{% trans applicants %} ({{ virka.ehdokkaat.all.count }})</h3>
+                {% for ehdokas in virka.ehdokkaat.all %}
+                    {% include "vaalit_ehdokas.html" %}
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
 </div>
-</div>  
-<div class="col-xl-4 col-sm-12 ehdokasList">
-{% for virka in virat %}
-<div id="_{{ forloop.counter }}" class="tab-pane fade" role="tabpanel">
-  <h3>{% trans applicants %} ({{ virka.ehdokkaat.all.count }})</h3>
-  {% for ehdokas in virka.ehdokkaat.all %}
-    {% include "vaalit_ehdokas.html" %}
-  {% endfor %}
-  </div>
-{% endfor %}
-</div>
-</div>
+
 <div id="vaaliKysymysForm" class="my-4">
     {% include "forms/vaalit_question_form.html" %}
-  </div>
-  <div id="vaaliApplyForm" style="{{style_vaaliApplyForm}}">
+</div>
+
+<div id="vaaliApplyForm" style="{{style_vaaliApplyForm}}">
     {% include "forms/vaalit_apply_form.html" %}
-  </div>
+</div>
+
 <div id="vaaliContent" class="tab-content">
-  {% for virka in virat %}
-  <div id="q_{{ forloop.counter }}" class="tab-pane fade" role="tabpanel">
-    {# KYSYMYKSET #}
-    <div class="vaalitQuestions col-xl-10 col-lg-10 col-xs-12">
-      <h3 class="mt-4">{% trans questions %} ({{ virka.kysymykset.all.count }})
-          {% trans "No applicants" as no_applicant %}</h3>
-      <div class="vaalitKysymysList list-group list-group-root">
-        {% for kysymys in virka.kysymykset.all %}
-          {% include "vaalit_question.html" %}
-
-          {# VASTAUKSET #}
-          <div class="list-group collapse answersList" id="vastaukset_{{ kysymys.pk }}">
-            <div class="answersContainer">
-            
-            {% for vastaus in kysymys.vastaukset.all %}
-              {% include "vaalit_answer.html" %}
-            {% endfor %}
-            {% if not kysymys.vastaukset.all %}
-            <p class="ml-5">{% trans no_responses %}</p> <!-- TODO: Better styling-->
-            {% endif %}
-            {% for ehdokas in virka.ehdokkaat.all %} <!-- TODO: Better implementation-->
-            {% if request.user == ehdokas.auth_prodeko_user %}
-              {% include "forms/vaalit_answer_form.html" %}
-            {% endif %}
-            {%endfor %}
+    {% for virka in virat %}
+        <div id="q_{{ forloop.counter }}" class="tab-pane fade" role="tabpanel">
+            {# KYSYMYKSET #}
+            <div class="vaalitQuestions col-xl-10 col-lg-10 col-xs-12">
+                <h3 class="mt-4">
+                    {% trans questions %} ({{ virka.kysymykset.all.count }})
+                    {% trans "No applicants" as no_applicant %}
+                </h3>
+                <div class="vaalitKysymysList list-group list-group-root">
+                    {% for kysymys in virka.kysymykset.all %}
+                        {% include "vaalit_question.html" %}
+                        {# VASTAUKSET #}
+                        <div class="list-group collapse answersList" id="vastaukset_{{ kysymys.pk }}">
+                            <div class="answersContainer">
+                                {% for vastaus in kysymys.vastaukset.all %}
+                                    {% include "vaalit_answer.html" %}
+                                {% endfor %}
+                                {% if not kysymys.vastaukset.all %}
+                                    <p class="ml-5">{% trans no_responses %}</p> <!-- TODO: Better styling-->
+                                {% endif %}
+                                {% for ehdokas in virka.ehdokkaat.all %} <!-- TODO: Better implementation-->
+                                    {% if request.user == ehdokas.auth_prodeko_user %}
+                                        {% include "forms/vaalit_answer_form.html" %}
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% empty %}
+                        <p>{% trans no_questions %}</p>
+                    {% endfor %}
+                </div>
             </div>
-          </div>
-
-        {% empty %}
-          <p>{% trans no_questions %}</p>
-        {% endfor %}
-      </div>
-    </div>
-
-  </div>
-  {% endfor %}
+        </div>
+    {% endfor %}
 </div>
 
 {% include "vaalit_modal_delete_ehdokas.html" %}
@@ -75,15 +76,15 @@
 
 {% addtoblock "js" %}
 <script type="text/javascript">
-  var ehdokkaatJSON = JSON.parse('{{ ehdokkaat_json|safe }}');
-  var descriptions = {{virat_description_json|safe}}
+    var ehdokkaatJSON = JSON.parse('{{ ehdokkaat_json|safe }}');
+    var descriptions = {{virat_description_json|safe}}
 
-  function updateDescription(virka) {
-    selectedVirka = localStorage.getItem('selectedTab_id');
-    if (selectedVirka == null) return;
-    description = descriptions[selectedVirka.slice(2)-1].description
-    $("#roleDescription").text(description);
-  }
+    function updateDescription(virka) {
+        selectedVirka = localStorage.getItem('selectedTab_id');
+        if (selectedVirka == null) return;
+        description = descriptions[selectedVirka.slice(2)-1].description
+        $("#roleDescription").text(description);
+    }
 </script>
 {% endaddtoblock %}
 

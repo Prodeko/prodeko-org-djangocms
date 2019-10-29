@@ -6,59 +6,59 @@
 {% trans "Note! You can modify your application later." as apply_note %}
 
 <form id="vaalitApplyForm" novalidate action="" method="POST" enctype="multipart/form-data">
-  {% csrf_token %}
-  {{ form_ehdokas.media }}
-  <div class="container-fluid">
-    <div class="form-group row">
-      <div class="col-lg-8 col-sm-12 pl-0">
-        <label class="col-form-label" for="{{ form_ehdokas.name.id_for_label }}">{{ form_ehdokas.name.label }}</label>
-        {{ form_ehdokas.name }}
-      </div>
-      <div class="col-sm-3">
-        {% if form_ehdokas.name.errors %}
-          <small class="form-text text-danger">{{ form_ehdokas.name.errors.as_text }}</small>
-        {% endif %}
-      </div>
+    {% csrf_token %}
+    {{ form_ehdokas.media }}
+    <div class="container-fluid">
+        <div class="form-group row">
+            <div class="col-lg-8 col-sm-12 pl-0">
+                <label class="col-form-label" for="{{ form_ehdokas.name.id_for_label }}">{{ form_ehdokas.name.label }}</label>
+                {{ form_ehdokas.name }}
+            </div>
+            <div class="col-sm-3">
+                {% if form_ehdokas.name.errors %}
+                    <small class="form-text text-danger">{{ form_ehdokas.name.errors.as_text }}</small>
+                {% endif %}
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-lg-8 col-sm-12 px-0">
+                <label class="col-form-label" for="{{ form_ehdokas.introduction.id_for_label }}">{% trans introduction %}</label>
+                {{ form_ehdokas.introduction }}
+                {% if form_ehdokas.introduction.errors %}
+                    <small class="form-text text-danger">{{ form_ehdokas.introduction.errors.as_text }}</small>
+                {% endif %}
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-lg-8 col-sm-12 pl-0">
+                <label class="col-form-label" for="{{ form_photo.pic.id_for_label }}">{% trans picture %}</label>
+                {{ form_ehdokas.pic }}
+            </div>
+            <div class="col-sm-3">
+                {% if form_ehdokas.pic.errors %}
+                    <small class="form-text text-danger">{{ form_ehdokas.pic.errors.as_text }}</small>
+                {% endif %}
+            </div>
+        </div>
+        <div class="form-group row">
+            <img class="crop-preview">
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-10 pl-0">
+                <button name="submitVirka" type="submit" class="btn btn-primary my-2">{% trans apply %}</button> <br />
+                <small class="form-text text-muted">{% trans apply_note %}</small>
+                <hr />
+            </div>
+        </div>
+        {% comment %}
+            Hidden values used to crop the image and set the correct
+            virka foreign key on the submitted ehdokas object
+        {% endcomment %}
+        <input type="hidden" name="submitVirka" value=""/>
+        <input type="hidden" class="input-virka" name="hidden-input-virka" value="{{virat.0.name}}"/>
+        <input type="hidden" id="x" name="hidden-crop-x" value="0"/>
+        <input type="hidden" id="y" name="hidden-crop-y" value="0"/>
+        <input type="hidden" id="w" name="hidden-crop-w" value="100"/>
+        <input type="hidden" id="h" name="hidden-crop-h" value="100"/>
     </div>
-    <div class="form-group row">
-      <div class="col-lg-8 col-sm-12 px-0">
-        <label class="col-form-label" for="{{ form_ehdokas.introduction.id_for_label }}">{% trans introduction %}</label>
-        {{ form_ehdokas.introduction }}
-        {% if form_ehdokas.introduction.errors %}
-          <small class="form-text text-danger">{{ form_ehdokas.introduction.errors.as_text }}</small>
-        {% endif %}
-      </div>
-    </div>
-    <div class="form-group row">
-      <div class="col-lg-8 col-sm-12 pl-0">
-        <label class="col-form-label" for="{{ form_photo.pic.id_for_label }}">{% trans picture %}</label>
-        {{ form_ehdokas.pic }}
-      </div>
-      <div class="col-sm-3">
-        {% if form_ehdokas.pic.errors %}
-          <small class="form-text text-danger">{{ form_ehdokas.pic.errors.as_text }}</small>
-        {% endif %}
-      </div>
-    </div>
-    <div class="form-group row">
-      <img class="crop-preview">
-    </div>
-    <div class="form-group row">
-      <div class="col-sm-10 pl-0">
-        <button name="submitVirka" type="submit" class="btn btn-primary my-2">{% trans apply %}</button> <br />
-        <small class="form-text text-muted">{% trans apply_note %}</small>
-        <hr />
-      </div>
-    </div>
-    {% comment %}
-      Hidden values used to crop the image and set the correct
-      virka foreign key on the submitted ehdokas object
-    {% endcomment %}
-    <input type="hidden" name="submitVirka" value=""/>
-    <input type="hidden" class="input-virka" name="hidden-input-virka" value="{{virat.0.name}}"/>
-    <input type="hidden" id="x" name="hidden-crop-x" value="0"/>
-    <input type="hidden" id="y" name="hidden-crop-y" value="0"/>
-    <input type="hidden" id="w" name="hidden-crop-w" value="100"/>
-    <input type="hidden" id="h" name="hidden-crop-h" value="100"/>
-  </div>
 </form>

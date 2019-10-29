@@ -4,15 +4,17 @@
 {% trans "Post an answer" as submit_answer_title %}
 
 <form action="" method="POST" class="answerForm" id="vaalitAnswerForm_{{ forloop.counter }}">
-    <p><strong>{% trans submit_answer_title %}</strong></p>
-  {% csrf_token %}
-  <div class="form-group row">
-    <div class="col-lg-11 col-sm-12">
-      <textarea name="answer" rows="3" id="id_answer" class="form-control" required=""></textarea>
+    <p>
+        <strong>{% trans submit_answer_title %}</strong>
+    </p>
+    {% csrf_token %}
+    <div class="form-group row">
+        <div class="col-lg-11 col-sm-12">
+            <textarea name="answer" rows="3" id="id_answer" class="form-control" required=""></textarea>
+        </div>
     </div>
-  </div>
-  <div class="form-group">
-    <input type="hidden" class="input-question" name="hidden-input-kysymys" value="{{kysymys.id}}"/>
-    <button name="submitVastaus" type="submit" class="btn btn-primary my-1">{% trans submit_answer %}</button>
-  </div>
+    <div class="form-group">
+        <input type="hidden" class="input-question" name="hidden-input-kysymys" value="{{kysymys.id}}"/>
+        <button name="submitVastaus" type="submit" class="btn btn-primary my-1">{% trans submit_answer %}</button>
+    </div>
 </form>
