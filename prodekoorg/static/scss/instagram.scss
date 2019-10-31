@@ -1,12 +1,31 @@
-@import 'variables.scss';
+@import "variables.scss";
+@import "breakpoints-mixin.scss";
 
 #instagram {
-  width: 100%;
-  display: grid;
-  grid-gap: 5px;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+
+  .square {
+    position: relative;
+    flex-basis: calc(50% - 10px);
+    margin: 5px;
+    box-sizing: border-box;
+
+    @include phone {
+      margin: 2px;
+    }
+  }
+
+  .square::before {
+    content: "";
+    display: block;
+    padding-top: 100%;
+  }
 
   img {
+    position: absolute;
+    top: 0;
+    left: 0;
     display: block;
     object-fit: cover;
     width: 100%;
@@ -19,7 +38,6 @@
     display: grid;
     grid-gap: 5px;
     grid-template-columns: repeat(2, 1fr);
-    margin-bottom: 40px;
 
     img {
       display: block;
