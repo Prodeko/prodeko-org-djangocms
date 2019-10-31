@@ -297,5 +297,5 @@ class KulukorvausModelTest(TestData):
         model = self.test_kulukorvaus_model
         self.assertEquals(
             model.get_absolute_url(),
-            "kulukorvaukset/{}/{}".format(model.created_at.year, model.pk),
+            f"kulukorvaukset/{model.created_at.year}/{model.pk}",
         )

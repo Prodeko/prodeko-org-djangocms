@@ -37,9 +37,7 @@ def postcsv(request):
             nextRow.save()
         messages.add_message(request, messages.SUCCESS, _("CSV imported successfully."))
     except Exception as e:
-        messages.add_message(
-            request, messages.ERROR, _("Error downloading CSV: {}".format(e))
-        )
+        messages.add_message(request, messages.ERROR, _(f"Error downloading CSV: {e}"))
     return redirect("../../admin/")
 
 

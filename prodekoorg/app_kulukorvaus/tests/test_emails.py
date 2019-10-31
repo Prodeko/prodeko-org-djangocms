@@ -11,12 +11,12 @@ class EmailTest(TestData):
 
         # Send message.
         send_email(
-            user, model_perustiedot.id, "kulukorvaus.txt", model_perustiedot.email,
+            user, model_perustiedot.id, "kulukorvaus.txt", model_perustiedot.email
         )
 
         # Test that one message has been sent.
         self.assertEqual(len(mail.outbox), 1)
 
         # Verify that the subject of the first message is correct.
-        subject = "Prodeko kulukorvaus - {} {}".format(user.first_name, user.last_name)
+        subject = f"Prodeko kulukorvaus - {user.first_name} {user.last_name}"
         self.assertEqual(mail.outbox[0].subject, subject)

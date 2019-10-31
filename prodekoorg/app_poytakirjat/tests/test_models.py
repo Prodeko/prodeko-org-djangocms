@@ -21,4 +21,4 @@ class DokumenttiModelTest(TestData):
 
     def test_get_absolute_url(self):
         model = self.test_dokumentti_model
-        self.assertEquals(model.get_absolute_url(), "{}".format(model.doc_file.url))
+        self.assertEquals(model.get_absolute_url(), model.doc_file.url)

@@ -138,7 +138,7 @@ class PendingUser(models.Model):
         return f"{first_name} {last_name} - {field_of_study}"
 
     def name(self):
-        return "{} {}".format(self.first_name, self.last_name)
+        return f"{self.first_name} {self.last_name}"
 
     class Meta:
         # Correct spelling in Django admin

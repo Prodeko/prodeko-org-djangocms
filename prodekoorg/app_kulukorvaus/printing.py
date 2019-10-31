@@ -129,7 +129,7 @@ class KulukorvausPDF:
             width=10 * cm,
         )
         s05cm = Spacer(width=0, height=0.5 * cm)
-        ptime = "<font name='Raleway Medium' size=8>{}</font>".format(formatted_time)
+        ptime = f"<font name='Raleway Medium' size=8>{formatted_time}</font>"
         PTIME = Paragraph(ptime, styles["Center"])
 
         text_info = _(
@@ -139,14 +139,12 @@ class KulukorvausPDF:
             "If you notice any errors in the information below, contact Prodeko's treasurer immediately at rahastonhoitaja@prodeko.org."
         )
 
-        ptext = """<font name='Raleway Medium' size=10>{}
+        ptext = f"""<font name='Raleway Medium' size=10>{text_info}
         <br />
         <br />
-        {}
+        {text_errors}
         </font>
-        """.format(
-            text_info, text_errors
-        )
+        """
 
         # Setup paragraph of text before the table as well as the table
         P1 = Paragraph(ptext, styles["Normal"])

@@ -83,9 +83,7 @@ class KulukorvausPerustiedot(models.Model):
 
     def pdf_filename(self):
         created_at = self.kulukorvaus_set.all().first().created_at.date()
-        filename = "{}_kulukorvaus_{}.pdf".format(
-            created_at, self.created_by.replace(" ", "_")
-        )
+        filename = f"{created_at}_kulukorvaus_{self.created_by.replace(' ', '_')}.pdf"
         return filename
 
     def __str__(self):

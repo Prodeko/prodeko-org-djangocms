@@ -22,7 +22,5 @@ def download(request, pk):
     response = HttpResponse(file_wrapper, content_type=file_mimetype)
     response["X-Sendfile"] = file_path
     response["Content-Length"] = os.stat(file_path).st_size
-    response["Content-Disposition"] = "attachment; filename={}".format(
-        file_object.file.name
-    )
+    response["Content-Disposition"] = f"attachment; filename={file_object.file.name}"
     return response

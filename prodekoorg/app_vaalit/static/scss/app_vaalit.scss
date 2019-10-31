@@ -1,6 +1,10 @@
-@import '../static/scss/variables.scss';
+@import "../static/scss/variables.scss";
 
 #vaaliContainer {
+  .modal {
+    z-index: 9999;
+  }
+
   #roleDescription {
     margin-bottom: 2rem;
     white-space: pre-wrap; /** Enables linebreaks while using jquery to render description texts **/
@@ -137,7 +141,7 @@
     font-size: 0.7em;
   }
 
-  form[id^='vaalitAnswerForm_'] .btn {
+  form[id^="vaalitAnswerForm_"] .btn {
     width: 150px;
   }
 }
@@ -158,13 +162,8 @@
 /* Height is set to 100px in 'vaalit_custom.js' once the
  * image file is selected and cropped.
  */
-#vaaliContainer
-  #vaalitKysymysForm
-  #btnHaeVirkaan.animate-chevron
-  .fa-chevron-down {
-  transform: rotate(
-    -179.999deg
-  ); /* For some reason there is a small wiggle if the rotation is 180 degrees */
+#vaaliContainer #vaalitKysymysForm #btnHaeVirkaan.animate-chevron .fa-chevron-down {
+  transform: rotate(-179.999deg); /* For some reason there is a small wiggle if the rotation is 180 degrees */
   transition: all 0.3s ease-in-out;
 }
 
@@ -286,7 +285,7 @@ a.list-group-item-action:hover {
 
 /* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
 @media only screen and (max-width: 479px) {
-  #vaaliContainer #modalCrop button[class*='js-zoom'] {
+  #vaaliContainer #modalCrop button[class*="js-zoom"] {
     max-width: 50px;
   }
 }

@@ -66,7 +66,7 @@ def send_email(user):
         Nothing, sends an email message.
     """
 
-    subject = "Uusi jäsenhakemus - {} {}".format(user.first_name, user.last_name)
+    subject = f"Uusi jäsenhakemus - {user.first_name} {user.last_name}"
     text_content = render_to_string("info_mail.txt", {"user": user})
     html_content = render_to_string("info_mail.html", {"user": user})
 
