@@ -14,7 +14,7 @@ window.onload = fetch(
   .then(function(json) {
     json.data.map(image =>
       $('div#instagram').append(
-        `<a href=${image.link} target= "_blank"><img src=${image.images.low_resolution.url}></img></a>`
+        `<a class="square" href=${image.link} target= "_blank" rel="noopener noreferrer"><img src=${image.images.standard_resolution.url}></img></a>`
       )
     );
   });
