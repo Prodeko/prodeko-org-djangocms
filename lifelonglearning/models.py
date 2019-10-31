@@ -1,6 +1,7 @@
 from ckeditor.fields import RichTextField
 from django.conf import settings
 from django.db import models
+from django.templatetags.static import static
 from django.utils.translation import ugettext_lazy as _
 
 
@@ -45,9 +46,9 @@ class Course(models.Model):
 
     def get_banner_image(self):
         if self.banner:
-            return "{}".format(self.banner.url)
+            return self.banner.url
         else:
-            return "{}{}".format(settings.STATIC_URL, "img/default_thumbnail.jpg")
+            return static("images/lifelonglearning/default_thumbnail.jpg")
 
     class Meta:
         verbose_name = _("course")
