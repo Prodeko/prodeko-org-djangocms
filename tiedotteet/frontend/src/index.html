@@ -2,34 +2,30 @@
 
 <!DOCTYPE html>
 <html>
+    <head>
+        <meta charset="utf-8">
+        <title>Prodeko - Tiedotteet</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<head>
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-    <title>Prodeko tiedotteet</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#1e3553">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        {# Favicon stuff #}
+        <link rel="apple-touch-icon" sizes="180x180" href="{% static 'tiedotteet/assets/favicons/apple-touch-icon.png' %}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{% static 'tiedotteet/assets/favicons/favicon-32x32.png' %}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{% static 'tiedotteet/assets/favicons/favicon-16x16.png' %}">
+        <link rel="mask-icon" href="{% static 'tiedotteet/assets/favicons/safari-pinned-tab.svg' %}" color="#002e7d">
+        <meta name="msapplication-TileColor" content="#2b5797">
+        <meta name="theme-color" content="#ffffff">
 
-    <!-- {# Favicon stuff #} -->
-    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'tiedotteet/assets/favicons/apple-touch-icon.png' %}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'tiedotteet/assets/favicons/favicon-32x32.png' %}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'tiedotteet/assets/favicons/favicon-16x16.png' %}">
-    <link rel="mask-icon" href="{% static 'tiedotteet/assets/favicons/safari-pinned-tab.svg' %}" color="#002e7d">
-    <meta name="msapplication-TileColor" content="#2b5797">
-    <meta name="theme-color" content="#ffffff">
-
-    <link href="https://fonts.googleapis.com/css?family=Raleway:400,600" rel="stylesheet">
-    <script>
-        window.csrfToken = "{{csrf_token}}";
-    </script>
-    {% include "snippets/ga-head.html" %}
-</head>
-
-<body>
-    {% include "snippets/ga-body.html" %}
-    <noscript>This site requires JavaScript turned on</noscript>
-    <div id="root"></div>
-    <script src="{% static 'tiedotteet/tiedotteet-bundle.js' %}"></script>
-</body>
-
+        {% include "libraries/raleway.html" %}
+        {% include "libraries/fontawesome.html" %}
+        <script>
+            window.csrfToken = "{{csrf_token}}";
+        </script>
+        {% include "snippets/ga-head.html" %}
+    </head>
+    <body>
+        {% include "snippets/ga-body.html" %}
+        <noscript>This site requires JavaScript turned on</noscript>
+        <div id="root"></div>
+        <script src="{% static 'tiedotteet/tiedotteet-bundle.js' %}"></script>
+    </body>
 </html>

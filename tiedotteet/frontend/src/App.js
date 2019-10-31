@@ -1,11 +1,7 @@
-import React, { Component } from 'react';
-import ContentContainer from './modules/Content/ContentContainer';
-import './styles/main.scss';
+import React from 'react'
+import TiedotteetContainer from './containers/TiedotteetContainer'
+import './styles/main.scss'
 
-class App extends Component {
-  render() {
-    return <ContentContainer />;
-  }
-}
+const App = () => <TiedotteetContainer />
 
-export default App;
+export default App

@@ -1,18 +1,17 @@
-import { createStore, applyMiddleware } from 'redux';
-import { createLogger } from 'redux-logger';
-import { createBrowserHistory } from 'history';
-import thunkMiddleware from 'redux-thunk';
-import rootReducer from './reducer';
+import { createStore, applyMiddleware } from 'redux'
+import { createLogger } from 'redux-logger'
+import { createBrowserHistory } from 'history'
+import thunkMiddleware from 'redux-thunk'
+import rootReducer from './reducers'
+export const history = createBrowserHistory()
 
-export const history = createBrowserHistory();
-
-const loggerMiddleware = createLogger();
-let middlewares = [thunkMiddleware];
+const loggerMiddleware = createLogger()
+let middlewares = [thunkMiddleware]
 
 if (process.env.NODE_ENV === 'development') {
-  middlewares = [...middlewares, loggerMiddleware];
+  middlewares = [...middlewares, loggerMiddleware]
 }
 
-const store = createStore(rootReducer, applyMiddleware(...middlewares));
+const store = createStore(rootReducer, applyMiddleware(...middlewares))
 
-export default store;
+export default store

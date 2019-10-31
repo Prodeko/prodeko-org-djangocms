@@ -16,7 +16,6 @@ class MailConfiguration(models.Model):
     fail_silently = models.BooleanField(default=True)
 
     class Meta:
-        # Correct spelling in Django admin
         verbose_name = _("mail configuration")
         verbose_name_plural = _("Mail configuration")
         db_table = "tiedotteet_mailconfiguration"
@@ -26,9 +25,9 @@ class Tag(models.Model):
     """A message category.
 
     Attributes:
-    title: Category title.
-    order: Number representing category importance.
-    login_required: Boolean indicating public vs private categories.
+        title: Category title.
+        order: Number representing category importance.
+        login_required: Boolean indicating public vs private categories.
     """
 
     title = models.CharField(max_length=25, blank=True, null=True)
@@ -49,9 +48,9 @@ class Category(models.Model):
     For example, messages relating to studies, events or general information.
 
     Attributes:
-    title: Category title.
-    order: Number representing category importance.
-    login_required: Boolean indicating public vs private categories.
+        title: Category title.
+        order: Number representing category importance.
+        login_required: Boolean indicating public vs private categories.
     """
 
     title = models.CharField(max_length=150, blank=True, null=True)
@@ -104,19 +103,19 @@ class Message(models.Model):
     """A message containing some important information.
 
     Attributes:
-    header: Message title.
-    pub_date: Publishing date of the message.
-    category: Message category.
-    tags: Tags associated with the message.
-    start_date: Date to start showing the message.
-    end_date: Date to end showing the message.
-    deadline_date: Signup deadline for event messages.
-    show_deadline: Boolean to show or hide the deadline date.
-    visible: Boolean to show or hide the message.
-    content: Message content.
-    objects: Custom manager.
-    visible_objects: Custom model manager that only returns visible objects.
-    old_objects: Custom model manager that only returns old objects.
+        header: Message title.
+        pub_date: Publishing date of the message.
+        category: Message category.
+        tags: Tags associated with the message.
+        start_date: Date to start showing the message.
+        end_date: Date to end showing the message.
+        deadline_date: Signup deadline for event messages.
+        show_deadline: Boolean to show or hide the deadline date.
+        visible: Boolean to show or hide the message.
+        content: Message content.
+        objects: Custom manager.
+        visible_objects: Custom model manager that only returns visible objects.
+        old_objects: Custom model manager that only returns old objects.
     """
 
     header = models.CharField(max_length=250)

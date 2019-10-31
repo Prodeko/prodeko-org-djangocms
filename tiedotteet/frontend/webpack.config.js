@@ -1,6 +1,6 @@
-const path = require('path');
-const webpack = require('webpack');
-const HtmlWebPackPlugin = require('html-webpack-plugin');
+const path = require('path')
+const webpack = require('webpack')
+const HtmlWebPackPlugin = require('html-webpack-plugin')
 
 module.exports = env => {
   return {
@@ -23,7 +23,7 @@ module.exports = env => {
           use: ['style-loader', 'css-loader', 'sass-loader']
         },
         {
-          test: /\.js(x)?$/,
+          test: /\.js$/,
           exclude: /node_modules/,
           use: ['babel-loader']
         },
@@ -43,9 +43,9 @@ module.exports = env => {
     plugins: [
       new webpack.HotModuleReplacementPlugin(),
       new HtmlWebPackPlugin({
-        inject: false,
-        template: './src/index.html'
+        inject: env.development ? true : false,
+        template: env.development ? './src/index_dev.html' : './src/index.html'
       })
     ]
-  };
-};
+  }
+}

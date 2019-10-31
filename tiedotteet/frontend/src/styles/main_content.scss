@@ -7,9 +7,7 @@
   background-color: $content-bg;
   transition-duration: $sidebar-transition-duration;
   transition-property: margin;
-  -ms-user-select: text;
-  -moz-user-select: text;
-  -webkit-user-select: text;
+  user-select: text;
 
   &.display-desktop {
     margin-left: $sidebar-width;

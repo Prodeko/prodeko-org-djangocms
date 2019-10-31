@@ -1,22 +1,14 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
-class ScrollControl extends Component {
-  render() {
-    return (
-      <div
-        id="scroll-control"
-        className="control-button"
-        onClick={this.props.handleClick}
-      >
-        <i className="fa fa-arrow-up" />
-      </div>
-    );
-  }
-}
+const ScrollControl = ({ handleClick }) => (
+  <div id="scroll-control" className="control-button" onClick={handleClick}>
+    <i className="fas fa-arrow-up" />
+  </div>
+)
 
 ScrollControl.propTypes = {
   handleClick: PropTypes.func.isRequired
-};
+}
 
-export default ScrollControl;
+export default ScrollControl
