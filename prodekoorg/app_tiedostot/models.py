@@ -2,6 +2,7 @@ import os
 
 from django.conf import settings
 from django.db import models
+from django.templatetags.static import static
 from django.utils.translation import ugettext_lazy as _
 
 
@@ -19,9 +20,9 @@ class Tiedosto(models.Model):
 
     def get_thumbnail_image(self):
         if self.thumbnail_image:
-            return "{}".format(self.thumbnail_image.url)
+            return f"{self.thumbnail_image.url}"
         else:
-            return "{}{}".format(settings.STATIC_ROOT, "/misc/default_thumbnail.jpg")
+            return static("/misc/default_thumbnail.jpg")
 
     class Meta:
         # Correct spelling in Django admin

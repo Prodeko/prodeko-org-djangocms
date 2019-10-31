@@ -64,7 +64,7 @@ def main_groups_api(request, email):
         messages.add_message(
             request,
             messages.SUCCESS,
-            _("Successfully added {} to {} mailing list.".format(email, MAILING_LIST)),
+            _(f"Successfully added {email} to {MAILING_LIST} mailing list."),
         )
 
     except HttpError as e:
@@ -73,9 +73,7 @@ def main_groups_api(request, email):
                 request,
                 messages.ERROR,
                 _(
-                    "Error adding a member to {}: {} is already a member.".format(
-                        MAILING_LIST, email
-                    )
+                    f"Error adding a member to {MAILING_LIST}: {email} is already a member."
                 ),
             )
         elif e.resp.status == 403:
@@ -83,9 +81,7 @@ def main_groups_api(request, email):
                 request,
                 messages.ERROR,
                 _(
-                    "Invalid credentials. Check documentation and validate setup in G Suite and GCP API console.".format(
-                        e
-                    )
+                    "Invalid credentials. Check documentation and validate setup in G Suite and GCP API console."
                 ),
             )
             raise
