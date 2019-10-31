@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-29 15:19+0200\n"
+"POT-Creation-Date: 2019-10-31 18:02+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Timo Riski <timo@prodeko.org>\n"
 "Language: \n"
@@ -226,43 +226,43 @@ msgstr "Sähköposti ja salasana eivät täsmänneet. Yritä uudestaan"
 msgid "Lifelonglearning page"
 msgstr "Lifelonglearning sivu"
 
-#: lifelonglearning/models.py:24
+#: lifelonglearning/models.py:25
 msgid "name"
 msgstr "nimi"
 
-#: lifelonglearning/models.py:27
+#: lifelonglearning/models.py:28
 msgid "coaches"
 msgstr "valmentajat"
 
-#: lifelonglearning/models.py:29 prodekoorg/app_infoscreen/models.py:35
+#: lifelonglearning/models.py:30 prodekoorg/app_infoscreen/models.py:35
 msgid "description"
 msgstr "kuvaus"
 
-#: lifelonglearning/models.py:30
+#: lifelonglearning/models.py:31
 msgid "registration url"
 msgstr "ilmoittautumislinkki"
 
-#: lifelonglearning/models.py:32 prodekoorg/app_infoscreen/models.py:37
+#: lifelonglearning/models.py:33 prodekoorg/app_infoscreen/models.py:37
 msgid "banner image"
 msgstr "kuva"
 
-#: lifelonglearning/models.py:37
+#: lifelonglearning/models.py:38
 msgid "group size"
 msgstr "kurssin koko"
 
-#: lifelonglearning/models.py:39
+#: lifelonglearning/models.py:40
 msgid "timing"
 msgstr "ajankohta"
 
-#: lifelonglearning/models.py:41
+#: lifelonglearning/models.py:42
 msgid "open"
 msgstr "auki"
 
-#: lifelonglearning/models.py:53
+#: lifelonglearning/models.py:54
 msgid "course"
 msgstr "kurssi"
 
-#: lifelonglearning/models.py:54
+#: lifelonglearning/models.py:55
 msgid "Courses"
 msgstr "Kurssit"
 
@@ -439,7 +439,7 @@ msgstr ""
 "selvittämiseksi."
 
 #: prodekoorg/app_apply_for_membership/templates/form_apply.html:3
-#: prodekoorg/app_kulukorvaus/models.py:133
+#: prodekoorg/app_kulukorvaus/models.py:131
 #: prodekoorg/app_kulukorvaus/templates/form_kulukorvaus_kulu.html:4
 msgid "Receipt"
 msgstr "Kuitti"
@@ -540,7 +540,7 @@ msgstr "ESTIEM (ulkoministeri@prodeko.org)"
 msgid "Tutoring (isovastaava@prodeko.org)"
 msgstr "ISO-toiminta (isovastaava@prodeko.org)"
 
-#: prodekoorg/app_contact/models.py:90 prodekoorg/app_kulukorvaus/models.py:115
+#: prodekoorg/app_contact/models.py:90 prodekoorg/app_kulukorvaus/models.py:113
 #: prodekoorg/app_vaalit/models.py:76 prodekoorg/app_vaalit/models.py:100
 msgid "Created at"
 msgstr "Luotu"
@@ -640,7 +640,7 @@ msgid "Processed"
 msgstr "Valmis"
 
 #: prodekoorg/app_kulukorvaus/apps.py:7
-#: prodekoorg/app_kulukorvaus/models.py:143
+#: prodekoorg/app_kulukorvaus/models.py:141
 #: prodekoorg/templates/layout-components/footer.html:8
 msgid "Reimbursements"
 msgstr "Kulukorvaukset"
@@ -680,31 +680,31 @@ msgid "Total reimbursement (in €)"
 msgstr "Korvaussumma yhteensä (euroissa)"
 
 #: prodekoorg/app_kulukorvaus/models.py:71
-#: prodekoorg/app_kulukorvaus/models.py:129
+#: prodekoorg/app_kulukorvaus/models.py:127
 msgid "Additional information"
 msgstr "Lisätietoja, kulujen perusteita"
 
-#: prodekoorg/app_kulukorvaus/models.py:98
+#: prodekoorg/app_kulukorvaus/models.py:96
 msgid "reimbursement basic information"
 msgstr "kulukorvaus perustiedot"
 
-#: prodekoorg/app_kulukorvaus/models.py:99
+#: prodekoorg/app_kulukorvaus/models.py:97
 msgid "Reimbursement basic information"
 msgstr "Kulukorvaus perustiedot"
 
-#: prodekoorg/app_kulukorvaus/models.py:121
+#: prodekoorg/app_kulukorvaus/models.py:119
 msgid "Expense explanation"
 msgstr "Kulun selite"
 
-#: prodekoorg/app_kulukorvaus/models.py:123
+#: prodekoorg/app_kulukorvaus/models.py:121
 msgid "Event / expense target"
 msgstr "Tapahtuma / kulun kohde"
 
-#: prodekoorg/app_kulukorvaus/models.py:126
+#: prodekoorg/app_kulukorvaus/models.py:124
 msgid "Sum (in €)"
 msgstr "Summa (euroissa)"
 
-#: prodekoorg/app_kulukorvaus/models.py:142
+#: prodekoorg/app_kulukorvaus/models.py:140
 msgid "reimbursement"
 msgstr "kulukorvaus"
 
@@ -797,7 +797,7 @@ msgstr "Lataa pöytäkirjat Drivestä"
 msgid "How does this work"
 msgstr "Miten lataaminen toimii"
 
-#: prodekoorg/app_tiedostot/apps.py:7 prodekoorg/app_tiedostot/models.py:28
+#: prodekoorg/app_tiedostot/apps.py:7 prodekoorg/app_tiedostot/models.py:29
 msgid "Files"
 msgstr "Tiedostot"
 
@@ -805,11 +805,11 @@ msgstr "Tiedostot"
 msgid "Files application"
 msgstr "Sovellus - Tiedostot"
 
-#: prodekoorg/app_tiedostot/models.py:54
+#: prodekoorg/app_tiedostot/models.py:55
 msgid "file version"
 msgstr "tiedostoversio"
 
-#: prodekoorg/app_tiedostot/models.py:55
+#: prodekoorg/app_tiedostot/models.py:56
 msgid "File versions"
 msgstr "Tiedostoversiot"
 
@@ -1025,7 +1025,7 @@ msgid "since"
 msgstr "sitten"
 
 #: prodekoorg/app_vaalit/templates/vaalit_content.html:4
-#: prodekoorg/app_vaalit/templates/vaalit_content.html:39
+#: prodekoorg/app_vaalit/templates/vaalit_content.html:43
 msgid "No applicants"
 msgstr "Ei hakijoita"
 
@@ -1229,7 +1229,7 @@ msgid "Category"
 msgstr "Kategoria"
 
 #: tiedotteet/backend/forms.py:56 tiedotteet/backend/forms.py:102
-#: tiedotteet/backend/models.py:42
+#: tiedotteet/backend/models.py:41
 #: tiedotteet/backend/templates/control/nav.html:24
 #: tiedotteet/backend/templates/control/tags.html:10
 msgid "Tags"
@@ -1311,33 +1311,33 @@ msgstr "Otsikko"
 msgid "Recipients (separated by comma)"
 msgstr "Vastaanottajat (pilkulla eroteltuna)"
 
-#: tiedotteet/backend/models.py:20
+#: tiedotteet/backend/models.py:19
 msgid "mail configuration"
 msgstr "mailikonfiguraatio"
 
-#: tiedotteet/backend/models.py:21
+#: tiedotteet/backend/models.py:20
 msgid "Mail configuration"
 msgstr "Mailikonfiguraatiot"
 
-#: tiedotteet/backend/models.py:41
+#: tiedotteet/backend/models.py:40
 msgid "tag"
 msgstr "tagi"
 
-#: tiedotteet/backend/models.py:72
+#: tiedotteet/backend/models.py:71
 msgid "category"
 msgstr "kategoria"
 
-#: tiedotteet/backend/models.py:73
+#: tiedotteet/backend/models.py:72
 #: tiedotteet/backend/templates/control/categories.html:10
 #: tiedotteet/backend/templates/control/nav.html:18
 msgid "Categories"
 msgstr "Kategoriat"
 
-#: tiedotteet/backend/models.py:160
+#: tiedotteet/backend/models.py:159
 msgid "bulletin"
 msgstr "tiedote"
 
-#: tiedotteet/backend/models.py:161
+#: tiedotteet/backend/models.py:160
 #: tiedotteet/backend/templates/control/messages.html:11
 msgid "Bulletins"
 msgstr "Tiedotteet"

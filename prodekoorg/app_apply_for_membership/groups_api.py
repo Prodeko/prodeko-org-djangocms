@@ -64,7 +64,7 @@ def main_groups_api(request, email):
         messages.add_message(
             request,
             messages.SUCCESS,
-            _(f"Successfully added {email} to {MAILING_LIST} mailing list."),
+            _("Successfully added {} to {} mailing list.").format(email, MAILING_LIST),
         )
 
     except HttpError as e:
@@ -73,7 +73,9 @@ def main_groups_api(request, email):
                 request,
                 messages.ERROR,
                 _(
-                    f"Error adding a member to {MAILING_LIST}: {email} is already a member."
+                    "Error adding a member to {}: {} is already a member.".format(
+                        MAILING_LIST, email
+                    )
                 ),
             )
         elif e.resp.status == 403:
