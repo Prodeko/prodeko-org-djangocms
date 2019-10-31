@@ -5,7 +5,7 @@
   "author": "Veikko Kovanen <veikko.kovanen@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server --open --hot --mode development",
+    "start": "webpack-dev-server --open --hot --mode development --env.development",
     "build:dev": "webpack --env.development",
     "build:prod": "webpack --env.production",
     "test": "find ./src -name '*.test.js' | xargs mocha --require ignore-styles ./test/configure.js -R spec",
@@ -26,8 +26,7 @@
     "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.6.3",
-    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/core": "^7.6.4",
     "@babel/preset-env": "^7.6.3",
     "@babel/preset-react": "^7.6.3",
     "babel-eslint": "10",
@@ -35,23 +34,23 @@
     "chai": "^4.2.0",
     "css-loader": "^3.2.0",
     "enzyme": "^3.10.0",
-    "enzyme-adapter-react-16": "^1.14.0",
-    "eslint": "^6.5.1",
+    "enzyme-adapter-react-16": "^1.15.1",
+    "eslint": "^6.6.0",
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-react": "^7.16.0",
     "file-loader": "^4.2.0",
     "html-webpack-plugin": "^3.2.0",
-    "mocha": "^6.2.1",
-    "node-sass": "^4.12.0",
+    "mocha": "^6.2.2",
+    "node-sass": "^4.13.0",
     "prettier": "^1.18.2",
-    "react": "^16.10.2",
-    "react-dom": "^16.10.2",
-    "react-test-renderer": "^16.10.2",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
+    "react-test-renderer": "^16.11.0",
     "redux-logger": "^3.0.6",
     "sass-loader": "^8.0.0",
     "style-loader": "^1.0.0",
-    "webpack": "^4.41.0",
+    "webpack": "^4.41.2",
     "webpack-cli": "^3.3.9",
-    "webpack-dev-server": "^3.8.2"
+    "webpack-dev-server": "^3.9.0"
   }
 }

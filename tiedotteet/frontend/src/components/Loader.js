@@ -1,15 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react'
 
-class Loader extends Component {
-  render() {
-    return (
-      <div className="loader">
-        <img src="/static/tiedotteet/assets/prodeko.png" alt="Loading..." />
-      </div>
-    );
-  }
-}
+const Loader = () => (
+  <div className="loader">
+    <img src="/static/tiedotteet/assets/prodeko.png" alt="Loading..." />
+  </div>
+)
 
-Loader.propTypes = {};
+Loader.propTypes = {}
 
-export default Loader;
+export default Loader
