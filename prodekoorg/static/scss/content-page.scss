@@ -1,9 +1,9 @@
-@import 'variables.scss';
+@import "variables.scss";
 
 .content-page-jumbotron {
   .jumbotron {
     height: 25vh;
-    background-image: url('/static/images/backgrounds/content-page-bg-blue.jpg');
+    background-image: url("/static/images/backgrounds/bg-blue.jpg");
     background-repeat: no-repeat;
     background-size: cover;
 

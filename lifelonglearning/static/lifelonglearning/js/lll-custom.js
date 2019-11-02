@@ -1,16 +1,12 @@
 $(document).ready(function() {
-  $('h2').fitText(1.2, { maxFontSize: '45px' });
-  $('h3').fitText(1, { maxFontSize: '36px' });
-  $('h1').fitText(0.9, { maxFontSize: '60px' });
-
   $('#content').on('click', function() {
     if ($(window).width() < 800 && $('#content').hasClass('blur')) {
-      $('.navbar-toggle').trigger('click');
+      $('.navbar-toggler').trigger('click');
     }
   });
 
   // Creates blur effect in the background when the menu icon is clicked on mobile
-  $('.navbar-toggle').on('click', function() {
+  $('.navbar-toggler').on('click', function() {
     if ($('#content').hasClass('blur')) {
       $('#content').removeClass('blur');
     } else {
@@ -19,28 +15,29 @@ $(document).ready(function() {
   });
 
   // Setup by device and scroll: if start position is not on top, create background for navbar
-  if ($(window).width() < 800) $('#myNavbar').css('opacity', '1');
+  if ($(window).width() < 800) $('#lll-navbar').css('opacity', '1');
   if ($(window).scrollTop() > 50) {
     $('#navbar').css('background-position', 'left 0px');
+    $('#lll-navbar').css('opacity', '0.8');
     $('#scrollToTop').css('opacity', '1');
-    $('#myNavbar').css('opacity', '1');
   }
 
   // Create navbar background when scrolled
   $(window).scroll(function() {
     if ($(this).scrollTop() > 50 || $(document).scrollTop() > 50) {
       $('#navbar').css('background-position', 'left 0px');
-      $('#myNavbar').css('opacity', '1');
+      $('#lll-navbar').css('opacity', '0.8');
       $('#scrollToTop').css('opacity', '1');
     } else {
       $('#navbar').css('background-position', 'left -300px');
-      if ($(window).width() > 800) $('#myNavbar').css('opacity', '0');
+      if ($(window).width() > 800) $('#lll-navbar').css('opacity', '0');
+      if ($(window).width() > 800) $('#lll-navbar').css('display', 'none');
       $('#scrollToTop').css('opacity', '0');
     }
   });
 
   // When header is clicked, scroll to top
-  $('#scrollToTop, #logo').on('click', function(event) {
+  $('#scrollToTop').on('click', function(event) {
     event.preventDefault();
     $('html, body').animate(
       {
@@ -51,10 +48,10 @@ $(document).ready(function() {
     );
   });
 
-  // Select all links with hashes
+  // Select all anchor links
   $(document).on('click', "a[href*='#']", function(event) {
     if ($(window).width() < 800 && $('#content').hasClass('blur')) {
-      $('.navbar-toggle').trigger('click');
+      $('.navbar-toggler').trigger('click');
     }
     if (
       location.pathname.replace(/^\//, '') ==
@@ -69,7 +66,7 @@ $(document).ready(function() {
           {
             scrollTop: target.offset().top - 100
           },
-          1000,
+          600,
           function() {}
         );
       }

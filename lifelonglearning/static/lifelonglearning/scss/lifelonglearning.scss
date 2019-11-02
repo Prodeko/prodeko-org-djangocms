@@ -1,0 +1,101 @@
+@import "../../../prodekoorg/static/scss/variables.scss";
+@import "../../../prodekoorg/static/scss/breakpoints-mixin.scss";
+@import "../../../prodekoorg/static/scss/error-pages";
+@import "lll-typography.scss";
+@import "lll-navbar.scss";
+@import "lll-banner.scss";
+@import "lll-coursecard.scss";
+@import "lll-coursepage.scss";
+@import "lll-footer.scss";
+
+html,
+body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  color: #666;
+  font-size: 1em;
+  font-family: "Raleway", sans-serif;
+  border: none;
+}
+
+#scrollToTop {
+  position: fixed;
+  right: 30px;
+  bottom: 20px;
+  z-index: 999;
+  color: lightgrey;
+  font-size: 3em;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+
+.container,
+.white-block {
+  background-color: white;
+}
+
+.section {
+  width: 100%;
+
+  .section-text {
+    max-width: 800px;
+    margin: auto auto;
+    margin-top: auto;
+  }
+
+  &:first-of-type {
+    margin-top: 30px;
+  }
+
+  .principles {
+    font-size: 6em;
+  }
+}
+
+.bottom-gradient {
+  position: absolute;
+  bottom: 0;
+  z-index: 5;
+  width: 100%;
+  height: 200px;
+  max-height: 70%;
+  background-image: linear-gradient(to top, rgba(0, 40, 81, 1), rgba(0, 40, 81, 0));
+}
+
+.registration {
+  z-index: 100;
+  padding: 15px 45px;
+}
+
+.blur {
+  filter: blur(7px);
+}
+
+.btn {
+  max-width: 800px;
+  margin: 50px auto 0;
+  font-weight: 600;
+  font-size: 1em;
+  border-radius: 0;
+}
+
+@include phone {
+  html,
+  body {
+    font-size: 0.95em;
+  }
+
+  #logo {
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .nav > li {
+    display: block;
+    float: none;
+  }
+}

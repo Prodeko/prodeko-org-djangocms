@@ -48,7 +48,7 @@ class Course(models.Model):
         if self.banner:
             return self.banner.url
         else:
-            return static("images/lifelonglearning/default_thumbnail.jpg")
+            return static("images/backgrounds/bg-blue.jpg")
 
     class Meta:
         verbose_name = _("course")

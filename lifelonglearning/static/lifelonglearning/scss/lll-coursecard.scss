@@ -1,0 +1,50 @@
+.course {
+  position: relative;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+  .course-banner {
+    position: relative;
+    width: 100%;
+    height: 150px;
+    background-color: blue;
+    background-position: center center;
+    background-size: cover;
+  }
+
+  .course-text {
+    padding: 20px;
+
+    .course-ingress {
+      position: relative;
+      min-height: 160px;
+      margin-bottom: 20px;
+
+      .read-more {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        z-index: 5;
+        width: 100%;
+        height: 200px;
+        max-height: 70%;
+        color: grey;
+        text-align: center;
+        background-image: linear-gradient(to top, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+      }
+
+      .read-more-text {
+        position: absolute;
+        bottom: -30px;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        transition: all 0.3s;
+      }
+    }
+  }
+
+  .course:hover .read-more-text {
+    color: black;
+  }
+}

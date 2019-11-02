@@ -1,134 +1,106 @@
 {% extends "base-LLL.html" %}
-{% load cms_tags menu_tags staticfiles i18n %}
+{% load cms_tags menu_tags i18n %}
 
 {% block body %}
-    <nav id="navbar">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#lll-navbar">
-                    <i class="fas fa-bars white"></i>
-                </button>
-                <a class="navbar-brand"><img id="logo" src="{% static 'images/lifelonglearning/headerlogo.png' %}" alt="Prodeko logo"></a>
-            </div>
-            <div class="collapse navbar-collapse" id="lll-navbar">
-                <ul class="nav navbar-nav">
-                    <li><a href="#second">Tulevat kurssit</a></li>
-                    <li><a href="#third">Menneet kurssit</a></li>
-                    <li><a href="#fourth">Ideologia</a></li>
-                    <li><a href="#fifth">Päivitä osaamisesi</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+
+    {% include 'lll-nav.html'%}
 
     <div id="scrollToTop"><i class="fas fa-arrow-circle-up"></i></div>
 
     <div id="content">
-        <div class="banner">
-            <div class="banner-background">
-                <video autoplay muted loop id="banner-video">
-                    <source src="{% static 'videos/video_banner_720p.webm' %}" type="video/webm">
-                </video>
-                <div class="bottom-gradient"></div>
-            </div>
-            <div class="banner-content">
-                <div class="banner-text">
-                    <h1 class="white ok-spacing">Lifelong Learning</h1>
-                    <h4 class="lightgrey no-top">by Prodeko</h4>
-                    <h5 class="white">
-                        Maailma muuttuu koko ajan kiihtyvällä tahdilla. Vaikka tällä hetkellä muutos tuntuu äärimmäisen nopealta, todellisuudessa
-                        <b>se ei ikinä enää tule olemaan niin hidasta, kuin se on nyt</b>. Tehostamalla omaa oppimistamme mahdollistamme sen, että voimme
-                        tulevaisuudessakin olla viemässä Suomea ja suomalaisia yrityksiä eteenpäin kehityksen kärjessä.
-                    </h5>
-                    <br>
-                    <a class="btn btn-success registration center" href="#courses">Ilmoittaudu sessioihin</a>
-                </div>
-            </div>
-        </div>
+
+        
+        {% include 'lll-banner.html'%}
 
         <div class="white-block">
             <div class="container">
-                <div id="first" class="section row">
-                    <h2>Liity oppimaan</h2>
-                    <p>
-                        Oppimista tulee jatkaa myös tutkinnon valmistuttua läpi koko elämän. Tämä ei välttämättä tarkoita palaamista koulunpenkille, vaan
-                        uudenlaisen asenteen omaksumista. Siirrymme koulutuksesta oppimiseen ja työelämän ja opintojen välillä valitsemisesta näiden yhdistämiseen.
+                <div id="id-liity-oppimaan" class="section">
+                    <div class="section-text">
+                        <h2 class="center">Liity oppimaan</h2>
+                        <p>
+                            Oppimista tulee jatkaa myös tutkinnon valmistuttua läpi koko elämän. Tämä ei välttämättä tarkoita palaamista koulunpenkille, vaan
+                            uudenlaisen asenteen omaksumista. Siirrymme koulutuksesta oppimiseen ja työelämän ja opintojen välillä valitsemisesta näiden yhdistämiseen.
+                            <br>
+                            Prodeko-yhteisönä meillä on mahdollisuus kehittää omaa osaamistamme yhdessä hyödyntäen uniikkia yhteisöämme. Koska Prodekolaiset ovat monissa
+                            yrityksissä erittäin tärkeissä asemissa, on useilla meistä myös velvollisuus ylläpitää ja kehittää omaa osaamistaan. Lifelong Learning -projekti
+                            käynnistettiin juuri tätä varten: mahdollistamaan prodekolaisten elinikäistä oppimista.
+                        </p>
                         <br>
-                        Prodeko-yhteisönä meillä on mahdollisuus kehittää omaa osaamistamme yhdessä hyödyntäen uniikkia yhteisöämme. Koska Prodekolaiset ovat monissa
-                        yrityksissä erittäin tärkeissä asemissa, on useilla meistä myös velvollisuus ylläpitää ja kehittää omaa osaamistaan. Lifelong Learning -projekti
-                        käynnistettiin juuri tätä varten: mahdollistamaan prodekolaisten elinikäistä oppimista.
-                    </p>
-                    <br>
+                    </div>
                 </div>
-                <div id="second" class="section row">
+                <div id="id-tulevat-kurssit" class="section">
                     <div id="courses">
                         <hr />
                         <h2 class="center">Tulevat kurssit</h2>
                         <br />
                         
-                        {% for course in openCourses %}
-                            <a href="{% url 'lifelonglearning:coursepage' course.id %}">
+                        <div class="row">
+                            {% for course in openCourses %}
                                 <div class="col-md-6">
-                                    <div class="course">
-                                        <div class="course-banner" style="background-image: url('{{ course.get_banner_image }}')">
-                                            <div class="bottom-gradient"></div>
-                                        </div>
-                                        <div class="course-text">
-                                            <h3>{{ course.name }}</h3>
-                                            {% if course.coaches %}<p class="addition clear">Valmentajat: <span class="black">{{ course.coaches }}</span></p>{% endif %}
-                                            {% if course.groupsize %}<p class="addition">Kurssikoko: <span class="black">{{ course.groupsize }}</span></p>{% endif %}
-                                            {% if course.timing %}<p class="addition">Ajankohta: <span class="black">{{ course.timing }}</span></p>{% endif %}
-                                            <hr>
-                                            <div class="course-ingress">
-                                                <p>{% autoescape off %}{{ course.description | truncatechars:400 | safe }}{% endautoescape %}</p>
-                                                <div class="read-more">
-                                                    <p class="read-more-text">Lue lisää...</p>
-                                                </div>
+                                    <a href="{% url 'lifelonglearning:coursepage' course.id %}">
+                                        <div class="course">
+                                            <div class="course-banner" style="background-image: url('{{ course.get_banner_image }}')">
+                                                <div class="bottom-gradient"></div>
                                             </div>
-                                            <a class="btn btn-success btn-block registration" href="{{ course.registration }}">Ilmoittaudu</a>
+                                            <div class="course-text">
+                                                <h3>{{ course.name }}</h3>
+                                                {% if course.coaches %}<p class="addition clear">Valmentajat: <span class="black">{{ course.coaches }}</span></p>{% endif %}
+                                                {% if course.groupsize %}<p class="addition">Kurssikoko: <span class="black">{{ course.groupsize }}</span></p>{% endif %}
+                                                {% if course.timing %}<p class="addition">Ajankohta: <span class="black">{{ course.timing }}</span></p>{% endif %}
+                                                <hr>
+                                                <div class="course-ingress">
+                                                    <p>{% autoescape off %}{{ course.description | truncatechars:400 | safe }}{% endautoescape %}</p>
+                                                    <div class="read-more">
+                                                        <p class="read-more-text">Lue lisää...</p>
+                                                    </div>
+                                                </div>
+                                                <a class="btn btn-success btn-block registration" href="{{ course.registration }}">Ilmoittaudu</a>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </a>
                                 </div>
-                            </a>
-                        {% endfor %}
+                            {% endfor %}
+                        </div>
                     </div>
                 </div>
-                <div id="third" class="section row">
+                <div id="id-menneet-kurssit" class="section">
                     <div id="courses">
                         {% if openCourses %}
                             <hr>
                             <h2 class="center">Menneet kurssit</h2>
                         {% endif %}
 
-                        {% for course in pastCourses %}
-                            <a href="{% url 'lifelonglearning:coursepage' course.id %}">
+                        <div class="row">
+                            {% for course in pastCourses %}
                                 <div class="col-md-6">
-                                    <div class="course">
-                                        <div class="course-banner" style="background-image: url('{{ course.get_banner_image }}')">
-                                            <div class="bottom-gradient"></div>
-                                        </div>
-                                        <div class="course-text">
-                                            <h3>{{ course.name }}</h3>
-                                            {% if course.coaches %}<p class="addition clear">Valmentajat: <span class="black">{{ course.coaches }}</span></p>{% endif %}
-                                            {% if course.groupsize %}<p class="addition">Kurssikoko: <span class="black">{{ course.groupsize }}</span></p>{% endif %}
-                                            {% if course.timing %}<p class="addition">Ajankohta: <span class="black">{{ course.timing }}</span></p>{% endif %}
-                                            <hr>
-                                            <div class="course-ingress">
-                                                <p>{% autoescape off %}{{ course.description | truncatechars:400 | safe }}{% endautoescape %}</p>
-                                                <div class="read-more">
-                                                    <p class="read-more-text">Lue lisää...</p>
+                                    <a href="{% url 'lifelonglearning:coursepage' course.id %}">
+                                        <div class="course">
+                                            <div class="course-banner" style="background-image: url('{{ course.get_banner_image }}')">
+                                                <div class="bottom-gradient"></div>
+                                            </div>
+                                            <div class="course-text">
+                                                <h3>{{ course.name }}</h3>
+                                                {% if course.coaches %}<p class="addition clear">Valmentajat: <span class="black">{{ course.coaches }}</span></p>{% endif %}
+                                                {% if course.groupsize %}<p class="addition">Kurssikoko: <span class="black">{{ course.groupsize }}</span></p>{% endif %}
+                                                {% if course.timing %}<p class="addition">Ajankohta: <span class="black">{{ course.timing }}</span></p>{% endif %}
+                                                <hr>
+                                                <div class="course-ingress">
+                                                    <p>{% autoescape off %}{{ course.description | truncatechars:400 | safe }}{% endautoescape %}</p>
+                                                    <div class="read-more">
+                                                        <p class="read-more-text">Lue lisää...</p>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </a>
                                 </div>
-                            </a>
-                        {% endfor %}
+                            {% endfor %}
+                        </div>
                     </div>
                 </div>
                 <hr>
-                <div id="fourth" class="section row">
-                    <h2 class="center">Ideologia</h2>
+                <div id="id-ideologia" class="section">
+                    <h2 class="center w-100 mb-4">Ideologia</h2>
                     <br>
                     <div class="row center">
                         <div class="col-md-3">
@@ -154,200 +126,192 @@
                     </div>
                 </div>
                 <hr>
-                <div id="fifth" class="section row">
-                    <h2>Päivitä osaamisesi</h2>
-                    <br />
-                    <p>
-                        Prodeko-yhteisön aivan ensimmäinen mahdollisuus
-                        päivittää tuotantotalouden perusosaaminen on 
-                        täällä. Inspiroidu elinikäisestä oppimisesta 
-                        ja ota tavoitteeksesi Prodeko-pistepassin 
-                        ensimmäisen version suorittaminen ennen seminaaria 2020!
-                    </p>
-                    <p>
-                        Perusosaamisen päivittäminen tapahtuu keräämällä 
-                        pisteitä, jotka on jaoteltu teeman mukaan neljään 
-                        eri kategoriaan. Suorita pisteitä vähintään kolmesta 
-                        eri kategoriasta ja kerää yhteensä 10 pistettä. 
-                        Kategorioihin pääset tutustumaan tarkemmin alta.
-                    </p>
-                    <p>
-                        Moniin pisteiden kirjauksiin liittyy reflektio opitusta. 
-                        Voit reflektoida juuri sinulle mieleisellä tavalla! 
-                        Suositeltava pituus on esimerkiksi yhden sivun 
-                        kirjoitus tai viiden minuutin äänite.
-                    </p>
-                    <p>
-                        Palauta reflektiosi sähköpostitse vapaavalintaisessa 
-                        muodossa osoitteeseen lifelonglearning@prodeko.org.
-                    </p>
-                    <p>
-                        Fyysisiä passeja on jaossa mm. Prodeko-yhteisön 
-                        tapahtumissa ja lifelong learning projektin 
-                        Prodeko-kursseilla. Voit myös halutessasi tulostaa pistepassin 
-                        <b><a href="https://drive.google.com/open?id=1Y7OLDIPKz3NSJErYRCqyTkHKvwO7x1ch" target="_blank">täältä</a></b>!
-                    </p>
-                    <br />
-                    <h3>1. Courses</h3>
-                    <br />
-                    <p>
-                        Ensimmäinen kategoria tarkoittaa kompakteja, 
-                        tietyn teeman ympärillä liikkuvia oppimiskokonaisuuksia. 
-                        Lifelong Learning -projektin alla tapahtuvista 
-                        Prodeko-kursseista saa <b>5 pistettä</b>. Näihin 
-                        lukeutuvat sekä syksyllä palaavat afterwork-vertaisoppimiskurssit 
-                        että keväällä julkaistava ensimmäinen Prodeko-podcastsarja. 
-                        Vastaavasti myös Prodeko-seminaariin osallistumisesta 
-                        on tarjolla <b>2 pistettä</b>.
-                    </p>
-                    <p>
-                        Saadaksesi pisteet, reflektoi kurssisuoritusta 
-                        lyhyesti yllä olevien yleisohjeiden mukaisesti. 
-                        Kirjaa sitten pisteet passiisi.
-                    </p>
-                    <p>
-                        Voit kerätä pisteitä myös muista kursseista. Arvioi 
-                        itse kurssia vastaava pistemäärä: 1 piste vastaa 
-                        puolikkaan päivän aktiivista osallistumista. 
-                        Maksimipistemäärä yhdestä kurssista on kuitenkin 5 
-                        pistettä. Muista reflektoida erityisesti näistä kursseista!
-                    </p>
-                    <br />
-                    <h3>2. Readings</h3>
-                    <br />
-                    <p>
-                        Lukemistoomme on koottu mielenkiintoisia, kehittäviä 
-                        ja ennen kaikkea tuotantotalouden ammattilaisille 
-                        relevantteja kirjoja ja artikkeleita. Kirjoista saa 
-                        <b>2 pistettä</b>, artikkeleista <b>yhden pisteen</b>. 
-                        Muistathan referoida lukemasi!
-                    </p>
-                    <p>
-                        Kirjoittaja – Kirjan nimi – Tyyppi (kirja tai artikkeli)
-                    </p>
-                    <p>
-                        Minä – lukemistoa henkilökohtaisen kehityksen tueksi
-                    </p>
-                    <ul>
-                        <li>Daniel Kahneman – Thinking, Fast and Slow</li>
-                        <li>Chip & Dan Heath – Decisive</li>
-                        <li>Adam Grant – Originals: How non-conformists change the world</li>
-                        <li>Peter F. Drucker – Managing Oneself</li>
-                        <li>Viktor Frankl – Man’s Search for Meaning</li>
-                        <li>Carol Dweck – Midset</li>
-                        <li>Clayton Christensen – How Will You Measure Your Life?</li>
-                    </ul>
-                    <p>
-                        Organisaatio – lukemistoa organisaatioiden toiminnasta ja kehityksestä
-                    </p>
-                    <ul>
-                        <li>Timo Ritakallio & Timo Vuori – Elävä strategia</li>
-                        <li>James March & Herbert Simon – Organizations</li>
-                        <li>Risto Siilasmaa – Transforming Nokia</li>
-                        <li>John Carreyrou – Bad Blood</li>
-                    </ul>
-                    <p>
-                        Tiimi – lukemistoa vuorovaikutuksesta ja johtamisesta
-                    </p>
-                    <ul>
-                        <li>The Arbinger Institute – Leadership and Self-Deception</li>
-                        <li>Ben Horowitz – The Hard Thing About Hard Things</li>
-                    </ul>
-                    <p>
-                        Maailma – lukemistoa maailman ilmiöistä ja kehityksestä
-                    </p>
-                    <ul>
-                        <li>Cathy O’Neil – Weapons of Math Destruction</li>
-                        <li>Max Tegmark – Life 3.0</li>
-                        <li>Yuval Noah Harari – Homo Deus</li>
-                        <li>Yuval Noah Harari – 21 Lessons for the 21st Century</li>
-                    </ul>
-                    <br />
-                    <p>
-                        Tiedätkö kirjan tai artikkelin, joka jokaisen tutalaisen 
-                        kannattaisi mielestäsi lukea? Ilmianna se meille perusteluiden 
-                        kanssa sähköpostilla osoitteeseen lifelonglearnining@prodeko.org!
-                    </p>
-                    <br />
-                    <h3>3. Reflection</h3>
-                    <br>
-                    <p>
-                        Henkilökohtaisessa kehityksessä oman kehityksen 
-                        ja toiminnan reflektointi on keskeisessä osassa.
-                        Esimerkiksi osallistumalla uraohjaukseen tai 
-                        mentorointiin tai huolehtimalla omasta
-                        henkisestä hyvinvoinnista psykologin tai 
-                        elämäntapavalmentajan kanssa saat 
-                        <b>yhden pisteen</b>.
-                    </p>
-                    <p>
-                        Behavioral change – muutos käyttäytymisessä. 
-                        Haluatko kehittyä tietyssä elämäsi osa-alueessa 
-                        tai muuttaa jotain tapaasi? Ota kuukauden 
-                        projektiksi keskittyä ja kehittyä valitsemassasi 
-                        asiassa. Kirjoita viikoittainen päiväkirja 
-                        edistyksestäsi ja kerää <b>3 pistettä</b>.
-                    </p>
-                    <p>
-                        Mikäli edellä mainitut eivät ole mahdollisia, 
-                        voit myös reflektoida vapaasti valitsemaasi 
-                        itsellesi tärkeää aihetta vapaavalintaisessa 
-                        muodossa <b>yhden pisteen</b> edestä. 
-                        Suositeltu pituus tällöin on esimerkiksi 
-                        kolme kirjoitettua sivua tai 15 minuutin äänite.
-                    </p>
-                    <p>
-                        Muista jälleen referoida lyhyesti oppimasi 
-                        tai palauttaa päiväkirjasi tai reflektiosi!
-                    </p>
-                    <br />
-                    <h3>4. Give Back</h3>
-                    <br />
-                    <p>
-                        Kuten Prodekon arvoihin kuuluu, haluamme myös 
-                        kontribuoida ympäröivissä yhteisöissämme ja 
-                        yhteiskunnassamme. Give Back-osioon voit sisällyttää 
-                        vapaasti mitä tahansa yhteistä ja muiden hyvää 
-                        edistävää toimintaasi! Esimerkiksi seuraavat 
-                        vaihtoehdot ovat loistavia:
-                    </p>
-                    <br />
-                    <b>1 piste:</b>
-                    <ul>
-                        <li>vierailijaluennointi</li>
-                        <li>ekskursion järjestäminen</li>
-                        <li>Prodeko-kurssin session isännöinti</li>
-                        <li>lukuvinkin lähettäminen lifelong learning -tiimille</li>
-                    </ul>
-                    <br />
-                    <b>2 pistettä:</b>
-                    <ul>
-                        <li>opiskelijoiden harjoitustyön ohjaaminen</li>
-                        <li>toisen mentorointi</li>
-                        <li>elinikäisen oppimisen ilosanoman levittäminen</li>
-                        <li>hyväntekeväisyystyöhön osallistuminen</li>
-                    </ul>
-                    <br />
-                    <b>3 pistettä:</b>
-                    <ul>
-                        <li>diplomityön ohjaaminen</li>
-                        <li>hyväntekeväisyystyön vetäminen</li>
-                        <li>Prodekon lifelong learning -projektiin kontribuoiminen</li>
-                    </ul>
-                </div>
-                <footer>
-                    <div class="social center white">
-                        <h3 class="center ok-spacing">
-                            <a href="https://www.facebook.com/prodeko/"><i class="fab fa-facebook"></i></a>
-                            <a href="https://www.instagram.com/prodeko/"><i class="fab fa-instagram"></i></a>
-                            <a href="https://www.linkedin.com/company/prodeko-guild-of-industrial-engineering-and-management/"><i class="fab fa-linkedin"></i></a>
-                        </h3>
-                        <hr>
-                        <a href="https://www.prodeko.org"><p>Tuotantotalouden Kilta Prodeko</p></a>
-                        <a href="https://alumni.prodeko.org"><p>Prodekon Alumni</p></a>
-                        <a href="http://tuta.aalto.fi"><p>Aalto-yliopiston tuotantotalouden laitos</p></a>
+                <div id="id-osaaminen" class="section">
+                    <div class="section-text">
+                        <h2>Päivitä osaamisesi</h2>
+                        <br />
+                        <p>
+                            Prodeko-yhteisön aivan ensimmäinen mahdollisuus
+                            päivittää tuotantotalouden perusosaaminen on 
+                            täällä. Inspiroidu elinikäisestä oppimisesta 
+                            ja ota tavoitteeksesi Prodeko-pistepassin 
+                            ensimmäisen version suorittaminen ennen seminaaria 2020!
+                        </p>
+                        <p>
+                            Perusosaamisen päivittäminen tapahtuu keräämällä 
+                            pisteitä, jotka on jaoteltu teeman mukaan neljään 
+                            eri kategoriaan. Suorita pisteitä vähintään kolmesta 
+                            eri kategoriasta ja kerää yhteensä 10 pistettä. 
+                            Kategorioihin pääset tutustumaan tarkemmin alta.
+                        </p>
+                        <p>
+                            Moniin pisteiden kirjauksiin liittyy reflektio opitusta. 
+                            Voit reflektoida juuri sinulle mieleisellä tavalla! 
+                            Suositeltava pituus on esimerkiksi yhden sivun 
+                            kirjoitus tai viiden minuutin äänite.
+                        </p>
+                        <p>
+                            Palauta reflektiosi sähköpostitse vapaavalintaisessa 
+                            muodossa osoitteeseen lifelonglearning@prodeko.org.
+                        </p>
+                        <p>
+                            Fyysisiä passeja on jaossa mm. Prodeko-yhteisön 
+                            tapahtumissa ja lifelong learning projektin 
+                            Prodeko-kursseilla. Voit myös halutessasi tulostaa pistepassin 
+                            <b><a href="https://drive.google.com/open?id=1Y7OLDIPKz3NSJErYRCqyTkHKvwO7x1ch" target="_blank">täältä</a></b>!
+                        </p>
+                        <br />
+                        <h3>1. Courses</h3>
+                        <br />
+                        <p>
+                            Ensimmäinen kategoria tarkoittaa kompakteja, 
+                            tietyn teeman ympärillä liikkuvia oppimiskokonaisuuksia. 
+                            Lifelong Learning -projektin alla tapahtuvista 
+                            Prodeko-kursseista saa <b>5 pistettä</b>. Näihin 
+                            lukeutuvat sekä syksyllä palaavat afterwork-vertaisoppimiskurssit 
+                            että keväällä julkaistava ensimmäinen Prodeko-podcastsarja. 
+                            Vastaavasti myös Prodeko-seminaariin osallistumisesta 
+                            on tarjolla <b>2 pistettä</b>.
+                        </p>
+                        <p>
+                            Saadaksesi pisteet, reflektoi kurssisuoritusta 
+                            lyhyesti yllä olevien yleisohjeiden mukaisesti. 
+                            Kirjaa sitten pisteet passiisi.
+                        </p>
+                        <p>
+                            Voit kerätä pisteitä myös muista kursseista. Arvioi 
+                            itse kurssia vastaava pistemäärä: 1 piste vastaa 
+                            puolikkaan päivän aktiivista osallistumista. 
+                            Maksimipistemäärä yhdestä kurssista on kuitenkin 5 
+                            pistettä. Muista reflektoida erityisesti näistä kursseista!
+                        </p>
+                        <br />
+                        <h3>2. Readings</h3>
+                        <br />
+                        <p>
+                            Lukemistoomme on koottu mielenkiintoisia, kehittäviä 
+                            ja ennen kaikkea tuotantotalouden ammattilaisille 
+                            relevantteja kirjoja ja artikkeleita. Kirjoista saa 
+                            <b>2 pistettä</b>, artikkeleista <b>yhden pisteen</b>. 
+                            Muistathan referoida lukemasi!
+                        </p>
+                        <p>
+                            Kirjoittaja – Kirjan nimi – Tyyppi (kirja tai artikkeli)
+                        </p>
+                        <p>
+                            Minä – lukemistoa henkilökohtaisen kehityksen tueksi
+                        </p>
+                        <ul>
+                            <li>Daniel Kahneman – Thinking, Fast and Slow</li>
+                            <li>Chip & Dan Heath – Decisive</li>
+                            <li>Adam Grant – Originals: How non-conformists change the world</li>
+                            <li>Peter F. Drucker – Managing Oneself</li>
+                            <li>Viktor Frankl – Man’s Search for Meaning</li>
+                            <li>Carol Dweck – Midset</li>
+                            <li>Clayton Christensen – How Will You Measure Your Life?</li>
+                        </ul>
+                        <p>
+                            Organisaatio – lukemistoa organisaatioiden toiminnasta ja kehityksestä
+                        </p>
+                        <ul>
+                            <li>Timo Ritakallio & Timo Vuori – Elävä strategia</li>
+                            <li>James March & Herbert Simon – Organizations</li>
+                            <li>Risto Siilasmaa – Transforming Nokia</li>
+                            <li>John Carreyrou – Bad Blood</li>
+                        </ul>
+                        <p>
+                            Tiimi – lukemistoa vuorovaikutuksesta ja johtamisesta
+                        </p>
+                        <ul>
+                            <li>The Arbinger Institute – Leadership and Self-Deception</li>
+                            <li>Ben Horowitz – The Hard Thing About Hard Things</li>
+                        </ul>
+                        <p>
+                            Maailma – lukemistoa maailman ilmiöistä ja kehityksestä
+                        </p>
+                        <ul>
+                            <li>Cathy O’Neil – Weapons of Math Destruction</li>
+                            <li>Max Tegmark – Life 3.0</li>
+                            <li>Yuval Noah Harari – Homo Deus</li>
+                            <li>Yuval Noah Harari – 21 Lessons for the 21st Century</li>
+                        </ul>
+                        <br />
+                        <p>
+                            Tiedätkö kirjan tai artikkelin, joka jokaisen tutalaisen 
+                            kannattaisi mielestäsi lukea? Ilmianna se meille perusteluiden 
+                            kanssa sähköpostilla osoitteeseen lifelonglearnining@prodeko.org!
+                        </p>
+                        <br />
+                        <h3>3. Reflection</h3>
+                        <br>
+                        <p>
+                            Henkilökohtaisessa kehityksessä oman kehityksen 
+                            ja toiminnan reflektointi on keskeisessä osassa.
+                            Esimerkiksi osallistumalla uraohjaukseen tai 
+                            mentorointiin tai huolehtimalla omasta
+                            henkisestä hyvinvoinnista psykologin tai 
+                            elämäntapavalmentajan kanssa saat 
+                            <b>yhden pisteen</b>.
+                        </p>
+                        <p>
+                            Behavioral change – muutos käyttäytymisessä. 
+                            Haluatko kehittyä tietyssä elämäsi osa-alueessa 
+                            tai muuttaa jotain tapaasi? Ota kuukauden 
+                            projektiksi keskittyä ja kehittyä valitsemassasi 
+                            asiassa. Kirjoita viikoittainen päiväkirja 
+                            edistyksestäsi ja kerää <b>3 pistettä</b>.
+                        </p>
+                        <p>
+                            Mikäli edellä mainitut eivät ole mahdollisia, 
+                            voit myös reflektoida vapaasti valitsemaasi 
+                            itsellesi tärkeää aihetta vapaavalintaisessa 
+                            muodossa <b>yhden pisteen</b> edestä. 
+                            Suositeltu pituus tällöin on esimerkiksi 
+                            kolme kirjoitettua sivua tai 15 minuutin äänite.
+                        </p>
+                        <p>
+                            Muista jälleen referoida lyhyesti oppimasi 
+                            tai palauttaa päiväkirjasi tai reflektiosi!
+                        </p>
+                        <br />
+                        <h3>4. Give Back</h3>
+                        <br />
+                        <p>
+                            Kuten Prodekon arvoihin kuuluu, haluamme myös 
+                            kontribuoida ympäröivissä yhteisöissämme ja 
+                            yhteiskunnassamme. Give Back-osioon voit sisällyttää 
+                            vapaasti mitä tahansa yhteistä ja muiden hyvää 
+                            edistävää toimintaasi! Esimerkiksi seuraavat 
+                            vaihtoehdot ovat loistavia:
+                        </p>
+                        <br />
+                        <b>1 piste:</b>
+                        <ul>
+                            <li>vierailijaluennointi</li>
+                            <li>ekskursion järjestäminen</li>
+                            <li>Prodeko-kurssin session isännöinti</li>
+                            <li>lukuvinkin lähettäminen lifelong learning -tiimille</li>
+                        </ul>
+                        <br />
+                        <b>2 pistettä:</b>
+                        <ul>
+                            <li>opiskelijoiden harjoitustyön ohjaaminen</li>
+                            <li>toisen mentorointi</li>
+                            <li>elinikäisen oppimisen ilosanoman levittäminen</li>
+                            <li>hyväntekeväisyystyöhön osallistuminen</li>
+                        </ul>
+                        <br />
+                        <b>3 pistettä:</b>
+                        <ul>
+                            <li>diplomityön ohjaaminen</li>
+                            <li>hyväntekeväisyystyön vetäminen</li>
+                            <li>Prodekon lifelong learning -projektiin kontribuoiminen</li>
+                        </ul>
                     </div>
-                </footer>
+                </div>
+
+                {% include 'lll-footer.html'%}
+
             </div>
         </div>
     </div>

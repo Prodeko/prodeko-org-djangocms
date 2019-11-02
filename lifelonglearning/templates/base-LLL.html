@@ -28,8 +28,7 @@
 
 {% addtoblock "custom-css" %}
     {% include "libraries/raleway.html" %}
-    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
-    <link href="{% sass_src 'scss/lifelonglearning.scss' %}" rel="stylesheet" type="text/css" />
+    <link href="{% sass_src 'lifelonglearning/scss/lifelonglearning.scss' %}" rel="stylesheet" type="text/css" />
     <link rel="shortcut icon" href="{% static 'images/favicons/favicon-32x32.png' %}">
     {% include "libraries/fontawesome.html" %}
 {% endaddtoblock %}
@@ -37,7 +36,6 @@
 {% addtoblock "custom-js" %}
     {% include "libraries/jquery.html" %}
     {% include "libraries/bootstrap.html" %}
-    <script src="https://fastcdn.org/FitText/1.2/jquery.fittext.js"></script>
-    <script src="{% static 'js/custom-LLL.js' %}"></script>
+    <script src="{% static 'lifelonglearning/js/lll-custom.js' %}"></script>
     {% include "libraries/html5shiv.html" %}
 {% endaddtoblock %}

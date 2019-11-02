@@ -1,0 +1,31 @@
+.coursepage-card {
+  position: relative;
+  z-index: 10;
+  display: block;
+  max-width: 800px;
+  margin: -170px auto 50px;
+  padding: 20px 20px;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+  .course-specs {
+    padding: 5px 0 15px;
+  }
+
+  .course-description {
+    margin: 50px 0 20px;
+  }
+
+  .course-description a {
+    color: #3cf;
+  }
+}
+
+.coursepage-banner {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  background-color: blue;
+  background-position: center center;
+  background-size: cover;
+}
