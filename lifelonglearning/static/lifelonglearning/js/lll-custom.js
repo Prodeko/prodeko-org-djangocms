@@ -1,6 +1,9 @@
 $(document).ready(function() {
   $('#content').on('click', function() {
-    if ($(window).width() < 992) {
+    if (
+      $(window).width() < 992 &&
+      !$('.navbar-toggler').hasClass('collapsed')
+    ) {
       $('.navbar-toggler').trigger('click');
     }
   });

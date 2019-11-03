@@ -1,15 +1,17 @@
+$navbar-height: 49px;
+
 .banner {
-  margin-top: 40px;
+  margin-top: $navbar-height;
   margin-bottom: 0;
   text-align: center;
 
   .banner-background {
     position: relative;
-    height: calc(100vh - 40px);
+    height: calc(100vh - #{$navbar-height});
     overflow: hidden;
 
     @include phone {
-      height: calc(40vh - 40px);
+      height: calc(40vh - #{$navbar-height});
     }
 
     #banner-video {
@@ -17,6 +19,9 @@
       top: 50%;
       left: 50%;
       height: 100%;
+      background-image: url('/static/images/backgrounds/bg-white.jpg');
+      background-position: center center;
+      background-size: cover;
       transform: translate(-50%, -50%);
     }
 
