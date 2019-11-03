@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-31 18:02+0200\n"
+"POT-Creation-Date: 2019-11-03 17:32+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Timo Riski <timo@prodeko.org>\n"
 "Language: \n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: abisivut/cms_apps.py:11
+#: abisivut/cms_apps.py:11 prodekoorg/settings/base.py:293
 msgid "High school student page"
 msgstr "Abisivut"
 
@@ -805,13 +805,17 @@ msgstr "Tiedostot"
 msgid "Files application"
 msgstr "Sovellus - Tiedostot"
 
-#: prodekoorg/app_tiedostot/models.py:55
+#: prodekoorg/app_tiedostot/models.py:51
 msgid "file version"
 msgstr "tiedostoversio"
 
-#: prodekoorg/app_tiedostot/models.py:56
+#: prodekoorg/app_tiedostot/models.py:52
 msgid "File versions"
 msgstr "Tiedostoversiot"
+
+#: prodekoorg/app_tiedostot/templates/tiedostot.html:4
+msgid "download"
+msgstr "lataa"
 
 #: prodekoorg/app_toimarit/admin.py:49 prodekoorg/app_toimarit/admin.py:64
 msgid "Export selected as CSV"
@@ -1098,6 +1102,26 @@ msgstr "Muokkaa"
 #: prodekoorg/settings/base.py:65 prodekoorg/settings/base.py:82
 msgid "English"
 msgstr "Englanti"
+
+#: prodekoorg/settings/base.py:289
+msgid "Frontpage"
+msgstr "Etusivu"
+
+#: prodekoorg/settings/base.py:290
+msgid "Content page"
+msgstr "Sisältösivu"
+
+#: prodekoorg/settings/base.py:291
+msgid "Content page with 1:1 split"
+msgstr "Sisältösivu 1:1 jaolla"
+
+#: prodekoorg/settings/base.py:292
+msgid "Content page with 2:1 split"
+msgstr "Sisältösivu 2:1 jaolla"
+
+#: prodekoorg/settings/base.py:297
+msgid "Navigation"
+msgstr "Navigaatio"
 
 #: prodekoorg/templates/admin/inc/branding.html:10
 msgid "Django Administration"

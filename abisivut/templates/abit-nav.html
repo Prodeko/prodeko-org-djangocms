@@ -1,0 +1,13 @@
+{% load cms_tags staticfiles %}
+
+<nav class="navbar-expand-lg" id="navbar">
+    <a class="navbar-brand">
+        <img id="logo" src="{% static 'images/logos/prodeko-logo-text-white.png' %}" alt="Prodeko logo">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#abit-navbar" aria-controls="abit-navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars white"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="abit-navbar">
+        {% placeholder "abit_nav" %}
+    </div>
+</nav>
