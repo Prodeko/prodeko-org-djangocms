@@ -1,10 +1,10 @@
-@import "../../../prodekoorg/static/scss/variables.scss";
-@import "../../../prodekoorg/static/scss/breakpoints-mixin.scss";
-@import "../../../prodekoorg/static/scss/global.scss";
-@import "abit-typography.scss";
-@import "abit-navbar.scss";
-@import "abit-banner.scss";
-@import "abit-footer.scss";
+@import '../../../prodekoorg/static/scss/variables.scss';
+@import '../../../prodekoorg/static/scss/breakpoints-mixin.scss';
+@import '../../../prodekoorg/static/scss/global.scss';
+@import 'abit-typography.scss';
+@import 'abit-navbar.scss';
+@import 'abit-banner.scss';
+@import 'abit-footer.scss';
 
 html,
 body {
@@ -14,7 +14,7 @@ body {
   overflow-x: hidden;
   color: #666;
   font-size: 1em;
-  font-family: "Raleway", sans-serif;
+  font-family: 'Raleway', sans-serif;
   border: none;
 }
 
