@@ -8,20 +8,6 @@ $(document).ready(function() {
     }
   });
 
-  function handleVideoLoading() {
-    // Force remove #loading after 5 seconds
-    $(window).on('load', function() {
-      setTimeout(function() {
-        $('#loading').fadeOut(600);
-      }, 2000);
-    });
-
-    var video = document.getElementById('banner-video');
-    video.onloadeddata = function() {
-      $('#loading').fadeOut(600);
-    };
-  }
-
   function toggleNavbar() {
     if ($(window).width() >= 992) {
       if ($(this).scrollTop() > 50 || $(document).scrollTop() > 50) {
@@ -37,7 +23,6 @@ $(document).ready(function() {
     }
   }
 
-  handleVideoLoading();
   toggleNavbar();
 
   // Create navbar background when scrolled
