@@ -17,10 +17,12 @@
         {% include "snippets/ga-body.html" %}
 
         {% cms_toolbar %}
+
+        <div id="scrollToTop">
+            <i class="fas fa-angle-double-up"></i>
+        </div>
+
         {% block body %}
-            <div id="scrollToTop">
-                <i class="fas fa-angle-double-up"></i>
-            </div>
         {% endblock %}
         {% render_block "js" %}
     </body>
@@ -36,6 +38,6 @@
 {% addtoblock "custom-js" %}
     {% include "libraries/jquery.html" %}
     {% include "libraries/bootstrap.html" %}
-    <script src="{% static 'lifelonglearning/js/lll-custom.js' %}"></script>
     {% include "libraries/html5shiv.html" %}
+    <script src="{% static 'lifelonglearning/js/lll-custom.js' %}"></script>
 {% endaddtoblock %}
