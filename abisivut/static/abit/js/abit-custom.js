@@ -52,7 +52,7 @@ $(document).ready(function() {
         event.preventDefault();
         $('html, body').animate(
           {
-            scrollTop: target.offset().top - 100
+            scrollTop: target.offset().top - 130
           },
           600,
           function() {}
