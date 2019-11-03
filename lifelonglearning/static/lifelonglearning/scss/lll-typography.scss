@@ -47,16 +47,6 @@ h5 {
   line-height: 25px;
 }
 
-#first,
-#fifth {
-  max-width: 800px;
-  margin: auto auto;
-}
-
-#first {
-  margin-top: 30px;
-}
-
 a,
 a:hover {
   color: inherit;
@@ -65,10 +55,10 @@ a:hover {
 
 i {
   transition: all 0.2s ease;
-}
 
-i:hover {
-  color: lightgrey;
+  &:hover {
+    color: lightgrey;
+  }
 }
 
 .white {
@@ -94,10 +84,10 @@ i:hover {
 
 .link {
   color: #3cf;
-}
 
-.link:hover {
-  text-decoration: underline;
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .no-top {

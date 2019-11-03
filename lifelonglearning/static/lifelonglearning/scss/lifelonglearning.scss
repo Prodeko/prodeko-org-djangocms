@@ -55,27 +55,9 @@ body {
   }
 }
 
-.bottom-gradient {
-  position: absolute;
-  bottom: 0;
-  z-index: 5;
-  width: 100%;
-  height: 200px;
-  max-height: 70%;
-  background-image: linear-gradient(
-    to top,
-    rgba(0, 40, 81, 1),
-    rgba(0, 40, 81, 0)
-  );
-}
-
 .registration {
   z-index: 100;
   padding: 15px 45px;
-}
-
-.blur {
-  filter: blur(7px);
 }
 
 .btn {
