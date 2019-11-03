@@ -1,9 +1,26 @@
 $(document).ready(function() {
   $('#content').on('click', function() {
-    if ($(window).width() < 992) {
+    if (
+      $(window).width() < 992 &&
+      !$('.navbar-toggler').hasClass('collapsed')
+    ) {
       $('.navbar-toggler').trigger('click');
     }
   });
+
+  function handleVideoLoading() {
+    // Force remove #loading after 5 seconds
+    $(window).on('load', function() {
+      setTimeout(function() {
+        $('#loading').fadeOut(600);
+      }, 2000);
+    });
+
+    var video = document.getElementById('banner-video');
+    video.onloadeddata = function() {
+      $('#loading').fadeOut(600);
+    };
+  }
 
   function toggleNavbar() {
     if ($(window).width() >= 992) {
@@ -20,6 +37,7 @@ $(document).ready(function() {
     }
   }
 
+  handleVideoLoading();
   toggleNavbar();
 
   // Create navbar background when scrolled
