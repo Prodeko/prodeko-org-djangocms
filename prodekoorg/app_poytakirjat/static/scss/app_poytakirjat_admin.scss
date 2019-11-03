@@ -2,10 +2,10 @@
 @import '../../../static/scss/breakpoints-mixin.scss';
 
 #folderIdForm {
+  max-width: 260px !important;
   margin: 0 !important;
   padding: 0 !important;
   background-color: transparent !important;
-  max-width: 260px !important;
 
   .input-folderid {
     min-width: 260px;

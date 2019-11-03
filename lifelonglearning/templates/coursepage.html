@@ -2,13 +2,11 @@
 {% load cms_tags menu_tags sekizai_tags sass_tags i18n staticfiles %}
 
 {% block body %}
-    <nav id="navbar">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="{% url 'lifelonglearning:index' %}"><img id="logo" src="{% static 'images/lifelonglearning/headerlogo.png' %}" alt="Prodeko logo"></a>
-            </div>
-        </div>
-    </nav>
+    <header>
+        <a class="navbar-brand" href="{% url 'lifelonglearning:index' %}">
+            <img id="logo" src="{% static 'lifelonglearning/images/headerlogo.png' %}" alt="Prodeko logo">
+        </a>
+    </header>
 
 
     <div class="coursepage-banner" style="background-image: url('{{ course.get_banner_image }}')">
@@ -33,17 +31,6 @@
         </div>
     </div>
 
-    <footer>
-        <div class="social center white">
-            <h3 class="center ok-spacing">
-                <a href="https://www.facebook.com/prodeko/"><i class="fab fa-facebook"></i></a>
-                <a href="https://www.instagram.com/prodeko/"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.linkedin.com/company/prodeko-guild-of-industrial-engineering-and-management/"><i class="fab fa-linkedin"></i></a>
-            </h3>
-            <hr>
-            <a href="www.prodeko.org"><p>Tuotantotalouden Kilta Prodeko</p></a>
-            <a href="alumni.prodeko.org"><p>Prodekon Alumni</p></a>
-            <p>Aalto-yliopiston tuotantotalouden laitos</p>
-        </div>
-    </footer>
+    {% include 'lll-footer.html'%}
+
 {% endblock %}
