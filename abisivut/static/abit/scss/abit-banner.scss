@@ -5,11 +5,11 @@
 
   .banner-background {
     position: relative;
-    height: calc(100vh - 40px - 46px);
+    height: calc(100vh - 40px);
     overflow: hidden;
 
     @include phone {
-      height: calc(40vh - 40px - 46px);
+      height: calc(40vh - 40px);
     }
 
     #banner-video {
