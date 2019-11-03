@@ -112,14 +112,14 @@ input[type='submit'] {
   }
 
   .cms-pagetree-node-state-published {
-    border: none;
     background: $override-admin-green;
     background-color: $override-admin-green;
+    border: none;
   }
   .cms-pagetree-node-state-dirty {
-    border: none;
     background: $override-admin-blue;
     background-color: $override-admin-blue;
+    border: none;
   }
 
   .cms-tree-item-menu {
@@ -233,8 +233,8 @@ form {
 }
 
 body.login.djangocms-admin-style #container {
-  overflow: auto !important;
   min-width: 280px !important;
+  overflow: auto !important;
 
   @include phone {
     margin-top: 70px;

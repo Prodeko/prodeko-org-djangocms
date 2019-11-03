@@ -6,8 +6,8 @@
   "scripts": {
     "lint:eslint": "eslint --ext .js .",
     "lint:eslint-fix": "eslint --ext .js --fix .",
-    "lint:css": "stylelint '**/*.scss', '**/*.css'",
-    "lint:css-fix": "stylelint '**/*.scss', '**/*.css' --fix"
+    "lint:css": "stylelint 'lifelonglearning/static/lifelonglearning/scss/*.scss' 'prodekoorg/**/static/scss/*.scss' 'abisivut/static/abit/scss/*.scss' 'seminaari/static/scss/*.scss'",
+    "lint:css-fix": "stylelint 'lifelonglearning/static/lifelonglearning/scss/*.scss' 'prodekoorg/**/static/scss/*.scss' 'abisivut/static/abit/scss/*.scss' 'seminaari/static/scss/*.scss' --fix"
   },
   "husky": {
     "hooks": {
