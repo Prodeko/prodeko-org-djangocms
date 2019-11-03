@@ -1,40 +1,21 @@
-{% extends "base-abit.html" %}
+{% extends "abit-base.html" %}
 {% load cms_tags menu_tags staticfiles i18n %}
 
 {% block content %}
-    <div id="loading">
-        <div id="loading-animation"></div>
-    </div>
-    <div id="navbar">
-        <div class="navbar-container">
-            <img id="navbar-logo" src="{% static 'images/logos/prodeko-logo-text-white.png' %}" />
-            <ul>
-                <a href="#"><li>Otsikko 1</li></a>
-                <a href="#"><li>Otsikko 2</li></a>
-                <a href="#"><li>Otsikko 3</li></a>
-                <a href="#"><li>Otsikko 4</li></a>
-            </ul>
-            <div id="navbar-background"></div>
-        </div>
-    </div>
-    <div id="opener">
-        <div class="darkener"></div>
 
-        <div class="text-container">
-            <h2>Tuupa tutalle boi</h2>
-            <p>Boi, tuu opiskelee hauskassa seurassa - kui jees!??!?!!</p>
+    <div id="scrollToTop"><i class="fas fa-chevron-circle-up"></i></div>
 
-            <a class="btn" href="#">Tutustu opiskelijatarinoihin</a>
-            <a class="btn" href="#contact">Lue alumnin uratarinoita</a>
-        </div>
-        <img class="transition-graphic" src="assets/transition.svg" />
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-9">
-                <div class="test">Tähän tulee perään sitten CMS contenttia:</div>
+    {% include "abit-nav.html" %}
+    
+    <main>
+        <div id="content">
+                {% include "abit-banner.html" %}
+            <div class="container">
                 {% placeholder "content" %}
             </div>
         </div>
-    </div>
+    </main>
+
+    {% include 'abit-footer.html'%}
+
 {% endblock content %}

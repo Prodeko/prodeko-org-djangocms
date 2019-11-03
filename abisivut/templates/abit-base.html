@@ -1,0 +1,37 @@
+{% load cms_tags menu_tags sekizai_tags sass_tags i18n staticfiles %}
+
+<!DOCTYPE html>
+<html lang={{LANGUAGE_CODE}}>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Prodeko - Aalto-yliopiston tuotantotalouden kilta</title>
+        {% include "snippets/ga-head.html" %}
+
+        {% render_block "css" %}
+        {% render_block "custom-js" %}
+        {% render_block "custom-css" %}
+    </head>
+
+    <body>
+        {% include "snippets/ga-body.html" %}
+
+        {% cms_toolbar %}
+        {% block content %}{% endblock %}
+        {% render_block "js" %}
+    </body>
+</html>
+
+{% addtoblock "custom-css" %}
+    {% include "libraries/raleway.html" %}
+    <link href="{% sass_src 'abit/scss/abit.scss' %}" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="{% static 'images/favicons/favicon-32x32.png' %}">
+    {% include "libraries/fontawesome.html" %}
+{% endaddtoblock %}
+
+{% addtoblock "custom-js" %}
+    {% include "libraries/jquery.html" %}
+    {% include "libraries/bootstrap.html" %}
+    {% include "libraries/html5shiv.html" %}
+    <script src="{% static 'abit/js/abit-custom.js' %}"></script>
+{% endaddtoblock %}

@@ -7,3 +7,17 @@ body {
     }
   }
 }
+
+.align-left {
+  float: left;
+}
+
+.align-right {
+  float: right;
+}
+
+.align-center {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}

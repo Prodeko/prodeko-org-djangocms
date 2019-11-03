@@ -286,13 +286,17 @@ INSTALLED_APPS = (
 
 # DjagoCMS specific config
 CMS_TEMPLATES = (
-    ("frontpage.html", "Frontpage"),
-    ("contentpage/content-page.html", "Content page"),
-    ("contentpage/content-page-twocol6-6.html", "Content page with 1:1 split"),
-    ("contentpage/content-page-twocol8-4.html", "Content page with 2:1 split"),
+    ("frontpage.html", _("Frontpage")),
+    ("contentpage/content-page.html", _("Content page")),
+    ("contentpage/content-page-twocol6-6.html", _("Content page with 1:1 split")),
+    ("contentpage/content-page-twocol8-4.html", _("Content page with 2:1 split")),
+    ("abit.html", _("High school student page")),
+    ("lifelonglearning.html", _("Life longlearning page")),
 )
 CMS_PERMISSION = True
-CMS_PLACEHOLDER_CONF = {}
+CMS_PLACEHOLDER_CONF = {
+    "abit_nav": {"name": _("Navigation"), "plugins": ["TextPlugin"]}
+}
 
 THUMBNAIL_PROCESSORS = (
     "easy_thumbnails.processors.colorspace",
