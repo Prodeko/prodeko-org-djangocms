@@ -1,12 +1,12 @@
-@import "../../../prodekoorg/static/scss/variables.scss";
-@import "../../../prodekoorg/static/scss/breakpoints-mixin.scss";
-@import "../../../prodekoorg/static/scss/error-pages";
-@import "lll-typography.scss";
-@import "lll-navbar.scss";
-@import "lll-banner.scss";
-@import "lll-coursecard.scss";
-@import "lll-coursepage.scss";
-@import "lll-footer.scss";
+@import '../../../prodekoorg/static/scss/variables.scss';
+@import '../../../prodekoorg/static/scss/breakpoints-mixin.scss';
+@import '../../../prodekoorg/static/scss/error-pages';
+@import 'lll-typography.scss';
+@import 'lll-navbar.scss';
+@import 'lll-banner.scss';
+@import 'lll-coursecard.scss';
+@import 'lll-coursepage.scss';
+@import 'lll-footer.scss';
 
 html,
 body {
@@ -16,7 +16,7 @@ body {
   overflow-x: hidden;
   color: #666;
   font-size: 1em;
-  font-family: "Raleway", sans-serif;
+  font-family: 'Raleway', sans-serif;
   border: none;
 }
 
@@ -62,7 +62,11 @@ body {
   width: 100%;
   height: 200px;
   max-height: 70%;
-  background-image: linear-gradient(to top, rgba(0, 40, 81, 1), rgba(0, 40, 81, 0));
+  background-image: linear-gradient(
+    to top,
+    rgba(0, 40, 81, 1),
+    rgba(0, 40, 81, 0)
+  );
 }
 
 .registration {

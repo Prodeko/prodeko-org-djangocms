@@ -1,4 +1,4 @@
-@import "../static/scss/variables.scss";
+@import '../static/scss/variables.scss';
 
 #vaaliContainer {
   .modal {
@@ -28,8 +28,8 @@
     }
   }
   #ehdokasName {
-    font-weight: bold;
     margin-top: 1rem;
+    font-weight: bold;
   }
 
   .read-application {
@@ -76,9 +76,9 @@
       flex-direction: row;
       align-items: center;
       justify-content: space-between;
-      background: #0028510d;
-      padding-left: 0.5rem;
       margin-bottom: 0.5rem;
+      padding-left: 0.5rem;
+      background: #0028510d;
 
       .my-2 {
         width: 90%;
@@ -91,10 +91,10 @@
     }
 
     .questionBox {
-      border-left: 0.5rem #002e7d solid;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.125);
-      border-right: 1px solid rgba(0, 0, 0, 0.125);
       border-top: 1px solid rgba(0, 0, 0, 0.125);
+      border-right: 1px solid rgba(0, 0, 0, 0.125);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+      border-left: 0.5rem #002e7d solid;
     }
 
     .answersList {
@@ -131,9 +131,9 @@
 
   .img-container img {
     display: inline;
-    margin: 0 auto;
     width: 100%;
     height: auto;
+    margin: 0 auto;
   }
 
   .vaalitQuestions small {
@@ -141,7 +141,7 @@
     font-size: 0.7em;
   }
 
-  form[id^="vaalitAnswerForm_"] .btn {
+  form[id^='vaalitAnswerForm_'] .btn {
     width: 150px;
   }
 }
@@ -162,8 +162,13 @@
 /* Height is set to 100px in 'vaalit_custom.js' once the
  * image file is selected and cropped.
  */
-#vaaliContainer #vaalitKysymysForm #btnHaeVirkaan.animate-chevron .fa-chevron-down {
-  transform: rotate(-179.999deg); /* For some reason there is a small wiggle if the rotation is 180 degrees */
+#vaaliContainer
+  #vaalitKysymysForm
+  #btnHaeVirkaan.animate-chevron
+  .fa-chevron-down {
+  transform: rotate(
+    -179.999deg
+  ); /* For some reason there is a small wiggle if the rotation is 180 degrees */
   transition: all 0.3s ease-in-out;
 }
 
@@ -187,10 +192,10 @@
 }
 
 .answers-container {
-  background: #e8e8e8;
   margin: 0.5rem auto 0rem 4rem;
   padding-top: 1rem;
   padding-bottom: 1rem;
+  background: #e8e8e8;
   border-top: #c3c3c3 1px solid;
 
   .answers-container-desktop {
@@ -207,10 +212,10 @@
       //border-bottom: 1px solid $blue-normal;
     }
     .img-container {
-      margin-left: 1rem;
-      margin-right: 1rem;
       width: 3rem !important;
       height: 3rem !important;
+      margin-right: 1rem;
+      margin-left: 1rem;
     }
   }
 }
@@ -276,8 +281,8 @@ a.list-group-item-action:hover {
     font-size: 0.8em;
   }
   .virka-unread {
-    font-size: 0.8em;
     color: green;
+    font-size: 0.8em;
   }
 }
 
@@ -285,7 +290,7 @@ a.list-group-item-action:hover {
 
 /* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
 @media only screen and (max-width: 479px) {
-  #vaaliContainer #modalCrop button[class*="js-zoom"] {
+  #vaaliContainer #modalCrop button[class*='js-zoom'] {
     max-width: 50px;
   }
 }
@@ -308,8 +313,8 @@ a.list-group-item-action:hover {
   }
 
   .vastaus-text {
-    font-size: small;
     margin: 0.5rem !important;
+    font-size: small;
   }
 
   #vaaliContainer .vaalitQuestions {
@@ -336,18 +341,18 @@ a.list-group-item-action:hover {
 
   .QuestionAskerContainer {
     display: flex;
-    align-items: center;
-    margin: 0 auto;
-    font-size: large;
-    margin-top: 0.5rem;
     flex: 0 0 100%;
+    align-items: center;
     max-width: 100%;
+    margin: 0 auto;
+    margin-top: 0.5rem;
+    font-size: large;
   }
 
   .answersCountContainer {
     display: flex;
-    justify-content: center;
     align-items: baseline;
+    justify-content: center;
   }
 
   #vaaliContainer .vaalitKysymysList .answersList {
