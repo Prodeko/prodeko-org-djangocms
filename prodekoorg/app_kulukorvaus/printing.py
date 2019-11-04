@@ -128,8 +128,9 @@ class KulukorvausPDF:
         ]
 
         Img = self.get_image(
-            settings.STATIC_ROOT + "/images/logos/prodeko-logo-text-blue.png",
-            width=10 * cm,
+            staticfiles_storage.open(
+                "/images/logos/prodeko-logo-text-blue.png", width=10 * cm
+            )
         )
         s05cm = Spacer(width=0, height=0.5 * cm)
         ptime = f"<font name='Raleway Medium' size=8>{formatted_time}</font>"
