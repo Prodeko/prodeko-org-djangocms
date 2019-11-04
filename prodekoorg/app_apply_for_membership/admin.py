@@ -1,15 +1,14 @@
-from django.urls import re_path
 from django.contrib import admin
 from django.contrib.admin.views.decorators import staff_member_required
 from django.db import models
 from django.forms import Textarea
 from django.shortcuts import redirect
-from django.urls import reverse
+from django.urls import re_path, reverse
 from django.utils.html import format_html
 from django.utils.translation import gettext as _
-from .models import PendingUser
 
-# from .groups_api import main_groups_api
+from .groups_api import main_groups_api
+from .models import PendingUser
 
 
 class PendingUserAdmin(admin.ModelAdmin):
@@ -81,7 +80,7 @@ def accept_application(request, account_id, *args, **kwargs):
     """Accept a membership application from Django admin."""
     user = PendingUser.objects.get(pk=account_id)
     user.accept_membership(request, args, kwargs)
-    # main_groups_api(request, user.email)
+    main_groups_api(request, user.email)
     return redirect("../../")
 
 
