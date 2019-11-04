@@ -1,6 +1,5 @@
 from io import BytesIO
 
-from django.conf import settings
 from django.contrib.staticfiles.storage import staticfiles_storage
 from django.utils import timezone
 from django.utils.dateformat import format
@@ -128,7 +127,7 @@ class KulukorvausPDF:
         ]
 
         Img = self.get_image(
-            settings.STATIC_ROOT + "/images/logos/prodeko-logo-text-blue.png",
+            staticfiles_storage.open("/images/logos/prodeko-logo-text-blue.png"),
             width=10 * cm,
         )
         s05cm = Spacer(width=0, height=0.5 * cm)
