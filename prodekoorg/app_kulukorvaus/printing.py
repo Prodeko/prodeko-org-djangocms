@@ -60,6 +60,7 @@ class KulukorvausPDF:
 
     def get_image(self, path, width):
         """Return image with a specified width and the original aspect ratio."""
+        print(path)
         img = ImageReader(path)
         iw, ih = img.getSize()
         aspect = ih / float(iw)
@@ -127,7 +128,7 @@ class KulukorvausPDF:
         ]
 
         Img = self.get_image(
-            staticfiles_storage.open("/images/logos/prodeko-logo-text-blue.png"),
+            staticfiles_storage.open("images/logos/prodeko-logo-text-blue.png"),
             width=10 * cm,
         )
         s05cm = Spacer(width=0, height=0.5 * cm)
