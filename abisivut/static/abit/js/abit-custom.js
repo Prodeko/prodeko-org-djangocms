@@ -12,22 +12,28 @@ $(document).ready(function() {
     if ($(window).width() >= 992) {
       if ($(this).scrollTop() > 50 || $(document).scrollTop() > 50) {
         $('#abit-navbar').css('opacity', '0.95');
-        $('#scrollToTop').css('opacity', '1');
       } else {
-        if ($(window).width() >= 992) $('#abit-navbar').css('opacity', '0');
-        if ($(window).width() >= 992) $('#abit-navbar').css('display', 'none');
-        $('#scrollToTop').css('opacity', '0');
+        $('#abit-navbar').css('opacity', '0');
       }
     } else {
       $('#abit-navbar').css('opacity', '0.95');
     }
   }
 
-  toggleNavbar();
+  function toggleScrollToTop() {
+    if ($(this).scrollTop() > 50 || $(document).scrollTop() > 50) {
+      $('#scrollToTop').css('opacity', '1');
+    } else {
+      $('#scrollToTop').css('opacity', '0');
+    }
+  }
 
-  // Create navbar background when scrolled
+  toggleNavbar();
+  toggleScrollToTop();
+
   $(document).scroll(function() {
     toggleNavbar();
+    toggleScrollToTop();
   });
 
   // When header is clicked, scroll to top
