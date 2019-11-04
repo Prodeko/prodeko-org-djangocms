@@ -1,6 +1,7 @@
 from io import BytesIO
 
 from django.conf import settings
+from django.contrib.staticfiles.storage import staticfiles_storage
 from django.utils import timezone
 from django.utils.dateformat import format
 from django.utils.translation import ugettext as _
@@ -44,10 +45,12 @@ class KulukorvausPDF:
     def register_fonts(self):
         """Register fonts so reportlab can use them."""
         pdfmetrics.registerFont(
-            TTFont("Raleway Bold", settings.STATIC_ROOT + "/fonts/Raleway-Bold.ttf")
+            TTFont("Raleway Bold", staticfiles_storage.open("fonts/Raleway-Bold.ttf"))
         )
         pdfmetrics.registerFont(
-            TTFont("Raleway Medium", settings.STATIC_ROOT + "/fonts/Raleway-Medium.ttf")
+            TTFont(
+                "Raleway Medium", staticfiles_storage.open("fonts/Raleway-Medium.ttf")
+            )
         )
 
     def handle_receipt(self, img_receipt):
