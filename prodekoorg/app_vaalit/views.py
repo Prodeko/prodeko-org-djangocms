@@ -1,27 +1,22 @@
 import json
 import os
 from io import BytesIO
-
 from sys import stderr
 
 from django.conf import settings
-from django.contrib import messages, auth
+from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib.staticfiles.storage import staticfiles_storage
 from django.contrib.staticfiles.templatetags.staticfiles import static
+from django.core import serializers
 from django.core.exceptions import PermissionDenied
 from django.core.files.base import ContentFile
 from django.core.files.uploadedfile import InMemoryUploadedFile
-from django.core import serializers
 from django.core.serializers import serialize
 from django.core.serializers.json import DjangoJSONEncoder
-from django.http import (
-    Http404,
-    HttpResponse,
-    HttpResponseForbidden,
-    HttpResponseRedirect,
-    JsonResponse,
-)
+from django.http import (Http404, HttpResponse, HttpResponseForbidden,
+                         HttpResponseRedirect, JsonResponse)
 from django.shortcuts import get_object_or_404, redirect, render
 from django.template.loader import render_to_string
 from django.urls import reverse_lazy
@@ -120,17 +115,9 @@ def update_kysymys_view(request, pk):
 
 def crop_pic(uploaded_img, x, y, w, h):
     if not uploaded_img:
-        img_url_prt = static("images/misc/anonymous_prodeko.jpg")
+        img_url = staticfiles_storage.open("images/misc/anonymous_prodeko.jpg")
         x, y, w, h = 0, 0, 150, 150
-        # Image URL in production
-        img_url_full = (
-            settings.BASE_DIR
-            + "/prodekoorg/collected-static/images/misc/anonymous_prodeko.jpg"
-        )
-        # Image URL in development
-        if settings.DEBUG:
-            img_url_full = settings.BASE_DIR + "/prodekoorg" + img_url_prt
-        img = Image.open(img_url_full)
+        img = Image.open(img_url)
     else:
         img = Image.open(uploaded_img.file)
     area = (x, y, x + w, y + h)
