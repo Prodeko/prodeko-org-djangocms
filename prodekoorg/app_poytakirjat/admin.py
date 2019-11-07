@@ -6,8 +6,8 @@ from .models import Dokumentti
 
 
 class YearFilter(SimpleListFilter):
-    title = "vuosi"
-    parameter_name = _("year")
+    title = _("year")
+    parameter_name = "year"
 
     def lookups(self, request, model_admin):
         years = set([d.date.year for d in model_admin.model.objects.all()])
