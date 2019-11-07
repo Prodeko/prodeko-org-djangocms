@@ -24,7 +24,7 @@ def docs(request):
     if not request.user.has_accepted_policies:
         return render(request, "documents.html", {"policy_error": True})
 
-    docs = Dokumentti.objects.all().order_by("date")
+    docs = Dokumentti.objects.all().order_by("-date")
     iterable = [(str(doc.date.year), doc) for doc in docs]
     context = defaultdict(list)
     for year, doc in iterable:

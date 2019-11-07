@@ -29,7 +29,7 @@ class DokumenttiViewTest(TestData):
             reverse("download_docs_from_gsuite"), data=test_data
         )
         self.assertRedirects(
-            response, "/fi/admin/login/?next=/fi/admin/poytakirjat/download"
+            response, "/fi/admin/login/?next=/fi/admin/app_poytakirjat/download"
         )
 
     @unittest.skip(

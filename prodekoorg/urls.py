@@ -64,7 +64,7 @@ urlpatterns += i18n_patterns(
     ),
     re_path(r"^admin/toimarit/postcsv$", postcsv, name="postcsv"),
     re_path(
-        r"^admin/poytakirjat/download$",
+        r"^admin/app_poytakirjat/download$",
         run_app_poytakirjat,
         name="download_docs_from_gsuite",
     ),
