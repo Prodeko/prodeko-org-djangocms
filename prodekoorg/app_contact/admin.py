@@ -8,7 +8,7 @@ from .models import Message
 
 class YearFilter(SimpleListFilter):
     title = _("Year")
-    parameter_name = "vuosi"
+    parameter_name = _("year")
 
     def lookups(self, request, model_admin):
         years = set([d.created_at.year for d in model_admin.model.objects.all()])

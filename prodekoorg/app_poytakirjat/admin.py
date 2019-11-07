@@ -1,11 +1,13 @@
 from django.contrib import admin
 from django.contrib.admin import SimpleListFilter
+from django.utils.translation import ugettext_lazy as _
+
 from .models import Dokumentti
 
 
 class YearFilter(SimpleListFilter):
     title = "vuosi"
-    parameter_name = "vuosi"
+    parameter_name = _("year")
 
     def lookups(self, request, model_admin):
         years = set([d.date.year for d in model_admin.model.objects.all()])

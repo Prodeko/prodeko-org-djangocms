@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-07 22:37+0200\n"
+"POT-Creation-Date: 2019-11-07 23:22+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Timo Riski <timo@prodeko.org>\n"
 "Language: \n"
@@ -454,6 +454,11 @@ msgstr "Tietosuoja"
 #: prodekoorg/app_contact/templates/form_contact.html:66
 msgid "/privacy-policy"
 msgstr "/tietosuoja"
+
+#: prodekoorg/app_contact/admin.py:11 prodekoorg/app_kulukorvaus/admin.py:11
+#: prodekoorg/app_poytakirjat/admin.py:10
+msgid "year"
+msgstr "vuosi"
 
 #: prodekoorg/app_contact/apps.py:7 prodekoorg/app_contact/models.py:113
 #: prodekoorg/templates/layout-components/footer.html:7
