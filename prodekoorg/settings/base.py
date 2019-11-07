@@ -291,7 +291,7 @@ CMS_TEMPLATES = (
     ("contentpage/content-page-twocol6-6.html", _("Content page with 1:1 split")),
     ("contentpage/content-page-twocol8-4.html", _("Content page with 2:1 split")),
     ("abit.html", _("High school student page")),
-    ("lifelonglearning.html", _("Life longlearning page")),
+    ("lifelonglearning.html", _("Lifelong learning page")),
 )
 CMS_PERMISSION = True
 CMS_PLACEHOLDER_CONF = {
