@@ -6,9 +6,9 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class Course(models.Model):
-    """Prodeko lifelonglearning course.
+    """Prodeko lifelong learning course.
 
-    This model represents a course in Prodeko's lifelonglearning programme.
+    This model represents a course in Prodeko's lifelong learning programme.
 
     Attributes:
         name: Course title.
