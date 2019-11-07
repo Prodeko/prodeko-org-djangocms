@@ -14,9 +14,8 @@ from django.utils.translation import ugettext_lazy as _
 from google.oauth2 import service_account
 from PyPDF2 import PdfFileMerger, PdfFileReader
 
+from .constants import TEAM_DRIVE_ID
 from .models import Dokumentti
-
-TEAM_DRIVE_ID = "0AD8EdtHhweZwUk9PVA"
 
 
 def initialize_service():
@@ -49,7 +48,7 @@ def merge_liitteet_to_doc(pdfs):
         BytesIO buffer contents (a pdf file).
     """
 
-    merger = PdfFileMerger()
+    merger = PdfFileMerger(strict=False)
     for pdf in pdfs:
         if pdf:
             merger.append(PdfFileReader(pdf))
@@ -85,9 +84,7 @@ def get_gdrive_folders_dict(service, parent_folder_id):
             .list(
                 corpora="teamDrive",
                 orderBy="createdTime",
-                q="mimeType='application/vnd.google-apps.folder' and parents in '"
-                + parent_folder_id
-                + "'",
+                q=f"mimeType='application/vnd.google-apps.folder' and parents in '{parent_folder_id}'",
                 supportsTeamDrives=True,
                 includeTeamDriveItems=True,
                 teamDriveId=TEAM_DRIVE_ID,
@@ -129,7 +126,7 @@ def filter_gdrive_folders_dict(folders_dict):
     return filtered_dict
 
 
-def create_models_from_folders(service, folders_dict):
+def create_models_from_folders(request, service, folders_dict):
     """Create Django objects from folders_dict
 
     Args:
@@ -138,38 +135,60 @@ def create_models_from_folders(service, folders_dict):
             containing info that gets converted to Dokumentti models.
 
     Returns:
-        Integer count of successfully downloaded documents.
+        List of successfully downloaded documents.
     """
 
     # Filter out unwanted folders inside the 'Kokoukset' folder
     filtered_dict = filter_gdrive_folders_dict(folders_dict)
-    success_count = 0
-    for parent_id, name in filtered_dict.items():
-
-        # Get ordinal number from folder name
-        number_string = name[:2]
+    downloaded = []
+    document_name = ""
+    for parent_id, folder_name in filtered_dict.items():
         try:
-            number = int(number_string)
-        except ValueError:
-            number = 999
-        name = name
+            # Get ordinal number from folder name
+            number_string = folder_name[:2]
+            try:
+                number = int(number_string)
+            except ValueError:
+                number = 999
 
-        # Get date from folder name
-        date = datetime.strptime(name[3:], "%d.%m.%Y").date()
+            year = folder_name[-4:]
 
-        # Downloaded files as BytesIO objects
-        poytakirja, liitteet = download_files_as_pdf(service, parent_id)
+            # Get date from folder name
+            date = datetime.strptime(folder_name[3:], "%d.%m.%Y").date()
+            document_name = f"Hallituksen kokous {number}"
 
-        pdf_file = merge_liitteet_to_doc([poytakirja] + liitteet)
-        final_pdf = ContentFile(pdf_file)
+            # Downloaded files as BytesIO objects
+            poytakirja, liitteet = download_files_as_pdf(service, parent_id)
 
-        # Create the new Dokumentti object and save 'final_pdf'
-        doc = Dokumentti.objects.create(
-            gdrive_id=parent_id, name=name, number=number, date=date
-        )
-        doc.doc_file.save(f"{name}.pdf", final_pdf)
-        success_count += 1
-    return success_count
+            # Continue to next loop if no pöytäkirja is found
+            if not poytakirja:
+                messages.add_message(
+                    request,
+                    messages.INFO,
+                    _(
+                        "No file starting with 'Pöytäkirja' found in folder {}".format(
+                            folder_name
+                        )
+                    ),
+                )
+                continue
+
+            pdf_file = merge_liitteet_to_doc([poytakirja] + liitteet)
+            final_pdf = ContentFile(pdf_file)
+
+            # Create the new Dokumentti object and save 'final_pdf'
+            doc = Dokumentti.objects.create(
+                gdrive_id=parent_id, name=document_name, number=number, date=date
+            )
+            doc.doc_file.save(f"{document_name}.pdf", final_pdf)
+            downloaded.append(number)
+        except Exception as e:
+            messages.add_message(
+                request,
+                messages.ERROR,
+                _("Error downloading document: {} ({})").format(document_name, e),
+            )
+    return downloaded
 
 
 def download_files_as_pdf(service, parent_id):
@@ -301,20 +320,27 @@ def run_app_poytakirjat(request):
         A user must be a staff member to access this function.
     """
 
-    # Id of the 'Kokoukset' folder iside 'Hallituksen sisäinen Team Drive
+    # Id of the 'Kokoukset' folder inside 'Hallituksen sisäinen' Team Drive
     folder_id = request.POST["folderID"]
     try:
         service = initialize_service()
         # Returns a dict of folders inside the folder_id above
         folders_dict = get_gdrive_folders_dict(service, folder_id)
-        success_count = create_models_from_folders(service, folders_dict)
-        messages.add_message(
-            request,
-            messages.INFO,
-            _(f"Downloaded {success_count} proceedings documents from G Drive."),
-        )
+        downloaded = create_models_from_folders(request, service, folders_dict)
+        if len(downloaded) > 0:
+            messages.add_message(
+                request,
+                messages.INFO,
+                _(
+                    "Downloaded documents {} from G Drive.".format(
+                        ", ".join(str(d) for d in downloaded)
+                    )
+                ),
+            )
+        else:
+            messages.add_message(request, messages.INFO, _(f"No documents downloaded."))
     except Exception as e:
         messages.add_message(
-            request, messages.ERROR, _(f"Error downloading documents: {e}")
+            request, messages.ERROR, _("Error downloading documents: {}").format(e)
         )
     return redirect("/admin/app_poytakirjat/dokumentti/")
