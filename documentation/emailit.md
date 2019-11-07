@@ -1,6 +1,6 @@
 # Sähköposteista :mailbox_with_mail::email:
 
-- **Päivitetty** 15.1.2019
+- **Päivitetty** 7.11.2019
 - **Tekijä:** Timo Riski
 
 Projektin automaattisesti lähetettävät sähköpostit kulkevat smtp-relay.gmail.com palvelimen kautta. Tässä dokumentissa kerrotaan lisätietoja mailikonfiguraatiosta yleisesti.
@@ -65,6 +65,10 @@ app_apply_for_membership
 app_kulukorvaus
 
 - Yhteenvetomaili kulukorvauksen lähettämisen jälkeen
+
+app_contact
+
+- Yhteydenottolomakkeen viesti valittuun sähköpostiosoitteeseen
 
 ## Muuta
 

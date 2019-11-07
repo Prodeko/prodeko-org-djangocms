@@ -1,6 +1,6 @@
 # Tiedostoista :open_file_folder::file_folder:
 
-- **Päivitetty** 15.10.2019
+- **Päivitetty** 3.11.2019
 - **Tekijä:** Timo Riski
 
 Prodissa prodeko.org static- ja mediatiedostot hostataan Azure Storagessa. Storage blobeja on kaksi: static/ ja media/. Blobien edessä on CDN.
