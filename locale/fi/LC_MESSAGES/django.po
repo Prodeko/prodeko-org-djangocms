@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-03 17:32+0200\n"
+"POT-Creation-Date: 2019-11-07 22:37+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Timo Riski <timo@prodeko.org>\n"
 "Language: \n"
@@ -106,7 +106,7 @@ msgstr "Profiili"
 
 #: auth_prodeko/templates/accounts/user_profile.html:14
 #: prodekoorg/app_kulukorvaus/models.py:60
-#: prodekoorg/app_kulukorvaus/printing.py:94
+#: prodekoorg/app_kulukorvaus/printing.py:97
 #: prodekoorg/app_toimarit/models.py:34 prodekoorg/app_vaalit/models.py:39
 msgid "Name"
 msgstr "Nimi"
@@ -115,7 +115,7 @@ msgstr "Nimi"
 #: auth_prodeko/templates/accounts/user_profile.html:21
 #: prodekoorg/app_apply_for_membership/models.py:62
 #: prodekoorg/app_contact/models.py:91 prodekoorg/app_kulukorvaus/models.py:61
-#: prodekoorg/app_kulukorvaus/printing.py:95
+#: prodekoorg/app_kulukorvaus/printing.py:98
 #: prodekoorg/app_toimarit/models.py:118
 msgid "Email"
 msgstr "Sähköposti"
@@ -222,9 +222,9 @@ msgstr "Salasana unohtunut?"
 msgid "The email and password didn't match. Try again"
 msgstr "Sähköposti ja salasana eivät täsmänneet. Yritä uudestaan"
 
-#: lifelonglearning/cms_apps.py:12
-msgid "Lifelonglearning page"
-msgstr "Lifelonglearning sivu"
+#: lifelonglearning/cms_apps.py:12 prodekoorg/settings/base.py:294
+msgid "Lifelong learning page"
+msgstr "Lifelong learning sivu"
 
 #: lifelonglearning/models.py:25
 msgid "name"
@@ -266,19 +266,19 @@ msgstr "kurssi"
 msgid "Courses"
 msgstr "Kurssit"
 
-#: prodekoorg/app_apply_for_membership/admin.py:56
+#: prodekoorg/app_apply_for_membership/admin.py:55
 msgid "View"
 msgstr "Katsele"
 
-#: prodekoorg/app_apply_for_membership/admin.py:58
+#: prodekoorg/app_apply_for_membership/admin.py:57
 msgid "Accept"
 msgstr "Hyväksy"
 
-#: prodekoorg/app_apply_for_membership/admin.py:60
+#: prodekoorg/app_apply_for_membership/admin.py:59
 msgid "Reject"
 msgstr "Hylkää"
 
-#: prodekoorg/app_apply_for_membership/admin.py:66
+#: prodekoorg/app_apply_for_membership/admin.py:65
 msgid "Application actions"
 msgstr "Hakemustoimenpiteet"
 
@@ -666,12 +666,12 @@ msgid "In process"
 msgstr "Käsittelyssä"
 
 #: prodekoorg/app_kulukorvaus/models.py:62
-#: prodekoorg/app_kulukorvaus/printing.py:96
+#: prodekoorg/app_kulukorvaus/printing.py:99
 msgid "Phone number"
 msgstr "Puhelinnumero"
 
 #: prodekoorg/app_kulukorvaus/models.py:64
-#: prodekoorg/app_kulukorvaus/printing.py:97
+#: prodekoorg/app_kulukorvaus/printing.py:100
 msgid "Account number (IBAN)"
 msgstr "Tilinumero (IBAN)"
 
@@ -708,11 +708,11 @@ msgstr "Summa (euroissa)"
 msgid "reimbursement"
 msgstr "kulukorvaus"
 
-#: prodekoorg/app_kulukorvaus/printing.py:99
+#: prodekoorg/app_kulukorvaus/printing.py:102
 msgid "Additional info"
 msgstr "Lisätietoja, kulujen perusteita"
 
-#: prodekoorg/app_kulukorvaus/printing.py:136
+#: prodekoorg/app_kulukorvaus/printing.py:139
 msgid ""
 "Your reimbursement claim has been received. The claim will be processed in "
 "the next Prodeko board meeting."
@@ -720,7 +720,7 @@ msgstr ""
 "Kulukorvauksesi on vastaanotettu. Hakemus käsitellään seuraavassa "
 "hallituksen kokouksessa."
 
-#: prodekoorg/app_kulukorvaus/printing.py:139
+#: prodekoorg/app_kulukorvaus/printing.py:142
 msgid ""
 "If you notice any errors in the information below, contact Prodeko's "
 "treasurer immediately at rahastonhoitaja@prodeko.org."
@@ -771,15 +771,25 @@ msgstr "Hallituksen pöytäkirjat"
 msgid "Board meeting minutes application"
 msgstr "Sovellus - Hallituksen pöytäkirjat"
 
-#: prodekoorg/app_poytakirjat/gdrive_api.py:314
-#, python-brace-format
-msgid "Downloaded {success_count} proceedings documents from G Drive."
-msgstr "Ladattu {success_count} pöytäkirjaa G Drivestä."
+#: prodekoorg/app_poytakirjat/gdrive_api.py:169
+msgid "No file starting with 'Pöytäkirja' found in folder {}"
+msgstr "Tiedostoa, jonka nimi alkaa 'Pöytäkirja' ei löytynyt kansiosta {}"
 
-#: prodekoorg/app_poytakirjat/gdrive_api.py:318
-#, python-brace-format
-msgid "Error downloading documents: {e}"
-msgstr "Virhe pöytäkirjoja ladattaessa: {e}"
+#: prodekoorg/app_poytakirjat/gdrive_api.py:189
+msgid "Error downloading document: {} ({})"
+msgstr "Virhe pöytäkirjoja ladattaessa: {} ({})"
+
+#: prodekoorg/app_poytakirjat/gdrive_api.py:335
+msgid "Downloaded documents {} from G Drive."
+msgstr "Ladattiin pöytäkirjat {} Drivestä"
+
+#: prodekoorg/app_poytakirjat/gdrive_api.py:341
+msgid "No documents downloaded."
+msgstr "Yhtäkään pöytäkirjaa ei ladattu."
+
+#: prodekoorg/app_poytakirjat/gdrive_api.py:344
+msgid "Error downloading documents: {}"
+msgstr "Virhe pöytäkirjoja ladattaessa: {}"
 
 #: prodekoorg/app_poytakirjat/models.py:67
 msgid "minutes"
@@ -1119,7 +1129,7 @@ msgstr "Sisältösivu 1:1 jaolla"
 msgid "Content page with 2:1 split"
 msgstr "Sisältösivu 2:1 jaolla"
 
-#: prodekoorg/settings/base.py:297
+#: prodekoorg/settings/base.py:298
 msgid "Navigation"
 msgstr "Navigaatio"
 
