@@ -77,7 +77,7 @@ $(document).ready(function() {
     localStorage.setItem("selectedTab_id", null);
     localStorage.setItem("selectedVirka", null);
 
-    document.getElementById("landingPageTitle").scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
+    document.getElementById("landingPageTitle").scrollIntoView({behavior: "smooth", block: "start"});
   }
 
   $('.vaalitFrontpageLink').click(function(e) {
@@ -97,7 +97,7 @@ $(document).ready(function() {
       $('#q_' + previousId.slice(2)).removeClass("active show");
     }
 
-    document.getElementById("roleDescription").scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
+    document.getElementById("roleDescription").scrollIntoView({behavior: "smooth", block: "start"});
 
     localStorage.setItem("selectedTab_id", id);
     localStorage.setItem("selectedVirka", virka);
