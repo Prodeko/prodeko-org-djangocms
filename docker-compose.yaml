@@ -8,6 +8,8 @@ services:
       - MYSQL_DATABASE=prodekoorg
       - MYSQL_USER=prodekoorg
       - MYSQL_PASSWORD=secret
+  cache:
+    image: redis:5
   web:
     tty: true
     build: .

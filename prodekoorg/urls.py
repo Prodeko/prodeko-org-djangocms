@@ -7,7 +7,7 @@ from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 from django.contrib.sitemaps.views import sitemap
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-from django.urls import include, re_path
+from django.urls import include, re_path, path
 from django.utils.translation import ugettext_lazy as _
 from django.views.decorators.cache import cache_page
 from django.views.generic.base import TemplateView
@@ -84,13 +84,16 @@ urlpatterns += i18n_patterns(
 
 # This is only needed when using runserver.
 if settings.DEBUG:
+    import debug_toolbar
+
     urlpatterns = (
         [
             re_path(
                 r"^media/(?P<path>.*)$",
                 serve,
                 {"document_root": settings.MEDIA_ROOT, "show_indexes": True},
-            )
+            ),
+            path("__debug__/", include(debug_toolbar.urls)),
         ]
         + staticfiles_urlpatterns()
         + urlpatterns

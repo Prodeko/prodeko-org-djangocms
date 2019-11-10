@@ -22,6 +22,11 @@ DATABASES = {
     "TEST": {"CHARSET": "utf8", "COLLATION": "utf8_unicode_ci"},
 }
 
+# Caching
+CACHES = {
+    "default": {"BACKEND": "redis_cache.RedisCache", "LOCATION": "localhost:6379"}
+}
+
 INSTALLED_APPS += ("storages",)
 
 CDN_URL = "static.prodeko.org"
