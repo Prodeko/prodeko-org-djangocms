@@ -6,7 +6,8 @@ from alumnirekisteri.rekisteri.models import *
 
 
 class PersonAdmin(admin.ModelAdmin):
-    list_display = ("user", "fullname")
+    list_display = ("fullname", "member_until", "member_type")
+    search_fields = ("fullname",)
 
 
 admin.site.register(Person, PersonAdmin)
