@@ -6,7 +6,13 @@ from easy_thumbnails.fields import ThumbnailerImageField
 
 
 class Virka(models.Model):
-    """ Position in the elections.
+    """Position in the elections.
+
+    Attributes:
+        is_hallitus: Boolean indicating a board position.
+        name: Name of the position.
+        description: Description of the position.
+        read_by: Used to track updates (new questions, answers and candidates).
     """
 
     is_hallitus = models.BooleanField(default=False, verbose_name=_("Board"))
@@ -30,6 +36,14 @@ class Virka(models.Model):
 
 class Ehdokas(models.Model):
     """ Applicant in the elections.
+
+    Attributes:
+        id: Primary key.
+        auth_prodeko_user: Foreign key to Prodeko user associated with the applicant.
+        name: Name of the applicant.
+        introduction: Applicant introduction.
+        virka: Foreign key to Virka model.
+        pic: Applicant picture.
     """
 
     id = models.AutoField(primary_key=True)
@@ -71,6 +85,12 @@ class Ehdokas(models.Model):
 
 class Kysymys(models.Model):
     """ Question assigned to a specific candidate (Ehdokas).
+
+    Attributes:
+        created_at: Question creation timestamp.
+        created_by: User who created the question. Foreign key to Prodeko user.
+        to_virka: Foreign key to Virka model.
+        question: Question content.
     """
 
     created_at = models.DateTimeField(auto_now_add=True, verbose_name=_("Created at"))
@@ -95,6 +115,12 @@ class Kysymys(models.Model):
 
 class Vastaus(models.Model):
     """ Answer to a spesific question by a specific candidate.
+
+    Attributes:
+        created_at: Vastaus creation timestamp.
+        by_ehdokas: Foreign key to Ehdokas model.
+        to_question: Foreign key to Question model.
+        answer: Answer content.
     """
 
     created_at = models.DateTimeField(auto_now_add=True, verbose_name=_("Created at"))
