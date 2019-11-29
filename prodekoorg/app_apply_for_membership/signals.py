@@ -3,7 +3,7 @@ from django.db.models.signals import pre_delete
 from django.dispatch import receiver
 from googleapiclient.http import HttpError
 
-from .constants import MAILING_LIST
+from .constants import MAILING_LIST_PORA, MAILING_LIST_PRODEKO
 from .groups_api import initialize_service
 
 
@@ -32,7 +32,11 @@ def delete_user_from_mailing_list(sender, instance, **kwargs):
 
         # Call G Suite API and remove a member from the email list
         service.members().delete(
-            groupKey=MAILING_LIST, memberKey=instance.email
+            groupKey=MAILING_LIST_PRODEKO, memberKey=instance.email
+        ).execute()
+
+        service.members().delete(
+            groupKey=MAILING_LIST_PORA, memberKey=instance.email
         ).execute()
 
     except HttpError as e:
