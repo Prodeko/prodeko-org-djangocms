@@ -6,7 +6,7 @@ django-ckeditor==5.7.1
 django-classy-tags==0.9.0
 django-cms==3.7.0
 django-cors-headers==3.1.0
-django-filer==1.5.0
+django-filer==1.6.0
 django-filter==2.2.0
 django-formtools==2.1
 django-js-asset==1.2.2
@@ -30,6 +30,7 @@ djangocms-page-meta==0.9.0
 djangorestframework==3.10.3
 django-storages==1.7.2
 django-pipeline==1.6.14
+django-redis-cache==2.1.0
 azure==4.0.0
 
 easy-thumbnails==2.6

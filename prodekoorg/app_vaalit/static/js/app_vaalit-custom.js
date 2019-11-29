@@ -97,7 +97,7 @@ $(document).ready(function() {
       $('#q_' + previousId.slice(2)).removeClass("active show");
     }
 
-    document.getElementById("roleDescription").scrollIntoView({behavior: "smooth", block: "start"});
+    document.getElementById("header").scrollIntoView({behavior: "smooth", block: "start"});
 
     localStorage.setItem("selectedTab_id", id);
     localStorage.setItem("selectedVirka", virka);

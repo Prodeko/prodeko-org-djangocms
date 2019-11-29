@@ -179,6 +179,7 @@ TEMPLATES = [
 ]
 
 MIDDLEWARE = (
+    "django.middleware.cache.UpdateCacheMiddleware",
     "cms.middleware.utils.ApphookReloadMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -196,6 +197,7 @@ MIDDLEWARE = (
     "corsheaders.middleware.CorsMiddleware",
     # matrikkeli.prodeko.org
     #'audit_log.middleware.UserLoggingMiddleware',
+    "django.middleware.cache.FetchFromCacheMiddleware",
 )
 
 INSTALLED_APPS = (
@@ -297,6 +299,13 @@ CMS_PERMISSION = True
 CMS_PLACEHOLDER_CONF = {
     "abit_nav": {"name": _("Navigation"), "plugins": ["TextPlugin"]}
 }
+CMS_CACHE_DURATIONS = {
+    "content": 60 * 60 * 6,
+    "menus": 60 * 60 * 6,
+    "permissions": 60 * 60 * 6,
+}
+CMS_PLACEHOLDER_CACHE = True
+CMS_PAGE_CACHE = True
 
 THUMBNAIL_PROCESSORS = (
     "easy_thumbnails.processors.colorspace",
@@ -399,6 +408,7 @@ CKEDITOR_IMAGE_BACKEND = "pillow"
 CSRF_TRUSTED_ORIGINS = ".google.com"
 
 SESSION_COOKIE_AGE = 60 * 60 * 24 * 30  # 30 days
+SESSION_ENGINE = "django.contrib.sessions.backends.cached_db"
 
 CORS_ORIGIN_ALLOW_ALL = True
 REST_FRAMEWORK = {

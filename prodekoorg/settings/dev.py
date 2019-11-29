@@ -3,6 +3,8 @@ from .base import *
 DEBUG = True
 ALLOWED_HOSTS = ["prodeko.org", ".prodeko.org", "localhost"]
 
+INTERNAL_IPS = ["web"]
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
@@ -15,6 +17,19 @@ DATABASES = {
     },
     "TEST": {"CHARSET": "utf8", "COLLATION": "utf8_unicode_ci"},
 }
+
+# Caching
+CACHES = {"default": {"BACKEND": "redis_cache.RedisCache", "LOCATION": "cache:6379"}}
+
+# Show django debug toolbar always.
+# This is needed because the Docker internal IP is not static
+DEBUG_TOOLBAR_CONFIG = {
+    "SHOW_TOOLBAR_CALLBACK": lambda request: True if DEBUG else False
+}
+
+INSTALLED_APPS += ("debug_toolbar",)
+
+MIDDLEWARE += ("debug_toolbar.middleware.DebugToolbarMiddleware",)
 
 STATIC_URL = "/static/"
 MEDIA_URL = "/media/"

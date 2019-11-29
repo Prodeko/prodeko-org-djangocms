@@ -20,7 +20,8 @@ RUN apt-get update && apt-get install -y dos2unix
 WORKDIR /code
 
 COPY requirements.txt requirements.txt ./
-RUN pip install -r requirements.txt
+COPY requirements-dev.txt requirements-dev.txt ./
+RUN pip install -r requirements-dev.txt
 
 COPY . /code/
 COPY --from=tiedotteet-build /app/public/tiedotteet /code/tiedotteet/frontend/public/tiedotteet
