@@ -1,7 +1,5 @@
 {% load i18n %}
 
-<p>{{ user.name }} hakee Prodekon j&auml;senyytt&auml;.</p>
-<p>&nbsp;</p>
 <p><strong>J&auml;senhakemuksen tiedot:</strong></p>
 <p>Nimi: {{ user.name }}</p>
 <p>S&auml;hk&ouml;posti: {{ user.email }}</p>
@@ -12,6 +10,4 @@
 <p>Muuta: {{ user.additional_info }}</p>
 <p>{% endif %}</p>
 <p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>https://www.prodeko.org/fi/admin/app_apply_for_membership/pendinguser/{{ user.id }}/change/ - Hyv&auml;ksy tai hylk&auml;&auml; hakemus t&auml;st&auml;, mutta huolehdi ensin, ett&auml; olet lis&auml;nnyt j&auml;senen j&auml;senet-s&auml;hk&ouml;postilistalle (ja suomenkieliset opiskelijat my&ouml;s PoRan s&auml;hk&ouml;postilistalle). Hyväksytylle hakijalle l&auml;hetet&auml;&auml;n s&auml;hk&ouml;postilla k&auml;ytt&auml;j&auml;tunnus ja salasana prodeko.orgiin. Sama tunnus käy matrikkeliin.</p>
-<p>&nbsp;</p>
+<p>https://www.prodeko.org/fi/admin/app_apply_for_membership/pendinguser/{{ user.id }}/change/ - Hyv&auml;ksy tai hylk&auml;&auml; hakemus t&auml;st&auml;. Hyväksytylle hakijalle l&auml;hetet&auml;&auml;n s&auml;hk&ouml;postilla k&auml;ytt&auml;j&auml;tunnus ja salasana prodeko.orgiin. Sama tunnus käy matrikkeliin.</p>
