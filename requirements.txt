@@ -1,5 +1,5 @@
 # Django requirements
-Django==2.2.5
+Django==2.2.8
 django-appconf==1.0.3
 django-audit-log==0.7.0 # Replace with django-revision
 django-ckeditor==5.7.1
