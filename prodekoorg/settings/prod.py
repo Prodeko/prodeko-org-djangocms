@@ -1,11 +1,17 @@
 from .base import *
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
+from sentry_sdk.integrations.redis import RedisIntegration
 
 sentry_sdk.init(
     dsn=SENTRY_DSN,
     integrations=[DjangoIntegration()],
     send_default_pii=True
+)
+
+sentry_sdk.init(
+    dsn=SENTRY_DSN,
+    integrations=[RedisIntegration()]
 )
 
 DEBUG = False
