@@ -1,13 +1,13 @@
 # Tiedostoista :open_file_folder::file_folder:
 
-- **Päivitetty** 3.11.2019
+- **Päivitetty** 30.12.2019
 - **Tekijä:** Timo Riski
 
 Prodissa prodeko.org static- ja mediatiedostot hostataan Azure Storagessa. Storage blobeja on kaksi: static/ ja media/. Blobien edessä on CDN.
 
 ## Setup
 
-1. Luo infrastruktuuri Azureen infrastructure/ kansion ohjeiden mukaan.
+1. Luo infrastruktuuri Azureen https://github.com/Prodeko/infrastructure repon mukaisesti. Prodeko.org projekti tarvitsee prodissa CDN:n ja storage accountin, jossa on media ja static storage containerit.
 2. Määritä settings.py käyttämään `DEFAULT_FILE_STORAGE = "prodekoorg.custom_azure.AzureMediaStorage"` ja `STATICFILES_STORAGE = "prodekoorg.custom_azure.AzureStaticStorage"`.
 3. Aja `python3 manage.py collectstatic`, jotta tiedostot kopioituvat Azureen.
 

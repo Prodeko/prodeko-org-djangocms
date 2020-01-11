@@ -22,7 +22,7 @@ def get_version():
     version = 1
     return version
 
-
+handler404 = 'prodekoorg.views.handler404'
 handler500 = "prodekoorg.views.handler500"
 
 urlpatterns = [
