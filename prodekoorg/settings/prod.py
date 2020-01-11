@@ -5,13 +5,8 @@ from sentry_sdk.integrations.redis import RedisIntegration
 
 sentry_sdk.init(
     dsn=SENTRY_DSN,
-    integrations=[DjangoIntegration()],
+    integrations=[DjangoIntegration(), RedisIntegration()],
     send_default_pii=True
-)
-
-sentry_sdk.init(
-    dsn=SENTRY_DSN,
-    integrations=[RedisIntegration()]
 )
 
 DEBUG = False
