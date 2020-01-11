@@ -1,5 +1,5 @@
 # Django requirements
-Django==2.2.5
+Django==2.2.9
 django-appconf==1.0.3
 django-audit-log==0.7.0 # Replace with django-revision
 django-ckeditor==5.7.1
@@ -31,7 +31,9 @@ djangorestframework==3.10.3
 django-storages==1.7.2
 django-pipeline==1.6.14
 django-redis-cache==2.1.0
+
 azure==4.0.0
+sentry-sdk==0.14.0
 
 easy-thumbnails==2.6
 html5lib==1.0.1
