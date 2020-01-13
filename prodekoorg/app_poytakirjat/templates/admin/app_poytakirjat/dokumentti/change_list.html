@@ -23,7 +23,7 @@
                     Klikkaamalla 'Lataa pöytäkirjat Drivestä' 'Kokoukset'-kansiossa olevat pöytäkirjat latautuvat Driven API:n avulla. \
                     Vain pöytäkirjat joita ei ole alla olevassa listassa ladataan. Pöytäkirjojen manuaalinen lisäys onnistuu painamalla 'Lisää pöytäkirja'.<br /><br /> \
                     Pöytäkirjan tulee olla Driven kansiossa, joka on nimetty seuraavasti: järjestysnumero_pp.kk.yyyy \
-                    (esim. 12_19.3.2018 tai 35_12.10.2018 - huom! Kuukaudessa ei saa olla edessä 0).<br /><br /> \
+                    (esim. 08_19.3.2018 tai 35_12.10.2018 - huom! Kuukaudessa ei saa olla edessä 0). Järjestysnumerossa tulee olla edessä 0.<br /><br /> \
                     Pöytäkirjan tulee olla Google Docs muodossa (ei .docx tai .pdf) ja nimetty alkaen 'Pöytäkirja' (esim. Pöytäkirja_04).\
                     Liitteet tulee nimetä alkaen 'LIITE' (esim. LIITE1_laskuliite, LIITE2_esitys-x). Liitteitä voi olla useita.<br /><br /> \
                     LIITE-sanan jälkeen tuleva järjestysnumero määrää missä järjestyksessä liitteet lisätään lopulliseen pdf-tiedostoon.\
@@ -57,7 +57,7 @@
     <li>
         <form id="folderIdForm" method="POST" action="{% url 'download_docs_from_gsuite' %}">
             {% csrf_token %}
-            <input name="folderID" type="text" class="form-control input-folderid" value ="1kOb4EWajWr4B4CvUPwPv3nk2PObZVQ7s">
+            <input name="folderID" type="text" class="form-control input-folderid" value ="1tO87_WxVyov6b7MPfvVg1BTsk-AFX1hn">
         </form>
     </li>
     <li>
