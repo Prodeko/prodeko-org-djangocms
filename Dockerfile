@@ -12,10 +12,7 @@ FROM python:3
 ENV PYTHONUNBUFFERED 1
 
 # Install Python and Package Libraries
-RUN apt-get update && \
-    apt-get install -y mysql-client gettext
-
-RUN apt-get update && apt-get install -y dos2unix
+RUN apt-get update && apt-get install -y default-mysql-client gettext dos2unix
 
 WORKDIR /code
 
