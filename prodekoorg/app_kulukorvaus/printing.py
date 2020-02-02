@@ -1,4 +1,5 @@
 from io import BytesIO
+from textwrap import wrap
 
 from django.contrib.staticfiles.storage import staticfiles_storage
 from django.utils import timezone
@@ -99,7 +100,7 @@ class KulukorvausPDF:
             [_("Phone number"), phone_number],
             [_("Account number (IBAN)"), bank_number],
             ["BIC", bic],
-            [_("Additional info"), additional_info],
+            [_("Additional info"), "\n".join(wrap(additional_info, 80))],
         ]
 
         t_kulu = []
@@ -107,13 +108,11 @@ class KulukorvausPDF:
         for model in self.models_kulukorvaukset:
             fields = model._meta.get_fields()
             for field in fields:
-                if (
-                    field.name != "id"
-                    and field.name != "created_at"
-                    and field.name != "info"
-                ):
+                if (field.name not in ["id", "created_at", "info"]):
                     verbose_name = field.verbose_name
                     value = getattr(model, field.name)
+                    if type(value) == str:
+                        value = "\n".join(wrap(value, 80))
                     if field.name == "receipt":
                         receipt = self.handle_receipt(value.file.read())
                         value = receipt
