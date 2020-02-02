@@ -44,6 +44,9 @@
         max-width: 70px;
       }
     }
+    img:hover{
+      transform: scale(1.3);
+    }
 
     @include smallphone {
       height: 50px;
