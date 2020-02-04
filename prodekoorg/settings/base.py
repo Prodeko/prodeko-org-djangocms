@@ -247,6 +247,7 @@ INSTALLED_APPS = (
     "prodekoorg.app_kulukorvaus",
     "prodekoorg.app_membership",
     "prodekoorg.app_poytakirjat",
+    "prodekoorg.app_tapahtumat",
     "prodekoorg.app_tiedostot",
     "prodekoorg.app_toimarit",
     "prodekoorg.app_utils",

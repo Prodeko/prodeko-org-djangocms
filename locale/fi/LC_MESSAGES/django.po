@@ -781,22 +781,27 @@ msgid "Board meeting minutes application"
 msgstr "Sovellus - Hallituksen pöytäkirjat"
 
 #: prodekoorg/app_poytakirjat/gdrive_api.py:169
+#: prodekoorg/app_tapahtumat/gdrive_api.py:169
 msgid "No file starting with 'Pöytäkirja' found in folder {}"
 msgstr "Tiedostoa, jonka nimi alkaa 'Pöytäkirja' ei löytynyt kansiosta {}"
 
 #: prodekoorg/app_poytakirjat/gdrive_api.py:189
+#: prodekoorg/app_tapahtumat/gdrive_api.py:189
 msgid "Error downloading document: {} ({})"
 msgstr "Virhe pöytäkirjoja ladattaessa: {} ({})"
 
 #: prodekoorg/app_poytakirjat/gdrive_api.py:335
+#: prodekoorg/app_tapahtumat/gdrive_api.py:335
 msgid "Downloaded documents {} from G Drive."
 msgstr "Ladattiin pöytäkirjat {} Drivestä"
 
 #: prodekoorg/app_poytakirjat/gdrive_api.py:341
+#: prodekoorg/app_tapahtumat/gdrive_api.py:341
 msgid "No documents downloaded."
 msgstr "Yhtäkään pöytäkirjaa ei ladattu."
 
 #: prodekoorg/app_poytakirjat/gdrive_api.py:344
+#: prodekoorg/app_tapahtumat/gdrive_api.py:344
 msgid "Error downloading documents: {}"
 msgstr "Virhe pöytäkirjoja ladattaessa: {}"
 

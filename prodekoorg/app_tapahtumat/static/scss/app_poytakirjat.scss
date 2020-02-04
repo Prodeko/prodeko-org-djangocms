@@ -1,0 +1,25 @@
+#documents-container {
+  margin-bottom: 2em;
+
+  a.btn {
+    font-size: 1.5em;
+    background-color: #002e7d;
+    border-color: grey;
+  }
+
+  .fa-chevron-down {
+    transition: all 0.3s ease-in-out;
+  }
+
+  .collapsed {
+    .fa-chevron-down {
+      transform: rotate(-90deg);
+      transition: all 0.4s ease-in-out;
+    }
+  }
+  .field-state {
+    p {
+      background-color: red;
+    }
+  }
+}
