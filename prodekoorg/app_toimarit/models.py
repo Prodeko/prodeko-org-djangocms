@@ -4,7 +4,8 @@ from django.contrib.staticfiles.storage import staticfiles_storage
 from django.core.files import File
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-from easy_thumbnails.fields import ThumbnailerImageField
+from filer.fields.image import FilerImageField
+from easy_thumbnails.files import get_thumbnailer
 
 
 def remove_äö(input_str):
@@ -58,10 +59,7 @@ class Toimari(models.Model):
     section = models.ForeignKey(
         Jaosto, verbose_name=_("Section"), on_delete=models.CASCADE
     )
-    photo = ThumbnailerImageField(
-        upload_to="app_toimarit/toimari_photos",
-        default="images/toimari_photos/placeholder.jpg",
-    )
+    photo = FilerImageField(on_delete=models.SET_NULL, null=True, blank=True, verbose_name=_("Photo"))
 
     @property
     def name(self):
@@ -73,11 +71,6 @@ class Toimari(models.Model):
 
     def __str__(self):
         return f"{self.name}, {self.position}"
-
-    def save(self, *args, **kwargs):
-        img = staticfiles_storage.open(get_photo_url("toimari_photos", self.filename))
-        self.photo.save(self.filename, img, save=False)
-        super(Toimari, self).save(*args, **kwargs)
 
     class Meta:
         verbose_name = _("guild official")
@@ -122,10 +115,7 @@ class HallituksenJasen(models.Model):
     description = models.CharField(
         max_length=255, verbose_name=_("Description"), blank=True, null=True
     )
-    photo = ThumbnailerImageField(
-        upload_to="app_toimarit/hallitus_photos",
-        default="images/hallitus_photos/placeholder.jpg",
-    )
+    photo = FilerImageField(on_delete=models.SET_NULL, null=True, blank=True, verbose_name=_("Photo"))
 
     @property
     def name(self):
@@ -137,11 +127,6 @@ class HallituksenJasen(models.Model):
 
     def __str__(self):
         return f"{self.name}, {self.position}"
-
-    def save(self, *args, **kwargs):
-        img = staticfiles_storage.open(get_photo_url("hallitus_photos", self.filename))
-        self.photo.save(self.filename, img, save=False)
-        super(HallituksenJasen, self).save(*args, **kwargs)
 
     class Meta:
         verbose_name = _("board member")
