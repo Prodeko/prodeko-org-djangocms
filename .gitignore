@@ -70,6 +70,7 @@ venv/
 node_modules/
 
 prodekoorg/settings/variables.txt
+prodekoorg/service_account.json
 *.db
 *.json
 !data.json
