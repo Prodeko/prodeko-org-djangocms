@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-04 16:47+0200\n"
+"POT-Creation-Date: 2020-02-05 17:18+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Timo Riski <timo@prodeko.org>\n"
 "Language: \n"
@@ -107,7 +107,7 @@ msgstr "Profiili"
 #: auth_prodeko/templates/accounts/user_profile.html:14
 #: prodekoorg/app_kulukorvaus/models.py:60
 #: prodekoorg/app_kulukorvaus/printing.py:98
-#: prodekoorg/app_toimarit/models.py:35 prodekoorg/app_vaalit/models.py:53
+#: prodekoorg/app_toimarit/models.py:20 prodekoorg/app_vaalit/models.py:53
 msgid "Name"
 msgstr "Nimi"
 
@@ -116,7 +116,7 @@ msgstr "Nimi"
 #: prodekoorg/app_apply_for_membership/models.py:62
 #: prodekoorg/app_contact/models.py:91 prodekoorg/app_kulukorvaus/models.py:61
 #: prodekoorg/app_kulukorvaus/printing.py:99
-#: prodekoorg/app_toimarit/models.py:111
+#: prodekoorg/app_toimarit/models.py:95
 msgid "Email"
 msgstr "Sähköposti"
 
@@ -349,12 +349,12 @@ msgid "Other (English)"
 msgstr "Englanti"
 
 #: prodekoorg/app_apply_for_membership/models.py:58
-#: prodekoorg/app_toimarit/models.py:56 prodekoorg/app_toimarit/models.py:99
+#: prodekoorg/app_toimarit/models.py:41 prodekoorg/app_toimarit/models.py:83
 msgid "First name"
 msgstr "Etunimi"
 
 #: prodekoorg/app_apply_for_membership/models.py:59
-#: prodekoorg/app_toimarit/models.py:57 prodekoorg/app_toimarit/models.py:100
+#: prodekoorg/app_toimarit/models.py:42 prodekoorg/app_toimarit/models.py:84
 msgid "Last name"
 msgstr "Sukunimi"
 
@@ -367,6 +367,7 @@ msgid "Field of study"
 msgstr "Opiskeluala"
 
 #: prodekoorg/app_apply_for_membership/models.py:64
+#: prodekoorg/app_toimarit/models.py:50 prodekoorg/app_toimarit/models.py:105
 msgid "Year"
 msgstr "Vuosi"
 
@@ -455,7 +456,7 @@ msgid "/privacy-policy"
 msgstr "/tietosuoja"
 
 #: prodekoorg/app_contact/admin.py:10 prodekoorg/app_kulukorvaus/admin.py:10
-#: prodekoorg/app_poytakirjat/admin.py:9
+#: prodekoorg/app_poytakirjat/admin.py:9 prodekoorg/app_toimarit/admin.py:13
 msgid "year"
 msgstr "Vuosi"
 
@@ -827,7 +828,7 @@ msgstr "tiedostoversio"
 msgid "File versions"
 msgstr "Tiedostoversiot"
 
-#: prodekoorg/app_toimarit/admin.py:49 prodekoorg/app_toimarit/admin.py:64
+#: prodekoorg/app_toimarit/admin.py:67 prodekoorg/app_toimarit/admin.py:85
 msgid "Export selected as CSV"
 msgstr "Vie valitut CSV:hen"
 
@@ -835,64 +836,71 @@ msgstr "Vie valitut CSV:hen"
 msgid "Board and guild officials"
 msgstr "Hallitus ja toimihenkilöt"
 
-#: prodekoorg/app_toimarit/cms_apps.py:11
-msgid "Guild officials application"
-msgstr "Sovellus - Toimarisivu"
+#: prodekoorg/app_toimarit/cms_apps.py:16
+msgstr "Sovellus - Uudet toimarit -sivu"
 
-#: prodekoorg/app_toimarit/cms_apps.py:20
-msgid "Board of Prodeko application"
-msgstr "Sovellus - Hallitussivu"
+#: prodekoorg/app_toimarit/cms_apps.py:27
+msgid "Old guild officials application"
+msgstr "Sovellus - Vanhat toimarit -sivu"
 
-#: prodekoorg/app_toimarit/models.py:41
+#: prodekoorg/app_toimarit/cms_apps.py:38
+msgid "Current board of Prodeko application"
+msgstr "Sovellus - Nykyinen hallitus -sivu"
+
+#: prodekoorg/app_toimarit/cms_apps.py:49
+msgid "Old boards of Prodeko application"
+msgstr "Sovellus - Vanhat hallitukset -sivu"
+
+#: prodekoorg/app_toimarit/models.py:26
 msgid "section"
 msgstr "jaosto"
 
-#: prodekoorg/app_toimarit/models.py:42
+#: prodekoorg/app_toimarit/models.py:27
 msgid "sections"
 msgstr "jaostot"
 
-#: prodekoorg/app_toimarit/models.py:58 prodekoorg/app_toimarit/models.py:101
+#: prodekoorg/app_toimarit/models.py:43 prodekoorg/app_toimarit/models.py:85
 #: prodekoorg/app_vaalit/models.py:19
 msgid "Position"
 msgstr "Virka"
 
-#: prodekoorg/app_toimarit/models.py:60 prodekoorg/app_toimarit/models.py:107
+#: prodekoorg/app_toimarit/models.py:45 prodekoorg/app_toimarit/models.py:91
 msgid "Section"
 msgstr "Jaosto"
 
-#: prodekoorg/app_toimarit/models.py:62 prodekoorg/app_toimarit/models.py:118
+#: prodekoorg/app_toimarit/models.py:48 prodekoorg/app_toimarit/models.py:103
 msgid "Photo"
 msgstr ""
 
-#: prodekoorg/app_toimarit/models.py:76
+#: prodekoorg/app_toimarit/models.py:60
 msgid "guild official"
 msgstr "toimari"
 
-#: prodekoorg/app_toimarit/models.py:77
+#: prodekoorg/app_toimarit/models.py:61
 msgid "guild officials"
 msgstr "toimarit"
 
-#: prodekoorg/app_toimarit/models.py:109
+#: prodekoorg/app_toimarit/models.py:93
 msgid "Position (English)"
 msgstr "Virka (Englanniksi)"
 
-#: prodekoorg/app_toimarit/models.py:110
+#: prodekoorg/app_toimarit/models.py:94
 msgid "Mobile phone"
 msgstr "Puhelinnumero"
 
-#: prodekoorg/app_toimarit/models.py:113
+#: prodekoorg/app_toimarit/models.py:97
 msgid "Telegram"
 msgstr "Telegram"
 
-#: prodekoorg/app_toimarit/models.py:116 prodekoorg/app_vaalit/models.py:20
+#: prodekoorg/app_toimarit/models.py:100 prodekoorg/app_vaalit/models.py:20
 msgid "Description"
 msgstr "Kuvaus"
 
-#: prodekoorg/app_toimarit/models.py:132
+#: prodekoorg/app_toimarit/models.py:115
 msgid "board member"
 msgstr "hallituksen jäsen"
 
-#: prodekoorg/app_toimarit/models.py:133
+#: prodekoorg/app_toimarit/models.py:116
 msgid "board members"
 msgstr "hallituksen jäsenet"
 
@@ -917,11 +925,11 @@ msgstr "Korjaa allaolevat virheet."
 msgid "Filter"
 msgstr "Filtteri"
 
-#: prodekoorg/app_toimarit/views.py:38
+#: prodekoorg/app_toimarit/views.py:73
 msgid "CSV imported successfully."
 msgstr "CSV-tiedosto ladattu onnistuneesti"
 
-#: prodekoorg/app_toimarit/views.py:41
+#: prodekoorg/app_toimarit/views.py:76
 msgid "Error downloading CSV: {}"
 msgstr "Virhe csv:tä ladattaessa: {}"
 
