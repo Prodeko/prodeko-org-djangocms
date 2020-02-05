@@ -18,7 +18,7 @@
                                 {% for official in guildofficials %}
                                     {% if official.section == section %}
                                         <div class="toimari">
-                                            <img src="{{ official.photo.url }}" alt="{{ official.name }}"/>
+                                            <img src="{{ official.photo|thumbnail_url:'toimari' }}" alt="{{ official.name }}"/>
                                             <div class="description">
                                                 <strong>{{ official.name }}</strong>
                                                 <br />

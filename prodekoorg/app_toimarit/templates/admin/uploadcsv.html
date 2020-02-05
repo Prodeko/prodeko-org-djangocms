@@ -1,20 +1,25 @@
 {% extends 'admin/base.html' %} 
 
+{% block extrastyle %}
+    {{ block.super }}
+    {% include "libraries/bootstrap-scss.html" %}
+    {% include "libraries/fontawesome.html" %}
+{% endblock %}
+
 {% block content %}
     <div style="margin: 0 auto;">
-        <h1>Lataa toimari/hallitustiedot CSV-tiedostosta</h1>
+        <h1>Lataa toimarit CSV-tiedostosta</h1>
         <form action="{% url 'postcsv' %}" method="POST" enctype="multipart/form-data">
             <input type="file" name="file" accept=".csv" /> {% csrf_token %} <br />
             <br />
-            <button type="submit">Lataa CSV</button>
+            <button class="btn btn-primary" type="submit">Lataa CSV</button>
         </form>
-        <br />
         <hr />
-        <br />
         <p>
             Tiedoston tulee olla muotoa etunimi;sukunimi;virka;jaosto<br />
-            Jaostot täytyy olla luotuna adminissa samalla nimellä ennen tiedoston
-            lataamista.
+            Kuvat täytyy ladata filerin kansioihin Kuvat/Toimihenkilöt/[VUOSI]
+            ennen csv lataamista. Kuvan nimen tulee alkaa Etunimi_Sukunimi.
+            Tiedostopäätteellä (jpg/png) ei ole väliä.
         </p>
     </div>
     <br />

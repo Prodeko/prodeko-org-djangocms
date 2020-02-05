@@ -1,11 +1,27 @@
 import csv
 
 from django.contrib import admin
+from django.contrib.admin import SimpleListFilter
 from django.core.exceptions import PermissionDenied
 from django.http import HttpResponse
 from django.utils.translation import ugettext_lazy as _
 
 from .models import HallituksenJasen, Jaosto, Toimari
+
+
+class YearFilter(SimpleListFilter):
+    title = _("year")
+    parameter_name = "year"
+
+    def lookups(self, request, model_admin):
+        years = set([m.year for m in model_admin.model.objects.all()])
+        return [(y, y) for y in years]
+
+    def queryset(self, request, queryset):
+        if self.value() is not None:
+            return queryset.filter(year=self.value())
+        else:
+            return queryset
 
 
 def exportcsv(modeladmin, request, queryset):
@@ -44,7 +60,9 @@ class JaostoAdmin(admin.ModelAdmin):
 
 @admin.register(Toimari)
 class ToimariAdmin(admin.ModelAdmin):
-    list_display = ("firstname", "lastname", "section", "position")
+    list_display = ("year", "firstname", "lastname", "section", "position")
+    list_filter = (YearFilter,)
+
     actions = [exportcsv]
     exportcsv.short_description = _("Export selected as CSV")
 
@@ -52,6 +70,7 @@ class ToimariAdmin(admin.ModelAdmin):
 @admin.register(HallituksenJasen)
 class HallituksenJasenAdmin(admin.ModelAdmin):
     list_display = (
+        "year",
         "firstname",
         "lastname",
         "position",
@@ -60,5 +79,7 @@ class HallituksenJasenAdmin(admin.ModelAdmin):
         "mobilephone",
         "email",
     )
+    list_filter = (YearFilter,)
+
     actions = [exportcsv]
     exportcsv.short_description = _("Export selected as CSV")

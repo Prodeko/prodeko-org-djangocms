@@ -8,21 +8,6 @@ from filer.fields.image import FilerImageField
 from easy_thumbnails.files import get_thumbnailer
 
 
-def remove_äö(input_str):
-    return unidecode.unidecode(input_str)
-
-
-def get_photo_url(board_or_official, filename):
-    photo_url = "images/toimari_photos/placeholder.jpg"
-    photo_exists = staticfiles_storage.exists(
-        f"images/{board_or_official}/{remove_äö(filename)}"
-    )
-    if photo_exists:
-        photo_url = f"images/{board_or_official}/{filename}"
-
-    return remove_äö(photo_url)
-
-
 class Jaosto(models.Model):
     """Prodeko board proceedings documents.
 
@@ -59,15 +44,14 @@ class Toimari(models.Model):
     section = models.ForeignKey(
         Jaosto, verbose_name=_("Section"), on_delete=models.CASCADE
     )
-    photo = FilerImageField(on_delete=models.SET_NULL, null=True, blank=True, verbose_name=_("Photo"))
+    photo = FilerImageField(
+        on_delete=models.SET_NULL, null=True, blank=True, verbose_name=_("Photo")
+    )
+    year = models.IntegerField(verbose_name=_("Year"))
 
     @property
     def name(self):
         return f"{self.firstname} {self.lastname}"
-
-    @property
-    def filename(self):
-        return f"{self.firstname}_{self.lastname}.jpg"
 
     def __str__(self):
         return f"{self.name}, {self.position}"
@@ -115,15 +99,14 @@ class HallituksenJasen(models.Model):
     description = models.CharField(
         max_length=255, verbose_name=_("Description"), blank=True, null=True
     )
-    photo = FilerImageField(on_delete=models.SET_NULL, null=True, blank=True, verbose_name=_("Photo"))
+    photo = FilerImageField(
+        on_delete=models.SET_NULL, null=True, blank=True, verbose_name=_("Photo")
+    )
+    year = models.IntegerField(verbose_name=_("Year"))
 
     @property
     def name(self):
         return f"{self.firstname} {self.lastname}"
-
-    @property
-    def filename(self):
-        return f"{self.firstname}_{self.lastname}.jpg"
 
     def __str__(self):
         return f"{self.name}, {self.position}"

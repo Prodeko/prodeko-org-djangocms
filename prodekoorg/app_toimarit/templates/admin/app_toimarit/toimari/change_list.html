@@ -49,13 +49,13 @@
                                 {% blocktrans with cl.opts.verbose_name as name %}Add {{ name }}{% endblocktrans %}
                             </a>
                         </li>
-                        <!-- TOIMARIN LISÄÄMINEN -->
+                        {# TOIMARIN LISÄÄMINEN #}
                         <li>
                             <a href="{% url 'uploadcsv' %}" class="addlink">
                                 Lataa CSV
                             </a>
                         </li>
-                        <!-- TOIMARIN LISÄÄMINEN LOPPUU -->
+                        {# TOIMARIN LISÄÄMINEN LOPPUU #}
                     {% endif %}
                 {% endblock %}
             </ul>
