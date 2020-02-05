@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-05 17:18+0200\n"
+"POT-Creation-Date: 2020-02-05 22:57+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Timo Riski <timo@prodeko.org>\n"
 "Language: \n"
@@ -837,7 +837,8 @@ msgid "Board and guild officials"
 msgstr "Hallitus ja toimihenkilöt"
 
 #: prodekoorg/app_toimarit/cms_apps.py:16
-msgstr "Sovellus - Uudet toimarit -sivu"
+msgid "Current guild officials application"
+msgstr "Sovellus - Nykyiset toimarit -sivu"
 
 #: prodekoorg/app_toimarit/cms_apps.py:27
 msgid "Old guild officials application"
@@ -925,11 +926,11 @@ msgstr "Korjaa allaolevat virheet."
 msgid "Filter"
 msgstr "Filtteri"
 
-#: prodekoorg/app_toimarit/views.py:73
+#: prodekoorg/app_toimarit/views.py:74
 msgid "CSV imported successfully."
 msgstr "CSV-tiedosto ladattu onnistuneesti"
 
-#: prodekoorg/app_toimarit/views.py:76
+#: prodekoorg/app_toimarit/views.py:77
 msgid "Error downloading CSV: {}"
 msgstr "Virhe csv:tä ladattaessa: {}"
 
