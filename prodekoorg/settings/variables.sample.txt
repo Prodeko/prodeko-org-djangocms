@@ -16,7 +16,7 @@ DEV_EMAIL = you.email@email.com
 KEY = longrandomstring
 
 [DEBUG]
-MODE = True
+SHOW_DEBUG_TOOLBAR = False
 
 [SENTRY]
 DSN = https://1da6cf1579c34878bbf1d1cebe533368@sentry.prodeko.org/1
