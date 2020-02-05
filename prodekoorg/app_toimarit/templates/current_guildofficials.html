@@ -10,22 +10,20 @@
         <div class="row">
             <div class="col-md-9">
                 {% show_breadcrumb 0 "layout-components/breadcrumb.html" %}
-                {% for section in sections %}
+                {% for section, officials in context.items %}
                     <div class="row">
                         <div class="col-12">
                             <h3 class="section-header">{{ section }}</h3>
                             <div class="row justify-content-center">
-                                {% for official in guildofficials %}
-                                    {% if official.section == section %}
-                                        <div class="toimari">
-                                            <img src="{{ official.photo|thumbnail_url:'toimari' }}" alt="{{ official.name }}"/>
-                                            <div class="description">
-                                                <strong>{{ official.name }}</strong>
-                                                <br />
-                                                {{ official.position }}
-                                            </div>
+                                {% for official in officials %}
+                                    <div class="toimari">
+                                        <img src="{{ official.photo|thumbnail_url:'toimari' }}" alt="{{ official.name }}"/>
+                                        <div class="description">
+                                            <strong>{{ official.name }}</strong>
+                                            <br />
+                                            {{ official.position }}
                                         </div>
-                                    {% endif %}
+                                    </div>
                                 {% endfor %}
                             </div>
                         </div>

@@ -1,5 +1,7 @@
 @import '../../../static/scss/variables.scss';
 @import '../../../static/scss/breakpoints-mixin.scss';
+@import 'app_toimarit_hallitus.scss';
+@import 'app_toimarit_collapse.scss';
 
 .toimari {
   float: left;
@@ -14,18 +16,18 @@
     width: 100%;
     height: auto;
   }
+}
 
-  .description {
-    padding: 7px;
-    font-size: 0.85rem;
-    text-align: center;
-    word-wrap: break-word;
-  }
+.description {
+  padding: 7px;
+  font-size: 0.85rem;
+  text-align: center;
+  word-wrap: break-word;
+}
 
-  strong {
-    color: $blue-dark;
-    font-size: 1rem;
-  }
+strong {
+  color: $blue-dark;
+  font-size: 1rem;
 }
 
 .section-header {
@@ -33,31 +35,5 @@
     font-size: 1.5rem;
     text-align: center;
     word-wrap: break-word;
-  }
-}
-
-#hallituskuva {
-  img {
-    display: block;
-    margin: 0 auto;
-  }
-}
-
-.boardMember {
-  min-width: 250px;
-
-  @include smallphone {
-    margin-bottom: 30px;
-  }
-
-  .description {
-    margin: 10px 0;
-    font-size: 0.9rem;
-    word-wrap: break-word;
-  }
-
-  strong {
-    color: $blue-dark;
-    font-size: 1.1rem;
   }
 }

@@ -1,0 +1,25 @@
+#hallituskuva {
+  img {
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+.boardMember {
+  min-width: 250px;
+
+  @include smallphone {
+    margin-bottom: 30px;
+  }
+
+  .description {
+    margin: 10px 0;
+    font-size: 0.9rem;
+    word-wrap: break-word;
+  }
+
+  strong {
+    color: $blue-dark;
+    font-size: 1.1rem;
+  }
+}

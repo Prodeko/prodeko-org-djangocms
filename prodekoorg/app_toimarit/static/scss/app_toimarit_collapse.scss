@@ -1,0 +1,22 @@
+@import '../../../static/scss/variables.scss';
+
+#officials-container {
+  margin-bottom: 2em;
+
+  a.btn {
+    font-size: 1.5em;
+    background-color: $blue-normal;
+    border-color: grey;
+  }
+
+  .fa-chevron-down {
+    transition: all 0.2s ease-in-out;
+  }
+
+  .collapsed {
+    .fa-chevron-down {
+      transform: rotate(-90deg);
+      transition: all 0.3s ease-in-out;
+    }
+  }
+}

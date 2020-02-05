@@ -12,7 +12,7 @@ from prodekoorg.app_toimarit.views import (
 
 @apphook_pool.register
 class CurrentOfficialsApphook(CMSApp):
-    app_name = "app_toimarit"
+    app_name = "app_toimarit_current"
     name = _("Current guild officials application")
 
     def get_urls(self, page=None, language=None, **kwargs):
@@ -23,7 +23,7 @@ class CurrentOfficialsApphook(CMSApp):
 
 @apphook_pool.register
 class OldOfficialsApphook(CMSApp):
-    app_name = "app_toimarit"
+    app_name = "app_toimarit_old"
     name = _("Old guild officials application")
 
     def get_urls(self, page=None, language=None, **kwargs):
@@ -34,7 +34,7 @@ class OldOfficialsApphook(CMSApp):
 
 @apphook_pool.register
 class CurrentBoardApphook(CMSApp):
-    app_name = "app_toimarit"
+    app_name = "app_toimarit_hallitus_current"
     name = _("Current board of Prodeko application")
 
     def get_urls(self, page=None, language=None, **kwargs):
@@ -45,7 +45,7 @@ class CurrentBoardApphook(CMSApp):
 
 @apphook_pool.register
 class OldBoardsApphook(CMSApp):
-    app_name = "app_toimarit"
+    app_name = "app_toimarit_hallitus_old"
     name = _("Old boards of Prodeko application")
 
     def get_urls(self, page=None, language=None, **kwargs):

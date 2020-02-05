@@ -1,0 +1,46 @@
+{% extends "contentpage/content-page.html" %}
+{% load cms_tags menu_tags thumbnail static sekizai_tags sass_tags %}
+
+{% block extra_head %}
+    <link href="{% sass_src 'scss/app_toimarit.scss' %}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block content %}
+    <div class="container page-container">
+        <div class="row">
+            <div class="col-md-9">
+                {% show_breadcrumb 0 "layout-components/breadcrumb.html" %}
+                <div class="hallituskuva">
+                    <img class="w-100 h-100" src="{% static 'images/hallitus_photos/board_full.jpg' %}" alt="Prodeko board" />
+                </div>
+                <div>
+                    <h3>Hallituksen jäsenet</h3>
+                    <div class="row justify-content-center justify-content-sm-start">
+                        {% for boardmember in boardmembers %}
+                            <div class="col-md-6 col-lg-4">
+                                <div class="boardMember">
+                                    <img class="w-100 h-100" src="{{ boardmember.photo|thumbnail_url:'hallitus' }}" alt="{{ boardmember.name }}"/>
+                                    <div class="description">
+                                        <strong>{{ boardmember.name }}</strong>
+                                        <br />
+                                        {{ boardmember.position }}
+                                        <br />
+                                        {{ boardmember.position_eng }}
+                                        <br />
+                                        {{ boardmember.mobilephone }}
+                                        <br />
+                                        {{ boardmember.email }}
+                                        <br />
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                {% show_sub_menu 2 1 100 "layout-components/sidenav.html" %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}

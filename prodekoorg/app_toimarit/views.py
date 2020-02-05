@@ -1,6 +1,8 @@
 import csv
 import io
 from datetime import datetime
+from collections import defaultdict
+import json
 
 from django.contrib import messages
 from django.contrib.admin.views.decorators import staff_member_required
@@ -16,6 +18,12 @@ from filer.utils.loader import load_model
 from .models import HallituksenJasen, Jaosto, Toimari
 
 Image = load_model(FILER_IMAGE_MODEL)
+
+
+def default_to_regular(d):
+    if isinstance(d, defaultdict):
+        d = {k: default_to_regular(v) for k, v in d.items()}
+    return d
 
 
 @staff_member_required
@@ -79,7 +87,7 @@ def postcsv(request):
 
 
 def list_current_guildofficials(request):
-    """Fetch current Guild Officials and display them on a page.
+    """Fetch current guild officials and display them on a page.
 
     Args:
         request: HttpRequest object from Django.
@@ -89,16 +97,20 @@ def list_current_guildofficials(request):
     """
 
     guildofficials = Toimari.objects.select_related("section").filter(
-        year=str(datetime.now().year)
-    )
-    sections = set([o.section for o in guildofficials])
+        year=datetime.now().year
+    ).order_by('-year', '-section', '-lastname')
 
-    context = {"guildofficials": guildofficials, "sections": sections}
-    return render(request, "current_guildofficials.html", context)
+    context = defaultdict(list)
+    for official in guildofficials:
+        context[official.section].append(official)
+
+    context = default_to_regular(context)
+    
+    return render(request, "current_guildofficials.html", {"context": context})
 
 
 def list_old_guildofficials(request):
-    """Fetch old Guild Officials and display them on a page.
+    """Fetch old guild officials and display them on a page.
 
     Args:
         request: HttpRequest object from Django.
@@ -106,11 +118,22 @@ def list_old_guildofficials(request):
     Returns:
         A Django TemplateResponse object that renders an html template.
     """
-    pass
+
+    guildofficials = Toimari.objects.select_related("section").filter(
+        year__lt=datetime.now().year
+    ).order_by('-year', '-section', '-lastname')
+
+    context = defaultdict(lambda: defaultdict(list))
+    for official in guildofficials:
+        context[official.year][official.section.name].append(official)
+
+    context = default_to_regular(context)
+    
+    return render(request, "old_guildofficials.html", {"context": context})
 
 
 def list_current_boardmembers(request):
-    """Fetch current Board Members and display them on a page.
+    """Fetch current board members and display them on a page.
 
     Args:
         request: HttpRequest object from Django.
@@ -125,7 +148,7 @@ def list_current_boardmembers(request):
 
 
 def list_old_boardmembers(request):
-    """Fetch old Board Members and display them on a page.
+    """Fetch old board members and display them on a page.
 
     Args:
         request: HttpRequest object from Django.
