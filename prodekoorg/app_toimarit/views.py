@@ -79,7 +79,7 @@ def postcsv(request):
 
 
 def list_current_guildofficials(request):
-    """Fetch all Guild Official objects and display them on a page.
+    """Fetch current Guild Officials and display them on a page.
 
     Args:
         request: HttpRequest object from Django.
@@ -98,11 +98,19 @@ def list_current_guildofficials(request):
 
 
 def list_old_guildofficials(request):
+    """Fetch old Guild Officials and display them on a page.
+
+    Args:
+        request: HttpRequest object from Django.
+
+    Returns:
+        A Django TemplateResponse object that renders an html template.
+    """
     pass
 
 
 def list_current_boardmembers(request):
-    """Fetch all Board Member objects and display them on a page.
+    """Fetch current Board Members and display them on a page.
 
     Args:
         request: HttpRequest object from Django.
@@ -117,4 +125,12 @@ def list_current_boardmembers(request):
 
 
 def list_old_boardmembers(request):
+    """Fetch old Board Members and display them on a page.
+
+    Args:
+        request: HttpRequest object from Django.
+
+    Returns:
+        A Django TemplateResponse object that renders an html template.
+    """
     pass
