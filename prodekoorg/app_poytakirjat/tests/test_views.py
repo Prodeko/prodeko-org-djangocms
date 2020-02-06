@@ -26,7 +26,7 @@ class DokumenttiViewTest(TestData):
         test_data = {"folderID": "1RD-AIF6GuB08wDSFKxNxRZgBu2BtPEli"}
 
         response = self.client.post(
-            reverse("download_docs_from_gsuite"), data=test_data
+            reverse("admin:download_docs_from_gsuite"), data=test_data
         )
         self.assertRedirects(
             response, "/fi/admin/login/?next=/fi/admin/app_poytakirjat/download"
@@ -48,6 +48,6 @@ class DokumenttiViewTest(TestData):
         test_data = {"folderID": "1RD-AIF6GuB08wDSFKxNxRZgBu2BtPEli"}
 
         response = self.client.post(
-            reverse("download_docs_from_gsuite"), data=test_data
+            reverse("admin:download_docs_from_gsuite"), data=test_data
         )
         self.assertRedirects(response, "/fi/admin/app_poytakirjat/dokumentti/")
