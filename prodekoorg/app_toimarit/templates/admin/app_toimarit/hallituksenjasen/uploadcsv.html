@@ -1,0 +1,28 @@
+{% extends 'admin/base.html' %} 
+
+{% block extrastyle %}
+    {{ block.super }}
+    {% include "libraries/bootstrap-scss.html" %}
+    {% include "libraries/fontawesome.html" %}
+{% endblock %}
+
+{% block content %}
+    <div style="margin: 0 auto;">
+        <h1>Lataa hallituslaiset CSV-tiedostosta</h1>
+        <form action="{% url 'admin:hallitus_postcsv' %}" method="POST" enctype="multipart/form-data">
+            <input type="file" name="file" accept=".csv" /> {% csrf_token %} <br />
+            <br />
+            <button class="btn btn-primary" type="submit">Lataa CSV</button>
+        </form>
+        <hr />
+        <p>
+            <strong>Tiedoston tulee olla muotoa etunimi;sukunimi;virka suomeksi;virka englanniksi;vuosi;(mobilephone);(email);(telegram)<br />
+            Esimerkiksi: Timo;Riski;Mediakeisari;Minister of Media and Information Technology;2018;;;</strong> <br />
+            Suluissa olevat kohdat ovat vapaavalintaisia, ne voi halutessaan jättää tyhjäksi. <br />
+            Kuvat tulee ladata filerin kansioihin Kuvat/Hallitukset/[VUOSI] ennen csv lataamista. <br />
+            Mikäli kuvia ei ole saatavilla, käytetään Kuvat/anonymous_prodeko.jpg placeholderia. </br />
+            Kuvan nimen tulee alkaa Etunimi_Sukunimi. Huom! Kuvan nimessä ei saa olla ä tai ö kirjainta. Tiedostopäätteellä (jpg/png) ei ole väliä.
+        </p>
+    </div>
+    <br />
+{% endblock %}

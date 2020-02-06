@@ -21,13 +21,13 @@ DATABASES = {
 # Caching
 CACHES = {"default": {"BACKEND": "redis_cache.RedisCache", "LOCATION": "cache:6379"}}
 
-# Show django debug toolbar always.
-# This is needed because the Docker internal IP is not static
-DEBUG_TOOLBAR_CONFIG = {
-    "SHOW_TOOLBAR_CALLBACK": lambda request: True if DEBUG else False
-}
-
-INSTALLED_APPS += ("debug_toolbar",)
+if config["DEBUG"]["SHOW_DEBUG_TOOLBAR"] == "True":
+    # Show django debug toolbar always.
+    # This is needed because the Docker internal IP is not static
+    DEBUG_TOOLBAR_CONFIG = {
+        "SHOW_TOOLBAR_CALLBACK": lambda request: True if DEBUG else False
+    }
+    INSTALLED_APPS += ("debug_toolbar",)
 
 MIDDLEWARE += ("debug_toolbar.middleware.DebugToolbarMiddleware",)
 
@@ -46,16 +46,7 @@ FILER_STORAGES = {
             "UPLOAD_TO": "filer.utils.generate_filename.by_date",
             "UPLOAD_TO_PREFIX": "public",
         },
-        "thumbnails": {
-            "ENGINE": "filer.storage.PublicFileSystemStorage",
-            "OPTIONS": {
-                "location": os.path.join(
-                    BASE_DIR, "prodekoorg/media/filer/filer_thumbnails"
-                ),
-                "base_url": MEDIA_URL + "thumbnails",
-            },
-            "UPLOAD_TO_PREFIX": "public",
-        },
+        "thumbnails": {"ENGINE": "filer.storage.PublicFileSystemStorage",},
     },
     "private": {
         "main": {
@@ -67,15 +58,6 @@ FILER_STORAGES = {
             "UPLOAD_TO": "filer.utils.generate_filename.randomized",
             "UPLOAD_TO_PREFIX": "private",
         },
-        "thumbnails": {
-            "ENGINE": "filer.storage.PrivateFileSystemStorage",
-            "OPTIONS": {
-                "location": os.path.join(
-                    BASE_DIR, "prodekoorg/smedia/filer/filer_thumbnails"
-                ),
-                "base_url": MEDIA_URL + "thumbnails",
-            },
-            "UPLOAD_TO_PREFIX": "private",
-        },
+        "thumbnails": {"ENGINE": "filer.storage.PrivateFileSystemStorage",},
     },
 }

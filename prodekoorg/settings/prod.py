@@ -6,7 +6,7 @@ from sentry_sdk.integrations.redis import RedisIntegration
 sentry_sdk.init(
     dsn=SENTRY_DSN,
     integrations=[DjangoIntegration(), RedisIntegration()],
-    send_default_pii=True
+    send_default_pii=True,
 )
 
 DEBUG = False

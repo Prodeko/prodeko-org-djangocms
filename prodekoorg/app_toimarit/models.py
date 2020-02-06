@@ -1,25 +1,17 @@
 import unidecode
+
 from django.conf import settings
 from django.contrib.staticfiles.storage import staticfiles_storage
 from django.core.files import File
 from django.db import models
+from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
-from easy_thumbnails.fields import ThumbnailerImageField
+from filer.fields.image import FilerImageField
+from easy_thumbnails.files import get_thumbnailer
 
 
-def remove_äö(input_str):
-    return unidecode.unidecode(input_str)
-
-
-def get_photo_url(board_or_official, filename):
-    photo_url = "images/toimari_photos/placeholder.jpg"
-    photo_exists = staticfiles_storage.exists(
-        f"images/{board_or_official}/{remove_äö(filename)}"
-    )
-    if photo_exists:
-        photo_url = f"images/{board_or_official}/{filename}"
-
-    return remove_äö(photo_url)
+def default_year():
+    return timezone.now().date().year
 
 
 class Jaosto(models.Model):
@@ -58,26 +50,17 @@ class Toimari(models.Model):
     section = models.ForeignKey(
         Jaosto, verbose_name=_("Section"), on_delete=models.CASCADE
     )
-    photo = ThumbnailerImageField(
-        upload_to="app_toimarit/toimari_photos",
-        default="images/toimari_photos/placeholder.jpg",
+    photo = FilerImageField(
+        on_delete=models.SET_NULL, null=True, blank=True, verbose_name=_("Photo")
     )
+    year = models.IntegerField(default=default_year, verbose_name=_("Year"))
 
     @property
     def name(self):
         return f"{self.firstname} {self.lastname}"
 
-    @property
-    def filename(self):
-        return f"{self.firstname}_{self.lastname}.jpg"
-
     def __str__(self):
         return f"{self.name}, {self.position}"
-
-    def save(self, *args, **kwargs):
-        img = staticfiles_storage.open(get_photo_url("toimari_photos", self.filename))
-        self.photo.save(self.filename, img, save=False)
-        super(Toimari, self).save(*args, **kwargs)
 
     class Meta:
         verbose_name = _("guild official")
@@ -90,58 +73,38 @@ class HallituksenJasen(models.Model):
     Attributes:
         firstname: First name of the Board Member
         lastname: Last name of the Board Member
-        position: Current position as a Board Member (in Finnish)
-        section: The section of responsibility.
-          Not currently displayed anywhere, and exists just to make
-          the export CSV function simpler.
-        position_eng: English version of the Board Member's position
+        position_fi: Current position as a Board Member (in Finnish)
+        position_en: English version of the Board Member's position
         mobilephone: Mobile phone number of the Board Member
         telegram: Telegram username of the Board Member.
           Not currently displayed anywhere.
-        description: A short description of the role.
-          Not currenly displayed anywhere.
         photo: HallituksenJasen photo
     """
 
     firstname = models.CharField(max_length=30, verbose_name=_("First name"))
     lastname = models.CharField(max_length=30, verbose_name=_("Last name"))
-    position = models.CharField(max_length=50, verbose_name=_("Position"))
-    section = models.ForeignKey(
-        Jaosto,
-        on_delete=models.CASCADE,
-        blank=True,
-        null=True,
-        verbose_name=_("Section"),
+    position_fi = models.CharField(max_length=50, verbose_name=_("Position"))
+    position_en = models.CharField(max_length=60, verbose_name=_("Position (English)"))
+    mobilephone = models.CharField(
+        max_length=20, verbose_name=_("Mobile phone"), blank=True, null=True
     )
-    position_eng = models.CharField(max_length=60, verbose_name=_("Position (English)"))
-    mobilephone = models.CharField(max_length=20, verbose_name=_("Mobile phone"))
-    email = models.CharField(max_length=30, verbose_name=_("Email"))
+    email = models.CharField(
+        max_length=30, verbose_name=_("Email"), blank=True, null=True
+    )
     telegram = models.CharField(
         max_length=20, verbose_name=_("Telegram"), blank=True, null=True
     )
-    description = models.CharField(
-        max_length=255, verbose_name=_("Description"), blank=True, null=True
+    photo = FilerImageField(
+        on_delete=models.SET_NULL, null=True, blank=True, verbose_name=_("Photo")
     )
-    photo = ThumbnailerImageField(
-        upload_to="app_toimarit/hallitus_photos",
-        default="images/hallitus_photos/placeholder.jpg",
-    )
+    year = models.IntegerField(default=default_year, verbose_name=_("Year"))
 
     @property
     def name(self):
         return f"{self.firstname} {self.lastname}"
 
-    @property
-    def filename(self):
-        return f"{self.firstname}_{self.lastname}.jpg"
-
     def __str__(self):
-        return f"{self.name}, {self.position}"
-
-    def save(self, *args, **kwargs):
-        img = staticfiles_storage.open(get_photo_url("hallitus_photos", self.filename))
-        self.photo.save(self.filename, img, save=False)
-        super(HallituksenJasen, self).save(*args, **kwargs)
+        return f"{self.name}, {self.position_fi}"
 
     class Meta:
         verbose_name = _("board member")

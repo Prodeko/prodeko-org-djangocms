@@ -425,3 +425,5 @@ META_SITE_NAME = "Tuotantotalouden kilta Prodeko ry"
 META_USE_OG_PROPERTIES = True
 META_FB_AUTHOR_URL = "https://www.facebook.com/prodeko"
 META_FB_PUBLISHER = "https://www.facebook.com/prodeko"
+
+FILER_ALLOW_REGULAR_USERS_TO_ADD_ROOT_FOLDERS = True

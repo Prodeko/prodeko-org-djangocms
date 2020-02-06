@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "contentpage/content-page.html" %}
 {% load cms_tags menu_tags sekizai_tags sass_tags %}
 
 {% block extra_head %}
@@ -13,25 +13,32 @@
         {% if policy_error %}
             {% include "other/policy-error.html"%}
         {% else %}
-            {% show_breadcrumb 0 "layout-components/breadcrumb.html" %}
-            {% placeholder "content" %}
-            <div id="documents-container">
-                {% for year, doclist in context.items %}
-                    <a class="btn btn-primary w-100 text-left mb-2" data-toggle="collapse" href="#collapse{{ year }}">
-                        {{ year }}
-                        <i class="fa fa-fw fa-chevron-down pt-1"></i>
-                    </a>
-                    <div class="collapse {% if forloop.first %}show{% endif %}" id="collapse{{ year }}">
-                        <div class="card card-body mb-3">
-                            {% for doc in doclist %}
-                                <div class="mb-2">
-                                    <p class="d-inline mr-2">{{ doc.name }}/{{ year }}</p>
-                                    <a class="d-inline" href="{{ doc.doc_file.url }}">(pdf)</a>
+        {% show_breadcrumb 0 "layout-components/breadcrumb.html" %}
+        {% placeholder "content" %}
+            <div class="row">
+                <div class="col-md-9">
+                    <div id="documents-container">
+                        {% for year, doclist in context.items %}
+                            <a class="btn btn-primary w-100 text-left mb-2 {% if not forloop.first %}collapsed{% endif %}" data-toggle="collapse" href="#collapse-{{ year }}">
+                                {{ year }}
+                                <i class="fa fa-fw {% if forloop.first %}fa-chevron-down{% endif %} pt-1"></i>
+                            </a>
+                            <div class="collapse {% if forloop.first %}show{% endif %}" id="collapse-{{ year }}">
+                                <div class="card card-body mb-3">
+                                    {% for doc in doclist %}
+                                        <div class="mb-2">
+                                            <p class="d-inline mr-2">{{ doc.name }}/{{ year }}</p>
+                                            <a class="d-inline" href="{{ doc.doc_file.url }}">(pdf)</a>
+                                        </div>
+                                    {% endfor %}
                                 </div>
-                            {% endfor %}
-                        </div>
+                            </div>
+                        {% endfor %}
                     </div>
-                {% endfor %}
+                </div>
+            </div>
+            <div class="col-md-3">
+                {% show_sub_menu 2 1 100 "layout-components/sidenav.html" %}
             </div>
         {% endif %}
     </div>

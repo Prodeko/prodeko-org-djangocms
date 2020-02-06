@@ -1,0 +1,55 @@
+{% extends "contentpage/content-page.html" %}
+{% load cms_tags menu_tags thumbnail static sekizai_tags sass_tags %}
+
+{% block extra_head %}
+    <link href="{% sass_src 'scss/app_toimarit.scss' %}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block content %}
+    <div class="container page-container">
+        {% show_breadcrumb 0 "layout-components/breadcrumb.html" %}
+        {% placeholder "content" %}
+        <div class="row">
+            <div class="col-md-9">
+                <div id="officials-container">
+                    {% for year, boardmembers in context.items %}
+                        <a class="btn btn-primary w-100 text-left mb-2 {% if not forloop.first %}collapsed{% endif %}" data-toggle="collapse" href="#collapse-{{ year }}">
+                            {{ year }}
+                            <i class="fa fa-fw fa-chevron-down pt-1"></i>
+                        </a>
+                        <div class="collapse {% if forloop.first %}show{% endif %}" id="collapse-{{ year }}">
+                            <div class="card card-body mb-3">
+                                {% widthratio boardmembers|length 2 1 as midpoint %}
+                                <div class="row justify-content-center">
+                                    {% for boardmember in boardmembers %}
+                                        {% if forloop.first %}
+                                            <div class="col">
+                                        {% endif %}
+
+                                        {% if forloop.counter == midpoint|add:"0" %}
+                                            </div>
+                                            <div class="col">
+                                        {% else %}
+                                            <div class="description">
+                                                <strong>{{ boardmember.name }}</strong>
+                                                <br />
+                                                {{ boardmember.position_fi }}
+                                            </div>
+                                        {% endif %}
+
+                                        {% if forloop.last %}
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-md-3">
+                {% show_sub_menu 2 1 100 "layout-components/sidenav.html" %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}

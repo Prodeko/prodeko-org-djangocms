@@ -108,7 +108,7 @@ class KulukorvausPDF:
         for model in self.models_kulukorvaukset:
             fields = model._meta.get_fields()
             for field in fields:
-                if (field.name not in ["id", "created_at", "info"]):
+                if field.name not in ["id", "created_at", "info"]:
                     verbose_name = field.verbose_name
                     value = getattr(model, field.name)
                     if type(value) == str:

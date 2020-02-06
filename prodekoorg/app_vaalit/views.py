@@ -15,8 +15,13 @@ from django.core.files.base import ContentFile
 from django.core.files.uploadedfile import InMemoryUploadedFile
 from django.core.serializers import serialize
 from django.core.serializers.json import DjangoJSONEncoder
-from django.http import (Http404, HttpResponse, HttpResponseForbidden,
-                         HttpResponseRedirect, JsonResponse)
+from django.http import (
+    Http404,
+    HttpResponse,
+    HttpResponseForbidden,
+    HttpResponseRedirect,
+    JsonResponse,
+)
 from django.shortcuts import get_object_or_404, redirect, render
 from django.template.loader import render_to_string
 from django.urls import reverse_lazy

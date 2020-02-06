@@ -1,5 +1,7 @@
 {% extends "contentpage/content-page.html" %}
-{% load cms_tags menu_tags thumbnail static sekizai_tags sass_tags %}
+{% load cms_tags i18n menu_tags static sekizai_tags sass_tags thumbnail %}
+
+{% get_current_language as LANGUAGE_CODE %}
 
 {% block extra_head %}
     <link href="{% sass_src 'scss/app_toimarit.scss' %}" rel="stylesheet" type="text/css" />
@@ -10,9 +12,7 @@
         <div class="row">
             <div class="col-md-9">
                 {% show_breadcrumb 0 "layout-components/breadcrumb.html" %}
-                <div class="hallituskuva">
-                    <img class="w-100 h-100" src="{% static 'images/hallitus_photos/board_full.jpg' %}" alt="Prodeko board" />
-                </div>
+                {% placeholder "content" %}
                 <div>
                     <h3>Hallituksen jäsenet</h3>
                     <div class="row justify-content-center justify-content-sm-start">
@@ -23,9 +23,7 @@
                                     <div class="description">
                                         <strong>{{ boardmember.name }}</strong>
                                         <br />
-                                        {{ boardmember.position }}
-                                        <br />
-                                        {{ boardmember.position_eng }}
+                                        {% if LANGUAGE_CODE == 'fi' %}{{ boardmember.position_fi }}{% else %}{{ boardmember.position_en }}{% endif %}
                                         <br />
                                         {{ boardmember.mobilephone }}
                                         <br />

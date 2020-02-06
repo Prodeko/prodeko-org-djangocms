@@ -154,22 +154,22 @@ class HallituksenJasenModelTest(TestData):
         self.assertEquals(field_label, "Jaosto")
 
     @english
-    def test_position_eng_label_english(self):
+    def test_position_en_label_english(self):
         field_label = self.test_hallituksenjasen1._meta.get_field(
-            "position_eng"
+            "position_en"
         ).verbose_name
         self.assertEquals(field_label, "Position (English)")
 
     @finnish
-    def test_position_eng_label_finnish(self):
+    def test_position_en_label_finnish(self):
         field_label = self.test_hallituksenjasen1._meta.get_field(
-            "position_eng"
+            "position_en"
         ).verbose_name
         self.assertEquals(field_label, "Virka (Englanniksi)")
 
-    def test_position_eng_max_length(self):
+    def test_position_en_max_length(self):
         max_length = self.test_hallituksenjasen1._meta.get_field(
-            "position_eng"
+            "position_en"
         ).max_length
         self.assertEquals(max_length, 60)
 
