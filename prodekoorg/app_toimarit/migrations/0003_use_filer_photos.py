@@ -10,7 +10,6 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('app_toimarit', '0002_add_photo_fields'),
-        ('filer', '0011_auto_20190418_0137'),
     ]
 
     operations = [
