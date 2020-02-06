@@ -1,11 +1,17 @@
 import unidecode
+
 from django.conf import settings
 from django.contrib.staticfiles.storage import staticfiles_storage
 from django.core.files import File
 from django.db import models
+from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 from filer.fields.image import FilerImageField
 from easy_thumbnails.files import get_thumbnailer
+
+
+def default_year():
+    return timezone.now().date().year
 
 
 class Jaosto(models.Model):
@@ -47,7 +53,7 @@ class Toimari(models.Model):
     photo = FilerImageField(
         on_delete=models.SET_NULL, null=True, blank=True, verbose_name=_("Photo")
     )
-    year = models.IntegerField(verbose_name=_("Year"))
+    year = models.IntegerField(default=default_year, verbose_name=_("Year"))
 
     @property
     def name(self):
@@ -67,49 +73,38 @@ class HallituksenJasen(models.Model):
     Attributes:
         firstname: First name of the Board Member
         lastname: Last name of the Board Member
-        position: Current position as a Board Member (in Finnish)
-        section: The section of responsibility.
-          Not currently displayed anywhere, and exists just to make
-          the export CSV function simpler.
-        position_eng: English version of the Board Member's position
+        position_fi: Current position as a Board Member (in Finnish)
+        position_en: English version of the Board Member's position
         mobilephone: Mobile phone number of the Board Member
         telegram: Telegram username of the Board Member.
           Not currently displayed anywhere.
-        description: A short description of the role.
-          Not currenly displayed anywhere.
         photo: HallituksenJasen photo
     """
 
     firstname = models.CharField(max_length=30, verbose_name=_("First name"))
     lastname = models.CharField(max_length=30, verbose_name=_("Last name"))
-    position = models.CharField(max_length=50, verbose_name=_("Position"))
-    section = models.ForeignKey(
-        Jaosto,
-        on_delete=models.CASCADE,
-        blank=True,
-        null=True,
-        verbose_name=_("Section"),
+    position_fi = models.CharField(max_length=50, verbose_name=_("Position"))
+    position_en = models.CharField(max_length=60, verbose_name=_("Position (English)"))
+    mobilephone = models.CharField(
+        max_length=20, verbose_name=_("Mobile phone"), blank=True, null=True
     )
-    position_eng = models.CharField(max_length=60, verbose_name=_("Position (English)"))
-    mobilephone = models.CharField(max_length=20, verbose_name=_("Mobile phone"))
-    email = models.CharField(max_length=30, verbose_name=_("Email"))
+    email = models.CharField(
+        max_length=30, verbose_name=_("Email"), blank=True, null=True
+    )
     telegram = models.CharField(
         max_length=20, verbose_name=_("Telegram"), blank=True, null=True
-    )
-    description = models.CharField(
-        max_length=255, verbose_name=_("Description"), blank=True, null=True
     )
     photo = FilerImageField(
         on_delete=models.SET_NULL, null=True, blank=True, verbose_name=_("Photo")
     )
-    year = models.IntegerField(verbose_name=_("Year"))
+    year = models.IntegerField(default=default_year, verbose_name=_("Year"))
 
     @property
     def name(self):
         return f"{self.firstname} {self.lastname}"
 
     def __str__(self):
-        return f"{self.name}, {self.position}"
+        return f"{self.name}, {self.position_fi}"
 
     class Meta:
         verbose_name = _("board member")

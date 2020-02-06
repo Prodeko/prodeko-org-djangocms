@@ -38,8 +38,8 @@ class TestData(TestCase):
         cls.test_hallituksenjasen1 = HallituksenJasen.objects.create(
             firstname="John",
             lastname="Doe",
-            position="Puheenjohtaja",
-            position_eng="Chairman",
+            position_fi="Puheenjohtaja",
+            position_en="Chairman",
             section=cls.test_jaosto2,
             mobilephone="000123123",
             email="puheenjohtaja@test.com",

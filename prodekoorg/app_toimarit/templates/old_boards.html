@@ -7,35 +7,44 @@
 
 {% block content %}
     <div class="container page-container">
+        {% show_breadcrumb 0 "layout-components/breadcrumb.html" %}
+        {% placeholder "content" %}
         <div class="row">
             <div class="col-md-9">
-                {% show_breadcrumb 0 "layout-components/breadcrumb.html" %}
-                <div class="hallituskuva">
-                    <img class="w-100 h-100" src="{% static 'images/hallitus_photos/board_full.jpg' %}" alt="Prodeko board" />
-                </div>
-                <div>
-                    <h3>Hallituksen jäsenet</h3>
-                    <div class="row justify-content-center justify-content-sm-start">
-                        {% for boardmember in boardmembers %}
-                            <div class="col-md-6 col-lg-4">
-                                <div class="boardMember">
-                                    <img class="w-100 h-100" src="{{ boardmember.photo|thumbnail_url:'hallitus' }}" alt="{{ boardmember.name }}"/>
-                                    <div class="description">
-                                        <strong>{{ boardmember.name }}</strong>
-                                        <br />
-                                        {{ boardmember.position }}
-                                        <br />
-                                        {{ boardmember.position_eng }}
-                                        <br />
-                                        {{ boardmember.mobilephone }}
-                                        <br />
-                                        {{ boardmember.email }}
-                                        <br />
-                                    </div>
+                <div id="officials-container">
+                    {% for year, boardmembers in context.items %}
+                        <a class="btn btn-primary w-100 text-left mb-2 {% if not forloop.first %}collapsed{% endif %}" data-toggle="collapse" href="#collapse-{{ year }}">
+                            {{ year }}
+                            <i class="fa fa-fw fa-chevron-down pt-1"></i>
+                        </a>
+                        <div class="collapse {% if forloop.first %}show{% endif %}" id="collapse-{{ year }}">
+                            <div class="card card-body mb-3">
+                                {% widthratio boardmembers|length 2 1 as midpoint %}
+                                <div class="row justify-content-center">
+                                    {% for boardmember in boardmembers %}
+                                        {% if forloop.first %}
+                                            <div class="col">
+                                        {% endif %}
+
+                                        {% if forloop.counter == midpoint|add:"0" %}
+                                            </div>
+                                            <div class="col">
+                                        {% else %}
+                                            <div class="description">
+                                                <strong>{{ boardmember.name }}</strong>
+                                                <br />
+                                                {{ boardmember.position_fi }}
+                                            </div>
+                                        {% endif %}
+
+                                        {% if forloop.last %}
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
                                 </div>
                             </div>
-                        {% endfor %}
-                    </div>
+                        </div>
+                    {% endfor %}
                 </div>
             </div>
             <div class="col-md-3">
