@@ -13,14 +13,13 @@ from django.views.decorators.cache import cache_page
 from django.views.generic.base import TemplateView
 from django.views.i18n import JavaScriptCatalog
 from django.views.static import serve
-from prodekoorg.app_poytakirjat.gdrive_api import run_app_poytakirjat
-from prodekoorg.app_toimarit.views import postcsv
 
 
 def get_version():
     # Increment this when javascript translations change
     version = 1
     return version
+
 
 handler500 = "prodekoorg.views.handler500"
 
@@ -47,25 +46,12 @@ urlpatterns += [re_path(r"", include("filer.server.urls"))]
 
 # Localization and internationalization
 urlpatterns += i18n_patterns(
-    # app_toimarit & app_poytakirjat
-    # Must be before admin urls
     re_path(
         r"^jsi18n/",
         cache_page(86400, key_prefix="js18n-%s" % get_version())(
             JavaScriptCatalog.as_view()
         ),
         name="javascript-catalog",
-    ),
-    re_path(
-        r"^admin/toimarit/csvupload$",
-        TemplateView.as_view(template_name="admin/uploadcsv.html"),
-        name="uploadcsv",
-    ),
-    re_path(r"^admin/toimarit/postcsv$", postcsv, name="postcsv"),
-    re_path(
-        r"^admin/app_poytakirjat/download$",
-        run_app_poytakirjat,
-        name="download_docs_from_gsuite",
     ),
     # auth_prodeko
     re_path(r"", include("auth_prodeko.urls")),

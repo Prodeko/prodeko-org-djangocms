@@ -1,8 +1,10 @@
 from django.contrib import admin
 from django.contrib.admin import SimpleListFilter
+from django.urls import path
 from django.utils.translation import ugettext_lazy as _
 
 from .models import Dokumentti
+from .gdrive_api import run_app_poytakirjat
 
 
 class YearFilter(SimpleListFilter):
@@ -21,6 +23,13 @@ class YearFilter(SimpleListFilter):
 
 
 class DokumenttiAdmin(admin.ModelAdmin):
+    def get_urls(self):
+        urls = super().get_urls()
+        app_poytakirjat_urls = [
+            path("download", run_app_poytakirjat, name="download_docs_from_gsuite",),
+        ]
+        return app_poytakirjat_urls + urls
+
     list_display = ("name", "date")
     list_filter = (YearFilter,)
 

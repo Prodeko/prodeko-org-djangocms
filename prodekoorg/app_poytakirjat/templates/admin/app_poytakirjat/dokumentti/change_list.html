@@ -55,7 +55,7 @@
     {% trans "How does this work" as how_does_it_work %}
 
     <li>
-        <form id="folderIdForm" method="POST" action="{% url 'download_docs_from_gsuite' %}">
+        <form id="folderIdForm" method="POST" action="{% url 'admin:download_docs_from_gsuite' %}">
             {% csrf_token %}
             <input name="folderID" type="text" class="form-control input-folderid" value ="1tO87_WxVyov6b7MPfvVg1BTsk-AFX1hn">
         </form>
