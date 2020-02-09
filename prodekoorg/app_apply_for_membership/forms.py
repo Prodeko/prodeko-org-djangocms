@@ -33,7 +33,6 @@ class PendingUserForm(ModelForm):
                 choices=PendingUser.AYY_MEMBER_CHOICES
             )
         if "start_year" in self.fields:
-            print(year_choices)
             self.fields["start_year"] = TypedChoiceField(
                 coerce=int, choices=year_choices, initial=timezone.now().year
             )

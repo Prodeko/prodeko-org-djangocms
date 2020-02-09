@@ -17,7 +17,6 @@ class KulukorvausViewTest(TestData, CMSTestCase):
         Tests redirect to login page if the main kulukorvaus page is
         accessed and the user is not logged in.
         """
-        print(reverse("kulukorvaus"))
         response = self.client.get(reverse("kulukorvaus"))
         self.assertRedirects(response, "/fi/login/?next=/fi/kulukorvaus/")
 

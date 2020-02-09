@@ -61,7 +61,6 @@ class KulukorvausPDF:
 
     def get_image(self, path, width):
         """Return image with a specified width and the original aspect ratio."""
-        print(path)
         img = ImageReader(path)
         iw, ih = img.getSize()
         aspect = ih / float(iw)
