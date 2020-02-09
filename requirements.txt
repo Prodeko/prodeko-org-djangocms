@@ -1,60 +1,60 @@
 # Django requirements
-Django==2.2.9
+Django==2.2.10
 django-appconf==1.0.3
 django-audit-log==0.7.0 # Replace with django-revision
-django-ckeditor==5.7.1
-django-classy-tags==0.9.0
-django-cms==3.7.0
-django-cors-headers==3.1.0
+django-ckeditor==5.9.0
+django-classy-tags==1.0.0
+django-cms==3.7.1
+django-cors-headers==3.2.1
 django-filer==1.6.0
 django-filter==2.2.0
-django-formtools==2.1
+django-formtools==2.2
 django-js-asset==1.2.2
-django-mptt==0.10.0
+django-mptt==0.11.0
 django-polymorphic==2.1.2
-django-sekizai==1.0.0
-django-treebeard==4.3
-djangocms-admin-style==1.4.0
-djangocms-attributes-field==1.1.0
+django-sekizai==1.1.0
+django-treebeard==4.3.1
+djangocms-admin-style==1.5.0
+djangocms-attributes-field==1.2.0
 djangocms-bootstrap4==1.5.0
 djangocms-column==1.9.0
-djangocms-file==2.3.0
-djangocms-icon==1.4.1
+djangocms-file==2.4.0
+djangocms-icon==1.5.0
 djangocms-link==2.5.0
-djangocms-picture==2.3.0
-djangocms-snippet==2.2.0
-djangocms-style==2.2.0
+djangocms-picture==2.4.0
+djangocms-snippet==2.3.0
+djangocms-style==2.3.0
 djangocms-text-ckeditor==3.8.0
-djangocms-video==2.1.1
-djangocms-page-meta==0.9.0
-djangorestframework==3.10.3
-django-storages==1.7.2
-django-pipeline==1.6.14
+djangocms-video==2.3.0
+djangocms-page-meta==0.10.0
+djangorestframework==3.11.0
+django-storages==1.9.1
+django-pipeline==1.7.0
 django-redis-cache==2.1.0
 
 azure==4.0.0
-sentry-sdk==0.14.0
+sentry-sdk==0.14.1
 
-easy-thumbnails==2.6
+easy-thumbnails==2.7
 html5lib==1.0.1
-Markdown==3.1.1
-mysqlclient==1.4.4
+Markdown==3.2
+mysqlclient==1.4.6
 oauthlib==3.1.0
-Pillow==6.2.0
+Pillow==7.0.0
 PyMySQL==0.9.3
 PyPDF2==1.26.0
-pytz==2019.2
-reportlab==3.5.26
+pytz==2019.3
+reportlab==3.5.34
 requests==2.22.0
-six==1.12.0
+six==1.14.0
 unicodecsv==0.14.1
-uritemplate==3.0.0
+uritemplate==3.0.1
 
 # Google drive integration
 google-api-python-client==1.7.11
-google-auth-oauthlib==0.4.0
+google-auth-oauthlib==0.4.1
 
 # SASS
-libsass==0.19.2
-django-compressor==2.3
-django-sass-processor==0.7.3
+libsass==0.19.4
+django-compressor==2.4
+django-sass-processor==0.8
