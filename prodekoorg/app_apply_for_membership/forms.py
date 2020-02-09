@@ -1,8 +1,13 @@
-from django.forms import ModelForm, RadioSelect, Textarea, CheckboxInput
+from django.forms import ModelForm, RadioSelect, Textarea, CheckboxInput, TypedChoiceField
 from django.utils.translation import ugettext_lazy as _
+from django.utils import timezone
 
 from .models import PendingUser
 from auth_prodeko.models import User
+
+
+def year_choices():
+    return [(r, r) for r in reversed(range(1966, timezone.now().year + 1))]
 
 
 class PendingUserForm(ModelForm):
@@ -26,6 +31,11 @@ class PendingUserForm(ModelForm):
         if "is_ayy_member" in self.fields:
             self.fields["is_ayy_member"].widget = RadioSelect(
                 choices=PendingUser.AYY_MEMBER_CHOICES
+            )
+        if "start_year" in self.fields:
+            print(year_choices)
+            self.fields["start_year"] = TypedChoiceField(
+                coerce=int, choices=year_choices, initial=timezone.now().year
             )
         for visible in self.visible_fields():
             if visible.name not in [
