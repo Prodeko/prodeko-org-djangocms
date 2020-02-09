@@ -1,5 +1,3 @@
-import datetime
-
 from django.conf import settings
 from django.contrib import messages
 from django.core.mail import EmailMultiAlternatives
@@ -7,7 +5,13 @@ from django.core.validators import FileExtensionValidator
 from django.db import models
 from django.template.loader import render_to_string
 from django.utils.crypto import get_random_string
+from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
+from django.core.validators import MaxValueValidator, MinValueValidator
+
+
+def max_value_current_year(value):
+    return MaxValueValidator(timezone.now().year)(value)
 
 
 class PendingUser(models.Model):
@@ -47,10 +51,6 @@ class PendingUser(models.Model):
 
     LANGUAGE_CHOICES = (("FI", _("Finnish")), ("EN", _("Other (English)")))
 
-    YEAR_CHOICES = []
-    for r in reversed(range(1966, (datetime.datetime.now().year + 1))):
-        YEAR_CHOICES.append((r, r))
-
     id = models.AutoField(primary_key=True)
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True
@@ -62,8 +62,7 @@ class PendingUser(models.Model):
     email = models.EmailField(verbose_name=_("Email"))
     start_year = models.IntegerField(
         verbose_name=_("Year"),
-        choices=YEAR_CHOICES,
-        default=datetime.datetime.now().year,
+        validators=[MinValueValidator(1966), max_value_current_year],
     )
     language = models.CharField(
         max_length=50, choices=LANGUAGE_CHOICES, verbose_name=_("Preferred language")
