@@ -90,7 +90,7 @@ class PendingUser(models.Model):
     def accept_membership(self, request, account_id, *args, **kwargs):
         password = get_random_string(length=16)
         self.user.set_password(password)
-        self.send_accept_email(self.user, password)
+        #self.send_accept_email(self.user, password)
         self.user.is_active = True
         self.user.save()
         messages.success(request, _("Membership application accepted."))

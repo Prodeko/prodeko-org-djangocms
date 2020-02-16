@@ -103,7 +103,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "prodekoorg/media")
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "prodekoorg/static"),
     os.path.join(BASE_DIR, "auth_prodeko/static"),
-    os.path.join(BASE_DIR, "prodekoorg/app_apply_for_membership/static"),
+    os.path.join(BASE_DIR, "prodekoorg/app_membership/static"),
     os.path.join(BASE_DIR, "prodekoorg/app_contact/static"),
     os.path.join(BASE_DIR, "prodekoorg/app_kulukorvaus/static"),
     os.path.join(BASE_DIR, "prodekoorg/app_poytakirjat/static"),
@@ -145,9 +145,9 @@ TEMPLATES = [
             os.path.join(BASE_DIR, "tiedotteet/backend/templates"),
             os.path.join(BASE_DIR, "tiedotteet/frontend/public"),
             os.path.join(BASE_DIR, "alumnirekisteri/rekisteri"),
-            os.path.join(BASE_DIR, "prodekoorg/app_apply_for_membership/templates"),
+            os.path.join(BASE_DIR, "prodekoorg/app_membership/templates"),
             os.path.join(
-                BASE_DIR, "prodekoorg/app_apply_for_membership/templates/emails"
+                BASE_DIR, "prodekoorg/app_membership/templates/emails"
             ),
             os.path.join(BASE_DIR, "prodekoorg/app_contact/templates"),
             os.path.join(BASE_DIR, "prodekoorg/app_contact/templates/emails"),
@@ -275,10 +275,10 @@ INSTALLED_APPS = (
     # seminaari.prodeko.org
     "seminaari",
     # ------------------------
-    "prodekoorg.app_apply_for_membership",
     "prodekoorg.app_contact",
     "prodekoorg.app_infoscreen",
     "prodekoorg.app_kulukorvaus",
+    "prodekoorg.app_membership",
     "prodekoorg.app_poytakirjat",
     "prodekoorg.app_tiedostot",
     "prodekoorg.app_toimarit",
@@ -392,7 +392,7 @@ FILER_PAGINATE_BY = 50
 # Configure django messages framework to work with bootstrap
 MESSAGE_TAGS = {messages.ERROR: "danger"}
 
-# Email config. See documentation/app_apply_for_membership.md
+# Email config. See documentation/app_membership.md
 # on more details about how email sending works through G Suite.
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp-relay.gmail.com"

@@ -31,7 +31,7 @@ def main_form(request):
 
             if not pending_user.has_accepted_policies:
                 return render(
-                    request, "app_apply_for_membership_base.html", {"form": form_apply}
+                    request, "app_membership_base.html", {"form": form_apply}
                 )
 
             pending_user.save()
@@ -41,17 +41,17 @@ def main_form(request):
                 # Google server doesn't authenticate no-reply@prodeko.org.
                 # Most likely the password to said account is configured incorrectly
                 return render(
-                    request, "app_apply_for_membership_base.html", {"error": True}
+                    request, "app_membership_base.html", {"error": True}
                 )
 
-            return render(request, "app_apply_for_membership_base.html", {"done": True})
+            return render(request, "app_membership_base.html", {"done": True})
         else:
             # The http status code is captured as an error in javascript
             return render(request, "form_apply.html", {"form": form_apply}, status=599)
     else:
         form_apply = PendingUserForm()
         return render(
-            request, "app_apply_for_membership_base.html", {"form": form_apply}
+            request, "app_membership_base.html", {"form": form_apply}
         )
 
 

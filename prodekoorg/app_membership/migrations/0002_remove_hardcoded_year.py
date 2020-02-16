@@ -2,19 +2,19 @@
 
 import django.core.validators
 from django.db import migrations, models
-import prodekoorg.app_apply_for_membership.models
+import prodekoorg.app_membership.models
 
 
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('app_apply_for_membership', '0001_initial'),
+        ('app_membership', '0001_initial'),
     ]
 
     operations = [
         migrations.AlterField(
             model_name='pendinguser',
             name='start_year',
-            field=models.IntegerField(validators=[django.core.validators.MinValueValidator(1966), prodekoorg.app_apply_for_membership.models.max_value_current_year], verbose_name='Year'),
+            field=models.IntegerField(validators=[django.core.validators.MinValueValidator(1966), prodekoorg.app_membership.models.max_value_current_year], verbose_name='Year'),
         ),
     ]

@@ -7,7 +7,7 @@ from .views import main_form
 
 @apphook_pool.register
 class ApplyForMembershipApphook(CMSApp):
-    app_name = "app_apply_for_membership"
+    app_name = "app_membership"
     name = _("Apply for Prodeko membership application")
 
     def get_urls(self, page=None, language=None, **kwargs):

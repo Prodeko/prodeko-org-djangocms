@@ -4,7 +4,7 @@ from alumnirekisteri.rekisteri.models import Person
 from django.conf import settings
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from prodekoorg.app_apply_for_membership.models import PendingUser
+from prodekoorg.app_membership.models import PendingUser
 
 from .models import User
 

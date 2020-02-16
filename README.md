@@ -1,10 +1,10 @@
 # Prodeko.org :tv::rainbow:
 
-Tuotantotalouden kilta Prodekon Django-pohjaiset nettisivut.
+Tuotantotalouden kilta Prodekon Django CMS -pohjaiset nettisivut.
 
 ---
 
-Prodeko.org projekti käyttää Django versiota 2.2.5.
+Prodeko.org projekti käyttää Django versiota 2.2.10.
 
 ### Vaatimukset
 
@@ -142,7 +142,7 @@ $ npm run lint:css-fix  # Korjaa virheet
     ├── locale                         # Käännökset
     │   └── ...
     ├── prodekoorg                     # Projektin pääkansio
-    │   │── app_apply_for_membership   # Jäseneksi liittyminen -lomake
+    │   │── app_membership             # Jäseneksi liittyminen -lomake
     │   │   └── ...
     │   │── app_contact                # Yhteydenottolomake
     │   │   └── ...
@@ -200,7 +200,7 @@ $ npm run lint:css-fix  # Korjaa virheet
 .po tiedosto näyttää tältä:
 
 ```
-#: prodekoorg/app_apply_for_membership/models.py:37
+#: prodekoorg/app_membership/models.py:37
 msgid "First name"
 msgstr "Etunimi"
 ```
