@@ -23,7 +23,7 @@ Projektin automaattisesti lähetettävät sähköpostit kulkevat smtp-relay.gmai
 4. Muokkaa settings.py:
 
 ```
-# Email config. See documentation/app_apply_for_membership.md or emailit.md
+# Email config. See documentation/app_membership.md or emailit.md
 # on more details about how email sending works through G Suite.
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp-relay.gmail.com'
@@ -57,7 +57,7 @@ auth_prodeko
 
 - Password reset maili
 
-app_apply_for_membership
+app_membership
 
 - Infomaili mediakeisarille
 - Hylkäys/hyväksymismaili hakijalle
