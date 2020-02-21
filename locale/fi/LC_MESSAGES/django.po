@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-10 23:10+0200\n"
+"POT-Creation-Date: 2020-02-21 21:20+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Timo Riski <timo@prodeko.org>\n"
 "Language: \n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: abisivut/cms_apps.py:11 prodekoorg/settings/base.py:298
+#: abisivut/cms_apps.py:11 prodekoorg/settings/base.py:296
 msgid "High school student page"
 msgstr "Abisivut"
 
@@ -106,8 +106,8 @@ msgstr "Profiili"
 
 #: auth_prodeko/templates/accounts/user_profile.html:14
 #: prodekoorg/app_kulukorvaus/models.py:60
-#: prodekoorg/app_kulukorvaus/printing.py:97
-#: prodekoorg/app_toimarit/models.py:34 prodekoorg/app_vaalit/models.py:39
+#: prodekoorg/app_kulukorvaus/printing.py:98
+#: prodekoorg/app_toimarit/models.py:34 prodekoorg/app_vaalit/models.py:53
 msgid "Name"
 msgstr "Nimi"
 
@@ -115,7 +115,7 @@ msgstr "Nimi"
 #: auth_prodeko/templates/accounts/user_profile.html:21
 #: prodekoorg/app_apply_for_membership/models.py:62
 #: prodekoorg/app_contact/models.py:91 prodekoorg/app_kulukorvaus/models.py:61
-#: prodekoorg/app_kulukorvaus/printing.py:98
+#: prodekoorg/app_kulukorvaus/printing.py:99
 #: prodekoorg/app_toimarit/models.py:118
 msgid "Email"
 msgstr "Sähköposti"
@@ -222,7 +222,7 @@ msgstr "Salasana unohtunut?"
 msgid "The email and password didn't match. Try again"
 msgstr "Sähköposti ja salasana eivät täsmänneet. Yritä uudestaan"
 
-#: lifelonglearning/cms_apps.py:12 prodekoorg/settings/base.py:299
+#: lifelonglearning/cms_apps.py:12 prodekoorg/settings/base.py:297
 msgid "Lifelong learning page"
 msgstr "Lifelong learning sivu"
 
@@ -266,19 +266,19 @@ msgstr "kurssi"
 msgid "Courses"
 msgstr "Kurssit"
 
-#: prodekoorg/app_apply_for_membership/admin.py:55
+#: prodekoorg/app_apply_for_membership/admin.py:56
 msgid "View"
 msgstr "Katsele"
 
-#: prodekoorg/app_apply_for_membership/admin.py:57
+#: prodekoorg/app_apply_for_membership/admin.py:58
 msgid "Accept"
 msgstr "Hyväksy"
 
-#: prodekoorg/app_apply_for_membership/admin.py:59
+#: prodekoorg/app_apply_for_membership/admin.py:60
 msgid "Reject"
 msgstr "Hylkää"
 
-#: prodekoorg/app_apply_for_membership/admin.py:65
+#: prodekoorg/app_apply_for_membership/admin.py:66
 msgid "Application actions"
 msgstr "Hakemustoimenpiteet"
 
@@ -303,15 +303,15 @@ msgstr ""
 "Mikäli opiskelet Aalto-yliopistossa hae varsinaiseksi jäseneksi. Muuten hae "
 "ulkojäseneksi"
 
-#: prodekoorg/app_apply_for_membership/groups_api.py:67
+#: prodekoorg/app_apply_for_membership/groups_api.py:65
 msgid "Successfully added {} to {} mailing list."
 msgstr "Lisätty {} onnistuneesti {} sähköpostilistalle."
 
-#: prodekoorg/app_apply_for_membership/groups_api.py:76
+#: prodekoorg/app_apply_for_membership/groups_api.py:74
 msgid "Error adding a member to {}: {} is already a member."
 msgstr "Virhe lisättäessä listalle {}: {} on jo listan jäsen."
 
-#: prodekoorg/app_apply_for_membership/groups_api.py:86
+#: prodekoorg/app_apply_for_membership/groups_api.py:84
 msgid ""
 "Invalid credentials. Check documentation and validate setup in G Suite and "
 "GCP API console."
@@ -340,7 +340,7 @@ msgid "No"
 msgstr "Ei"
 
 #: prodekoorg/app_apply_for_membership/models.py:48
-#: prodekoorg/settings/base.py:68 prodekoorg/settings/base.py:78
+#: prodekoorg/settings/base.py:66 prodekoorg/settings/base.py:76
 msgid "Finnish"
 msgstr "Suomi"
 
@@ -545,7 +545,7 @@ msgid "Tutoring (isovastaava@prodeko.org)"
 msgstr "ISO-toiminta (isovastaava@prodeko.org)"
 
 #: prodekoorg/app_contact/models.py:90 prodekoorg/app_kulukorvaus/models.py:113
-#: prodekoorg/app_vaalit/models.py:76 prodekoorg/app_vaalit/models.py:100
+#: prodekoorg/app_vaalit/models.py:96 prodekoorg/app_vaalit/models.py:126
 msgid "Created at"
 msgstr "Luotu"
 
@@ -670,16 +670,17 @@ msgid "In process"
 msgstr "Käsittelyssä"
 
 #: prodekoorg/app_kulukorvaus/models.py:62
-#: prodekoorg/app_kulukorvaus/printing.py:99
+#: prodekoorg/app_kulukorvaus/printing.py:100
 msgid "Phone number"
 msgstr "Puhelinnumero"
 
 #: prodekoorg/app_kulukorvaus/models.py:64
-#: prodekoorg/app_kulukorvaus/printing.py:100
+#: prodekoorg/app_kulukorvaus/printing.py:101
 msgid "Account number (IBAN)"
 msgstr "Tilinumero (IBAN)"
 
 #: prodekoorg/app_kulukorvaus/models.py:68
+#: prodekoorg/app_kulukorvaus/printing.py:104
 msgid "Total reimbursement (in €)"
 msgstr "Korvaussumma yhteensä (euroissa)"
 
@@ -712,11 +713,11 @@ msgstr "Summa (euroissa)"
 msgid "reimbursement"
 msgstr "kulukorvaus"
 
-#: prodekoorg/app_kulukorvaus/printing.py:102
+#: prodekoorg/app_kulukorvaus/printing.py:103
 msgid "Additional info"
 msgstr "Lisätietoja, kulujen perusteita"
 
-#: prodekoorg/app_kulukorvaus/printing.py:139
+#: prodekoorg/app_kulukorvaus/printing.py:142
 msgid ""
 "Your reimbursement claim has been received. The claim will be processed in "
 "the next Prodeko board meeting."
@@ -724,7 +725,7 @@ msgstr ""
 "Kulukorvauksesi on vastaanotettu. Hakemus käsitellään seuraavassa "
 "hallituksen kokouksessa."
 
-#: prodekoorg/app_kulukorvaus/printing.py:142
+#: prodekoorg/app_kulukorvaus/printing.py:145
 msgid ""
 "If you notice any errors in the information below, contact Prodeko's "
 "treasurer immediately at rahastonhoitaja@prodeko.org."
@@ -819,17 +820,13 @@ msgstr "Tiedostot"
 msgid "Files application"
 msgstr "Sovellus - Tiedostot"
 
-#: prodekoorg/app_tiedostot/models.py:51
+#: prodekoorg/app_tiedostot/models.py:55
 msgid "file version"
 msgstr "tiedostoversio"
 
-#: prodekoorg/app_tiedostot/models.py:52
+#: prodekoorg/app_tiedostot/models.py:56
 msgid "File versions"
 msgstr "Tiedostoversiot"
-
-#: prodekoorg/app_tiedostot/templates/tiedostot.html:4
-msgid "download"
-msgstr "lataa"
 
 #: prodekoorg/app_toimarit/admin.py:49 prodekoorg/app_toimarit/admin.py:64
 msgid "Export selected as CSV"
@@ -856,7 +853,7 @@ msgid "sections"
 msgstr "jaostot"
 
 #: prodekoorg/app_toimarit/models.py:57 prodekoorg/app_toimarit/models.py:108
-#: prodekoorg/app_vaalit/models.py:13
+#: prodekoorg/app_vaalit/models.py:19
 msgid "Position"
 msgstr "Virka"
 
@@ -884,7 +881,7 @@ msgstr "Puhelinnumero"
 msgid "Telegram"
 msgstr "Telegram"
 
-#: prodekoorg/app_toimarit/models.py:123 prodekoorg/app_vaalit/models.py:14
+#: prodekoorg/app_toimarit/models.py:123 prodekoorg/app_vaalit/models.py:20
 msgid "Description"
 msgstr "Kuvaus"
 
@@ -937,72 +934,72 @@ msgstr "Vaalit"
 msgid "Elections application"
 msgstr "Sovellus - Vaalit"
 
-#: prodekoorg/app_vaalit/models.py:12
+#: prodekoorg/app_vaalit/models.py:18
 #: prodekoorg/app_vaalit/templates/vaalit_nav.html:4
 msgid "Board"
 msgstr "Hallitus"
 
-#: prodekoorg/app_vaalit/models.py:16
+#: prodekoorg/app_vaalit/models.py:22
 msgid "Read by"
 msgstr "Lukenut"
 
-#: prodekoorg/app_vaalit/models.py:27
+#: prodekoorg/app_vaalit/models.py:33
 msgid "position"
 msgstr "virka"
 
-#: prodekoorg/app_vaalit/models.py:28
+#: prodekoorg/app_vaalit/models.py:34
 msgid "Positions"
 msgstr "Virat"
 
-#: prodekoorg/app_vaalit/models.py:46
+#: prodekoorg/app_vaalit/models.py:60
 #: prodekoorg/app_vaalit/templates/forms/vaalit_apply_form.html:4
 msgid "Picture"
 msgstr "Kuva"
 
-#: prodekoorg/app_vaalit/models.py:67
+#: prodekoorg/app_vaalit/models.py:81
 msgid "applicant"
 msgstr "hakija"
 
-#: prodekoorg/app_vaalit/models.py:68
+#: prodekoorg/app_vaalit/models.py:82
 #: prodekoorg/app_vaalit/templates/vaalit_content.html:3
 msgid "Applicants"
 msgstr "Hakijat"
 
-#: prodekoorg/app_vaalit/models.py:81
+#: prodekoorg/app_vaalit/models.py:101
 msgid "questions"
 msgstr "kysymykset"
 
-#: prodekoorg/app_vaalit/models.py:83
+#: prodekoorg/app_vaalit/models.py:103
 msgid "Question"
 msgstr "Kysymys"
 
-#: prodekoorg/app_vaalit/models.py:90
+#: prodekoorg/app_vaalit/models.py:110
 msgid "question"
 msgstr "kysymys"
 
-#: prodekoorg/app_vaalit/models.py:91
+#: prodekoorg/app_vaalit/models.py:111
 #: prodekoorg/app_vaalit/templates/vaalit_content.html:5
 msgid "Questions"
 msgstr "Kysymykset"
 
-#: prodekoorg/app_vaalit/models.py:102
+#: prodekoorg/app_vaalit/models.py:128
 msgid "answered_by"
 msgstr "vastaaja"
 
-#: prodekoorg/app_vaalit/models.py:105
+#: prodekoorg/app_vaalit/models.py:131
 msgid "answers"
 msgstr "vastaukset"
 
-#: prodekoorg/app_vaalit/models.py:107
+#: prodekoorg/app_vaalit/models.py:133
 #: prodekoorg/app_vaalit/templates/vaalit_question.html:3
 msgid "Answer"
 msgstr "Vastaus"
 
-#: prodekoorg/app_vaalit/models.py:114
+#: prodekoorg/app_vaalit/models.py:140
 msgid "answer"
 msgstr "vastaus"
 
-#: prodekoorg/app_vaalit/models.py:115
+#: prodekoorg/app_vaalit/models.py:141
 #: prodekoorg/app_vaalit/templates/vaalit_question.html:4
 msgid "Answers"
 msgstr "Vastaukset"
@@ -1113,27 +1110,27 @@ msgstr "Poista"
 msgid "Edit"
 msgstr "Muokkaa"
 
-#: prodekoorg/settings/base.py:68 prodekoorg/settings/base.py:85
+#: prodekoorg/settings/base.py:66 prodekoorg/settings/base.py:83
 msgid "English"
 msgstr "Englanti"
 
-#: prodekoorg/settings/base.py:294
+#: prodekoorg/settings/base.py:292
 msgid "Frontpage"
 msgstr "Etusivu"
 
-#: prodekoorg/settings/base.py:295
+#: prodekoorg/settings/base.py:293
 msgid "Content page"
 msgstr "Sisältösivu"
 
-#: prodekoorg/settings/base.py:296
+#: prodekoorg/settings/base.py:294
 msgid "Content page with 1:1 split"
 msgstr "Sisältösivu 1:1 jaolla"
 
-#: prodekoorg/settings/base.py:297
+#: prodekoorg/settings/base.py:295
 msgid "Content page with 2:1 split"
 msgstr "Sisältösivu 2:1 jaolla"
 
-#: prodekoorg/settings/base.py:303
+#: prodekoorg/settings/base.py:301
 msgid "Navigation"
 msgstr "Navigaatio"
 
@@ -1502,3 +1499,9 @@ msgstr "Tiedote lisätty"
 #: tiedotteet/backend/views.py:425
 msgid "Admin login required"
 msgstr "Kirjautuminen ylläpitäjänä vaadittu"
+
+#~ msgid "Total reimbursement"
+#~ msgstr "Korvaussumma yhteensä"
+
+#~ msgid "download"
+#~ msgstr "lataa"

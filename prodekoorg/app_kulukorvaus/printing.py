@@ -88,6 +88,7 @@ class KulukorvausPDF:
         bank_number = model_perustiedot.bank_number
         bic = model_perustiedot.get_bic_display()
         additional_info = model_perustiedot.additional_info
+        sum_overall = model_perustiedot.sum_overall
 
         # Container to hold table elements
         elements = []
@@ -100,6 +101,7 @@ class KulukorvausPDF:
             [_("Account number (IBAN)"), bank_number],
             ["BIC", bic],
             [_("Additional info"), additional_info],
+            [_("Total reimbursement (in €)"), sum_overall],
         ]
 
         t_kulu = []
@@ -117,7 +119,8 @@ class KulukorvausPDF:
                     if field.name == "receipt":
                         receipt = self.handle_receipt(value.file.read())
                         value = receipt
-                    t_kulu.append([verbose_name, value])
+                    t_kulu.append([verbose_name, value],)
+            t_kulu.append('\n')
 
         # Styling for the table
         t_style = [
