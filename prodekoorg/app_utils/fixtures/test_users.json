@@ -1,0 +1,38 @@
+[
+  {
+    "model": "auth_prodeko.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$150000$SXYJTl1iKVPy$Qez5x7IxHW9zLQIa87hJYawgWJ2RLUZXWQBBFe7kTkM=",
+      "last_login": null,
+      "is_superuser": false,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2020-02-21T12:00:00.000Z",
+      "email": "test1@test.com",
+      "has_accepted_policies": true,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth_prodeko.user",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$150000$pk7ryG7TjrNN$K7Gs+rutvaIICQS95Qhrkh+klxbadB15iEV7h5xT91s=",
+      "last_login": null,
+      "is_superuser": false,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2020-02-21T12:00:00.000Z",
+      "email": "test2@test.com",
+      "has_accepted_policies": false,
+      "groups": [],
+      "user_permissions": []
+    }
+  }
+]

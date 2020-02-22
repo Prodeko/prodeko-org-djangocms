@@ -75,4 +75,4 @@ prodekoorg/settings/variables.txt
 !data.json
 !package.json
 !package-lock.json
-!infrastructure/*
+!prodekoorg/app_utils/fixtures/*.json
