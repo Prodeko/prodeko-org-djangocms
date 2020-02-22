@@ -2,37 +2,42 @@ import os
 from shutil import rmtree
 from unittest.mock import MagicMock
 
+from cms.api import create_page
+from cms.constants import TEMPLATE_INHERITANCE_MAGIC
+from cms.test_utils.testcases import CMSTestCase
 from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.core.files import File
-from django.test import TestCase
 
 from ..models import Kulukorvaus, KulukorvausPerustiedot
 
-TMP_MEDIA_DIR = "/tmp/django_test"
-# Creates a temporary folder for test file uploads
-if not os.path.exists(TMP_MEDIA_DIR):
-    os.makedirs(TMP_MEDIA_DIR)
-settings.MEDIA_ROOT = TMP_MEDIA_DIR
 
-
-class TestData(TestCase):
+class TestData(CMSTestCase):
     """Common test data for app_kulukorvaus used across
     test_forms.py, test_models.py and test_views.py
 
     Args:
-        TestCase: https://docs.djangoproject.com/en/dev/topics/testing/tools/#testcase.
+        CMSTestCase: http://docs.django-cms.org/en/latest/how_to/testing.html.
     """
+
+    fixtures = ["test_users.json"]
 
     @classmethod
     def setUpTestData(cls):
         # Create a user
         User = get_user_model()
-        cls.test_user1 = User.objects.create_user(
-            email="test1@test.com", password="Ukc55Has-@"
-        )
-        cls.test_user2 = User.objects.create_user(
-            email="test2@test.com", password='q"WaXkcB>7'
+        cls.test_user1 = User.objects.get(email="test1@test.com")
+        cls.test_user2 = User.objects.get(email="test2@test.com")
+
+        cls.another_page = create_page(
+            title="kulukorvaus",
+            template=TEMPLATE_INHERITANCE_MAGIC,
+            language="fi",
+            created_by=cls.test_user1,
+            published=True,
+            login_required=True,
+            apphook="KulukorvausApphook",
+            apphook_namespace="app_kulukorvaus",
         )
 
         cls.file_mock_pdf = MagicMock(spec=File, name="FileMock")
@@ -64,4 +69,4 @@ class TestData(TestCase):
 
     def tearDown(self):
         # Remove the temporary folder created for file upload tests
-        rmtree(settings.MEDIA_ROOT, ignore_errors=True)
+        rmtree("/tmp/", ignore_errors=True)

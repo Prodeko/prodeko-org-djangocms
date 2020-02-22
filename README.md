@@ -40,7 +40,7 @@ Jos törmäät "ImportError: Couldn't import Django..." erroriin, vaihda käytt�
 
 - Testit saa ajettua komennolla `python3 manage.py test -v=2"`
 - Vain osan testeistä saa ajettua esimerkiksi näin: `python3 manage.py test -p=test_forms.py -v=2"`
-- Tietyn appin testit saa ajettua näin: `python3 manage.py test prodekoorg.app_kulukorvaus.tests -v=2`
+- Tietyn appin testit saa ajettua näin: `python3 manage.py test prodekoorg.app_kulukorvaus.tests -v=2 --keepdb --parallel` (--keepdb säilyttää tietokannan testiajojen välissä)
 - Testien kirjoittamiseen voi katsoa mallia prodekoorg/app_kulukorvaus/tests/ kansiosta
 
 ### Koodityyli

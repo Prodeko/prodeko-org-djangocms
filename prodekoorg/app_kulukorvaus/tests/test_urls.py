@@ -1,16 +1,9 @@
-from django.conf.urls import include, url
-from django.contrib import admin
+from cms.appresolver import get_app_patterns
+from django.conf.urls import include
+from django.conf.urls.i18n import i18n_patterns
 from django.urls import re_path
 
-from ..views import download_kulukorvaus_pdf, main_form
+urlpatterns = i18n_patterns(
+    re_path(r"^", include("auth_prodeko.urls")), re_path(r"^", include("cms.urls"))
+)
 
-urlpatterns = [
-    re_path(r"^admin/", admin.site.urls),
-    re_path(r"", include("cms.urls")),
-    re_path(
-        r"^download/(?P<perustiedot_id>[0-9]+)/",
-        download_kulukorvaus_pdf,
-        name="download_kulukorvaus",
-    ),
-    re_path(r"^", main_form, name="kulukorvaus"),
-]
