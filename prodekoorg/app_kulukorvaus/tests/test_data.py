@@ -1,5 +1,4 @@
-import os
-from shutil import rmtree
+import tempfile
 from unittest.mock import MagicMock
 
 from cms.api import create_page
@@ -21,9 +20,21 @@ class TestData(CMSTestCase):
     """
 
     fixtures = ["test_users.json"]
+    tmp_dir = None
 
     @classmethod
-    def setUpTestData(cls):
+    def setUpClass(cls):
+        cls.tmp_dir = tempfile.TemporaryDirectory(prefix="mediatest")
+        settings.MEDIA_ROOT = cls.tmp_dir.name
+        super(TestData, cls).setUpClass()
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.tmp_dir = None
+        super(TestData, cls).tearDownClass()
+
+    @classmethod
+    def setUp(cls):
         # Create a user
         User = get_user_model()
         cls.test_user1 = User.objects.get(email="test1@test.com")
@@ -47,6 +58,7 @@ class TestData(CMSTestCase):
         cls.file_mock_jpg.name = "test.jpg"
 
         cls.test_perustiedot_model = KulukorvausPerustiedot.objects.create(
+            pk=1,
             created_by_user=cls.test_user1,
             created_by="webbitiimi",
             email="webbitiimi@prodeko.org",
@@ -59,6 +71,7 @@ class TestData(CMSTestCase):
         )
 
         cls.test_kulukorvaus_model = Kulukorvaus.objects.create(
+            pk=1,
             info=cls.test_perustiedot_model,
             target="Testing",
             explanation="Making sure that everything works as expected!",
@@ -66,7 +79,3 @@ class TestData(CMSTestCase):
             additional_info="Some additional info.",
             receipt=cls.file_mock_jpg,
         )
-
-    def tearDown(self):
-        # Remove the temporary folder created for file upload tests
-        rmtree("/tmp/", ignore_errors=True)

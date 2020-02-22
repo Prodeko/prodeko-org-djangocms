@@ -1,18 +1,14 @@
 import os
-import tempfile
 
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test.utils import override_settings
-from django.urls import reverse, reverse_lazy
 
-from ..models import KulukorvausPerustiedot
 from .test_data import TestData
 
 urlconf = "prodekoorg.app_kulukorvaus.tests.test_urls"
-media_root = tempfile.TemporaryDirectory(prefix="mediatest").name
 
 
-@override_settings(ROOT_URLCONF=urlconf, MEDIA_ROOT=media_root, TESTING=True)
+@override_settings(ROOT_URLCONF=urlconf, TESTING=True)
 class KulukorvausViewTest(TestData):
     """Tests for views in the app_kulukorvaus app."""
 
@@ -216,4 +212,3 @@ class KulukorvausViewTest(TestData):
         self.assertContains(
             response, "Syötä kelvollinen sähköpostiosoite", status_code=599
         )
-
