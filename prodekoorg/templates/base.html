@@ -1,6 +1,8 @@
-{% load cms_tags meta page_meta_tags sekizai_tags sass_tags i18n staticfiles %}
+{% load cms_tags meta page_meta_tags prodekoorg_tags sekizai_tags sass_tags i18n staticfiles %}
 
 {% page_meta request.current_page as page_meta %}
+
+{% settings_value "TESTING" as is_test %}
 
 <!DOCTYPE html>
 <html lang={{LANGUAGE_CODE}}>
@@ -28,7 +30,11 @@
         {% include "layout-components/navbar.html" %}
         {% include "other/policy-modal.html" %}
         {% block content %}{% endblock content %}
-        {% include "layout-components/footer.html" %}
+
+        {# Footer uses namespaced urls that are not available in tests #}
+        {% if not is_test %}
+            {% include "layout-components/footer.html" %}
+        {% endif %}
 
         {% render_block "js" %}
     </body>
@@ -51,5 +57,11 @@
 {% addtoblock "js" %}
     <script src="{% static 'js/navbar.js' %}"></script>
     <script src="{% static 'js/policymodal.js' %}"></script>
-    <script type="text/javascript" src="{% url 'javascript-catalog' %}"></script>
+
+    {# Javascript catalog urls are not included in tests #}
+    {% if not is_test %}
+        <script type="text/javascript" src="{% url 'javascript-catalog' %}"></script>
+    {% endif %}
 {% endaddtoblock %}
+
+

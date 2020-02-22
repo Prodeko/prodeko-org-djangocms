@@ -1,48 +1,53 @@
 import os
+import tempfile
 
-from cms.test_utils.testcases import CMSTestCase
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test.utils import override_settings
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 
+from ..models import KulukorvausPerustiedot
 from .test_data import TestData
 
+urlconf = "prodekoorg.app_kulukorvaus.tests.test_urls"
+media_root = tempfile.TemporaryDirectory(prefix="mediatest").name
 
-@override_settings(ROOT_URLCONF="prodekoorg.app_kulukorvaus.tests.test_urls")
-class KulukorvausViewTest(TestData, CMSTestCase):
+
+@override_settings(ROOT_URLCONF=urlconf, MEDIA_ROOT=media_root, TESTING=True)
+class KulukorvausViewTest(TestData):
     """Tests for views in the app_kulukorvaus app."""
 
-    def test_kulukorvaus_and_redirect_if_not_logged_in(self):
+    def test_kulukorvaus_and_redirect_not_logged_in(self):
         """
         Tests redirect to login page if the main kulukorvaus page is
         accessed and the user is not logged in.
         """
-        response = self.client.get(reverse("kulukorvaus"))
+
+        response = self.client.get("/fi/kulukorvaus/", follow=True)
         self.assertRedirects(response, "/fi/login/?next=/fi/kulukorvaus/")
 
-    def test_download_and_redirect_if_not_logged_in(self):
+    def test_download_and_redirect_not_logged_in(self):
         """
         Tests redirect to login page if the download url is accessed
         and the user is not logged in.
         """
-        response = self.client.get(
-            reverse(
-                "download_kulukorvaus",
-                kwargs={"perustiedot_id": self.test_perustiedot_model.id},
-            )
-        )
-        self.assertRedirects(response, "/fi/login/?next=/fi/download-kulukorvaus/1")
 
-    def test_download_if_not_correct_permissions(self):
+        response = self.client.get(
+            f"/fi/kulukorvaus/download/{self.test_perustiedot_model.id}/", follow=True
+        )
+
+        self.assertRedirects(
+            response,
+            f"/fi/login/?next=/fi/kulukorvaus/download/{self.test_perustiedot_model.id}/",
+        )
+
+    def test_download_incorrect_permissions(self):
         """
         Test that a user who didn't create the kulukorvaus can't download it.
         """
-        self.client.login(email="test2@test.com", password='q"WaXkcB>7')
+
+        self.client.login(email="test2@test.com", password="test2salasana")
         response = self.client.get(
-            reverse(
-                "download_kulukorvaus",
-                kwargs={"perustiedot_id": self.test_perustiedot_model.id},
-            )
+            f"/fi/kulukorvaus/download/{self.test_perustiedot_model.id}/", follow=True
         )
         self.assertEqual(response.status_code, 403)
 
@@ -50,35 +55,37 @@ class KulukorvausViewTest(TestData, CMSTestCase):
         """
         Tests that a user who created the kulukorvaus can download it.
         """
-        self.client.login(email="test1@test.com", password="Ukc55Has-@")
-        response = self.client.get(
-            reverse(
-                "download_kulukorvaus",
-                kwargs={"perustiedot_id": self.test_perustiedot_model.id},
-            )
-        )
-        self.assertEqual(response.status_code, 200)
 
-    def test_HTTP404_for_invalid_reimbursement_if_logged_in(self):
+        self.client.login(email="test1@test.com", password="test1salasana")
+        response = self.client.get(
+            f"/fi/kulukorvaus/download/{self.test_perustiedot_model.id}/", follow=True
+        )
+        self.assertEqual(
+            response.get("Content-Disposition"),
+            'attachment; filename="' + self.test_perustiedot_model.pdf_filename() + '"',
+        )
+
+    def test_invalid_reimbursement_logged_in(self):
         """
         Tests that HTTP404 is raised if someone tries to download
         a non-existent kulukorvaus.
         """
-        self.client.login(email="test1@test.com", password="Ukc55Has-@")
-        response = self.client.get(
-            reverse("download_kulukorvaus", kwargs={"perustiedot_id": 999})
-        )
+
+        self.client.login(email="test1@test.com", password="test1salasana")
+        response = self.client.get("/fi/kulukorvaus/download/999/", follow=True)
         self.assertEqual(response.status_code, 404)
 
     def test_form_submission(self):
         """
         Test valid form submission. Includes the empty/management form data.
         """
-        self.client.login(email="test1@test.com", password="Ukc55Has-@")
+
+        self.client.login(email="test1@test.com", password="test1salasana")
 
         __location__ = os.path.realpath(
             os.path.join(os.getcwd(), os.path.dirname(__file__))
         )
+
         test_img1 = open(os.path.join(__location__, "img1.jpg"), "rb")
         test_img2 = open(os.path.join(__location__, "img2.jpg"), "rb")
 
@@ -111,17 +118,62 @@ class KulukorvausViewTest(TestData, CMSTestCase):
         }
 
         response = self.client.post(
-            reverse("kulukorvaus"),
-            data=test_data,
-            HTTP_X_REQUESTED_WITH="XMLHttpRequest",
+            "/fi/kulukorvaus/", data=test_data, HTTP_X_REQUESTED_WITH="XMLHttpRequest",
         )
+
         self.assertEqual(response.status_code, 200)
+
+    def test_form_submission_has_not_accepted_policies(self):
+        """
+        Test valid form submission. Includes the empty/management form data.
+        """
+
+        self.client.login(email="test2@test.com", password="test2salasana")
+
+        __location__ = os.path.realpath(
+            os.path.join(os.getcwd(), os.path.dirname(__file__))
+        )
+        test_img1 = open(os.path.join(__location__, "img1.jpg"), "rb")
+        test_img2 = open(os.path.join(__location__, "img2.jpg"), "rb")
+
+        test_data = {
+            # management_form data
+            "form-TOTAL_FORMS": "2",
+            "form-INITIAL_FORMS": "0",
+            "form-MIN_NUM_FORMS": "0",
+            "form-MAX_NUM_FORMS": "1000",
+            # KulukorvausPerustiedotForm
+            "created_by": "Prodekon CTO",
+            "email": "webbitiimi@prodeko.org",
+            "phone_number": "123456789",
+            "bank_number": "FI21 1234 5600 0007 85",
+            "bic": "NORDEA",
+            "sum_overall": "200",
+            "additional_info": "Tämä on testi!",
+            # First KulukorvausForm data
+            "form-0-sum_euros": "200",
+            "form-0-explanation": "Webbitiimin virkistys",
+            "form-0-additional_info": "",
+            "form-0-target": "Webbitiimi",
+            "form-0-receipt": SimpleUploadedFile("test.jpg", test_img1.read()),
+        }
+
+        response = self.client.post(
+            "/fi/kulukorvaus/", data=test_data, HTTP_X_REQUESTED_WITH="XMLHttpRequest",
+        )
+
+        self.assertEqual(response.context["policy_error"], True)
+        self.assertContains(
+            response,
+            "Käyttääksesi Prodekon sähköisiä palveluita, sinun on hyväksyttävä",
+        )
 
     def test_invalid_form_submission(self):
         """
         Test invalid form submission. The email is invalid.
         """
-        self.client.login(email="test1@test.com", password="Ukc55Has-@")
+
+        self.client.login(email="test1@test.com", password="test1salasana")
 
         __location__ = os.path.realpath(
             os.path.join(os.getcwd(), os.path.dirname(__file__))
@@ -158,8 +210,10 @@ class KulukorvausViewTest(TestData, CMSTestCase):
         }
 
         response = self.client.post(
-            reverse("kulukorvaus"),
-            data=test_data,
-            HTTP_X_REQUESTED_WITH="XMLHttpRequest",
+            "/fi/kulukorvaus/", data=test_data, HTTP_X_REQUESTED_WITH="XMLHttpRequest",
         )
-        self.assertEqual(response.status_code, 599)
+
+        self.assertContains(
+            response, "Syötä kelvollinen sähköpostiosoite", status_code=599
+        )
+

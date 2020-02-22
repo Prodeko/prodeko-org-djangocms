@@ -292,10 +292,3 @@ class KulukorvausModelTest(TestData):
     def test_object_verbose_name_plural_finnish(self):
         verbose_name = self.test_kulukorvaus_model._meta.verbose_name_plural
         self.assertEquals(verbose_name, "Kulukorvaukset")
-
-    def test_get_absolute_url(self):
-        model = self.test_kulukorvaus_model
-        self.assertEquals(
-            model.get_absolute_url(),
-            f"kulukorvaukset/{model.created_at.year}/{model.pk}",
-        )

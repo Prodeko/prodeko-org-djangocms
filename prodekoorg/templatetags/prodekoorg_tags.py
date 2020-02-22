@@ -2,6 +2,7 @@ import re
 
 from django import template
 from django.utils.safestring import mark_safe
+from django.conf import settings
 
 register = template.Library()
 
@@ -22,3 +23,8 @@ def add_class(value, css_class):
     else:
         return mark_safe(string.replace(" ", ' class="%s" ' % css_class))
     return value
+
+
+@register.simple_tag
+def settings_value(name):
+    return getattr(settings, name, "")
