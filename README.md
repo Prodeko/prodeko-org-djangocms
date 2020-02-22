@@ -27,7 +27,7 @@ Kehitysympäristön käynnistys luo uuden Django käyttäjän:
 
 ### Deployas palvelimelle
 
-Azuressa hostataan media ja static tiedostot. Lisäksi käytössä on Azuren CDN. Azuren infrastruktuurin saa pystytettyä infrastructure/deploy.sh skriptillä.
+Azuressa hostataan media ja static tiedostot. Lisäksi käytössä on Azuren CDN.
 
 1. Virtualenv päälle `source venv/bin/activate`
 2. Aja `bash deploy.sh` projektin juuressa
@@ -134,8 +134,6 @@ $ npm run lint:css-fix  # Korjaa virheet
     ├── auth_prodeko                   # Autentikaatio
     │   └── ...
     ├── documentation                  # Dokumentaatio
-    │   └── ...
-    ├── infrastructure                 # Azure ARM templatet ja deploy skripti
     │   └── ...
     ├── lifelonglearning               # lifelonglearning.prodeko.org
     │   └── ...
