@@ -1,4 +1,5 @@
-from django.urls import include, re_path
+from django.urls import re_path
+
 from .views_api import SlidesList, now
 
 app_name = "app_infoscreen"

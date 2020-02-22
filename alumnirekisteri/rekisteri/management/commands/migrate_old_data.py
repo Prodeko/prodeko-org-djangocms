@@ -1,10 +1,10 @@
 # import numpy as np
 import json
-import django
-from pprint import pprint
-from django.core.management.base import BaseCommand, CommandError
-from rekisteri.models import *
+
+from django.core.management.base import BaseCommand
+
 from auth2.models import *
+from rekisteri.models import *
 
 
 class Command(BaseCommand):
@@ -451,7 +451,6 @@ class Command(BaseCommand):
                     e.start_year = int(tekn["Opinnot alkaneet"])
                 except:
                     print("viallinen vuosi", tekn["Opinnot alkaneet"])
-                    pass
             if tekn["Valmistumisvuosi"] and tekn["Valmistumisvuosi"] != "NULL":
                 try:
                     e.end_year = int(tekn["Valmistumisvuosi"])

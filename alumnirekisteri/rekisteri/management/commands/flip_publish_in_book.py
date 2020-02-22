@@ -1,17 +1,9 @@
 # import numpy as np
-import json
-import django
-import csv
-import sys
-import requests
-import re
-from pprint import pprint
-from django.core.management.base import BaseCommand, CommandError
-from rekisteri.models import *
+
+from django.core.management.base import BaseCommand
+
 from auth2.models import *
-from django.core.files import File
-from django.core.files.temp import NamedTemporaryFile
-from django.core.files.base import ContentFile
+from rekisteri.models import *
 
 
 class Command(BaseCommand):

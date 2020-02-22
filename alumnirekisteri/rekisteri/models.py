@@ -1,12 +1,10 @@
 # from audit_log.models.managers import AuditLog
-import datetime
+
 from django.conf import settings
 from django.db import models
-from django.urls import reverse
 from django.db.models import Q
 from django.template.defaultfilters import slugify
-
-# Create your models here.
+from django.urls import reverse
 
 
 class MailList(models.Model):

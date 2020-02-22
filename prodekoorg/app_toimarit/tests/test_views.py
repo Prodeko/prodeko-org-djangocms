@@ -3,8 +3,8 @@ import os
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.urls import reverse
 
-from .test_data import TestData
 from ..models import Toimari
+from .test_data import TestData
 
 
 class AppToimaritViewTest(TestData):

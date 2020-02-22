@@ -1,6 +1,7 @@
+from uuid import uuid4
+
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-from uuid import uuid4
 
 
 def content_directory(instance, filename):

@@ -1,9 +1,16 @@
-from django.forms import ModelForm, RadioSelect, Textarea, CheckboxInput, TypedChoiceField
-from django.utils.translation import ugettext_lazy as _
+from django.forms import (
+    CheckboxInput,
+    ModelForm,
+    RadioSelect,
+    Textarea,
+    TypedChoiceField,
+)
 from django.utils import timezone
+from django.utils.translation import ugettext_lazy as _
+
+from auth_prodeko.models import User
 
 from .models import PendingUser
-from auth_prodeko.models import User
 
 
 def year_choices():

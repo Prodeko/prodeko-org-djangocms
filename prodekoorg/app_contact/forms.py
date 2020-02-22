@@ -1,8 +1,7 @@
-from django.forms import ModelForm, ChoiceField, Select, Textarea
+from django.forms import ModelForm, Select, Textarea
 from django.utils.translation import ugettext_lazy as _
 
 from .models import Message
-from auth_prodeko.models import User
 
 
 class ContactForm(ModelForm):

@@ -1,13 +1,7 @@
-import unidecode
-
-from django.conf import settings
-from django.contrib.staticfiles.storage import staticfiles_storage
-from django.core.files import File
 from django.db import models
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 from filer.fields.image import FilerImageField
-from easy_thumbnails.files import get_thumbnailer
 
 
 def default_year():

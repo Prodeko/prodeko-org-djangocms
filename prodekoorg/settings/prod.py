@@ -1,7 +1,8 @@
-from .base import *
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
 from sentry_sdk.integrations.redis import RedisIntegration
+
+from .base import *
 
 sentry_sdk.init(
     dsn=SENTRY_DSN,

@@ -1,13 +1,12 @@
 # import numpy as np
-import json
-import django
-from pprint import pprint
-from django.core.management.base import BaseCommand, CommandError
-from rekisteri.models import *
-from auth2.models import *
-from django.contrib.auth.hashers import *
 import random
 import string
+
+from django.contrib.auth.hashers import *
+from django.core.management.base import BaseCommand
+
+from auth2.models import *
+from rekisteri.models import *
 
 
 class Command(BaseCommand):

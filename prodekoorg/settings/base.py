@@ -146,9 +146,7 @@ TEMPLATES = [
             os.path.join(BASE_DIR, "tiedotteet/frontend/public"),
             os.path.join(BASE_DIR, "alumnirekisteri/rekisteri"),
             os.path.join(BASE_DIR, "prodekoorg/app_membership/templates"),
-            os.path.join(
-                BASE_DIR, "prodekoorg/app_membership/templates/emails"
-            ),
+            os.path.join(BASE_DIR, "prodekoorg/app_membership/templates/emails"),
             os.path.join(BASE_DIR, "prodekoorg/app_contact/templates"),
             os.path.join(BASE_DIR, "prodekoorg/app_contact/templates/emails"),
             os.path.join(BASE_DIR, "prodekoorg/app_kulukorvaus/templates"),

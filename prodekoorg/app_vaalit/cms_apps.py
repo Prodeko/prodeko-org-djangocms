@@ -3,6 +3,7 @@ from cms.apphook_pool import apphook_pool
 from django.contrib.auth.decorators import login_required
 from django.urls import path
 from django.utils.translation import ugettext_lazy as _
+
 from .views import (
     EhdokasCreateView,
     EhdokasDeleteView,

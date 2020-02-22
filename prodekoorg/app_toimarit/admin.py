@@ -1,15 +1,15 @@
 import csv
 
 from django.contrib import admin
-from django.urls import include, re_path, path
-from django.views.generic import TemplateView
 from django.contrib.admin import SimpleListFilter
 from django.core.exceptions import PermissionDenied
 from django.http import HttpResponse
+from django.urls import path
 from django.utils.translation import ugettext_lazy as _
+from django.views.generic import TemplateView
 
 from .models import HallituksenJasen, Jaosto, Toimari
-from .views import toimari_postcsv, hallitus_postcsv
+from .views import hallitus_postcsv, toimari_postcsv
 
 
 class YearFilter(SimpleListFilter):

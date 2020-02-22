@@ -1,43 +1,41 @@
-import os
-from django.shortcuts import (
-    render,
-    render_to_response,
-    redirect,
-    HttpResponse,
-    HttpResponseRedirect,
-)
-from django.http import (
-    HttpResponseNotFound,
-    HttpResponseForbidden,
-    StreamingHttpResponse,
-    JsonResponse,
-)
-from django.urls import reverse
-from django.core.files.base import ContentFile
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.core.mail import EmailMultiAlternatives
-from django.template import RequestContext
-from django.shortcuts import get_object_or_404
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth import update_session_auth_hash
-from django.contrib.admin.views.decorators import staff_member_required
-from django.contrib import messages
-from django.db.models import F, Value, CharField
-from django.template.loader import render_to_string
-from alumnirekisteri.rekisteri.forms import *
-from alumnirekisteri.rekisteri.models import *
-from django.db.models import Q
-from alumnirekisteri.auth2.forms import PasswordChangeForm, LoginForm
-from io import TextIOWrapper
-from io import StringIO
-from shutil import make_archive
-from wsgiref.util import FileWrapper
 import csv as csv
-import unicodecsv as unicodecsv
-from itertools import chain
 import math
+import os
 import random
 import string
+from io import StringIO, TextIOWrapper
+from itertools import chain
+from shutil import make_archive
+from wsgiref.util import FileWrapper
+
+import unicodecsv as unicodecsv
+from django.contrib import messages
+from django.contrib.admin.views.decorators import staff_member_required
+from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.decorators import login_required
+from django.core.mail import EmailMultiAlternatives
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
+from django.db.models import F, Q, Value
+from django.http import (
+    HttpResponseForbidden,
+    HttpResponseNotFound,
+    JsonResponse,
+    StreamingHttpResponse,
+)
+from django.shortcuts import (
+    HttpResponse,
+    HttpResponseRedirect,
+    get_object_or_404,
+    redirect,
+    render,
+    render_to_response,
+)
+from django.template.loader import render_to_string
+from django.urls import reverse
+
+from alumnirekisteri.auth2.forms import LoginForm, PasswordChangeForm
+from alumnirekisteri.rekisteri.forms import *
+from alumnirekisteri.rekisteri.models import *
 from prodekoorg import settings as project_settings
 
 

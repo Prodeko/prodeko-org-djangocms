@@ -1,18 +1,14 @@
 import csv
 import io
-import json
-import unidecode
-from datetime import datetime
 from collections import defaultdict
+from datetime import datetime
 
+import unidecode
 from django.contrib import messages
 from django.contrib.admin.views.decorators import staff_member_required
-from django.contrib.staticfiles.storage import staticfiles_storage
-from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
 from django.utils.translation import ugettext_lazy as _
 from django.views.decorators.csrf import csrf_protect
-from filer.models.filemodels import File
 from filer.settings import FILER_IMAGE_MODEL
 from filer.utils.loader import load_model
 

@@ -1,6 +1,5 @@
 import os
 
-from django.conf import settings
 from django.db import models
 from django.templatetags.static import static
 from django.utils.translation import ugettext_lazy as _

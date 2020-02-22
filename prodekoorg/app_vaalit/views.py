@@ -1,20 +1,14 @@
 import json
-import os
 from io import BytesIO
-from sys import stderr
 
-from django.conf import settings
-from django.contrib import auth, messages
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.staticfiles.storage import staticfiles_storage
-from django.contrib.staticfiles.templatetags.staticfiles import static
-from django.core import serializers
 from django.core.exceptions import PermissionDenied
 from django.core.files.base import ContentFile
 from django.core.files.uploadedfile import InMemoryUploadedFile
 from django.core.serializers import serialize
-from django.core.serializers.json import DjangoJSONEncoder
 from django.http import (
     Http404,
     HttpResponse,
@@ -29,7 +23,7 @@ from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from PIL import Image
 
 from .forms import EhdokasForm, KysymysForm, VastausForm
-from .models import Ehdokas, Kysymys, Vastaus, Virka
+from .models import Ehdokas, Kysymys, Virka
 
 
 class EhdokasCreateView(SuccessMessageMixin, CreateView):

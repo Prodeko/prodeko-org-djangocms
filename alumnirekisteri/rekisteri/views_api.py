@@ -1,6 +1,7 @@
-from rest_framework import generics, permissions, filters
-from alumnirekisteri.rekisteri.models import *
+from rest_framework import generics, permissions
+
 from alumnirekisteri.auth2.models import User
+from alumnirekisteri.rekisteri.models import *
 from alumnirekisteri.rekisteri.serializers import *
 
 

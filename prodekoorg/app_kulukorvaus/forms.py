@@ -1,4 +1,4 @@
-from django.forms import ModelForm, RadioSelect, Textarea
+from django.forms import ModelForm, Textarea
 from django.utils.translation import ugettext_lazy as _
 
 from .models import Kulukorvaus, KulukorvausPerustiedot

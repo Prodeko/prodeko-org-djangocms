@@ -1,13 +1,16 @@
 from django.conf import settings
 from django.contrib import messages
 from django.core.mail import EmailMultiAlternatives
-from django.core.validators import FileExtensionValidator
+from django.core.validators import (
+    FileExtensionValidator,
+    MaxValueValidator,
+    MinValueValidator,
+)
 from django.db import models
 from django.template.loader import render_to_string
-from django.utils.crypto import get_random_string
 from django.utils import timezone
+from django.utils.crypto import get_random_string
 from django.utils.translation import ugettext_lazy as _
-from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 def max_value_current_year(value):
@@ -90,7 +93,7 @@ class PendingUser(models.Model):
     def accept_membership(self, request, account_id, *args, **kwargs):
         password = get_random_string(length=16)
         self.user.set_password(password)
-        #self.send_accept_email(self.user, password)
+        # self.send_accept_email(self.user, password)
         self.user.is_active = True
         self.user.save()
         messages.success(request, _("Membership application accepted."))

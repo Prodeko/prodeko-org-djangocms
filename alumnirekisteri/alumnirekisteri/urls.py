@@ -1,5 +1,4 @@
 from django.urls import include, re_path
-from rest_framework import routers
 
 from alumnirekisteri.rekisteri import urls as rekisteri_urls
 

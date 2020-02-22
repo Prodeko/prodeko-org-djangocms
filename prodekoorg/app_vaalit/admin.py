@@ -1,6 +1,6 @@
 from django.contrib import admin
-from django.db import models
-from .models import Ehdokas, Kysymys, Virka, Vastaus
+
+from .models import Ehdokas, Kysymys, Vastaus, Virka
 
 
 class VirkaAdmin(admin.ModelAdmin):

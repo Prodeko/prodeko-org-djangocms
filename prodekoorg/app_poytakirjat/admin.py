@@ -3,8 +3,8 @@ from django.contrib.admin import SimpleListFilter
 from django.urls import path
 from django.utils.translation import ugettext_lazy as _
 
-from .models import Dokumentti
 from .gdrive_api import run_app_poytakirjat
+from .models import Dokumentti
 
 
 class YearFilter(SimpleListFilter):

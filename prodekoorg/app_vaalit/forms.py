@@ -1,7 +1,5 @@
-from django import forms
-from django.core.files import File
-from django.forms import ModelForm, Textarea
-from PIL import Image
+from django.forms import ModelForm
+
 from .models import Ehdokas, Kysymys, Vastaus
 
 

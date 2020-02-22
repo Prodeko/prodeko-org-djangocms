@@ -1,7 +1,7 @@
-from urllib.parse import urlencode
-from urllib.parse import unquote
-from django.utils.safestring import mark_safe
+from urllib.parse import unquote, urlencode
+
 from django import template
+from django.utils.safestring import mark_safe
 
 register = template.Library()
 

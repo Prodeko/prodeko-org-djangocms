@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/2.2/howto/deployment/wsgi/
 
 import os
 import sys
+
 from django.core.wsgi import get_wsgi_application
 
 root = os.path.join(os.path.dirname(__file__), "..")

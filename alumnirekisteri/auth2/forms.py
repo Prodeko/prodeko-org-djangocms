@@ -1,11 +1,11 @@
 from django import forms
+from django.contrib.auth import password_validation
 from django.contrib.auth.forms import (
-    UserCreationForm,
     AuthenticationForm,
     SetPasswordForm,
+    UserCreationForm,
 )
-from django.utils.translation import ugettext, ugettext_lazy as _
-from django.contrib.auth import authenticate, get_user_model, password_validation
+from django.utils.translation import ugettext_lazy as _
 
 from alumnirekisteri.auth2.models import User
 

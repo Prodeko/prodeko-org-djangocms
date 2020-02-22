@@ -1,7 +1,8 @@
 from django import forms
+
+from alumnirekisteri.auth2.forms import RegisterForm as auth2RegisterForm
 from alumnirekisteri.rekisteri.models import *
 from auth_prodeko.models import User
-from alumnirekisteri.auth2.forms import RegisterForm as auth2RegisterForm
 
 
 class RegisterForm(auth2RegisterForm):

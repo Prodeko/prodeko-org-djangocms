@@ -7,4 +7,4 @@ class AppApplyForMembershipConfig(AppConfig):
     verbose_name = _("Membership applications")
 
     def ready(self):
-        import prodekoorg.app_membership.signals
+        pass

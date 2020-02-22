@@ -1,4 +1,5 @@
-from django.urls import include, re_path
+from django.urls import re_path
+
 from tiedotteet.backend import views, views_api
 
 app_name = "tiedotteet"

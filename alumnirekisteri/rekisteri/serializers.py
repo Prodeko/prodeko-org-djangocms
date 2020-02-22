@@ -1,6 +1,7 @@
-from alumnirekisteri.rekisteri.models import *
-from alumnirekisteri.auth2.models import User
 from rest_framework import serializers
+
+from alumnirekisteri.auth2.models import User
+from alumnirekisteri.rekisteri.models import *
 
 
 class UserSerializer(serializers.ModelSerializer):

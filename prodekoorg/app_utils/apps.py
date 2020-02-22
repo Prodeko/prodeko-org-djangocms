@@ -7,4 +7,4 @@ class AppUtilsConfig(AppConfig):
     verbose_name = _("Utilities")
 
     def ready(self):
-        import prodekoorg.app_utils.signals
+        pass

@@ -1,13 +1,10 @@
-import django
 import csv
 import sys
-import requests
-from django.core.management.base import BaseCommand, CommandError
-from rekisteri.models import *
+
+from django.core.management.base import BaseCommand
+
 from auth2.models import *
-from django.core.files import File
-from django.core.files.temp import NamedTemporaryFile
-from django.core.files.base import ContentFile
+from rekisteri.models import *
 
 
 class Command(BaseCommand):
@@ -16,7 +13,6 @@ class Command(BaseCommand):
 
     def add_arguments(self, parser):
         parser.add_argument("path", nargs=1, type=str)
-        pass
 
     def handle(self, *args, **options):
         print("handle")

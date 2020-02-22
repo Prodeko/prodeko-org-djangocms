@@ -30,9 +30,7 @@ def main_form(request):
             pending_user = form_apply.save(commit=False)
 
             if not pending_user.has_accepted_policies:
-                return render(
-                    request, "app_membership_base.html", {"form": form_apply}
-                )
+                return render(request, "app_membership_base.html", {"form": form_apply})
 
             pending_user.save()
             try:
@@ -40,9 +38,7 @@ def main_form(request):
             except SMTPAuthenticationError:
                 # Google server doesn't authenticate no-reply@prodeko.org.
                 # Most likely the password to said account is configured incorrectly
-                return render(
-                    request, "app_membership_base.html", {"error": True}
-                )
+                return render(request, "app_membership_base.html", {"error": True})
 
             return render(request, "app_membership_base.html", {"done": True})
         else:
@@ -50,9 +46,7 @@ def main_form(request):
             return render(request, "form_apply.html", {"form": form_apply}, status=599)
     else:
         form_apply = PendingUserForm()
-        return render(
-            request, "app_membership_base.html", {"form": form_apply}
-        )
+        return render(request, "app_membership_base.html", {"form": form_apply})
 
 
 def send_email(user):

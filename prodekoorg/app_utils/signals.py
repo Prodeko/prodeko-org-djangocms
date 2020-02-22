@@ -1,12 +1,13 @@
-from alumnirekisteri.rekisteri.models import Person
 from django.db.models.signals import post_delete
 from django.dispatch import receiver
 from easy_thumbnails.signal_handlers import generate_aliases_global
 from easy_thumbnails.signals import saved_file
+
+from alumnirekisteri.rekisteri.models import Person
 from lifelonglearning.models import Course
-from prodekoorg.app_membership.models import PendingUser
 from prodekoorg.app_infoscreen.models import Slide
 from prodekoorg.app_kulukorvaus.models import Kulukorvaus, KulukorvausPerustiedot
+from prodekoorg.app_membership.models import PendingUser
 from prodekoorg.app_poytakirjat.models import Dokumentti
 from prodekoorg.app_tiedostot.models import Tiedosto, TiedostoVersio
 from prodekoorg.app_vaalit.models import Ehdokas

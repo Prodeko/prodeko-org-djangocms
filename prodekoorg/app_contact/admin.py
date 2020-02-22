@@ -3,6 +3,7 @@ from django.contrib.admin import SimpleListFilter
 from django.db import models
 from django.forms import Textarea
 from django.utils.translation import ugettext_lazy as _
+
 from .models import Message
 
 

@@ -1,10 +1,10 @@
-from django.urls import re_path
 from django.contrib.auth import views as auth_views
-from alumnirekisteri.rekisteri import views, views_api
-from rest_framework.urlpatterns import format_suffix_patterns
-from alumnirekisteri.auth2.forms import LoginForm
 from django.contrib.auth.decorators import user_passes_test
+from django.urls import re_path
 from django.views.generic import TemplateView
+from rest_framework.urlpatterns import format_suffix_patterns
+
+from alumnirekisteri.rekisteri import views
 
 # prevent logged in users for accessing /login/ url
 login_forbidden = user_passes_test(lambda u: u.is_anonymous(), "/")
