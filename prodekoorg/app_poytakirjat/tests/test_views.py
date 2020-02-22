@@ -1,10 +1,15 @@
 import unittest
 
+from django.conf import settings
+from django.test.utils import override_settings
 from django.urls import reverse
 
 from .test_data import TestData
 
+urlconf = "prodekoorg.urls"
 
+
+@override_settings(ROOT_URLCONF=urlconf, TESTING=True)
 class DokumenttiViewTest(TestData):
     """Tests for views in the app_poytakirjat app."""
 
@@ -13,23 +18,24 @@ class DokumenttiViewTest(TestData):
         Tests redirect to login page if the main poytakirjat page is
         accessed and the user is not logged in.
         """
-        response = self.client.get(reverse("app_poytakirjat:documents"))
-        self.assertEqual(response.status_code, 302)
-        self.assertRedirects(response, "/fi/login/?next=/fi/dokumentit/")
+
+        response = self.client.get("/fi/kokouspoytakirjat/", follow=True)
+        self.assertRedirects(response, "/fi/login/?next=/fi/kokouspoytakirjat/")
 
     def test_admin_download_not_authorized(self):
         """
         Test documents downloading from admin panel.
         """
-        self.client.login(email="test1@test.com", password="Ukc55Has-@")
 
+        self.client.cookies.load({settings.LANGUAGE_COOKIE_NAME: "fi"})
+        self.client.login(email="test1@test.com", password="testi1salasana")
         test_data = {"folderID": "1RD-AIF6GuB08wDSFKxNxRZgBu2BtPEli"}
-
         response = self.client.post(
             reverse("admin:download_docs_from_gsuite"), data=test_data
         )
         self.assertRedirects(
-            response, "/fi/admin/login/?next=/fi/admin/app_poytakirjat/download"
+            response,
+            "/en/admin/login/?next=/en/admin/app_poytakirjat/dokumentti/download",
         )
 
     @unittest.skip(
@@ -43,10 +49,9 @@ class DokumenttiViewTest(TestData):
         documents through google API to a test database. The test
         database is destroyed after the test run.
         """
-        self.client.login(email="test2@test.com", password='q"WaXkcB>7')
 
+        self.client.login(email="test2@test.com", password="testi2salasana")
         test_data = {"folderID": "1RD-AIF6GuB08wDSFKxNxRZgBu2BtPEli"}
-
         response = self.client.post(
             reverse("admin:download_docs_from_gsuite"), data=test_data
         )

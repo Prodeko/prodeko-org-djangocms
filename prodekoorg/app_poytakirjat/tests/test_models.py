@@ -1,11 +1,4 @@
-from django.test import override_settings
-
 from .test_data import TestData
-
-# Override settigs to test translations
-english = override_settings(LANGUAGE_CODE="en", LANGUAGES=(("en", "English"),))
-
-finnish = override_settings(LANGUAGE_CODE="fi", LANGUAGES=(("fi", "Finnish"),))
 
 
 class DokumenttiModelTest(TestData):

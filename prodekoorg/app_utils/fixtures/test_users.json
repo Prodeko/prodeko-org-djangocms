@@ -23,10 +23,10 @@
     "fields": {
       "password": "pbkdf2_sha256$150000$pk7ryG7TjrNN$K7Gs+rutvaIICQS95Qhrkh+klxbadB15iEV7h5xT91s=",
       "last_login": null,
-      "is_superuser": false,
+      "is_superuser": true,
       "first_name": "",
       "last_name": "",
-      "is_staff": false,
+      "is_staff": true,
       "is_active": true,
       "date_joined": "2020-02-21T12:00:00.000Z",
       "email": "test2@test.com",

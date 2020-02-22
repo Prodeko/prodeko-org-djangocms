@@ -35,7 +35,6 @@ class TestData(CMSTestCase):
 
     @classmethod
     def setUp(cls):
-        # Create a user
         User = get_user_model()
         cls.test_user1 = User.objects.get(email="test1@test.com")
         cls.test_user2 = User.objects.get(email="test2@test.com")
@@ -44,7 +43,7 @@ class TestData(CMSTestCase):
             title="kulukorvaus",
             template=TEMPLATE_INHERITANCE_MAGIC,
             language="fi",
-            created_by=cls.test_user1,
+            created_by=cls.test_user2,
             published=True,
             login_required=True,
             apphook="KulukorvausApphook",
