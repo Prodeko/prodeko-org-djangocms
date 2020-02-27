@@ -20,6 +20,11 @@
   a {
     color: white;
     font-weight: bold;
+
+    &:hover {
+        color: rgb(230, 230, 230);
+        transition: 0.1s ease-out;
+    }
   }
 
   h2,
@@ -38,9 +43,6 @@
       @include phone {
         max-width: 70px;
       }
-    }
-    img:hover {
-      transform: scale(1.3);
     }
 
     @include smallphone {
