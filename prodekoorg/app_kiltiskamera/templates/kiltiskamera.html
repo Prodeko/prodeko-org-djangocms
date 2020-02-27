@@ -1,0 +1,23 @@
+{% extends "contentpage/content-page.html" %}
+{% load cms_tags menu_tags sekizai_tags %}
+
+{% block extra_head %}
+{% endblock %}
+
+{% block content %}
+
+    {% include "layout-components/jumbotron.html" %}
+
+    <div class="container">
+        {% show_breadcrumb 0 "layout-components/breadcrumb.html" %}
+        {% placeholder "content" %}
+        <div class="row">
+            <div class="col-md-9">
+                <img src="{% url 'app_kiltiskamera:stream' %}" class="img-fluid">
+            </div>
+            <div class="col-md-3">
+                {% show_sub_menu 2 1 100 "layout-components/sidenav.html" %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}
