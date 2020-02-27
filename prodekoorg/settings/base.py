@@ -99,6 +99,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, "prodekoorg/collected-static")
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "prodekoorg/media")
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "tiedotteet/frontend/static"),
+    os.path.join(BASE_DIR, "tiedotteet/frontend/public"),
+]
+
 STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
