@@ -29,6 +29,7 @@ DB_PSWD = config["DB"]["PASSWORD"]
 DEV_EMAIL = config["EMAIL"]["DEV_EMAIL"]
 STORAGE_KEY = config["STORAGE"]["KEY"]
 SENTRY_DSN = config["SENTRY"]["DSN"]
+KILTISKAMERA_URL = config["KILTISKAMERA"]["URL"]
 
 # Application definition
 ROOT_URLCONF = "prodekoorg.urls"
@@ -98,32 +99,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, "prodekoorg/collected-static")
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "prodekoorg/media")
 
-# Directories where STATICFILES_FINDERS looks for static files
-# Custom apps serving static files need to be added here
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "prodekoorg/static"),
-    os.path.join(BASE_DIR, "auth_prodeko/static"),
-    os.path.join(BASE_DIR, "prodekoorg/app_membership/static"),
-    os.path.join(BASE_DIR, "prodekoorg/app_contact/static"),
-    os.path.join(BASE_DIR, "prodekoorg/app_kulukorvaus/static"),
-    os.path.join(BASE_DIR, "prodekoorg/app_poytakirjat/static"),
-    os.path.join(BASE_DIR, "prodekoorg/app_tiedostot/static"),
-    os.path.join(BASE_DIR, "prodekoorg/app_toimarit/static"),
-    os.path.join(BASE_DIR, "prodekoorg/app_vaalit/static"),
-    # abit.prodeko.org
-    os.path.join(BASE_DIR, "abisivut/static"),
-    # lifelonglearning.prodeko.org
-    os.path.join(BASE_DIR, "lifelonglearning/static"),
-    # seminaari.prodeko.org
-    os.path.join(BASE_DIR, "seminaari/static"),
-    # tiedotteet.prodeko.org
-    os.path.join(BASE_DIR, "tiedotteet/frontend/static"),
-    os.path.join(BASE_DIR, "tiedotteet/frontend/public"),
-    os.path.join(BASE_DIR, "tiedotteet/backend/static"),
-    # matrikkeli.prodeko.org
-    os.path.join(BASE_DIR, "alumnirekisteri/rekisteri/static"),
-]
-
 STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
@@ -137,24 +112,6 @@ SASS_PRECISION = 8
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [
-            os.path.join(BASE_DIR, "prodekoorg/templates"),
-            os.path.join(BASE_DIR, "abisivut/templates"),
-            os.path.join(BASE_DIR, "lifelonglearning/templates"),
-            os.path.join(BASE_DIR, "seminaari/templates"),
-            os.path.join(BASE_DIR, "tiedotteet/backend/templates"),
-            os.path.join(BASE_DIR, "tiedotteet/frontend/public"),
-            os.path.join(BASE_DIR, "alumnirekisteri/rekisteri"),
-            os.path.join(BASE_DIR, "prodekoorg/app_membership/templates"),
-            os.path.join(BASE_DIR, "prodekoorg/app_membership/templates/emails"),
-            os.path.join(BASE_DIR, "prodekoorg/app_contact/templates"),
-            os.path.join(BASE_DIR, "prodekoorg/app_contact/templates/emails"),
-            os.path.join(BASE_DIR, "prodekoorg/app_kulukorvaus/templates"),
-            os.path.join(BASE_DIR, "prodekoorg/app_kulukorvaus/templates/emails"),
-            os.path.join(BASE_DIR, "prodekoorg/app_poytakirjat/templates"),
-            os.path.join(BASE_DIR, "prodekoorg/app_toimarit/templates"),
-            os.path.join(BASE_DIR, "prodekoorg/app_tiedostot/templates"),
-        ],
         "OPTIONS": {
             "context_processors": [
                 "django.contrib.auth.context_processors.auth",
@@ -274,6 +231,7 @@ INSTALLED_APPS = (
     "seminaari",
     # ------------------------
     "prodekoorg.app_contact",
+    "prodekoorg.app_kiltiskamera",
     "prodekoorg.app_infoscreen",
     "prodekoorg.app_kulukorvaus",
     "prodekoorg.app_membership",
@@ -393,7 +351,7 @@ MESSAGE_TAGS = {messages.ERROR: "danger"}
 # Email config. See documentation/app_membership.md
 # on more details about how email sending works through G Suite.
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = "smtp-relay.gmail.com"
+EMAIL_HOST = config["EMAIL"]["HOST"]
 EMAIL_HOST_USER = config["EMAIL"]["USER"]
 EMAIL_HOST_PASSWORD = config["EMAIL"]["PASSWORD"]
 DEFAULT_FROM_EMAIL = "no-reply@prodeko.org"

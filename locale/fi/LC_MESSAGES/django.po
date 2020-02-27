@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-22 11:19+0200\n"
+"POT-Creation-Date: 2020-02-27 23:08+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Timo Riski <timo@prodeko.org>\n"
 "Language: \n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: abisivut/cms_apps.py:11 prodekoorg/settings/base.py:296
+#: abisivut/cms_apps.py:12 prodekoorg/settings/base.py:252
 msgid "High school student page"
 msgstr "Abisivut"
 
@@ -25,7 +25,7 @@ msgstr "Abisivut"
 msgid "The two password fields didn't match."
 msgstr "Salasanat eivät täsmää."
 
-#: alumnirekisteri/auth2/forms.py:50 tiedotteet/backend/forms.py:173
+#: alumnirekisteri/auth2/forms.py:50 tiedotteet/backend/forms.py:174
 msgid "Password"
 msgstr "Salasana"
 
@@ -77,23 +77,23 @@ msgstr "Väärä salasana"
 msgid "Passwords don't match"
 msgstr "Salasanat eivät täsmää"
 
-#: auth_prodeko/models.py:58
+#: auth_prodeko/models.py:59
 msgid "email address"
 msgstr "sähköposti"
 
-#: auth_prodeko/models.py:61
+#: auth_prodeko/models.py:62
 msgid "Accepted privacy policy"
 msgstr "Hyväksynyt tietosuojalausekkeen"
 
-#: auth_prodeko/models.py:63
+#: auth_prodeko/models.py:64
 msgid "Designates whether the user has accepted Prodeko's privacy policy."
 msgstr "Määrittää, onko käyttäjä hyväksynyt Prodekon tietosuojalausekkeen."
 
-#: auth_prodeko/models.py:74
+#: auth_prodeko/models.py:75
 msgid "user"
 msgstr "käyttäjä"
 
-#: auth_prodeko/models.py:75
+#: auth_prodeko/models.py:76
 msgid "Users"
 msgstr "Käyttäjät"
 
@@ -107,15 +107,15 @@ msgstr "Profiili"
 #: auth_prodeko/templates/accounts/user_profile.html:14
 #: prodekoorg/app_kulukorvaus/models.py:60
 #: prodekoorg/app_kulukorvaus/printing.py:97
-#: prodekoorg/app_toimarit/models.py:26 prodekoorg/app_vaalit/models.py:53
+#: prodekoorg/app_toimarit/models.py:20 prodekoorg/app_vaalit/models.py:53
 msgid "Name"
 msgstr "Nimi"
 
 #: auth_prodeko/templates/accounts/user_profile.html:15
 #: auth_prodeko/templates/accounts/user_profile.html:21
-#: prodekoorg/app_contact/models.py:91 prodekoorg/app_kulukorvaus/models.py:61
+#: prodekoorg/app_contact/models.py:88 prodekoorg/app_kulukorvaus/models.py:61
 #: prodekoorg/app_kulukorvaus/printing.py:98
-#: prodekoorg/app_membership/models.py:62 prodekoorg/app_toimarit/models.py:92
+#: prodekoorg/app_membership/models.py:65 prodekoorg/app_toimarit/models.py:86
 msgid "Email"
 msgstr "Sähköposti"
 
@@ -221,7 +221,7 @@ msgstr "Salasana unohtunut?"
 msgid "The email and password didn't match. Try again"
 msgstr "Sähköposti ja salasana eivät täsmänneet. Yritä uudestaan"
 
-#: lifelonglearning/cms_apps.py:12 prodekoorg/settings/base.py:297
+#: lifelonglearning/cms_apps.py:12 prodekoorg/settings/base.py:253
 msgid "Lifelong learning page"
 msgstr "Lifelong learning sivu"
 
@@ -233,7 +233,7 @@ msgstr "nimi"
 msgid "coaches"
 msgstr "valmentajat"
 
-#: lifelonglearning/models.py:30 prodekoorg/app_infoscreen/models.py:35
+#: lifelonglearning/models.py:30 prodekoorg/app_infoscreen/models.py:34
 msgid "description"
 msgstr "kuvaus"
 
@@ -241,7 +241,7 @@ msgstr "kuvaus"
 msgid "registration url"
 msgstr "ilmoittautumislinkki"
 
-#: lifelonglearning/models.py:33 prodekoorg/app_infoscreen/models.py:37
+#: lifelonglearning/models.py:33 prodekoorg/app_infoscreen/models.py:36
 msgid "banner image"
 msgstr "kuva"
 
@@ -265,117 +265,117 @@ msgstr "kurssi"
 msgid "Courses"
 msgstr "Kurssit"
 
-#: prodekoorg/app_contact/admin.py:10 prodekoorg/app_kulukorvaus/admin.py:10
+#: prodekoorg/app_contact/admin.py:11 prodekoorg/app_kulukorvaus/admin.py:11
 #: prodekoorg/app_poytakirjat/admin.py:11 prodekoorg/app_toimarit/admin.py:16
 msgid "year"
 msgstr "Vuosi"
 
-#: prodekoorg/app_contact/apps.py:7 prodekoorg/app_contact/models.py:113
+#: prodekoorg/app_contact/apps.py:7 prodekoorg/app_contact/models.py:110
 #: prodekoorg/templates/layout-components/footer.html:7
 msgid "Contact form"
 msgstr "Yhteydenottolomake"
 
-#: prodekoorg/app_contact/cms_apps.py:11
+#: prodekoorg/app_contact/cms_apps.py:12
 msgid "Contact form application"
 msgstr "Sovellus - Yhteydenottolomake"
 
-#: prodekoorg/app_contact/forms.py:31
+#: prodekoorg/app_contact/forms.py:30
 msgid "Optional. Fill if you want to be contacted back."
 msgstr "Vapaaehtoinen. Täytä mikäli haluat vastauksen viestiisi."
 
-#: prodekoorg/app_contact/models.py:24
+#: prodekoorg/app_contact/models.py:21
 msgid "Feedback and general questions (hallitus@prodeko.org)"
 msgstr "Palaute ja yleiset asiat (hallitus@prodeko.org)"
 
-#: prodekoorg/app_contact/models.py:30
+#: prodekoorg/app_contact/models.py:27
 msgid ""
 "PTER (Prodekoian activities encouragement fund) grants (hallitus@prodeko.org)"
 msgstr ""
 "PTER (Prodekolaistoiminnan edistämisrahasto) hakemukset (hallitus@prodeko."
 "org)"
 
-#: prodekoorg/app_contact/models.py:37
+#: prodekoorg/app_contact/models.py:34
 msgid ""
 "Alumni, department and stakeholder relations (puheenjohtaja@prodeko.org)"
 msgstr "Alumni-, laitos- ja muut sidosryhmäsuhteet (puheenjohtaja@prodeko.org)"
 
-#: prodekoorg/app_contact/models.py:43
+#: prodekoorg/app_contact/models.py:40
 msgid "Cooperation with fellow guilds (ulkoministeri@prodeko.org)"
 msgstr ""
 "Yhteistyö ja yhteistyöpyynnöt toisten kiltojen ja ainejärjestöjen kanssa "
 "(ulkoministeri@prodeko.org)"
 
-#: prodekoorg/app_contact/models.py:49
+#: prodekoorg/app_contact/models.py:46
 msgid ""
 "Marketing to high school students and questions relating applying "
 "(abivastaava@prodeko.org)"
 msgstr "Abimarkkinointi ja hakeminen opiskelijaksi"
 
-#: prodekoorg/app_contact/models.py:56
+#: prodekoorg/app_contact/models.py:53
 msgid "New students, freshmen events and education (fuksikapteeni@prodeko.org)"
 msgstr ""
 "Uudet opiskelijat, fuksitapahtumat, opiskelun aloittaminen "
 "(fuksikapteeni@prodeko.org)"
 
-#: prodekoorg/app_contact/models.py:62
+#: prodekoorg/app_contact/models.py:59
 msgid "Master and exchange students (maisterikvkapteeni@prodeko.org)"
 msgstr "Maisteri- ja vaihto-opiskelijat (maisterikvkapteeni@prodeko.org)"
 
-#: prodekoorg/app_contact/models.py:67
+#: prodekoorg/app_contact/models.py:64
 msgid "Communications, email lists and brand (mediakeisari@prodeko.org)"
 msgstr ""
 "Jäsenistölle tiedottaminen, sähköpostilistat, brändi ja viestintä "
 "(mediakeisari@prodeko.org)"
 
-#: prodekoorg/app_contact/models.py:69
+#: prodekoorg/app_contact/models.py:66
 msgid "IT related questions (cto@prodeko.org)"
 msgstr "Tietotekniset kysymykset (cto@prodeko.org)"
 
-#: prodekoorg/app_contact/models.py:74
+#: prodekoorg/app_contact/models.py:71
 msgid "Corporate Relations (yrityssuhdevastaava@prodeko.org)"
 msgstr "Yrityssuhteet (yrityssuhdevastaava@prodeko.org)"
 
-#: prodekoorg/app_contact/models.py:76
+#: prodekoorg/app_contact/models.py:73
 msgid "Excursions (excumestari@prodeko.org)"
 msgstr "Excursiot (excumestari@prodeko.org)"
 
-#: prodekoorg/app_contact/models.py:77
+#: prodekoorg/app_contact/models.py:74
 msgid "Student events (sisakumi@prodeko.org)"
 msgstr "Tapahtumat, tapahtumaehdotukset (sisakumi@prodeko.org)"
 
-#: prodekoorg/app_contact/models.py:81
+#: prodekoorg/app_contact/models.py:78
 msgid "Billing and finances (rahastonhoitaja@prodeko.org)"
 msgstr "Laskut, kulukorvaukset, raha-asiat (rahastonhoitaja@prodeko.org)"
 
-#: prodekoorg/app_contact/models.py:83
+#: prodekoorg/app_contact/models.py:80
 msgid "ESTIEM (ulkoministeri@prodeko.org)"
 msgstr "ESTIEM (ulkoministeri@prodeko.org)"
 
-#: prodekoorg/app_contact/models.py:84
+#: prodekoorg/app_contact/models.py:81
 msgid "Tutoring (isovastaava@prodeko.org)"
 msgstr "ISO-toiminta (isovastaava@prodeko.org)"
 
-#: prodekoorg/app_contact/models.py:90 prodekoorg/app_kulukorvaus/models.py:113
+#: prodekoorg/app_contact/models.py:87 prodekoorg/app_kulukorvaus/models.py:113
 #: prodekoorg/app_vaalit/models.py:96 prodekoorg/app_vaalit/models.py:126
 msgid "Created at"
 msgstr "Luotu"
 
-#: prodekoorg/app_contact/models.py:96
+#: prodekoorg/app_contact/models.py:93
 msgid "Who do you wish to contact?"
 msgstr "Keneen haluat olla yhteydessä?"
 
-#: prodekoorg/app_contact/models.py:98
+#: prodekoorg/app_contact/models.py:95
 msgid "Your message"
 msgstr "Viestisi"
 
-#: prodekoorg/app_contact/models.py:103
+#: prodekoorg/app_contact/models.py:100
 msgid ""
 "I accept that my email address is stored in order to be contacted regarding "
 "my message."
 msgstr ""
 "Hyväksyn sähköpostiosoitteeni tallentamisen, jotta viestiini voidaan vastata."
 
-#: prodekoorg/app_contact/models.py:112
+#: prodekoorg/app_contact/models.py:109
 msgid "contact form application"
 msgstr "yhteydenottolomake"
 
@@ -416,51 +416,59 @@ msgstr "/tietosuoja"
 msgid "Infoscreen"
 msgstr "Infoscreeni"
 
-#: prodekoorg/app_infoscreen/models.py:28
+#: prodekoorg/app_infoscreen/models.py:27
 msgid "title"
 msgstr "otsikko"
 
-#: prodekoorg/app_infoscreen/models.py:30
+#: prodekoorg/app_infoscreen/models.py:29
 msgid "start datetime"
 msgstr "alkamispäivä"
 
-#: prodekoorg/app_infoscreen/models.py:33
+#: prodekoorg/app_infoscreen/models.py:32
 msgid "end datetime"
 msgstr "päättymispäivä"
 
-#: prodekoorg/app_infoscreen/models.py:39
+#: prodekoorg/app_infoscreen/models.py:38
 msgid "highlight"
 msgstr "korosta"
 
-#: prodekoorg/app_infoscreen/models.py:40
+#: prodekoorg/app_infoscreen/models.py:39
 msgid "visible"
 msgstr "näkyvissä"
 
-#: prodekoorg/app_infoscreen/models.py:54
+#: prodekoorg/app_infoscreen/models.py:53
 msgid "slide"
 msgstr "slide"
 
-#: prodekoorg/app_infoscreen/models.py:55
+#: prodekoorg/app_infoscreen/models.py:54
 msgid "Slides"
 msgstr "Slides"
 
-#: prodekoorg/app_kulukorvaus/admin.py:25
+#: prodekoorg/app_kiltiskamera/apps.py:7
+msgid "Guild room camera"
+msgstr "Kiltiskamera"
+
+#: prodekoorg/app_kiltiskamera/cms_apps.py:12
+msgid "Guild room camera application"
+msgstr "Sovellus - Kiltiskamera"
+
+#: prodekoorg/app_kulukorvaus/admin.py:26
 #: prodekoorg/app_kulukorvaus/models.py:74
 msgid "Status"
 msgstr "Tila"
 
-#: prodekoorg/app_kulukorvaus/admin.py:29
+#: prodekoorg/app_kulukorvaus/admin.py:30
 #: prodekoorg/app_kulukorvaus/models.py:40
 #: tiedotteet/backend/templates/control/nav.html:43
 #: tiedotteet/backend/views.py:89
 msgid "New"
 msgstr "Uudet"
 
-#: prodekoorg/app_kulukorvaus/admin.py:29
+#: prodekoorg/app_kulukorvaus/admin.py:30
 msgid "In Process"
 msgstr "Käsittelyssä"
 
-#: prodekoorg/app_kulukorvaus/admin.py:29
+#: prodekoorg/app_kulukorvaus/admin.py:30
 #: prodekoorg/app_kulukorvaus/models.py:42
 msgid "Processed"
 msgstr "Valmis"
@@ -620,19 +628,19 @@ msgstr "Hylkää"
 msgid "Application actions"
 msgstr "Hakemustoimenpiteet"
 
-#: prodekoorg/app_membership/apps.py:7 prodekoorg/app_membership/models.py:145
+#: prodekoorg/app_membership/apps.py:7 prodekoorg/app_membership/models.py:148
 msgid "Membership applications"
 msgstr "Jäsenhakemukset"
 
-#: prodekoorg/app_membership/cms_apps.py:11
+#: prodekoorg/app_membership/cms_apps.py:12
 msgid "Apply for Prodeko membership application"
 msgstr "Sovellus - Prodekon jäsenhakemus"
 
-#: prodekoorg/app_membership/forms.py:63
+#: prodekoorg/app_membership/forms.py:70
 msgid "An application or account associated with this email already exists"
 msgstr "Jäsenhakemus tai käyttäjä tällä sähköpostiosoitteella on jo olemassa."
 
-#: prodekoorg/app_membership/forms.py:73
+#: prodekoorg/app_membership/forms.py:80
 msgid ""
 "If you are studying at Aalto apply as a true member. Otherwise, apply as "
 "external member."
@@ -656,91 +664,91 @@ msgstr ""
 "Virheelliset tunnukset. Lue dokumentaatio uudestaan ja tarkista että G Suite "
 "sekä GCP API console on määritetty oikein."
 
-#: prodekoorg/app_membership/models.py:45
+#: prodekoorg/app_membership/models.py:48
 msgid "True member"
 msgstr "Varsinainen jäsen"
 
-#: prodekoorg/app_membership/models.py:46
+#: prodekoorg/app_membership/models.py:49
 msgid "Alumn"
 msgstr "Alumni"
 
-#: prodekoorg/app_membership/models.py:47
+#: prodekoorg/app_membership/models.py:50
 msgid "External member"
 msgstr "Ulkojäsen"
 
-#: prodekoorg/app_membership/models.py:50
+#: prodekoorg/app_membership/models.py:53
 msgid "Yes"
 msgstr "Kyllä"
 
-#: prodekoorg/app_membership/models.py:50
+#: prodekoorg/app_membership/models.py:53
 msgid "No"
 msgstr "Ei"
 
-#: prodekoorg/app_membership/models.py:52 prodekoorg/settings/base.py:66
-#: prodekoorg/settings/base.py:76
+#: prodekoorg/app_membership/models.py:55 prodekoorg/settings/base.py:67
+#: prodekoorg/settings/base.py:77
 msgid "Finnish"
 msgstr "Suomi"
 
-#: prodekoorg/app_membership/models.py:52
+#: prodekoorg/app_membership/models.py:55
 msgid "Other (English)"
 msgstr "Englanti"
 
-#: prodekoorg/app_membership/models.py:58 prodekoorg/app_toimarit/models.py:47
-#: prodekoorg/app_toimarit/models.py:84
+#: prodekoorg/app_membership/models.py:61 prodekoorg/app_toimarit/models.py:41
+#: prodekoorg/app_toimarit/models.py:78
 msgid "First name"
 msgstr "Etunimi"
 
-#: prodekoorg/app_membership/models.py:59 prodekoorg/app_toimarit/models.py:48
-#: prodekoorg/app_toimarit/models.py:85
+#: prodekoorg/app_membership/models.py:62 prodekoorg/app_toimarit/models.py:42
+#: prodekoorg/app_toimarit/models.py:79
 msgid "Last name"
 msgstr "Sukunimi"
 
-#: prodekoorg/app_membership/models.py:60
+#: prodekoorg/app_membership/models.py:63
 msgid "Hometown"
 msgstr "Kotikaupunki"
 
-#: prodekoorg/app_membership/models.py:61
+#: prodekoorg/app_membership/models.py:64
 msgid "Field of study"
 msgstr "Opiskeluala"
 
-#: prodekoorg/app_membership/models.py:64 prodekoorg/app_toimarit/models.py:56
-#: prodekoorg/app_toimarit/models.py:100
+#: prodekoorg/app_membership/models.py:67 prodekoorg/app_toimarit/models.py:50
+#: prodekoorg/app_toimarit/models.py:94
 msgid "Year"
 msgstr "Vuosi"
 
-#: prodekoorg/app_membership/models.py:68
+#: prodekoorg/app_membership/models.py:71
 msgid "Preferred language"
 msgstr "Kieli"
 
-#: prodekoorg/app_membership/models.py:71
+#: prodekoorg/app_membership/models.py:74
 msgid "Membership type"
 msgstr "Jäsentyyppi"
 
-#: prodekoorg/app_membership/models.py:74
+#: prodekoorg/app_membership/models.py:77
 msgid "Why do you want to become a member?"
 msgstr "Miksi haluat jäseneksi?"
 
-#: prodekoorg/app_membership/models.py:79
+#: prodekoorg/app_membership/models.py:82
 msgid "Are you an AYY (Aalto University Student Union) member?"
 msgstr "Oletko AYY:n jäsen?"
 
-#: prodekoorg/app_membership/models.py:83
+#: prodekoorg/app_membership/models.py:86
 msgid "Receipt of the membership payment"
 msgstr "Kuitti jäsenmaksusta"
 
-#: prodekoorg/app_membership/models.py:87
+#: prodekoorg/app_membership/models.py:90
 msgid "I accept Prodeko's privacy policy"
 msgstr "Hyväksyn Prodekon tietosuojalausekkeen"
 
-#: prodekoorg/app_membership/models.py:96
+#: prodekoorg/app_membership/models.py:99
 msgid "Membership application accepted."
 msgstr "Jäsenhakemus hyväsytty"
 
-#: prodekoorg/app_membership/models.py:101
+#: prodekoorg/app_membership/models.py:104
 msgid "Membership application rejected."
 msgstr "Jäsenhakemus hylätty"
 
-#: prodekoorg/app_membership/models.py:144
+#: prodekoorg/app_membership/models.py:147
 msgid "membership application"
 msgstr "jäsenhakemus"
 
@@ -770,7 +778,7 @@ msgstr "📬 Hakemus vastaanotettu!"
 msgid "Board meeting documents"
 msgstr "Hallituksen pöytäkirjat"
 
-#: prodekoorg/app_poytakirjat/cms_apps.py:11
+#: prodekoorg/app_poytakirjat/cms_apps.py:12
 msgid "Board meeting minutes application"
 msgstr "Sovellus - Hallituksen pöytäkirjat"
 
@@ -794,11 +802,11 @@ msgstr "Yhtäkään pöytäkirjaa ei ladattu."
 msgid "Error downloading documents: {}"
 msgstr "Virhe pöytäkirjoja ladattaessa: {}"
 
-#: prodekoorg/app_poytakirjat/models.py:67
+#: prodekoorg/app_poytakirjat/models.py:68
 msgid "minutes"
 msgstr "pöytäkirja"
 
-#: prodekoorg/app_poytakirjat/models.py:68
+#: prodekoorg/app_poytakirjat/models.py:69
 msgid "Minutes"
 msgstr "Pöytäkirjat"
 
@@ -810,7 +818,7 @@ msgstr "Lataa pöytäkirjat Drivestä"
 msgid "How does this work"
 msgstr "Miten lataaminen toimii"
 
-#: prodekoorg/app_tiedostot/apps.py:7 prodekoorg/app_tiedostot/models.py:29
+#: prodekoorg/app_tiedostot/apps.py:7 prodekoorg/app_tiedostot/models.py:28
 msgid "Files"
 msgstr "Tiedostot"
 
@@ -818,11 +826,11 @@ msgstr "Tiedostot"
 msgid "Files application"
 msgstr "Sovellus - Tiedostot"
 
-#: prodekoorg/app_tiedostot/models.py:55
+#: prodekoorg/app_tiedostot/models.py:54
 msgid "file version"
 msgstr "tiedostoversio"
 
-#: prodekoorg/app_tiedostot/models.py:56
+#: prodekoorg/app_tiedostot/models.py:55
 msgid "File versions"
 msgstr "Tiedostoversiot"
 
@@ -834,68 +842,68 @@ msgstr "Vie valitut CSV:hen"
 msgid "Board and guild officials"
 msgstr "Hallitus ja toimihenkilöt"
 
-#: prodekoorg/app_toimarit/cms_apps.py:16
+#: prodekoorg/app_toimarit/cms_apps.py:17
 msgid "Current guild officials application"
 msgstr "Sovellus - Nykyiset toimarit -sivu"
 
-#: prodekoorg/app_toimarit/cms_apps.py:27
+#: prodekoorg/app_toimarit/cms_apps.py:28
 msgid "Old guild officials application"
 msgstr "Sovellus - Vanhat toimarit -sivu"
 
-#: prodekoorg/app_toimarit/cms_apps.py:38
+#: prodekoorg/app_toimarit/cms_apps.py:39
 msgid "Current board of Prodeko application"
 msgstr "Sovellus - Nykyinen hallitus -sivu"
 
-#: prodekoorg/app_toimarit/cms_apps.py:49
+#: prodekoorg/app_toimarit/cms_apps.py:50
 msgid "Old boards of Prodeko application"
 msgstr "Sovellus - Vanhat hallitukset -sivu"
 
-#: prodekoorg/app_toimarit/models.py:32
+#: prodekoorg/app_toimarit/models.py:26
 msgid "section"
 msgstr "jaosto"
 
-#: prodekoorg/app_toimarit/models.py:33
+#: prodekoorg/app_toimarit/models.py:27
 msgid "sections"
 msgstr "jaostot"
 
-#: prodekoorg/app_toimarit/models.py:49 prodekoorg/app_toimarit/models.py:86
+#: prodekoorg/app_toimarit/models.py:43 prodekoorg/app_toimarit/models.py:80
 #: prodekoorg/app_vaalit/models.py:19
 msgid "Position"
 msgstr "Virka"
 
-#: prodekoorg/app_toimarit/models.py:51
+#: prodekoorg/app_toimarit/models.py:45
 msgid "Section"
 msgstr "Jaosto"
 
-#: prodekoorg/app_toimarit/models.py:54 prodekoorg/app_toimarit/models.py:98
+#: prodekoorg/app_toimarit/models.py:48 prodekoorg/app_toimarit/models.py:92
 msgid "Photo"
 msgstr ""
 
-#: prodekoorg/app_toimarit/models.py:66
+#: prodekoorg/app_toimarit/models.py:60
 msgid "guild official"
 msgstr "toimari"
 
-#: prodekoorg/app_toimarit/models.py:67
+#: prodekoorg/app_toimarit/models.py:61
 msgid "guild officials"
 msgstr "toimarit"
 
-#: prodekoorg/app_toimarit/models.py:87
+#: prodekoorg/app_toimarit/models.py:81
 msgid "Position (English)"
 msgstr "Virka (Englanniksi)"
 
-#: prodekoorg/app_toimarit/models.py:89
+#: prodekoorg/app_toimarit/models.py:83
 msgid "Mobile phone"
 msgstr "Puhelinnumero"
 
-#: prodekoorg/app_toimarit/models.py:95
+#: prodekoorg/app_toimarit/models.py:89
 msgid "Telegram"
 msgstr "Telegram"
 
-#: prodekoorg/app_toimarit/models.py:110
+#: prodekoorg/app_toimarit/models.py:104
 msgid "board member"
 msgstr "hallituksen jäsen"
 
-#: prodekoorg/app_toimarit/models.py:111
+#: prodekoorg/app_toimarit/models.py:105
 msgid "board members"
 msgstr "hallituksen jäsenet"
 
@@ -905,11 +913,11 @@ msgstr "hallituksen jäsenet"
 msgid "Add %(name)s"
 msgstr "Lisää %(name)s"
 
-#: prodekoorg/app_toimarit/views.py:96 prodekoorg/app_toimarit/views.py:157
+#: prodekoorg/app_toimarit/views.py:92 prodekoorg/app_toimarit/views.py:153
 msgid "CSV imported successfully."
 msgstr "CSV-tiedosto ladattu onnistuneesti"
 
-#: prodekoorg/app_toimarit/views.py:99 prodekoorg/app_toimarit/views.py:160
+#: prodekoorg/app_toimarit/views.py:95 prodekoorg/app_toimarit/views.py:156
 msgid "Error downloading CSV: {}"
 msgstr "Virhe csv:tä ladattaessa: {}"
 
@@ -921,7 +929,7 @@ msgstr "Työkalut"
 msgid "Elections"
 msgstr "Vaalit"
 
-#: prodekoorg/app_vaalit/cms_apps.py:20
+#: prodekoorg/app_vaalit/cms_apps.py:21
 msgid "Elections application"
 msgstr "Sovellus - Vaalit"
 
@@ -1105,27 +1113,27 @@ msgstr "Poista"
 msgid "Edit"
 msgstr "Muokkaa"
 
-#: prodekoorg/settings/base.py:66 prodekoorg/settings/base.py:83
+#: prodekoorg/settings/base.py:67 prodekoorg/settings/base.py:84
 msgid "English"
 msgstr "Englanti"
 
-#: prodekoorg/settings/base.py:292
+#: prodekoorg/settings/base.py:248
 msgid "Frontpage"
 msgstr "Etusivu"
 
-#: prodekoorg/settings/base.py:293
+#: prodekoorg/settings/base.py:249
 msgid "Content page"
 msgstr "Sisältösivu"
 
-#: prodekoorg/settings/base.py:294
+#: prodekoorg/settings/base.py:250
 msgid "Content page with 1:1 split"
 msgstr "Sisältösivu 1:1 jaolla"
 
-#: prodekoorg/settings/base.py:295
+#: prodekoorg/settings/base.py:251
 msgid "Content page with 2:1 split"
 msgstr "Sisältösivu 2:1 jaolla"
 
-#: prodekoorg/settings/base.py:301
+#: prodekoorg/settings/base.py:257
 msgid "Navigation"
 msgstr "Navigaatio"
 
@@ -1240,104 +1248,104 @@ msgstr "^tiedotteet/"
 msgid "^matrikkeli/"
 msgstr ""
 
-#: seminaari/cms_apps.py:11
+#: seminaari/cms_apps.py:12
 msgid "Prodeko seminar page"
 msgstr "Prodeko-seminaari sivu"
 
-#: tiedotteet/backend/forms.py:53 tiedotteet/backend/forms.py:99
+#: tiedotteet/backend/forms.py:54 tiedotteet/backend/forms.py:100
 msgid "Header"
 msgstr "Otsikko"
 
-#: tiedotteet/backend/forms.py:54 tiedotteet/backend/forms.py:100
+#: tiedotteet/backend/forms.py:55 tiedotteet/backend/forms.py:101
 msgid "Content"
 msgstr "Sisältö"
 
-#: tiedotteet/backend/forms.py:55 tiedotteet/backend/forms.py:101
-#: tiedotteet/backend/forms.py:133
+#: tiedotteet/backend/forms.py:56 tiedotteet/backend/forms.py:102
+#: tiedotteet/backend/forms.py:134
 #: tiedotteet/backend/templates/control/categories.html:53
 msgid "Category"
 msgstr "Kategoria"
 
-#: tiedotteet/backend/forms.py:56 tiedotteet/backend/forms.py:102
+#: tiedotteet/backend/forms.py:57 tiedotteet/backend/forms.py:103
 #: tiedotteet/backend/models.py:41
 #: tiedotteet/backend/templates/control/nav.html:24
 #: tiedotteet/backend/templates/control/tags.html:10
 msgid "Tags"
 msgstr "Tagit"
 
-#: tiedotteet/backend/forms.py:57 tiedotteet/backend/forms.py:103
+#: tiedotteet/backend/forms.py:58 tiedotteet/backend/forms.py:104
 msgid "Start date"
 msgstr "Alkamispäivä"
 
-#: tiedotteet/backend/forms.py:58 tiedotteet/backend/forms.py:104
+#: tiedotteet/backend/forms.py:59 tiedotteet/backend/forms.py:105
 msgid "End date"
 msgstr "Päättymispäivä"
 
-#: tiedotteet/backend/forms.py:59 tiedotteet/backend/forms.py:105
+#: tiedotteet/backend/forms.py:60 tiedotteet/backend/forms.py:106
 msgid "Deadline"
 msgstr "Deadline"
 
-#: tiedotteet/backend/forms.py:60 tiedotteet/backend/forms.py:106
+#: tiedotteet/backend/forms.py:61 tiedotteet/backend/forms.py:107
 msgid "Show deadline"
 msgstr "Näytä deadline"
 
-#: tiedotteet/backend/forms.py:61 tiedotteet/backend/forms.py:107
+#: tiedotteet/backend/forms.py:62 tiedotteet/backend/forms.py:108
 #: tiedotteet/backend/templates/control/categories.html:55
 msgid "Visible"
 msgstr "Näytä"
 
-#: tiedotteet/backend/forms.py:86 tiedotteet/backend/views.py:336
+#: tiedotteet/backend/forms.py:87 tiedotteet/backend/views.py:336
 msgid "Bulletin updated"
 msgstr "Tiedote päivitetty"
 
-#: tiedotteet/backend/forms.py:134
+#: tiedotteet/backend/forms.py:135
 #: tiedotteet/backend/templates/control/categories.html:54
 msgid "Order"
 msgstr "Järjestys"
 
-#: tiedotteet/backend/forms.py:135
+#: tiedotteet/backend/forms.py:136
 msgid "Visibility"
 msgstr "Näkyvyys"
 
-#: tiedotteet/backend/forms.py:141
+#: tiedotteet/backend/forms.py:142
 msgid "Public"
 msgstr "Julkinen"
 
-#: tiedotteet/backend/forms.py:141
+#: tiedotteet/backend/forms.py:142
 msgid "Login required"
 msgstr "Vaatii kirjautumisen"
 
-#: tiedotteet/backend/forms.py:150
+#: tiedotteet/backend/forms.py:151
 msgid "Add a new tag"
 msgstr "Lisää tagi"
 
-#: tiedotteet/backend/forms.py:153
+#: tiedotteet/backend/forms.py:154
 msgid "Add tag"
 msgstr "Lisää tagi"
 
-#: tiedotteet/backend/forms.py:170
+#: tiedotteet/backend/forms.py:171
 #: tiedotteet/backend/templates/control/email.html:21
 msgid "Host"
 msgstr "Palvelin"
 
-#: tiedotteet/backend/forms.py:171
+#: tiedotteet/backend/forms.py:172
 #: tiedotteet/backend/templates/control/email.html:25
 msgid "Port"
 msgstr "Portti"
 
-#: tiedotteet/backend/forms.py:172
+#: tiedotteet/backend/forms.py:173
 msgid "Username (email)"
 msgstr "Käyttäjänimi (sähköpostiosoite)"
 
-#: tiedotteet/backend/forms.py:174
+#: tiedotteet/backend/forms.py:175
 msgid "Use TLS Encryption"
 msgstr "TLS salaus päällä"
 
-#: tiedotteet/backend/forms.py:192
+#: tiedotteet/backend/forms.py:193
 msgid "Title"
 msgstr "Otsikko"
 
-#: tiedotteet/backend/forms.py:193
+#: tiedotteet/backend/forms.py:194
 msgid "Recipients (separated by comma)"
 msgstr "Vastaanottajat (pilkulla eroteltuna)"
 
@@ -1494,224 +1502,3 @@ msgstr "Tiedote lisätty"
 #: tiedotteet/backend/views.py:425
 msgid "Admin login required"
 msgstr "Kirjautuminen ylläpitäjänä vaadittu"
-
-#, fuzzy
-#~| msgid "Read by"
-#~ msgid "created by"
-#~ msgstr "Lukenut"
-
-#, fuzzy
-#~| msgid "Created at"
-#~ msgid "Created"
-#~ msgstr "Luotu"
-
-#, fuzzy
-#~| msgid "Change password"
-#~ msgid "Changed"
-#~ msgstr "Vaihda salasana"
-
-#, fuzzy
-#~| msgid "Delete"
-#~ msgid "Deleted"
-#~ msgstr "Poista"
-
-#, fuzzy
-#~| msgid "banner image"
-#~ msgid "Embed Image"
-#~ msgstr "kuva"
-
-#, fuzzy
-#~| msgid "Slides"
-#~ msgid "Play Slideshow"
-#~ msgstr "Slides"
-
-#, fuzzy
-#~| msgid "Your message"
-#~ msgid "Messages"
-#~ msgstr "Viestisi"
-
-#, fuzzy
-#~| msgid "Section"
-#~ msgid "Syndication"
-#~ msgstr "Jaosto"
-
-#, fuzzy
-#~| msgid "email address"
-#~ msgid "Enter a valid email address."
-#~ msgstr "sähköposti"
-
-#, fuzzy
-#~| msgid "Recipients (separated by comma)"
-#~ msgid "Enter only digits separated by commas."
-#~ msgstr "Vastaanottajat (pilkulla eroteltuna)"
-
-#, fuzzy
-#~| msgid "Phone number"
-#~ msgid "Enter a number."
-#~ msgstr "Puhelinnumero"
-
-#, fuzzy
-#~| msgid "Phone number"
-#~ msgid "Decimal number"
-#~ msgstr "Puhelinnumero"
-
-#, fuzzy
-#~| msgid "Documentation"
-#~ msgid "Duration"
-#~ msgstr "Dokumentaatio"
-
-#, fuzzy
-#~| msgid "email address"
-#~ msgid "Email address"
-#~ msgstr "sähköposti"
-
-#, fuzzy
-#~| msgid "Files application"
-#~ msgid "File path"
-#~ msgstr "Sovellus - Tiedostot"
-
-#, fuzzy
-#~| msgid "email address"
-#~ msgid "IPv4 address"
-#~ msgstr "sähköposti"
-
-#, fuzzy
-#~| msgid "email address"
-#~ msgid "IP address"
-#~ msgstr "sähköposti"
-
-#, fuzzy
-#~| msgid "Files"
-#~ msgid "File"
-#~ msgstr "Tiedostot"
-
-#, fuzzy
-#~| msgid "Admin login required"
-#~ msgid "This field is required."
-#~ msgstr "Kirjautuminen ylläpitäjänä vaadittu"
-
-#, fuzzy
-#~| msgid "External member"
-#~ msgid "Enter a whole number."
-#~ msgstr "Ulkojäsen"
-
-#, fuzzy
-#~| msgid "end datetime"
-#~ msgid "Enter a valid date/time."
-#~ msgstr "päättymispäivä"
-
-#, fuzzy
-#~| msgid "Please correct the error below."
-#~ msgid "Please correct the duplicate data for %(field)s."
-#~ msgstr "Korjaa allaolevat virheet."
-
-#, fuzzy
-#~| msgid "Please correct the errors below."
-#~ msgid "Please correct the duplicate values below."
-#~ msgstr "Korjaa allaolevat virheet."
-
-#, fuzzy
-#~| msgid "Status"
-#~ msgid "Sat"
-#~ msgstr "Tila"
-
-#, fuzzy
-#~| msgid "True member"
-#~ msgid "September"
-#~ msgstr "Varsinainen jäsen"
-
-#, fuzzy
-#~| msgid "board member"
-#~ msgid "November"
-#~ msgstr "hallituksen jäsen"
-
-#, fuzzy
-#~| msgid "True member"
-#~ msgid "December"
-#~ msgstr "Varsinainen jäsen"
-
-#, fuzzy
-#~| msgid "tag"
-#~ msgid "aug"
-#~ msgstr "tagi"
-
-#, fuzzy
-#~| msgid "True member"
-#~ msgctxt "alt. month"
-#~ msgid "September"
-#~ msgstr "Varsinainen jäsen"
-
-#, fuzzy
-#~| msgid "board member"
-#~ msgctxt "alt. month"
-#~ msgid "November"
-#~ msgstr "hallituksen jäsen"
-
-#, fuzzy
-#~| msgid "True member"
-#~ msgctxt "alt. month"
-#~ msgid "December"
-#~ msgstr "Varsinainen jäsen"
-
-#, fuzzy
-#~| msgid "Port"
-#~ msgid "or"
-#~ msgstr "Portti"
-
-#, fuzzy
-#~| msgid "year"
-#~ msgid "%d year"
-#~ msgid_plural "%d years"
-#~ msgstr[0] "Vuosi"
-#~ msgstr[1] "Vuosi"
-
-#, fuzzy
-#~| msgid "minutes"
-#~ msgid "%d minute"
-#~ msgid_plural "%d minutes"
-#~ msgstr[0] "pöytäkirja"
-#~ msgstr[1] "pöytäkirja"
-
-#, fuzzy
-#~| msgid "minutes"
-#~ msgid "0 minutes"
-#~ msgstr "pöytäkirja"
-
-#, fuzzy
-#~| msgid "Documentation"
-#~ msgid "Django Documentation"
-#~ msgstr "Dokumentaatio"
-
-#, fuzzy
-#~| msgid "Introduction"
-#~ msgid "Product"
-#~ msgstr "Esittely"
-
-#, fuzzy
-#~| msgid "Apply"
-#~ msgid "App"
-#~ msgstr "Hae virkaan"
-
-#, fuzzy
-#~| msgid "Personal info"
-#~ msgid "Person"
-#~ msgstr "Henkilökohtainen tieto"
-
-#, fuzzy
-#~| msgid "Navigation"
-#~ msgid "Organization"
-#~ msgstr "Navigaatio"
-
-#, fuzzy
-#~| msgid "Preview"
-#~ msgid "Review"
-#~ msgstr "Esikatselu"
-
-#~ msgid "Home"
-#~ msgstr "Kotisivu"
-
-#~ msgid "Filter"
-#~ msgstr "Filtteri"
-
-#~ msgid "download"
-#~ msgstr "lataa"

@@ -8,6 +8,7 @@ USER = prodekoorg
 PASSWORD = secret
 
 [EMAIL]
+HOST = put-smtp.url.here
 USER = no-reply@prodeko.org
 PASSWORD = secret
 DEV_EMAIL = you.email@email.com
@@ -20,3 +21,6 @@ SHOW_DEBUG_TOOLBAR = False
 
 [SENTRY]
 DSN = https://1da6cf1579c34878bbf1d1cebe533368@sentry.prodeko.org/1
+
+[KILTISKAMERA]
+URL = https://insertuserhere:insertpasswordhere@0.0.0.1:1234/

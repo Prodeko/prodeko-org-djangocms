@@ -18,12 +18,31 @@ Prodeko.org projekti käyttää Django versiota 2.2.10.
 $ docker-compose up  # Kehitysympäristön käynnistys
 ```
 
+Asenna lisäksi eslint, prettier, stylelint, pylint, jinjalint ja black ajamalla seuraavat komennot:
+
+```
+$ npm install
+$ python3 -m venv venv
+$ pip3 install -r requirements-dev.txt
+```
+
 ### Kehittäminen
 
 Kehitysympäristön käynnistys luo uuden Django käyttäjän:
 
 - Käyttäjä: **webbitiimi@prodeko.org**
 - Salasana: **kananugetti**
+
+### Uuden appin luonti
+
+Esimerkiksi app_kiltiskamera luotiin seuraavasti:
+
+```
+mkdir prodekoorg/app_kiltiskamera
+python3 manage.py startapp app_kiltiskamera prodekoorg/app_kiltiskamera
+```
+
+Myös abisivut, auth_prodeko, seminaari ja tiedotteet ovat omia appejaan, vaikka ne eivät ole prodekoorg kansion sisällä.
 
 ### Deployas palvelimelle
 
@@ -51,14 +70,6 @@ Käytössä seuraavat työkalut:
 - html: jinjalint
 - javascript: eslint + prettier
 - css: stylelint + prettier
-
-Luo virtualenv Python ja HTML tiedostojen linttaamiseksi:
-
-```shell
-$ python3 -m venv venv
-$ source venv/bin/activate
-$ pip3 install -r requirements-dev.txt
-```
 
 #### Python
 

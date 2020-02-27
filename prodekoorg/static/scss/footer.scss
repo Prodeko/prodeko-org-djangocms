@@ -2,7 +2,7 @@
 @import 'variables.scss';
 
 .prodeko-footer {
-  margin: 0 auto;
+  margin: 15px auto 0 auto;
   padding-top: 3rem;
   padding-right: 0;
   padding-bottom: 2rem;
@@ -20,11 +20,6 @@
   a {
     color: white;
     font-weight: bold;
-
-    &:hover {
-      color: rgb(230, 230, 230);
-      transition: 0.1s ease-out;
-    }
   }
 
   h2,
