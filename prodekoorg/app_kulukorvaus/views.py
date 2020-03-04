@@ -1,7 +1,6 @@
 from smtplib import SMTPAuthenticationError
 
 from django.conf import settings
-from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
 from django.core.files.base import ContentFile
 from django.core.mail import EmailMultiAlternatives
@@ -15,7 +14,6 @@ from .models import KulukorvausPerustiedot
 from .printing import KulukorvausPDF
 
 
-@login_required
 def download_kulukorvaus_pdf(request, perustiedot_id):
     """Downloads a Kulukorvaus model as PDF
 
@@ -91,7 +89,6 @@ def add_pdf_to_model(perustiedot_id):
     model_perustiedot.pdf.save(filename, pdf_file)
 
 
-@login_required
 def main_form(request):
     """Processing logic behind the form at url /kulukorvaus.
 
