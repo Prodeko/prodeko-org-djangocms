@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-27 23:08+0200\n"
+"POT-Creation-Date: 2020-03-05 14:32+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Timo Riski <timo@prodeko.org>\n"
 "Language: \n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: abisivut/cms_apps.py:12 prodekoorg/settings/base.py:252
+#: abisivut/cms_apps.py:12 prodekoorg/settings/base.py:263
 msgid "High school student page"
 msgstr "Abisivut"
 
@@ -221,7 +221,7 @@ msgstr "Salasana unohtunut?"
 msgid "The email and password didn't match. Try again"
 msgstr "Sähköposti ja salasana eivät täsmänneet. Yritä uudestaan"
 
-#: lifelonglearning/cms_apps.py:12 prodekoorg/settings/base.py:253
+#: lifelonglearning/cms_apps.py:12 prodekoorg/settings/base.py:264
 msgid "Lifelong learning page"
 msgstr "Lifelong learning sivu"
 
@@ -271,7 +271,7 @@ msgid "year"
 msgstr "Vuosi"
 
 #: prodekoorg/app_contact/apps.py:7 prodekoorg/app_contact/models.py:110
-#: prodekoorg/templates/layout-components/footer.html:7
+#: prodekoorg/templates/layout-components/footer.html:4
 msgid "Contact form"
 msgstr "Yhteydenottolomake"
 
@@ -403,7 +403,6 @@ msgstr "️⚠️ Jotakin meni pieleen. Ota yhteyttä sähköpostitse."
 
 #: prodekoorg/app_contact/templates/form_contact.html:3
 #: prodekoorg/app_membership/templates/form_apply.html:4
-#: prodekoorg/templates/layout-components/footer.html:9
 msgid "Privacy policy"
 msgstr "Tietosuoja"
 
@@ -475,7 +474,6 @@ msgstr "Valmis"
 
 #: prodekoorg/app_kulukorvaus/apps.py:7
 #: prodekoorg/app_kulukorvaus/models.py:141
-#: prodekoorg/templates/layout-components/footer.html:8
 msgid "Reimbursements"
 msgstr "Kulukorvaukset"
 
@@ -1117,23 +1115,23 @@ msgstr "Muokkaa"
 msgid "English"
 msgstr "Englanti"
 
-#: prodekoorg/settings/base.py:248
+#: prodekoorg/settings/base.py:259
 msgid "Frontpage"
 msgstr "Etusivu"
 
-#: prodekoorg/settings/base.py:249
+#: prodekoorg/settings/base.py:260
 msgid "Content page"
 msgstr "Sisältösivu"
 
-#: prodekoorg/settings/base.py:250
+#: prodekoorg/settings/base.py:261
 msgid "Content page with 1:1 split"
 msgstr "Sisältösivu 1:1 jaolla"
 
-#: prodekoorg/settings/base.py:251
+#: prodekoorg/settings/base.py:262
 msgid "Content page with 2:1 split"
 msgstr "Sisältösivu 2:1 jaolla"
 
-#: prodekoorg/settings/base.py:257
+#: prodekoorg/settings/base.py:268
 msgid "Navigation"
 msgstr "Navigaatio"
 
@@ -1179,21 +1177,9 @@ msgstr "Alumneille"
 msgid "For businesses"
 msgstr "Yrityksille"
 
-#: prodekoorg/templates/layout-components/footer.html:3
-msgid "Contact information"
-msgstr "Ota yhteyttä"
-
-#: prodekoorg/templates/layout-components/footer.html:4
+#: prodekoorg/templates/layout-components/footer.html:2
 msgid "Mailing address"
 msgstr "Postiosoite"
-
-#: prodekoorg/templates/layout-components/footer.html:5
-msgid "Visiting address"
-msgstr "Käyntiosoite"
-
-#: prodekoorg/templates/layout-components/footer.html:6
-msgid "Apply for membership"
-msgstr "Jäsenhakemus"
 
 #: prodekoorg/templates/layout-components/instagram.html:3
 msgid "Social media"
@@ -1502,3 +1488,12 @@ msgstr "Tiedote lisätty"
 #: tiedotteet/backend/views.py:425
 msgid "Admin login required"
 msgstr "Kirjautuminen ylläpitäjänä vaadittu"
+
+#~ msgid "Contact information"
+#~ msgstr "Ota yhteyttä"
+
+#~ msgid "Visiting address"
+#~ msgstr "Käyntiosoite"
+
+#~ msgid "Apply for membership"
+#~ msgstr "Jäsenhakemus"
