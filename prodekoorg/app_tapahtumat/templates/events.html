@@ -1,42 +1,38 @@
-{% extends "base.html" %} {% load cms_tags menu_tags sekizai_tags sass_tags %}
-{% block extra_head %}
-<link
-  href="{% sass_src 'scss/app_tapahtumat.scss' %}"
-  rel="stylesheet"
-  type="text/css"
-/>
-{% endblock %} {% block content %} {% include "layout-components/jumbotron.html"
-%}
+{% extends "base.html" %} 
+{% load cms_tags menu_tags sekizai_tags sass_tags %}
 
-<div class="container mt-4">
-  {% if policy_error %} {% include "other/policy-error.html"%} {% else %} {%
-  show_breadcrumb 0 "layout-components/breadcrumb.html" %} {% placeholder
-  "content" %}
-  <div id="events-container">
-    {% for year, doclist in context.items %}
-    <a
-      class="btn btn-primary w-100 text-left mb-2"
-      data-toggle="collapse"
-      href="#collapse{{ year }}"
-    >
-      {{ year }}
-      <i class="fa fa-fw fa-chevron-down pt-1"></i>
-    </a>
-    <div
-      class="collapse {% if forloop.first %}show{% endif %}"
-      id="collapse{{ year }}"
-    >
-      <div class="card card-body mb-3">
-        {% for doc in doclist %}
-        <div class="mb-2">
-          <p class="d-inline mr-2">{{ doc.name }}/{{ year }}/<p>{{doc.state}}</p></p>
-          <a class="d-inline" href="{{ doc.doc_file.url }}">(pdf)</a>
-        </div>
-        {% endfor %}
-      </div>
-    </div>
-    {% endfor %}
-  </div>
-  {% endif %}
-</div>
+{% block extra_head %}
+<link href="{% sass_src 'scss/app_tapahtumat.scss' %}" rel="stylesheet" type="text/css" />
+{% endblock %} 
+
+{% block content %} 
+
+    {% include "layout-components/jumbotron.html" %}
+
+	<div class="container mt-4">
+  		{% if policy_error %} 
+			{% include "other/policy-error.html"%} 
+		{% else %} 
+			{% show_breadcrumb 0 "layout-components/breadcrumb.html" %} 
+			{% placeholder "content" %}
+  			<div id="events-container">
+    			{% for year, doclist in context.items %}
+    				<a class="btn btn-primary w-100 text-left mb-2" data-toggle="collapse" href="#collapse{{ year }}" >
+      					{{ year }}
+      					<i class="fa fa-fw fa-chevron-down pt-1"></i>
+    				</a>
+    				<div class="collapse {% if forloop.first %}show{% endif %}" id="collapse{{ year }}" >
+      					<div class="card card-body mb-3">
+        					{% for doc in doclist %}
+        						<div class="mb-2">
+          							<p class="d-inline mr-2">{{ doc.name }}/{{ year }}/<p>{{doc.state}}</p></p>
+          							<a class="d-inline" href="{{ doc.doc_file.url }}">(pdf)</a>
+        						</div>
+        					{% endfor %}
+      					</div>
+    				</div>
+   				 {% endfor %}
+  			</div>
+  		{% endif %}
+	</div>
 {% endblock content %}

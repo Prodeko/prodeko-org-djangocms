@@ -10,7 +10,7 @@ class YearFilter(SimpleListFilter):
     parameter_name = "year"
 
     def lookups(self, request, model_admin):
-        years = set([str(d.date.year) + '/' + str(d.date.month).zfill(2) for d in model_admin.model.objects.all()])
+        years = set([str(d.start_date.year) + '/' + str(d.start_date.month).zfill(2) for d in model_admin.model.objects.all()])
         return [(y, y) for y in years]
 
     def queryset(self, request, queryset):
@@ -22,7 +22,7 @@ class YearFilter(SimpleListFilter):
 
 
 class TapahtumaAdmin(admin.ModelAdmin):
-    list_display = ("name", "date", "state")
+    list_display = ("name", "start_date", "state")
     list_filter = (YearFilter,)
 
 

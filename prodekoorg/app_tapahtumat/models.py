@@ -3,40 +3,6 @@ from django.utils.translation import ugettext_lazy as _
 from uuid import uuid4
 
 
-def content_directory(instance, filename):
-    """Specify doc_file upload directory at runtime.
-
-    Uploads the model instance to a directory that
-    gets specified using information about the model itself
-
-    For example, say we upload 'pöytäkirja2018-02.pdf'
-    to the server. We would like to have a folder
-    /dokumentit/2018/2/pöytäkirja2018-2.pdf to keep
-    things organized. The '/2' folder is needed since
-    proceedings documents regularly have attachments.
-
-    A unique identifier is added to the path to prevent
-    public access to the files.
-
-    Args:
-        instance: Tapahtuma object instance.
-        filename: Filename.
-
-    Returns:
-        A string representing the file upload path.
-    """
-
-    return "/".join(
-        [
-            "dokumentit",
-            str(instance.date.year),
-            str(instance.number),
-            str(uuid4()),
-            filename,
-        ]
-    )
-
-
 class Tapahtuma(models.Model):
     """Prodeko board proceedings documents.
 
@@ -53,18 +19,45 @@ class Tapahtuma(models.Model):
         doc_file: Document file as PDF.
     """
 
-    name = models.CharField(max_length=50)
-    date = models.DateField()
-    desc = models.TextField(max_length=500, null=True, blank=True)
-    state = models.CharField(max_length=1, choices=[('S', 'Speculation'), ('D', 'Save the date'), ('P', 'Published')], default='S')
+    uuid = models.UUIDField(primary_key=True, default=uuid4, editable=False)
+    name = models.CharField(max_length=100)
+    start_date = models.DateField()
+    start_time = models.TimeField(null=True, blank=True)
+    end_date = models.DateField(null=True, blank=True)
+    end_time = models.TimeField(null=True, blank=True)
+    desc = models.TextField(null=True, blank=True)
+    t_what = models.CharField(blank=True, max_length=140)
+    t_where = models.CharField(blank=True, max_length=140)
+    t_when = models.CharField(blank=True, max_length=140)
+    t_why = models.CharField(blank=True, max_length=140)
+    t_cost = models.CharField(blank=True, max_length=140)
+    t_dc = models.CharField(blank=True, max_length=140)
+    t_for_who = models.CharField(blank=True, max_length=140)
+    state = models.CharField(
+        max_length=1,
+        choices=[("S", "Speculation"), ("D", "Save the date"), ("P", "Published")],
+        default="S",
+    )
     short_desc = models.TextField(max_length=140, null=True, blank=True)
-    
 
     def __str__(self):
         return self.name
+
+    def save(self, *args, **kwargs):
+        from .gcalendar_api import update_event
+
+        if update_event(self):
+            super().save(*args, **kwargs)
+        else:
+            raise ValueError("CalendarSync failed")
 
     class Meta:
         # Correct spelling in Django admin
         verbose_name = _("event")
         verbose_name_plural = _("Events")
-        ordering = ["-date"]
+        ordering = ["-start_date"]
+
+
+class TapahtumaLuokat(models.Model):
+    name = models.CharField(max_length=50)
+
