@@ -43,11 +43,17 @@ class KulukorvausPerustiedot(models.Model):
     )
 
     BIC_CHOICES = (
-        ("OP", "OKOYFIHH"),
-        ("NORDEA", "NDEAFIHH"),
-        ("SPANKKI", "SBANFIHH"),
-        ("DANSKE", "DABAFIHH"),
-        ("HANDELS", "HANDFIHH"),
+        ("Aktia", "HELSFIHH"),
+        ("Danske Bank", "DABAFIHH"),
+        ("Danske Bank", "DABAFIHX"),
+        ("Handelsbanken", "HANDFIHH"),
+        ("Nordea", "NDEAFIHH"),
+        ("OmaSp", "OMASP"),
+        ("Osuuspankki", "OKOYFIHH"),
+        ("POP Pankki", "POPFFI22"),
+        ("S-Pankki", "SBANFIHH"),
+        ("Säästöpankki", "ITELFIHH"),
+        ("Ålandsbanken", "AABAFI22"),
     )
 
     id = models.AutoField(primary_key=True)
