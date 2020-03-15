@@ -74,7 +74,7 @@ h5 {
 }
 
 a {
-  color: rgb(248, 80, 94);
+  color: rgb(65, 223, 171);
   text-decoration: none;
 
   &:hover {
@@ -294,7 +294,7 @@ hr {
   right: 1rem;
   z-index: 100;
   width: 50%;
-  max-width: 700px;
+  max-width: 550px;
   height: auto;
 
   @media (max-width: 576px) {
@@ -319,11 +319,11 @@ hr {
 
   .fa-facebook-square {
     padding-right: 0.3rem;
-    color: #f8505e;
+    color: #41dfab;
   }
 
   a {
-    color: rgb(248, 80, 94);
+    color: rgb(65, 223, 171);
     font-size: 1.2rem;
 
     &:hover {
