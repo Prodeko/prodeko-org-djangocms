@@ -24,8 +24,8 @@ def docs(request):
     if not request.user.has_accepted_policies:
         return render(request, "events.html", {"policy_error": True})
 
-    docs = Tapahtuma.objects.all().order_by("-date")
-    iterable = [(str(doc.date.year), doc) for doc in docs]
+    docs = Tapahtuma.objects.all().order_by("-start_date")
+    iterable = [(str(doc.start_date.year), doc) for doc in docs]
     context = defaultdict(list)
     for year, doc in iterable:
         context[year].append(doc)

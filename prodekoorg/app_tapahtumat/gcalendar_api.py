@@ -163,6 +163,7 @@ def update_event(event):
     new_event = generate_event(event)
 
     try:
+        old_event = Tapahtuma.objects.get(uuid=event.uuid)
         cal_event = (
             service.events()
             .get(
@@ -171,6 +172,7 @@ def update_event(event):
             )
             .execute()
         )
+
         service.events().update(
             calendarId="prodeko.org_br7j1nk202p8r7840h0be18d9o@group.calendar.google.com",
             eventId=new_event["id"],
