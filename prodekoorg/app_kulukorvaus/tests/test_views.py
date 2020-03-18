@@ -1,5 +1,6 @@
 import os
 
+from django.core import mail
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test.utils import override_settings
 
@@ -28,12 +29,12 @@ class KulukorvausViewTest(TestData):
         """
 
         response = self.client.get(
-            f"/fi/kulukorvaus/download/{self.test_perustiedot_model.id}/", follow=True
+            f"/fi/kulukorvaus/download/{self.test_perustiedot_model.id}", follow=True
         )
 
         self.assertRedirects(
             response,
-            f"/fi/login/?next=/fi/kulukorvaus/download/{self.test_perustiedot_model.id}/",
+            f"/fi/login/?next=/fi/kulukorvaus/download/{self.test_perustiedot_model.id}",
         )
 
     def test_download_incorrect_permissions(self):
@@ -43,7 +44,7 @@ class KulukorvausViewTest(TestData):
 
         self.client.login(email="test2@test.com", password="test2salasana")
         response = self.client.get(
-            f"/fi/kulukorvaus/download/{self.test_perustiedot_model.id}/", follow=True
+            f"/fi/kulukorvaus/download/{self.test_perustiedot_model.id}"
         )
         self.assertEqual(response.status_code, 403)
 
@@ -54,7 +55,7 @@ class KulukorvausViewTest(TestData):
 
         self.client.login(email="test1@test.com", password="test1salasana")
         response = self.client.get(
-            f"/fi/kulukorvaus/download/{self.test_perustiedot_model.id}/", follow=True
+            f"/fi/kulukorvaus/download/{self.test_perustiedot_model.id}", follow=True
         )
         self.assertEqual(
             response.get("Content-Disposition"),
@@ -68,7 +69,7 @@ class KulukorvausViewTest(TestData):
         """
 
         self.client.login(email="test1@test.com", password="test1salasana")
-        response = self.client.get("/fi/kulukorvaus/download/999/", follow=True)
+        response = self.client.get("/fi/kulukorvaus/download/999", follow=True)
         self.assertEqual(response.status_code, 404)
 
     def test_form_submission(self):
@@ -118,10 +119,14 @@ class KulukorvausViewTest(TestData):
         )
 
         self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(mail.outbox), 2)
+        self.assertContains(
+            response, "✅ Kulukorvauksesi on vastaanotettu.",
+        )
 
     def test_form_submission_has_not_accepted_policies(self):
         """
-        Test valid form submission. Includes the empty/management form data.
+        Test form submission if the user hasn't accepted policies.
         """
 
         self.client.login(email="test2@test.com", password="test2salasana")

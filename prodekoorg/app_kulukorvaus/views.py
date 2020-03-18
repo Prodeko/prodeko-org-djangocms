@@ -42,10 +42,7 @@ def download_kulukorvaus_pdf(request, perustiedot_id):
     # raise PermissionDenied.
     try:
         model_perustiedot = KulukorvausPerustiedot.objects.get(id=perustiedot_id)
-        if (
-            not request.user == model_perustiedot.created_by_user
-            and not request.user.is_staff
-        ):
+        if not request.user == model_perustiedot.created_by_user:
             raise PermissionDenied
     except KulukorvausPerustiedot.DoesNotExist:
         raise Http404("Reimbursement does not exist")
