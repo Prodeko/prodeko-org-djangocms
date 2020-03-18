@@ -34,7 +34,7 @@ def stream(request):
         response["Cache-Control"] = "private"
         return response
     except Exception as e:
-        img = staticfiles_storage.open("images/webcam_offline.jpg")
+        img = staticfiles_storage.open("images/kiltiskamera/webcam_offline.jpg")
         response = HttpResponse(img, content_type="image/jpeg")
         return response
 
