@@ -9,6 +9,11 @@ from .test_data import TestData
 urlconf = "prodekoorg.app_kulukorvaus.tests.test_urls"
 
 
+__location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
+test_img1 = open(os.path.join(__location__, "img1.jpg"), "rb")
+test_img2 = open(os.path.join(__location__, "img2.jpg"), "rb")
+
+
 @override_settings(ROOT_URLCONF=urlconf, TESTING=True)
 class KulukorvausViewTest(TestData):
     """Tests for views in the app_kulukorvaus app."""
@@ -19,7 +24,7 @@ class KulukorvausViewTest(TestData):
         accessed and the user is not logged in.
         """
 
-        response = self.client.get("/fi/kulukorvaus/", follow=True)
+        response = self.client.get("/fi/kulukorvaus/")
         self.assertRedirects(response, "/fi/login/?next=/fi/kulukorvaus/")
 
     def test_download_and_redirect_not_logged_in(self):
@@ -29,9 +34,8 @@ class KulukorvausViewTest(TestData):
         """
 
         response = self.client.get(
-            f"/fi/kulukorvaus/download/{self.test_perustiedot_model.id}", follow=True
+            f"/fi/kulukorvaus/download/{self.test_perustiedot_model.id}"
         )
-
         self.assertRedirects(
             response,
             f"/fi/login/?next=/fi/kulukorvaus/download/{self.test_perustiedot_model.id}",
@@ -55,7 +59,7 @@ class KulukorvausViewTest(TestData):
 
         self.client.login(email="test1@test.com", password="test1salasana")
         response = self.client.get(
-            f"/fi/kulukorvaus/download/{self.test_perustiedot_model.id}", follow=True
+            f"/fi/kulukorvaus/download/{self.test_perustiedot_model.id}"
         )
         self.assertEqual(
             response.get("Content-Disposition"),
@@ -69,7 +73,7 @@ class KulukorvausViewTest(TestData):
         """
 
         self.client.login(email="test1@test.com", password="test1salasana")
-        response = self.client.get("/fi/kulukorvaus/download/999", follow=True)
+        response = self.client.get("/fi/kulukorvaus/download/999")
         self.assertEqual(response.status_code, 404)
 
     def test_form_submission(self):
@@ -78,13 +82,6 @@ class KulukorvausViewTest(TestData):
         """
 
         self.client.login(email="test1@test.com", password="test1salasana")
-
-        __location__ = os.path.realpath(
-            os.path.join(os.getcwd(), os.path.dirname(__file__))
-        )
-
-        test_img1 = open(os.path.join(__location__, "img1.jpg"), "rb")
-        test_img2 = open(os.path.join(__location__, "img2.jpg"), "rb")
 
         test_data = {
             # management_form data
@@ -97,7 +94,7 @@ class KulukorvausViewTest(TestData):
             "email": "webbitiimi@prodeko.org",
             "phone_number": "123456789",
             "bank_number": "FI21 1234 5600 0007 85",
-            "bic": "NORDEA",
+            "bic": "Nordea",
             "sum_overall": "1.51",
             "additional_info": "Tämä on testi!",
             # First KulukorvausForm data
@@ -131,12 +128,6 @@ class KulukorvausViewTest(TestData):
 
         self.client.login(email="test2@test.com", password="test2salasana")
 
-        __location__ = os.path.realpath(
-            os.path.join(os.getcwd(), os.path.dirname(__file__))
-        )
-        test_img1 = open(os.path.join(__location__, "img1.jpg"), "rb")
-        test_img2 = open(os.path.join(__location__, "img2.jpg"), "rb")
-
         test_data = {
             # management_form data
             "form-TOTAL_FORMS": "2",
@@ -148,7 +139,7 @@ class KulukorvausViewTest(TestData):
             "email": "webbitiimi@prodeko.org",
             "phone_number": "123456789",
             "bank_number": "FI21 1234 5600 0007 85",
-            "bic": "NORDEA",
+            "bic": "Nordea",
             "sum_overall": "200",
             "additional_info": "Tämä on testi!",
             # First KulukorvausForm data
@@ -176,12 +167,6 @@ class KulukorvausViewTest(TestData):
 
         self.client.login(email="test1@test.com", password="test1salasana")
 
-        __location__ = os.path.realpath(
-            os.path.join(os.getcwd(), os.path.dirname(__file__))
-        )
-        test_img1 = open(os.path.join(__location__, "img1.jpg"), "rb")
-        test_img2 = open(os.path.join(__location__, "img2.jpg"), "rb")
-
         test_data = {
             # management_form data
             "form-TOTAL_FORMS": "2",
@@ -193,7 +178,7 @@ class KulukorvausViewTest(TestData):
             "email": "webbitiimi",  # This is incorrect
             "phone_number": "123456789",
             "bank_number": "FI21 1234 5600 0007 85",
-            "bic": "NORDEA",
+            "bic": "Nordea",
             "sum_overall": "1.51",
             "additional_info": "Tämä on testi!",
             # First KulukorvausForm data

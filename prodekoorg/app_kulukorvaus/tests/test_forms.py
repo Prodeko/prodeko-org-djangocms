@@ -15,7 +15,7 @@ class KulukorvausPerustiedotFormTest(TestData):
             "email": "webbitiimi@prodeko.org",
             "phone_number": "123456789",
             "bank_number": "FI21 1234 5600 0007 85",
-            "bic": "NORDEA",
+            "bic": "Nordea",
             "sum_overall": 1.51,
             "additional_info": "Tämä on testi!",
         }
