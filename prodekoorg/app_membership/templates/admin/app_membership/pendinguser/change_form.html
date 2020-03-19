@@ -9,7 +9,7 @@
     {{block.super}}
 
     {% if original.id %}
-        <div class="submit-row" align="left">
+        <div class="submit-row">
             <p class="deletelink-box" style="padding-right: 10px;"><a href="{% url 'admin:application-accept' original.id %}" class="btn btn-accept-membership">{% trans accept %}</a></p>
             <p class="deletelink-box"><a href="{% url 'admin:application-reject' original.id %}" class="btn btn-reject-membership">{% trans reject %}</a></p>
         </div>

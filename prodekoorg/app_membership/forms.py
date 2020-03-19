@@ -1,3 +1,4 @@
+from auth_prodeko.models import User
 from django.forms import (
     CheckboxInput,
     ModelForm,
@@ -6,9 +7,7 @@ from django.forms import (
     TypedChoiceField,
 )
 from django.utils import timezone
-from django.utils.translation import ugettext_lazy as _
-
-from auth_prodeko.models import User
+from django.utils.translation import ugettext as _
 
 from .models import PendingUser
 
@@ -41,7 +40,10 @@ class PendingUserForm(ModelForm):
             )
         if "start_year" in self.fields:
             self.fields["start_year"] = TypedChoiceField(
-                coerce=int, choices=year_choices, initial=timezone.now().year
+                label=_(self.fields["start_year"].label),
+                coerce=int,
+                choices=year_choices,
+                initial=timezone.now().year,
             )
         for visible in self.visible_fields():
             if visible.name not in [

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-19 00:27+0200\n"
+"POT-Creation-Date: 2020-03-19 19:44+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Timo Riski <timo@prodeko.org>\n"
 "Language: \n"
@@ -636,11 +636,11 @@ msgstr "Jäsenhakemukset"
 msgid "Apply for Prodeko membership application"
 msgstr "Sovellus - Prodekon jäsenhakemus"
 
-#: prodekoorg/app_membership/forms.py:70
+#: prodekoorg/app_membership/forms.py:73
 msgid "An application or account associated with this email already exists"
 msgstr "Jäsenhakemus tai käyttäjä tällä sähköpostiosoitteella on jo olemassa."
 
-#: prodekoorg/app_membership/forms.py:80
+#: prodekoorg/app_membership/forms.py:83
 msgid ""
 "If you are studying at Aalto apply as a true member. Otherwise, apply as "
 "external member."
@@ -711,10 +711,9 @@ msgstr "Kotikaupunki"
 msgid "Field of study"
 msgstr "Opiskeluala"
 
-#: prodekoorg/app_membership/models.py:67 prodekoorg/app_toimarit/models.py:50
-#: prodekoorg/app_toimarit/models.py:94
-msgid "Year"
-msgstr "Vuosi"
+#: prodekoorg/app_membership/models.py:68
+msgid "Start year of studies"
+msgstr "Aloitusvuosi"
 
 #: prodekoorg/app_membership/models.py:71
 msgid "Preferred language"
@@ -742,11 +741,19 @@ msgstr "Hyväksyn Prodekon tietosuojalausekkeen"
 
 #: prodekoorg/app_membership/models.py:99
 msgid "Membership application accepted."
-msgstr "Jäsenhakemus hyväsytty"
+msgstr "Jäsenhakemus hyväksytty"
 
 #: prodekoorg/app_membership/models.py:104
 msgid "Membership application rejected."
 msgstr "Jäsenhakemus hylätty"
+
+#: prodekoorg/app_membership/models.py:110
+msgid "Your application to Prodeko has been accepted"
+msgstr ""
+
+#: prodekoorg/app_membership/models.py:126
+msgid "Your application to Prodeko has been rejected"
+msgstr ""
 
 #: prodekoorg/app_membership/models.py:147
 msgid "membership application"
@@ -878,6 +885,11 @@ msgstr "Jaosto"
 #: prodekoorg/app_toimarit/models.py:48 prodekoorg/app_toimarit/models.py:92
 msgid "Photo"
 msgstr ""
+
+# prodekoorg/app_toimarit/models.py:50
+#: prodekoorg/app_toimarit/models.py:50 prodekoorg/app_toimarit/models.py:94
+msgid "Year"
+msgstr "Vuosi"
 
 #: prodekoorg/app_toimarit/models.py:60
 msgid "guild official"

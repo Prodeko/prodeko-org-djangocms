@@ -12,8 +12,10 @@ def delete_user_from_mailing_list(sender, instance, **kwargs):
     """Remove a user from G Suite mailing list when a user model is deleted.
 
     This routine gets called if a User model is deleted.
-    As a result the deleted user gets removed from Prodeko's
-    main mailing list (jäsenet@prodeko.org) that resides in G Suite.
+    The deleted user gets removed from Prodeko's main
+    mailing list (jäsenet@prodeko.org) as well as PoRa's 
+    mailing list (jasenet@raittiusseura.org) that both reside 
+    in G Suite.
 
     Args:
         sender: Model sending the signal.

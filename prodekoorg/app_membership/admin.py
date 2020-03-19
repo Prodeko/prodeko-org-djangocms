@@ -3,7 +3,7 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.db import models
 from django.forms import Textarea
 from django.shortcuts import redirect
-from django.urls import re_path, reverse
+from django.urls import path, reverse
 from django.utils.html import format_html
 from django.utils.translation import gettext as _
 
@@ -29,18 +29,18 @@ class PendingUserAdmin(admin.ModelAdmin):
     def get_urls(self):
         urls = super().get_urls()
         custom_urls = [
-            re_path(
-                r"^(?P<account_id>.+)/view/$",
+            path(
+                "<account_id>/view/",
                 self.admin_site.admin_view(view_application),
                 name="application-view",
             ),
-            re_path(
-                r"^(?P<account_id>.+)/accept/$",
+            path(
+                "<account_id>/accept/",
                 self.admin_site.admin_view(accept_application),
                 name="application-accept",
             ),
-            re_path(
-                r"^(?P<account_id>.+)/reject/$",
+            path(
+                "<account_id>/reject/",
                 self.admin_site.admin_view(reject_application),
                 name="application-reject",
             ),
@@ -73,7 +73,7 @@ admin.site.register(PendingUser, PendingUserAdmin)
 @staff_member_required
 def view_application(request, account_id, *args, **kwargs):
     """View a membership application from Django admin."""
-    return redirect("../")
+    return redirect("/fi/admin/app_membership/pendinguser/")
 
 
 @staff_member_required
@@ -84,7 +84,7 @@ def accept_application(request, account_id, *args, **kwargs):
     main_groups_api(request, user.email, MAILING_LIST_PRODEKO)
     if user.language == "FI":
         main_groups_api(request, user.email, MAILING_LIST_PORA)
-    return redirect("../../")
+    return redirect("/fi/admin/app_membership/pendinguser/")
 
 
 @staff_member_required
@@ -92,4 +92,4 @@ def reject_application(request, account_id, *args, **kwargs):
     """Reject a membership application from Django admin."""
     user = PendingUser.objects.get(pk=account_id)
     user.reject_membership(request, args, kwargs)
-    return redirect("../../")
+    return redirect("/fi/admin/app_membership/pendinguser/")

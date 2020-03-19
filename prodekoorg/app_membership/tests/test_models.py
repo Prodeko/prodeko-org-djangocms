@@ -102,7 +102,7 @@ class PendingUserModelTest(TestData):
         field_label = self.test_pendinguser_model._meta.get_field(
             "start_year"
         ).verbose_name
-        self.assertEqual(field_label, "Year")
+        self.assertEqual(field_label, "Start year of studies")
 
     @finnish
     def test_start_year_label_finnish(self):

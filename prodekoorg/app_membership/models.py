@@ -64,8 +64,8 @@ class PendingUser(models.Model):
     field_of_study = models.CharField(max_length=50, verbose_name=_("Field of study"))
     email = models.EmailField(verbose_name=_("Email"))
     start_year = models.IntegerField(
-        verbose_name=_("Year"),
         validators=[MinValueValidator(1966), max_value_current_year],
+        verbose_name=_("Start year of studies"),
     )
     language = models.CharField(
         max_length=50, choices=LANGUAGE_CHOICES, verbose_name=_("Preferred language")
@@ -93,7 +93,7 @@ class PendingUser(models.Model):
     def accept_membership(self, request, account_id, *args, **kwargs):
         password = get_random_string(length=16)
         self.user.set_password(password)
-        # self.send_accept_email(self.user, password)
+        self.send_accept_email(self.user, password)
         self.user.is_active = True
         self.user.save()
         messages.success(request, _("Membership application accepted."))
@@ -107,7 +107,11 @@ class PendingUser(models.Model):
 
     def send_accept_email(self, user, password):
         # Inform user about accepted application
-        subject = "Your application to Prodeko has been accepted"
+        subject = (
+            "Your application to Prodeko has been accepted"
+            if self.language == "EN"
+            else "Hakemuksesi Prodekon jäseneksi hyväksyttiin"
+        )
         template = "accept_mail_en" if self.language == "EN" else "accept_mail_fi"
         text_content = render_to_string(
             f"{template}.txt", {"user": user, "password": password}
@@ -123,7 +127,11 @@ class PendingUser(models.Model):
 
     def send_reject_email(self, user):
         # Inform user about rejected application
-        subject = "Your application to Prodeko has been rejected"
+        subject = (
+            "Your application to Prodeko has been rejected"
+            if self.language == "EN"
+            else "Hakemuksesi Prodekon jäseneksi hylättiin"
+        )
         template = "reject_mail_en" if self.language == "EN" else "reject_mail_fi"
         text_content = render_to_string(f"{template}.txt", {"user": user})
         html_content = render_to_string(f"{template}.html", {"user": user})

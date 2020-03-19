@@ -10,12 +10,11 @@ class PendingUserFormFormTest(TestData):
     def test_pending_user_form_valid(self):
         form_data = {
             "id": 1,
-            "user": "webbitiimi@prodeko.org",
-            "first_name": "Mediakeisari",
-            "last_name": "Mediakeisari",
+            "first_name": "Test",
+            "last_name": "1",
             "hometown": "Espoo",
             "field_of_study": "Tuotantotalous",
-            "email": "webbitiimi@prodeko.org",
+            "email": "test1@test.co",
             "start_year": 2017,
             "language": "FI",
             "membership_type": "TR",
@@ -23,14 +22,14 @@ class PendingUserFormFormTest(TestData):
             "is_ayy_member": "Y",
             "has_accepted_policies": True,
         }
-        file_data = {"receipt": SimpleUploadedFile("test.pdf", b"a")}
+        file_data = {"receipt": SimpleUploadedFile("test.jpg", b"a")}
         form = PendingUserForm(data=form_data, files=file_data)
+
         self.assertTrue(form.is_valid())
 
     def test_pending_user_form_invalid_multiple(self):
         form_data = {
             "id": 1,
-            "user": "webbitiimi@prodeko.org",
             "first_name": "Mediakeisari",
             "last_name": "Mediakeisari",
             "hometown": "Espoo",
@@ -46,9 +45,10 @@ class PendingUserFormFormTest(TestData):
         form = PendingUserForm(data=form_data)
 
         self.assertFalse(form.is_valid())
-        self.assertEqual(len(form.errors), 5)
-        self.assertTrue(form["created_by"].errors)
-        self.assertTrue(form["email"].errors)
+        self.assertEqual(len(form.errors), 6)
         self.assertTrue(form["start_year"].errors)
+        self.assertTrue(form["language"].errors)
         self.assertTrue(form["membership_type"].errors)
-        self.assertTrue(form["is_ayi_member"].errors)
+        self.assertTrue(form["is_ayy_member"].errors)
+        self.assertTrue(form["email"].errors)
+        self.assertTrue(form["receipt"].errors)
