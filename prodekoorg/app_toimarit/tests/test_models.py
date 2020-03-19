@@ -122,36 +122,24 @@ class HallituksenJasenModelTest(TestData):
         self.assertEqual(max_length, 30)
 
     @english
-    def test_position_label_english(self):
+    def test_position_fi_label_english(self):
         field_label = self.test_hallituksenjasen1._meta.get_field(
-            "position"
+            "position_fi"
         ).verbose_name
         self.assertEqual(field_label, "Position")
 
     @finnish
-    def test_position_label_finnish(self):
+    def test_position_fi_label_finnish(self):
         field_label = self.test_hallituksenjasen1._meta.get_field(
-            "position"
+            "position_fi"
         ).verbose_name
         self.assertEqual(field_label, "Virka")
 
-    def test_position_max_length(self):
-        max_length = self.test_hallituksenjasen1._meta.get_field("position").max_length
+    def test_position_fi_max_length(self):
+        max_length = self.test_hallituksenjasen1._meta.get_field(
+            "position_fi"
+        ).max_length
         self.assertEqual(max_length, 50)
-
-    @english
-    def test_section_label_english(self):
-        field_label = self.test_hallituksenjasen1._meta.get_field(
-            "section"
-        ).verbose_name
-        self.assertEqual(field_label, "Section")
-
-    @finnish
-    def test_section_label_finnish(self):
-        field_label = self.test_hallituksenjasen1._meta.get_field(
-            "section"
-        ).verbose_name
-        self.assertEqual(field_label, "Jaosto")
 
     @english
     def test_position_en_label_english(self):
@@ -224,23 +212,3 @@ class HallituksenJasenModelTest(TestData):
     def test_telegram_max_length(self):
         max_length = self.test_hallituksenjasen1._meta.get_field("telegram").max_length
         self.assertEqual(max_length, 20)
-
-    @english
-    def test_description_label_english(self):
-        field_label = self.test_hallituksenjasen1._meta.get_field(
-            "description"
-        ).verbose_name
-        self.assertEqual(field_label, "Description")
-
-    @finnish
-    def test_description_label_finnish(self):
-        field_label = self.test_hallituksenjasen1._meta.get_field(
-            "description"
-        ).verbose_name
-        self.assertEqual(field_label, "Kuvaus")
-
-    def test_description_max_length(self):
-        max_length = self.test_hallituksenjasen1._meta.get_field(
-            "description"
-        ).max_length
-        self.assertEqual(max_length, 255)
