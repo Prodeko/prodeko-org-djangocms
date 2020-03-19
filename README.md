@@ -151,13 +151,15 @@ $ npm run lint:css-fix  # Korjaa virheet
     ├── locale                         # Käännökset
     │   └── ...
     ├── prodekoorg                     # Projektin pääkansio
-    │   │── app_membership             # Jäseneksi liittyminen -lomake
-    │   │   └── ...
     │   │── app_contact                # Yhteydenottolomake
     │   │   └── ...
     │   │── app_infoscreen             # REST api infoscreenille
     │   │   └── ...
+    │   │── app_kiltiskamera           # Kiltiskamera
+    │   │   └── ...
     │   │── app_kulukorvaus            # Sähköinen kulukorvauslomake
+    │   │   └── ...
+    │   │── app_membership             # Jäseneksi liittyminen -lomake
     │   │   └── ...
     │   │── app_poytakirjat            # Pöytäkirjojen automaattinen haku G Suiten Drivestä ja lisäys DjangoCMS:ään
     │   │   └── ...
@@ -202,9 +204,9 @@ $ npm run lint:css-fix  # Korjaa virheet
 ### Kääntäminen eri kielille
 
 1. importtaa ugettext_lazy: `from django.utils.translation import ugettext_lazy as *`. Käytä koodissa näin: \_("First name")
-2. `python3 manage.py makemessages -l fi`. locale/ kansioon .po tiedostoon muodostuu käännettävä sana, esimerkin tapauksessa "First name".
-3. Käännä suomeksi .po tiedostossa ja aja `python3 manage.py compilemessages -l fi`.
-4. (Valinnainen) Javascript tiedostojen sisältämät käännöset saa muodostettua seuraavalla komennolla: `python3 manage.py makemessages -d djangojs -l fi -i tiedotteet -i node_modules`
+2. `python3 manage.py makemessages -l fi -i "node_modules/*" -i "venv/*"`. locale/ kansioon .po tiedostoon muodostuu käännettävä sana, esimerkin tapauksessa "First name".
+3. Käännä suomeksi .po tiedostossa ja aja `python3 manage.py compilemessages -l fi -i "node_modules/*" -i "venv/*"`.
+4. (Valinnainen) Javascript tiedostojen sisältämät käännöset saa muodostettua seuraavalla komennolla: `python3 manage.py makemessages -d djangojs -l fi -i tiedotteet -i "node_modules/*" -i "venv/*"`
 
 .po tiedosto näyttää tältä:
 

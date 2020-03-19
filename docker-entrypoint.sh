@@ -41,8 +41,8 @@ python manage.py shell -c "from django.contrib.auth import get_user_model; \
 python3 manage.py loaddata --app cms --app menus --verbosity 3 data.json
 
 # Translations
-python3 manage.py makemessages -l fi -i node_modules -i venv
-python3 manage.py makemessages -d djangojs -l fi -i tiedotteet -i node_modules -i venv
-python3 manage.py compilemessages -l fi
+python3 manage.py makemessages -l fi -i "node_modules/*" -i "venv/*"
+python3 manage.py makemessages -d djangojs -l fi -i tiedotteet -i "node_modules/*" -i "venv/*"
+python3 manage.py compilemessages -l fi 
 
 exec "$@"
