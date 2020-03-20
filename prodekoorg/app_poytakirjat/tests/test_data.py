@@ -1,5 +1,5 @@
-import datetime
 import tempfile
+from datetime import datetime
 from unittest.mock import MagicMock
 
 from cms.api import create_page
@@ -56,10 +56,18 @@ class TestData(CMSTestCase):
         cls.file_mock_pdf = MagicMock(spec=File, name="FileMock")
         cls.file_mock_pdf.name = "test_document.pdf"
 
-        cls.test_dokumentti_model = Dokumentti.objects.create(
+        cls.test_dokumentti_model1 = Dokumentti.objects.create(
             gdrive_id=GDRIVE_ID,
             name="1_1.1.2019",
             number=1,
-            date=datetime.date.today(),
+            date=datetime.strptime("01.01.2019", "%d.%m.%Y"),
+            doc_file=cls.file_mock_pdf,
+        )
+
+        cls.test_dokumentti_model2 = Dokumentti.objects.create(
+            gdrive_id=GDRIVE_ID,
+            name="2_8.1.2020",
+            number=2,
+            date=datetime.strptime("08.01.2020", "%d.%m.%Y"),
             doc_file=cls.file_mock_pdf,
         )

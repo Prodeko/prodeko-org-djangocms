@@ -6,6 +6,8 @@ from django.urls import reverse
 
 from .test_data import TestData
 
+from ..models import Dokumentti
+
 urlconf = "prodekoorg.urls"
 
 
@@ -28,7 +30,7 @@ class DokumenttiViewTest(TestData):
         """
 
         self.client.cookies.load({settings.LANGUAGE_COOKIE_NAME: "fi"})
-        self.client.login(email="test1@test.com", password="testi1salasana")
+        self.client.login(email="test1@test.com", password="test1salasana")
         test_data = {"folderID": "1RD-AIF6GuB08wDSFKxNxRZgBu2BtPEli"}
         response = self.client.post(
             reverse("admin:download_docs_from_gsuite"), data=test_data
@@ -38,6 +40,18 @@ class DokumenttiViewTest(TestData):
             "/en/admin/login/?next=/en/admin/app_poytakirjat/dokumentti/download",
         )
 
+    def test_template_renders_correctly(self):
+        """
+        Test that template renders the correct number of documents.
+        """
+
+        self.client.login(email="test1@test.com", password="test1salasana")
+
+        response = self.client.get("/fi/kokouspoytakirjat/")
+
+        self.assertContains(response, "/media/dokumentit/2019", count=1)
+        self.assertContains(response, "/media/dokumentit/2020", count=1)
+
     @unittest.skip(
         "This is a long running test. Run if you suspect the G Drive integration is broken."
     )
@@ -46,11 +60,11 @@ class DokumenttiViewTest(TestData):
         Test documents downloading from admin panel.
 
         This test may run for a little while as it downloads the
-        documents through google API to a test database. The test
+        documents through Google's API to a test database. The test
         database is destroyed after the test run.
         """
 
-        self.client.login(email="test2@test.com", password="testi2salasana")
+        self.client.login(email="test2@test.com", password="test2salasana")
         test_data = {"folderID": "1RD-AIF6GuB08wDSFKxNxRZgBu2BtPEli"}
         response = self.client.post(
             reverse("admin:download_docs_from_gsuite"), data=test_data
