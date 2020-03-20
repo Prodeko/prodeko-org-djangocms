@@ -884,7 +884,7 @@ msgstr "Jaosto"
 
 #: prodekoorg/app_toimarit/models.py:48 prodekoorg/app_toimarit/models.py:92
 msgid "Photo"
-msgstr ""
+msgstr "Kuva"
 
 # prodekoorg/app_toimarit/models.py:50
 #: prodekoorg/app_toimarit/models.py:50 prodekoorg/app_toimarit/models.py:94

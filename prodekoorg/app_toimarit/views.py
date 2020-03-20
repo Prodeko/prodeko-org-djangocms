@@ -83,9 +83,12 @@ def hallitus_postcsv(request):
                 ).first()
 
                 if not image:
-                    image = Image.objects.get(
-                        original_filename__startswith=f"anonymous_prodeko",
-                    )
+                    try:
+                        image = Image.objects.get(
+                            original_filename__startswith=f"anonymous_prodeko",
+                        )
+                    except Image.DoesNotExist:
+                        image = None
 
                 nextRow.photo = image
                 nextRow.save()

@@ -81,6 +81,26 @@ class ToimariModelTest(TestData):
         field_label = self.test_toimari1._meta.get_field("section").verbose_name
         self.assertEqual(field_label, "Jaosto")
 
+    @english
+    def test_photo_label_english(self):
+        field_label = self.test_toimari1._meta.get_field("photo").verbose_name
+        self.assertEqual(field_label, "Photo")
+
+    @finnish
+    def test_photo_label_finnish(self):
+        field_label = self.test_toimari1._meta.get_field("photo").verbose_name
+        self.assertEqual(field_label, "Kuva")
+
+    @english
+    def test_year_label_english(self):
+        field_label = self.test_toimari1._meta.get_field("year").verbose_name
+        self.assertEqual(field_label, "Year")
+
+    @finnish
+    def test_year_label_finnish(self):
+        field_label = self.test_toimari1._meta.get_field("year").verbose_name
+        self.assertEqual(field_label, "Vuosi")
+
 
 class HallituksenJasenModelTest(TestData):
     """Tests for HallituksenJasen model."""
@@ -212,3 +232,23 @@ class HallituksenJasenModelTest(TestData):
     def test_telegram_max_length(self):
         max_length = self.test_hallituksenjasen1._meta.get_field("telegram").max_length
         self.assertEqual(max_length, 20)
+
+    @english
+    def test_photo_label_english(self):
+        field_label = self.test_hallituksenjasen1._meta.get_field("photo").verbose_name
+        self.assertEqual(field_label, "Photo")
+
+    @finnish
+    def test_photo_label_finnish(self):
+        field_label = self.test_hallituksenjasen1._meta.get_field("photo").verbose_name
+        self.assertEqual(field_label, "Kuva")
+
+    @english
+    def test_year_label_english(self):
+        field_label = self.test_hallituksenjasen1._meta.get_field("year").verbose_name
+        self.assertEqual(field_label, "Year")
+
+    @finnish
+    def test_year_label_finnish(self):
+        field_label = self.test_hallituksenjasen1._meta.get_field("year").verbose_name
+        self.assertEqual(field_label, "Vuosi")

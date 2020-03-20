@@ -28,6 +28,7 @@ class TestData(TestCase):
             lastname="Doe",
             position="Webbitiimi",
             section=cls.test_jaosto1,
+            year=2019,
         )
 
         cls.test_hallituksenjasen1 = HallituksenJasen.objects.create(
@@ -37,4 +38,5 @@ class TestData(TestCase):
             position_en="Chairman",
             mobilephone="000123123",
             email="puheenjohtaja@test.com",
+            year=2020,
         )
