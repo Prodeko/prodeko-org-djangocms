@@ -2,7 +2,7 @@ from smtplib import SMTPAuthenticationError
 
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
-from django.core.exceptions import PermissionDenied
+from django.core.exceptions import PermissionDenied, ObjectDoesNotExist
 from django.core.files.base import ContentFile
 from django.core.mail import EmailMultiAlternatives
 from django.forms import formset_factory
@@ -194,8 +194,23 @@ def main_form(request):
     else:
         # Generate empty forms and display them to the user.
         # Initial GET request to this view triggers ends up here.
+
         form_perustiedot = KulukorvausPerustiedotForm()
         formset = KulukorvausFormset()
+
+        try:
+            user = request.user
+            person = user.person
+            email = user.email
+
+            initial_values = (
+                {"created_by": person, "email": email} if request.user.person else {}
+            )
+            form_perustiedot = KulukorvausPerustiedotForm(initial=initial_values)
+            formset = KulukorvausFormset()
+        except ObjectDoesNotExist:
+            pass
+
         return render(
             request,
             "kulukorvaus.html",

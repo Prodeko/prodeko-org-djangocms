@@ -1,4 +1,6 @@
 import os
+from bs4 import BeautifulSoup
+import lxml
 
 from django.core import mail
 from django.core.files.uploadedfile import SimpleUploadedFile
@@ -64,6 +66,27 @@ class KulukorvausViewTest(TestData):
         self.assertEqual(
             response.get("Content-Disposition"),
             'attachment; filename="' + self.test_perustiedot_model.pdf_filename() + '"',
+        )
+
+    def test_prepopulate_form(self):
+        """
+        Tests that prepopulating the form fields work.
+        """
+
+        self.client.login(email="test1@test.com", password="test1salasana")
+        response = self.client.get(f"/fi/kulukorvaus/")
+
+        soup = BeautifulSoup(response.content, "lxml")
+        input_created_by = soup.find("input", {"id": "id_created_by"})
+        input_email = soup.find("input", {"id": "id_email"})
+
+        self.assertHTMLEqual(
+            str(input_created_by),
+            '<input class="form-control" id="id_created_by" maxlength="50" name="created_by" required="" type="text" value="Testi 1"/>',
+        )
+        self.assertHTMLEqual(
+            str(input_email),
+            '<input class="form-control" id="id_email" maxlength="254" name="email" required="" type="email" value="test1@test.com"/>',
         )
 
     def test_invalid_reimbursement_logged_in(self):

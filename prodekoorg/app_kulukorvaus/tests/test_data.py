@@ -34,7 +34,7 @@ class TestData(CMSTestCase):
         super(TestData, cls).tearDownClass()
 
     @classmethod
-    def setUp(cls):
+    def setUpTestData(cls):
         User = get_user_model()
         cls.test_user1 = User.objects.get(email="test1@test.com")
         cls.test_user2 = User.objects.get(email="test2@test.com")

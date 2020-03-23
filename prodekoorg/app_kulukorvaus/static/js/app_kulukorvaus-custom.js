@@ -40,7 +40,7 @@ $(document).ready(function() {
           dataLayer.push({ event: 'formError', formName: 'form_kulukorvaus' });
           $('#forms-wrapper').replaceWith(xhr.responseText);
           new Formset(document.querySelector('#form_kulukorvaus'));
-          handleFileUploads();
+          handleEventListeners();
         }
       }
     });
@@ -53,6 +53,32 @@ $(document).ready(function() {
     arr.forEach(function(el) {
       el.addEventListener('change', showFileName);
     });
+  }
+
+  function handleSumOverall() {
+    var arr = [].slice.call(document.querySelectorAll('[id$=sum_euros]'));
+    arr.shift(); // Remove first element in the array which is the management form input
+
+    arr.forEach(function(el) {
+      el.addEventListener('keyup', updateSumOverall, false);
+    });
+  }
+
+  function updateSumOverall() {
+    var arr = [].slice.call(document.querySelectorAll('[id$=sum_euros]'));
+    arr.shift(); // Remove first element in the array which is the management form input
+
+    var sum = Array.prototype.reduce.call(
+      arr,
+      function(a, b) {
+        var s = parseFloat(a) + parseFloat(b.value.replace(/,/, '.'));
+        return s.toFixed(2);
+      },
+      0
+    );
+
+    var sumOverallInput = document.getElementById('id_sum_overall');
+    sumOverallInput.value = !isNaN(sum) ? sum : 0;
   }
 
   function removeReceiptName(e) {
@@ -76,8 +102,13 @@ $(document).ready(function() {
     parentNode.appendChild(span);
   }
 
-  // Add event listeners to receipt upload buttons
-  handleFileUploads();
+  function handleEventListeners() {
+    // Add event listeners to receipt upload buttons
+    handleFileUploads();
+
+    // Add event listener to auto populate the overall sum
+    handleSumOverall();
+  }
 
   function Formset(element) {
     /*
@@ -115,7 +146,7 @@ $(document).ready(function() {
       formsList.insertAdjacentElement('beforeend', newForm);
       // Update the totalForms.value
       totalForms.value = Number(totalForms.value) + 1;
-      handleFileUploads();
+      handleEventListeners();
     }
 
     function getForm(target) {
@@ -165,7 +196,7 @@ $(document).ready(function() {
       formToRemove.remove();
       // Decrement the management form's count.
       totalForms.value = Number(totalForms.value) - 1;
-      handleFileUploads();
+      handleEventListeners();
     }
 
     element
@@ -176,5 +207,6 @@ $(document).ready(function() {
     this.addForm = addForm;
   }
 
+  handleEventListeners();
   new Formset(document.querySelector('#form_kulukorvaus'));
 });
