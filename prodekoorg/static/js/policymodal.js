@@ -1,5 +1,5 @@
-$(document).ready(function() {
-  $('#policy-modal').on('hide.bs.modal', function(e) {
+$(document).ready(function () {
+  $('#policy-modal').on('hide.bs.modal', function (e) {
     e.preventDefault();
   });
 

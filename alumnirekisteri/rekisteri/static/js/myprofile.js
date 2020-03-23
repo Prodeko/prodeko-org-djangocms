@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
   /* get profile image data */
   var imageData = { data: null };
   SimpleCrop($('#crop')[0], {
@@ -7,11 +7,11 @@ $(document).ready(function() {
     outputData: imageData,
     outputWidth: 1024,
     width: 512,
-    height: 512
+    height: 512,
   });
 
   /* Submit main-form */
-  $('#main-form').on('submit', function(event) {
+  $('#main-form').on('submit', function (event) {
     event.preventDefault();
     $('.error').remove();
     var form = $(this);
@@ -25,7 +25,7 @@ $(document).ready(function() {
       cache: false,
       contentType: false,
       processData: false,
-      success: function(response) {
+      success: function (response) {
         if (response.success) {
           location.reload();
         } else {
@@ -44,14 +44,14 @@ $(document).ready(function() {
             $('input[name=person_form-' + key + ']').after(errorElement);
           }
         }
-      }
+      },
     });
     return false;
   });
 
   /* All forms that are inside a modal with class modal-form
     will be submitted by this function. */
-  $('.modal-form').on('submit', 'form', function(event) {
+  $('.modal-form').on('submit', 'form', function (event) {
     event.preventDefault();
     $('.error').remove();
     var response = submitForm($(this).attr('action'), $(this).serialize());
@@ -71,28 +71,28 @@ $(document).ready(function() {
   });
 
   /* get edit modal contents */
-  $('.edit-link').on('click', function(event) {
+  $('.edit-link').on('click', function (event) {
     event.preventDefault();
     var modal = $($(this).attr('modal'));
     var url = $(this).attr('url');
-    $.get(url, function(data) {
+    $.get(url, function (data) {
       modal.find('.modal-content').html(data);
     });
     modal.modal('show');
   });
 
   /* get delete modal contents */
-  $('.delete-link').on('click', function(event) {
+  $('.delete-link').on('click', function (event) {
     event.preventDefault();
     var modal = $($(this).attr('modal'));
     var url = $(this).attr('url');
-    $.get(url, function(data) {
+    $.get(url, function (data) {
       modal.find('.modal-content').html(data);
     });
     modal.modal('show');
   });
 
-  var updateVisibility = function() {
+  var updateVisibility = function () {
     $('.panel:has(.category-checkbox:not(checked))').addClass(
       'category-disabled'
     );
@@ -117,17 +117,15 @@ function submitForm(url, data) {
     url: url,
     data: data,
     dataType: 'json',
-    async: false
+    async: false,
   });
   return jqXHR.responseJSON;
 }
 
 /* remove error messages when modal closes */
-$('.modal').on('hidden.bs.modal', function() {
+$('.modal').on('hidden.bs.modal', function () {
   $('.error').remove();
 });
 
 /* hide messages after 5 seconds */
-$('.footer .alert')
-  .delay(5000)
-  .fadeOut('slow');
+$('.footer .alert').delay(5000).fadeOut('slow');

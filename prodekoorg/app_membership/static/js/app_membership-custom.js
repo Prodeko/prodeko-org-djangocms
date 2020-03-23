@@ -1,15 +1,15 @@
-$(document).ready(function() {
+$(document).ready(function () {
   var csrftoken = $('[name=csrfmiddlewaretoken]').val();
   function csrfSafeMethod(method) {
     // these HTTP methods do not require CSRF protection
     return /^(GET|HEAD|OPTIONS|TRACE)$/.test(method);
   }
   $.ajaxSetup({
-    beforeSend: function(xhr, settings) {
+    beforeSend: function (xhr, settings) {
       if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
         xhr.setRequestHeader('X-CSRFToken', csrftoken);
       }
-    }
+    },
   });
 
   function removeReceiptName(e) {
@@ -46,7 +46,7 @@ $(document).ready(function() {
   }
 
   function registerEventListeners() {
-    $('#id_has_accepted_policies').change(function() {
+    $('#id_has_accepted_policies').change(function () {
       if (this.checked) {
         acceptPolicy();
       } else {
@@ -61,7 +61,7 @@ $(document).ready(function() {
   var hasAcceptedPolicies = false;
   registerEventListeners();
 
-  formApply.on('submit', function(e) {
+  formApply.on('submit', function (e) {
     e.preventDefault();
     var formData = new FormData(formApply.get(0));
 
@@ -75,14 +75,14 @@ $(document).ready(function() {
         data: formData,
         contentType: false, // Indicates 'multipart/form-data'
         processData: false,
-        success: function(data) {
+        success: function (data) {
           // Google Analytics form submission tracking
           dataLayer.push({ event: 'formSubmitted', formName: 'form_apply' });
           document.write(data);
         },
 
         // Re-renders the same page with error texts.
-        error: function(xhr) {
+        error: function (xhr) {
           if (xhr.status === 599) {
             // Google Analytics form error tracking
             dataLayer.push({ event: 'formError', formName: 'form_apply' });
@@ -90,7 +90,7 @@ $(document).ready(function() {
             registerEventListeners();
             acceptPolicy();
           }
-        }
+        },
       });
     }
   });

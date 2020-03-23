@@ -17,53 +17,53 @@ function getCookie(name) {
 var csrftoken = getCookie('csrftoken');
 
 /* make-admin post */
-$('.make-admin').click(function() {
+$('.make-admin').click(function () {
   var user_id = $(this).attr('user-id');
   var post_data = {
     csrfmiddlewaretoken: csrftoken,
     action: 'make-admin',
-    user_id: user_id
+    user_id: user_id,
   };
-  $.post('/admin/', post_data, function() {
+  $.post('/admin/', post_data, function () {
     location.reload();
   });
 });
 
 /* make-user post */
-$('.make-user').click(function() {
+$('.make-user').click(function () {
   var user_id = $(this).attr('user-id');
   var post_data = {
     csrfmiddlewaretoken: csrftoken,
     action: 'make-user',
-    user_id: user_id
+    user_id: user_id,
   };
-  $.post('/admin/', post_data, function() {
+  $.post('/admin/', post_data, function () {
     location.reload();
   });
 });
 
 /* make-inactive post */
-$('.make-inactive').click(function() {
+$('.make-inactive').click(function () {
   var user_id = $(this).attr('user-id');
   var post_data = {
     csrfmiddlewaretoken: csrftoken,
     action: 'make-inactive',
-    user_id: user_id
+    user_id: user_id,
   };
-  $.post('/admin/', post_data, function() {
+  $.post('/admin/', post_data, function () {
     location.reload();
   });
 });
 
 /* make-hidden post */
-$('.make-hidden').click(function() {
+$('.make-hidden').click(function () {
   var user_id = $(this).attr('user-id');
   var post_data = {
     csrfmiddlewaretoken: csrftoken,
     action: 'make-hidden',
-    user_id: user_id
+    user_id: user_id,
   };
-  $.post('/admin/', post_data, function() {
+  $.post('/admin/', post_data, function () {
     location.reload();
   });
 });
@@ -73,15 +73,15 @@ function deleteUser(user_id) {
   var post_data = {
     csrfmiddlewaretoken: csrftoken,
     action: 'delete-user',
-    user_id: user_id
+    user_id: user_id,
   };
-  $.post('/admin/', post_data, function() {
+  $.post('/admin/', post_data, function () {
     location.reload();
   });
 }
 
 /* delete user popup */
-$('.delete-user-button').click(function() {
+$('.delete-user-button').click(function () {
   var user_id = $(this).attr('user-id');
   var user_name = $(this).attr('user-name');
   $('#delete-user-modal').modal('show');
@@ -90,7 +90,7 @@ $('.delete-user-button').click(function() {
 });
 
 /* confirm delete user */
-$('#delete-user-modal #delete-user').click(function() {
+$('#delete-user-modal #delete-user').click(function () {
   var user_id = $(this).attr('user-id');
   deleteUser(user_id);
   //location.reload();

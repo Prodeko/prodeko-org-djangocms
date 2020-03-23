@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
   $('.profile-icon').popover({ trigger: 'hover', placement: 'left' });
 
   var hamburger = $('.hamburger');
@@ -13,7 +13,7 @@ $(document).ready(function() {
     $('body').css('position', 'static');
   }
 
-  hamburger.on('click', function() {
+  hamburger.on('click', function () {
     hamburger.toggleClass('is-active');
     hamburger.hasClass('is-active') ? preventScrolling() : allowScrolling();
   });

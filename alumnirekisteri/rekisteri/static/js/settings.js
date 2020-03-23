@@ -1,6 +1,6 @@
-$(document).ready(function() {
+$(document).ready(function () {
   /* Submit main-form */
-  $('#main-form').on('submit', function(event) {
+  $('#main-form').on('submit', function (event) {
     event.preventDefault();
     $('.error').remove();
     var form = $(this);
@@ -13,7 +13,7 @@ $(document).ready(function() {
       cache: false,
       contentType: false,
       processData: false,
-      success: function(response) {
+      success: function (response) {
         if (response.success) {
           location.reload();
         } else {
@@ -33,29 +33,27 @@ $(document).ready(function() {
             $('input[name=person_form-' + key + ']').after(errorElement);
           }
         }
-      }
+      },
     });
     return false;
   });
 
   /* get delete modal contents */
-  $('.delete-link').on('click', function(event) {
+  $('.delete-link').on('click', function (event) {
     event.preventDefault();
     var modal = $($(this).attr('modal'));
     var url = $(this).attr('url');
-    $.get(url, function(data) {
+    $.get(url, function (data) {
       modal.find('.modal-content').html(data);
     });
     modal.modal('show');
   });
 
   /* remove error messages when modal closes */
-  $('.modal').on('hidden.bs.modal', function() {
+  $('.modal').on('hidden.bs.modal', function () {
     $('.error').remove();
   });
 
   /* hide messages after 5 seconds */
-  $('.footer .alert')
-    .delay(5000)
-    .fadeOut('slow');
+  $('.footer .alert').delay(5000).fadeOut('slow');
 });

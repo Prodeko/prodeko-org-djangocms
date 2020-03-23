@@ -8,11 +8,11 @@ if (window.innerWidth >= 576) {
 window.onload = fetch(
   `https://api.instagram.com/v1/users/self/media/recent/?access_token=${ACCESS_TOKEN}&count=${num}`
 )
-  .then(function(response) {
+  .then(function (response) {
     return response.json();
   })
-  .then(function(json) {
-    json.data.map(image =>
+  .then(function (json) {
+    json.data.map((image) =>
       $('div#instagram').append(
         `<a class="square" href=${image.link} target= "_blank" rel="noopener noreferrer"><img src=${image.images.standard_resolution.url}></img></a>`
       )

@@ -1,5 +1,5 @@
-$(document).ready(function() {
-  $('#content').on('click', function() {
+$(document).ready(function () {
+  $('#content').on('click', function () {
     if (
       $(window).width() < 992 &&
       !$('.navbar-toggler').hasClass('collapsed')
@@ -31,25 +31,25 @@ $(document).ready(function() {
   toggleNavbar();
   toggleScrollToTop();
 
-  $(document).scroll(function() {
+  $(document).scroll(function () {
     toggleNavbar();
     toggleScrollToTop();
   });
 
   // When header is clicked, scroll to top
-  $('#scrollToTop').on('click', function(event) {
+  $('#scrollToTop').on('click', function (event) {
     event.preventDefault();
     $('html, body').animate(
       {
-        scrollTop: 0
+        scrollTop: 0,
       },
       800,
-      function() {}
+      function () {}
     );
   });
 
   // Select all anchor links
-  $(document).on('click', "a[href*='#']", function(event) {
+  $(document).on('click', "a[href*='#']", function (event) {
     if (
       location.pathname.replace(/^\//, '') ==
         this.pathname.replace(/^\//, '') &&
@@ -61,10 +61,10 @@ $(document).ready(function() {
         event.preventDefault();
         $('html, body').animate(
           {
-            scrollTop: target.offset().top - 130
+            scrollTop: target.offset().top - 130,
           },
           600,
-          function() {}
+          function () {}
         );
       }
     }

@@ -1,19 +1,19 @@
-$(document).ready(function() {
+$(document).ready(function () {
   var csrftoken = $('[name=csrfmiddlewaretoken]').val();
   function csrfSafeMethod(method) {
     // these HTTP methods do not require CSRF protection
     return /^(GET|HEAD|OPTIONS|TRACE)$/.test(method);
   }
   $.ajaxSetup({
-    beforeSend: function(xhr, settings) {
+    beforeSend: function (xhr, settings) {
       if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
         xhr.setRequestHeader('X-CSRFToken', csrftoken);
       }
-    }
+    },
   });
 
   var formKulukorvaus = $('#form_kulukorvaus');
-  formKulukorvaus.on('submit', function(e) {
+  formKulukorvaus.on('submit', function (e) {
     e.preventDefault();
     $('button[type=submit]').attr('disabled', '');
     var formData = new FormData(formKulukorvaus.get(0));
@@ -24,17 +24,17 @@ $(document).ready(function() {
       data: formData,
       contentType: false, // Indicates 'multipart/form-data'
       processData: false,
-      success: function(data) {
+      success: function (data) {
         // Google Analytics form submission tracking
         dataLayer.push({
           event: 'formSubmitted',
-          formName: 'form_kulukorvaus'
+          formName: 'form_kulukorvaus',
         });
         document.write(data);
       },
 
       // Re-renders the same page with error texts.
-      error: function(xhr) {
+      error: function (xhr) {
         if (xhr.status === 599) {
           // Google Analytics form error tracking
           dataLayer.push({ event: 'formError', formName: 'form_kulukorvaus' });
@@ -42,7 +42,7 @@ $(document).ready(function() {
           new Formset(document.querySelector('#form_kulukorvaus'));
           handleEventListeners();
         }
-      }
+      },
     });
   });
 
@@ -50,7 +50,7 @@ $(document).ready(function() {
     var arr = [].slice.call(document.querySelectorAll('[type*=file]'));
     arr.shift(); // Remove first element in the array which is the management form input button
 
-    arr.forEach(function(el) {
+    arr.forEach(function (el) {
       el.addEventListener('change', showFileName);
     });
   }
@@ -59,7 +59,7 @@ $(document).ready(function() {
     var arr = [].slice.call(document.querySelectorAll('[id$=sum_euros]'));
     arr.shift(); // Remove first element in the array which is the management form input
 
-    arr.forEach(function(el) {
+    arr.forEach(function (el) {
       el.addEventListener('keyup', updateSumOverall, false);
     });
   }
@@ -70,7 +70,7 @@ $(document).ready(function() {
 
     var sum = Array.prototype.reduce.call(
       arr,
-      function(a, b) {
+      function (a, b) {
         var s = parseFloat(a) + parseFloat(b.value.replace(/,/, '.'));
         return s.toFixed(2);
       },
@@ -165,10 +165,10 @@ $(document).ready(function() {
       var match = new RegExp(matchValue);
       var replace = prefix + newValue.toString();
 
-      ['name', 'id', 'for'].forEach(function(attr) {
+      ['name', 'id', 'for'].forEach(function (attr) {
         form
           .querySelectorAll('[' + attr + '*=' + matchValue + ']')
-          .forEach(function(el) {
+          .forEach(function (el) {
             el.setAttribute(
               attr,
               el.getAttribute(attr).replace(match, replace)

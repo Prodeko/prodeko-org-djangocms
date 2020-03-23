@@ -2,7 +2,7 @@ prodekoorg/collected-static/
 prodekoorg/app_vaalit/
 prodekoorg/media
 
-tiedotteet/backend/static/control/
+tiedotteet/backend/static/js/vendor/
 tiedotteet/frontend/
 
 alumnirekisteri/rekisteri/static/js/simple_crop.js
