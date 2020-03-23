@@ -8,7 +8,7 @@ const ScrollControl = ({ handleClick }) => (
 )
 
 ScrollControl.propTypes = {
-  handleClick: PropTypes.func.isRequired
+  handleClick: PropTypes.func.isRequired,
 }
 
 export default ScrollControl

@@ -11,10 +11,10 @@ const sidebarDimensions = {
   width: 260,
   handle: 0,
   desktopLimit: 660,
-  initiallyOpen: true
+  initiallyOpen: true,
 }
 
-const Content = props => {
+const Content = (props) => {
   const { analyticsActions, contentActions, content } = props
   const { markRead, markUnread, fetchContent } = contentActions
   const { sendAnalyticsEvent } = analyticsActions
@@ -62,10 +62,10 @@ const Content = props => {
   }, [updateDimensions, handleScroll])
 
   const toggleSidebar = () => {
-    setSidebarOpen(open => !open)
+    setSidebarOpen((open) => !open)
   }
 
-  const handleSwipe = e => {
+  const handleSwipe = (e) => {
     if (mode === 'mobile') {
       const d = e.direction
       if ((sidebarOpen && d == 2) || (!sidebarOpen && d == 4)) {
@@ -105,7 +105,7 @@ const Content = props => {
 }
 
 Content.propTypes = {
-  content: PropTypes.object.isRequired
+  content: PropTypes.object.isRequired,
 }
 
 export default Content

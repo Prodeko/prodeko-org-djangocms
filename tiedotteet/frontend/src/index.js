@@ -9,7 +9,7 @@ import './serviceWorker'
 configureAnchors({
   offset: 0,
   scrollDuration: 0,
-  keepLastAnchorHash: false
+  keepLastAnchorHash: false,
 })
 
 render(

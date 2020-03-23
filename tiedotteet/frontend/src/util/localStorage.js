@@ -1,4 +1,4 @@
-export const isInStore = messageId => {
+export const isInStore = (messageId) => {
   const storage = localStorage.getItem('prodeko_tiedotteet')
   if (storage === null) {
     return false
@@ -10,7 +10,7 @@ export const isInStore = messageId => {
   return false
 }
 
-export const addToStorage = messageId => {
+export const addToStorage = (messageId) => {
   const storage = localStorage.getItem('prodeko_tiedotteet')
   if (storage === null) {
     localStorage.setItem('prodeko_tiedotteet', [])
@@ -21,7 +21,7 @@ export const addToStorage = messageId => {
   }
 }
 
-export const removeFromStorage = messageId => {
+export const removeFromStorage = (messageId) => {
   const storage = localStorage.getItem('prodeko_tiedotteet')
   if (storage === null) {
     return false
@@ -30,7 +30,7 @@ export const removeFromStorage = messageId => {
     const messages = storage.split(',')
     localStorage.setItem(
       'prodeko_tiedotteet',
-      messages.filter(m => m !== messageId.toString())
+      messages.filter((m) => m !== messageId.toString())
     )
   }
 }

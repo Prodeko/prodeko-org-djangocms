@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "lint:eslint": "eslint --ext .js .",
-    "lint:eslint-fix": "eslint --ext .js --fix .",
+    "lint:eslint-fix": "eslint --ext .js --fix . && cd tiedotteet/frontend/ && npm run lint:fix ",
     "lint:css": "stylelint 'lifelonglearning/static/lifelonglearning/scss/*.scss' 'prodekoorg/**/static/scss/*.scss' 'abisivut/static/abit/scss/*.scss' 'seminaari/static/scss/*.scss'",
     "lint:css-fix": "stylelint 'lifelonglearning/static/lifelonglearning/scss/*.scss' 'prodekoorg/**/static/scss/*.scss' 'abisivut/static/abit/scss/*.scss' 'seminaari/static/scss/*.scss' --fix"
   },

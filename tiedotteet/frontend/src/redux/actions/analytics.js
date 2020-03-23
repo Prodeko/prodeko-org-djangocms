@@ -1,14 +1,13 @@
 import { SEND_EVENT } from '../actionTypes'
 
-const sendEvent = payload => ({
+const sendEvent = (payload) => ({
   type: SEND_EVENT,
-  payload
+  payload,
 })
 
-export const sendAnalyticsEvent = payload => {
-  console.log(payload)
+export const sendAnalyticsEvent = (payload) => {
   dataLayer.push(payload)
-  return dispatch => {
+  return (dispatch) => {
     dispatch(sendEvent(payload))
   }
 }

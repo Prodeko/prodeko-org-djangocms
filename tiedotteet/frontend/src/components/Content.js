@@ -6,7 +6,7 @@ import Header from './Header'
 import TableOfContents from './TableOfContents'
 import Footer from './Footer'
 
-const Content = props => {
+const Content = (props) => {
   const { additionalClasses, sendAnalyticsEvent, content } = props
 
   return (
@@ -19,7 +19,7 @@ const Content = props => {
       <div>
         <div>
           {content.data
-            .filter(c => c.messages.length > 0)
+            .filter((c) => c.messages.length > 0)
             .map((c, ckey) => (
               <div key={ckey}>
                 <h2>{c.title}</h2>
@@ -49,7 +49,7 @@ const Content = props => {
 Content.propTypes = {
   additionalClasses: PropTypes.string,
   content: PropTypes.object.isRequired,
-  sendAnalyticsEvent: PropTypes.func.isRequired
+  sendAnalyticsEvent: PropTypes.func.isRequired,
 }
 
 export default Content

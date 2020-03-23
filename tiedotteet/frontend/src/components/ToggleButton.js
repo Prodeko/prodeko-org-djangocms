@@ -6,7 +6,7 @@ const ToggleButton = ({ handleClick, show }) =>
 
 ToggleButton.propTypes = {
   show: PropTypes.bool.isRequired,
-  handleClick: PropTypes.func.isRequired
+  handleClick: PropTypes.func.isRequired,
 }
 
 export default ToggleButton

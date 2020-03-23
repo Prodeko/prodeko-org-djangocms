@@ -8,7 +8,7 @@ const TableOfContents = ({ sendAnalyticsEvent, content }) => {
     sendAnalyticsEvent({
       event: 'tiedoteLinkClicked',
       tiedoteCategory: category,
-      tiedoteHeader: header
+      tiedoteHeader: header,
     })
   }
 
@@ -42,7 +42,7 @@ const TableOfContents = ({ sendAnalyticsEvent, content }) => {
 
 TableOfContents.propTypes = {
   content: PropTypes.object.isRequired,
-  sendAnalyticsEvent: PropTypes.func.isRequired
+  sendAnalyticsEvent: PropTypes.func.isRequired,
 }
 
 export default TableOfContents

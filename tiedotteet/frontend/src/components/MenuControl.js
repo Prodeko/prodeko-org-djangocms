@@ -8,7 +8,7 @@ const MenuControl = ({ handleClick }) => (
 )
 
 MenuControl.propTypes = {
-  handleClick: PropTypes.func.isRequired
+  handleClick: PropTypes.func.isRequired,
 }
 
 export default MenuControl

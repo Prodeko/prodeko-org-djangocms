@@ -1,13 +1,13 @@
 import {
   REQUEST_CONTENT,
   REQUEST_CONTENT_SUCCESS,
-  REQUEST_CONTENT_FAILURE
+  REQUEST_CONTENT_FAILURE,
 } from '../actionTypes'
 
 const initialState = {
   isFetching: false,
   error: null,
-  data: []
+  data: [],
 }
 
 export default function ContentStateReducer(state = initialState, action = {}) {
@@ -16,20 +16,20 @@ export default function ContentStateReducer(state = initialState, action = {}) {
       return {
         ...state,
         isFetching: true,
-        error: null
+        error: null,
       }
     case REQUEST_CONTENT_SUCCESS:
       return {
         ...state,
         isFetching: false,
         error: null,
-        data: action.payload
+        data: action.payload,
       }
     case REQUEST_CONTENT_FAILURE:
       return {
         ...state,
         isFetching: false,
-        error: action.payload
+        error: action.payload,
       }
     default:
       return state

@@ -3,11 +3,11 @@ import {
   REQUEST_CONTENT_SUCCESS,
   REQUEST_CONTENT_FAILURE,
   MARK_READ,
-  MARK_UNREAD
+  MARK_UNREAD,
 } from '../actionTypes'
 import { addToStorage, removeFromStorage } from '../../util/localStorage'
 
-export const fetchContent = () => dispatch => {
+export const fetchContent = () => (dispatch) => {
   dispatch(requestContent())
 
   const isProd = process.env.NODE_ENV === 'production'
@@ -21,40 +21,40 @@ export const fetchContent = () => dispatch => {
     headers: {
       'X-CSRFToken': window.csrfToken,
       Accept: 'application/json',
-      'Content-Type': 'application/json'
-    }
+      'Content-Type': 'application/json',
+    },
   })
-    .then(response => response.json())
-    .then(json => dispatch(requestContentSuccess(json)))
-    .catch(error => dispatch(requestContentFailure(error)))
+    .then((response) => response.json())
+    .then((json) => dispatch(requestContentSuccess(json)))
+    .catch((error) => dispatch(requestContentFailure(error)))
 }
 
 export const requestContent = () => ({
-  type: REQUEST_CONTENT
+  type: REQUEST_CONTENT,
 })
 
-export const requestContentSuccess = payload => ({
+export const requestContentSuccess = (payload) => ({
   type: REQUEST_CONTENT_SUCCESS,
-  payload
+  payload,
 })
 
-export const requestContentFailure = payload => ({
+export const requestContentFailure = (payload) => ({
   type: REQUEST_CONTENT_FAILURE,
-  payload
+  payload,
 })
 
-export const markRead = payload => {
+export const markRead = (payload) => {
   addToStorage(payload)
   return {
     type: MARK_READ,
-    payload
+    payload,
   }
 }
 
-export const markUnRead = payload => {
+export const markUnRead = (payload) => {
   removeFromStorage(payload)
   return {
     type: MARK_UNREAD,
-    payload
+    payload,
   }
 }

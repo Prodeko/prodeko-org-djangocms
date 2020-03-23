@@ -8,7 +8,7 @@ const SideListItem = ({ sendAnalyticsEvent, message }) => {
     sendAnalyticsEvent({
       event: 'tiedoteLinkClicked',
       tiedoteCategory: message.category,
-      tiedoteHeader: message.header
+      tiedoteHeader: message.header,
     })
   }
 
@@ -37,7 +37,7 @@ const SideListItem = ({ sendAnalyticsEvent, message }) => {
 
 SideListItem.propTypes = {
   message: PropTypes.object.isRequired,
-  sendAnalyticsEvent: PropTypes.func.isRequired
+  sendAnalyticsEvent: PropTypes.func.isRequired,
 }
 
 export default SideListItem

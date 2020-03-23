@@ -1,4 +1,4 @@
-@import 'variables.scss';
+@import "variables.scss";
 
 #sidebar {
   position: fixed;
@@ -12,6 +12,7 @@
   transition-duration: $sidebar-transition-duration;
   transition-property: left;
   -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
 
   &.open {
     left: 0;
