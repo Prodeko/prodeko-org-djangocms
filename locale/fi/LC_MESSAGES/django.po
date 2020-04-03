@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: abisivut/cms_apps.py:12 prodekoorg/settings/base.py:263
+#: abisivut/cms_apps.py:12 prodekoorg/settings/base.py:264
 msgid "High school student page"
 msgstr "Abisivut"
 
@@ -221,7 +221,7 @@ msgstr "Salasana unohtunut?"
 msgid "The email and password didn't match. Try again"
 msgstr "Sähköposti ja salasana eivät täsmänneet. Yritä uudestaan"
 
-#: lifelonglearning/cms_apps.py:12 prodekoorg/settings/base.py:264
+#: lifelonglearning/cms_apps.py:12 prodekoorg/settings/base.py:265
 msgid "Lifelong learning page"
 msgstr "Lifelong learning sivu"
 
@@ -825,6 +825,20 @@ msgstr "Lataa pöytäkirjat Drivestä"
 msgid "How does this work"
 msgstr "Miten lataaminen toimii"
 
+#: prodekoorg/app_proleko/apps.py:7
+msgid "Proleko's"
+msgstr ""
+
+#: prodekoorg/app_proleko/cms_apps.py:12
+#, fuzzy
+#| msgid "Files application"
+msgid "Proleko application"
+msgstr "Sovellus - Tiedostot"
+
+#: prodekoorg/app_proleko/models.py:37
+msgid "Prolekos"
+msgstr ""
+
 #: prodekoorg/app_tiedostot/apps.py:7 prodekoorg/app_tiedostot/models.py:28
 msgid "Files"
 msgstr "Tiedostot"
@@ -1129,23 +1143,23 @@ msgstr "Muokkaa"
 msgid "English"
 msgstr "Englanti"
 
-#: prodekoorg/settings/base.py:259
+#: prodekoorg/settings/base.py:260
 msgid "Frontpage"
 msgstr "Etusivu"
 
-#: prodekoorg/settings/base.py:260
+#: prodekoorg/settings/base.py:261
 msgid "Content page"
 msgstr "Sisältösivu"
 
-#: prodekoorg/settings/base.py:261
+#: prodekoorg/settings/base.py:262
 msgid "Content page with 1:1 split"
 msgstr "Sisältösivu 1:1 jaolla"
 
-#: prodekoorg/settings/base.py:262
+#: prodekoorg/settings/base.py:263
 msgid "Content page with 2:1 split"
 msgstr "Sisältösivu 2:1 jaolla"
 
-#: prodekoorg/settings/base.py:268
+#: prodekoorg/settings/base.py:269
 msgid "Navigation"
 msgstr "Navigaatio"
 

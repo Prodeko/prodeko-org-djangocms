@@ -3,7 +3,7 @@ from cms.apphook_pool import apphook_pool
 from django.urls import path
 from django.utils.translation import ugettext_lazy as _
 
-from .views import download_kulukorvaus_pdf, main_form
+from .views import posts, archives
 
 
 @apphook_pool.register
@@ -13,5 +13,6 @@ class ProlekoApphook(CMSApp):
 
     def get_urls(self, page=None, language=None, **kwargs):
         return [
-            path("", main_form, name="proleko"),
+            path("", posts, name="posts"),
+            path("archives", archives, name="archives"),
         ]

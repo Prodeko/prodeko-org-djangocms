@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load cms_tags menu_tags sekizai_tags sass_tags %}
+
+{% block extra_head %}
+    <link href="{% sass_src 'scss/app_tiedostot.scss' %}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block content %}
+
+    {% include "layout-components/jumbotron.html" %}
+
+    <div class="container">
+        {% show_breadcrumb 0 "layout-components/breadcrumb.html" %}
+        {% placeholder "content" %}
+        {% for tiedosto in tiedostot %}
+            <div class="col-md-3">
+                <div class="card full-width">
+                    <img class="card-img-top thumbnail-image" style="background-image: url('{{ tiedosto.get_thumbnail_image }}');" >
+                    <div class="card-body">
+                        <h4 class="card-title">{{ tiedosto.title }}</h4>
+                        <p class="card-text description">{{ tiedosto.description }}</p>
+                        <hr>
+                        {% for version in tiedosto.versions.all %}
+                            <ul class="tiedostot-list"><a href="{% url 'app_tiedostot:download' version.id %}">{{ version.file_name }}{{ version.file_extension }} (lataa)</a></ul>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        <br>
+    </div>
+{% endblock content %}
