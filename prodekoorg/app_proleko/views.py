@@ -1,3 +1,4 @@
+from collections import OrderedDict
 from itertools import groupby
 from django.shortcuts import render
 from .models import Lehti, Post
@@ -23,4 +24,4 @@ def archives(request):
                 grouped[issue.year] + [issue], key=lambda x: x.issue)
         else:
             grouped[issue.year] = [issue]
-    return render(request, "archives.html", {"magazines": grouped})
+    return render(request, "archives.html", {"magazines": OrderedDict(sorted(grouped.items(), reverse=True))})
