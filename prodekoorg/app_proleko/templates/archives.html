@@ -1,32 +1,38 @@
-{% extends "base.html" %}
 {% load cms_tags menu_tags sekizai_tags sass_tags %}
-
 {% block extra_head %}
-    <link href="{% sass_src 'scss/app_tiedostot.scss' %}" rel="stylesheet" type="text/css" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link href="{% sass_src 'scss/app_proleko.scss' %}" rel="stylesheet" type="text/css" />
+    <link href="{% sass_src 'scss/app_proleko_archives.scss' %}" rel="stylesheet" type="text/css" />
 {% endblock %}
 
-{% block content %}
-
-    {% include "layout-components/jumbotron.html" %}
-
-    <div class="container">
-        {% show_breadcrumb 0 "layout-components/breadcrumb.html" %}
-        {% placeholder "content" %}
-        {% for tiedosto in tiedostot %}
-            <div class="col-md-3">
-                <div class="card full-width">
-                    <img class="card-img-top thumbnail-image" style="background-image: url('{{ tiedosto.get_thumbnail_image }}');" >
-                    <div class="card-body">
-                        <h4 class="card-title">{{ tiedosto.title }}</h4>
-                        <p class="card-text description">{{ tiedosto.description }}</p>
-                        <hr>
-                        {% for version in tiedosto.versions.all %}
-                            <ul class="tiedostot-list"><a href="{% url 'app_tiedostot:download' version.id %}">{{ version.file_name }}{{ version.file_extension }} (lataa)</a></ul>
-                        {% endfor %}
+<div class="container">
+    <div class="navbar">
+        {% for year, issues in magazines.items %}
+            <a href="#{{year}}">{{year}}</a>
+        {% endfor %}
+    </div>
+    <div class="magazine-container">
+        <h1>Prolekot kautta aikain</h1>
+        {% for year, issues in magazines.items %}
+            <div id="{{ year }}" class="year">
+                <div class="year-header">
+                    <h2>{{ year }}</h2>
+                    <div class="divider" />
+                </div>
+                <div class="issues-container">
+                    {% for issue in issues %}
+                        <div class="issue">
+                            <h3 class="issue-title">{{ issue.title }}</h3>
+                            <p class="issue-description">{{ issue.description }}</p>
+                            <a href="{{ issue.file.url }}" class="issue-cover" style="background-image: url('{{ issue.get_thumbnail_image }}');">
+                                <div class="issue-number">{{issue.issue}}/{{issue.year}}</div>
+                            </a>           
+                        </div>
+                    {% endfor %}
                     </div>
                 </div>
             </div>
-        {% endfor %}
-        <br>
+        {% endfor %}  
     </div>
-{% endblock content %}
+</div>

@@ -1,12 +1,26 @@
+from itertools import groupby
 from django.shortcuts import render
-from .models import Lehti
+from .models import Lehti, Post
 
 
 def posts(request):
-    posts = []
-    return render(request, "posts", {"posts": posts})
+    posts = Post.objects.all()
+    return render(request, "posts.html", {"posts": posts})
+
+
+def post(request, post_id):
+    post = Post.objects.get(pk=post_id)
+    return render(request, "post.html", {"post": post})
 
 
 def archives(request):
-    lehdet = Lehti.objects.all()
-    return render(request, "archives.html", {"magazines": lehdet})
+    issues = list(Lehti.objects.all())
+    print(issues)
+    grouped = {}
+    for issue in issues:
+        if (issue.year in grouped):
+            grouped[issue.year] = sorted(
+                grouped[issue.year] + [issue], key=lambda x: x.issue)
+        else:
+            grouped[issue.year] = [issue]
+    return render(request, "archives.html", {"magazines": grouped})

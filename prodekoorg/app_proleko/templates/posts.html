@@ -1,0 +1,24 @@
+{% load cms_tags menu_tags sekizai_tags sass_tags %}
+
+{% block extra_head %}
+    <link href="{% sass_src 'scss/app_proleko.scss' %}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        {% placeholder "content" %}
+        {% for post in posts %}
+            <div class="col-md-3">
+                <div class="card full-width">
+                    <img class="card-img-top thumbnail-image" style="background-image: url('{{ post.get_thumbnail_image }}');" >
+                    <div class="card-body">
+                        <h4 class="card-title">{{ post.title }}</h4>
+                        <p class="card-text ingress">{{ post.ingress }}</p>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        <br>
+    </div>
+{% endblock content %}
