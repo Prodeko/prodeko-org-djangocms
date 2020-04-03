@@ -8,12 +8,12 @@
 
 <div class="container">
     <div class="navbar">
+        <h3>Prolekot kautta aikain</h3>
         {% for year, issues in magazines.items %}
             <a href="#{{year}}">{{year}}</a>
         {% endfor %}
     </div>
     <div class="magazine-container">
-        <h1>Prolekot kautta aikain</h1>
         {% for year, issues in magazines.items %}
             <div id="{{ year }}" class="year">
                 <div class="year-header">
