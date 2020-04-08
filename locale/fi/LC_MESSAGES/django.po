@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-08 23:00+0300\n"
+"POT-Creation-Date: 2020-04-08 23:32+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Timo Riski <timo@prodeko.org>\n"
 "Language: \n"
@@ -835,11 +835,19 @@ msgstr ""
 msgid "Proleko application"
 msgstr "Sovellus - Tiedostot"
 
-#: prodekoorg/app_proleko/models.py:31
+#: prodekoorg/app_proleko/models.py:33
 msgid "Prolekos"
 msgstr ""
 
-#: prodekoorg/app_proleko/models.py:64
+#: prodekoorg/app_proleko/models.py:44
+msgid "Ingressi"
+msgstr ""
+
+#: prodekoorg/app_proleko/models.py:46
+msgid "Sisältö"
+msgstr ""
+
+#: prodekoorg/app_proleko/models.py:68
 msgid "Posts"
 msgstr ""
 

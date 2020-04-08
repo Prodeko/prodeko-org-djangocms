@@ -2,6 +2,8 @@ import datetime
 from django.db import models
 from django.templatetags.static import static
 from django.utils.translation import ugettext_lazy as _
+from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
 
 
 class Lehti(models.Model):
@@ -38,8 +40,10 @@ class Post(models.Model):
         max_length=255, verbose_name="Otsikko", null=False)
     authors = models.CharField(
         max_length=255, verbose_name="Kirjoittaja", null=True)
-    ingress = models.TextField(verbose_name="Ingressi", null=True)
-    content = models.TextField(verbose_name="Leipäteksti", null=True)
+    ingress = RichTextField(
+        verbose_name=_("Ingressi"), blank=True)
+    content = RichTextUploadingField(
+        verbose_name=_("Sisältö"), blank=False)
 
     def form_upload_path(self, filename):
         return f"proleko/posts/{self.timestamp.year}/{filename}"

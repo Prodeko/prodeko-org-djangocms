@@ -1,4 +1,5 @@
 {% load cms_tags menu_tags sekizai_tags sass_tags %}
+{% render_block "css" %}
 
 {% block extra_head %}
     <meta charset="utf-8">
@@ -7,26 +8,25 @@
     <link href="{% sass_src 'scss/app_proleko_posts.scss' %}" rel="stylesheet" type="text/css" />
 {% endblock %}
 
+{% cms_toolbar %}
+
 {% block content %}
     <div class="container">
-        <h1>Proleko</h1>
         <div class="posts-container">
         {% for post in posts %}
         <div class="post-outline">
-            <div class="post">
-                <img class="thumbnail-image" src="{{ post.get_thumbnail_image }}" />
+            <a class="post" style="background-image: url('{{ post.get_thumbnail_image }}');">
+                <div class="darkener"></div>
                 <div class="post-content">
                     <div class="post-header">
                         <h3 class="post-title">{{ post.title }}</h3>
-                        <h5 class="post-authors">{{ post.authors}}</h5>
+                        <h5 class="post-authors">{{ post.authors}}, {{post.date}}</h5>
                         <div class="divider"></div>
                     </div>
                     <div class="post-ingress">{{ post.ingress }}</div>
-                    <div class="post-footer">
-                        <div class="post-likes">333 {{ post.likes }}</div>
-                    </div>
+                    <div class="post-likes">3 {{ post.likes }}</div>
                 </div>
-            </div>
+            </a>
         </div>
         {% endfor %}
         </div>
