@@ -1,10 +1,14 @@
 {% load cms_tags menu_tags sekizai_tags sass_tags %}
+    {% render_block "css" %}
 {% block extra_head %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <link href="{% sass_src 'scss/app_proleko.scss' %}" rel="stylesheet" type="text/css" />
     <link href="{% sass_src 'scss/app_proleko_archives.scss' %}" rel="stylesheet" type="text/css" />
 {% endblock %}
+
+
+{% cms_toolbar %}
 
 <div class="container">
     <div class="navbar">
@@ -23,10 +27,11 @@
                 <div class="issues-container">
                     {% for issue in issues %}
                         <div class="issue">
-                            <h3 class="issue-title">{{ issue.title }}</h3>
-                            <p class="issue-description">{{ issue.description }}</p>
                             <a href="{{ issue.file.url }}" class="issue-cover" style="background-image: url('{{ issue.get_thumbnail_image }}');">
-                                <div class="issue-number">{{issue.issue}}/{{issue.year}}</div>
+                                <div class="issue-texts">
+                                    <div class="issue-number">{{issue.issue}}/{{issue.year}}</div>
+                                    <div class="issue-title">{{issue.title}}</div>
+                                </div>
                             </a>           
                         </div>
                     {% endfor %}

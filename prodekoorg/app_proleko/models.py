@@ -23,7 +23,7 @@ class Lehti(models.Model):
 
     def get_thumbnail_image(self):
         if self.thumbnail:
-            return f"{self.thumbnail.url}"
+            return self.thumbnail.url
         else:
             return static("/misc/default_thumbnail.jpg")
 
@@ -55,8 +55,8 @@ class Post(models.Model):
         return f"{self.title} – {self.timestamp.month}/{self.timestamp.year}"
 
     def get_thumbnail_image(self):
-        if self.thumbnail_image:
-            return f"{self.thumbnail.url}"
+        if self.thumbnail:
+            return self.thumbnail.url
         else:
             return static("/misc/default_post_thumbnail.jpg")
 
