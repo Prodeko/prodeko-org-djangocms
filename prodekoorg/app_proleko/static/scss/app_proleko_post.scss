@@ -46,29 +46,8 @@
   }
 }
 
-.post-likes {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  align-self: center;
-  justify-content: center;
-  color: darkgrey;
-  font-size: 1.2rem;
-
-  .post-like-icon {
-    margin-right: 15px;
-    font-size: 1.6rem;
-    cursor: pointer;
-  }
-
-  .fas {
-    color: rgb(179, 0, 0);
-  }
-}
-
 .post-header {
   width: 100%;
-  margin-bottom: 50px;
   padding: 20px 0;
 
   .post-authors {
@@ -118,7 +97,7 @@
   }
 
   .post-ingress {
-    padding-left: 20px;
+    padding: 0 20px;
     color: rgb(53, 53, 53);
     font-size: 1.3rem;
     font-style: italic;
@@ -130,6 +109,30 @@
   width: 100%;
   max-width: 700px;
   padding: 20px 10px;
+
+  a {
+    position: relative;
+    color: orange;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  img {
+    display: block;
+    width: 120% !important;
+    max-width: 100vw;
+    height: auto !important;
+    margin: 50px auto;
+    margin-left: -10%;
+
+    @media (max-width: 800px) {
+      margin-left: 0;
+      width: 100% !important;
+    }
+  }
 }
 
 .post-footer {

@@ -29,7 +29,9 @@
                     <div class="post-ingress">{{ post.ingress}}</div>
                 </div>
                 <div class="post-body">
+                    {% autoescape off %}
                     {{post.content}}
+                    {% endautoescape %}
                 </div>
             </div>
         </div>

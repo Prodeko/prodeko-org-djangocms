@@ -40,7 +40,7 @@ class Post(models.Model):
         max_length=255, verbose_name="Otsikko", null=False)
     authors = models.CharField(
         max_length=255, verbose_name="Kirjoittaja", null=True)
-    ingress = RichTextField(
+    ingress = models.TextField(
         verbose_name=_("Ingressi"), blank=True)
     content = RichTextUploadingField(
         verbose_name=_("Sisältö"), blank=False)

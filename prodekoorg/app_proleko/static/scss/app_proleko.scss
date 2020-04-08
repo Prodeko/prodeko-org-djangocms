@@ -62,3 +62,23 @@ body {
   width: 100%;
   padding: 15px;
 }
+
+.post-likes {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-self: center;
+  justify-content: center;
+  color: darkgrey;
+  font-size: 1.2rem;
+
+  .post-like-icon {
+    margin-right: 15px;
+    font-size: 1.6rem;
+    cursor: pointer;
+  }
+
+  .fas {
+    color: rgb(179, 0, 0);
+  }
+}
