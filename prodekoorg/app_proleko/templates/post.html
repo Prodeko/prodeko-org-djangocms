@@ -1,32 +1,49 @@
-{% extends "base.html" %}
-{% load cms_tags menu_tags sekizai_tags sass_tags %}
 
+{% extends "proleko-base.html" %}
+{% load sass_tags %}
 {% block extra_head %}
-    <link href="{% sass_src 'scss/app_proleko.scss' %}" rel="stylesheet" type="text/css" />
+    <link href="{% sass_src 'scss/app_proleko_post.scss' %}" rel="stylesheet" type="text/css" />
 {% endblock %}
 
 {% block content %}
-
-    {% include "layout-components/jumbotron.html" %}
-
-    <div class="container">
-        {% show_breadcrumb 0 "layout-components/breadcrumb.html" %}
-        {% placeholder "content" %}
-        {% for tiedosto in tiedostot %}
-            <div class="col-md-3">
-                <div class="card full-width">
-                    <img class="card-img-top thumbnail-image" style="background-image: url('{{ tiedosto.get_thumbnail_image }}');" >
-                    <div class="card-body">
-                        <h4 class="card-title">{{ tiedosto.title }}</h4>
-                        <p class="card-text description">{{ tiedosto.description }}</p>
-                        <hr>
-                        {% for version in tiedosto.versions.all %}
-                            <ul class="tiedostot-list"><a href="{% url 'app_tiedostot:download' version.id %}">{{ version.file_name }}{{ version.file_extension }} (lataa)</a></ul>
-                        {% endfor %}
+    <div>
+        <div class="post-container">
+            <div class="banner-container">
+                <img class="banner" src="{{ post.get_thumbnail_image }}" />
+                <div class="fade"></div>
+            </div>
+            <div class="post-content">
+                <div class="post-header">
+                    <h2 class="post-title">{{ post.title }}</h2>
+                    <h5 class="post-authors">{{ post.authors }}</h5>
+                    <div class="divider"></div>
+                    <div class="post-details">
+                        <div class="post-timestamp">{{ post.timestamp }}</div>
+                        <div class="post-likes">
+                            <div class="post-like-icon">
+                                <i class="fas fa-heart"></i>
+                            </div> 
+                        {{ post.likes}}
+                        </div>
                     </div>
+                    <div class="post-ingress">{{ post.ingress}}</div>
+                </div>
+                <div class="post-body">
+                    {{post.content}}
                 </div>
             </div>
-        {% endfor %}
-        <br>
+        </div>
+        <div class="post-footer">
+            <div class="post-likes">
+                <div class="post-like-icon">
+                    {% if has_liked %}
+                        <i class="far fa-heart"></i>
+                    {% else %}
+                        <i class="fas fa-heart"></i>
+                    {% endif %}
+                </div> 
+                {{ post.likes}}
+            </div>
+        </div>
     </div>
 {% endblock content %}

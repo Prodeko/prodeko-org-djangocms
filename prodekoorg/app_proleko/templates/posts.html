@@ -1,21 +1,15 @@
-{% load cms_tags menu_tags sekizai_tags sass_tags %}
-{% render_block "css" %}
-
+{% extends "proleko-base.html" %}
+{% load sass_tags %}
 {% block extra_head %}
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <link href="{% sass_src 'scss/app_proleko.scss' %}" rel="stylesheet" type="text/css" />
     <link href="{% sass_src 'scss/app_proleko_posts.scss' %}" rel="stylesheet" type="text/css" />
 {% endblock %}
-
-{% cms_toolbar %}
 
 {% block content %}
     <div class="container">
         <div class="posts-container">
         {% for post in posts %}
         <div class="post-outline">
-            <a class="post" style="background-image: url('{{ post.get_thumbnail_image }}');">
+            <a href="{% url "app_proleko:post" post_id=post.id %}" class="post" style="background-image: url('{{ post.get_thumbnail_image }}');">
                 <div class="darkener"></div>
                 <div class="post-content">
                     <div class="post-header">

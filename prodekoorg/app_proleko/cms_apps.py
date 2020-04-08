@@ -14,6 +14,6 @@ class ProlekoApphook(CMSApp):
     def get_urls(self, page=None, language=None, **kwargs):
         return [
             path("", posts, name="posts"),
-            path(r"^posts/(?P<post_id>[0-9]+)/", post, name="post"),
+            path("posts/<int:post_id>/", post, name="post"),
             path("archives/", archives, name="archives"),
         ]
