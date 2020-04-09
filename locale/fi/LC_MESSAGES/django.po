@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-09 03:13+0300\n"
+"POT-Creation-Date: 2020-04-09 15:29+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Timo Riski <timo@prodeko.org>\n"
 "Language: \n"
@@ -711,9 +711,10 @@ msgstr "Kotikaupunki"
 msgid "Field of study"
 msgstr "Opiskeluala"
 
-#: prodekoorg/app_membership/models.py:68
-msgid "Start year of studies"
-msgstr "Aloitusvuosi"
+#: prodekoorg/app_membership/models.py:67 prodekoorg/app_proleko/models.py:19
+#: prodekoorg/app_toimarit/models.py:50 prodekoorg/app_toimarit/models.py:94
+msgid "Year"
+msgstr "Vuosi"
 
 #: prodekoorg/app_membership/models.py:71
 msgid "Preferred language"
@@ -825,37 +826,63 @@ msgstr "Lataa pöytäkirjat Drivestä"
 msgid "How does this work"
 msgstr "Miten lataaminen toimii"
 
-#: prodekoorg/app_proleko/apps.py:7
+#: prodekoorg/app_proleko/apps.py:7 prodekoorg/app_proleko/models.py:44
 msgid "Proleko's"
-msgstr ""
+msgstr "Prolekot"
 
 #: prodekoorg/app_proleko/cms_apps.py:12
-#, fuzzy
-#| msgid "Files application"
 msgid "Proleko application"
-msgstr "Sovellus - Tiedostot"
+msgstr "Sovellus - Prolekot"
 
-#: prodekoorg/app_proleko/models.py:34
-msgid "Prolekos"
-msgstr ""
+#: prodekoorg/app_proleko/models.py:22
+msgid "Issue"
+msgstr "Numero"
 
-#: prodekoorg/app_proleko/models.py:45
-msgid "Ingressi"
-msgstr ""
+#: prodekoorg/app_proleko/models.py:25
+msgid "File"
+msgstr "Tiedosto"
 
-#: prodekoorg/app_proleko/models.py:47
-msgid "Sisältö"
-msgstr ""
+#: prodekoorg/app_proleko/models.py:28
+msgid "Thumbnail"
+msgstr "Esikatselukuva"
 
-#: prodekoorg/app_proleko/models.py:49
-#, fuzzy
-#| msgid "Read by"
+#: prodekoorg/app_proleko/models.py:30 prodekoorg/app_proleko/models.py:53
+#: tiedotteet/backend/forms.py:193
+msgid "Title"
+msgstr "Otsikko"
+
+#: prodekoorg/app_proleko/models.py:31 prodekoorg/app_vaalit/models.py:20
+msgid "Description"
+msgstr "Kuvaus"
+
+#: prodekoorg/app_proleko/models.py:43
+msgid "proleko"
+msgstr "proleko"
+
+#: prodekoorg/app_proleko/models.py:54
+msgid "Author"
+msgstr "Toimittaja"
+
+#: prodekoorg/app_proleko/models.py:55
+msgid "Lead"
+msgstr "Ingressi"
+
+#: prodekoorg/app_proleko/models.py:56 tiedotteet/backend/forms.py:55
+#: tiedotteet/backend/forms.py:101
+msgid "Content"
+msgstr "Sisältö"
+
+#: prodekoorg/app_proleko/models.py:58
 msgid "Liked by"
-msgstr "Lukenut"
+msgstr "Tykännyt"
 
-#: prodekoorg/app_proleko/models.py:71
+#: prodekoorg/app_proleko/models.py:79
+msgid "post"
+msgstr "postaus"
+
+#: prodekoorg/app_proleko/models.py:80
 msgid "Posts"
-msgstr ""
+msgstr "Postaukset"
 
 #: prodekoorg/app_tiedostot/apps.py:7 prodekoorg/app_tiedostot/models.py:28
 msgid "Files"
@@ -981,10 +1008,6 @@ msgstr "Sovellus - Vaalit"
 #: prodekoorg/app_vaalit/templates/vaalit_nav.html:4
 msgid "Board"
 msgstr "Hallitus"
-
-#: prodekoorg/app_vaalit/models.py:20
-msgid "Description"
-msgstr "Kuvaus"
 
 #: prodekoorg/app_vaalit/models.py:22
 msgid "Read by"
@@ -1300,10 +1323,6 @@ msgstr "Prodeko-seminaari sivu"
 msgid "Header"
 msgstr "Otsikko"
 
-#: tiedotteet/backend/forms.py:55 tiedotteet/backend/forms.py:101
-msgid "Content"
-msgstr "Sisältö"
-
 #: tiedotteet/backend/forms.py:56 tiedotteet/backend/forms.py:102
 #: tiedotteet/backend/forms.py:134
 #: tiedotteet/backend/templates/control/categories.html:53
@@ -1384,10 +1403,6 @@ msgstr "Käyttäjänimi (sähköpostiosoite)"
 #: tiedotteet/backend/forms.py:175
 msgid "Use TLS Encryption"
 msgstr "TLS salaus päällä"
-
-#: tiedotteet/backend/forms.py:193
-msgid "Title"
-msgstr "Otsikko"
 
 #: tiedotteet/backend/forms.py:194
 msgid "Recipients (separated by comma)"
