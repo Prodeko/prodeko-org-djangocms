@@ -6,6 +6,7 @@
 {% endblock %}
 
 {% block content %}
+    {% csrf_token %}
     <div>
         <div class="post-container">
             <div class="banner-container">
@@ -23,7 +24,7 @@
                             <div class="post-like-icon">
                                 <i class="fas fa-heart"></i>
                             </div> 
-                        {{ post.likes}}
+                        <div class="total-likes">{{ post.total_likes }}</div>
                         </div>
                     </div>
                     <div class="post-ingress">{{ post.ingress}}</div>
@@ -37,14 +38,14 @@
         </div>
         <div class="post-footer">
             <div class="post-likes">
-                <div class="post-like-icon">
+                <div class="post-like-icon" onclick="post({{ user.id }})">
                     {% if has_liked %}
-                        <i class="far fa-heart"></i>
+                        <i id="like_button" class="fas fa-heart"></i>
                     {% else %}
-                        <i class="fas fa-heart"></i>
+                        <i id="like_button" class="far fa-heart"></i>
                     {% endif %}
                 </div> 
-                {{ post.likes}}
+                <div class="total-likes">{{ post.total_likes }}</div>
             </div>
         </div>
     </div>

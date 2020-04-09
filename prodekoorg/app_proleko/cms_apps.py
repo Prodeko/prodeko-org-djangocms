@@ -3,7 +3,7 @@ from cms.apphook_pool import apphook_pool
 from django.urls import path
 from django.utils.translation import ugettext_lazy as _
 
-from .views import posts, post, archives
+from .views import posts, post, like, archives
 
 
 @apphook_pool.register
@@ -15,5 +15,6 @@ class ProlekoApphook(CMSApp):
         return [
             path("", posts, name="posts"),
             path("posts/<int:post_id>/", post, name="post"),
+            path("posts/<int:post_id>/like/<int:user_id>/", like, name="like"),
             path("archives/", archives, name="archives"),
         ]

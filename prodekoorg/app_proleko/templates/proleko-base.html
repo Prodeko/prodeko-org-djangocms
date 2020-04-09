@@ -28,3 +28,8 @@
     <link rel="shortcut icon" href="{% static 'images/favicons/favicon-32x32.png' %}">
     {% include "libraries/fontawesome.html" %}
 {% endaddtoblock %}
+
+{% addtoblock "custom-js" %}
+    {% include "libraries/jquery.html" %}
+    <script src="{% static 'js/app_proleko.js' %}"></script>
+{% endaddtoblock %}

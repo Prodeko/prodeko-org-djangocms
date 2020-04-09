@@ -1,6 +1,7 @@
 import datetime
 from django.db import models
 from django.templatetags.static import static
+from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 from ckeditor.fields import RichTextField
 from ckeditor_uploader.fields import RichTextUploadingField
@@ -44,16 +45,18 @@ class Post(models.Model):
         verbose_name=_("Ingressi"), blank=True)
     content = RichTextUploadingField(
         verbose_name=_("Sisältö"), blank=False)
+    likes = models.ManyToManyField(
+        settings.AUTH_USER_MODEL, blank=True, verbose_name=_("Liked by")
+    )
+
+    def total_likes(self):
+        return self.likes.all().count()
 
     def form_upload_path(self, filename):
         return f"proleko/posts/{self.timestamp.year}/{filename}"
 
     thumbnail = models.ImageField(
         upload_to=form_upload_path, blank=True)
-
-    def likes(self):
-        # TODO: implement like system
-        return 0
 
     def __str__(self):
         return f"{self.title} – {self.timestamp.month}/{self.timestamp.year}"
