@@ -1,5 +1,10 @@
 {% extends "proleko-base.html" %}
+{% load sass_tags %}
+{% block extra_head %}
+    <link href="{% sass_src 'scss/app_proleko_archives.scss' %}" rel="stylesheet" type="text/css" />
+{% endblock %}
 
+{% block content %}
 <div class="container">
     <div class="navbar">
         <h3>Prolekot kautta aikain</h3>
@@ -31,3 +36,4 @@
         {% endfor %}  
     </div>
 </div>
+{% endblock content %}

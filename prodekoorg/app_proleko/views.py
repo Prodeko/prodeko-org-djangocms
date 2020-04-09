@@ -49,7 +49,6 @@ def like(request, post_id, user_id):
 
 def archives(request):
     issues = list(Lehti.objects.all())
-    print(issues)
     grouped = {}
     for issue in issues:
         if (issue.year in grouped):
