@@ -14,8 +14,8 @@
   padding: 10px;
   background: linear-gradient(90deg, pink, purple);
   opacity: 0.9;
-  filter: grayscale(100%);
-  transition: filter 0.8s, opacity 0.1s;
+  filter: grayscale(80%);
+  transition: filter 0.1s, opacity 0.1s;
 
   &:hover {
     opacity: 1;
