@@ -4,12 +4,14 @@
     <link href="{% sass_src 'scss/app_proleko_posts.scss' %}" rel="stylesheet" type="text/css" />
 {% endblock %}
 
+
 {% block content %}
     <div class="container">
         <div class="posts-container">
         {% for post in posts %}
         <div class="post-outline" style="background: linear-gradient(90deg, {{ post.color1 }}, {{ post.color2 }});">
-            <a href="{% url "app_proleko:post" post_id=post.id %}" class="post" style="background-image: url('{{ post.get_thumbnail_image }}');">
+            <a href="{% url "app_proleko:post" post_id=post.id %}" class="post">
+                <img class="post-image" src="{{ post.get_thumbnail_image }}" loading="lazy" />
                 <div class="darkener"></div>
                 <div class="post-content">
                     <div class="post-header">

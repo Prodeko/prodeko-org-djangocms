@@ -1,0 +1,114 @@
+.navbar {
+  position: fixed;
+  z-index: 100;
+  display: grid;
+  flex-flow: row wrap;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  width: 100%;
+  background: white;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.03);
+  @media (max-width: 400px) {
+    justify-content: space-between;
+    font-size: 0.9rem;
+  }
+}
+
+.links {
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+  padding: 0 10px;
+
+  .link {
+    position: relative;
+    display: block;
+    margin: 0 30px;
+    padding: 2px 0;
+    color: grey;
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 5px;
+    text-decoration: none;
+    cursor: pointer;
+
+    @media (max-width: 400px) {
+      margin: 0 10px;
+    }
+
+    &::after {
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background-color: pink;
+      transition: width 0.3s ease-in-out;
+      content: '';
+    }
+
+    &:hover {
+      &::after {
+        width: 70%;
+      }
+    }
+  }
+}
+
+.proleko-logo {
+  width: 50px;
+  height: 50px;
+  margin: 5px;
+  background: linear-gradient(
+    90deg,
+    rgba(179, 0, 38, 1) 0%,
+    rgba(255, 199, 0, 1) 19%,
+    rgba(15, 238, 0, 1) 47%,
+    rgba(0, 255, 211, 1) 75%,
+    rgba(0, 76, 131, 1) 100%
+  );
+
+  background-size: 500% 100%;
+  animation: gradient 10s infinite;
+
+  img {
+    width: inherit;
+    height: inherit;
+    object-fit: contain;
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: left;
+  }
+  50% {
+    background-position: right;
+  }
+  100% {
+    background-position: left;
+  }
+}
+
+.main-page-link {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 5px 30px;
+  cursor: pointer;
+
+  &:hover {
+    img {
+      transform: translateX(10px);
+    }
+  }
+
+  @media (max-width: 400px) {
+    padding: 5px 15px;
+  }
+
+  img {
+    height: 30px;
+    transform: translateX(0px);
+    transition: transform 0.3s;
+  }
+}

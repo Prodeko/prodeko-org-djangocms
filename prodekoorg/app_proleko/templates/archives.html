@@ -6,8 +6,8 @@
 
 {% block content %}
 <div class="container">
-    <div class="navbar">
-        <h3>Prolekot kautta aikain</h3>
+    <div class="archives-navbar">
+        <h3 class="page-title">Prolekot kautta aikain</h3>
         {% for year, issues in magazines.items %}
             <a href="#{{year}}">{{year}}</a>
         {% endfor %}

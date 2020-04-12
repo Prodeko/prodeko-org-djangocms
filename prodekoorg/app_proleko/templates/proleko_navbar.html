@@ -1,0 +1,25 @@
+{% load sass_tags %}
+{% block extra_head %}
+    <link href="{% sass_src 'scss/app_proleko_navbar.scss' %}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+ {% load staticfiles %}
+
+{% block content %}
+    <div class="navbar">
+        <a class="proleko-logo" href="{% url "app_proleko:posts" %}">
+            <img src="{% static "media/proleko-logo.svg" %}" />
+        </a>
+        <div class="links">
+            <a class="link" href="{% url "app_proleko:posts" %}">
+                Verkkojulkaisut
+            </a>
+            <a class="link" href="{% url "app_proleko:archives" %}">
+                Arkistot
+            </a>
+        </div>
+        <a class="main-page-link" href="{% url "app_proleko:posts" %}">
+            <img src="{% static  'images/logos/prodeko-logo-middleblue.png' %}" />
+        </a>
+    </div>
+{% endblock content %}
