@@ -50,10 +50,10 @@ class Lehti(models.Model):
 
 class Post(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
-    title = models.CharField(max_length=255, verbose_name=_("Title"), null=False)
-    authors = models.CharField(max_length=255, verbose_name=_("Author"), null=True)
-    ingress = models.TextField(verbose_name=_("Lead"), blank=True)
-    content = RichTextUploadingField(verbose_name=_("Content"), blank=False)
+    title = models.CharField(max_length=255, null=False, verbose_name=_("Title"))
+    authors = models.CharField(max_length=255, null=True, verbose_name=_("Author"))
+    ingress = models.TextField(blank=True, verbose_name=_("Lead"))
+    content = RichTextUploadingField(blank=False, verbose_name=_("Content"))
     likes = models.ManyToManyField(
         settings.AUTH_USER_MODEL, blank=True, verbose_name=_("Liked by")
     )

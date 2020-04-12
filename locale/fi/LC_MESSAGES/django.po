@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-12 22:34+0300\n"
+"POT-Creation-Date: 2020-04-13 01:12+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Timo Riski <timo@prodeko.org>\n"
 "Language: \n"
@@ -628,7 +628,7 @@ msgstr "Hylkää"
 msgid "Application actions"
 msgstr "Hakemustoimenpiteet"
 
-#: prodekoorg/app_membership/apps.py:7 prodekoorg/app_membership/models.py:148
+#: prodekoorg/app_membership/apps.py:7 prodekoorg/app_membership/models.py:156
 msgid "Membership applications"
 msgstr "Jäsenhakemukset"
 
@@ -636,11 +636,11 @@ msgstr "Jäsenhakemukset"
 msgid "Apply for Prodeko membership application"
 msgstr "Sovellus - Prodekon jäsenhakemus"
 
-#: prodekoorg/app_membership/forms.py:73
+#: prodekoorg/app_membership/forms.py:72
 msgid "An application or account associated with this email already exists"
 msgstr "Jäsenhakemus tai käyttäjä tällä sähköpostiosoitteella on jo olemassa."
 
-#: prodekoorg/app_membership/forms.py:83
+#: prodekoorg/app_membership/forms.py:82
 msgid ""
 "If you are studying at Aalto apply as a true member. Otherwise, apply as "
 "external member."
@@ -648,15 +648,15 @@ msgstr ""
 "Mikäli opiskelet Aalto-yliopistossa hae varsinaiseksi jäseneksi. Muuten hae "
 "ulkojäseneksi"
 
-#: prodekoorg/app_membership/groups_api.py:65
+#: prodekoorg/app_membership/groups_api.py:66
 msgid "Successfully added {} to {} mailing list."
 msgstr "Lisätty {} onnistuneesti {} sähköpostilistalle."
 
-#: prodekoorg/app_membership/groups_api.py:74
+#: prodekoorg/app_membership/groups_api.py:75
 msgid "Error adding a member to {}: {} is already a member."
 msgstr "Virhe lisättäessä listalle {}: {} on jo listan jäsen."
 
-#: prodekoorg/app_membership/groups_api.py:84
+#: prodekoorg/app_membership/groups_api.py:85
 msgid ""
 "Invalid credentials. Check documentation and validate setup in G Suite and "
 "GCP API console."
@@ -711,10 +711,9 @@ msgstr "Kotikaupunki"
 msgid "Field of study"
 msgstr "Opiskeluala"
 
-#: prodekoorg/app_membership/models.py:67 prodekoorg/app_proleko/models.py:19
-#: prodekoorg/app_toimarit/models.py:50 prodekoorg/app_toimarit/models.py:94
-msgid "Year"
-msgstr "Vuosi"
+#: prodekoorg/app_membership/models.py:68
+msgid "Start year of studies"
+msgstr "Aloitusvuosi"
 
 #: prodekoorg/app_membership/models.py:71
 msgid "Preferred language"
@@ -748,15 +747,7 @@ msgstr "Jäsenhakemus hyväksytty"
 msgid "Membership application rejected."
 msgstr "Jäsenhakemus hylätty"
 
-#: prodekoorg/app_membership/models.py:110
-msgid "Your application to Prodeko has been accepted"
-msgstr ""
-
-#: prodekoorg/app_membership/models.py:126
-msgid "Your application to Prodeko has been rejected"
-msgstr ""
-
-#: prodekoorg/app_membership/models.py:147
+#: prodekoorg/app_membership/models.py:155
 msgid "membership application"
 msgstr "jäsenhakemus"
 
@@ -833,6 +824,11 @@ msgstr "Prolekot"
 #: prodekoorg/app_proleko/cms_apps.py:12
 msgid "Proleko application"
 msgstr "Sovellus - Prolekot"
+
+#: prodekoorg/app_proleko/models.py:19 prodekoorg/app_toimarit/models.py:50
+#: prodekoorg/app_toimarit/models.py:94
+msgid "Year"
+msgstr "Vuosi"
 
 #: prodekoorg/app_proleko/models.py:22
 msgid "Issue"
@@ -945,11 +941,6 @@ msgstr "Jaosto"
 msgid "Photo"
 msgstr "Kuva"
 
-# prodekoorg/app_toimarit/models.py:50
-#: prodekoorg/app_toimarit/models.py:50 prodekoorg/app_toimarit/models.py:94
-msgid "Year"
-msgstr "Vuosi"
-
 #: prodekoorg/app_toimarit/models.py:60
 msgid "guild official"
 msgstr "toimari"
@@ -984,11 +975,11 @@ msgstr "hallituksen jäsenet"
 msgid "Add %(name)s"
 msgstr "Lisää %(name)s"
 
-#: prodekoorg/app_toimarit/views.py:92 prodekoorg/app_toimarit/views.py:153
+#: prodekoorg/app_toimarit/views.py:95 prodekoorg/app_toimarit/views.py:159
 msgid "CSV imported successfully."
 msgstr "CSV-tiedosto ladattu onnistuneesti"
 
-#: prodekoorg/app_toimarit/views.py:95 prodekoorg/app_toimarit/views.py:156
+#: prodekoorg/app_toimarit/views.py:98 prodekoorg/app_toimarit/views.py:162
 msgid "Error downloading CSV: {}"
 msgstr "Virhe csv:tä ladattaessa: {}"
 
