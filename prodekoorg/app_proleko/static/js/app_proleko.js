@@ -1,15 +1,15 @@
-$(document).ready(function() {
+$(document).ready(function () {
   var csrftoken = $('[name=csrfmiddlewaretoken]').val();
   function csrfSafeMethod(method) {
     // these HTTP methods do not require CSRF protection
     return /^(GET|HEAD|OPTIONS|TRACE)$/.test(method);
   }
   $.ajaxSetup({
-    beforeSend: function(xhr, settings) {
+    beforeSend: function (xhr, settings) {
       if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
         xhr.setRequestHeader('X-CSRFToken', csrftoken);
       }
-    }
+    },
   });
 });
 
@@ -20,17 +20,13 @@ function post(user_id) {
     url: 'like/' + user_id + '/',
     type: 'POST',
     data: { is_liked: is_liked },
-    success: function(data) {
+    success: function (data) {
       $('.total-likes').text(data['total_likes']);
       if (is_liked) {
-        $('#like_button')
-          .removeClass()
-          .addClass('far fa-heart');
+        $('#like_button').removeClass().addClass('far fa-heart');
       } else {
-        $('#like_button')
-          .removeClass()
-          .addClass('fas fa-heart');
+        $('#like_button').removeClass().addClass('fas fa-heart');
       }
-    }
+    },
   });
 }
