@@ -31,7 +31,7 @@ COLORS = [
 
 @login_required
 def posts(request):
-    posts = Post.objects.all()
+    posts = Post.objects.all().order_by('-timestamp')
     posts_dict = posts.values()
 
     for post in posts_dict:
