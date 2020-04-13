@@ -38,6 +38,7 @@ def posts(request):
         post["get_thumbnail_image"] = posts.get(
             pk=post["id"]).get_thumbnail_image()
         post["total_likes"] = posts.get(pk=post["id"]).total_likes()
+        post["get_date"] = posts.get(pk=post["id"]).get_date()
         color1 = random.choice(COLORS)
         post["color1"] = color1
         color2 = random.choice(COLORS)

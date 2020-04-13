@@ -27,7 +27,8 @@ class Lehti(models.Model):
     thumbnail = models.ImageField(
         upload_to=form_upload_path, blank=True, verbose_name=_("Thumbnail")
     )
-    title = models.CharField(max_length=255, blank=True, verbose_name=_("Title"))
+    title = models.CharField(
+        max_length=255, blank=True, verbose_name=_("Title"))
     description = models.TextField(blank=True, verbose_name=_("Description"))
 
     def __str__(self):
@@ -50,13 +51,18 @@ class Lehti(models.Model):
 
 class Post(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
-    title = models.CharField(max_length=255, null=False, verbose_name=_("Title"))
-    authors = models.CharField(max_length=255, null=True, verbose_name=_("Author"))
+    title = models.CharField(
+        max_length=255, null=False, verbose_name=_("Title"))
+    authors = models.CharField(
+        max_length=255, null=True, verbose_name=_("Author"))
     ingress = models.TextField(blank=True, verbose_name=_("Lead"))
     content = RichTextUploadingField(blank=False, verbose_name=_("Content"))
     likes = models.ManyToManyField(
         settings.AUTH_USER_MODEL, blank=True, verbose_name=_("Liked by")
     )
+
+    def get_date(self):
+        return self.timestamp.date()
 
     def total_likes(self):
         return self.likes.all().count()

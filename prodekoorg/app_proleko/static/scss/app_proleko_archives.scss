@@ -97,6 +97,10 @@
   flex-flow: row wrap;
   justify-content: flex-start;
   width: 100%;
+
+  @media (max-width: 450px) {
+    flex-direction: column-reverse;
+  }
 }
 
 .issue {
