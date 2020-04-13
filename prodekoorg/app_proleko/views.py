@@ -3,6 +3,7 @@ from itertools import groupby
 from django.shortcuts import render
 from django.http import HttpResponseBadRequest, JsonResponse
 from .models import Lehti, Post
+from django.contrib.auth.decorators import login_required
 import random
 
 COLORS = [
@@ -28,12 +29,14 @@ COLORS = [
 ]
 
 
+@login_required
 def posts(request):
     posts = Post.objects.all()
     posts_dict = posts.values()
 
     for post in posts_dict:
-        post["get_thumbnail_image"] = posts.get(pk=post["id"]).get_thumbnail_image()
+        post["get_thumbnail_image"] = posts.get(
+            pk=post["id"]).get_thumbnail_image()
         post["total_likes"] = posts.get(pk=post["id"]).total_likes()
         color1 = random.choice(COLORS)
         post["color1"] = color1
@@ -44,6 +47,7 @@ def posts(request):
     return render(request, "posts.html", {"posts": posts_dict})
 
 
+@login_required
 def post(request, post_id):
     post = Post.objects.get(pk=post_id)
     user_id = request.user.id
@@ -51,6 +55,7 @@ def post(request, post_id):
     return render(request, "post.html", {"post": post, "has_liked": has_liked})
 
 
+@login_required
 def like(request, post_id, user_id):
     if request.method == "POST" and request.is_ajax():
         post = Post.objects.get(pk=post_id)
@@ -64,6 +69,7 @@ def like(request, post_id, user_id):
         return HttpResponseBadRequest
 
 
+@login_required
 def archives(request):
     issues = list(Lehti.objects.all())
     grouped = {}
