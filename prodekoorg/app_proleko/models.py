@@ -10,6 +10,24 @@ from ckeditor_uploader.fields import RichTextUploadingField
 def form_upload_path(self, filename):
     return f"proleko/archives/{self.year}/{filename}"
 
+class Ad(models.Model):
+    year = models.IntegerField(
+        default = datetime.date.today().year,
+        null = False,
+        blank = False,
+        verbose_name=_("Year"),
+        )
+    title = models.CharField(max_length = 255, blank = True, verbose_name=_("Title"))
+    image = models.ImageField(
+        upload_to =form_upload_path, blank = True, verbose_name =_("Image")
+    )
+    def __str__(self):
+        return self.title
+    def get_ad_image(self):
+        return self.image
+    def form_upload_path(self, filename):
+        return f"proleko/ads{self.year}/{filename}"
+    
 
 class Lehti(models.Model):
     year = models.IntegerField(
