@@ -9,6 +9,7 @@
     <div class="container">
         <div class="posts-container">
         {% for post in posts %}
+        {% if post.type == "post" %}
         <div class="post-outline" style="background: linear-gradient(90deg, {{ post.color1 }}, {{ post.color2 }});">
             <a href="{% url "app_proleko:post" post_id=post.id %}" class="post">
                 <img class="post-image" src="{{ post.get_thumbnail_image }}" loading="lazy" />
@@ -33,6 +34,12 @@
                 </div>
             </a>
         </div>
+        {% else %}
+        <a class="ad" href="{{post.url}}">
+            <img src="{{post.get_ad_image}}" alt="{{post.company_name}}" />
+            <span class="ad-label">Mainos</span>
+        </a>
+        {% endif %}
         {% endfor %}
         </div>
     </div>

@@ -7,27 +7,27 @@ from ckeditor.fields import RichTextField
 from ckeditor_uploader.fields import RichTextUploadingField
 
 
-def form_upload_path(self, filename):
-    return f"proleko/archives/{self.year}/{filename}"
-
 class Ad(models.Model):
-    year = models.IntegerField(
-        default = datetime.date.today().year,
-        null = False,
-        blank = False,
-        verbose_name=_("Year"),
-        )
-    title = models.CharField(max_length = 255, blank = True, verbose_name=_("Title"))
-    image = models.ImageField(
-        upload_to =form_upload_path, blank = True, verbose_name =_("Image")
-    )
-    def __str__(self):
-        return self.title
-    def get_ad_image(self):
-        return self.image
+    timestamp = models.DateTimeField(auto_now_add=True)
+    company_name = models.CharField(
+        max_length=255, blank=False, unique=True, verbose_name=_("Company name"))
+
+    url = models.CharField(
+        max_length=255, blank=True, verbose_name=_("URL"))
+
     def form_upload_path(self, filename):
-        return f"proleko/ads{self.year}/{filename}"
-    
+        return f"proleko/ads/{filename}"
+
+    image = models.ImageField(
+        upload_to=form_upload_path, blank=True, verbose_name=_("Image")
+    )
+
+    def __str__(self):
+        return f"{self.company_name} – {self.timestamp}"
+
+    def get_ad_image(self):
+        return self.image.url
+
 
 class Lehti(models.Model):
     year = models.IntegerField(
@@ -39,6 +39,10 @@ class Lehti(models.Model):
     issue = models.IntegerField(
         default=1, null=False, blank=False, verbose_name=_("Issue")
     )
+
+    def form_upload_path(self, filename):
+        return f"proleko/archives/{self.year}/{filename}"
+
     file = models.FileField(
         unique=True, upload_to=form_upload_path, verbose_name=_("File")
     )
@@ -70,11 +74,11 @@ class Lehti(models.Model):
 class Post(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
     title = models.CharField(
-        max_length=255, null=False, verbose_name=_("Title"))
+        max_length=255, verbose_name=_("Title"), null=False)
     authors = models.CharField(
-        max_length=255, null=True, verbose_name=_("Author"))
-    ingress = models.TextField(blank=True, verbose_name=_("Lead"))
-    content = RichTextUploadingField(blank=False, verbose_name=_("Content"))
+        max_length=255, verbose_name=_("Author"), null=True)
+    ingress = models.TextField(verbose_name=_("Lead"), blank=True)
+    content = RichTextUploadingField(verbose_name=_("Content"), blank=False)
     likes = models.ManyToManyField(
         settings.AUTH_USER_MODEL, blank=True, verbose_name=_("Liked by")
     )

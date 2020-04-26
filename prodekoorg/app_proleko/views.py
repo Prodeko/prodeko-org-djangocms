@@ -1,10 +1,14 @@
+import random
+from .models import Lehti, Post, Ad
+from django.contrib.auth.decorators import login_required
+from .models import Lehti, Post
 from collections import OrderedDict
 from itertools import groupby
 from django.shortcuts import render
 from django.http import HttpResponseBadRequest, JsonResponse
-from .models import Lehti, Post
-from django.contrib.auth.decorators import login_required
-import random
+<< << << < HEAD
+== == == =
+>>>>>> > Implement Ads model/logic/style
 
 COLORS = [
     "#FF8552",
@@ -33,8 +37,11 @@ COLORS = [
 def posts(request):
     posts = Post.objects.all().order_by('-timestamp')
     posts_dict = posts.values()
+    ads = list(Ad.objects.all())
+    random.shuffle(ads)
 
     for post in posts_dict:
+        post["type"] = "post"
         post["get_thumbnail_image"] = posts.get(
             pk=post["id"]).get_thumbnail_image()
         post["total_likes"] = posts.get(pk=post["id"]).total_likes()
@@ -45,7 +52,13 @@ def posts(request):
         while color2 == color1:
             color2 = random.choice(COLORS)
         post["color2"] = color2
-    return render(request, "posts.html", {"posts": posts_dict})
+
+    l = list(posts_dict)
+
+    for i in range(len(ads)):
+        l.insert(3 + i * 5 + i, ads[i])
+
+    return render(request, "posts.html", {"posts": l})
 
 
 @login_required

@@ -90,3 +90,34 @@
     }
   }
 }
+
+.ad {
+  position: relative;
+  display: block;
+  max-width: 100%;
+  margin: 0 auto 100px;
+  cursor: pointer;
+
+  img {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    max-height: 500px;
+    margin: 0 auto;
+  }
+
+  .ad-label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    /*background: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));*/
+    z-index: 5;
+    display: block;
+    width: 100%;
+    padding: 10px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+  }
+}
