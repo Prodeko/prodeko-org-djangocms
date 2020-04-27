@@ -54,8 +54,9 @@ def posts(request):
         post["color2"] = color2
 
     l = list(posts_dict)
-
     for i in range(len(ads)):
+        # After three first posts, every 5 posts
+        # with index correction i (list changes on every append)
         l.insert(3 + i * 5 + i, ads[i])
 
     return render(request, "posts.html", {"posts": l})
