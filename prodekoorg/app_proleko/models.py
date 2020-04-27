@@ -10,10 +10,10 @@ from ckeditor_uploader.fields import RichTextUploadingField
 class Ad(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
     company_name = models.CharField(
-        max_length=255, blank=False, unique=True, verbose_name=_("Company name"))
+        max_length=255, blank=False, unique=True, verbose_name=_("Company name")
+    )
 
-    url = models.CharField(
-        max_length=255, blank=True, verbose_name=_("URL"))
+    url = models.CharField(max_length=255, blank=True, verbose_name=_("URL"))
 
     def form_upload_path(self, filename):
         return f"proleko/ads/{filename}"
@@ -49,8 +49,7 @@ class Lehti(models.Model):
     thumbnail = models.ImageField(
         upload_to=form_upload_path, blank=True, verbose_name=_("Thumbnail")
     )
-    title = models.CharField(
-        max_length=255, blank=True, verbose_name=_("Title"))
+    title = models.CharField(max_length=255, blank=True, verbose_name=_("Title"))
     description = models.TextField(blank=True, verbose_name=_("Description"))
 
     def __str__(self):
@@ -73,10 +72,8 @@ class Lehti(models.Model):
 
 class Post(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
-    title = models.CharField(
-        max_length=255, verbose_name=_("Title"), null=False)
-    authors = models.CharField(
-        max_length=255, verbose_name=_("Author"), null=True)
+    title = models.CharField(max_length=255, verbose_name=_("Title"), null=False)
+    authors = models.CharField(max_length=255, verbose_name=_("Author"), null=True)
     ingress = models.TextField(verbose_name=_("Lead"), blank=True)
     content = RichTextUploadingField(verbose_name=_("Content"), blank=False)
     likes = models.ManyToManyField(
