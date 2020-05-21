@@ -143,7 +143,7 @@ def toimari_postcsv(request):
                 image = Image.objects.filter(
                     original_filename__startswith=remove_äö(f"{firstname}_{lastname}"),
                     folder__name__contains=str(year),
-                    folder__parent__name__contains="Toimihenkilöt",
+                    folder__parent__name__contains="Toimarit",
                 ).first()
 
                 if not image:
