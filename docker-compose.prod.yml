@@ -4,8 +4,9 @@ services:
   redis:
     image: redis:6
 
-  web:
+  prodeko_org:
     image: prodekoregistry.azurecr.io/prodeko-org/prodeko-org
+    command: gunicorn prodekoorg.wsgi:application --bind 0.0.0.0:8000
     ports:
       - '8000:8000'
 

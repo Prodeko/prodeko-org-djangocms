@@ -44,18 +44,14 @@ python3 manage.py startapp app_kiltiskamera prodekoorg/app_kiltiskamera
 
 Myös abisivut, auth_prodeko, seminaari ja tiedotteet ovat omia appejaan, vaikka ne eivät ole prodekoorg kansion sisällä.
 
-### Deployas palvelimelle
+### Deployaus palvelimelle
 
-Katso [infrastructure reposta](https://github.com/Prodeko/infrastructure/) ohjeet deployaukseen.
+## Azure
 
-## Docker
-
-- Ennen imagen puskemista, aja: `az acr login --name prodekoregistry`
-
-```
-docker build -f Dockerfile -t prodekoregistry.azurecr.io/prodeko-org/prodeko-org
-docker push prodekoregistry.azurecr.io/prodeko-org/prodeko-org
-```
+1. Kirjaudu Prodekon docker registryyn: `az acr login --name prodekoregistry`
+2. Buildaa image: `docker build . -t prodekoregistry.azurecr.io/prodeko-org/prodeko-or`
+3. Puske image registryyn: `docker push prodekoregistry.azurecr.io/prodeko-org/prodeko-org`
+4. Aja infrastructure reposta: `ansible-playbook playbook.yml --extra-vars '@passwd.yml' --tags services,prodeko_org --skip-tags reinstall_sentry`
 
 ## Vanha
 
@@ -176,6 +172,8 @@ $ npm run lint:css-fix  # Korjaa virheet
     │   │   └── ...
     │   │── app_poytakirjat            # Pöytäkirjojen automaattinen haku G Suiten Drivestä ja lisäys DjangoCMS:ään
     │   │   └── ...
+    │   │── app_proleko                # proleko.prodeko.org
+    │   │   └── ...
     │   │── app_tiedostot              # Prodekon brändiin liittyviä tiedostoja
     │   │   └── ...
     │   │── app_toimarit               # Mahdollistaa vuoden toimihenkilöiden päivittämisen sivuille .csv-tiedoston avulla
@@ -191,7 +189,7 @@ $ npm run lint:css-fix  # Korjaa virheet
     │   │── settings                   # Django globaalit asetukset
     │   │   ├── base.py
     │   │   ├── dev.py
-    │   │   ├── prod.py
+    │   │   └── prod.py
     │   │── static                     # Staattiset tiedostot
     │   │   ├── fonts
     │   │   ├── images

@@ -1,2 +1,10 @@
-venv/*
-node_modules/*
+**/venv
+**/node_modules
+**/.git
+**/.DS_Store
+**/__pycache__
+**/prodekoorg/collected-static
+prodekoorg/media/*
+.coverage
+*.json
+!data.json
