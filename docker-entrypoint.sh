@@ -2,29 +2,21 @@
 
 set -e
 
-function wait_for_mysql () {
-	# Check if MySQL is up and accepting connections.
-	HOSTNAME=$(python <<EOF
-try:
-    from urllib.parse import urlparse
-except ImportError:
-    from urlparse import urlparse
-o = urlparse('$DATABASE_URL')
-print(o.hostname)
-EOF
-)
-	until mysqladmin ping --host "$HOSTNAME" --silent; do
-		>&2 echo "MySQL is unavailable - sleeping"
+function wait_for_db () {
+	# Check if database is up and accepting connections.
+  echo "Checking database connection"
+  until psql $DATABASE_URL -c "select 1" 2>/dev/null; do
+		>&2 echo "Database is unavailable - sleeping"
 		sleep 1
 	done
-	>&2 echo "MySQL is up - continuing"
+	>&2 echo "Database is up - continuing"
 }
 
-wait_for_mysql
+wait_for_db
 
 # Create test database
-# mysql -h db -P 3306 -u root -p$*secret -e "CREATE DATABASE test_prodekoorg;"
-# mysql -h db -P 3306 -u root -p$*secret -e "GRANT ALL PRIVILEGES ON test_prodekoorg.* TO prodekoorg@localhost IDENTIFIED BY 'secret';"
+# psql -h $DATABASE_URL -c "CREATE DATABASE test_prodekoorg;"
+# psql -h $DATABASE_URL -c "GRANT ALL PRIVILEGES ON test_prodekoorg.* TO prodekoorg@localhost IDENTIFIED BY 'secret';"
 
 # Create and run migrations
 echo "Creating migrations..."
@@ -38,7 +30,7 @@ python manage.py shell -c "from django.contrib.auth import get_user_model; \
 	User.objects.create_superuser('webbitiimi@prodeko.org', 'kananugetti', has_accepted_policies=True)"
 
 # Load sample data for development
-python3 manage.py loaddata --app cms --app menus --verbosity 3 data.json
+# python3 manage.py loaddata --app cms --app menus --verbosity 3 data.json
 
 # Translations
 python3 manage.py makemessages -l fi -i "node_modules/*" -i "venv/*"

@@ -46,6 +46,19 @@ Myös abisivut, auth_prodeko, seminaari ja tiedotteet ovat omia appejaan, vaikka
 
 ### Deployas palvelimelle
 
+Katso [infrastructure reposta](https://github.com/Prodeko/infrastructure/) ohjeet deployaukseen.
+
+## Docker
+
+- Ennen imagen puskemista, aja: `az acr login --name prodekoregistry`
+
+```
+docker build -f Dockerfile -t prodekoregistry.azurecr.io/prodeko-org/prodeko-org
+docker push prodekoregistry.azurecr.io/prodeko-org/prodeko-org
+```
+
+## Vanha
+
 Azuressa hostataan media ja static tiedostot. Lisäksi käytössä on Azuren CDN.
 
 1. Virtualenv päälle `source venv/bin/activate`

@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:11
+    environment:
+      - POSTGRES_DB=prodekoorg
+      - POSTGRES_USER=prodekoorg
+      - POSTGRES_PASSWORD=secret
+
+  redis:
+    image: redis:6
+
+  web:
+    tty: true
+    build: .
+    volumes:
+      - .:/code
+      - /code/tiedotteet/frontend/public/tiedotteet
+    ports:
+      - '8000:8000'
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=postgres://prodekoorg:secret@db/prodekoorg

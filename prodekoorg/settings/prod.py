@@ -21,20 +21,21 @@ MANAGERS = [("CTO", "cto@prodeko.org")]
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.mysql",
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
         "NAME": DB_NAME_DEFAULT,
         "USER": DB_USER,
         "PASSWORD": DB_PSWD,
-        "HOST": "localhost",
-        "PORT": "3306",
-        "OPTIONS": {"charset": "utf8mb4"},
-    },
-    "TEST": {"CHARSET": "utf8", "COLLATION": "utf8_unicode_ci"},
+        "HOST": "prodeko-postgres.postgres.database.azure.com",
+        "PORT": "5432",
+        "OPTIONS": {
+            "sslmode": "verify-ca",
+        },
+    }
 }
 
 # Caching
 CACHES = {
-    "default": {"BACKEND": "redis_cache.RedisCache", "LOCATION": "localhost:6379"}
+    "default": {"BACKEND": "redis_cache.RedisCache", "LOCATION": "redis:6379"}
 }
 
 INSTALLED_APPS += ("storages",)

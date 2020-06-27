@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-13 01:12+0300\n"
+"POT-Creation-Date: 2020-06-27 13:30+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Timo Riski <timo@prodeko.org>\n"
 "Language: \n"
@@ -817,7 +817,7 @@ msgstr "Lataa pöytäkirjat Drivestä"
 msgid "How does this work"
 msgstr "Miten lataaminen toimii"
 
-#: prodekoorg/app_proleko/apps.py:7 prodekoorg/app_proleko/models.py:44
+#: prodekoorg/app_proleko/apps.py:7 prodekoorg/app_proleko/models.py:66
 msgid "Proleko's"
 msgstr "Prolekot"
 
@@ -825,58 +825,70 @@ msgstr "Prolekot"
 msgid "Proleko application"
 msgstr "Sovellus - Prolekot"
 
-#: prodekoorg/app_proleko/models.py:19 prodekoorg/app_toimarit/models.py:50
+#: prodekoorg/app_proleko/models.py:13
+msgid "Company name"
+msgstr "Yrityksen nimi"
+
+#: prodekoorg/app_proleko/models.py:16
+msgid "URL"
+msgstr "URL"
+
+#: prodekoorg/app_proleko/models.py:22
+msgid "Image"
+msgstr "Kuva"
+
+#: prodekoorg/app_proleko/models.py:37 prodekoorg/app_toimarit/models.py:50
 #: prodekoorg/app_toimarit/models.py:94
 msgid "Year"
 msgstr "Vuosi"
 
-#: prodekoorg/app_proleko/models.py:22
+#: prodekoorg/app_proleko/models.py:40
 msgid "Issue"
 msgstr "Numero"
 
-#: prodekoorg/app_proleko/models.py:25
+#: prodekoorg/app_proleko/models.py:47
 msgid "File"
 msgstr "Tiedosto"
 
-#: prodekoorg/app_proleko/models.py:28
+#: prodekoorg/app_proleko/models.py:50
 msgid "Thumbnail"
 msgstr "Esikatselukuva"
 
-#: prodekoorg/app_proleko/models.py:30 prodekoorg/app_proleko/models.py:53
+#: prodekoorg/app_proleko/models.py:52 prodekoorg/app_proleko/models.py:75
 #: tiedotteet/backend/forms.py:193
 msgid "Title"
 msgstr "Otsikko"
 
-#: prodekoorg/app_proleko/models.py:31 prodekoorg/app_vaalit/models.py:20
+#: prodekoorg/app_proleko/models.py:53 prodekoorg/app_vaalit/models.py:20
 msgid "Description"
 msgstr "Kuvaus"
 
-#: prodekoorg/app_proleko/models.py:43
+#: prodekoorg/app_proleko/models.py:65
 msgid "proleko"
 msgstr "proleko"
 
-#: prodekoorg/app_proleko/models.py:54
+#: prodekoorg/app_proleko/models.py:76
 msgid "Author"
 msgstr "Toimittaja"
 
-#: prodekoorg/app_proleko/models.py:55
+#: prodekoorg/app_proleko/models.py:77
 msgid "Lead"
 msgstr "Ingressi"
 
-#: prodekoorg/app_proleko/models.py:56 tiedotteet/backend/forms.py:55
+#: prodekoorg/app_proleko/models.py:78 tiedotteet/backend/forms.py:55
 #: tiedotteet/backend/forms.py:101
 msgid "Content"
 msgstr "Sisältö"
 
-#: prodekoorg/app_proleko/models.py:58
+#: prodekoorg/app_proleko/models.py:80
 msgid "Liked by"
 msgstr "Tykännyt"
 
-#: prodekoorg/app_proleko/models.py:79
+#: prodekoorg/app_proleko/models.py:104
 msgid "post"
 msgstr "postaus"
 
-#: prodekoorg/app_proleko/models.py:80
+#: prodekoorg/app_proleko/models.py:105
 msgid "Posts"
 msgstr "Postaukset"
 

@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  redis:
+    image: redis:6
+
+  web:
+    image: prodekoregistry.azurecr.io/prodeko-org/prodeko-org
+    ports:
+      - '8000:8000'
+
+networks:
+  default:
+    external:
+      name: prodeko-docker-net

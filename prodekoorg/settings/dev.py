@@ -7,19 +7,17 @@ INTERNAL_IPS = ["web"]
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.mysql",
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
         "NAME": DB_NAME_DEFAULT,
         "USER": DB_USER,
         "PASSWORD": DB_PSWD,
-        "HOST": "db",
-        "PORT": "3306",
-        "OPTIONS": {"charset": "utf8mb4"},
-    },
-    "TEST": {"CHARSET": "utf8", "COLLATION": "utf8_unicode_ci"},
+        "HOST": "postgres",
+        "PORT": "5432",
+    }
 }
 
 # Caching
-CACHES = {"default": {"BACKEND": "redis_cache.RedisCache", "LOCATION": "cache:6379"}}
+CACHES = {"default": {"BACKEND": "redis_cache.RedisCache", "LOCATION": "redis:6379"}}
 
 if config["DEBUG"]["SHOW_DEBUG_TOOLBAR"] == "True":
     # Show django debug toolbar always.
