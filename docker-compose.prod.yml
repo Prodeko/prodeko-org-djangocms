@@ -2,13 +2,19 @@ version: '3.8'
 
 services:
   redis:
-    image: redis:6
+    image: redis:6-alpine
+    volumes:
+      - 'prodeko-org-redis:/data'
 
   prodeko_org:
-    image: prodekoregistry.azurecr.io/prodeko-org/prodeko-org
+    image: prodekoregistry.azurecr.io/prodeko-org/prodeko-org:latest
     command: gunicorn prodekoorg.wsgi:application --bind 0.0.0.0:8000
     ports:
       - '8000:8000'
+
+volumes:
+  prodeko-org-redis:
+    external: true
 
 networks:
   default:
