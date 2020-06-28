@@ -9,6 +9,8 @@ services:
   prodeko_org:
     image: prodekoregistry.azurecr.io/prodeko-org/prodeko-org:latest
     command: gunicorn prodekoorg.wsgi:application --bind 0.0.0.0:8000
+    volumes:
+      - ./prodekoorg:/code/prodekoorg
     ports:
       - '8000:8000'
 
