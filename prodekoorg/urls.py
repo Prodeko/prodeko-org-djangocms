@@ -60,7 +60,7 @@ urlpatterns += i18n_patterns(
     # tiedotteet.prodeko.org
     re_path(_(r"^weekly-bulletin/"), include("tiedotteet.backend.urls")),
     # matrikkeli.prodeko.org
-    re_path(_(r"^matrikkeli/"), include("alumnirekisteri.alumnirekisteri.urls")),
+    re_path(_(r"^matrikkeli/"), include("alumnirekisteri.rekisteri.urls")),
     # Misc
     re_path(r"^admin/", admin.site.urls),
     re_path(r"^ckeditor/", include("ckeditor_uploader.urls")),

@@ -6,8 +6,7 @@ from django.contrib.auth.forms import (
     UserCreationForm,
 )
 from django.utils.translation import ugettext_lazy as _
-
-from alumnirekisteri.auth2.models import User
+from auth_prodeko.models import User
 
 
 class LoginForm(AuthenticationForm):

@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from alumnirekisteri.auth2.models import User
+from auth_prodeko.models import User
 from alumnirekisteri.rekisteri.models import *
 
 

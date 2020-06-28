@@ -1,8 +1,8 @@
 from rest_framework import generics, permissions
 
-from alumnirekisteri.auth2.models import User
 from alumnirekisteri.rekisteri.models import *
 from alumnirekisteri.rekisteri.serializers import *
+from auth_prodeko.models import User
 
 
 class UserList(generics.ListAPIView):

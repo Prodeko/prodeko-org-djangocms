@@ -14,7 +14,7 @@ services:
   prodeko_org:
     build: .
     entrypoint: /code/docker-entrypoint.sh
-    command: ['python3', 'manage.py', 'runserver', '0.0.0.0:8000']
+    command: python3 manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/code
       - /code/tiedotteet/frontend/public/tiedotteet
@@ -23,4 +23,4 @@ services:
     depends_on:
       - postgres
     environment:
-      - DATABASE_URL=postgres://prodekoorg:secret@db/prodekoorg
+      - DATABASE_URL=postgres://prodekoorg:secret@postgres/prodekoorg

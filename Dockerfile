@@ -18,8 +18,8 @@ WORKDIR /code
 COPY requirements.txt requirements.txt ./
 COPY requirements-dev.txt requirements-dev.txt ./
 
-RUN apk add --no-cache --virtual .build-deps g++ gcc libc-dev libxslt-dev libressl-dev libffi-dev jpeg-dev musl-dev postgresql-dev && \
-  apk add --no-cache libxslt postgresql-client gettext && \
+RUN apk add --no-cache --virtual .build-deps build-base libxslt-dev libressl-dev libffi-dev zlib-dev jpeg-dev libpng-dev musl-dev postgresql-dev && \
+  apk add --no-cache libxslt postgresql-client gettext libjpeg && \
   pip install --no-cache-dir -r requirements-dev.txt && \
   apk del --purge .build-deps
 

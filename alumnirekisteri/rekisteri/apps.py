@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class RekisteriConfig(AppConfig):
-    name = "rekisteri"
+    name = "alumnirekisteri.rekisteri"

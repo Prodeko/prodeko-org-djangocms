@@ -231,7 +231,6 @@ INSTALLED_APPS = (
     "corsheaders",
     # ------------------------
     # matrikkeli.prodeko.org
-    "alumnirekisteri",
     "alumnirekisteri.rekisteri",
     # ------------------------
     # abit.prodeko.org
