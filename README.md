@@ -51,7 +51,7 @@ Myös abisivut, auth_prodeko, seminaari ja tiedotteet ovat omia appejaan, vaikka
 1. Kirjaudu Prodekon docker registryyn: `az acr login --name prodekoregistry`
 2. Buildaa image: `docker build . -t prodekoregistry.azurecr.io/prodeko-org/prodeko-or`
 3. Puske image registryyn: `docker push prodekoregistry.azurecr.io/prodeko-org/prodeko-org`
-4. Aja infrastructure reposta: `ansible-playbook playbook.yml --extra-vars '@passwd.yml' --tags services,prodeko_org --skip-tags reinstall_sentry`
+4. Aja infrastructure reposta: `ansible-playbook playbook.yml --extra-vars '@passwd.yml' --tags prodeko_org`
 
 ## Vanha
 
