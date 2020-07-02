@@ -3,11 +3,13 @@ version: '3.8'
 services:
   redis:
     image: redis:6-alpine
+    restart: unless-stopped
     volumes:
       - 'prodeko-org-redis:/data'
 
   prodeko_org:
     image: prodekoregistry.azurecr.io/prodeko-org/prodeko-org:latest
+    restart: unless-stopped
     command: gunicorn prodekoorg.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - ./prodekoorg:/code/prodekoorg
