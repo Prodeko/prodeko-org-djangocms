@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-27 13:30+0300\n"
+"POT-Creation-Date: 2020-07-07 15:48+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Timo Riski <timo@prodeko.org>\n"
 "Language: \n"
@@ -17,39 +17,39 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: abisivut/cms_apps.py:12 prodekoorg/settings/base.py:264
+#: abisivut/cms_apps.py:12 prodekoorg/settings/base.py:263
 msgid "High school student page"
 msgstr "Abisivut"
 
-#: alumnirekisteri/auth2/forms.py:43
+#: alumnirekisteri/auth2/forms.py:42
 msgid "The two password fields didn't match."
 msgstr "Salasanat eivät täsmää."
 
-#: alumnirekisteri/auth2/forms.py:50 tiedotteet/backend/forms.py:174
+#: alumnirekisteri/auth2/forms.py:49 tiedotteet/backend/forms.py:174
 msgid "Password"
 msgstr "Salasana"
 
-#: alumnirekisteri/auth2/forms.py:55
+#: alumnirekisteri/auth2/forms.py:54
 msgid "Password confirmation"
 msgstr "Uusi salasana - vahvistus"
 
-#: alumnirekisteri/auth2/forms.py:58
+#: alumnirekisteri/auth2/forms.py:57
 msgid "Enter the same password as before, for verification."
 msgstr "Vahvista antamalla sama salasana."
 
-#: alumnirekisteri/auth2/forms.py:103
+#: alumnirekisteri/auth2/forms.py:102
 msgid "Your old password was entered incorrectly. Please enter it again."
 msgstr "Salasana on väärä. Yritä uudestaan."
 
-#: alumnirekisteri/auth2/forms.py:108
+#: alumnirekisteri/auth2/forms.py:107
 msgid "Old password"
 msgstr "Vanha salasana"
 
-#: alumnirekisteri/auth2/forms.py:113
+#: alumnirekisteri/auth2/forms.py:112
 msgid "New password"
 msgstr "Uusi salasana"
 
-#: alumnirekisteri/auth2/forms.py:118
+#: alumnirekisteri/auth2/forms.py:117
 msgid "New password confirmation"
 msgstr "Uusi salasana - vahvistus"
 
@@ -221,7 +221,7 @@ msgstr "Salasana unohtunut?"
 msgid "The email and password didn't match. Try again"
 msgstr "Sähköposti ja salasana eivät täsmänneet. Yritä uudestaan"
 
-#: lifelonglearning/cms_apps.py:12 prodekoorg/settings/base.py:265
+#: lifelonglearning/cms_apps.py:12 prodekoorg/settings/base.py:264
 msgid "Lifelong learning page"
 msgstr "Lifelong learning sivu"
 
@@ -1187,23 +1187,23 @@ msgstr "Muokkaa"
 msgid "English"
 msgstr "Englanti"
 
-#: prodekoorg/settings/base.py:260
+#: prodekoorg/settings/base.py:259
 msgid "Frontpage"
 msgstr "Etusivu"
 
-#: prodekoorg/settings/base.py:261
+#: prodekoorg/settings/base.py:260
 msgid "Content page"
 msgstr "Sisältösivu"
 
-#: prodekoorg/settings/base.py:262
+#: prodekoorg/settings/base.py:261
 msgid "Content page with 1:1 split"
 msgstr "Sisältösivu 1:1 jaolla"
 
-#: prodekoorg/settings/base.py:263
+#: prodekoorg/settings/base.py:262
 msgid "Content page with 2:1 split"
 msgstr "Sisältösivu 2:1 jaolla"
 
-#: prodekoorg/settings/base.py:269
+#: prodekoorg/settings/base.py:268
 msgid "Navigation"
 msgstr "Navigaatio"
 
