@@ -77,7 +77,7 @@ def hallitus_postcsv(request):
 
                 # The images have to be uploaded to filer before uploading the csv
                 image = Image.objects.filter(
-                    original_filename__startswith=remove_äö(f"{firstname}_{lastname}"),
+                    original_filename__istartswith=remove_äö(f"{firstname}_{lastname}"),
                     folder__name__contains=str(year),
                     folder__parent__name__contains="Hallitukset",
                 ).first()
@@ -141,7 +141,7 @@ def toimari_postcsv(request):
 
                 # The images have to be uploaded to filer before uploading the csv
                 image = Image.objects.filter(
-                    original_filename__startswith=remove_äö(f"{firstname}_{lastname}"),
+                    original_filename__istartswith=remove_äö(f"{firstname}_{lastname}"),
                     folder__name__contains=str(year),
                     folder__parent__name__contains="Toimarit",
                 ).first()
