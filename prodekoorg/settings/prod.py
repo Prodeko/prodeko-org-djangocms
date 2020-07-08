@@ -29,9 +29,6 @@ DATABASES = {
         "PORT": "5439",
         "CONN_MAX_AGE": 600,
         "DISABLE_SERVER_SIDE_CURSORS": True,
-        "OPTIONS": {
-            "sslmode": "require",
-        },
     }
 }
 
