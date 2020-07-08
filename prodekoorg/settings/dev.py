@@ -7,7 +7,7 @@ INTERNAL_IPS = ["web"]
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "ENGINE": "django.db.backends.postgresql",
         "NAME": DB_NAME_DEFAULT,
         "USER": DB_USER,
         "PASSWORD": DB_PSWD,

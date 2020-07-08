@@ -21,12 +21,14 @@ MANAGERS = [("CTO", "cto@prodeko.org")]
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "ENGINE": "django.db.backends.postgresql",
         "NAME": DB_NAME_DEFAULT,
         "USER": DB_USER,
         "PASSWORD": DB_PSWD,
-        "HOST": "prodeko-postgres.postgres.database.azure.com",
-        "PORT": "5432",
+        "HOST": "pgbouncer",
+        "PORT": "5439",
+        "CONN_MAX_AGE": 600,
+        "DISABLE_SERVER_SIDE_CURSORS": True,
         "OPTIONS": {
             "sslmode": "require",
         },

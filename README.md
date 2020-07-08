@@ -49,7 +49,7 @@ Myös abisivut, auth_prodeko, seminaari ja tiedotteet ovat omia appejaan, vaikka
 ## Azure
 
 1. Kirjaudu Prodekon docker registryyn: `az acr login --name prodekoregistry`
-2. Buildaa image: `docker build . -t prodekoregistry.azurecr.io/prodeko-org/prodeko-or`
+2. Buildaa image: `docker build . -t prodekoregistry.azurecr.io/prodeko-org/prodeko-org`
 3. Puske image registryyn: `docker push prodekoregistry.azurecr.io/prodeko-org/prodeko-org`
 4. Aja infrastructure reposta: `ansible-playbook playbook.yml --extra-vars '@passwd.yml' --tags prodeko_org`
 
@@ -214,7 +214,7 @@ $ npm run lint:css-fix  # Korjaa virheet
 
 ### Kääntäminen eri kielille
 
-1. importtaa ugettext_lazy: `from django.utils.translation import ugettext_lazy as *`. Käytä koodissa näin: \_("First name")
+1. importtaa gettext_lazy: `from django.utils.translation import gettext_lazy as *`. Käytä koodissa näin: \_("First name")
 2. `python3 manage.py makemessages -l fi -i "node_modules/*" -i "venv/*"`. locale/ kansioon .po tiedostoon muodostuu käännettävä sana, esimerkin tapauksessa "First name".
 3. Käännä suomeksi .po tiedostossa ja aja `python3 manage.py compilemessages -l fi -i "node_modules/*" -i "venv/*"`.
 4. (Valinnainen) Javascript tiedostojen sisältämät käännöset saa muodostettua seuraavalla komennolla: `python3 manage.py makemessages -d djangojs -l fi -i tiedotteet -i "node_modules/*" -i "venv/*"`
