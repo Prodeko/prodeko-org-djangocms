@@ -2,7 +2,7 @@
 waitress==1.4.4
 
 # Django requirements
-Django==2.2.14
+Django==3.0.8
 django-appconf==1.0.4
 django-audit-log==0.7.0 # Replace with django-revision
 django-ckeditor==5.9.0
