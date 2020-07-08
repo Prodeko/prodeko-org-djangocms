@@ -27,8 +27,7 @@ from django.shortcuts import (
     HttpResponseRedirect,
     get_object_or_404,
     redirect,
-    render,
-    render_to_response,
+    render
 )
 from django.template.loader import render_to_string
 from django.urls import reverse
@@ -243,7 +242,7 @@ def admin_member_requests(request):
             else:
                 return HttpResponseForbidden()
         return render(request, "admin.html", {"users": users, "heading": heading})
-    return render_to_response("")
+    return render("")
 
 
 @staff_member_required(login_url="/login/")

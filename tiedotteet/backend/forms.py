@@ -14,7 +14,7 @@ from django.forms import (
     Textarea,
     TextInput,
 )
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 from tiedotteet.backend.models import Category, MailConfiguration, Message, Tag
 

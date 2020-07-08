@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 set -e
 
@@ -30,7 +30,7 @@ python manage.py shell -c "from django.contrib.auth import get_user_model; \
 	User.objects.create_superuser('webbitiimi@prodeko.org', 'kananugetti', has_accepted_policies=True)"
 
 # Load sample data for development
-# python3 manage.py loaddata --app cms --app menus --verbosity 3 data.json
+python3 manage.py loaddata --app cms --app menus --verbosity 3 data.json
 
 # Translations
 python3 manage.py makemessages -l fi -i "node_modules/*" -i "venv/*"

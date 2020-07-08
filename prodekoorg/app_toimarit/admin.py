@@ -5,7 +5,7 @@ from django.contrib.admin import SimpleListFilter
 from django.core.exceptions import PermissionDenied
 from django.http import HttpResponse
 from django.urls import path
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from django.views.generic import TemplateView
 
 from .models import HallituksenJasen, Jaosto, Toimari
