@@ -57,9 +57,9 @@ Myös abisivut, auth_prodeko, seminaari ja tiedotteet ovat omia appejaan, vaikka
 
 - Käynnistä projekti komennolla `docker-compose up`
 - Avaa uusi terminal window
-- Testit saa ajettua komennolla `docker exec -it prodeko_org pytest prodekoorg/`
-- Testien kattavuus ja rinnakkaisajo `docker exec -it prodeko_org pytest --cov -n auto prodekoorg/`
-- **Tietyn appin testit saa ajettua näin: `docker exec -it prodeko_org pytest prodekoorg/app_kulukorvaus**
+- Testit saa ajettua komennolla `docker exec prodeko_org pytest prodekoorg/`
+- Testien kattavuus ja rinnakkaisajo `docker exec prodeko_org pytest --cov -n auto prodekoorg/`
+- **Tietyn appin testit saa ajettua näin: `docker exec prodeko_org pytest prodekoorg/app_kulukorvaus**
 
 ### Koodityyli
 

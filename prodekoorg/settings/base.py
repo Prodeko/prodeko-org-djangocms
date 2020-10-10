@@ -199,7 +199,6 @@ INSTALLED_APPS = (
     "djangocms_text_ckeditor",
     "filer",
     "easy_thumbnails",
-    "meta",
     # Django CMS plugins
     "djangocms_column",
     "djangocms_file",
