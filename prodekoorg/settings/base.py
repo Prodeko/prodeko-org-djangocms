@@ -51,6 +51,16 @@ AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
 ]
 
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://redis:6379",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    }
+}
+
 # Internationalization
 # https://docs.djangoproject.com/en/dev/topics/i18n/
 LANGUAGE_CODE = "fi"
@@ -198,7 +208,6 @@ INSTALLED_APPS = (
     "djangocms_style",
     "djangocms_snippet",
     "djangocms_video",
-    "djangocms_page_meta",
     # SASS
     "sass_processor",
     # ------------------------

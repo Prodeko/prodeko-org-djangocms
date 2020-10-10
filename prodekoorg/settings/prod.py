@@ -32,11 +32,6 @@ DATABASES = {
     }
 }
 
-# Caching
-CACHES = {
-    "default": {"BACKEND": "redis_cache.RedisCache", "LOCATION": "redis:6379"}
-}
-
 INSTALLED_APPS += ("storages",)
 
 CDN_URL = "static.prodeko.org"

@@ -16,9 +16,6 @@ DATABASES = {
     }
 }
 
-# Caching
-CACHES = {"default": {"BACKEND": "redis_cache.RedisCache", "LOCATION": "redis:6379"}}
-
 if config["DEBUG"]["SHOW_DEBUG_TOOLBAR"] == "True":
     # Show django debug toolbar always.
     # This is needed because the Docker internal IP is not static
