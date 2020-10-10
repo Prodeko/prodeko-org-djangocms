@@ -5,11 +5,11 @@ on: [push]
 jobs:
   test:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        group: [1, 2, 3, 4, 5]
     steps:
       - uses: actions/checkout@v2
+
+      - name: Setup variables
+        run: cp prodekoorg/settings/variables.sample.txt prodekoorg/settings/variables.txt
 
       - name: Build the docker-compose stack
         run: docker-compose up -d
@@ -17,18 +17,18 @@ jobs:
       - name: Sleep
         uses: jakejarvis/wait-action@master
         with:
-          time: '15s'
+          time: '30s'
 
-      - name: Check running containers
-        run: docker ps
+      - name: Check logs
+        run: docker logs prodeko_org
 
       - name: Run pytest
-        run: pytest --cov --splits 5 --group ${{ matrix.group }}
+        run: docker exec prodeko_org pytest --cov prodekoorg/
 
       - name: Upload coverage
         uses: actions/upload-artifact@v1
         with:
-          name: coverage${{ matrix.group }}
+          name: coverage
           path: .coverage
 
   coverage:
