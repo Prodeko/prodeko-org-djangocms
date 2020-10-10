@@ -1,18 +1,21 @@
+from cms.test_utils.testcases import CMSTestCase
 from django.contrib.auth import get_user_model
-from django.test import TestCase
+from prodekoorg.app_utils.tests.test_utils import CommonTestData
+from sekizai.context import SekizaiContext
 
 from ..models import HallituksenJasen, Jaosto, Toimari
 
 
-class TestData(TestCase):
-    """Common test data for app_toimarit used across
-    test_models.py and test_views.py
+class TestData(CMSTestCase, CommonTestData):
+    """Common test data for app_toimarit tests.
 
     Args:
-        TestCase: https://docs.djangoproject.com/en/dev/topics/testing/tools/#testcase.
+        CMSTestCase: http://docs.django-cms.org/en/latest/how_to/testing.html.
+        CommonTestData: Defined in prodekoorg.app_utils.test.test_utils
     """
 
     fixtures = ["test_users.json"]
+    context = SekizaiContext()
 
     @classmethod
     def setUpTestData(cls):
@@ -40,3 +43,5 @@ class TestData(TestCase):
             email="puheenjohtaja@test.com",
             year=2020,
         )
+
+        super(TestData, cls).setUpTestData()

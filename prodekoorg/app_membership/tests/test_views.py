@@ -1,18 +1,16 @@
 import os
 from unittest.mock import Mock, patch
 
+import pytest
 from django.core import mail
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test.utils import override_settings
 
 from .test_data import TestData
 
-urlconf = "prodekoorg.app_membership.tests.test_urls"
 
-
-@override_settings(ROOT_URLCONF=urlconf, TESTING=True)
 class MembershipViewTest(TestData):
-    """Tests for views in the app_kulukorvaus app."""
+    """Tests for views in the app_membership app."""
 
     @patch("prodekoorg.app_membership.groups_api.initialize_service")
     def test_accept_membership(self, mock_initialize_service):

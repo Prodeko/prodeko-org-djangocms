@@ -1,40 +1,29 @@
-import tempfile
 from datetime import datetime
 from unittest.mock import MagicMock
 
 from cms.api import create_page
 from cms.constants import TEMPLATE_INHERITANCE_MAGIC
 from cms.test_utils.testcases import CMSTestCase
-from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.core.files import File
+from prodekoorg.app_utils.tests.test_utils import CommonTestData
+from sekizai.context import SekizaiContext
 
 from ..models import Dokumentti
 
 GDRIVE_ID = "1GUkGy5KDJ7HG9DNbbjUELs_KEBUcE-oV"
 
 
-class TestData(CMSTestCase):
-    """Common test data for app_poytakirjat used across
-    test_forms.py, test_models.py and test_views.py
+class TestData(CMSTestCase, CommonTestData):
+    """Common test data for app_poytakirjat tests.
 
     Args:
-        TestCase: https://docs.djangoproject.com/en/dev/topics/testing/tools/#testcase.
+        CMSTestCase: http://docs.django-cms.org/en/latest/how_to/testing.html.
+        CommonTestData: Defined in prodekoorg.app_utils.test.test_utils
     """
 
     fixtures = ["test_users.json"]
-    tmp_dir = None
-
-    @classmethod
-    def setUpClass(cls):
-        cls.tmp_dir = tempfile.TemporaryDirectory(prefix="mediatest")
-        settings.MEDIA_ROOT = cls.tmp_dir.name
-        super(TestData, cls).setUpClass()
-
-    @classmethod
-    def tearDownClass(cls):
-        cls.tmp_dir = None
-        super(TestData, cls).tearDownClass()
+    context = SekizaiContext()
 
     @classmethod
     def setUpTestData(cls):
@@ -71,3 +60,5 @@ class TestData(CMSTestCase):
             date=datetime.strptime("08.01.2020", "%d.%m.%Y"),
             doc_file=cls.file_mock_pdf,
         )
+
+        super(TestData, cls).setUpTestData()

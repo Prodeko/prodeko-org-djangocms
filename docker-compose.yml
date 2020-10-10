@@ -3,6 +3,7 @@ version: '3.8'
 services:
   postgres:
     image: postgres:11
+    container_name: postgres
     environment:
       - POSTGRES_DB=prodekoorg
       - POSTGRES_USER=prodekoorg
@@ -10,9 +11,11 @@ services:
 
   redis:
     image: redis:6
+    container_name: redis
 
   prodeko_org:
     build: .
+    container_name: prodeko_org
     entrypoint: /code/docker-entrypoint.sh
     command: python3 manage.py runserver 0.0.0.0:8000
     volumes:

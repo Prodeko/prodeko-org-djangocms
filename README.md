@@ -53,23 +53,13 @@ Myös abisivut, auth_prodeko, seminaari ja tiedotteet ovat omia appejaan, vaikka
 3. Puske image registryyn: `docker push prodekoregistry.azurecr.io/prodeko-org/prodeko-org`
 4. Aja infrastructure reposta: `ansible-playbook playbook.yml --extra-vars '@passwd.yml' --tags prodeko_org`
 
-## Vanha
-
-Azuressa hostataan media ja static tiedostot. Lisäksi käytössä on Azuren CDN.
-
-1. Virtualenv päälle `source venv/bin/activate`
-2. Aja `bash deploy.sh` projektin juuressa
-3. Käynnistä apache uudestaan `sudo service apache2 restart`
-4. Tarkista näyttävätkö sivut toimivan oikein [prodeko.org](https://prodeko.org)
-
-Jos törmäät "ImportError: Couldn't import Django..." erroriin, vaihda käyttäjä roottiin (`sudo su`) ja tee kohdat 2. ja 3. uudestaan.
-
 ### Testaus
 
-- Testit saa ajettua komennolla `python3 manage.py test -v=2"`
-- Vain osan testeistä saa ajettua esimerkiksi näin: `python3 manage.py test -p=test_forms.py -v=2"`
-- Tietyn appin testit saa ajettua näin: `python3 manage.py test prodekoorg.app_kulukorvaus.tests -v=2 --keepdb --parallel` (--keepdb säilyttää tietokannan testiajojen välissä)
-- Testien kirjoittamiseen voi katsoa mallia prodekoorg/app_kulukorvaus/tests/ kansiosta
+- Käynnistä projekti komennolla `docker-compose up`
+- Avaa uusi terminal window
+- Testit saa ajettua komennolla `docker exec -it prodeko_org pytest prodekoorg/`
+- Testien kattavuus ja rinnakkaisajo `docker exec -it prodeko_org pytest --cov -n auto prodekoorg/`
+- **Tietyn appin testit saa ajettua näin: `docker exec -it prodeko_org pytest prodekoorg/app_kulukorvaus**
 
 ### Koodityyli
 

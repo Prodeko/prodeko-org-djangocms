@@ -87,7 +87,7 @@ class KulukorvausPerustiedotModelTest(TestData):
 
     def test_bic_max_length(self):
         max_length = self.test_perustiedot_model._meta.get_field("bic").max_length
-        self.assertEqual(max_length, 11)
+        self.assertEqual(max_length, 30)
 
     @english
     def test_sum_overall_label_english(self):

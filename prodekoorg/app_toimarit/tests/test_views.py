@@ -1,5 +1,6 @@
 import os
 
+import pytest
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test.utils import override_settings
 from django.urls import reverse
@@ -7,14 +8,11 @@ from django.urls import reverse
 from ..models import HallituksenJasen, Jaosto, Toimari
 from .test_data import TestData
 
-urlconf = "prodekoorg.app_toimarit.tests.test_urls"
-
 __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
 csv_toimari_test = open(os.path.join(__location__, "csv_toimari_test.csv"), "rb")
 csv_hallitus_test = open(os.path.join(__location__, "csv_hallitus_test.csv"), "rb")
 
 
-@override_settings(ROOT_URLCONF=urlconf, TESTING=True)
 class AppToimaritViewTest(TestData):
     """Tests for views in the app_kulukorvaus app."""
 
@@ -27,7 +25,7 @@ class AppToimaritViewTest(TestData):
         response = self.client.get(reverse("admin:hallitus_postcsv"))
         self.assertRedirects(
             response,
-            "/fi/admin/login/?next=/fi/admin/app_toimarit/hallituksenjasen/postcsv",
+            "/en/admin/login/?next=/en/admin/app_toimarit/hallituksenjasen/postcsv",
         )
 
     def test_hallitus_postcsv_if_not_correct_permissions(self):
@@ -41,7 +39,7 @@ class AppToimaritViewTest(TestData):
         response = self.client.get(reverse("admin:hallitus_postcsv"))
         self.assertRedirects(
             response,
-            "/fi/admin/login/?next=/fi/admin/app_toimarit/hallituksenjasen/postcsv",
+            "/en/admin/login/?next=/en/admin/app_toimarit/hallituksenjasen/postcsv",
         )
 
     def test_hallitus_postcsv_correct_import_and_permissions(self):

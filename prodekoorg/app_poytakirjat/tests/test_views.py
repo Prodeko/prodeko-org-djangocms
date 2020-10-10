@@ -1,17 +1,16 @@
 import unittest
 
+import pytest
 from django.conf import settings
 from django.test.utils import override_settings
 from django.urls import reverse
 
-from .test_data import TestData
-
 from ..models import Dokumentti
+from .test_data import TestData
 
 urlconf = "prodekoorg.urls"
 
 
-@override_settings(ROOT_URLCONF=urlconf, TESTING=True)
 class DokumenttiViewTest(TestData):
     """Tests for views in the app_poytakirjat app."""
 
@@ -21,8 +20,8 @@ class DokumenttiViewTest(TestData):
         accessed and the user is not logged in.
         """
 
-        response = self.client.get("/fi/kokouspoytakirjat/", follow=True)
-        self.assertRedirects(response, "/fi/login/?next=/fi/kokouspoytakirjat/")
+        response = self.client.get("/en/kokouspoytakirjat/", follow=True)
+        self.assertRedirects(response, "/en/login/?next=/en/kokouspoytakirjat/")
 
     def test_admin_download_not_authorized(self):
         """

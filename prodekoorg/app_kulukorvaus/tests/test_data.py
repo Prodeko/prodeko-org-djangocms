@@ -1,37 +1,26 @@
-import tempfile
 from unittest.mock import MagicMock
 
 from cms.api import create_page
 from cms.constants import TEMPLATE_INHERITANCE_MAGIC
 from cms.test_utils.testcases import CMSTestCase
-from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.core.files import File
+from prodekoorg.app_utils.tests.test_utils import CommonTestData
+from sekizai.context import SekizaiContext
 
 from ..models import Kulukorvaus, KulukorvausPerustiedot
 
 
-class TestData(CMSTestCase):
-    """Common test data for app_kulukorvaus used across
-    test_forms.py, test_models.py and test_views.py
+class TestData(CMSTestCase, CommonTestData):
+    """Common test data for app_kulukorvaus tests.
 
     Args:
         CMSTestCase: http://docs.django-cms.org/en/latest/how_to/testing.html.
+        CommonTestData: Defined in prodekoorg.app_utils.test.test_utils
     """
 
     fixtures = ["test_users.json"]
-    tmp_dir = None
-
-    @classmethod
-    def setUpClass(cls):
-        cls.tmp_dir = tempfile.TemporaryDirectory(prefix="mediatest")
-        settings.MEDIA_ROOT = cls.tmp_dir.name
-        super(TestData, cls).setUpClass()
-
-    @classmethod
-    def tearDownClass(cls):
-        cls.tmp_dir = None
-        super(TestData, cls).tearDownClass()
+    context = SekizaiContext()
 
     @classmethod
     def setUpTestData(cls):
@@ -57,7 +46,6 @@ class TestData(CMSTestCase):
         cls.file_mock_jpg.name = "test.jpg"
 
         cls.test_perustiedot_model = KulukorvausPerustiedot.objects.create(
-            pk=1,
             created_by_user=cls.test_user1,
             created_by="webbitiimi",
             email="webbitiimi@prodeko.org",
@@ -70,7 +58,6 @@ class TestData(CMSTestCase):
         )
 
         cls.test_kulukorvaus_model = Kulukorvaus.objects.create(
-            pk=1,
             info=cls.test_perustiedot_model,
             target="Testing",
             explanation="Making sure that everything works as expected!",
@@ -78,3 +65,5 @@ class TestData(CMSTestCase):
             additional_info="Some additional info.",
             receipt=cls.file_mock_jpg,
         )
+
+        super(TestData, cls).setUpTestData()

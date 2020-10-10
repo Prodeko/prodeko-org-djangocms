@@ -1,6 +1,6 @@
 from cms.app_base import CMSApp
 from cms.apphook_pool import apphook_pool
-from django.urls import re_path
+from django.urls import path
 from django.utils.translation import gettext_lazy as _
 
 from .views import main_form
@@ -12,4 +12,4 @@ class ContactApphook(CMSApp):
     name = _("Contact form application")
 
     def get_urls(self, page=None, language=None, **kwargs):
-        return [re_path(r"^", main_form, name="contact")]
+        return [path("", main_form, name="contact")]
