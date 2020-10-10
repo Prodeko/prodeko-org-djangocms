@@ -27,3 +27,4 @@ services:
       - postgres
     environment:
       - DATABASE_URL=postgres://prodekoorg:secret@postgres/prodekoorg
+      - CI=${CI}

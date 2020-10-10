@@ -14,10 +14,6 @@ function wait_for_db () {
 
 wait_for_db
 
-# Create test database
-# psql -h $DATABASE_URL -c "CREATE DATABASE test_prodekoorg;"
-# psql -h $DATABASE_URL -c "GRANT ALL PRIVILEGES ON test_prodekoorg.* TO prodekoorg@localhost IDENTIFIED BY 'secret';"
-
 # Create and run migrations
 echo "Creating migrations..."
 python3 manage.py makemigrations

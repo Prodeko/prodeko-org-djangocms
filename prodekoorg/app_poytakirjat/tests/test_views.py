@@ -1,5 +1,3 @@
-import unittest
-
 import pytest
 from django.conf import settings
 from django.test.utils import override_settings
@@ -51,8 +49,8 @@ class DokumenttiViewTest(TestData):
         self.assertContains(response, "/media/dokumentit/2019", count=1)
         self.assertContains(response, "/media/dokumentit/2020", count=1)
 
-    @unittest.skip(
-        "This is a long running test. Run if you suspect the G Drive integration is broken."
+    @pytest.mark.skip(
+        reason="This is a long running test. Run if you suspect the G Drive integration is broken."
     )
     def test_admin_download_authorized(self):
         """

@@ -3,7 +3,11 @@ import tempfile
 from cms.api import create_page
 from cms.constants import TEMPLATE_INHERITANCE_MAGIC
 from django.conf import settings
-from django.test import TestCase
+from django.test import TestCase, override_settings
+
+# Override settigs to test translations
+english = override_settings(LANGUAGE_CODE="en", LANGUAGES=(("en", "English"),))
+finnish = override_settings(LANGUAGE_CODE="fi", LANGUAGES=(("fi", "Finnish"),))
 
 
 class CommonTestData(TestCase):
