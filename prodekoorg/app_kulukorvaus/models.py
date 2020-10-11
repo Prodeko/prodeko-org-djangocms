@@ -69,7 +69,7 @@ class KulukorvausPerustiedot(models.Model):
     bank_number = models.CharField(
         max_length=32, verbose_name=_("Account number (IBAN)")
     )
-    bic = models.CharField(max_length=11, choices=BIC_CHOICES, verbose_name="BIC")
+    bic = models.CharField(max_length=30, choices=BIC_CHOICES, verbose_name="BIC")
     sum_overall = models.DecimalField(
         max_digits=10, decimal_places=2, verbose_name=_("Total reimbursement (in €)")
     )

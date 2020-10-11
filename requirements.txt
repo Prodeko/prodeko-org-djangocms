@@ -2,68 +2,67 @@
 waitress==1.4.4
 
 # Django requirements
-Django==2.2.14
+Django==3.0.10
 django-appconf==1.0.4
 django-audit-log==0.7.0 # Replace with django-revision
-django-ckeditor==5.9.0
-django-classy-tags==1.0.0
-django-cms==3.7.1
-django-cors-headers==3.4.0
-django-filer==1.7.1
-django-filter==2.3.0
+django-ckeditor==6.0.0
+django-classy-tags==2.0.0
+django-cms==3.7.4
+django-cors-headers==3.5.0
+django-filer==2.0.2
+django-filter==2.4.0
 django-formtools==2.2
 django-js-asset==1.2.2
 django-mptt==0.11.0
-django-polymorphic==2.1.2
-django-sekizai==1.1.0
+django-polymorphic==3.0.0
+django-sekizai==2.0.0
 django-treebeard==4.3.1
-djangocms-admin-style==1.5.0
-djangocms-attributes-field==1.2.0
-djangocms-bootstrap4==1.6.0
-djangocms-column==1.10.0
-djangocms-file==2.4.0
-djangocms-icon==1.5.0
-djangocms-link==2.6.1
-djangocms-picture==2.4.0
-djangocms-snippet==2.3.0
-djangocms-style==2.3.0
-djangocms-text-ckeditor==3.9.1
-djangocms-video==2.3.0
-djangocms-page-meta==0.10.0
-djangorestframework==3.11.0
-django-storages==1.9.1
-django-pipeline==2.0.4
-django-redis-cache==2.1.1
+djangocms-admin-style==2.0.0
+djangocms-attributes-field==2.0.0
+djangocms-bootstrap4==2.0.0
+djangocms-column==1.11.0
+djangocms-file==3.0.0
+djangocms-icon==2.0.0
+djangocms-link==3.0.0
+djangocms-picture==3.0.0
+djangocms-snippet==3.0.0
+djangocms-style==3.0.0
+djangocms-text-ckeditor==4.0.0
+djangocms-video==3.0.0
+djangorestframework==3.12.1
+django-storages==1.10.1
+django-pipeline==2.0.5
+django-redis==4.12.1
 
 # For Django tests
-beautifulsoup4==4.9.1
-lxml==4.5.1
+beautifulsoup4==4.9.3
+lxml==4.5.2
 
 azure-common==1.1.25
 # Upgrade to 12.x.x once https://github.com/jschneier/django-storages/pull/805/ is merged
-azure-storage-blob==2.1.0
-sentry-sdk==0.16.0
+azure-storage-blob==12.5.0
+sentry-sdk==0.18.0
 
 easy-thumbnails==2.7
 html5lib==1.1
-Markdown==3.2.2
+Markdown==3.3
 oauthlib==3.1.0
-psycopg2==2.8.5
+psycopg2==2.8.6
 Pillow==7.2.0
-PyMySQL==0.9.3
+PyMySQL==0.10.1
 PyPDF2==1.26.0
 pytz==2020.1
-reportlab==3.5.44
+reportlab==3.5.53
 requests==2.24.0
 six==1.15.0
 unicodecsv==0.14.1
 uritemplate==3.0.1
 
 # Google drive integration
-google-api-python-client==1.9.3
+google-api-python-client==1.12.3
 google-auth-oauthlib==0.4.1
 
 # SASS
-libsass==0.20.0
+libsass==0.20.1
 django-compressor==2.4
-django-sass-processor==0.8
+django-sass-processor==0.8.2

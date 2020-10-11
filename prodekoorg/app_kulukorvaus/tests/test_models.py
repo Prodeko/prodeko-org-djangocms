@@ -1,11 +1,6 @@
-from django.test import override_settings
+from prodekoorg.app_utils.tests.test_utils import english, finnish
 
 from .test_data import TestData
-
-# Override settigs to test translations
-english = override_settings(LANGUAGE_CODE="en", LANGUAGES=(("en", "English"),))
-
-finnish = override_settings(LANGUAGE_CODE="fi", LANGUAGES=(("fi", "Finnish"),))
 
 
 class KulukorvausPerustiedotModelTest(TestData):
@@ -87,7 +82,7 @@ class KulukorvausPerustiedotModelTest(TestData):
 
     def test_bic_max_length(self):
         max_length = self.test_perustiedot_model._meta.get_field("bic").max_length
-        self.assertEqual(max_length, 11)
+        self.assertEqual(max_length, 30)
 
     @english
     def test_sum_overall_label_english(self):

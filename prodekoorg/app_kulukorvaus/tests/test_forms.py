@@ -1,3 +1,4 @@
+import pytest
 from django.core.files.uploadedfile import SimpleUploadedFile
 
 from ..forms import KulukorvausForm, KulukorvausPerustiedotForm
@@ -52,7 +53,7 @@ class KulukorvausFormTest(TestData):
 
     def test_kulukorvaus_form_valid(self):
         form_data = {
-            "info": 1,
+            "info": self.test_perustiedot_model.pk,
             "target": "Testing",
             "explanation": "Making sure that everything works as expected!",
             "sum_euros": 12.39,
@@ -65,7 +66,7 @@ class KulukorvausFormTest(TestData):
 
     def test_kulukorvaus_form_invalid_multiple(self):
         form_data = {
-            "info": 1,
+            "info": self.test_perustiedot_model.pk,
             "target": "",
             "explanation": "",
             "sum_euros": 12.391,

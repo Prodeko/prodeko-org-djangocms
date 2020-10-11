@@ -27,7 +27,7 @@ from django.shortcuts import (
     HttpResponseRedirect,
     get_object_or_404,
     redirect,
-    render
+    render,
 )
 from django.template.loader import render_to_string
 from django.urls import reverse
