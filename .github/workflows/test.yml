@@ -23,37 +23,10 @@ jobs:
           time: '45s'
 
       - name: Run pytest
-        run: docker exec prodeko_org pytest --cov prodekoorg/
-
-      - name: Upload coverage
-        uses: actions/upload-artifact@v1
-        with:
-          name: .coverage
-          path: .coverage
-
-  coverage:
-    needs: test
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Set up Python 3.8
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.8
-
-      - name: Install deps
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements-dev.txt
-
-      - name: Download coverage
-        uses: actions/download-artifact@v2
+        run: docker exec prodeko_org pytest --cov --cov-report=xml prodekoorg/
 
       - name: Run coverage
-        run: |
-          coverage report --fail-under=70
-          coverage xml
+        run: coverage report --fail-under=70
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v1
