@@ -55,8 +55,12 @@ jobs:
 
       - name: Run coverage
         run: |
-          coverage combine coverage*/.coverage*
-          coverage report --fail-under=50
+          coverage report --fail-under=70
           coverage xml
 
-      - uses: codecov/codecov-action@v1
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          file: ./coverage.xml
+          flags: unittests
