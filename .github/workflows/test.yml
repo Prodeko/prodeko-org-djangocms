@@ -28,7 +28,7 @@ jobs:
       - name: Upload coverage
         uses: actions/upload-artifact@v1
         with:
-          name: coverage
+          name: .coverage
           path: .coverage
 
   coverage:
