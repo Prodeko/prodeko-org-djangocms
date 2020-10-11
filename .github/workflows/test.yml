@@ -25,9 +25,6 @@ jobs:
       - name: Run pytest
         run: docker exec prodeko_org pytest --cov --cov-report=xml prodekoorg/
 
-      - name: Run coverage
-        run: coverage report --fail-under=70
-
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v1
         with:
