@@ -20,10 +20,7 @@ jobs:
       - name: Sleep
         uses: jakejarvis/wait-action@master
         with:
-          time: '30s'
-
-      - name: Run pytest
-        run: docker logs prodeko_org
+          time: '45s'
 
       - name: Run pytest
         run: docker exec prodeko_org pytest --cov prodekoorg/
