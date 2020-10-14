@@ -48,7 +48,10 @@ MEDIA_LOCATION = "media"
 STATIC_URL = f"https://{CDN_URL}/{STATIC_LOCATION}/"
 MEDIA_URL = f"https://{CDN_URL}/{MEDIA_LOCATION}/"
 
+# For django-ckeditor
 CKEDITOR_BASEPATH = f"https://{CDN_URL}/static/ckeditor/ckeditor/"
+# For djangocms-text-ckeditor
+TEXT_CKEDITOR_BASE_PATH = f"https://{CDN_URL}/static/djangocms_text_ckeditor/ckeditor/"
 
 # Django filer config
 FILER_STORAGES = {
