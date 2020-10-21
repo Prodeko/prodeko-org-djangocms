@@ -781,6 +781,7 @@ def admin_set_notes(request):
                 print(row)
                 names = row[1].split(" ", 1)
                 try:
+                    print(row)
                     user = User.objects.get(email__iexact=row[3])
                     membership_output += (
                         "User found: " + row[0] + ", " + row[1] + ", " + row[3] + "<br>"
@@ -834,8 +835,7 @@ def admin_set_notes(request):
                                 for _ in range(32)
                             )
                             u.save()
-                            p = Person()
-                            p.user = u
+                            p = u.person
                             if len(names) > 1:
                                 p.middle_names = names[1]
                             p.city = row[2]
