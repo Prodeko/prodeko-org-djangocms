@@ -6,6 +6,16 @@
 
 {% load sekizai_tags %}
 <h3>{% trans question_ask %}</h3>
+<div class="col-lg-8 col-sm-12">
+    <p>
+        {% blocktrans trimmed %}
+            Tehdään hakemisesta kaikille hyvä kokemus, eli muistetaan hyvät kysymyskäytännöt. 
+            Kysy sama kysymys kaikilta hakijoilta, kysy vain asioita, mitä hakija voi jo tietää ennen perehdytystä 
+            (painopiste motivaatiossa ja näkemyksissä) ja älä laita kysymyksiä vaalikokousta edeltävää viikonloppua vastaan,
+             vaan jätetään viimeiset kysymykset vaalikokousta edeltävänä perjantaina viimeistään klo 15 :)
+        {% endblocktrans%}
+    </p>
+</div>
 <form novalidate method="POST" id="vaalitKysymysForm">
     {% csrf_token %}
     <div class="form-group row">
