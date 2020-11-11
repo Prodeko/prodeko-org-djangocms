@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 12:16+0200\n"
+"POT-Creation-Date: 2020-11-11 15:43+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Timo Riski <timo@prodeko.org>\n"
 "Language: \n"
@@ -107,7 +107,7 @@ msgstr "Profiili"
 #: auth_prodeko/templates/accounts/user_profile.html:14
 #: prodekoorg/app_kulukorvaus/models.py:66
 #: prodekoorg/app_kulukorvaus/printing.py:97
-#: prodekoorg/app_toimarit/models.py:20 prodekoorg/app_vaalit/models.py:53
+#: prodekoorg/app_toimarit/models.py:20 prodekoorg/app_vaalit/models.py:54
 msgid "Name"
 msgstr "Nimi"
 
@@ -356,7 +356,7 @@ msgid "Tutoring (isovastaava@prodeko.org)"
 msgstr "ISO-toiminta (isovastaava@prodeko.org)"
 
 #: prodekoorg/app_contact/models.py:87 prodekoorg/app_kulukorvaus/models.py:119
-#: prodekoorg/app_vaalit/models.py:96 prodekoorg/app_vaalit/models.py:126
+#: prodekoorg/app_vaalit/models.py:97 prodekoorg/app_vaalit/models.py:127
 msgid "Created at"
 msgstr "Luotu"
 
@@ -1012,67 +1012,71 @@ msgstr "Sovellus - Vaalit"
 msgid "Board"
 msgstr "Hallitus"
 
-#: prodekoorg/app_vaalit/models.py:22
+#: prodekoorg/app_vaalit/models.py:21
+msgid "Sort-key"
+msgstr "Järjestys-avain"
+
+#: prodekoorg/app_vaalit/models.py:23
 msgid "Read by"
 msgstr "Lukenut"
 
-#: prodekoorg/app_vaalit/models.py:33
+#: prodekoorg/app_vaalit/models.py:34
 msgid "position"
 msgstr "virka"
 
-#: prodekoorg/app_vaalit/models.py:34
+#: prodekoorg/app_vaalit/models.py:35
 msgid "Positions"
 msgstr "Virat"
 
-#: prodekoorg/app_vaalit/models.py:60
+#: prodekoorg/app_vaalit/models.py:61
 #: prodekoorg/app_vaalit/templates/forms/vaalit_apply_form.html:4
 msgid "Picture"
 msgstr "Kuva"
 
-#: prodekoorg/app_vaalit/models.py:81
+#: prodekoorg/app_vaalit/models.py:82
 msgid "applicant"
 msgstr "hakija"
 
-#: prodekoorg/app_vaalit/models.py:82
+#: prodekoorg/app_vaalit/models.py:83
 #: prodekoorg/app_vaalit/templates/vaalit_content.html:3
 msgid "Applicants"
 msgstr "Hakijat"
 
-#: prodekoorg/app_vaalit/models.py:101
+#: prodekoorg/app_vaalit/models.py:102
 msgid "questions"
 msgstr "kysymykset"
 
-#: prodekoorg/app_vaalit/models.py:103
+#: prodekoorg/app_vaalit/models.py:104
 msgid "Question"
 msgstr "Kysymys"
 
-#: prodekoorg/app_vaalit/models.py:110
+#: prodekoorg/app_vaalit/models.py:111
 msgid "question"
 msgstr "kysymys"
 
-#: prodekoorg/app_vaalit/models.py:111
+#: prodekoorg/app_vaalit/models.py:112
 #: prodekoorg/app_vaalit/templates/vaalit_content.html:5
 msgid "Questions"
 msgstr "Kysymykset"
 
-#: prodekoorg/app_vaalit/models.py:128
+#: prodekoorg/app_vaalit/models.py:129
 msgid "answered_by"
 msgstr "vastaaja"
 
-#: prodekoorg/app_vaalit/models.py:131
+#: prodekoorg/app_vaalit/models.py:132
 msgid "answers"
 msgstr "vastaukset"
 
-#: prodekoorg/app_vaalit/models.py:133
+#: prodekoorg/app_vaalit/models.py:134
 #: prodekoorg/app_vaalit/templates/vaalit_question.html:3
 msgid "Answer"
 msgstr "Vastaus"
 
-#: prodekoorg/app_vaalit/models.py:140
+#: prodekoorg/app_vaalit/models.py:141
 msgid "answer"
 msgstr "vastaus"
 
-#: prodekoorg/app_vaalit/models.py:141
+#: prodekoorg/app_vaalit/models.py:142
 #: prodekoorg/app_vaalit/templates/vaalit_question.html:4
 msgid "Answers"
 msgstr "Vastaukset"
@@ -1107,6 +1111,16 @@ msgstr "Muokkaa hakemusta"
 #: prodekoorg/app_vaalit/templates/forms/vaalit_question_form.html:4
 msgid "Ask a question"
 msgstr "Lähetä kysymys"
+
+#: prodekoorg/app_vaalit/templates/forms/vaalit_question_form.html:11
+msgid ""
+"Tehdään hakemisesta kaikille hyvä kokemus, eli muistetaan hyvät "
+"kysymyskäytännöt. Kysy sama kysymys kaikilta hakijoilta, kysy vain asioita, "
+"mitä hakija voi jo tietää ennen perehdytystä (painopiste motivaatiossa ja "
+"näkemyksissä) ja älä laita kysymyksiä vaalikokousta edeltävää viikonloppua "
+"vastaan, vaan jätetään viimeiset kysymykset vaalikokousta edeltävänä "
+"perjantaina viimeistään klo 15 :)"
+msgstr ""
 
 #: prodekoorg/app_vaalit/templates/vaalit_answer.html:3
 msgid "since"

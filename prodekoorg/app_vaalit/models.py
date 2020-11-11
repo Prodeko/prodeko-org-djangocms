@@ -18,6 +18,7 @@ class Virka(models.Model):
     is_hallitus = models.BooleanField(default=False, verbose_name=_("Board"))
     name = models.CharField(max_length=50, unique=True, verbose_name=_("Position"))
     description = models.TextField(default="", verbose_name=_("Description"))
+    sort_key = models.CharField(max_length=50, default="ZZZ", verbose_name=_("Sort-key"))
     read_by = models.ManyToManyField(
         settings.AUTH_USER_MODEL, blank=True, verbose_name=_("Read by")
     )
@@ -27,7 +28,7 @@ class Virka(models.Model):
 
     def natural_key(self):
         return self.name
-
+        
     class Meta:
         # Correct spelling in Django admin
         verbose_name = _("position")

@@ -305,7 +305,7 @@ def mark_as_unread(pk):
 def main_view(request):
     context = {}
     ehdokkaat = Ehdokas.objects.all()
-    virat = Virka.objects.all()
+    virat = Virka.objects.all().order_by("sort_key")
     # ehdokkaat_json is parsed to JSON in the template 'vaalit_question_form.html'
     ehdokkaat_python = serialize(
         "python",
