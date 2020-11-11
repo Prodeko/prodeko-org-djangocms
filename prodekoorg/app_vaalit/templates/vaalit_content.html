@@ -81,8 +81,8 @@
 
     function updateDescription(virka) {
         selectedVirka = localStorage.getItem('selectedTab_id');
-        if (selectedVirka == null) return;
-        description = descriptions[selectedVirka.slice(2)-1].description
+        if (selectedVirka == null || !Number.isInteger(Number(selectedVirka.slice(2)))) return;
+        description = descriptions.find(desc => desc.id === Number(selectedVirka.slice(2))).description;
         $("#roleDescription").text(description);
     }
 </script>

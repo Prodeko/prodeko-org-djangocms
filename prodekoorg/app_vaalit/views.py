@@ -317,7 +317,7 @@ def main_view(request):
         "python", virat, use_natural_foreign_keys=True, fields=("description")
     )
     ehdokkaat_json = json.dumps([d["fields"] for d in ehdokkaat_python])
-    virat_description_json = json.dumps([d["fields"] for d in virat_description_python])
+    virat_description_json = json.dumps(list(map(lambda x: {**x["fields"], "id": x["pk"]}, virat_description_python)))
     context["virat_description_json"] = virat_description_json
     context["virat"] = virat
     context["ehdokkaat"] = ehdokkaat
