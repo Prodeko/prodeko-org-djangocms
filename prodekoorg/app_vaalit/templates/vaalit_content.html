@@ -15,7 +15,7 @@
     </div>  
     <div class="col-xl-4 col-sm-12 ehdokasList">
         {% for virka in virat %}
-            <div id="_{{ forloop.counter }}" class="tab-pane fade" role="tabpanel">
+            <div id="_{{ virka.pk }}" class="tab-pane fade" role="tabpanel">
                 <h3>{% trans applicants %} ({{ virka.ehdokkaat.all.count }})</h3>
                 {% for ehdokas in virka.ehdokkaat.all %}
                     {% include "vaalit_ehdokas.html" %}
@@ -35,7 +35,7 @@
 
 <div id="vaaliContent" class="tab-content">
     {% for virka in virat %}
-        <div id="q_{{ forloop.counter }}" class="tab-pane fade" role="tabpanel">
+        <div id="q_{{ virka.pk }}" class="tab-pane fade" role="tabpanel">
             {# KYSYMYKSET #}
             <div class="vaalitQuestions col-xl-10 col-lg-10 col-xs-12">
                 <h3 class="mt-4">
