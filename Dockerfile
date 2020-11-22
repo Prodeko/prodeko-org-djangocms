@@ -13,14 +13,15 @@ FROM python:3
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-WORKDIR /code
+WORKDIR /app
 
-COPY requirements.txt requirements.txt ./
-COPY requirements-dev.txt requirements-dev.txt ./
+COPY requirements*.txt /app/
+RUN pip install -r /app/requirements-dev.txt
 
 RUN pip install --no-cache-dir -r requirements-dev.txt
 
-RUN apt-get update && apt-get install -y postgresql-client gettext dos2unix
+RUN apt-get update && apt-get install -y postgresql-client gettext dos2unix \
+  && rm -rf /var/lib/apt/lists/*
 
-COPY . /code/
-COPY --from=tiedotteet-build /app/public/tiedotteet /code/tiedotteet/frontend/public/tiedotteet
+COPY . /app/
+COPY --from=tiedotteet-build /app/public/tiedotteet /app/tiedotteet/frontend/public/tiedotteet
