@@ -1,13 +1,16 @@
 # Production server
-waitress==1.4.4
+uvicorn==0.12.3
+gunicorn==20.0.4
+uvloop==0.14.0
+httptools==0.1.1
 
 # Django requirements
-Django==3.0.10
+Django==3.1.3
 django-appconf==1.0.4
 django-audit-log==0.7.0 # Replace with django-revision
 django-ckeditor==6.0.0
 django-classy-tags==2.0.0
-django-cms==3.7.4
+django-cms==3.8.0
 django-cors-headers==3.5.0
 django-filer==2.0.2
 django-filter==2.4.0
@@ -17,7 +20,7 @@ django-mptt==0.11.0
 django-polymorphic==3.0.0
 django-sekizai==2.0.0
 django-treebeard==4.3.1
-djangocms-admin-style==2.0.0
+djangocms-admin-style==2.0.1
 djangocms-attributes-field==2.0.0
 djangocms-bootstrap4==2.0.0
 djangocms-column==1.11.0
@@ -29,38 +32,37 @@ djangocms-snippet==3.0.0
 djangocms-style==3.0.0
 djangocms-text-ckeditor==4.0.0
 djangocms-video==3.0.0
-djangorestframework==3.12.1
+djangorestframework==3.12.2
 django-storages==1.10.1
 django-pipeline==2.0.5
 django-redis==4.12.1
 
 # For Django tests
 beautifulsoup4==4.9.3
-lxml==4.5.2
+lxml==4.6.1
 
-azure-common==1.1.25
+azure-common==1.1.26
 # Upgrade to 12.x.x once https://github.com/jschneier/django-storages/pull/805/ is merged
 azure-storage-blob==2.1.0
-sentry-sdk==0.18.0
+sentry-sdk==0.19.4
 
 easy-thumbnails==2.7
 html5lib==1.1
-Markdown==3.3
+Markdown==3.3.3
 oauthlib==3.1.0
 psycopg2==2.8.6
-Pillow==7.2.0
-PyMySQL==0.10.1
+Pillow==8.0.1
 PyPDF2==1.26.0
-pytz==2020.1
-reportlab==3.5.53
-requests==2.24.0
+pytz==2020.4
+reportlab==3.5.55
+requests==2.25.0
 six==1.15.0
 unicodecsv==0.14.1
 uritemplate==3.0.1
 
 # Google drive integration
-google-api-python-client==1.12.3
-google-auth-oauthlib==0.4.1
+google-api-python-client==1.12.8
+google-auth-oauthlib==0.4.2
 
 # SASS
 libsass==0.20.1
