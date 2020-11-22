@@ -6,33 +6,33 @@
 {% trans "Edit" as edit %}
 
 {% load sekizai_tags %}
-<li id="kysymys_{{ kysymys.pk }}" class="list-group-item align-items-start mb-2 no-border">
-  <a href="#vastaukset_{{ kysymys.pk }}" class="list-group-item list-group-item-action questionBox" data-toggle="collapse" aria-expanded="false" aria-controls="vastaukset_1">
+<li id="kysymys_{{ question.pk }}" class="list-group-item align-items-start mb-2 no-border">
+  <a href="#vastaukset_{{ question.pk }}" class="list-group-item list-group-item-action questionBox" data-toggle="collapse" aria-expanded="false" aria-controls="vastaukset_1">
     <div class="row">
       <div class="col-md-12 pl-0 ml-2">
         <div class="questionHeader">
-          <p class="my-2"><strong>{{ kysymys.question }}</strong></p>
+          <p class="my-2"><strong>{{ question.question }}</strong></p>
         </div>
         <div class="questionFooter">
           <div class="col-6 flex-column QuestionAskerContainer">
-            {% if kysymys.created_by %}
+            {% if question.created_by %}
               <small class="mb-0">
-                <em>{{ kysymys.created_by.first_name }} {{ kysymys.created_by.last_name }}</em>
+                <em>{{ question.created_by.first_name }} {{ question.created_by.last_name }}</em>
               </small>
               <br />
             {% endif %}
-            <small class="hidden-mobile">{{ kysymys.created_at|timesince }} sitten</small>
+            <small class="hidden-mobile">{{ question.created_at|timesince }} sitten</small>
           </div>
           <div class="answersCountContainer">
-            <p class="d-inline-block mr-1" class="smaller-text-mobile">{% trans answers %}: {{ kysymys.answers.count }}</p>
+            <p class="d-inline-block mr-1" class="smaller-text-mobile">{% trans answers %}: {{ question.answers.count }}</p>
             <i class="fa fa-fw fa-chevron-down d-inline-block"></i>
           </div>
         </div>
         <div class="row">
-          {% if request.user == kysymys.created_by %}
+          {% if request.user == question.created_by %}
             <form class="vaalitDeleteKysymysForm"  novalidate method="POST">
               {% csrf_token %}
-              <input type="hidden" name="hidden-kysymys-id" value="{{ kysymys.pk }}"/>
+              <input type="hidden" name="hidden-kysymys-id" value="{{ question.pk }}"/>
               <button type="submit" class="btn btn-outline-danger btn-xs mt-2 mr-2">
                 <i class="fas fa-times mr-2"></i>
                 {% trans remove %}
