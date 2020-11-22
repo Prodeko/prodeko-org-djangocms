@@ -12,7 +12,7 @@ services:
     restart: unless-stopped
     command: gunicorn prodekoorg.asgi:application -b 0.0.0.0:8000 -k uvicorn.workers.UvicornWorker
     volumes:
-      - ./prodekoorg:/code/prodekoorg
+      - ./prodekoorg:/app/prodekoorg
     ports:
       - '8000:8000'
     environment:
