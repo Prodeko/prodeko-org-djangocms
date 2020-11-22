@@ -16,8 +16,6 @@ ENV PYTHONUNBUFFERED 1
 WORKDIR /app
 
 COPY requirements*.txt /app/
-RUN pip install -r /app/requirements-dev.txt
-
 RUN pip install --no-cache-dir -r requirements-dev.txt
 
 RUN apt-get update && apt-get install -y postgresql-client gettext dos2unix \
