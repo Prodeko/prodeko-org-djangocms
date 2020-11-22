@@ -16,3 +16,13 @@ $ python manage.py shell
 `vagrant destroy` tuhoaa nykyisen ympäristön, jonka jälkeen yllä olevat komennot voi ajaa uudestaan jos jokin meni pieleen.
 
 Kirjaudu sisään matrikkeliin käyttäjällä admin@admin.fi / salasana.
+
+Lopettaessa käytön, anna komento
+```
+$ vagrant suspend
+```
+
+tai aloittaessa käyttöä seuraavan kerran joutuu ajamaan aikaavievän komennon
+```
+$ vagrant provision
+```
