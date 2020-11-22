@@ -6,22 +6,22 @@
     <div class="answers-container-desktop">
         <div class="d-flex flex-column align-items-start mx-4 col-3 col-sm-2 col-lg-1">
             <div class="img-container">
-                <img src="{{ vastaus.by_ehdokas.pic|thumbnail_url:'ehdokas' }}" alt="{{ vastaus.by_ehdokas.name }}"/>
+                <img src="{{ answer.by_ehdokas.pic|thumbnail_url:'ehdokas' }}" alt="{{ answer.by_ehdokas.name }}"/>
             </div>
             <p class="mb-0 mt-2">
-                <strong>{{ vastaus.by_ehdokas.name }}</strong>
+                <strong>{{ answer.by_ehdokas.name }}</strong>
             </p>
-            <small>{{ vastaus.created_at|timesince }} {% trans since %}</small>
+            <small>{{ answer.created_at|timesince }} {% trans since %}</small>
         </div>
-        <p class="vastaus-text col-sm-7 col-md-7 col-lg-8 col-xl-9">{{ vastaus.answer|linebreaksbr }}</p>
+        <p class="vastaus-text col-sm-7 col-md-7 col-lg-8 col-xl-9">{{ answer.answer|linebreaksbr }}</p>
     </div>
     <div class="answers-container-mobile flex-column">
         <div class="d-flex flex-row answers-header-mobile">
             <div class="img-container">
-                <img src="{{ vastaus.by_ehdokas.pic|thumbnail_url:'ehdokas' }}" alt="{{ vastaus.by_ehdokas.name }}"/>
+                <img src="{{ answer.by_ehdokas.pic|thumbnail_url:'ehdokas' }}" alt="{{ answer.by_ehdokas.name }}"/>
             </div>
-            <p class="mb-0 mt-2"><strong>{{ vastaus.by_ehdokas.name }}</strong></p>
+            <p class="mb-0 mt-2"><strong>{{ answer.by_ehdokas.name }}</strong></p>
         </div>
-        <p class="vastaus-text col-sm-7 col-md-7 col-lg-8 col-xl-9">{{ vastaus.answer|linebreaksbr }}</p>
+        <p class="vastaus-text col-sm-7 col-md-7 col-lg-8 col-xl-9">{{ answer.answer|linebreaksbr }}</p>
     </div>
 </li>

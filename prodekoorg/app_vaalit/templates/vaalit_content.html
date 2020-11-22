@@ -46,9 +46,9 @@
                     {% for question in virka.questions.all %}
                         {% include "vaalit_question.html" %}
                         {# VASTAUKSET #}
-                        <div class="list-group collapse answersList" id="vastaukset_{{ kysymys.pk }}">
+                        <div class="list-group collapse answersList" id="vastaukset_{{ question.pk }}">
                             <div class="answersContainer">
-                                {% for vastaus in question.answers.all %}
+                                {% for answer in question.answers.all %}
                                     {% include "vaalit_answer.html" %}
                                 {% endfor %}
                                 {% if not question.answers.all %}
