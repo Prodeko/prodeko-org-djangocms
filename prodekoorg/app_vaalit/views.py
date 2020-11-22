@@ -307,7 +307,7 @@ def main_view(request):
     virat = (
         Virka.objects.all()
         .prefetch_related(
-            "ehdokkaat", "questions", "questions__answers", "questions__answered_by"
+            "ehdokkaat", "questions", "questions__answers", "ehdokkaat__answered_by"
         )
         .order_by("sort_key")
     )
