@@ -8,6 +8,7 @@ sentry_sdk.init(
     dsn=SENTRY_DSN,
     integrations=[DjangoIntegration(), RedisIntegration()],
     send_default_pii=True,
+    traces_sample_rate=0.1,
 )
 
 DEBUG = False
