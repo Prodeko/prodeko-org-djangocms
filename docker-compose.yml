@@ -15,11 +15,11 @@ services:
   prodeko_org:
     build: .
     container_name: prodeko_org
-    entrypoint: /code/docker-entrypoint.sh
+    entrypoint: /app/docker-entrypoint.sh
     command: python3 manage.py runserver 0.0.0.0:8000
     volumes:
-      - .:/code
-      - /code/tiedotteet/frontend/public/tiedotteet
+      - .:/app
+      - /app/tiedotteet/frontend/public/tiedotteet
     ports:
       - '8000:8000'
     depends_on:

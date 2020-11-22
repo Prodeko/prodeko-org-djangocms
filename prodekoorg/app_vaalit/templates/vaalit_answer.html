@@ -9,7 +9,7 @@
                 <img src="{{ vastaus.by_ehdokas.pic|thumbnail_url:'ehdokas' }}" alt="{{ vastaus.by_ehdokas.name }}"/>
             </div>
             <p class="mb-0 mt-2">
-                <stong>{{ vastaus.by_ehdokas.name }}</strong>
+                <strong>{{ vastaus.by_ehdokas.name }}</strong>
             </p>
             <small>{{ vastaus.created_at|timesince }} {% trans since %}</small>
         </div>
@@ -20,7 +20,7 @@
             <div class="img-container">
                 <img src="{{ vastaus.by_ehdokas.pic|thumbnail_url:'ehdokas' }}" alt="{{ vastaus.by_ehdokas.name }}"/>
             </div>
-            <p class="mb-0 mt-2"><stong>{{ vastaus.by_ehdokas.name }}</strong></p>
+            <p class="mb-0 mt-2"><strong>{{ vastaus.by_ehdokas.name }}</strong></p>
         </div>
         <p class="vastaus-text col-sm-7 col-md-7 col-lg-8 col-xl-9">{{ vastaus.answer|linebreaksbr }}</p>
     </div>

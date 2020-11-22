@@ -24,16 +24,16 @@ def get_version():
 handler500 = "prodekoorg.views.handler500"
 
 urlpatterns = [
-    re_path(r"^sitemap\.xml$", sitemap, {"sitemaps": {"cmspages": CMSSitemap}}),
-    re_path(
-        r"^robots.txt$",
+    path("sitemap.xml", sitemap, {"sitemaps": {"cmspages": CMSSitemap}}),
+    path(
+        "robots.txt",
         TemplateView.as_view(
             template_name="misc/robots.txt", content_type="text/plain"
         ),
         name="robots_file",
     ),
-    re_path(
-        r"^browserconfig.xml$",
+    path(
+        "browserconfig.xml",
         TemplateView.as_view(
             template_name="misc/browserconfig.xml", content_type="text/xml"
         ),
@@ -42,29 +42,29 @@ urlpatterns = [
 ]
 
 # Django filer
-urlpatterns += [re_path(r"", include("filer.server.urls"))]
+urlpatterns += [path("", include("filer.server.urls"))]
 
 # Localization and internationalization
 urlpatterns += i18n_patterns(
-    re_path(
-        r"^jsi18n/",
+    path(
+        "jsi18n/",
         cache_page(86400, key_prefix="js18n-%s" % get_version())(
             JavaScriptCatalog.as_view()
         ),
         name="javascript-catalog",
     ),
     # auth_prodeko
-    re_path(r"", include("auth_prodeko.urls")),
+    path("", include("auth_prodeko.urls")),
     # app_infoscreen
-    re_path(r"^infoscreen/", include("prodekoorg.app_infoscreen.urls")),
+    path("infoscreen/", include("prodekoorg.app_infoscreen.urls")),
     # tiedotteet.prodeko.org
-    re_path(_(r"^weekly-bulletin/"), include("tiedotteet.backend.urls")),
+    path(_("weekly-bulletin/"), include("tiedotteet.backend.urls")),
     # matrikkeli.prodeko.org
-    re_path(_(r"^matrikkeli/"), include("alumnirekisteri.rekisteri.urls")),
+    path(_("matrikkeli/"), include("alumnirekisteri.rekisteri.urls")),
     # Misc
-    re_path(r"^admin/", admin.site.urls),
-    re_path(r"^ckeditor/", include("ckeditor_uploader.urls")),
-    re_path(r"", include("cms.urls")),
+    path("admin/", admin.site.urls),
+    path("ckeditor/", include("ckeditor_uploader.urls")),
+    path("", include("cms.urls")),
 )
 
 # This is only needed when using runserver.
