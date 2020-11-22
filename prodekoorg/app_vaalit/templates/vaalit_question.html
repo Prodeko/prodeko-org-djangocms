@@ -24,7 +24,7 @@
             <small class="hidden-mobile">{{ kysymys.created_at|timesince }} sitten</small>
           </div>
           <div class="answersCountContainer">
-            <p class="d-inline-block mr-1" class="smaller-text-mobile">{% trans answers %}: {{kysymys.vastaukset.count}}</p>
+            <p class="d-inline-block mr-1" class="smaller-text-mobile">{% trans answers %}: {{ kysymys.answers.count }}</p>
             <i class="fa fa-fw fa-chevron-down d-inline-block"></i>
           </div>
         </div>

@@ -12,7 +12,7 @@
         <div id="roleDescription" class="small-text-mobile">
             {{ virat.0.description|linebreaks }}
         </div>
-    </div>  
+    </div>
     <div class="col-xl-4 col-sm-12 ehdokasList">
         {% for virka in virat %}
             <div id="_{{ virka.pk }}" class="tab-pane fade" role="tabpanel">
@@ -39,19 +39,19 @@
             {# KYSYMYKSET #}
             <div class="vaalitQuestions col-xl-10 col-lg-10 col-xs-12">
                 <h3 class="mt-4">
-                    {% trans questions %} ({{ virka.kysymykset.all.count }})
+                    {% trans questions %} ({{ virka.questions.all.count }})
                     {% trans "No applicants" as no_applicant %}
                 </h3>
                 <div class="vaalitKysymysList list-group list-group-root">
-                    {% for kysymys in virka.kysymykset.all %}
+                    {% for question in virka.questions.all %}
                         {% include "vaalit_question.html" %}
                         {# VASTAUKSET #}
                         <div class="list-group collapse answersList" id="vastaukset_{{ kysymys.pk }}">
                             <div class="answersContainer">
-                                {% for vastaus in kysymys.vastaukset.all %}
+                                {% for vastaus in question.answers.all %}
                                     {% include "vaalit_answer.html" %}
                                 {% endfor %}
-                                {% if not kysymys.vastaukset.all %}
+                                {% if not question.answers.all %}
                                     <p class="ml-5">{% trans no_responses %}</p> <!-- TODO: Better styling-->
                                 {% endif %}
                                 {% for ehdokas in virka.ehdokkaat.all %} <!-- TODO: Better implementation-->
