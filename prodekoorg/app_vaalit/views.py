@@ -81,7 +81,7 @@ class EhdokasUpdateView(UpdateView):
         request = self.request
         context = self.get_context_data()
         ehdokas = self.get_object()
-        response = handle_modify_ehdokas(request, context=context, ehdokas=ehdokas)
+        handle_modify_ehdokas(request, context=context, ehdokas=ehdokas)
         return HttpResponseRedirect(self.get_success_url())
 
 
@@ -126,11 +126,11 @@ def crop_pic(uploaded_img, x, y, w, h):
     # We get an error if format='JPEG' because png's have alpha channel
     cropped_img.save(fp=img_io, format="PNG")
     buff_val = img_io.getvalue()
-    contentFile = ContentFile(buff_val)
+    content_file = ContentFile(buff_val)
     # If no image was provided use anonymous_prodeko.jpg
     name = uploaded_img.name if uploaded_img else "anonymous_prodeko.jpg"
     ret = InMemoryUploadedFile(
-        contentFile, None, name, "image/png", cropped_img.tell, None
+        content_file, None, name, "image/png", cropped_img.tell, None
     )
     img.close()
     img_io.close()
@@ -303,9 +303,15 @@ def mark_as_unread(pk):
 
 @login_required
 def main_view(request):
-    context = {}
     ehdokkaat = Ehdokas.objects.all()
-    virat = Virka.objects.all().order_by("sort_key")
+    virat = (
+        Virka.objects.all()
+        .prefetch_related(
+            "ehdokkaat", "questions", "questions__answers", "questions__answered_by"
+        )
+        .order_by("sort_key")
+    )
+
     # ehdokkaat_json is parsed to JSON in the template 'vaalit_question_form.html'
     ehdokkaat_python = serialize(
         "python",
@@ -317,15 +323,18 @@ def main_view(request):
         "python", virat, use_natural_foreign_keys=True, fields=("description")
     )
     ehdokkaat_json = json.dumps([d["fields"] for d in ehdokkaat_python])
-    virat_description_json = json.dumps(list(map(lambda x: {**x["fields"], "id": x["pk"]}, virat_description_python)))
+    virat_description_json = json.dumps(
+        list(map(lambda x: {**x["fields"], "id": x["pk"]}, virat_description_python))
+    )
+
+    context = {}
     context["virat_description_json"] = virat_description_json
     context["virat"] = virat
     context["ehdokkaat"] = ehdokkaat
     context["ehdokkaat_json"] = ehdokkaat_json
-    context["count_ehdokkaat_hallitus"] = Virka.objects.filter(is_hallitus=True).count()
-    context["count_ehdokkaat_toimarit"] = Virka.objects.filter(
-        is_hallitus=False
-    ).count()
+    context["count_ehdokkaat_hallitus"] = len([v for v in virat if v.is_hallitus])
+    context["count_ehdokkaat_toimarit"] = len([v for v in virat if not v.is_hallitus])
+
     if request.method == "POST":
         if "submitVirka" in request.POST:
             return handle_submit_ehdokas(request, context)
@@ -337,6 +346,6 @@ def main_view(request):
             raise Http404
     else:
         context["form_ehdokas"] = EhdokasForm(
-            initial={"name": request.user.first_name + " " + request.user.last_name}
+            initial={"name": f"{request.user.first_name} {request.user.last_name}"}
         )
         return render(request, "vaalit.html", context)

@@ -18,7 +18,9 @@ class Virka(models.Model):
     is_hallitus = models.BooleanField(default=False, verbose_name=_("Board"))
     name = models.CharField(max_length=50, unique=True, verbose_name=_("Position"))
     description = models.TextField(default="", verbose_name=_("Description"))
-    sort_key = models.CharField(max_length=50, default="ZZZ", verbose_name=_("Sort-key"))
+    sort_key = models.CharField(
+        max_length=50, default="ZZZ", verbose_name=_("Sort-key")
+    )
     read_by = models.ManyToManyField(
         settings.AUTH_USER_MODEL, blank=True, verbose_name=_("Read by")
     )
@@ -28,7 +30,7 @@ class Virka(models.Model):
 
     def natural_key(self):
         return self.name
-        
+
     class Meta:
         # Correct spelling in Django admin
         verbose_name = _("position")
@@ -99,7 +101,7 @@ class Kysymys(models.Model):
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, null=True
     )
     to_virka = models.ForeignKey(
-        Virka, on_delete=models.CASCADE, related_name=_("questions")
+        Virka, on_delete=models.CASCADE, related_name="questions"
     )
     question = models.TextField(blank=False, verbose_name=_("Question"))
 
@@ -126,10 +128,10 @@ class Vastaus(models.Model):
 
     created_at = models.DateTimeField(auto_now_add=True, verbose_name=_("Created at"))
     by_ehdokas = models.ForeignKey(
-        Ehdokas, blank=True, on_delete=models.CASCADE, related_name=_("answered_by")
+        Ehdokas, blank=True, on_delete=models.CASCADE, related_name="answered_by"
     )
     to_question = models.ForeignKey(
-        Kysymys, blank=True, on_delete=models.CASCADE, related_name=_("answers")
+        Kysymys, blank=True, on_delete=models.CASCADE, related_name="answers"
     )
     answer = models.TextField(blank=False, verbose_name=_("Answer"))
 
