@@ -1,4 +1,4 @@
-name: Run tests
+name: Run tests, upload artefacts to Codecov and Sentry
 
 on: [push]
 
@@ -31,3 +31,13 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
           file: ./coverage.xml
           flags: unittests
+
+      - name: Sentry release
+        uses: getsentry/action-release@v1.1.2
+        env:
+          SENTRY_URL: https://sentry.prodeko.org/
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          SENTRY_ORG: prodeko
+          SENTRY_PROJECT: prodeko-org
+        with:
+          environment: production
