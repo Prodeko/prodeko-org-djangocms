@@ -20,7 +20,7 @@ django-mptt==0.11.0
 django-polymorphic==3.0.0
 django-sekizai==2.0.0
 django-treebeard==4.3.1
-djangocms-admin-style==2.0.1
+djangocms-admin-style==2.0.2
 djangocms-attributes-field==2.0.0
 djangocms-bootstrap4==2.0.0
 djangocms-column==1.11.0
@@ -46,7 +46,7 @@ azure-common==1.1.26
 azure-storage-blob==2.1.0
 sentry-sdk==0.19.4
 
-easy-thumbnails==2.7
+easy-thumbnails==2.7.1
 html5lib==1.1
 Markdown==3.3.3
 oauthlib==3.1.0
