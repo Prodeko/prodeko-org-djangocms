@@ -1,9 +1,9 @@
-from django.urls import re_path
+from django.urls import path
 
 from .views_api import SlidesList, now
 
 app_name = "app_infoscreen"
 urlpatterns = [
-    re_path(r"^api/slides/$", SlidesList.as_view()),
-    re_path(r"^api/time/$", now),
+    path("api/slides/", SlidesList.as_view()),
+    path("api/time/", now),
 ]

@@ -73,7 +73,7 @@ admin.site.register(PendingUser, PendingUserAdmin)
 @staff_member_required
 def view_application(request, account_id, *args, **kwargs):
     """View a membership application from Django admin."""
-    return redirect("/fi/admin/app_membership/pendinguser/")
+    return redirect(f"/fi/admin/app_membership/pendinguser/{account_id}")
 
 
 @staff_member_required
