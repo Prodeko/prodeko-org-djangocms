@@ -2,7 +2,7 @@ from smtplib import SMTPAuthenticationError
 
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
-from django.core.exceptions import PermissionDenied, ObjectDoesNotExist
+from django.core.exceptions import ObjectDoesNotExist, PermissionDenied
 from django.core.files.base import ContentFile
 from django.core.mail import EmailMultiAlternatives
 from django.forms import formset_factory
@@ -140,7 +140,7 @@ def main_form(request):
 
             try:
                 # Helper function to generate a pdf representing
-                # the whole reimbursemet. Adds the generated pdf
+                # the complete reimbursement. Adds the generated pdf
                 # to the KulukorvausPerustiedot object created above.
                 add_pdf_to_model(model_perustiedot.id)
             except:

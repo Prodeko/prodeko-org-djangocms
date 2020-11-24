@@ -55,9 +55,7 @@ CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
         "LOCATION": "redis://redis:6379",
-        "OPTIONS": {
-            "CLIENT_CLASS": "django_redis.client.DefaultClient",
-        }
+        "OPTIONS": {"CLIENT_CLASS": "django_redis.client.DefaultClient",},
     }
 }
 
@@ -106,19 +104,18 @@ CMS_LANGUAGES = {
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/dev/howto/static-files/
 STATIC_ROOT = os.path.join(BASE_DIR, "prodekoorg/collected-static")
-
 MEDIA_ROOT = os.path.join(BASE_DIR, "prodekoorg/media")
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "tiedotteet/frontend/static"),
     os.path.join(BASE_DIR, "tiedotteet/frontend/public"),
 ]
-
 STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
     "sass_processor.finders.CssFinder",
 ]
+
 # SASS config
 # Uses: https://github.com/jrief/django-sass-processor
 SASS_PRECISION = 8

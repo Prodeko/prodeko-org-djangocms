@@ -4,15 +4,15 @@ from __future__ import absolute_import, print_function, unicode_literals
 from cms.sitemaps import CMSSitemap
 from django.conf import settings
 from django.conf.urls.i18n import i18n_patterns
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.sitemaps.views import sitemap
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-from django.urls import include, path, re_path
+from django.urls import include, path
 from django.utils.translation import gettext_lazy as _
 from django.views.decorators.cache import cache_page
 from django.views.generic.base import TemplateView
 from django.views.i18n import JavaScriptCatalog
-from django.views.static import serve
 
 
 def get_version():
@@ -72,14 +72,8 @@ if settings.DEBUG:
     import debug_toolbar
 
     urlpatterns = (
-        [
-            re_path(
-                r"^media/(?P<path>.*)$",
-                serve,
-                {"document_root": settings.MEDIA_ROOT, "show_indexes": True},
-            ),
-            path("__debug__/", include(debug_toolbar.urls)),
-        ]
+        [path("__debug__/", include(debug_toolbar.urls))]
+        + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
         + staticfiles_urlpatterns()
         + urlpatterns
     )
