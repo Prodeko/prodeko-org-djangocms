@@ -12,8 +12,8 @@
 			<link href="{% static 'css/material.css' %}" rel="stylesheet">
 			<link href="{% static 'css/ar_custom.css' %}" rel="stylesheet">
 			<link href="https://fonts.googleapis.com/css?family=Raleway:400,600" rel="stylesheet">
-			<link rel="icon" href="/static/icons/icon.png">
-			<title>{% block title %}Prodeko Matrikkeli{% endblock %}</title>
+      <title>{% block title %}Prodeko Matrikkeli{% endblock %}</title>
+      {% include "snippets/favicongenerator.html" %}
 			{% block local_styles %}
 
 			{% endblock %}
@@ -25,7 +25,7 @@
 			<nav class="navbar navbar-default bg-p700 text-primary elevation-2 navbar-fixed-top">
 				<div class="container-fluid">
 					<div class="navbar-header">
-						
+
 						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
