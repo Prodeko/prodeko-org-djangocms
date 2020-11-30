@@ -4,7 +4,7 @@ Tuotantotalouden kilta Prodekon Django CMS -pohjaiset nettisivut.
 
 ---
 
-Prodeko.org projekti käyttää Django versiota 3.0.10
+Prodeko.org projekti käyttää Django versiota 3.1.3
 
 ### Vaatimukset
 
