@@ -1,55 +1,55 @@
 {% load i18n static %}
 <ul class="sidebar navbar-nav">
-    <li class="nav-item">
-        <a href="{% url 'tiedotteet:index' %}" class="nav-link">
-            <i class="fa fa-fw fa-desktop"></i> 
-            <span>{% trans "Go to site" %}</span>
-        </a>
-    </li>
-    <li class="nav-item">
-        <a href="{% url 'tiedotteet:cp' %}" class="nav-link">
-            <i class="fa fa-fw fa-edit"></i> 
-            <span>{% trans "Publish" %}</span>
-        </a>
-    </li>
-    <li class="nav-item">
-        <a href="{% url 'tiedotteet:categories' %}" class="nav-link">
-            <i class="fa fa-fw fa-chart-pie"></i> 
-            <span>{% trans "Categories" %}</span>
-        </a>
-    </li>
-    <li class="nav-item">
-        <a href="{% url 'tiedotteet:tags' %}" class="nav-link">
-            <i class="fa fa-fw fa-tag"></i> 
-            <span>{% trans "Tags" %}</span>
-        </a>
-    </li>
-    <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-fw fa-folder"></i>
-            <span>Tiedotteet</span>
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navDropdown">
-            <a href="{% url 'tiedotteet:control_messages' filter='all' category='all' %}" class="dropdown-item">
-                <i class="fa fa-fw fa-bars"></i> 
-                {% trans "All" %}
-            </a>
-            <a href="{% url 'tiedotteet:control_messages' filter='now' category='all' %}" class="dropdown-item">
-                    <i class="fa fa-fw fa-square"></i> 
-                    {% trans "Now" %}
-            </a>
-            <a href="{% url 'tiedotteet:control_messages' filter='new' category='all' %}" class="dropdown-item">
-                    <i class="fa fa-fw fa-flag"></i> 
-                    {% trans "New" %}
-            </a>
-            <a href="{% url 'tiedotteet:control_messages' filter='upcoming' category='all' %}" class="dropdown-item">
-                    <i class="fa fa-fw fa-calendar"></i> 
-                    {% trans "Upcoming" %}
-            </a>
-            <a href="{% url 'tiedotteet:control_messages' filter='old' category='all' %}" class="dropdown-item">
-                    <i class="fa fa-fw fa-history"></i> 
-                    {% trans "Old" %}
-            </a>
-        </div>
-    </li>
+  <li class="nav-item">
+    <a href="{% url 'tiedotteet:index' %}" class="nav-link">
+      <i class="fa fa-fw fa-desktop"></i>
+      <span>{% trans "Go to site" %}</span>
+    </a>
+  </li>
+  <li class="nav-item">
+    <a href="{% url 'tiedotteet:cp' %}" class="nav-link">
+      <i class="fa fa-fw fa-edit"></i>
+      <span>{% trans "Publish" %}</span>
+    </a>
+  </li>
+  <li class="nav-item">
+    <a href="{% url 'tiedotteet:categories' %}" class="nav-link">
+      <i class="fa fa-fw fa-chart-pie"></i>
+      <span>{% trans "Categories" %}</span>
+    </a>
+  </li>
+  <li class="nav-item">
+    <a href="{% url 'tiedotteet:tags' %}" class="nav-link">
+      <i class="fa fa-fw fa-tag"></i>
+      <span>{% trans "Tags" %}</span>
+    </a>
+  </li>
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <i class="fas fa-fw fa-folder"></i>
+      <span>Tiedotteet</span>
+    </a>
+    <div class="dropdown-menu" aria-labelledby="navDropdown">
+      <a href="{% url 'tiedotteet:control_messages' filter='all' category='all' %}" class="dropdown-item">
+        <i class="fa fa-fw fa-bars"></i>
+        {% trans "All" %}
+      </a>
+      <a href="{% url 'tiedotteet:control_messages' filter='now' category='all' %}" class="dropdown-item">
+        <i class="fa fa-fw fa-square"></i>
+        {% trans "Now" %}
+      </a>
+      <a href="{% url 'tiedotteet:control_messages' filter='new' category='all' %}" class="dropdown-item">
+        <i class="fa fa-fw fa-flag"></i>
+        {% trans "New" %}
+      </a>
+      <a href="{% url 'tiedotteet:control_messages' filter='upcoming' category='all' %}" class="dropdown-item">
+        <i class="fa fa-fw fa-calendar"></i>
+        {% trans "Upcoming" %}
+      </a>
+      <a href="{% url 'tiedotteet:control_messages' filter='old' category='all' %}" class="dropdown-item">
+        <i class="fa fa-fw fa-history"></i>
+        {% trans "Old" %}
+      </a>
+    </div>
+  </li>
 </ul>

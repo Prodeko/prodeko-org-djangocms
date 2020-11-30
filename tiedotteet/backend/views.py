@@ -5,14 +5,13 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.core.mail import EmailMultiAlternatives
 from django.core.mail.backends.smtp import EmailBackend
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
-from django.http import HttpResponseForbidden, JsonResponse
+from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.template import Context
 from django.template.loader import get_template
 from django.utils import timezone
 from django.utils.html import strip_tags
 from django.utils.translation import ugettext as _
-
 from tiedotteet.backend.forms import (
     CategoryForm,
     EditForm,
@@ -422,4 +421,3 @@ def send_email(request):
                     {"success": False, "errors": {"mail": "failed to send"}}
                 )
         return JsonResponse({"success": False, "errors": dict(form.errors.items())})
-        return HttpResponseForbidden(_("Admin login required"))

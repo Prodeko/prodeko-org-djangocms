@@ -2,34 +2,34 @@
 
 {% block body %}
 
-    {% for c in categories %}
-        <br>
-        <h1 class="email">{{ forloop.counter }}. {{ c.title }}</h1>
-        {% for m in c.visible_messages %}
-            <h2 class="email">{{ forloop.parentloop.counter }}-{{ forloop.counter }} {{ m.header }}</h2>
-        {% endfor %}
-    {% endfor %}
-
+  {% for c in categories %}
     <br>
-    <br>
-
-    {% for c in categories %}
-        <br>
-        <h1 class="email">{{ forloop.counter }}. {{ c.title }}</h1>
-        {% for m in c.visible_messages %}
-            {% ifnotequal c.title "Työpaikat" %}
-                <span class="email">********************************</span>
-            {% endifnotequal %}
-
-            <h2 class="email">{{ forloop.parentloop.counter }}-{{ forloop.counter }} {{ m.header }}</h2>
-
-            {% ifnotequal c.title "Työpaikat" %}
-                <span class="email">================================</span>
-            {% endifnotequal %}
-            <div id="{{ m.id }}" class="email-content">
-                {% autoescape off %}{{ m.content }}{% endautoescape %}
-            </div>
-        {% endfor %}
+    <h1 class="email">{{ forloop.counter }}. {{ c.title }}</h1>
+    {% for m in c.visible_messages %}
+      <h2 class="email">{{ forloop.parentloop.counter }}-{{ forloop.counter }} {{ m.header }}</h2>
     {% endfor %}
+  {% endfor %}
+
+  <br>
+  <br>
+
+  {% for c in categories %}
+    <br>
+    <h1 class="email">{{ forloop.counter }}. {{ c.title }}</h1>
+    {% for m in c.visible_messages %}
+      {% ifnotequal c.title "Työpaikat" %}
+        <span class="email">********************************</span>
+      {% endifnotequal %}
+
+      <h2 class="email">{{ forloop.parentloop.counter }}-{{ forloop.counter }} {{ m.header }}</h2>
+
+      {% ifnotequal c.title "Työpaikat" %}
+        <span class="email">================================</span>
+      {% endifnotequal %}
+      <div id="{{ m.id }}" class="email-content">
+        {% autoescape off %}{{ m.content }}{% endautoescape %}
+      </div>
+    {% endfor %}
+  {% endfor %}
 
 {% endblock %}
