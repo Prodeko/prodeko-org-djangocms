@@ -1,10 +1,10 @@
 const path = require('path')
 const webpack = require('webpack')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 module.exports = (env) => {
   return {
-    mode: env.production ? 'production' : 'development',
     entry: './src/index.js',
     output: {
       path: path.resolve(__dirname, 'public/tiedotteet'),
@@ -19,21 +19,26 @@ module.exports = (env) => {
     module: {
       rules: [
         {
-          test: /\.scss$/,
-          use: ['style-loader', 'css-loader', 'sass-loader'],
+          test: /\.scss$/i,
+          use: [
+            'style-loader',
+            'css-loader',
+            'resolve-url-loader',
+            'sass-loader',
+          ],
         },
         {
-          test: /\.js$/,
+          test: /\.js$/i,
           exclude: /node_modules/,
-          use: ['babel-loader'],
+          use: 'babel-loader',
         },
         {
-          test: /\.(png|svg|jpg|gif)$/,
-          use: 'file-loader',
+          test: /\.(png|svg|jpg|gif)$/i,
+          type: 'asset/resource',
         },
         {
-          test: /\.(woff|woff2|eot|ttf|otf)$/,
-          use: ['file-loader'],
+          test: /\.(woff|woff2|eot|ttf|otf)$/i,
+          type: 'asset/resource',
         },
       ],
     },
@@ -41,6 +46,7 @@ module.exports = (env) => {
       extensions: ['.js', '.jsx'],
     },
     plugins: [
+      new CleanWebpackPlugin(),
       new webpack.HotModuleReplacementPlugin(),
       new HtmlWebPackPlugin({
         inject: env.development ? true : false,

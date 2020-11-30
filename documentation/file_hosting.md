@@ -1,6 +1,6 @@
 # Tiedostoista :open_file_folder::file_folder:
 
-- **Päivitetty** 30.12.2019
+- **Päivitetty** 30.11.2020
 - **Tekijä:** Timo Riski
 
 Prodissa prodeko.org static- ja mediatiedostot hostataan Azure Storagessa. Storage blobeja on kaksi: static/ ja media/. Blobien edessä on CDN.
@@ -79,7 +79,7 @@ $ ffmpeg -i abivideo_cut.mov -vf crop=1920:912:0:84 -c:a copy -an abivideo_crop.
 
 "AzCopy is a command-line utility that you can use to copy blobs or files to or from a storage account." AzCopyn saa ladattua [täältä](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10)
 
-Komentoriviltä Azureen saa lähetettyä tiedostoja seuraavasti:
+Komentoriviltä Azureen saa lähetettyä tiedostoja seuraavasti (muista ensin kirjautua sisään komennolla `azcopy login`):
 
 ```
 azcopy copy "media/filer/filer_public/*" "https://prodekostorage.blob.core.windows.net/media/filer/filer_public" --recursive
@@ -89,7 +89,10 @@ Ja poistettua seuraavasti:
 
 ```
 azcopy rm "https://prodekostorage.blob.core.windows.net/media/filer_public_thumbnails/filer_public" --recursive=true
+azcopy rm "https://prodekostorage.blob.core.windows.net/static?[SAS]" --recursive=true
 ```
+
+Mikäli `azcopy` komennot eivät toimi, tarkasta Azuresta että webbitiimi ryhmälle on määritetty "Storage Blob Data Owner" niminen oikeus. Toinen vaihtoehto on käyttää SAS-tokenia azcopy komentojen ajamiseen. Tokenin saa luotua Azuren portaalista klikkaamalla prodekostorage > Shared access signature > Generate SAS and connection string.
 
 ## Muuta
 

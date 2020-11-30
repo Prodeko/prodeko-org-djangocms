@@ -1,7 +1,7 @@
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker
-      .register('../static/tiedotteet/serviceworker.js')
+      .register('./static/tiedotteet/serviceworker.js')
       .then(
         (registration) => {
           console.log(

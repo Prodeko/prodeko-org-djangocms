@@ -66,7 +66,7 @@ Myös abisivut, auth_prodeko, seminaari ja tiedotteet ovat omia appejaan, vaikka
 Käytössä seuraavat työkalut:
 
 - python: pylint + black
-- html: jinjalint
+- html: curlylint
 - javascript: eslint + prettier
 - css: stylelint + prettier
 
@@ -97,12 +97,12 @@ All done! ✨ 🍰 ✨
 
 #### HTML
 
-HTML-templatejen linttaamiseen käytetään [Jinjalint](https://github.com/motet-a/jinjalint)
+HTML-templatejen linttaamiseen käytetään [Curlylint](https://github.com/thibaudcolas/curlylint)
 
 Aja jinjalint:
 
 ```shell
-$ jinjalint prodekoorg/templates
+$ curlylint prodekoorg
 ```
 
 #### Javascript & CSS

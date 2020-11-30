@@ -5,14 +5,14 @@
 
 {% block content %}
     <div class="navbar">
-        <a class="proleko-logo" href="{% url "app_proleko:posts" %}">
-            <img src="{% static "media/proleko-logo.svg" %}" />
+        <a class="proleko-logo" href="{% url 'app_proleko:posts' %}">
+            <img src="{% static 'images/logos/proleko-logo.svg' %}" />
         </a>
         <div class="links">
-            <a class="link" href="{% url "app_proleko:posts" %}">
+            <a class="link" href="{% url 'app_proleko:posts' %}">
                 Verkkojulkaisut
             </a>
-            <a class="link" href="{% url "app_proleko:archives" %}">
+            <a class="link" href="{% url 'app_proleko:archives' %}">
                 Arkistot
             </a>
         </div>

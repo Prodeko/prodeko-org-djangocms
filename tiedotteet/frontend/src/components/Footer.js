@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <div id="footer">
       <img
-        src="/static/tiedotteet/assets/prodeko-logo-text-blue.png"
+        src="https://static.prodeko.org/static/images/logos/prodeko-logo-text-blue.png"
         alt="Prodeko"
       />
     </div>
