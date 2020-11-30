@@ -167,8 +167,6 @@ MIDDLEWARE = (
     "cms.middleware.page.CurrentPageMiddleware",
     "cms.middleware.toolbar.ToolbarMiddleware",
     "cms.middleware.language.LanguageCookieMiddleware",
-    # tiedotteet.prodeko.org
-    "corsheaders.middleware.CorsMiddleware",
     # matrikkeli.prodeko.org
     #'audit_log.middleware.UserLoggingMiddleware',
     "django.middleware.cache.FetchFromCacheMiddleware",
@@ -233,7 +231,6 @@ INSTALLED_APPS = (
     "ckeditor",
     "ckeditor_uploader",
     "rest_framework",
-    "corsheaders",
     # ------------------------
     # matrikkeli.prodeko.org
     "alumnirekisteri.rekisteri",
@@ -383,7 +380,6 @@ CSRF_TRUSTED_ORIGINS = ".google.com"
 SESSION_COOKIE_AGE = 60 * 60 * 24 * 30  # 30 days
 SESSION_ENGINE = "django.contrib.sessions.backends.cached_db"
 
-CORS_ORIGIN_ALLOW_ALL = True
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework.authentication.BasicAuthentication",
