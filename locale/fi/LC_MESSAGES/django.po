@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-22 22:37+0200\n"
+"POT-Creation-Date: 2020-11-30 17:16+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Timo Riski <timo@prodeko.org>\n"
 "Language: \n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: abisivut/cms_apps.py:12 prodekoorg/settings/base.py:271
+#: abisivut/cms_apps.py:12 prodekoorg/settings/base.py:265
 msgid "High school student page"
 msgstr "Abisivut"
 
@@ -107,7 +107,7 @@ msgstr "Profiili"
 #: auth_prodeko/templates/accounts/user_profile.html:14
 #: prodekoorg/app_kulukorvaus/models.py:66
 #: prodekoorg/app_kulukorvaus/printing.py:97
-#: prodekoorg/app_toimarit/models.py:20 prodekoorg/app_vaalit/models.py:54
+#: prodekoorg/app_toimarit/models.py:20 prodekoorg/app_vaalit/models.py:56
 msgid "Name"
 msgstr "Nimi"
 
@@ -221,7 +221,7 @@ msgstr "Salasana unohtunut?"
 msgid "The email and password didn't match. Try again"
 msgstr "Sähköposti ja salasana eivät täsmänneet. Yritä uudestaan"
 
-#: lifelonglearning/cms_apps.py:12 prodekoorg/settings/base.py:272
+#: lifelonglearning/cms_apps.py:12 prodekoorg/settings/base.py:266
 msgid "Lifelong learning page"
 msgstr "Lifelong learning sivu"
 
@@ -356,7 +356,7 @@ msgid "Tutoring (isovastaava@prodeko.org)"
 msgstr "ISO-toiminta (isovastaava@prodeko.org)"
 
 #: prodekoorg/app_contact/models.py:87 prodekoorg/app_kulukorvaus/models.py:119
-#: prodekoorg/app_vaalit/models.py:97 prodekoorg/app_vaalit/models.py:127
+#: prodekoorg/app_vaalit/models.py:99 prodekoorg/app_vaalit/models.py:129
 msgid "Created at"
 msgstr "Luotu"
 
@@ -684,8 +684,8 @@ msgstr "Kyllä"
 msgid "No"
 msgstr "Ei"
 
-#: prodekoorg/app_membership/models.py:55 prodekoorg/settings/base.py:77
-#: prodekoorg/settings/base.py:87
+#: prodekoorg/app_membership/models.py:55 prodekoorg/settings/base.py:75
+#: prodekoorg/settings/base.py:85
 msgid "Finnish"
 msgstr "Suomi"
 
@@ -1012,71 +1012,59 @@ msgstr "Sovellus - Vaalit"
 msgid "Board"
 msgstr "Hallitus"
 
-#: prodekoorg/app_vaalit/models.py:21
+#: prodekoorg/app_vaalit/models.py:22
 msgid "Sort-key"
 msgstr "Järjestys-avain"
 
-#: prodekoorg/app_vaalit/models.py:23
+#: prodekoorg/app_vaalit/models.py:25
 msgid "Read by"
 msgstr "Lukenut"
 
-#: prodekoorg/app_vaalit/models.py:34
+#: prodekoorg/app_vaalit/models.py:36
 msgid "position"
 msgstr "virka"
 
-#: prodekoorg/app_vaalit/models.py:35
+#: prodekoorg/app_vaalit/models.py:37
 msgid "Positions"
 msgstr "Virat"
 
-#: prodekoorg/app_vaalit/models.py:61
+#: prodekoorg/app_vaalit/models.py:63
 #: prodekoorg/app_vaalit/templates/forms/vaalit_apply_form.html:4
 msgid "Picture"
 msgstr "Kuva"
 
-#: prodekoorg/app_vaalit/models.py:82
+#: prodekoorg/app_vaalit/models.py:84
 msgid "applicant"
 msgstr "hakija"
 
-#: prodekoorg/app_vaalit/models.py:83
+#: prodekoorg/app_vaalit/models.py:85
 #: prodekoorg/app_vaalit/templates/vaalit_content.html:3
 msgid "Applicants"
 msgstr "Hakijat"
 
-#: prodekoorg/app_vaalit/models.py:102
-msgid "questions"
-msgstr "kysymykset"
-
-#: prodekoorg/app_vaalit/models.py:104
+#: prodekoorg/app_vaalit/models.py:106
 msgid "Question"
 msgstr "Kysymys"
 
-#: prodekoorg/app_vaalit/models.py:111
+#: prodekoorg/app_vaalit/models.py:113
 msgid "question"
 msgstr "kysymys"
 
-#: prodekoorg/app_vaalit/models.py:112
+#: prodekoorg/app_vaalit/models.py:114
 #: prodekoorg/app_vaalit/templates/vaalit_content.html:5
 msgid "Questions"
 msgstr "Kysymykset"
 
-#: prodekoorg/app_vaalit/models.py:129
-msgid "answered_by"
-msgstr "vastaaja"
-
-#: prodekoorg/app_vaalit/models.py:132
-msgid "answers"
-msgstr "vastaukset"
-
-#: prodekoorg/app_vaalit/models.py:134
+#: prodekoorg/app_vaalit/models.py:136
 #: prodekoorg/app_vaalit/templates/vaalit_question.html:3
 msgid "Answer"
 msgstr "Vastaus"
 
-#: prodekoorg/app_vaalit/models.py:141
+#: prodekoorg/app_vaalit/models.py:143
 msgid "answer"
 msgstr "vastaus"
 
-#: prodekoorg/app_vaalit/models.py:142
+#: prodekoorg/app_vaalit/models.py:144
 #: prodekoorg/app_vaalit/templates/vaalit_question.html:4
 msgid "Answers"
 msgstr "Vastaukset"
@@ -1197,27 +1185,27 @@ msgstr "Poista"
 msgid "Edit"
 msgstr "Muokkaa"
 
-#: prodekoorg/settings/base.py:77 prodekoorg/settings/base.py:94
+#: prodekoorg/settings/base.py:75 prodekoorg/settings/base.py:92
 msgid "English"
 msgstr "Englanti"
 
-#: prodekoorg/settings/base.py:267
+#: prodekoorg/settings/base.py:261
 msgid "Frontpage"
 msgstr "Etusivu"
 
-#: prodekoorg/settings/base.py:268
+#: prodekoorg/settings/base.py:262
 msgid "Content page"
 msgstr "Sisältösivu"
 
-#: prodekoorg/settings/base.py:269
+#: prodekoorg/settings/base.py:263
 msgid "Content page with 1:1 split"
 msgstr "Sisältösivu 1:1 jaolla"
 
-#: prodekoorg/settings/base.py:270
+#: prodekoorg/settings/base.py:264
 msgid "Content page with 2:1 split"
 msgstr "Sisältösivu 2:1 jaolla"
 
-#: prodekoorg/settings/base.py:276
+#: prodekoorg/settings/base.py:270
 msgid "Navigation"
 msgstr "Navigaatio"
 
@@ -1325,16 +1313,24 @@ msgstr ""
 "sisään näet tämän saman valintaikkunan."
 
 #: prodekoorg/urls.py:61
-msgid "^weekly-bulletin/"
-msgstr "^tiedotteet/"
-
-#: prodekoorg/urls.py:63
-msgid "^matrikkeli/"
+msgid "matrikkeli/"
 msgstr ""
+
+#: seminaari/apps.py:7
+msgid "Prodeko seminar"
+msgstr "Prodeko-seminaari"
 
 #: seminaari/cms_apps.py:12
 msgid "Prodeko seminar page"
 msgstr "Prodeko-seminaari sivu"
+
+#: tiedotteet/backend/apps.py:7
+msgid "Weekly bulletin"
+msgstr "Viikkotiedote"
+
+#: tiedotteet/backend/cms_apps.py:11
+msgid "Weekly bulletin application"
+msgstr "Sovellus - Viikkotiedote"
 
 #: tiedotteet/backend/forms.py:54 tiedotteet/backend/forms.py:100
 msgid "Header"
@@ -1578,3 +1574,12 @@ msgstr "Tiedote lisätty"
 #: tiedotteet/backend/views.py:425
 msgid "Admin login required"
 msgstr "Kirjautuminen ylläpitäjänä vaadittu"
+
+#~ msgid "questions"
+#~ msgstr "kysymykset"
+
+#~ msgid "answered_by"
+#~ msgstr "vastaaja"
+
+#~ msgid "answers"
+#~ msgstr "vastaukset"
