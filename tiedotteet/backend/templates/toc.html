@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 
-<html>
-    <head>
-        <title>Tiedotteet</title>
-    </head>
+<html lang={{LANGUAGE_CODE}}>
+  <head>
+    <title>Tiedotteet</title>
+  </head>
 
-    <body>
-        {% for c in categories %}
-            <ul>
-                <li>{{c.title}}</li>
-                <ul>
-                    {% for m in c.visible_messages %}
-                        <li>
-                            <a href="../#{{m.id}}">{{ m.header }} {% if m.is_new %}<b>(new)</b>{% endif %}</a>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </ul>
-        {% endfor %}
-    </body>
+  <body>
+    {% for c in categories %}
+      <ul>
+        <li>{{c.title}}</li>
+        <ul>
+          {% for m in c.visible_messages %}
+            <li>
+              <a href="../#{{m.id}}">{{ m.header }} {% if m.is_new %}<b>(new)</b>{% endif %}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </ul>
+    {% endfor %}
+  </body>
 </html>

@@ -3,34 +3,34 @@
 {% trans "Weekly Bulletin - Control Panel" as title %}
 
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{% block title %}{% trans title %}{% endblock %}</title>
+<html lang={{LANGUAGE_CODE}}>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% trans title %}{% endblock %}</title>
 
-        {% include "libraries/jquery.html" %}
-        {% include "libraries/bootstrap-js.html" %}
+    {% include "libraries/jquery.html" %}
+    {% include "libraries/bootstrap-js.html" %}
 
-        {% include "libraries/bootstrap-scss.html" %}
-        {% include "libraries/fontawesome.html" %}
-        {% include "libraries/sb-admin.html" %}
+    {% include "libraries/bootstrap-scss.html" %}
+    {% include "libraries/fontawesome.html" %}
+    {% include "libraries/sb-admin.html" %}
 
-        {% render_block "css" %}
-    </head>
+    {% render_block "css" %}
+  </head>
 
-    <body>
-        {% include "control/navbar.html" %}
+  <body>
+    {% include "control/navbar.html" %}
 
-        <div id="wrapper">
-            {% include "control/nav.html" %}
-            
-            {% block body %}{% endblock %}
-        </div>
+    <div id="wrapper">
+      {% include "control/nav.html" %}
 
-        {% render_block "js" %}
-    </body>
+      {% block body %}{% endblock %}
+    </div>
+
+    {% render_block "js" %}
+  </body>
 </html>
 
 {% addtoblock "css" %}

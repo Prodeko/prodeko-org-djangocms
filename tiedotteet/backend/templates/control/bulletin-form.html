@@ -1,82 +1,82 @@
 {% load i18n %}
 
 <div class="form-row">
-    <div class="form-group col-md-4">
-        <label>{{ form.header.label }}</label>
-        {{ form.header }}
-        {% if form.header.errors %}
-            <small class="form-text text-danger">{{ form.header.errors.as_text }}</small>
-        {% endif %}
-    </div>
-    <div class="form-group col-md-4">
-        <label>{{ form.category.label }}</label>
-        {{ form.category }}
-        {% if form.category.errors %}
-            <small class="form-text text-danger">{{ form.category.errors.as_text }}</small>
-        {% endif %}
-    </div>
-    <div class="form-group col-md-4">
-        <label>{{ form.tags.label }}</label>
-        {{ form.tags }}
-        {% if form.tags.errors %}
-            <small class="form-text text-danger">{{ form.tags.errors.as_text }}</small>
-        {% endif %}
-    </div>
+  <div class="form-group col-md-4">
+    <label>{{ form.header.label }}</label>
+    {{ form.header }}
+    {% if form.header.errors %}
+      <small class="form-text text-danger">{{ form.header.errors.as_text }}</small>
+    {% endif %}
+  </div>
+  <div class="form-group col-md-4">
+    <label>{{ form.category.label }}</label>
+    {{ form.category }}
+    {% if form.category.errors %}
+      <small class="form-text text-danger">{{ form.category.errors.as_text }}</small>
+    {% endif %}
+  </div>
+  <div class="form-group col-md-4">
+    <label>{{ form.tags.label }}</label>
+    {{ form.tags }}
+    {% if form.tags.errors %}
+      <small class="form-text text-danger">{{ form.tags.errors.as_text }}</small>
+    {% endif %}
+  </div>
 </div>
 <div class="form-row">
-    <div class="form-group col-md-4">
-        <label>{{ form.start_date.label }}</label>
-        {{ form.start_date }}
-        {% if form.start_date.errors %}
-            <small class="form-text text-danger">{{ form.start_date.errors.as_text }}</small>
-        {% endif %}
-    </div>
-    <div class="form-group col-md-4">
-        <label>{{ form.end_date.label }}</label>
-        {{ form.end_date }}
-        {% if form.end_date.errors %}
-            <small class="form-text text-danger">{{ form.end_date.errors.as_text }}</small>
-        {% endif %}
-    </div>
-    <div class="form-group col-md-4">
-        <label>{{ form.deadline_date.label }}</label>
-        {{ form.deadline_date }}
-        {% if form.deadline_date.errors %}
-            <small class="form-text text-danger">{{ form.deadline_date.errors.as_text }}</small>
-        {% endif %}
-    </div>
+  <div class="form-group col-md-4">
+    <label>{{ form.start_date.label }}</label>
+    {{ form.start_date }}
+    {% if form.start_date.errors %}
+      <small class="form-text text-danger">{{ form.start_date.errors.as_text }}</small>
+    {% endif %}
+  </div>
+  <div class="form-group col-md-4">
+    <label>{{ form.end_date.label }}</label>
+    {{ form.end_date }}
+    {% if form.end_date.errors %}
+      <small class="form-text text-danger">{{ form.end_date.errors.as_text }}</small>
+    {% endif %}
+  </div>
+  <div class="form-group col-md-4">
+    <label>{{ form.deadline_date.label }}</label>
+    {{ form.deadline_date }}
+    {% if form.deadline_date.errors %}
+      <small class="form-text text-danger">{{ form.deadline_date.errors.as_text }}</small>
+    {% endif %}
+  </div>
 </div>
 <div class="form-row">
-    <div class="form-group col-md-12">
-        {{ form.show_deadline }}
-        <label for="{{ form.visiblle.id_for_label }}">{{ form.show_deadline.label }}</label>
-        {% if form.show_deadline.errors %}
-            <small class="form-text text-danger">{{ form.show_deadline.errors.as_text }}</small>
-        {% endif %}
-    </div>
+  <div class="form-group col-md-12">
+    {{ form.show_deadline }}
+    <label for="{{ form.visiblle.id_for_label }}">{{ form.show_deadline.label }}</label>
+    {% if form.show_deadline.errors %}
+      <small class="form-text text-danger">{{ form.show_deadline.errors.as_text }}</small>
+    {% endif %}
+  </div>
 </div>
 <div class="form-row">
-    <div class="form-group col-md-12">
-        {{ form.visible }}
-        <label for="{{ form.visiblle.id_for_label }}">{{ form.visible.label }}</label>
-        {% if form.visible.errors %}
-            <small class="form-text text-danger">{{ form.visible.errors.as_text }}</small>
-        {% endif %}
-    </div>
+  <div class="form-group col-md-12">
+    {{ form.visible }}
+    <label for="{{ form.visiblle.id_for_label }}">{{ form.visible.label }}</label>
+    {% if form.visible.errors %}
+      <small class="form-text text-danger">{{ form.visible.errors.as_text }}</small>
+    {% endif %}
+  </div>
 </div>
 <div class="form-row">
-    <div class="form-group col-md-12">
-        <label>{{ form.content.label }}</label>
-        <div>
-            {{ form.content }}
-            {% if form.content.errors %}
-                <small class="form-text text-danger">{{ form.content.errors.as_text }}</small>
-            {% endif %}
-        </div>
+  <div class="form-group col-md-12">
+    <label>{{ form.content.label }}</label>
+    <div>
+      {{ form.content }}
+      {% if form.content.errors %}
+        <small class="form-text text-danger">{{ form.content.errors.as_text }}</small>
+      {% endif %}
     </div>
+  </div>
 </div>
 <div class="form-row">
-    <div class="form-group col-md-12">
-        <input type="submit" name="submit" id="submit" value="{{label}}" class="btn btn-success">
-    </div>
+  <div class="form-group col-md-12">
+    <input type="submit" name="submit" id="submit" value="{{label}}" class="btn btn-success">
+  </div>
 </div>
