@@ -12,8 +12,8 @@ export const fetchContent = () => (dispatch) => {
 
   const isProd = process.env.NODE_ENV === 'production'
   const url = isProd
-    ? '/tiedotteet/api/content/'
-    : 'https://prodeko.org/fi/tiedotteet/api/content/'
+    ? 'api/content/'
+    : 'https://prodeko.org/fi/palvelut/viikkotiedote/api/content/'
 
   fetch(url, {
     method: 'get',
