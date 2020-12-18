@@ -26,4 +26,6 @@ services:
       - postgres
     environment:
       - DATABASE_URL=postgres://prodekoorg:secret@postgres/prodekoorg
+      # CI env variable is used to conditionally skip some tests in CI
+      # It is set automatically if we are running inside a Github action
       - CI=${CI}
