@@ -28,7 +28,7 @@ DATABASES = {
         "PASSWORD": DB_PSWD,
         "HOST": "pgbouncer",
         "PORT": "5439",
-        "CONN_MAX_AGE": 600,
+        "CONN_MAX_AGE": None,
         "DISABLE_SERVER_SIDE_CURSORS": True,
     }
 }
