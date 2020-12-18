@@ -14,7 +14,7 @@ jobs:
       - uses: satackey/action-docker-layer-caching@v0.0.8
         continue-on-error: true
 
-      - name: Build the docker-compose stack
+      - name: Start docker-compose stack
         run: docker-compose up -d
 
       - name: Sleep
@@ -31,6 +31,21 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
           file: ./coverage.xml
           flags: unittests
+
+      - name: Login via Azure CLI
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Build and push image
+        uses: azure/docker-login@v1
+        with:
+          login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
+          username: ${{ secrets.REGISTRY_USERNAME }}
+          password: ${{ secrets.REGISTRY_PASSWORD }}
+      - run: |
+          docker build . -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/prodeko-org/prodeko-org
+          docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/prodeko-org/prodeko-org
 
       - name: Sentry release
         uses: getsentry/action-release@v1.1.2
