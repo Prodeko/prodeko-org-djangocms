@@ -14,13 +14,13 @@ Prodeko.org projekti käyttää Django versiota 3.1.3
 2. Kopioi prodekoorg/settings/variables.sample.txt ja nimeä se variables.txt nimiseksi
 3. Täytä variables.txt tiedostoon puuttuvat muuttujat
 
-```
+```shell
 $ docker-compose up  # Kehitysympäristön käynnistys
 ```
 
 Asenna lisäksi eslint, prettier, stylelint, pylint, jinjalint ja black ajamalla seuraavat komennot:
 
-```
+```shell
 $ npm install
 $ python3 -m venv venv
 $ pip3 install -r requirements-dev.txt
@@ -37,7 +37,7 @@ Kehitysympäristön käynnistys luo uuden Django käyttäjän:
 
 Esimerkiksi app_kiltiskamera luotiin seuraavasti:
 
-```
+```shell
 mkdir prodekoorg/app_kiltiskamera
 python3 manage.py startapp app_kiltiskamera prodekoorg/app_kiltiskamera
 ```
