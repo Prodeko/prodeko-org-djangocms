@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-30 17:16+0200\n"
+"POT-Creation-Date: 2020-12-18 18:12+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Timo Riski <timo@prodeko.org>\n"
 "Language: \n"
@@ -460,7 +460,7 @@ msgstr "Tila"
 #: prodekoorg/app_kulukorvaus/admin.py:30
 #: prodekoorg/app_kulukorvaus/models.py:40
 #: tiedotteet/backend/templates/control/nav.html:43
-#: tiedotteet/backend/views.py:89
+#: tiedotteet/backend/views.py:88
 msgid "New"
 msgstr "Uudet"
 
@@ -1130,7 +1130,7 @@ msgstr "Ei vastauksia"
 #: prodekoorg/app_vaalit/templates/vaalit_ehdokas.html:3
 #: prodekoorg/app_vaalit/templates/vaalit_modal_delete_ehdokas.html:5
 #: prodekoorg/app_vaalit/templates/vaalit_modal_ehdokas_description.html:5
-#: tiedotteet/backend/templates/control/messages.html:67
+#: tiedotteet/backend/templates/control/messages.html:66
 #: tiedotteet/backend/templates/control/tags.html:44
 msgid "Delete"
 msgstr "Poista"
@@ -1338,7 +1338,7 @@ msgstr "Otsikko"
 
 #: tiedotteet/backend/forms.py:56 tiedotteet/backend/forms.py:102
 #: tiedotteet/backend/forms.py:134
-#: tiedotteet/backend/templates/control/categories.html:53
+#: tiedotteet/backend/templates/control/categories.html:52
 msgid "Category"
 msgstr "Kategoria"
 
@@ -1366,16 +1366,16 @@ msgid "Show deadline"
 msgstr "Näytä deadline"
 
 #: tiedotteet/backend/forms.py:62 tiedotteet/backend/forms.py:108
-#: tiedotteet/backend/templates/control/categories.html:55
+#: tiedotteet/backend/templates/control/categories.html:54
 msgid "Visible"
 msgstr "Näytä"
 
-#: tiedotteet/backend/forms.py:87 tiedotteet/backend/views.py:336
+#: tiedotteet/backend/forms.py:87 tiedotteet/backend/views.py:335
 msgid "Bulletin updated"
 msgstr "Tiedote päivitetty"
 
 #: tiedotteet/backend/forms.py:135
-#: tiedotteet/backend/templates/control/categories.html:54
+#: tiedotteet/backend/templates/control/categories.html:53
 msgid "Order"
 msgstr "Järjestys"
 
@@ -1448,7 +1448,7 @@ msgid "bulletin"
 msgstr "tiedote"
 
 #: tiedotteet/backend/models.py:160
-#: tiedotteet/backend/templates/control/messages.html:11
+#: tiedotteet/backend/templates/control/messages.html:10
 msgid "Bulletins"
 msgstr "Tiedotteet"
 
@@ -1474,7 +1474,7 @@ msgstr ""
 msgid "Add"
 msgstr "Lisää"
 
-#: tiedotteet/backend/templates/control/categories.html:72
+#: tiedotteet/backend/templates/control/categories.html:71
 #: tiedotteet/backend/templates/control/email.html:121
 #: tiedotteet/backend/templates/control/tags.html:28
 msgid "Save"
@@ -1522,21 +1522,21 @@ msgstr "Käyttäjä"
 msgid "Preview"
 msgstr "Esikatselu"
 
-#: tiedotteet/backend/templates/control/messages.html:17
+#: tiedotteet/backend/templates/control/messages.html:16
 msgid "No results"
 msgstr "Ei tuloksia"
 
-#: tiedotteet/backend/templates/control/messages.html:24
+#: tiedotteet/backend/templates/control/messages.html:23
 #: tiedotteet/backend/templates/control/nav.html:35
-#: tiedotteet/backend/views.py:100
+#: tiedotteet/backend/views.py:99
 msgid "All"
 msgstr "Kaikki"
 
-#: tiedotteet/backend/templates/control/messages.html:58
+#: tiedotteet/backend/templates/control/messages.html:57
 msgid "Hide"
 msgstr "Piilota"
 
-#: tiedotteet/backend/templates/control/messages.html:60
+#: tiedotteet/backend/templates/control/messages.html:59
 msgid "Show"
 msgstr "Näytä"
 
@@ -1545,17 +1545,17 @@ msgid "Go to site"
 msgstr "Näytä sivusto"
 
 #: tiedotteet/backend/templates/control/nav.html:39
-#: tiedotteet/backend/views.py:84
+#: tiedotteet/backend/views.py:83
 msgid "Now"
 msgstr "Nykyiset"
 
 #: tiedotteet/backend/templates/control/nav.html:47
-#: tiedotteet/backend/views.py:94
+#: tiedotteet/backend/views.py:93
 msgid "Upcoming"
 msgstr "Tulevat"
 
 #: tiedotteet/backend/templates/control/nav.html:51
-#: tiedotteet/backend/views.py:97
+#: tiedotteet/backend/views.py:96
 msgid "Old"
 msgstr "Menneet"
 
@@ -1567,19 +1567,6 @@ msgstr "Muokkaa tageja"
 msgid "No tags"
 msgstr "Ei tageja"
 
-#: tiedotteet/backend/views.py:60
+#: tiedotteet/backend/views.py:59
 msgid "New bulletin added"
 msgstr "Tiedote lisätty"
-
-#: tiedotteet/backend/views.py:425
-msgid "Admin login required"
-msgstr "Kirjautuminen ylläpitäjänä vaadittu"
-
-#~ msgid "questions"
-#~ msgstr "kysymykset"
-
-#~ msgid "answered_by"
-#~ msgstr "vastaaja"
-
-#~ msgid "answers"
-#~ msgstr "vastaukset"
