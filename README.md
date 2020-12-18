@@ -48,6 +48,10 @@ Myös abisivut, auth_prodeko, seminaari ja tiedotteet ovat omia appejaan, vaikka
 
 ## Azure
 
+Kun masteriin pusketaan tai mergetään tavaraan repoon määritetty Github Actions pipeline aktivoituu. Pipeline buildaa ja puskee automaattisesti kontin Azure Container Registryyn sekä deployaa kontin palvelimelle [infrastructure repon](https://github.com/Prodeko/infrastructure/tree/master/ansible) playbookin avulla.
+
+Mikäli deployaus halutaan suorittaa manuaalisesti, onnistuu se seuraavilla komennoilla:
+
 1. Kirjaudu Prodekon docker registryyn: `az acr login --name prodekoregistry`
 2. Buildaa image: `docker build . -t prodekoregistry.azurecr.io/prodeko-org/prodeko-org`
 3. Puske image registryyn: `docker push prodekoregistry.azurecr.io/prodeko-org/prodeko-org`

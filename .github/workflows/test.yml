@@ -1,0 +1,37 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - '*'
+      - '!master'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup variables
+        run: cp prodekoorg/settings/variables.sample.txt prodekoorg/settings/variables.txt
+
+      - uses: satackey/action-docker-layer-caching@v0.0.11
+        continue-on-error: true
+
+      - name: Start docker-compose stack
+        run: docker-compose up -d
+
+      - name: Sleep
+        uses: jakejarvis/wait-action@master
+        with:
+          time: '45s'
+
+      - name: Run pytest
+        run: docker exec prodeko_org pytest --cov --cov-report=xml prodekoorg/
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          file: ./coverage.xml
+          flags: unittests
