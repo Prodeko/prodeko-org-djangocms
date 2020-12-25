@@ -43,13 +43,13 @@
        		<div class="pagination footer">
       			<span class="step-links">
            			{% if persons.has_previous %}
-           			<a href="?page={{ persons.previous_page_number }}">Edellinen</a>
+           			<a href="?page={{ persons.previous_page_number }}&search_first_name={% if first_name %}{{ first_name }}{% endif %}&search_last_name={% if last_name %}{{ last_name }}{% endif %}&search_start_year={% if class_of_year %}{{ class_of_year }}{% endif %}">Edellinen</a>
            			{% endif %}
            			<span class="current">
            				Sivu {{ persons.number }}/{{ persons.paginator.num_pages }}
            			</span>
            			{% if persons.has_next %}
-           			<a href="?page={{ persons.next_page_number }}">Seuraava</a>
+           			<a href="?page={{ persons.next_page_number }}&search_first_name={% if first_name %}{{ first_name }}{% endif %}&search_last_name={% if last_name %}{{ last_name }}{% endif %}&search_start_year={% if class_of_year %}{{ class_of_year }}{% endif %}">Seuraava</a>
            			{% endif %}
            		</span>
            		<div class="footer bottom-gradient" ></div>

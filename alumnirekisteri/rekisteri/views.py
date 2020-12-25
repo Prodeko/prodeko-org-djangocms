@@ -1840,6 +1840,7 @@ def search(request):
             "first_name": first_name,
             "last_name": last_name,
             "class_of_year": class_of_year,
+            "page": page,
         },
     )
 

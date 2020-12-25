@@ -36,6 +36,9 @@
 					<div class="collapse navbar-collapse" id="navbar">
 						<form class="navbar-form navbar-left" method="get" action="{% url 'alumnirekisteri:search' %}">
 							<div class="form-group">
+								<input type="hidden" name="page" value="{% if page %}{{ page }}{% endif %}">
+							</div>
+							<div class="form-group">
 								<input type="text" name="search_first_name" value="{% if first_name %}{{ first_name }}{% endif %}" placeholder="Etunimi" class="form-control nav-haku">
 							</div>
 							<div class="form-group">
