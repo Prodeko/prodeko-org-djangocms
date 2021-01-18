@@ -10,7 +10,7 @@ services:
   prodeko_org:
     image: prodekoregistry.azurecr.io/prodeko-org/prodeko-org:latest
     restart: unless-stopped
-    command: gunicorn prodekoorg.asgi:application -b 0.0.0.0:8000 -k uvicorn.workers.UvicornWorker
+    command: uvicorn --host prodeko_org --workers 5 --interface asgi3 --loop asyncio --lifespan off prodekoorg.asgi:application
     volumes:
       - ./prodekoorg:/app/prodekoorg
     ports:
