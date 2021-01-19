@@ -3,18 +3,18 @@ version: '3.8'
 services:
   redis:
     image: redis:6-alpine
+    container_name: prodeko_org_redis
     restart: unless-stopped
     volumes:
       - 'prodeko-org-redis:/data'
 
   prodeko_org:
     image: prodekoregistry.azurecr.io/prodeko-org/prodeko-org:latest
+    container_name: prodeko_org
     restart: unless-stopped
     command: uvicorn --host prodeko_org --workers 5 --interface asgi3 --loop asyncio --lifespan off prodekoorg.asgi:application
     volumes:
       - ./prodekoorg:/app/prodekoorg
-    ports:
-      - '8000:8000'
     environment:
       - DJANGO_SETTINGS_MODULE=prodekoorg.settings.prod
 

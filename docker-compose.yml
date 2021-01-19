@@ -11,6 +11,7 @@ services:
 
   redis:
     image: redis:6-alpine
+    container_name: prodeko_org_redis
 
   prodeko_org:
     build: .
