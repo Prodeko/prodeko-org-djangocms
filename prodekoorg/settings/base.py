@@ -29,6 +29,7 @@ DB_PSWD = config["DB"]["PASSWORD"]
 DEV_EMAIL = config["EMAIL"]["DEV_EMAIL"]
 STORAGE_KEY = config["STORAGE"]["KEY"]
 SENTRY_DSN = config["SENTRY"]["DSN"]
+SENTRY_ENV = config["SENTRY"]["ENV"]
 KILTISKAMERA_URL = config["KILTISKAMERA"]["URL"]
 
 # Application definition

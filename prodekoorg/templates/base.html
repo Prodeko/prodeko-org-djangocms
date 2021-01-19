@@ -8,8 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         {% include "snippets/ga-head.html" %}
         
-        {% render_block "css" %}
         {% render_block "custom-js" %}
+        {% render_block "css" %}
         {% render_block "custom-css" %}
         
         {% comment %} Javascript and SCSS included in separate apps {% endcomment %}
@@ -41,6 +41,7 @@
 {% endaddtoblock %}
 
 {% addtoblock "custom-js" %}
+    {% include "libraries/sentry.html" %}
     {% include "libraries/jquery.html" %}
     {% include "libraries/bootstrap-js.html" %}
     {% include "libraries/html5shiv.html" %}

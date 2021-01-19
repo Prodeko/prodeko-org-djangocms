@@ -1,0 +1,12 @@
+{% load prodekoorg_tags %}
+<script src="https://browser.sentry-cdn.com/5.30.0/bundle.tracing.min.js" crossorigin="anonymous" async id="sentry-sdk"></script>
+<script>
+    document.getElementById('sentry-sdk').addEventListener('load', function () {
+        Sentry.init({
+          dsn: '{% settings_value "SENTRY_DSN" %}',
+          environment: '{% settings_value "SENTRY_ENV" %}',
+          integrations: [new Sentry.Integrations.BrowserTracing()],
+          tracesSampleRate: 1.0
+        });
+    }, false);
+</script>

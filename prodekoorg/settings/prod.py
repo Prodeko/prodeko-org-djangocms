@@ -6,9 +6,10 @@ from .base import *
 
 sentry_sdk.init(
     dsn=SENTRY_DSN,
+    environment=SENTRY_ENV,
     integrations=[DjangoIntegration(), RedisIntegration()],
     send_default_pii=True,
-    traces_sample_rate=0.1,
+    traces_sample_rate=1.0,
 )
 
 DEBUG = False
