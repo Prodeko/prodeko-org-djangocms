@@ -11,24 +11,30 @@ Prodeko.org projekti käyttää Django versiota 3.1.3
 #### Docker
 
 1. Lataa [docker](https://docs.docker.com/install/)
-2. Kopioi prodekoorg/settings/variables.sample.txt ja nimeä se variables.txt nimiseksi
-3. Täytä variables.txt tiedostoon puuttuvat muuttujat
-
-```shell
-$ docker-compose up  # Kehitysympäristön käynnistys
-```
+2. Kopioi prodekoorg/settings/variables.sample.txt ja nimeä se variables.txt nimiseksi.
+3. Täytä variables.txt tiedostoon puuttuvat muuttujat (kehitysympäristössä ei tarvitse)
 
 Asenna lisäksi eslint, prettier, stylelint, pylint, jinjalint ja black ajamalla seuraavat komennot:
 
 ```shell
 $ npm install
 $ python3 -m venv venv
+$ source venv/bin/activate
 $ pip3 install -r requirements-dev.txt
 ```
+Windowsilla on suositeltavaa ajaa nämä WSL:n sisällä.
 
 ### Kehittäminen
 
-Kehitysympäristön käynnistys luo uuden Django käyttäjän:
+Aja docker-kontti ylös seuraavalla komennolla:
+
+```shell
+$ docker-compose up  # Kehitysympäristön käynnistys
+```
+Windowsilla on suositeltavaa ajaa tämä WSL:n sisällä.
+
+Voit nyt siirtyä selaimellasi osoitteeseen <http://localhost:8000>.
+Kehitysympäristön käynnistys luo sivustolle uuden Django-käyttäjän:
 
 - Käyttäjä: **webbitiimi@prodeko.org**
 - Salasana: **kananugetti**
@@ -58,6 +64,8 @@ Mikäli deployaus halutaan suorittaa manuaalisesti, onnistuu se seuraavilla kome
 4. Aja infrastructure reposta: `ansible-playbook playbook.yml --extra-vars '@passwd.yml' --tags prodeko_org`
 
 ### Testaus
+
+Windowsilla on suositeltavaa ajaa kaikki tämänkin osion komennot WSL:n sisällä.
 
 - Käynnistä projekti komennolla `docker-compose up`
 - Avaa uusi terminal window
@@ -224,6 +232,8 @@ msgstr "Etunimi"
 ### Jos scss ei meinaa toimia
 
 Scss:n pitäisi automaattisesti compilata silloin kun tiedosto tallennetaan ja sen aikaleima muuttuu. Tämä ei aina toimi. Workaround: poista tiedostosta esim. yksi '{', jotta se on epäpätevä -> muodostuu error, jonka jälkeen kääntäminen toimii kun '{' lisätään takaisin.
+
+Windows-käyttäjä: käynnistä docker-kontti WSL:n sisällä.
 
 ### Kehittäjät
 
