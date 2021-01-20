@@ -8,8 +8,8 @@
         <title>Prodeko - Lifelong Learning Project</title>
         {% include "snippets/ga-head.html" %}
 
-        {% render_block "css" %}
         {% render_block "custom-js" %}
+        {% render_block "css" %}
         {% render_block "custom-css" %}
     </head>
 
@@ -36,6 +36,7 @@
 {% endaddtoblock %}
 
 {% addtoblock "custom-js" %}
+    {% include "libraries/sentry.html" %}
     {% include "libraries/jquery.html" %}
     {% include "libraries/bootstrap.html" %}
     {% include "libraries/html5shiv.html" %}

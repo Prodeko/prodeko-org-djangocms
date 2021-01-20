@@ -5,6 +5,8 @@
 		  <meta charset="utf-8">
 			<meta http-equiv="X-UA-Compatible" content="IE=edge">
 			<meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>{% block title %}Prodeko Matrikkeli{% endblock %}</title>
+      {% include "libraries/sentry.html" %}
 			<script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
 			<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
 			<link href="{% static 'icons/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
@@ -12,7 +14,6 @@
 			<link href="{% static 'css/material.css' %}" rel="stylesheet">
 			<link href="{% static 'css/ar_custom.css' %}" rel="stylesheet">
 			<link href="https://fonts.googleapis.com/css?family=Raleway:400,600" rel="stylesheet">
-      <title>{% block title %}Prodeko Matrikkeli{% endblock %}</title>
       {% include "snippets/favicongenerator.html" %}
 			{% block local_styles %}
 
