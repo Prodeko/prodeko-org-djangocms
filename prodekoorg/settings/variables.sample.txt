@@ -20,7 +20,8 @@ KEY = longrandomstring
 SHOW_DEBUG_TOOLBAR = False
 
 [SENTRY]
-DSN = https://1da6cf1579c34878bbf1d1cebe533368@sentry.prodeko.org/1
+DSN = https://fdff5dc6f7f949a09dec7eead4f4f363@sentry.prodeko.org/2
+ENV = development
 
 [KILTISKAMERA]
 URL = https://insertuserhere:insertpasswordhere@0.0.0.1:1234/
