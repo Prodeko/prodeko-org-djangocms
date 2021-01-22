@@ -14,7 +14,7 @@
     {% include "libraries/bootstrap-js.html" %}
     <script>
         $(function () {
-        $('[data-toggle="tooltip"]').tooltip({
+        $('[data-bs-toggle="tooltip"]').tooltip({
             html: true,
             title: "<span> \
                     HUOM! JOS LATAAT USEITA PÖYTÄKIRJOJA LATAUKSESSA SAATTAA KESTÄÄ JOPA MINUUTTI! <br /><br /> \
@@ -42,7 +42,7 @@
             {% for message in messages %}
                 <div class="alert alert-{{ message.tags }} alert-dismissable fade show" role="alert" style="margin-top:0.5rem;margin-bottom:0.5rem;">
                     {{ message }}
-                    <a type="button" class="close" data-dismiss="alert"><i class="fas fa-times"></i></a>
+                    <a type="button" class="close" data-bs-dismiss="alert"><i class="fas fa-times"></i></a>
                 </div>
             {% endfor %}
         </ul>
@@ -67,7 +67,7 @@
         </a>
     </li>
     <li>
-        <a id="download-instructions" href="#" data-toggle="tooltip" data-placement="bottom">
+        <a id="download-instructions" href="#" data-bs-toggle="tooltip" data-bs-placement="bottom">
             {% trans how_does_it_work %}
             <i class="ml-2 fas fa-question"></i>
         </a>

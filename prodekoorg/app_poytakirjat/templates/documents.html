@@ -19,7 +19,7 @@
                 <div class="col-md-9">
                     <div id="documents-container">
                         {% for year, doclist in context.items %}
-                            <a class="btn btn-primary w-100 text-left mb-2 {% if not forloop.first %}collapsed{% endif %}" data-toggle="collapse" href="#collapse-{{ year }}">
+                            <a class="btn btn-primary w-100 text-left mb-2 {% if not forloop.first %}collapsed{% endif %}" data-bs-toggle="collapse" href="#collapse-{{ year }}">
                                 {{ year }}
                                 <i class="fa fa-fw {% if forloop.first %}fa-chevron-down{% endif %} pt-1"></i>
                             </a>

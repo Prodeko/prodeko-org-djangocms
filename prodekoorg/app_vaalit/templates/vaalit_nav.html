@@ -10,7 +10,7 @@
         <strong>{% trans elections_information %}</strong>
     </a>
     <br/>
-    <a href="#hallitusList" class="list-group-item list-group-item-action" data-toggle="collapse">
+    <a href="#hallitusList" class="list-group-item list-group-item-action" data-bs-toggle="collapse">
         <i class="fa fa-fw fa-chevron-down"></i>
         <strong>{% trans board %}</strong>
         <span class="badge badge-primary badge-pill">{{ count_ehdokkaat_hallitus }}</span>
@@ -18,7 +18,7 @@
     <div class="list-group collapse show" id="hallitusList" role="tablist">
         {% for virka in virat %}
             {% if virka.is_hallitus %}
-                <a href="#_{{ virka.pk }}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" data-toggle="tab">
+                <a href="#_{{ virka.pk }}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" data-bs-toggle="tab">
                     <span class="virka-name">{{ virka.name }}</span>
                     {% if not request.user in virka.read_by.all %}
                         <span class="virka-unread">{% trans new %}</span>
@@ -27,7 +27,7 @@
             {% endif %}
         {% endfor %}
     </div>
-    <a href="#toimaritList" class="list-group-item list-group-item-action" data-toggle="collapse">
+    <a href="#toimaritList" class="list-group-item list-group-item-action" data-bs-toggle="collapse">
         <i class="fa fa-fw fa-chevron-down"></i>
         <strong>{% trans officials %}</strong>
         <span class="badge badge-primary badge-pill">{{ count_ehdokkaat_toimarit }}</span>
@@ -35,7 +35,7 @@
     <div class="list-group collapse show" id="toimaritList" role="tablist">
         {% for virka in virat %}
             {% if not virka.is_hallitus %}
-                <a href="#_{{ virka.pk }}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" data-toggle="tab">
+                <a href="#_{{ virka.pk }}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" data-bs-toggle="tab">
                     <span class="virka-name">{{ virka.name }}</span>
                     {% if not request.user in virka.read_by.all %}
                         <span class="virka-unread">{% trans new %}</span>
