@@ -6,11 +6,13 @@
 {% trans "Membership" as apply %}
 {% trans "Profile" as profile %}
 
-<div id="navbar-full" class="navbar navbar-expand-lg navbar-light d-none d-lg-block">
-    <div class="collapse navbar-collapse">
+<div id="navbar-full" class="navbar navbar-expand-lg navbar-dark d-none d-lg-block">
+    <div class="container-fluid collapse navbar-collapse navbar-logo-container">
         <a class="navbar-brand" href="/">
-            <img id="navbar-logo" src="{% static 'images/logos/prodeko-logo-middleblue-nav.png' %}" />
+            <img id="navbar-logo" src="{% static 'images/logos/prodeko-logo-text-white.png' %}" alt="Prodeko logo" />
         </a>
+    </div>
+    <div class="container-fluid collapse navbar-collapse">
         <ul class="navbar-nav justify-content-center align-items-center w-100">
             {% for child in children %}
                 {% if child.get_descendants %}
@@ -18,7 +20,7 @@
                         <a class="nav-link" id="navbarDropdown-{{ forloop.counter }}" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {{ child.get_menu_title }}
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown-{{ forloop.counter }}">
+                        <div class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown-{{ forloop.counter }}">
                             {% for kid in child.get_descendants %}
                                 <a class="dropdown-item" href="{{ kid.get_absolute_url }}">{{ kid.get_menu_title }}</a>
                             {% endfor %}
@@ -31,24 +33,25 @@
                 {% endif %}
             {% endfor %}
         </ul>
-        {% if user.is_authenticated %}
-            <a href="{% url 'auth_prodeko:profile' %}" class="profile-icon mr-4" data-bs-trigger="hover" data-bs-content="{% trans profile %}">
-                <i class="fas fa-user-circle"></i>
-            </a>
-        {% endif %}
         <div class="lang-picker d-flex flex-row justify-content-center">
             <a href="{% page_language_url 'fi' %}" class="{% if LANGUAGE_CODE == 'fi' %}lang{% endif %} mr-1" >FI</a>
             <span>/</span>
             <a href="{% page_language_url 'en' %}" class="{% if LANGUAGE_CODE == 'en' %}lang{% endif %} ml-1">EN</a>
         </div>
+        {% if user.is_authenticated %}
+            <a href="{% url 'auth_prodeko:profile' %}" class="profile-icon mr-4" data-bs-trigger="hover" data-bs-content="{% trans profile %}">
+                <i class="fas fa-user-circle"></i>
+            </a>
+        {% endif %}
         {% if not user.is_authenticated %}
-            <a href="{% url 'auth_prodeko:login' %}" class="auth-btn btn btn-block btn-primary mx-4" role="button">
-                {% trans login %}
+            <a href="{% url 'auth_prodeko:login' %}" class="auth-btn mr4">
+                <i class="fas fa-sign-in-alt"></i>
             </a>
         {% else %}
-            <a href="{% url 'auth_prodeko:logout' %}" class="auth-btn btn btn-block btn-primary mx-4" role="button">
-                {% trans logout %}
+            <a href="{% url 'auth_prodeko:logout' %}" class="auth-btn mr4">
+                <i class="fas fa-sign-out-alt"></i>
             </a>
         {% endif %}
     </div>
+</div>
 </div>
