@@ -14,7 +14,7 @@
       </div>
       <div class="row">
         <div class="col-md-8">
-          <p class="pull-right"><a type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#email-settings">{% trans "Edit settings" %}</a></p>
+          <p class="pull-right"><a type="button" class="btn btn-default btn-xs" data-bs-toggle="modal" data-bs-target="#email-settings">{% trans "Edit settings" %}</a></p>
           <p>{% trans "Email server settings" as emailserver_settings %}</p>
           <table class="table table-bordered">
             <tr>
@@ -73,7 +73,7 @@
           <form class="form-horizontal" action="{% url 'tiedotteet:control_panel_email' %}" method="post">
             {% csrf_token %}
             <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
               <h4 class="modal-title">{% trans emailserver_settings %}</h4>
             </div>
             <div class="modal-body">
@@ -119,7 +119,7 @@
             </div>
             <div class="modal-footer">
               <button type="submit" class="btn btn-success">{% trans "Save" %}</button>
-              <button type="button" class="btn btn-default" data-dismiss="modal">{% trans "Close" %}</button>
+              <button type="button" class="btn btn-default" data-bs-dismiss="modal">{% trans "Close" %}</button>
             </div>
           </form>
         </div>
