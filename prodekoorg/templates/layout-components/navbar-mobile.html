@@ -9,7 +9,7 @@
     <a class="navbar-brand" href="/">
         <img id="navbar-logo" src="{% static 'images/logos/prodeko-logo-text-blue.png' %}" />
     </a>
-    <button class="navbar-toggler hamburger hamburger--minus" type="button" data-toggle="collapse" data-target="#navbarMobile" aria-controls="navbarMobile" aria-expanded="false"aria-label="Toggle navigation">
+    <button class="navbar-toggler hamburger hamburger--minus" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMobile" aria-controls="navbarMobile" aria-expanded="false"aria-label="Toggle navigation">
         <span class="hamburger-box">
             <span class="hamburger-inner"></span>
         </span>
@@ -19,21 +19,21 @@
             <div id="navAccordion">
                 {% for child in children %}
                     {% if child.get_descendants %}
-                        <div id="heading-{{forloop.counter}}-{{child.level}}" class="my-3 caret-container collapsed" role="button" data-toggle="collapse" data-target="#collapse-{{forloop.counter}}-{{child.level}}" aria-expanded="false" aria-controls="collapse-{{forloop.counter}}-{{child.level}}">
+                        <div id="heading-{{forloop.counter}}-{{child.level}}" class="my-3 caret-container collapsed" role="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{forloop.counter}}-{{child.level}}" aria-expanded="false" aria-controls="collapse-{{forloop.counter}}-{{child.level}}">
                             <h5 class="ml-2 uppercase">
                                 {{ child.get_menu_title }}
                                 <span class="fa fa-caret-up float-right mr-3"></span>
                             </h5>
                         </div>
-                        <div id="collapse-{{forloop.counter}}-{{child.level}}" class="collapse text-center" aria-labelledby="heading-{{forloop.counter}}-{{child.level}}" data-parent="#navAccordion">
+                        <div id="collapse-{{forloop.counter}}-{{child.level}}" class="collapse text-center" aria-labelledby="heading-{{forloop.counter}}-{{child.level}}" data-bs-parent="#navAccordion">
                             <ul class="list-group list-group-flush">
                                 {% for kid in child.get_descendants %}
                                     {% if not kid.is_leaf_node %}
                                         <li id="navAccordion-{{forloop.counter}}" class="list-group-item">
-                                            <div id="heading-{{forloop.counter}}-{{kid.level}}" class="submenu-heading collapsed" role="button" data-toggle="collapse" data-target="#collapse-{{forloop.counter}}-{{kid.level}}" aria-expanded="false" aria-controls="collapse-{{forloop.counter}}-{{kid.level}}">
+                                            <div id="heading-{{forloop.counter}}-{{kid.level}}" class="submenu-heading collapsed" role="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{forloop.counter}}-{{kid.level}}" aria-expanded="false" aria-controls="collapse-{{forloop.counter}}-{{kid.level}}">
                                                 <span>{{ kid.get_menu_title }}</span>
                                             </div>
-                                            <div id="collapse-{{forloop.counter}}-{{kid.level}}" class="collapse text-center" aria-labelledby="heading-{{forloop.counter}}-{{kid.level}}" data-parent="#navAccordion-{{forloop.counter}}">
+                                            <div id="collapse-{{forloop.counter}}-{{kid.level}}" class="collapse text-center" aria-labelledby="heading-{{forloop.counter}}-{{kid.level}}" data-bs-parent="#navAccordion-{{forloop.counter}}">
                                                 <ul class="list-group list-group-flush">
                                                     <li class="list-group-item">
                                                         <a class="link" href="{{ kid.get_absolute_url }}">{{ kid.get_menu_title }}</a>

@@ -140,7 +140,7 @@ $(document).ready(function () {
       renumberForm(newForm, '__prefix__', totalForms.value);
       // Make it able to delete itself.
       newForm
-        .querySelector('[data-formset-remove-form]')
+        .querySelector('[data-bs-formset-remove-form]')
         .addEventListener('click', removeForm);
       // Append the new form to the formsList.
       formsList.insertAdjacentElement('beforeend', newForm);
@@ -200,7 +200,7 @@ $(document).ready(function () {
     }
 
     element
-      .querySelector('[data-formset-add-form]')
+      .querySelector('[data-bs-formset-add-form]')
       .addEventListener('click', addForm);
     element.formset = this;
 

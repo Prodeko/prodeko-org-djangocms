@@ -39,7 +39,7 @@ $(document).ready(function() {
   if ($("#vaalitNav").length > 0) {
     if (selectedTab_id != null && selectedTab_id != "null") {
       elem = $(
-        '.list-group-root a[data-toggle="tab"][href="' + selectedTab_id + '"] .virka-name'
+        '.list-group-root a[data-bs-toggle="tab"][href="' + selectedTab_id + '"] .virka-name'
       );
       elem2 = $(selectedTab_id);
       elem2.addClass("active show");
@@ -85,9 +85,9 @@ $(document).ready(function() {
     openFrontPage();
   })
 
-  $('.list-group-root a[data-toggle="tab"]').click(function(e) {
+  $('.list-group-root a[data-bs-toggle="tab"]').click(function(e) {
     var id = $(e.delegateTarget).attr("href");
-    var virka = $('.list-group-root a[data-toggle="tab"][href="' + id + '"] .virka-name')
+    var virka = $('.list-group-root a[data-bs-toggle="tab"][href="' + id + '"] .virka-name')
       .text()
       .trim();
     checkBtnHaeVirkaanVisibility(virka);
@@ -218,7 +218,7 @@ $(document).ready(function() {
   }
 
   function markReadSuccess(virka_id) {
-    $('.list-group-root a[data-toggle="tab"][href="' + "#_" + virka_id + '"] .virka-unread').fadeOut(200, function() {
+    $('.list-group-root a[data-bs-toggle="tab"][href="' + "#_" + virka_id + '"] .virka-unread').fadeOut(200, function() {
       $(this).remove();
     })
   }
