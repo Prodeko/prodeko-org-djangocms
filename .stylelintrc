@@ -10,7 +10,6 @@
   },
   "ignoreFiles": [
     "prodekoorg/collected-static/**",
-    "prodekoorg/static/scss/bs4-scss/**", 
     "prodekoorg/static/scss/hamburgers.scss",
     "alumnirekisteri/rekisteri/static/icons/**",
     "alumnirekisteri/rekisteri/static/css/**",
