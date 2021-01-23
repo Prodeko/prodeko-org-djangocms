@@ -10,12 +10,13 @@
       margin: 0 auto;
 
       #navbar-logo {
-        height: 3em;
+        height: 4em;
+        margin-left: -5em;
       }
     }
   }
 
-  .profile-icon, .auth-btn, {
+  .profile-icon, .auth-btn {
     padding-left: 1.2rem;
   }
 
@@ -25,6 +26,7 @@
     font-weight: bold;
     padding-left: 0.2em;
     padding-right: 0.2em;
+
     a {
       color: white;
     }
