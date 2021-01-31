@@ -3,6 +3,7 @@
 SECRET = longrandomstring
 
 [DB]
+HOST = postgres
 NAME_DEFAULT = prodekoorg
 USER = prodekoorg
 PASSWORD = secret

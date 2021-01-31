@@ -11,7 +11,7 @@ DATABASES = {
         "NAME": DB_NAME_DEFAULT,
         "USER": DB_USER,
         "PASSWORD": DB_PSWD,
-        "HOST": "postgres",
+        "HOST": DB_HOST,
         "PORT": "5432",
     }
 }

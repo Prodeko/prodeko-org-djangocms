@@ -27,10 +27,9 @@ DATABASES = {
         "NAME": DB_NAME_DEFAULT,
         "USER": DB_USER,
         "PASSWORD": DB_PSWD,
-        "HOST": "pgbouncer",
+        "HOST": DB_HOST,
         "PORT": "5439",
-        "CONN_MAX_AGE": 0,
-        "DISABLE_SERVER_SIDE_CURSORS": True,
+        "CONN_MAX_AGE": 60,
     }
 }
 

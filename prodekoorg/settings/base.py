@@ -23,6 +23,7 @@ config.read(os.path.join(BASE_DIR, "prodekoorg/settings/variables.txt"))
 # SECURITY WARNING: keep the secret keys used in production secret!
 # Use configparser to read environment variables from variables.txt file
 SECRET_KEY = config["DJANGO"]["SECRET"]
+DB_HOST = config["DB"]["HOST"]
 DB_NAME_DEFAULT = config["DB"]["NAME_DEFAULT"]
 DB_USER = config["DB"]["USER"]
 DB_PSWD = config["DB"]["PASSWORD"]
