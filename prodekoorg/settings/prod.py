@@ -13,7 +13,7 @@ sentry_sdk.init(
 )
 
 DEBUG = False
-ALLOWED_HOSTS = ["prodeko.org", ".prodeko.org", "prodeko.fi", ".prodeko.fi"]
+ALLOWED_HOSTS = ["prodeko.org", ".prodeko.org", "prodeko.fi", ".prodeko.fi", "0.0.0.0"]
 
 # When DEBUG = False, all errors with level ERROR or
 # higher get mailed to ADMINS according to LOGGING conf
@@ -28,7 +28,7 @@ DATABASES = {
         "USER": DB_USER,
         "PASSWORD": DB_PSWD,
         "HOST": DB_HOST,
-        "PORT": "5439",
+        "PORT": "5432",
         "CONN_MAX_AGE": 1800,
         "OPTIONS": {
             "sslmode": "verify-ca",
