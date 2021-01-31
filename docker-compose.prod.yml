@@ -17,6 +17,7 @@ services:
       - ./prodekoorg:/app/prodekoorg
     environment:
       - DJANGO_SETTINGS_MODULE=prodekoorg.settings.prod
+      - POSTGRESQL_SSL_CA=/app/ca-certs/BaltimoreCyberTrustRoot.crt.pem
 
 volumes:
   prodeko-org-redis:

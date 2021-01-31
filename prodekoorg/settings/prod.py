@@ -29,7 +29,11 @@ DATABASES = {
         "PASSWORD": DB_PSWD,
         "HOST": DB_HOST,
         "PORT": "5439",
-        "CONN_MAX_AGE": 60,
+        "CONN_MAX_AGE": 1800,
+        "OPTIONS": {
+            "sslmode": "verify-ca",
+            "sslrootcert": os.environ.get("POSTGRESQL_SSL_CA", ""),
+        },
     }
 }
 
