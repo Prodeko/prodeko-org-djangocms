@@ -16,7 +16,7 @@ DEBUG = False
 ALLOWED_HOSTS = ["prodeko.org", ".prodeko.org", "prodeko.fi", ".prodeko.fi", "0.0.0.0"]
 
 CORS_ALLOWED_ORIGINS = [
-    r"^https://\w+\.prodeko\.org$",,
+    "https://ilmo3.prodeko.org",
 ]
 
 # When DEBUG = False, all errors with level ERROR or
