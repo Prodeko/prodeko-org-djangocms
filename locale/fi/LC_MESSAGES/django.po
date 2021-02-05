@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-20 14:39+0200\n"
+"POT-Creation-Date: 2021-02-05 13:08+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Timo Riski <timo@prodeko.org>\n"
 "Language: \n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: abisivut/cms_apps.py:12 prodekoorg/settings/base.py:266
+#: abisivut/cms_apps.py:12 prodekoorg/settings/base.py:273
 msgid "High school student page"
 msgstr "Abisivut"
 
@@ -221,7 +221,7 @@ msgstr "Salasana unohtunut?"
 msgid "The email and password didn't match. Try again"
 msgstr "Sähköposti ja salasana eivät täsmänneet. Yritä uudestaan"
 
-#: lifelonglearning/cms_apps.py:12 prodekoorg/settings/base.py:267
+#: lifelonglearning/cms_apps.py:12 prodekoorg/settings/base.py:274
 msgid "Lifelong learning page"
 msgstr "Lifelong learning sivu"
 
@@ -684,8 +684,8 @@ msgstr "Kyllä"
 msgid "No"
 msgstr "Ei"
 
-#: prodekoorg/app_membership/models.py:55 prodekoorg/settings/base.py:76
-#: prodekoorg/settings/base.py:86
+#: prodekoorg/app_membership/models.py:55 prodekoorg/settings/base.py:77
+#: prodekoorg/settings/base.py:87
 msgid "Finnish"
 msgstr "Suomi"
 
@@ -1130,6 +1130,7 @@ msgstr "Ei vastauksia"
 #: prodekoorg/app_vaalit/templates/vaalit_ehdokas.html:3
 #: prodekoorg/app_vaalit/templates/vaalit_modal_delete_ehdokas.html:5
 #: prodekoorg/app_vaalit/templates/vaalit_modal_ehdokas_description.html:5
+#: prodekoorg/templates/oauth2_provider/application_confirm_delete.html:13
 #: tiedotteet/backend/templates/control/messages.html:66
 #: tiedotteet/backend/templates/control/tags.html:44
 msgid "Delete"
@@ -1185,27 +1186,27 @@ msgstr "Poista"
 msgid "Edit"
 msgstr "Muokkaa"
 
-#: prodekoorg/settings/base.py:76 prodekoorg/settings/base.py:93
+#: prodekoorg/settings/base.py:77 prodekoorg/settings/base.py:94
 msgid "English"
 msgstr "Englanti"
 
-#: prodekoorg/settings/base.py:262
+#: prodekoorg/settings/base.py:269
 msgid "Frontpage"
 msgstr "Etusivu"
 
-#: prodekoorg/settings/base.py:263
+#: prodekoorg/settings/base.py:270
 msgid "Content page"
 msgstr "Sisältösivu"
 
-#: prodekoorg/settings/base.py:264
+#: prodekoorg/settings/base.py:271
 msgid "Content page with 1:1 split"
 msgstr "Sisältösivu 1:1 jaolla"
 
-#: prodekoorg/settings/base.py:265
+#: prodekoorg/settings/base.py:272
 msgid "Content page with 2:1 split"
 msgstr "Sisältösivu 2:1 jaolla"
 
-#: prodekoorg/settings/base.py:271
+#: prodekoorg/settings/base.py:278
 msgid "Navigation"
 msgstr "Navigaatio"
 
@@ -1276,6 +1277,30 @@ msgstr "Sosiaalinen media"
 msgid "Membership"
 msgstr "Hae jäsenyyttä"
 
+#: prodekoorg/templates/oauth2_provider/application_confirm_delete.html:6
+msgid "Are you sure to delete the application"
+msgstr "Haluatko varmasti poistaa hakemuksesi?"
+
+#: prodekoorg/templates/oauth2_provider/application_confirm_delete.html:12
+msgid "Cancel"
+msgstr "Peruuta"
+
+#: prodekoorg/templates/oauth2_provider/application_form.html:11
+msgid "Edit application"
+msgstr "Muokkaa applikaatiota"
+
+#: prodekoorg/templates/oauth2_provider/application_form.html:33
+msgid "Go Back"
+msgstr "Takaisin"
+
+#: prodekoorg/templates/oauth2_provider/authorize.html:8
+msgid "Authorize"
+msgstr "Anna lupa"
+
+#: prodekoorg/templates/oauth2_provider/authorize.html:17
+msgid "Application requires following permissions"
+msgstr "Applikaatio vaatii seuraavia oikeuksia"
+
 #: prodekoorg/templates/other/policy-error.html:6
 msgid ""
 "📝 You have not accepted Prodeko's privacy policy. Please accept our privacy "
@@ -1312,7 +1337,7 @@ msgstr ""
 "Mikäli et hyväksy tietosuojalauseketta, sinut kirjataan ulos. Kirjautumalla "
 "sisään näet tämän saman valintaikkunan."
 
-#: prodekoorg/urls.py:61
+#: prodekoorg/urls.py:66
 msgid "matrikkeli/"
 msgstr ""
 

@@ -15,6 +15,10 @@ sentry_sdk.init(
 DEBUG = False
 ALLOWED_HOSTS = ["prodeko.org", ".prodeko.org", "prodeko.fi", ".prodeko.fi", "0.0.0.0"]
 
+CORS_ALLOWED_ORIGINS = [
+    r"^https://\w+\.prodeko\.org$",,
+]
+
 # When DEBUG = False, all errors with level ERROR or
 # higher get mailed to ADMINS according to LOGGING conf
 ADMINS = [("CTO", "cto@prodeko.org")]
@@ -29,7 +33,7 @@ DATABASES = {
         "PASSWORD": DB_PSWD,
         "HOST": DB_HOST,
         "PORT": "5432",
-        "CONN_MAX_AGE": 1800,
+        "CONN_MAX_AGE": 60,
         "OPTIONS": {
             "sslmode": "verify-ca",
             "sslrootcert": os.environ.get("POSTGRESQL_SSL_CA", ""),

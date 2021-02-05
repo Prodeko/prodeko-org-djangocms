@@ -156,6 +156,8 @@ TEMPLATES = [
 
 MIDDLEWARE = (
     "django.middleware.cache.UpdateCacheMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
+    "oauth2_provider.middleware.OAuth2TokenMiddleware",
     "cms.middleware.utils.ApphookReloadMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -170,7 +172,7 @@ MIDDLEWARE = (
     "cms.middleware.toolbar.ToolbarMiddleware",
     "cms.middleware.language.LanguageCookieMiddleware",
     # matrikkeli.prodeko.org
-    #'audit_log.middleware.UserLoggingMiddleware',
+    # "audit_log.middleware.UserLoggingMiddleware",
     "django.middleware.cache.FetchFromCacheMiddleware",
 )
 
@@ -186,7 +188,7 @@ INSTALLED_APPS = (
     "django.contrib.staticfiles",
     "django.contrib.messages",
     # ------------------------
-    # auth_prodeko needs to be above 'cms'
+    # auth_prodeko needs to be above "cms"
     "auth_prodeko",
     # ------------------------
     "cms",
@@ -233,6 +235,9 @@ INSTALLED_APPS = (
     "ckeditor",
     "ckeditor_uploader",
     "rest_framework",
+    # Oauth2
+    "oauth2_provider",
+    "corsheaders",
     # ------------------------
     # matrikkeli.prodeko.org
     "alumnirekisteri.rekisteri",
@@ -249,6 +254,7 @@ INSTALLED_APPS = (
     "prodekoorg.app_infoscreen",
     "prodekoorg.app_kulukorvaus",
     "prodekoorg.app_membership",
+    "prodekoorg.app_oauth",
     "prodekoorg.app_poytakirjat",
     "prodekoorg.app_proleko",
     "prodekoorg.app_tiedostot",
@@ -382,8 +388,23 @@ CSRF_TRUSTED_ORIGINS = ".google.com"
 SESSION_COOKIE_AGE = 60 * 60 * 24 * 30  # 30 days
 SESSION_ENGINE = "django.contrib.sessions.backends.cached_db"
 
+OAUTH2_PROVIDER = {
+    "SCOPES": {
+        "read": "Read scope",
+        "write": "Write scope",
+        "groups": "Access to your groups",
+    }
+}
+
+AUTHENTICATION_BACKENDS = (
+    "oauth2_provider.backends.OAuth2Backend",
+    "django.contrib.auth.backends.ModelBackend",
+)
+
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
+        "oauth2_provider.contrib.rest_framework.OAuth2Authentication",
+        "rest_framework.permissions.IsAuthenticated",
         "rest_framework.authentication.BasicAuthentication",
         "rest_framework.authentication.SessionAuthentication",
     )

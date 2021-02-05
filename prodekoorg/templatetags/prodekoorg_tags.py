@@ -6,7 +6,7 @@ from django.utils.safestring import mark_safe
 
 register = template.Library()
 
-class_re = re.compile(r'(?<=class=["\'])(.*?)(?=["\'])')
+class_re = re.compile(r'(?<=class=["\'])(.*)(?=["\'])')
 
 
 @register.filter
@@ -21,7 +21,7 @@ def add_class(value, css_class):
         if not m:
             return mark_safe(class_re.sub(match.group(1) + " " + css_class, string))
     else:
-        return mark_safe(string.replace(" ", ' class="%s" ' % css_class))
+        return mark_safe(string.replace(">", f' class="{css_class}">'))
     return value
 
 

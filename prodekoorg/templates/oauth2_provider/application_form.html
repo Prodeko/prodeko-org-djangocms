@@ -1,0 +1,44 @@
+{% extends "oauth2_provider/base.html" %}
+
+{% load prodekoorg_tags %}
+
+{% load i18n %}
+{% block content %}
+  <div class="block-center">
+    <form method="post" novalidate action="{% block app-form-action-url %}{% url 'oauth2_provider:update' application.id %}{% endblock app-form-action-url %}">
+      <h3 class="block-center-heading">
+        {% block app-form-title %}
+          {% trans "Edit application" %} {{ application.name }}
+        {% endblock app-form-title %}
+      </h3>
+      {% csrf_token %}
+
+      {% for field in form %}
+        <div class="form-group {% if field.errors %}error{% endif %}">
+          <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+          {% if not field.errors and request.body %}
+            {{ field|add_class:"form-control is-valid" }}
+          {% elif field.errors %}
+            {{ field|add_class:"form-control is-invalid" }}
+          {% else %}
+            {{ field|add_class:"form-control" }}
+          {% endif %}
+          {% for error in field.errors %}
+            <span class="form-text text-danger">{{ error }}</span>
+          {% endfor %}
+        </div>
+      {% endfor %}
+
+      <div class="form-group {% if form.non_field_errors %}error{% endif %}">
+        {% for error in form.non_field_errors %}
+          <span class="form-text text-danger">{{ error }}</span>
+        {% endfor %}
+      </div>
+
+      <a class="btn btn-outline-dark" href="{% block app-form-back-url %}{% url "oauth2_provider:detail" application.id %}{% endblock app-form-back-url %}">
+        {% trans "Go Back" %}
+      </a>
+      <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+  </div>
+{% endblock %}
