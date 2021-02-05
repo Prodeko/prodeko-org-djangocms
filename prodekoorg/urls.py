@@ -44,6 +44,11 @@ urlpatterns = [
 # Django filer
 urlpatterns += [path("", include("filer.server.urls"))]
 
+# app_oauth
+urlpatterns += [
+    path("oauth2/", include("prodekoorg.app_oauth.urls", namespace="oauth2_provider")),
+]
+
 # Localization and internationalization
 urlpatterns += i18n_patterns(
     path(
