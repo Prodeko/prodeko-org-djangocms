@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-05 13:08+0200\n"
+"POT-Creation-Date: 2021-02-06 15:48+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Timo Riski <timo@prodeko.org>\n"
 "Language: \n"
@@ -1130,7 +1130,9 @@ msgstr "Ei vastauksia"
 #: prodekoorg/app_vaalit/templates/vaalit_ehdokas.html:3
 #: prodekoorg/app_vaalit/templates/vaalit_modal_delete_ehdokas.html:5
 #: prodekoorg/app_vaalit/templates/vaalit_modal_ehdokas_description.html:5
-#: prodekoorg/templates/oauth2_provider/application_confirm_delete.html:13
+#: prodekoorg/templates/oauth2_provider/application_confirm_delete.html:11
+#: prodekoorg/templates/oauth2_provider/application_detail.html:37
+#: prodekoorg/templates/oauth2_provider/authorized-token-delete.html:11
 #: tiedotteet/backend/templates/control/messages.html:66
 #: tiedotteet/backend/templates/control/tags.html:44
 msgid "Delete"
@@ -1182,6 +1184,7 @@ msgid "Remove"
 msgstr "Poista"
 
 #: prodekoorg/app_vaalit/templates/vaalit_question.html:6
+#: prodekoorg/templates/oauth2_provider/application_detail.html:36
 #: tiedotteet/backend/templates/control/editor.html:10
 msgid "Edit"
 msgstr "Muokkaa"
@@ -1281,17 +1284,39 @@ msgstr "Hae jäsenyyttä"
 msgid "Are you sure to delete the application"
 msgstr "Haluatko varmasti poistaa hakemuksesi?"
 
-#: prodekoorg/templates/oauth2_provider/application_confirm_delete.html:12
+#: prodekoorg/templates/oauth2_provider/application_confirm_delete.html:10
+#: prodekoorg/templates/oauth2_provider/authorized-token-delete.html:10
 msgid "Cancel"
 msgstr "Peruuta"
+
+#: prodekoorg/templates/oauth2_provider/application_detail.html:10
+msgid "Client id"
+msgstr "Asiakastunnus"
+
+#: prodekoorg/templates/oauth2_provider/application_detail.html:15
+msgid "Client secret"
+msgstr "Client secret"
+
+#: prodekoorg/templates/oauth2_provider/application_detail.html:20
+msgid "Client type"
+msgstr "Sisältösivu"
+
+#: prodekoorg/templates/oauth2_provider/application_detail.html:25
+msgid "Authorization Grant Type"
+msgstr "Valtuutustyypi"
+
+#: prodekoorg/templates/oauth2_provider/application_detail.html:30
+msgid "Redirect Uris"
+msgstr "Uudelleenohjaus uri:t"
+
+#: prodekoorg/templates/oauth2_provider/application_detail.html:35
+#: prodekoorg/templates/oauth2_provider/application_form.html:39
+msgid "Go Back"
+msgstr "Takaisin"
 
 #: prodekoorg/templates/oauth2_provider/application_form.html:11
 msgid "Edit application"
 msgstr "Muokkaa applikaatiota"
-
-#: prodekoorg/templates/oauth2_provider/application_form.html:33
-msgid "Go Back"
-msgstr "Takaisin"
 
 #: prodekoorg/templates/oauth2_provider/authorize.html:8
 msgid "Authorize"
@@ -1300,6 +1325,10 @@ msgstr "Anna lupa"
 #: prodekoorg/templates/oauth2_provider/authorize.html:17
 msgid "Application requires following permissions"
 msgstr "Applikaatio vaatii seuraavia oikeuksia"
+
+#: prodekoorg/templates/oauth2_provider/authorized-token-delete.html:6
+msgid "Are you sure to delete the token"
+msgstr "Haluatko varmasti poistaa tokenin?"
 
 #: prodekoorg/templates/other/policy-error.html:6
 msgid ""
