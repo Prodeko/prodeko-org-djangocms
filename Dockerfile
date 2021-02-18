@@ -2,8 +2,8 @@
 FROM node:12 as tiedotteet-build
 WORKDIR /app
 
-COPY tiedotteet/frontend/package.json ./
-RUN npm install
+COPY tiedotteet/frontend/package.json tiedotteet/frontend/package-lock.json ./
+RUN npm ci
 
 ADD tiedotteet/frontend /app
 RUN npm run build:prod
