@@ -16,6 +16,7 @@ DEV_EMAIL = you.email@email.com
 
 [STORAGE]
 KEY = longrandomstring
+SAS_TOKEN = longrandomstring
 
 [DEBUG]
 SHOW_DEBUG_TOOLBAR = False

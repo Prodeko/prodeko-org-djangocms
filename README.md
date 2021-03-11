@@ -4,7 +4,7 @@ Tuotantotalouden kilta Prodekon Django CMS -pohjaiset nettisivut.
 
 ---
 
-Prodeko.org projekti käyttää Django versiota 3.1.3
+Prodeko.org projekti käyttää Django versiota 3.1.4
 
 ### Vaatimukset
 
@@ -22,6 +22,7 @@ $ python3 -m venv venv
 $ source venv/bin/activate
 $ pip3 install -r requirements-dev.txt
 ```
+
 Windowsilla on suositeltavaa ajaa nämä WSL:n sisällä.
 
 ### Kehittäminen
@@ -31,6 +32,7 @@ Aja docker-kontti ylös seuraavalla komennolla:
 ```shell
 $ docker-compose up  # Kehitysympäristön käynnistys
 ```
+
 Windowsilla on suositeltavaa ajaa tämä WSL:n sisällä.
 
 Voit nyt siirtyä selaimellasi osoitteeseen <http://localhost:8000>.
