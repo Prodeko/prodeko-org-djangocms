@@ -7,6 +7,7 @@ from storages.backends.azure_storage import AzureStorage
 class AzureMediaStorage(AzureStorage):
     account_name = "prodekostorage"
     account_key = settings.STORAGE_KEY
+    sas_token = settings.SAS_TOKEN
     azure_container = "media"
     expiration_secs = None
     # This is needed for django-filer
@@ -16,6 +17,7 @@ class AzureMediaStorage(AzureStorage):
 class AzureStaticStorage(ManifestFilesMixin, AzureStorage):
     account_name = "prodekostorage"
     account_key = settings.STORAGE_KEY
+    sas_token = settings.SAS_TOKEN
     azure_container = "static"
     expiration_secs = None
 
