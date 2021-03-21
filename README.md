@@ -14,6 +14,12 @@ Prodeko.org projekti käyttää Django versiota 3.1.4
 2. Kopioi prodekoorg/settings/variables.sample.txt ja nimeä se variables.txt nimiseksi.
 3. Täytä variables.txt tiedostoon puuttuvat muuttujat (kehitysympäristössä ei tarvitse)
 
+Kehitysympäristöä varten tarvitset kirjastot `postgresql-devel` ja `python3-dev`, jotka voi asentaa Ubuntulla (Debianilla) ja WSL:lla komennolla
+
+```shell
+$ sudo apt install libpq-dev python3-dev
+```
+
 Asenna lisäksi eslint, prettier, stylelint, pylint, jinjalint ja black ajamalla seuraavat komennot:
 
 ```shell
