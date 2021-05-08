@@ -4,6 +4,7 @@ SECRET = longrandomstring
 
 [DB]
 HOST = postgres
+PORT = 5432
 NAME_DEFAULT = prodekoorg
 USER = prodekoorg
 PASSWORD = secret

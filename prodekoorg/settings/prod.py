@@ -33,12 +33,7 @@ DATABASES = {
         "USER": DB_USER,
         "PASSWORD": DB_PSWD,
         "HOST": DB_HOST,
-        "PORT": "5432",
-        "CONN_MAX_AGE": 60,
-        "OPTIONS": {
-            "sslmode": "verify-ca",
-            "sslrootcert": os.environ.get("POSTGRESQL_SSL_CA", ""),
-        },
+        "PORT": DB_PORT,
     }
 }
 

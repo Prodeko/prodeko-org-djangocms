@@ -14,7 +14,7 @@ DATABASES = {
         "USER": DB_USER,
         "PASSWORD": DB_PSWD,
         "HOST": DB_HOST,
-        "PORT": "5432",
+        "PORT": DB_PORT,
     }
 }
 

@@ -24,6 +24,7 @@ config.read(os.path.join(BASE_DIR, "prodekoorg/settings/variables.txt"))
 # Use configparser to read environment variables from variables.txt file
 SECRET_KEY = config["DJANGO"]["SECRET"]
 DB_HOST = config["DB"]["HOST"]
+DB_PORT = config["DB"]["PORT"]
 DB_NAME_DEFAULT = config["DB"]["NAME_DEFAULT"]
 DB_USER = config["DB"]["USER"]
 DB_PSWD = config["DB"]["PASSWORD"]
