@@ -36,7 +36,7 @@ def hallitus_postcsv(request):
         request: HttpRequest object from Django.
 
     Returns:
-        Redirects to model admin if user has staff permissions, 
+        Redirects to model admin if user has staff permissions,
         otherwise redirects to login page.
     """
 
@@ -109,7 +109,7 @@ def toimari_postcsv(request):
         request: HttpRequest object from Django.
 
     Returns:
-        Redirects to model admin if user has staff permissions, 
+        Redirects to model admin if user has staff permissions,
         otherwise redirects to login page.
     """
 

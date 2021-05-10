@@ -42,7 +42,7 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractUser):
-    """Main user account model.  
+    """Main user account model.
 
     Used for authenticating to Prodeko's services.
 

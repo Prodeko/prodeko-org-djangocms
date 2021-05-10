@@ -15,10 +15,7 @@ sentry_sdk.init(
 DEBUG = False
 ALLOWED_HOSTS = ["prodeko.org", ".prodeko.org", "prodeko.fi", ".prodeko.fi", "0.0.0.0"]
 
-CORS_ALLOWED_ORIGINS = [
-    "https://ilmo3.prodeko.org",
-    "https://browser.sentry-cdn.com"
-]
+CORS_ALLOWED_ORIGINS = ["https://ilmo3.prodeko.org", "https://browser.sentry-cdn.com"]
 
 # When DEBUG = False, all errors with level ERROR or
 # higher get mailed to ADMINS according to LOGGING conf

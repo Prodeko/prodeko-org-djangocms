@@ -43,7 +43,9 @@ FILER_STORAGES = {
             "UPLOAD_TO": "filer.utils.generate_filename.by_date",
             "UPLOAD_TO_PREFIX": "public",
         },
-        "thumbnails": {"ENGINE": "filer.storage.PublicFileSystemStorage",},
+        "thumbnails": {
+            "ENGINE": "filer.storage.PublicFileSystemStorage",
+        },
     },
     "private": {
         "main": {
@@ -55,6 +57,8 @@ FILER_STORAGES = {
             "UPLOAD_TO": "filer.utils.generate_filename.randomized",
             "UPLOAD_TO_PREFIX": "private",
         },
-        "thumbnails": {"ENGINE": "filer.storage.PrivateFileSystemStorage",},
+        "thumbnails": {
+            "ENGINE": "filer.storage.PrivateFileSystemStorage",
+        },
     },
 }

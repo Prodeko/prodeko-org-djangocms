@@ -26,7 +26,11 @@ class DokumenttiAdmin(admin.ModelAdmin):
     def get_urls(self):
         urls = super().get_urls()
         app_poytakirjat_urls = [
-            path("download", run_app_poytakirjat, name="download_docs_from_gsuite",),
+            path(
+                "download",
+                run_app_poytakirjat,
+                name="download_docs_from_gsuite",
+            ),
         ]
         return app_poytakirjat_urls + urls
 

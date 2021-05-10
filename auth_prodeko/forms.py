@@ -8,7 +8,7 @@ from django.utils.translation import gettext_lazy as _
 class EditProfileForm(forms.Form):
     """EditProfileForm class extending Django's ModelForm.
 
-    Maps User model's fields to HTML form <input> elements. 
+    Maps User model's fields to HTML form <input> elements.
     """
 
     email = forms.EmailField(label="Email", max_length=50, required=False)

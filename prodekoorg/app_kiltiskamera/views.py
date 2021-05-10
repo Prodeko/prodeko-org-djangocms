@@ -13,14 +13,14 @@ from django.views.decorators import gzip
 def stream(request):
     """Proxies the kiltiskamera stream to logged in Prodeko users.
 
-    Retrieves the kiltiskamera stream using a GET request and 
-    returns it with a StreamingHttpResponse. 
+    Retrieves the kiltiskamera stream using a GET request and
+    returns it with a StreamingHttpResponse.
 
     Args:
         request: HttpRequest object from Django.
 
     Returns:
-        StreamingHttpResponse of the camera stream. 
+        StreamingHttpResponse of the camera stream.
 
         If the user isn't logged in, they are redirected to the login url.
     """
@@ -44,7 +44,7 @@ def index(request):
     """Renders the main kiltiskamera template.
 
     Retrieves a stream using a GET request and returns it with
-    a StreamingHttpResponse. 
+    a StreamingHttpResponse.
 
     Args:
         request: HttpRequest object from Django.

@@ -28,7 +28,8 @@ class MembershipViewTest(TestData):
         )
 
         self.assertContains(
-            response, "Jäsenhakemus hyväksytty",
+            response,
+            "Jäsenhakemus hyväksytty",
         )
         self.assertContains(
             response,
@@ -40,7 +41,8 @@ class MembershipViewTest(TestData):
         )
 
         self.assertRedirects(
-            response, f"/fi/admin/app_membership/pendinguser/",
+            response,
+            f"/fi/admin/app_membership/pendinguser/",
         )
         self.assertEqual(len(mail.outbox), 1)
         subject = "Hakemuksesi Prodekon jäseneksi hyväksyttiin"
@@ -59,15 +61,18 @@ class MembershipViewTest(TestData):
         applicant = self.test_pendinguser_model
 
         response = self.client.get(
-            f"/fi/admin/app_membership/pendinguser/{applicant.id}/reject/", follow=True,
+            f"/fi/admin/app_membership/pendinguser/{applicant.id}/reject/",
+            follow=True,
         )
 
         self.assertContains(
-            response, "Jäsenhakemus hylätty",
+            response,
+            "Jäsenhakemus hylätty",
         )
 
         self.assertRedirects(
-            response, f"/fi/admin/app_membership/pendinguser/",
+            response,
+            f"/fi/admin/app_membership/pendinguser/",
         )
         self.assertEqual(len(mail.outbox), 1)
         subject = "Hakemuksesi Prodekon jäseneksi hylättiin"
@@ -97,12 +102,15 @@ class MembershipViewTest(TestData):
         }
 
         response = self.client.post(
-            "/fi/jasenhakemus/", data=test_data, HTTP_X_REQUESTED_WITH="XMLHttpRequest",
+            "/fi/jasenhakemus/",
+            data=test_data,
+            HTTP_X_REQUESTED_WITH="XMLHttpRequest",
         )
 
         self.assertEqual(response.status_code, 200)
         self.assertContains(
-            response, "📬 Hakemus vastaanotettu!",
+            response,
+            "📬 Hakemus vastaanotettu!",
         )
         self.assertEqual(len(mail.outbox), 1)
         subject = "Uusi jäsenhakemus - Prodekon Mediakeisari"
@@ -132,7 +140,9 @@ class MembershipViewTest(TestData):
         }
 
         response = self.client.post(
-            "/fi/jasenhakemus/", data=test_data, HTTP_X_REQUESTED_WITH="XMLHttpRequest",
+            "/fi/jasenhakemus/",
+            data=test_data,
+            HTTP_X_REQUESTED_WITH="XMLHttpRequest",
         )
 
         self.assertContains(

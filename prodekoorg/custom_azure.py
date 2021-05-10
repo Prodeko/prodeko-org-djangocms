@@ -21,8 +21,8 @@ class AzureStaticStorage(ManifestFilesMixin, AzureStorage):
 
     def read_manifest(self):
         """Workaround to make Azure work with Django on the first 'collectstatic'
-        
-           See https://github.com/jschneier/django-storages/issues/630 for details.
+
+        See https://github.com/jschneier/django-storages/issues/630 for details.
         """
         try:
             return super(AzureStaticStorage, self).read_manifest()

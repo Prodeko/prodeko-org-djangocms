@@ -33,7 +33,7 @@ class EhdokasCreateView(SuccessMessageMixin, CreateView):
 
 
 class EhdokasDeleteView(SuccessMessageMixin, DeleteView):
-    """ Handles 'Ehdokas' model application deleting.
+    """Handles 'Ehdokas' model application deleting.
 
     Raises:
         PermissionDenied: Unauthorized user tried to delete an application that
@@ -58,7 +58,7 @@ class EhdokasDeleteView(SuccessMessageMixin, DeleteView):
 
 
 class EhdokasUpdateView(UpdateView):
-    """ Handles 'Ehdokas' model application updates.
+    """Handles 'Ehdokas' model application updates.
 
     Raises:
         PermissionDenied: Unauthorized user tried to delete an application that

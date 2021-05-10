@@ -16,7 +16,9 @@ class TiedotteetApphook(CMSApp):
             path("cp/", views.control_panel, name="cp"),
             path("cp/messages/<pk>/edit/", views.edit_message, name="edit_message"),
             path(
-                "cp/messages/<pk>/delete/", views.delete_message, name="delete_message",
+                "cp/messages/<pk>/delete/",
+                views.delete_message,
+                name="delete_message",
             ),
             path("cp/messages/<pk>/hide/", views.hide_message, name="hide_message"),
             path(

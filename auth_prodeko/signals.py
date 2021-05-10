@@ -13,7 +13,7 @@ from .models import User
 @receiver(post_save, sender=settings.AUTH_USER_MODEL)
 def create_alumnregistry_profile(sender, instance, created, **kwargs):
     """Creates an alumnirekisteri Person model when a PendingUser is created.
-    
+
     Uses Django signals (https://docs.djangoproject.com/en/2.1/topics/signals/).
     """
 
@@ -59,7 +59,7 @@ def create_alumnregistry_profile(sender, instance, created, **kwargs):
 @receiver(post_save, sender=PendingUser)
 def create_user_profile(sender, instance, created, **kwargs):
     """Creates User model when a PendingUser is created.
-    
+
     Uses Django signals (https://docs.djangoproject.com/en/2.1/topics/signals/).
     """
 

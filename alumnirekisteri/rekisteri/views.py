@@ -617,10 +617,14 @@ def admin_log(request):
     position_of_trust_log = PositionOfTrust.audit_log.annotate(
         action_user_name=F("action_user__email")
     ).annotate(target=Value("PositionOfTrust", output_field=models.CharField()))
-    student_organizational_activity_log = StudentOrganizationalActivity.audit_log.annotate(
-        action_user_name=F("action_user__email")
-    ).annotate(
-        target=Value("StudentOrganizationalActivity", output_field=models.CharField())
+    student_organizational_activity_log = (
+        StudentOrganizationalActivity.audit_log.annotate(
+            action_user_name=F("action_user__email")
+        ).annotate(
+            target=Value(
+                "StudentOrganizationalActivity", output_field=models.CharField()
+            )
+        )
     )
     volunteer_log = Volunteer.audit_log.annotate(
         action_user_name=F("action_user__email")

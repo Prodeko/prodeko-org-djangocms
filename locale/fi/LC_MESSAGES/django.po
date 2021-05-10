@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-13 11:15+0300\n"
+"POT-Creation-Date: 2021-05-10 20:07+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Timo Riski <timo@prodeko.org>\n"
 "Language: \n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: abisivut/cms_apps.py:12 prodekoorg/settings/base.py:273
+#: abisivut/cms_apps.py:12 prodekoorg/settings/base.py:274
 msgid "High school student page"
 msgstr "Abisivut"
 
@@ -221,7 +221,7 @@ msgstr "Salasana unohtunut?"
 msgid "The email and password didn't match. Try again"
 msgstr "Sähköposti ja salasana eivät täsmänneet. Yritä uudestaan"
 
-#: lifelonglearning/cms_apps.py:12 prodekoorg/settings/base.py:274
+#: lifelonglearning/cms_apps.py:12 prodekoorg/settings/base.py:275
 msgid "Lifelong learning page"
 msgstr "Lifelong learning sivu"
 
@@ -684,8 +684,8 @@ msgstr "Kyllä"
 msgid "No"
 msgstr "Ei"
 
-#: prodekoorg/app_membership/models.py:55 prodekoorg/settings/base.py:77
-#: prodekoorg/settings/base.py:87
+#: prodekoorg/app_membership/models.py:55 prodekoorg/settings/base.py:78
+#: prodekoorg/settings/base.py:88
 msgid "Finnish"
 msgstr "Suomi"
 
@@ -1189,27 +1189,27 @@ msgstr "Poista"
 msgid "Edit"
 msgstr "Muokkaa"
 
-#: prodekoorg/settings/base.py:77 prodekoorg/settings/base.py:94
+#: prodekoorg/settings/base.py:78 prodekoorg/settings/base.py:95
 msgid "English"
 msgstr "Englanti"
 
-#: prodekoorg/settings/base.py:269
+#: prodekoorg/settings/base.py:270
 msgid "Frontpage"
 msgstr "Etusivu"
 
-#: prodekoorg/settings/base.py:270
+#: prodekoorg/settings/base.py:271
 msgid "Content page"
 msgstr "Sisältösivu"
 
-#: prodekoorg/settings/base.py:271
+#: prodekoorg/settings/base.py:272
 msgid "Content page with 1:1 split"
 msgstr "Sisältösivu 1:1 jaolla"
 
-#: prodekoorg/settings/base.py:272
+#: prodekoorg/settings/base.py:273
 msgid "Content page with 2:1 split"
 msgstr "Sisältösivu 2:1 jaolla"
 
-#: prodekoorg/settings/base.py:278
+#: prodekoorg/settings/base.py:279
 msgid "Navigation"
 msgstr "Navigaatio"
 

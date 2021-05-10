@@ -38,7 +38,7 @@ class Virka(models.Model):
 
 
 class Ehdokas(models.Model):
-    """ Applicant in the elections.
+    """Applicant in the elections.
 
     Attributes:
         id: Primary key.
@@ -64,7 +64,7 @@ class Ehdokas(models.Model):
     )
 
     def natural_key(self):
-        """ String based representation of this object when accessed through
+        """String based representation of this object when accessed through
         foreign keys.
 
         In views.py get_ehdokkaat_json() method the serialize has
@@ -87,7 +87,7 @@ class Ehdokas(models.Model):
 
 
 class Kysymys(models.Model):
-    """ Question assigned to a specific candidate (Ehdokas).
+    """Question assigned to a specific candidate (Ehdokas).
 
     Attributes:
         created_at: Question creation timestamp.
@@ -117,7 +117,7 @@ class Kysymys(models.Model):
 
 
 class Vastaus(models.Model):
-    """ Answer to a spesific question by a specific candidate.
+    """Answer to a spesific question by a specific candidate.
 
     Attributes:
         created_at: Vastaus creation timestamp.

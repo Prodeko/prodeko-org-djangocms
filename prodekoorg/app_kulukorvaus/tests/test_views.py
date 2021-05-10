@@ -136,13 +136,16 @@ class KulukorvausViewTest(TestData):
         }
 
         response = self.client.post(
-            "/fi/kulukorvaus/", data=test_data, HTTP_X_REQUESTED_WITH="XMLHttpRequest",
+            "/fi/kulukorvaus/",
+            data=test_data,
+            HTTP_X_REQUESTED_WITH="XMLHttpRequest",
         )
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(len(mail.outbox), 2)
         self.assertContains(
-            response, "✅ Kulukorvauksesi on vastaanotettu.",
+            response,
+            "✅ Kulukorvauksesi on vastaanotettu.",
         )
 
     def test_form_submission_has_not_accepted_policies(self):
@@ -175,7 +178,9 @@ class KulukorvausViewTest(TestData):
         }
 
         response = self.client.post(
-            "/fi/kulukorvaus/", data=test_data, HTTP_X_REQUESTED_WITH="XMLHttpRequest",
+            "/fi/kulukorvaus/",
+            data=test_data,
+            HTTP_X_REQUESTED_WITH="XMLHttpRequest",
         )
 
         self.assertEqual(response.context["policy_error"], True)
@@ -220,7 +225,9 @@ class KulukorvausViewTest(TestData):
         }
 
         response = self.client.post(
-            "/fi/kulukorvaus/", data=test_data, HTTP_X_REQUESTED_WITH="XMLHttpRequest",
+            "/fi/kulukorvaus/",
+            data=test_data,
+            HTTP_X_REQUESTED_WITH="XMLHttpRequest",
         )
 
         self.assertContains(

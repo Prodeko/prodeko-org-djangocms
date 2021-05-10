@@ -56,7 +56,7 @@ class PendingUserForm(ModelForm):
 
     def clean(self):
         """Overrides ModelForm's clean method
-        
+
         This method is responsible for form validation. Check that
         there doesn't exist a User with the same email address that
         was submitted.
