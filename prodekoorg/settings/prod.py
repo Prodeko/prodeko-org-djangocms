@@ -9,7 +9,7 @@ sentry_sdk.init(
     environment=SENTRY_ENV,
     integrations=[DjangoIntegration(), RedisIntegration()],
     send_default_pii=True,
-    traces_sample_rate=1.0,
+    traces_sample_rate=0.3,
 )
 
 DEBUG = False

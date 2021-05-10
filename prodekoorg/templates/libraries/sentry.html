@@ -6,7 +6,7 @@
           dsn: '{% settings_value "SENTRY_DSN" %}',
           environment: '{% settings_value "SENTRY_ENV" %}',
           integrations: [new Sentry.Integrations.BrowserTracing()],
-          tracesSampleRate: 1.0
+          tracesSampleRate: 0.3
         });
     }, false);
 </script>
