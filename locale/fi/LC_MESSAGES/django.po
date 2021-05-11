@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-10 20:07+0300\n"
+"POT-Creation-Date: 2021-05-11 18:47+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Timo Riski <timo@prodeko.org>\n"
 "Language: \n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: abisivut/cms_apps.py:12 prodekoorg/settings/base.py:274
+#: abisivut/cms_apps.py:12 prodekoorg/settings/base.py:276
 msgid "High school student page"
 msgstr "Abisivut"
 
@@ -105,7 +105,7 @@ msgid "Profile"
 msgstr "Profiili"
 
 #: auth_prodeko/templates/accounts/user_profile.html:14
-#: prodekoorg/app_kulukorvaus/models.py:66
+#: prodekoorg/app_kulukorvaus/models.py:73
 #: prodekoorg/app_kulukorvaus/printing.py:97
 #: prodekoorg/app_toimarit/models.py:20 prodekoorg/app_vaalit/models.py:56
 msgid "Name"
@@ -113,7 +113,7 @@ msgstr "Nimi"
 
 #: auth_prodeko/templates/accounts/user_profile.html:15
 #: auth_prodeko/templates/accounts/user_profile.html:21
-#: prodekoorg/app_contact/models.py:88 prodekoorg/app_kulukorvaus/models.py:67
+#: prodekoorg/app_contact/models.py:88 prodekoorg/app_kulukorvaus/models.py:74
 #: prodekoorg/app_kulukorvaus/printing.py:98
 #: prodekoorg/app_membership/models.py:65 prodekoorg/app_toimarit/models.py:86
 msgid "Email"
@@ -221,7 +221,7 @@ msgstr "Salasana unohtunut?"
 msgid "The email and password didn't match. Try again"
 msgstr "Sähköposti ja salasana eivät täsmänneet. Yritä uudestaan"
 
-#: lifelonglearning/cms_apps.py:12 prodekoorg/settings/base.py:275
+#: lifelonglearning/cms_apps.py:12 prodekoorg/settings/base.py:277
 msgid "Lifelong learning page"
 msgstr "Lifelong learning sivu"
 
@@ -355,7 +355,7 @@ msgstr "ESTIEM (ulkoministeri@prodeko.org)"
 msgid "Tutoring (isovastaava@prodeko.org)"
 msgstr "ISO-toiminta (isovastaava@prodeko.org)"
 
-#: prodekoorg/app_contact/models.py:87 prodekoorg/app_kulukorvaus/models.py:119
+#: prodekoorg/app_contact/models.py:87 prodekoorg/app_kulukorvaus/models.py:126
 #: prodekoorg/app_vaalit/models.py:99 prodekoorg/app_vaalit/models.py:129
 msgid "Created at"
 msgstr "Luotu"
@@ -453,12 +453,12 @@ msgid "Guild room camera application"
 msgstr "Sovellus - Kiltiskamera"
 
 #: prodekoorg/app_kulukorvaus/admin.py:26
-#: prodekoorg/app_kulukorvaus/models.py:80
+#: prodekoorg/app_kulukorvaus/models.py:87
 msgid "Status"
 msgstr "Tila"
 
 #: prodekoorg/app_kulukorvaus/admin.py:30
-#: prodekoorg/app_kulukorvaus/models.py:40
+#: prodekoorg/app_kulukorvaus/models.py:47
 #: tiedotteet/backend/templates/control/nav.html:43
 #: tiedotteet/backend/views.py:88
 msgid "New"
@@ -469,12 +469,12 @@ msgid "In Process"
 msgstr "Käsittelyssä"
 
 #: prodekoorg/app_kulukorvaus/admin.py:30
-#: prodekoorg/app_kulukorvaus/models.py:42
+#: prodekoorg/app_kulukorvaus/models.py:49
 msgid "Processed"
 msgstr "Valmis"
 
 #: prodekoorg/app_kulukorvaus/apps.py:7
-#: prodekoorg/app_kulukorvaus/models.py:147
+#: prodekoorg/app_kulukorvaus/models.py:154
 #: prodekoorg/templates/layout-components/footer.html:8
 msgid "Reimbursements"
 msgstr "Kulukorvaukset"
@@ -495,56 +495,60 @@ msgstr ""
 "esim. \"Syyssitsit\", \"Fuksiryhmätapaaminen\" tai \"Kiltahuoneen "
 "uudistaminen\""
 
-#: prodekoorg/app_kulukorvaus/models.py:41
+#: prodekoorg/app_kulukorvaus/models.py:14
+msgid "File size is too large. It should not exceed 9.5MB"
+msgstr "Tiedoston koko on liian iso. Maksimikoko on 9,5MB."
+
+#: prodekoorg/app_kulukorvaus/models.py:48
 msgid "In process"
 msgstr "Käsittelyssä"
 
-#: prodekoorg/app_kulukorvaus/models.py:68
+#: prodekoorg/app_kulukorvaus/models.py:75
 #: prodekoorg/app_kulukorvaus/printing.py:99
 msgid "Phone number"
 msgstr "Puhelinnumero"
 
-#: prodekoorg/app_kulukorvaus/models.py:70
+#: prodekoorg/app_kulukorvaus/models.py:77
 #: prodekoorg/app_kulukorvaus/printing.py:100
 msgid "Account number (IBAN)"
 msgstr "Tilinumero (IBAN)"
 
-#: prodekoorg/app_kulukorvaus/models.py:74
+#: prodekoorg/app_kulukorvaus/models.py:81
 msgid "Total reimbursement (in €)"
 msgstr "Korvaussumma yhteensä (euroissa)"
 
-#: prodekoorg/app_kulukorvaus/models.py:77
-#: prodekoorg/app_kulukorvaus/models.py:133
+#: prodekoorg/app_kulukorvaus/models.py:84
+#: prodekoorg/app_kulukorvaus/models.py:140
 msgid "Additional information"
 msgstr "Lisätietoja, kulujen perusteita"
 
-#: prodekoorg/app_kulukorvaus/models.py:102
+#: prodekoorg/app_kulukorvaus/models.py:109
 msgid "reimbursement basic information"
 msgstr "kulukorvaus perustiedot"
 
-#: prodekoorg/app_kulukorvaus/models.py:103
+#: prodekoorg/app_kulukorvaus/models.py:110
 msgid "Reimbursement basic information"
 msgstr "Kulukorvaus perustiedot"
 
-#: prodekoorg/app_kulukorvaus/models.py:125
+#: prodekoorg/app_kulukorvaus/models.py:132
 msgid "Expense explanation"
 msgstr "Kulun selite"
 
-#: prodekoorg/app_kulukorvaus/models.py:127
+#: prodekoorg/app_kulukorvaus/models.py:134
 msgid "Event / expense target"
 msgstr "Tapahtuma / kulun kohde"
 
-#: prodekoorg/app_kulukorvaus/models.py:130
+#: prodekoorg/app_kulukorvaus/models.py:137
 msgid "Sum (in €)"
 msgstr "Summa (euroissa)"
 
-#: prodekoorg/app_kulukorvaus/models.py:137
+#: prodekoorg/app_kulukorvaus/models.py:144
 #: prodekoorg/app_kulukorvaus/templates/form_kulukorvaus_kulu.html:4
 #: prodekoorg/app_membership/templates/form_apply.html:3
 msgid "Receipt"
 msgstr "Kuitti"
 
-#: prodekoorg/app_kulukorvaus/models.py:146
+#: prodekoorg/app_kulukorvaus/models.py:153
 msgid "reimbursement"
 msgstr "kulukorvaus"
 
@@ -684,8 +688,8 @@ msgstr "Kyllä"
 msgid "No"
 msgstr "Ei"
 
-#: prodekoorg/app_membership/models.py:55 prodekoorg/settings/base.py:78
-#: prodekoorg/settings/base.py:88
+#: prodekoorg/app_membership/models.py:55 prodekoorg/settings/base.py:80
+#: prodekoorg/settings/base.py:90
 msgid "Finnish"
 msgstr "Suomi"
 
@@ -1189,27 +1193,27 @@ msgstr "Poista"
 msgid "Edit"
 msgstr "Muokkaa"
 
-#: prodekoorg/settings/base.py:78 prodekoorg/settings/base.py:95
+#: prodekoorg/settings/base.py:80 prodekoorg/settings/base.py:97
 msgid "English"
 msgstr "Englanti"
 
-#: prodekoorg/settings/base.py:270
+#: prodekoorg/settings/base.py:272
 msgid "Frontpage"
 msgstr "Etusivu"
 
-#: prodekoorg/settings/base.py:271
+#: prodekoorg/settings/base.py:273
 msgid "Content page"
 msgstr "Sisältösivu"
 
-#: prodekoorg/settings/base.py:272
+#: prodekoorg/settings/base.py:274
 msgid "Content page with 1:1 split"
 msgstr "Sisältösivu 1:1 jaolla"
 
-#: prodekoorg/settings/base.py:273
+#: prodekoorg/settings/base.py:275
 msgid "Content page with 2:1 split"
 msgstr "Sisältösivu 2:1 jaolla"
 
-#: prodekoorg/settings/base.py:279
+#: prodekoorg/settings/base.py:281
 msgid "Navigation"
 msgstr "Navigaatio"
 
