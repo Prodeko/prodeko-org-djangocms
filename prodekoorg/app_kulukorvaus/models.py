@@ -2,9 +2,16 @@ from datetime import datetime
 from uuid import uuid4
 
 from django.conf import settings
+from django.core.exceptions import ValidationError
 from django.core.validators import FileExtensionValidator
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+
+
+def file_size(value):
+    limit = 9.5 * 1024 * 1024
+    if value.size > limit:
+        raise ValidationError(_('File size is too large. It should not exceed 9.5MB'))
 
 
 def upload_url(instance, filename):
@@ -135,7 +142,7 @@ class Kulukorvaus(models.Model):
     receipt = models.FileField(
         upload_to=upload_url,
         verbose_name=_("Receipt"),
-        validators=[FileExtensionValidator(["png", "jpg", "jpeg"])],
+        validators=[FileExtensionValidator(["png", "jpg", "jpeg"]), file_size],
     )
 
     def __str__(self):
