@@ -14,7 +14,7 @@
   },
   "browserslist": "> 0.25%, not dead",
   "dependencies": {
-    "connected-react-router": "^6.8.0",
+    "connected-react-router": "^6.9.1",
     "history": "^5.0.0",
     "moment": "^2.29.1",
     "react-hammerjs": "^1.0.1",
