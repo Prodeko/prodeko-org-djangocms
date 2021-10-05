@@ -40,7 +40,7 @@ django-cors-middleware==1.5.0
 
 # For Django tests
 beautifulsoup4==4.9.3
-lxml==4.6.2
+lxml==4.6.3
 
 azure-common==1.1.26
 # Upgrade to 12.x.x once https://github.com/jschneier/django-storages/pull/805/ is merged
@@ -69,3 +69,4 @@ google-auth-oauthlib==0.4.2
 libsass==0.20.1
 django-compressor==2.4
 django-sass-processor==0.8.2
+rsa>=4.7 # not directly required, pinned by Snyk to avoid a vulnerability
