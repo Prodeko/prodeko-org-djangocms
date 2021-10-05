@@ -31,7 +31,8 @@ DATABASES = {
         "PASSWORD": DB_PSWD,
         "HOST": DB_HOST,
         "PORT": DB_PORT,
-        "DISABLE_SERVER_SIDE_CURSORS": True
+        "DISABLE_SERVER_SIDE_CURSORS": True,
+        "CONN_MAX_AGE": 1
     }
 }
 
