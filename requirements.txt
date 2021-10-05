@@ -31,7 +31,8 @@ djangocms-style==3.0.0
 djangocms-text-ckeditor==4.0.0
 djangocms-video==3.0.0
 djangorestframework==3.12.4
-django-storages==1.11.1
+git+git://github.com/jschneier/django-storages@master#egg=django-storages
+#django-storages==1.11.1
 django-pipeline==2.0.6
 django-redis==5.0.0
 django-oauth-toolkit==1.5.0

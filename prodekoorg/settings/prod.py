@@ -32,14 +32,14 @@ DATABASES = {
         "HOST": DB_HOST,
         "PORT": DB_PORT,
         "DISABLE_SERVER_SIDE_CURSORS": True,
-        "CONN_MAX_AGE": 1
+        "CONN_MAX_AGE": 60
     }
 }
 
 INSTALLED_APPS += ("storages",)
 
 CDN_URL = "static.prodeko.org"
-AZURE_CUSTOM_DOMAIN = CDN_URL
+AZURE_ACCOUNT_NAME = "prodekostorage"
 AZURE_CACHE_CONTROL = "public,max-age=31536000,immutable"
 
 DEFAULT_FILE_STORAGE = "prodekoorg.custom_azure.AzureMediaStorage"
