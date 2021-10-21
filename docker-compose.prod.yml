@@ -12,7 +12,7 @@ services:
     image: prodekoregistry.azurecr.io/prodeko-org/prodeko-org:latest
     container_name: prodeko_org
     restart: unless-stopped
-    command: uvicorn --host prodeko_org --workers 5 --interface asgi3 --loop asyncio --lifespan off prodekoorg.asgi:application
+    command: uvicorn --host prodeko_org --workers 5 --interface wsgi --lifespan off prodekoorg.wsgi:application
     volumes:
       - ./prodekoorg:/app/prodekoorg
     environment:
