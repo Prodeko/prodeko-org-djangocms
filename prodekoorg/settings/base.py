@@ -64,7 +64,7 @@ CACHES = {
 
 # Internationalization
 # https://docs.djangoproject.com/en/dev/topics/i18n/
-LANGUAGE_CODE = "fi_FI"
+LANGUAGE_CODE = "fi"
 TIME_ZONE = "Europe/Helsinki"
 USE_I18N = True
 USE_L10N = True
