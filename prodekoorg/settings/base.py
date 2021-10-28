@@ -13,8 +13,6 @@ from django.utils.translation import gettext_lazy as _
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-LANGUAGE_CODE = "fi-FI"
-
 SITE_ID = 1
 
 config = configparser.ConfigParser()
@@ -66,7 +64,7 @@ CACHES = {
 
 # Internationalization
 # https://docs.djangoproject.com/en/dev/topics/i18n/
-LANGUAGE_CODE = "fi"
+LANGUAGE_CODE = "fi_FI"
 TIME_ZONE = "Europe/Helsinki"
 USE_I18N = True
 USE_L10N = True
