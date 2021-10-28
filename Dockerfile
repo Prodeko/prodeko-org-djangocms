@@ -9,7 +9,7 @@ ADD tiedotteet/frontend /app
 RUN npm run build:prod
 
 # Stage 2 - main container definition
-FROM python:3
+FROM python:3.9
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
