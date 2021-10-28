@@ -1,6 +1,7 @@
 
 # Production server
-uvicorn==0.13.3
+uvicorn==0.13.3 # asgi
+gunicorn==20.1.0 # wsgi
 
 # Django requirements
 Django==3.1.4
