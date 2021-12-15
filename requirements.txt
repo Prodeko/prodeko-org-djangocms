@@ -39,7 +39,7 @@ django-cors-middleware==1.5.0
 
 # For Django tests
 beautifulsoup4==4.9.3
-lxml==4.6.2
+lxml==4.6.5
 
 azure-common==1.1.26
 # Upgrade to 12.x.x once https://github.com/jschneier/django-storages/pull/805/ is merged
