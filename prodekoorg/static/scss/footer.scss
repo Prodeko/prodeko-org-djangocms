@@ -33,7 +33,9 @@
   }
 
   .network-div {
+    display: flex;
     flex: 1 0 20%;
+    align-items: center;
     height: 65px;
     margin: 10px;
 
