@@ -1,0 +1,30 @@
+{% extends "ar_base.html" %}
+{% load static %}
+
+{% block body %}
+
+<section id="view-membership-status" class="">
+  <div class="container">
+    <h1>{% name %}</h1>
+    <h2>Jäsenyys päättyy / Membership ends : {% membership_until %}</h3>
+  </div>
+</section>
+
+
+<div id="profile-footer" class="footer footer-fixed footer-blue">
+  <div class="row col col-md-8 col-md-offset-2">
+    {% if messages %}
+      {% for m in messages %}
+        <span class="alert {% if m.tags %}alert-{{ m.tags }}{% endif %}">{{ m.message|striptags }}</span>
+      {% endfor %}
+    {% endif %}
+    <button type="submit" onclick="$('#main-form').submit();" class="btn-white btn-primary" style="float:right;margin-right:10px;margin-top: 8px;">Tallenna tiedot</button>
+  </div>
+</div>
+
+<div style="height:50px;width:100%;"></div> <!-- Makes page long enough to see behind footer -->
+
+<script type="text/javascript" src="{% static 'js/simple_crop.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/myprofile_membership.js' %}"></script>
+
+{% endblock %}

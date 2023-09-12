@@ -928,6 +928,19 @@ def myprofile(request):
         request,
     )
 
+@login_required(login_url="/login/")
+def membership_status(request):
+    user = request.user
+    person = user.person
+    return render(
+        request,
+        "myprofile/myprofile_membership.html",
+        {
+            "name": f"{user.first_name} {user.last_name}",
+            "member_until": person.member_until,
+        }
+    )
+
 
 def edit_person(user, person, adminview, template, form_action_url, request):
     # forms
