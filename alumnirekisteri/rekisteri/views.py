@@ -936,8 +936,7 @@ def membership_status(request):
         request,
         "myprofile/myprofile_membership.html",
         {
-            "name": f"{user.first_name} {user.last_name}",
-            "member_until": person.member_until,
+
         }
     )
 
