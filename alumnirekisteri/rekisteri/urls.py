@@ -5,6 +5,7 @@ from django.views.generic import TemplateView
 from rest_framework.urlpatterns import format_suffix_patterns
 
 from alumnirekisteri.rekisteri import views
+from alumnirekisteri.rekisteri import views_api
 
 # prevent logged in users for accessing /login/ url
 login_forbidden = user_passes_test(lambda u: u.is_anonymous(), "/")
@@ -256,6 +257,7 @@ urlpatterns = [
         name="password_reset_complete",
     ),
     # API
+    re_path(r"^api/webhook/stripe/$", views_api.StripeWebhook.as_view()),
     # re_path(r"^api/users/$", views_api.UserList.as_view()),
     # re_path(r"^api/persons/$", views_api.PersonList.as_view()),
     # re_path(r"^api/persons/(?P<pk>[0-9]+)$", views_api.PersonDetail.as_view()),

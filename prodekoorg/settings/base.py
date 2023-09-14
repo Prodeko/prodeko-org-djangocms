@@ -30,7 +30,10 @@ DEV_EMAIL = config["EMAIL"]["DEV_EMAIL"]
 STORAGE_KEY = config["STORAGE"]["KEY"]
 SENTRY_DSN = config["SENTRY"]["DSN"]
 SENTRY_ENV = config["SENTRY"]["ENV"]
-KILTISKAMERA_URL = config["KILTISKAMERA"]["URL"]
+MAILCHIMP_API_KEY = config["MAILCHIMP"]["API_KEY"]
+MAILCHIMP_LIST_ID = config["MAILCHIMP"]["LIST_ID"]
+STRIPE_API_KEY = config["STRIPE"]["API_KEY"]
+STRIPE_PAYMENT_LINK_ID = config["STRIPE"]["PAYMENT_LINK_ID"]
 
 # Application definition
 ROOT_URLCONF = "prodekoorg.urls"
@@ -279,7 +282,7 @@ CMS_PLACEHOLDER_CONF = {
     "abit_nav": {"name": _("Navigation"), "plugins": ["TextPlugin"]}
 }
 CMS_CACHE_DURATIONS = {
-    "content": 60 * 60 * 6,
+    "content": 1,
     "menus": 60 * 60 * 6,
     "permissions": 60 * 60 * 6,
 }
