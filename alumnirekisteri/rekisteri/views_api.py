@@ -16,7 +16,7 @@ from django.core.cache import cache
 
 
 stripe.api_key = settings.STRIPE_API_KEY
-endpoint_secret = 'whsec_937f053ed2a8cc24b3d7e4dd2ee65f693cbb61559c659f17e75b5414f5d90f4d'
+endpoint_secret = settings.STRIPE_ENDPOINT_SECRET
 
 @method_decorator(csrf_exempt, name='dispatch')
 class StripeWebhook(View):
