@@ -3,6 +3,7 @@ import math
 import os
 import random
 import string
+from datetime import datetime, timedelta
 from io import StringIO, TextIOWrapper
 from itertools import chain
 from shutil import make_archive
@@ -10,11 +11,13 @@ from wsgiref.util import FileWrapper
 
 import unicodecsv as unicodecsv
 from django.contrib import messages
+from django.conf import settings
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.core.mail import EmailMultiAlternatives
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
+from django.core.cache import cache
 from django.db.models import F, Q, Value
 from django.http import (
     HttpResponseForbidden,
@@ -195,7 +198,8 @@ def admin(request):
             )
             email_to = user.email
             from_email = "alumnirekisteri.no.reply@prodeko.org"
-            msg = EmailMultiAlternatives(subject, text_content, from_email, [email_to])
+            msg = EmailMultiAlternatives(
+                subject, text_content, from_email, [email_to])
             msg.attach_alternative(html_content, "text/html")
             msg.send()
     elif request.method == "POST" and "admin_note" in request.POST:
@@ -257,7 +261,8 @@ def admin_export_matrikkeli(request):
         response = HttpResponse(content_type="text/tex")
         response["charset"] = "utf-8"
         response["Content-Disposition"] = 'attachment; filename="vuosikurssit.tex"'
-        response.write(render_to_string("vuosikurssit.tex", {"persons": persons}))
+        response.write(render_to_string(
+            "vuosikurssit.tex", {"persons": persons}))
         return response
 
     persons = (
@@ -280,7 +285,8 @@ def admin_export_matrikkeli(request):
     if not request.GET.get("images", False):
         response = HttpResponse(content_type="text/tex")
         response["charset"] = "utf-8"
-        response["Content-Disposition"] = 'attachment; filename="' + category + '.tex"'
+        response["Content-Disposition"] = 'attachment; filename="' + \
+            category + '.tex"'
         response.write(
             render_to_string(
                 "matrikkeli.tex", {"persons": persons, "category": category}
@@ -318,7 +324,8 @@ def admin_export_data(request):
             request.POST.get("member_until_search"),
             request.POST.get("member_type_search"),
         )
-        queryset = queryset.exclude(person__is_hidden=True).exclude(is_active=False)
+        queryset = queryset.exclude(
+            person__is_hidden=True).exclude(is_active=False)
 
         if request.POST.get("alive"):
             queryset = queryset.exclude(person__is_dead=True)
@@ -423,10 +430,13 @@ def admin_export_data(request):
                 )
 
             if request.POST.get("phones"):
-                row.append("§".join(map(lambda x: x.phone_number, p.phones.all())))
+                row.append(
+                    "§".join(map(lambda x: x.phone_number, p.phones.all())))
             if request.POST.get("work_experiences"):
-                experiences = sorted(p.work_experiences.all(), key=sortByEndDate)
-                current_positions = filter(lambda e: not e.end_year, experiences)
+                experiences = sorted(
+                    p.work_experiences.all(), key=sortByEndDate)
+                current_positions = filter(
+                    lambda e: not e.end_year, experiences)
                 current_position = ""
                 current_organisation = ""
                 row.append("§".join(map(displayPosition, current_positions)))
@@ -445,7 +455,8 @@ def admin_export_data(request):
                     "§".join(
                         map(
                             displayPosition,
-                            sorted(p.positions_of_trust.all(), key=sortByEndDate),
+                            sorted(p.positions_of_trust.all(),
+                                   key=sortByEndDate),
                         )
                     )
                 )
@@ -675,16 +686,20 @@ def admin_stats(request):
     total_count = len(User.objects.all())
     logged_in = total_count - len(User.objects.all().filter(last_login=None))
 
-    dont_publish_in_book = len(Person.objects.all().filter(dont_publish_in_book=True))
+    dont_publish_in_book = len(
+        Person.objects.all().filter(dont_publish_in_book=True))
     dont_publish_in_book_logged_in = len(
         Person.objects.all()
         .filter(dont_publish_in_book=True)
         .exclude(user__last_login=None)
     )
 
-    show_phones_category = len(Person.objects.all().filter(show_phones_category=True))
-    show_emails_category = len(Person.objects.all().filter(show_emails_category=True))
-    show_skills_category = len(Person.objects.all().filter(show_skills_category=True))
+    show_phones_category = len(
+        Person.objects.all().filter(show_phones_category=True))
+    show_emails_category = len(
+        Person.objects.all().filter(show_emails_category=True))
+    show_skills_category = len(
+        Person.objects.all().filter(show_skills_category=True))
     show_languages_category = len(
         Person.objects.all().filter(show_languages_category=True)
     )
@@ -700,7 +715,8 @@ def admin_stats(request):
     show_volunteers_category = len(
         Person.objects.all().filter(show_volunteers_category=True)
     )
-    show_honors_category = len(Person.objects.all().filter(show_honors_category=True))
+    show_honors_category = len(
+        Person.objects.all().filter(show_honors_category=True))
     show_interests_category = len(
         Person.objects.all().filter(show_interests_category=True)
     )
@@ -719,7 +735,8 @@ def admin_stats(request):
     )
     draw_dont_publish_in_book_logged = (
         str(
-            math.ceil(dont_publish_in_book_logged_in / (dont_publish_in_book + 1) * 100)
+            math.ceil(dont_publish_in_book_logged_in /
+                      (dont_publish_in_book + 1) * 100)
         )
         + "%"
     )
@@ -774,7 +791,8 @@ def admin_set_notes(request):
 
         if datafile:
             try:
-                f = TextIOWrapper(datafile.file, encoding="utf-8 ", errors="replace")
+                f = TextIOWrapper(
+                    datafile.file, encoding="utf-8 ", errors="replace")
             except:
                 f = StringIO(datafile.file.read().decode())
             dialect = csv.Sniffer().sniff(f.read(), delimiters=";,")
@@ -788,7 +806,8 @@ def admin_set_notes(request):
                     print(row)
                     user = User.objects.get(email__iexact=row[3])
                     membership_output += (
-                        "User found: " + row[0] + ", " + row[1] + ", " + row[3] + "<br>"
+                        "User found: " + row[0] + ", " +
+                        row[1] + ", " + row[3] + "<br>"
                     )
                 except:
                     try:
@@ -835,7 +854,8 @@ def admin_set_notes(request):
                             u.first_name = names[0]
                             u.last_name = row[0]
                             u.password = "".join(
-                                random.choice(string.ascii_uppercase + string.digits)
+                                random.choice(
+                                    string.ascii_uppercase + string.digits)
                                 for _ in range(32)
                             )
                             u.save()
@@ -928,16 +948,30 @@ def myprofile(request):
         request,
     )
 
+
 @login_required(login_url="/login/")
-def membership_status(request):
+def membership_status(request):    
     user = request.user
     person = user.person
+
+    today = datetime.today().date()
+    six_months_from_now = today + timedelta(days=182)  # approx. 6 months
+    should_pay = today < person.member_until < six_months_from_now
     return render(
         request,
         "myprofile/myprofile_membership.html",
         {
             "name": f"{user.first_name} {user.last_name}",
-            "member_until": person.member_until,
+            "person_id": person.pk,
+            "email": user.email,
+            "should_pay": should_pay,
+            "membership_data": [
+                ("Member until", person.member_until),
+                ("Member type", person.get_member_type_display()),
+                ("AYY member", "Yes" if person.ayy_member else "No"),
+                ("Class of year", person.class_of_year),
+                ("XQ year (year you use to register to events)", person.xq_year),
+            ]
         }
     )
 
@@ -953,7 +987,8 @@ def edit_person(user, person, adminview, template, form_action_url, request):
     # Submit Both Forms
     if request.method == "POST":
         user_form = UserForm(request.POST, instance=user, prefix="user_form")
-        person_form = PersonForm(request.POST, instance=person, prefix="person_form")
+        person_form = PersonForm(
+            request.POST, instance=person, prefix="person_form")
 
         if request.user.is_staff and adminview:
             admin_form = AdminPersonForm(
@@ -1037,9 +1072,11 @@ def edit_person(user, person, adminview, template, form_action_url, request):
 @login_required(login_url="/login/")
 def settings(request):
     user_form = UserForm(instance=request.user, prefix="user_form")
-    person_form = PersonForm(instance=request.user.person, prefix="person_form")
+    person_form = PersonForm(
+        instance=request.user.person, prefix="person_form")
     if request.method == "POST":
-        user_form = UserForm(request.POST, instance=request.user, prefix="user_form")
+        user_form = UserForm(
+            request.POST, instance=request.user, prefix="user_form")
         person_form = PersonForm(
             request.POST, instance=request.user.person, prefix="person_form"
         )
@@ -1798,7 +1835,8 @@ def change_password(request):
         else:
             for key in form.errors:
                 messages.warning(
-                    request, form.fields[key].label + ": " + form.errors[key][0]
+                    request, form.fields[key].label +
+                    ": " + form.errors[key][0]
                 )
     return redirect("rekisteri.views.new_password")
 
@@ -1816,7 +1854,8 @@ def public_profile(request, slug):
 @login_required(login_url="/login/")
 def search(request):
     """ Search persons """
-    queryset = Person.objects.exclude(is_hidden=True).exclude(user__is_active=False)
+    queryset = Person.objects.exclude(
+        is_hidden=True).exclude(user__is_active=False)
     first_name = request.GET.get("search_first_name", None)
     last_name = request.GET.get("search_last_name", None)
     class_of_year = request.GET.get("search_start_year", None)

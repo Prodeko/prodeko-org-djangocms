@@ -59,6 +59,7 @@ requests==2.25.1
 six==1.15.0
 unicodecsv==0.14.1
 uritemplate==3.0.1
+stripe==6.4.0
 
 # Google drive integration
 google-api-python-client==1.12.8
