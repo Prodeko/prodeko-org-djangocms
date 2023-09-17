@@ -36,7 +36,10 @@
       {% if should_pay %}
       <h2>You have not paid your membership fee for the next year!</h2>
       <stripe-buy-button buy-button-id="buy_btn_1NqG91BXFu7VMnhUnfNfFKlG"
-        publishable-key="pk_live_sqMB9UbyLIXgHJ4exCAQkhlw00V81yfQ6S">
+        publishable-key="pk_live_sqMB9UbyLIXgHJ4exCAQkhlw00V81yfQ6S"
+        customer-email="{{ email }}"
+        client-reference-id="{{ person_id }}"
+        >
       </stripe-buy-button>
       {% endif %}
     </div>

@@ -961,7 +961,7 @@ def membership_status(request):
         request,
         "myprofile/myprofile_membership.html",
         {
-            "name": f"{user.first_name} {user.last_name}",
+            "name": "{} {}".format(user.first_name, user.last_name),
             "person_id": person.pk,
             "email": user.email,
             "should_pay": should_pay,
