@@ -283,7 +283,7 @@ CMS_PLACEHOLDER_CONF = {
     "abit_nav": {"name": _("Navigation"), "plugins": ["TextPlugin"]}
 }
 CMS_CACHE_DURATIONS = {
-    "content": 1,
+    "content": 60 * 60 * 6,
     "menus": 60 * 60 * 6,
     "permissions": 60 * 60 * 6,
 }
