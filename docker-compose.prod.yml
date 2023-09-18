@@ -13,7 +13,8 @@ services:
     container_name: prodeko_org
     restart: unless-stopped
     # command: uvicorn --host prodeko_org --workers 5 --interface wsgi --lifespan off prodekoorg.wsgi:application
-    command: gunicorn --bind 0.0.0.0:8000 --workers 5 --threads 4 prodekoorg.wsgi:application
+    # Each thread manages its own database connection
+    command: gunicorn --bind 0.0.0.0:8000 --workers 2 --threads 2 prodekoorg.wsgi:application
     volumes:
       - ./prodekoorg:/app/prodekoorg
     environment:
