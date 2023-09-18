@@ -27,3 +27,12 @@ ENV = development
 
 [KILTISKAMERA]
 URL = https://insertuserhere:insertpasswordhere@0.0.0.1:1234/
+
+[MAILCHIMP]
+MAILCHIMP_API_KEY = secret
+MAILCHIMP_LIST_ID = 1a2b3c4d5e
+
+[STRIPE]
+STRIPE_PAYMENT_LINK_ID = plink_a1b2c3d4e5
+STRIPE_API_KEY = secret
+STRIPE_ENDPOINT_SECRET = endpointsecret
