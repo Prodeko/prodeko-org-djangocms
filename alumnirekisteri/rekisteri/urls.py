@@ -39,7 +39,7 @@ urlpatterns = [
     re_path(r"^settings/$", views.settings, name="settings"),
     re_path(r"^new-password/$", views.new_password, name="new_password"),
     re_path(r"^myprofile/$", views.myprofile, name="myprofile"),
-    re_path(r"^myprofile/status$", views.membership_status, name="membership_status"),
+    re_path(r"^myprofile/status/$", views.membership_status, name="membership_status"),
     re_path(
         r"^myprofile/delete-profile/$", views.delete_profile, name="delete_profile"
     ),
