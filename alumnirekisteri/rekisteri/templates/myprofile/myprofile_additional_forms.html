@@ -155,6 +155,9 @@
             </div>
             <span class="text-muted">{{ x.position }}</span>
             <h4>{{ x.organisation }}</h4>
+            {% if x.is_founding_member %}
+              <p>(perustajajäsen)</p>
+            {% endif %}
             <p>
               {% if x.start_year or x.end_year %}{% if x.start_month and x.start_year %}{{ x.get_start_month_display }}, {% endif %}{% if x.start_year %}{{ x.start_year }}{% endif %} - {% if x.end_month and x.end_year %}{{ x.get_end_month_display }}, {% endif %}{% if x.end_year %}{{ x.end_year }}{% endif %}{% endif %}
             </p>
