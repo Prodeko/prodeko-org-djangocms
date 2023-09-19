@@ -408,6 +408,7 @@ class WorkExperience(models.Model):
         Person, on_delete=models.CASCADE, related_name="work_experiences"
     )
     organisation = models.CharField(max_length=250)
+    is_founding_member = models.BooleanField(blank=False, default=False)
     position = models.CharField(max_length=250)
     start_year = models.IntegerField(blank=True, null=True)
     start_month = models.IntegerField(blank=True, null=True, choices=MONTH_CHOICES)
