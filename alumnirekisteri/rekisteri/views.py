@@ -441,6 +441,11 @@ def admin_export_data(request):
                 current_organisation = ""
                 row.append("§".join(map(displayPosition, current_positions)))
                 row.append("§".join(map(displayPosition, experiences)))
+
+            if request.POST.get("founded_companies"):
+                founded_companies = sorted(p.work_experiences.filter(is_founding_member=True), key=sortByEndDate)
+                row.append("§".join((x.organisation for x in founded_companies)))
+
             if request.POST.get("educations"):
                 row.append(
                     "§".join(
@@ -576,6 +581,8 @@ def admin_export_data(request):
         if request.POST.get("work_experiences"):
             legend.append("Nykyiset toimenkuvat")
             legend.append("Kaikki työkokemukset")
+        if request.POST.get("founded_companies"):
+            legend.append("Perustetut yritykset")
         if request.POST.get("educations"):
             legend.append("Koulutus")
         if request.POST.get("positions_of_trust"):
