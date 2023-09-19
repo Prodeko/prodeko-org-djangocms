@@ -36,7 +36,6 @@ class StripeWebhook(View):
         # Handle the event
         if event['type'] == 'checkout.session.completed':
             cache.clear()
-            print('Payment was successful!')
             checkout = event['data']['object']
             user_id = checkout['client_reference_id']
             plink_id = checkout['payment_link']
@@ -44,10 +43,7 @@ class StripeWebhook(View):
             if(plink_id == settings.STRIPE_PAYMENT_LINK_ID):
                 today = datetime.date.today()
                 next_due_date = datetime.date(today.year + 1, 10, 31)
-                print('Next due date: {}'.format(next_due_date))
-                print('User id: {}'.format(user_id))
                 person = Person.objects.get(pk=user_id)
-                print('Person: {}'.format(person.user.first_name))
                 person.member_until = next_due_date
                 person.save()
             else:

@@ -71,6 +71,7 @@
 									<li class="{% if 'myprofile' in request.path %}active{% endif %}"><a href="{% url 'alumnirekisteri:myprofile' %}"><span class="fa fa-cog"></span> Muuta tietoja</a></li>
 									<li class="{% if request.user.person.slug in request.path %}active{% endif %}"><a href="{% url 'alumnirekisteri:public_profile' slug=request.user.pk %}"><span class="fa fa-user"></span> Julkinen profiili</a></li>
                   <li><a href="{% url 'alumnirekisteri:new_password' %}" id="#change-password"><span class="glyphicon glyphicon-lock"></span> Vaihda salasana</a></li>
+                  <li><a href="{% url 'alumnirekisteri:membership_status' %}"><span class="fa fa-info" style="margin-right: 2px"></span>Prodekon jäsenyys</a></li>
                   <li role="separator" class="divider"></li>
 									<li><a href="{% url 'alumnirekisteri:logout' %}"><span class="glyphicon glyphicon-log-out"></span> Kirjaudu ulos</a></li>
                 </ul>

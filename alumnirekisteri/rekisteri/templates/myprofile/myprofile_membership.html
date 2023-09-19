@@ -41,6 +41,8 @@
         client-reference-id="{{ person_id }}"
         >
       </stripe-buy-button>
+      {% else %}
+      <h2>You have paid your membership fee for the next year!</h2>
       {% endif %}
     </div>
   </div>
