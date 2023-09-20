@@ -873,6 +873,7 @@ class WorkExperienceForm(forms.ModelForm):
         model = WorkExperience
         fields = [
             "organisation",
+            "is_founding_member",
             "position",
             "start_year",
             "start_month",
@@ -886,6 +887,13 @@ class WorkExperienceForm(forms.ModelForm):
         ]
         widgets = {
             "organisation": forms.TextInput(attrs={"class": "form-control"}),
+            "is_founding_member": forms.CheckboxInput(attrs={
+                    "class": "",
+                    "data-toggle": "toggle",
+                    "data-on": "Olen",
+                    "data-off": "En",
+                    "data-size": "mini",
+                }),
             "position": forms.TextInput(attrs={"class": "form-control"}),
             "start_year": forms.NumberInput(attrs={"class": "form-control"}),
             "start_month": forms.Select(attrs={"class": "form-control"}),
@@ -899,6 +907,7 @@ class WorkExperienceForm(forms.ModelForm):
         }
         labels = {
             "organisation": "Organisaatio",
+            "is_founding_member": "Olen perustajajäsen",
             "position": "Positio",
             "start_year": "Aloitusvuosi",
             "start_month": "Aloituskuukausi",

@@ -129,3 +129,20 @@ $('.modal').on('hidden.bs.modal', function () {
 
 /* hide messages after 5 seconds */
 $('.footer .alert').delay(5000).fadeOut('slow');
+
+/*
+BootstrapToggle doesn't initialize the toggles when they are dynamically loaded (editing or deleting a modal).
+This results in them looking like normal checkboxes.
+Workaround: destroy and re-initialize all toggles on ajaxComplete.
+
+References:
+- https://www.bootstraptoggle.com/
+- https://stackoverflow.com/questions/32586384/bootstrap-toggle-doesnt-work-after-ajax-load
+*/
+$(document).ajaxComplete(function() {
+  $('input[type=checkbox][data-toggle^=toggle]').each(function() {
+    toggle = $(this)
+    toggle.bootstrapToggle('destroy')
+    toggle.bootstrapToggle()
+  })
+})
