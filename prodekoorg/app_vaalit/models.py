@@ -16,6 +16,7 @@ class Virka(models.Model):
     """
 
     is_hallitus = models.BooleanField(default=False, verbose_name=_("Board"))
+    is_visible = models.BooleanField(default=False, verbose_name=_("Visible"))
     name = models.CharField(max_length=50, unique=True, verbose_name=_("Position"))
     description = models.TextField(default="", verbose_name=_("Description"))
     sort_key = models.CharField(

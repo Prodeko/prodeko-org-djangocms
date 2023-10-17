@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-24 18:44+0300\n"
+"POT-Creation-Date: 2023-10-17 14:25+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Timo Riski <timo@prodeko.org>\n"
 "Language: \n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: abisivut/cms_apps.py:12 prodekoorg/settings/base.py:276
+#: abisivut/cms_apps.py:12 prodekoorg/settings/base.py:278
 msgid "High school student page"
 msgstr "Abisivut"
 
@@ -107,7 +107,7 @@ msgstr "Profiili"
 #: auth_prodeko/templates/accounts/user_profile.html:14
 #: prodekoorg/app_kulukorvaus/models.py:73
 #: prodekoorg/app_kulukorvaus/printing.py:97
-#: prodekoorg/app_toimarit/models.py:20 prodekoorg/app_vaalit/models.py:56
+#: prodekoorg/app_toimarit/models.py:20 prodekoorg/app_vaalit/models.py:57
 msgid "Name"
 msgstr "Nimi"
 
@@ -221,7 +221,7 @@ msgstr "Salasana unohtunut?"
 msgid "The email and password didn't match. Try again"
 msgstr "Sähköposti ja salasana eivät täsmänneet. Yritä uudestaan"
 
-#: lifelonglearning/cms_apps.py:12 prodekoorg/settings/base.py:277
+#: lifelonglearning/cms_apps.py:12 prodekoorg/settings/base.py:279
 msgid "Lifelong learning page"
 msgstr "Lifelong learning sivu"
 
@@ -356,7 +356,7 @@ msgid "Tutoring (isovastaava@prodeko.org)"
 msgstr "ISO-toiminta (isovastaava@prodeko.org)"
 
 #: prodekoorg/app_contact/models.py:87 prodekoorg/app_kulukorvaus/models.py:126
-#: prodekoorg/app_vaalit/models.py:99 prodekoorg/app_vaalit/models.py:129
+#: prodekoorg/app_vaalit/models.py:100 prodekoorg/app_vaalit/models.py:130
 msgid "Created at"
 msgstr "Luotu"
 
@@ -594,10 +594,10 @@ msgstr "Lataa pdf"
 
 #: prodekoorg/app_kulukorvaus/templates/kulukorvaus_done.html:8
 msgid ""
-"✅ Your reimbursement claim has been received. The claim will be processed in "
-"the next Prodeko board meeting. If you notice any errors in the information "
-"below, contact Prodeko's treasurer immediately at rahastonhoitaja@prodeko."
-"org."
+"✅ Your reimbursement claim has been received. The claim will be processed "
+"in the next Prodeko board meeting. If you notice any errors in the "
+"information below, contact Prodeko's treasurer immediately at "
+"rahastonhoitaja@prodeko.org."
 msgstr ""
 "✅ Kulukorvauksesi on vastaanotettu. Hakemus käsitellään seuraavassa "
 "hallituksen kokouksessa. Jos havaitset virheitä pdf:n tiedoissa, ota "
@@ -688,8 +688,8 @@ msgstr "Kyllä"
 msgid "No"
 msgstr "Ei"
 
-#: prodekoorg/app_membership/models.py:55 prodekoorg/settings/base.py:80
-#: prodekoorg/settings/base.py:90
+#: prodekoorg/app_membership/models.py:55 prodekoorg/settings/base.py:82
+#: prodekoorg/settings/base.py:92
 msgid "Finnish"
 msgstr "Suomi"
 
@@ -863,7 +863,7 @@ msgstr "Esikatselukuva"
 msgid "Title"
 msgstr "Otsikko"
 
-#: prodekoorg/app_proleko/models.py:53 prodekoorg/app_vaalit/models.py:20
+#: prodekoorg/app_proleko/models.py:53 prodekoorg/app_vaalit/models.py:21
 msgid "Description"
 msgstr "Kuvaus"
 
@@ -945,7 +945,7 @@ msgid "sections"
 msgstr "jaostot"
 
 #: prodekoorg/app_toimarit/models.py:43 prodekoorg/app_toimarit/models.py:80
-#: prodekoorg/app_vaalit/models.py:19
+#: prodekoorg/app_vaalit/models.py:20
 msgid "Position"
 msgstr "Virka"
 
@@ -1016,59 +1016,65 @@ msgstr "Sovellus - Vaalit"
 msgid "Board"
 msgstr "Hallitus"
 
-#: prodekoorg/app_vaalit/models.py:22
+#: prodekoorg/app_vaalit/models.py:19 tiedotteet/backend/forms.py:62
+#: tiedotteet/backend/forms.py:108
+#: tiedotteet/backend/templates/control/categories.html:54
+msgid "Visible"
+msgstr "Näytä"
+
+#: prodekoorg/app_vaalit/models.py:23
 msgid "Sort-key"
 msgstr "Järjestys-avain"
 
-#: prodekoorg/app_vaalit/models.py:25
+#: prodekoorg/app_vaalit/models.py:26
 msgid "Read by"
 msgstr "Lukenut"
 
-#: prodekoorg/app_vaalit/models.py:36
+#: prodekoorg/app_vaalit/models.py:37
 msgid "position"
 msgstr "virka"
 
-#: prodekoorg/app_vaalit/models.py:37
+#: prodekoorg/app_vaalit/models.py:38
 msgid "Positions"
 msgstr "Virat"
 
-#: prodekoorg/app_vaalit/models.py:63
+#: prodekoorg/app_vaalit/models.py:64
 #: prodekoorg/app_vaalit/templates/forms/vaalit_apply_form.html:4
 msgid "Picture"
 msgstr "Kuva"
 
-#: prodekoorg/app_vaalit/models.py:84
+#: prodekoorg/app_vaalit/models.py:85
 msgid "applicant"
 msgstr "hakija"
 
-#: prodekoorg/app_vaalit/models.py:85
+#: prodekoorg/app_vaalit/models.py:86
 #: prodekoorg/app_vaalit/templates/vaalit_content.html:3
 msgid "Applicants"
 msgstr "Hakijat"
 
-#: prodekoorg/app_vaalit/models.py:106
+#: prodekoorg/app_vaalit/models.py:107
 msgid "Question"
 msgstr "Kysymys"
 
-#: prodekoorg/app_vaalit/models.py:113
+#: prodekoorg/app_vaalit/models.py:114
 msgid "question"
 msgstr "kysymys"
 
-#: prodekoorg/app_vaalit/models.py:114
+#: prodekoorg/app_vaalit/models.py:115
 #: prodekoorg/app_vaalit/templates/vaalit_content.html:5
 msgid "Questions"
 msgstr "Kysymykset"
 
-#: prodekoorg/app_vaalit/models.py:136
+#: prodekoorg/app_vaalit/models.py:137
 #: prodekoorg/app_vaalit/templates/vaalit_question.html:3
 msgid "Answer"
 msgstr "Vastaus"
 
-#: prodekoorg/app_vaalit/models.py:143
+#: prodekoorg/app_vaalit/models.py:144
 msgid "answer"
 msgstr "vastaus"
 
-#: prodekoorg/app_vaalit/models.py:144
+#: prodekoorg/app_vaalit/models.py:145
 #: prodekoorg/app_vaalit/templates/vaalit_question.html:4
 msgid "Answers"
 msgstr "Vastaukset"
@@ -1111,7 +1117,7 @@ msgid ""
 "mitä hakija voi jo tietää ennen perehdytystä (painopiste motivaatiossa ja "
 "näkemyksissä) ja älä laita kysymyksiä vaalikokousta edeltävää viikonloppua "
 "vastaan, vaan jätetään viimeiset kysymykset vaalikokousta edeltävänä "
-"perjantaina viimeistään klo 15 :)"
+"perjantaina viimeistään klo 12 :)"
 msgstr ""
 
 #: prodekoorg/app_vaalit/templates/vaalit_answer.html:3
@@ -1193,27 +1199,27 @@ msgstr "Poista"
 msgid "Edit"
 msgstr "Muokkaa"
 
-#: prodekoorg/settings/base.py:80 prodekoorg/settings/base.py:97
+#: prodekoorg/settings/base.py:82 prodekoorg/settings/base.py:99
 msgid "English"
 msgstr "Englanti"
 
-#: prodekoorg/settings/base.py:272
+#: prodekoorg/settings/base.py:274
 msgid "Frontpage"
 msgstr "Etusivu"
 
-#: prodekoorg/settings/base.py:273
+#: prodekoorg/settings/base.py:275
 msgid "Content page"
 msgstr "Sisältösivu"
 
-#: prodekoorg/settings/base.py:274
+#: prodekoorg/settings/base.py:276
 msgid "Content page with 1:1 split"
 msgstr "Sisältösivu 1:1 jaolla"
 
-#: prodekoorg/settings/base.py:275
+#: prodekoorg/settings/base.py:277
 msgid "Content page with 2:1 split"
 msgstr "Sisältösivu 2:1 jaolla"
 
-#: prodekoorg/settings/base.py:281
+#: prodekoorg/settings/base.py:283
 msgid "Navigation"
 msgstr "Navigaatio"
 
@@ -1422,11 +1428,6 @@ msgstr "Deadline"
 #: tiedotteet/backend/forms.py:61 tiedotteet/backend/forms.py:107
 msgid "Show deadline"
 msgstr "Näytä deadline"
-
-#: tiedotteet/backend/forms.py:62 tiedotteet/backend/forms.py:108
-#: tiedotteet/backend/templates/control/categories.html:54
-msgid "Visible"
-msgstr "Näytä"
 
 #: tiedotteet/backend/forms.py:87 tiedotteet/backend/views.py:335
 msgid "Bulletin updated"

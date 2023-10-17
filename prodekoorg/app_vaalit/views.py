@@ -310,6 +310,7 @@ def main_view(request):
             "ehdokkaat", "questions", "questions__answers", "ehdokkaat__answered_by"
         )
         .order_by("sort_key")
+        .filter(is_visible=True)
     )
 
     # ehdokkaat_json is parsed to JSON in the template 'vaalit_question_form.html'
