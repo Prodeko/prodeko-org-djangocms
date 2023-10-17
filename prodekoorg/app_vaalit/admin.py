@@ -13,7 +13,7 @@ class VirkaAdmin(admin.ModelAdmin):
     make_visible.short_description = "Mark selected items as visible"
     make_hidden.short_description = "Mark selected items as hidden"
     actions = [make_visible, make_hidden]
-    list_display = ('name', 'sort_key', 'is_board', 'is_visible')
+    list_display = ('name', 'sort_key', 'application_start', 'is_hallitus', 'is_visible')
 
 
 

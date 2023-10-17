@@ -312,6 +312,18 @@ def main_view(request):
         .order_by("sort_key")
         .filter(is_visible=True)
     )
+    virat_python= [
+        {
+            "name": virka.name,
+            "description": virka.description,
+            "is_application_period": virka.is_application_period,
+            "application_start": virka.application_start.strftime('%d.%m.'),
+            "is_hallitus": virka.is_hallitus,
+            "is_visible": virka.is_visible
+        }
+        for virka in virat
+    ]
+    virat_json = json.dumps(virat_python)
 
     # ehdokkaat_json is parsed to JSON in the template 'vaalit_question_form.html'
     ehdokkaat_python = serialize(
@@ -331,6 +343,7 @@ def main_view(request):
     context = {}
     context["virat_description_json"] = virat_description_json
     context["virat"] = virat
+    context["virat_json"] = virat_json
     context["ehdokkaat"] = ehdokkaat
     context["ehdokkaat_json"] = ehdokkaat_json
     context["count_ehdokkaat_hallitus"] = len([v for v in virat if v.is_hallitus])
