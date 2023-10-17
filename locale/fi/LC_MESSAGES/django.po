@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-17 14:25+0300\n"
+"POT-Creation-Date: 2023-10-17 14:45+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Timo Riski <timo@prodeko.org>\n"
 "Language: \n"
@@ -863,7 +863,7 @@ msgstr "Esikatselukuva"
 msgid "Title"
 msgstr "Otsikko"
 
-#: prodekoorg/app_proleko/models.py:53 prodekoorg/app_vaalit/models.py:21
+#: prodekoorg/app_proleko/models.py:53 prodekoorg/app_vaalit/models.py:22
 msgid "Description"
 msgstr "Kuvaus"
 
@@ -945,7 +945,7 @@ msgid "sections"
 msgstr "jaostot"
 
 #: prodekoorg/app_toimarit/models.py:43 prodekoorg/app_toimarit/models.py:80
-#: prodekoorg/app_vaalit/models.py:20
+#: prodekoorg/app_vaalit/models.py:21
 msgid "Position"
 msgstr "Virka"
 
@@ -1011,30 +1011,30 @@ msgstr "Vaalit"
 msgid "Elections application"
 msgstr "Sovellus - Vaalit"
 
-#: prodekoorg/app_vaalit/models.py:18
+#: prodekoorg/app_vaalit/models.py:19
 #: prodekoorg/app_vaalit/templates/vaalit_nav.html:4
 msgid "Board"
 msgstr "Hallitus"
 
-#: prodekoorg/app_vaalit/models.py:19 tiedotteet/backend/forms.py:62
+#: prodekoorg/app_vaalit/models.py:20 tiedotteet/backend/forms.py:62
 #: tiedotteet/backend/forms.py:108
 #: tiedotteet/backend/templates/control/categories.html:54
 msgid "Visible"
 msgstr "Näytä"
 
-#: prodekoorg/app_vaalit/models.py:23
+#: prodekoorg/app_vaalit/models.py:24
 msgid "Sort-key"
 msgstr "Järjestys-avain"
 
-#: prodekoorg/app_vaalit/models.py:26
+#: prodekoorg/app_vaalit/models.py:27
 msgid "Read by"
 msgstr "Lukenut"
 
-#: prodekoorg/app_vaalit/models.py:37
+#: prodekoorg/app_vaalit/models.py:38
 msgid "position"
 msgstr "virka"
 
-#: prodekoorg/app_vaalit/models.py:38
+#: prodekoorg/app_vaalit/models.py:39
 msgid "Positions"
 msgstr "Virat"
 

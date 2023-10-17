@@ -4,7 +4,17 @@ from .models import Ehdokas, Kysymys, Vastaus, Virka
 
 
 class VirkaAdmin(admin.ModelAdmin):
-    pass
+    def make_visible(modeladmin, request, queryset):
+        queryset.update(is_visible=True)
+
+    def make_hidden(modeladmin, request, queryset):
+        queryset.update(is_visible=False)
+
+    make_visible.short_description = "Mark selected items as visible"
+    make_hidden.short_description = "Mark selected items as hidden"
+    actions = [make_visible, make_hidden]
+    list_display = ('name', 'sort_key', 'is_board', 'is_visible')
+
 
 
 class EhdokasAdmin(admin.ModelAdmin):
