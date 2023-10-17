@@ -9,10 +9,10 @@
 <div class="col-lg-8 col-sm-12">
     <p>
         {% blocktrans trimmed %}
-            Tehdään hakemisesta kaikille hyvä kokemus, eli muistetaan hyvät kysymyskäytännöt. 
-            Kysy sama kysymys kaikilta hakijoilta, kysy vain asioita, mitä hakija voi jo tietää ennen perehdytystä 
-            (painopiste motivaatiossa ja näkemyksissä) ja älä laita kysymyksiä vaalikokousta edeltävää viikonloppua vastaan,
-             vaan jätetään viimeiset kysymykset vaalikokousta edeltävänä perjantaina viimeistään klo 12 :)
+        Tehdään hakemisesta kaikille hyvä kokemus, eli muistetaan hyvät kysymyskäytännöt.
+        Kysy sama kysymys kaikilta hakijoilta, kysy vain asioita, mitä hakija voi jo tietää ennen perehdytystä
+        (painopiste motivaatiossa ja näkemyksissä) ja älä laita kysymyksiä vaalikokousta edeltävää viikonloppua vastaan,
+        vaan jätetään viimeiset kysymykset vaalikokousta edeltävänä perjantaina viimeistään klo 12 :)
         {% endblocktrans%}
     </p>
 </div>
@@ -28,7 +28,7 @@
         </div>
     </div>
     <div class="form-group">
-        <input type="hidden" class="input-virka" name="hidden-input-virka" value="{{virat.0.name}}"/>
+        <input type="hidden" class="input-virka" name="hidden-input-virka" value="{{virat.0.name}}" />
         <button name="submitKysymys" type="submit" class="btn btn-primary my-2">{% trans question_submit %}</button>
         <a role="button" id="btnHaeVirkaan" class="btn btn-default">
             {% trans apply %}
@@ -48,21 +48,33 @@
     checkBtnHaeVirkaanVisibility(selectedVirka);
 
     function checkBtnHaeVirkaanVisibility(virka) {
-    var virka = virka;
+        var virka = virka;
+        // Hide apply form if application period is false
+        const virkaItem = JSON.parse('{{ virat_json|safe }}').find(e => e.name == virka);
+        ehdokkaatForVirka = $.grep(ehdokkaatJSON, function (e, i) {
+            return e.virka == virka;
+        });
 
-    ehdokkaatForVirka = $.grep(ehdokkaatJSON, function(e, i) {
-        return e.virka == virka;
-    });
-    // If the current user is already an ehdokas for this virka...
-    if (ehdokkaatForVirka.some(item => item.auth_prodeko_user[0] == user)) {
-        // ... don't display the "Hae virkaan" button
-        $('#btnHaeVirkaan').hide();
-        // and hide the apply form if it was visible
-        $('#vaaliWrapperApplyForm').hide();
-    } else {
-        // ... otherwise show the button
-        $('#btnHaeVirkaan').show();
-    }
+        // If the current user is already an ehdokas for this virka...
+        if (!virkaItem.is_application_period || ehdokkaatForVirka.some(item => item.auth_prodeko_user[0] == user)) {
+            // ... don't display the "Hae virkaan" button
+            $('#btnHaeVirkaan').hide();
+            // and hide the apply form if it was visible
+            $('#vaaliWrapperApplyForm').hide();
+            if (!virkaItem.is_application_period) {
+                console.log(virkaItem.is_application_period)
+                $("#vaalitKysymysForm").hide();
+                $("#electionNotOpen").show();
+                $("#startDate").text(virkaItem.application_period_start_date);
+            } else {
+                $("#vaalitKysymysForm").show();
+            }
+        } else {
+            // ... otherwise show the button
+            $("#vaalitKysymysForm").show();
+            $('#btnHaeVirkaan').show();
+            $("#electionNotOpen").hide();
+        }
     }
 </script>
 {% endaddtoblock %}

@@ -5,6 +5,7 @@
 {% trans "Questions" as questions %}
 {% trans "No questions" as no_questions %}
 {% trans "No Responses" as no_responses %}
+{% trans "The application period has not started. It will start " as election_not_open %}
 
 <div class="row">
     <div class="col-xl-8 col-sm-12">
@@ -15,12 +16,12 @@
     </div>
     <div class="col-xl-4 col-sm-12 ehdokasList">
         {% for virka in virat %}
-            <div id="_{{ virka.pk }}" class="tab-pane fade" role="tabpanel">
-                <h3>{% trans applicants %} ({{ virka.ehdokkaat.all.count }})</h3>
-                {% for ehdokas in virka.ehdokkaat.all %}
-                    {% include "vaalit_ehdokas.html" %}
-                {% endfor %}
-            </div>
+        <div id="_{{ virka.pk }}" class="tab-pane fade" role="tabpanel">
+            <h3>{% trans applicants %} ({{ virka.ehdokkaat.all.count }})</h3>
+            {% for ehdokas in virka.ehdokkaat.all %}
+            {% include "vaalit_ehdokas.html" %}
+            {% endfor %}
+        </div>
         {% endfor %}
     </div>
 </div>
@@ -35,40 +36,39 @@
 
 <div id="vaaliContent" class="tab-content">
     {% for virka in virat %}
-        <div id="q_{{ virka.pk }}" class="tab-pane fade" role="tabpanel">
-            {# KYSYMYKSET #}
-            <div class="vaalitQuestions col-xl-10 col-lg-10 col-xs-12">
-                <h3 class="mt-4">
-                    {% trans questions %} ({{ virka.questions.all.count }})
-                    {% trans "No applicants" as no_applicant %}
-                </h3>
-                <div class="vaalitKysymysList list-group list-group-root">
-                    {% for question in virka.questions.all %}
-                        {% include "vaalit_question.html" %}
-                        {# VASTAUKSET #}
-                        <div class="list-group collapse answersList" id="vastaukset_{{ question.pk }}">
-                            <div class="answersContainer">
-                                {% for answer in question.answers.all %}
-                                    {% include "vaalit_answer.html" %}
-                                {% endfor %}
-                                {% if not question.answers.all %}
-                                    <p class="ml-5">{% trans no_responses %}</p> <!-- TODO: Better styling-->
-                                {% endif %}
-                                {% for ehdokas in virka.ehdokkaat.all %} <!-- TODO: Better implementation-->
-                                    {% if request.user == ehdokas.auth_prodeko_user %}
-                                        {% include "forms/vaalit_answer_form.html" %}
-                                    {% endif %}
-                                {% endfor %}
-                            </div>
-                        </div>
-                    {% empty %}
-                        <p>{% trans no_questions %}</p>
-                    {% endfor %}
+    <div id="q_{{ virka.pk }}" class="tab-pane fade" role="tabpanel">
+        {# KYSYMYKSET #}
+        <div class="vaalitQuestions col-xl-10 col-lg-10 col-xs-12">
+            <h3 class="mt-4">
+                {% trans questions %} ({{ virka.questions.all.count }})
+                {% trans "No applicants" as no_applicant %}
+            </h3>
+            <div class="vaalitKysymysList list-group list-group-root">
+                {% for question in virka.questions.all %}
+                {% include "vaalit_question.html" %}
+                {# VASTAUKSET #}
+                <div class="list-group collapse answersList" id="vastaukset_{{ question.pk }}">
+                    <div class="answersContainer">
+                        {% for answer in question.answers.all %}
+                        {% include "vaalit_answer.html" %}
+                        {% endfor %}
+                        {% if not question.answers.all %}
+                        <p class="ml-5">{% trans no_responses %}</p> <!-- TODO: Better styling-->
+                        {% endif %}
+                        {% for ehdokas in virka.ehdokkaat.all %} <!-- TODO: Better implementation-->
+                        {% if request.user == ehdokas.auth_prodeko_user %}
+                        {% include "forms/vaalit_answer_form.html" %}
+                        {% endif %}
+                        {% endfor %}
+                    </div>
                 </div>
+                {% empty %}
+                <p>{% trans no_questions %}</p>
+                {% endfor %}
             </div>
         </div>
+    </div>
     {% endfor %}
-</div>
 
 {% include "vaalit_modal_delete_ehdokas.html" %}
 {% include "vaalit_modal_photocrop.html" %}
@@ -77,7 +77,7 @@
 {% addtoblock "js" %}
 <script type="text/javascript">
     var ehdokkaatJSON = JSON.parse('{{ ehdokkaat_json|safe }}');
-    var descriptions = {{virat_description_json|safe}}
+    var descriptions = {{ virat_description_json| safe}}
 
     function updateDescription(virka) {
         selectedVirka = localStorage.getItem('selectedTab_id');
@@ -85,6 +85,6 @@
         description = descriptions.find(desc => desc.id === Number(selectedVirka.slice(2))).description;
         $("#roleDescription").text(description);
     }
+
 </script>
 {% endaddtoblock %}
-

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-17 14:45+0300\n"
+"POT-Creation-Date: 2023-10-17 17:45+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Timo Riski <timo@prodeko.org>\n"
 "Language: \n"
@@ -107,7 +107,7 @@ msgstr "Profiili"
 #: auth_prodeko/templates/accounts/user_profile.html:14
 #: prodekoorg/app_kulukorvaus/models.py:73
 #: prodekoorg/app_kulukorvaus/printing.py:97
-#: prodekoorg/app_toimarit/models.py:20 prodekoorg/app_vaalit/models.py:57
+#: prodekoorg/app_toimarit/models.py:20 prodekoorg/app_vaalit/models.py:65
 msgid "Name"
 msgstr "Nimi"
 
@@ -356,7 +356,7 @@ msgid "Tutoring (isovastaava@prodeko.org)"
 msgstr "ISO-toiminta (isovastaava@prodeko.org)"
 
 #: prodekoorg/app_contact/models.py:87 prodekoorg/app_kulukorvaus/models.py:126
-#: prodekoorg/app_vaalit/models.py:100 prodekoorg/app_vaalit/models.py:130
+#: prodekoorg/app_vaalit/models.py:108 prodekoorg/app_vaalit/models.py:138
 msgid "Created at"
 msgstr "Luotu"
 
@@ -863,7 +863,7 @@ msgstr "Esikatselukuva"
 msgid "Title"
 msgstr "Otsikko"
 
-#: prodekoorg/app_proleko/models.py:53 prodekoorg/app_vaalit/models.py:22
+#: prodekoorg/app_proleko/models.py:53 prodekoorg/app_vaalit/models.py:23
 msgid "Description"
 msgstr "Kuvaus"
 
@@ -945,7 +945,7 @@ msgid "sections"
 msgstr "jaostot"
 
 #: prodekoorg/app_toimarit/models.py:43 prodekoorg/app_toimarit/models.py:80
-#: prodekoorg/app_vaalit/models.py:21
+#: prodekoorg/app_vaalit/models.py:22
 msgid "Position"
 msgstr "Virka"
 
@@ -1022,59 +1022,65 @@ msgstr "Hallitus"
 msgid "Visible"
 msgstr "Näytä"
 
-#: prodekoorg/app_vaalit/models.py:24
+#: prodekoorg/app_vaalit/models.py:21
+#, fuzzy
+#| msgid "Application actions"
+msgid "Application start date"
+msgstr "Hakemustoimenpiteet"
+
+#: prodekoorg/app_vaalit/models.py:25
 msgid "Sort-key"
 msgstr "Järjestys-avain"
 
-#: prodekoorg/app_vaalit/models.py:27
+#: prodekoorg/app_vaalit/models.py:28
 msgid "Read by"
 msgstr "Lukenut"
 
-#: prodekoorg/app_vaalit/models.py:38
+#: prodekoorg/app_vaalit/models.py:45
 msgid "position"
 msgstr "virka"
 
-#: prodekoorg/app_vaalit/models.py:39
+#: prodekoorg/app_vaalit/models.py:46
 msgid "Positions"
 msgstr "Virat"
 
-#: prodekoorg/app_vaalit/models.py:64
+#: prodekoorg/app_vaalit/models.py:72
 #: prodekoorg/app_vaalit/templates/forms/vaalit_apply_form.html:4
 msgid "Picture"
 msgstr "Kuva"
 
-#: prodekoorg/app_vaalit/models.py:85
+#: prodekoorg/app_vaalit/models.py:93
 msgid "applicant"
 msgstr "hakija"
 
-#: prodekoorg/app_vaalit/models.py:86
+#: prodekoorg/app_vaalit/models.py:94
 #: prodekoorg/app_vaalit/templates/vaalit_content.html:3
 msgid "Applicants"
 msgstr "Hakijat"
 
-#: prodekoorg/app_vaalit/models.py:107
+#: prodekoorg/app_vaalit/models.py:115
 msgid "Question"
 msgstr "Kysymys"
 
-#: prodekoorg/app_vaalit/models.py:114
+#: prodekoorg/app_vaalit/models.py:122
 msgid "question"
 msgstr "kysymys"
 
-#: prodekoorg/app_vaalit/models.py:115
+#: prodekoorg/app_vaalit/models.py:123
 #: prodekoorg/app_vaalit/templates/vaalit_content.html:5
 msgid "Questions"
 msgstr "Kysymykset"
 
-#: prodekoorg/app_vaalit/models.py:137
+#: prodekoorg/app_vaalit/models.py:145
 #: prodekoorg/app_vaalit/templates/vaalit_question.html:3
 msgid "Answer"
 msgstr "Vastaus"
 
-#: prodekoorg/app_vaalit/models.py:144
+#: prodekoorg/app_vaalit/models.py:152
 msgid "answer"
 msgstr "vastaus"
 
-#: prodekoorg/app_vaalit/models.py:145
+#: prodekoorg/app_vaalit/models.py:153
 #: prodekoorg/app_vaalit/templates/vaalit_question.html:4
 msgid "Answers"
 msgstr "Vastaukset"
@@ -1125,7 +1131,7 @@ msgid "since"
 msgstr "sitten"
 
 #: prodekoorg/app_vaalit/templates/vaalit_content.html:4
-#: prodekoorg/app_vaalit/templates/vaalit_content.html:43
+#: prodekoorg/app_vaalit/templates/vaalit_content.html:44
 msgid "No applicants"
 msgstr "Ei hakijoita"
 
@@ -1136,6 +1142,10 @@ msgstr "Ei kysymyksiä"
 #: prodekoorg/app_vaalit/templates/vaalit_content.html:7
 msgid "No Responses"
 msgstr "Ei vastauksia"
+
+#: prodekoorg/app_vaalit/templates/vaalit_content.html:8
+msgid "The application period has not started. It will start "
+msgstr ""
 
 #: prodekoorg/app_vaalit/templates/vaalit_ehdokas.html:3
 #: prodekoorg/app_vaalit/templates/vaalit_modal_delete_ehdokas.html:5
@@ -1629,3 +1639,8 @@ msgstr "Ei tageja"
 #: tiedotteet/backend/views.py:59
 msgid "New bulletin added"
 msgstr "Tiedote lisätty"
+
+#, fuzzy
+#~| msgid "Application actions"
+#~ msgid "Application end date"
+#~ msgstr "Hakemustoimenpiteet"
