@@ -315,7 +315,6 @@ def main_view(request):
     virat_python= [
         {
             "name": virka.name,
-            "description": virka.description,
             "is_application_period": virka.is_application_period,
             "application_start": virka.application_start.strftime('%d.%m.'),
             "is_hallitus": virka.is_hallitus,

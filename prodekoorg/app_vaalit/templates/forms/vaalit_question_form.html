@@ -63,17 +63,22 @@
             $('#vaaliWrapperApplyForm').hide();
             if (!virkaItem.is_application_period) {
                 console.log(virkaItem.is_application_period)
-                $("#vaalitKysymysForm").hide();
+                $("#vaaliKysymysForm").hide();
+                $("#ehdokasList").hide();
+                $("#vaaliContent").hide();
                 $("#electionNotOpen").show();
                 $("#startDate").text(virkaItem.application_period_start_date);
             } else {
-                $("#vaalitKysymysForm").show();
+                $("#vaaliKysymysForm").show();
+                $("#ehdokasList").show();
+                $("#vaaliContent").show();
             }
         } else {
             // ... otherwise show the button
-            $("#vaalitKysymysForm").show();
+            $("#vaaliKysymysForm").show();
+            $("#ehdokasList").show();
+            $("#vaaliContent").show();
             $('#btnHaeVirkaan').show();
-            $("#electionNotOpen").hide();
         }
     }
 </script>

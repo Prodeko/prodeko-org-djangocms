@@ -14,7 +14,7 @@
             {{ virat.0.description|linebreaks }}
         </div>
     </div>
-    <div class="col-xl-4 col-sm-12 ehdokasList">
+    <div class="col-xl-4 col-sm-12 ehdokasList" id="ehdokasList">
         {% for virka in virat %}
         <div id="_{{ virka.pk }}" class="tab-pane fade" role="tabpanel">
             <h3>{% trans applicants %} ({{ virka.ehdokkaat.all.count }})</h3>
