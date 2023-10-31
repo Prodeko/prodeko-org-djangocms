@@ -963,7 +963,7 @@ def membership_status(request):
 
     today = datetime.today().date()
     six_months_from_now = today + timedelta(days=182)  # approx. 6 months
-    should_pay = today <= person.member_until < six_months_from_now
+    should_pay = today < person.member_until < six_months_from_now
     return render(
         request,
         "myprofile/myprofile_membership.html",
