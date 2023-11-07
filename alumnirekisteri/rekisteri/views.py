@@ -970,6 +970,7 @@ def membership_status(request):
     today = datetime.today().date()
     six_months_from_now = today + timedelta(days=182)  # approx. 6 months
     should_pay = today < person.member_until < six_months_from_now
+    is_expired = person.member_until < today
     return render(
         request,
         "myprofile/myprofile_membership.html",
@@ -978,6 +979,7 @@ def membership_status(request):
             "person_id": person.pk,
             "email": user.email,
             "should_pay": should_pay,
+            "is_expired": is_expired,
             "membership_data": [
                 ("Member until", person.member_until),
                 ("Member type", person.get_member_type_display()),
