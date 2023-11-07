@@ -373,6 +373,8 @@ def admin_export_data(request):
                 row.append(p.class_of_year)
             if request.POST.get("member_until"):
                 row.append(p.member_until)
+            if request.POST.get("member_type"):
+                row.append(p.get_member_type_display())
             if request.POST.get("student_number"):
                 row.append(p.student_number)
             if request.POST.get("dont_publish_in_book"):
@@ -398,6 +400,7 @@ def admin_export_data(request):
             if request.POST.get("tuta_info"):
                 row.append(p.get_starting_year())
                 row.append(p.get_graduation_year())
+
 
             def displayPosition(x):
                 return (
@@ -553,6 +556,8 @@ def admin_export_data(request):
             legend.append("Aloittanut")
         if request.POST.get("member_until"):
             legend.append("Jäsenyys loppuu")
+        if request.POST.get("member_type"):
+            legend.append("Jäsenyystyyppi")
         if request.POST.get("student_number"):
             legend.append("Opiskelijanumero")
         if request.POST.get("dont_publish_in_book"):
@@ -597,6 +602,7 @@ def admin_export_data(request):
             legend.append("Kiinnostuksen kohteet")
         if request.POST.get("family_members"):
             legend.append("Perheenjäsenet")
+
 
         response["Content-Disposition"] = 'attachment; filename="somefilename.csv"'
         writer.writerow(legend)

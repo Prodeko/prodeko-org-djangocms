@@ -90,6 +90,8 @@
                 <input id="class_of_year_checkbox" type="checkbox" name="class_of_year" checked/><br>
                 Jäsenyys päättyy
                 <input id="member_until_checkbox" type="checkbox" name="member_until" checked/><br>
+                Jäsenyystyyppi
+                <input id="member_type_checkbox" type="checkbox" name="member_type" checked/><br>
                 Op. nro
                 <input id="student_number_checkbox" type="checkbox" name="student_number" checked/><br>
                 Julkaise matrikkelissa
@@ -161,7 +163,7 @@
 <script type="text/javascript">
     var attributs = ["email", "first_name", "last_name", "last_login", "middle_names", "nickname", "preferred_name",
                       "address", "is_dead", "birthdate","place_of_birth", "gender", "marital_status", "military_rank", "class_of_year",
-                      "member_until", "student_number", "dont_publish_in_book", "mentoring", "partner_contact", "is_alumni",
+                      "member_until", "member_type", "student_number", "dont_publish_in_book", "mentoring", "partner_contact", "is_alumni",
                       "subscribe_alumnimail", "homepage", "linkedin_profile", "admin_note",
                       "phones", "work_experiences", "founded_companies", "emails", "skills", "languages", "educations", "positions_of_trust", "student_organizational_activities",
                       "volunteers", "honors", "interests", "family_members", "tuta_info"];
@@ -191,6 +193,8 @@
                 checkboxes["email"].checked = true;
                 checkboxes["last_login"].checked = true;
                 checkboxes["admin_note"].checked = true;
+                checkboxes["member_until"].checked = true;
+                checkboxes["member_type"].checked = true;
                 break;
             case 4:
                 Object.values(checkboxes).forEach(function(x){x.checked = false});
