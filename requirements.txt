@@ -43,7 +43,7 @@ lxml==4.6.2
 
 azure-common==1.1.26
 # Upgrade to 12.x.x once https://github.com/jschneier/django-storages/pull/805/ is merged
-azure-storage-blob==2.1.0
+azure-storage-blob==12.13.0
 sentry-sdk==0.19.5
 
 easy-thumbnails==2.7.1
