@@ -8,6 +8,9 @@ from io import StringIO, TextIOWrapper
 from itertools import chain
 from shutil import make_archive
 from wsgiref.util import FileWrapper
+import qrcode
+from io import BytesIO
+import base64
 
 import unicodecsv as unicodecsv
 from django.contrib import messages
@@ -25,6 +28,7 @@ from django.http import (
     JsonResponse,
     StreamingHttpResponse,
 )
+
 from django.shortcuts import (
     HttpResponse,
     HttpResponseRedirect,
@@ -971,11 +975,41 @@ def membership_status(request):
     six_months_from_now = today + timedelta(days=182)  # approx. 6 months
     should_pay = today < person.member_until < six_months_from_now
     is_expired = person.member_until < today
+
+        # Data to be encoded
+    data = user.email
+
+    # Generate QR code
+    qr = qrcode.QRCode(
+        version=1,
+        error_correction=qrcode.constants.ERROR_CORRECT_L,
+        box_size=15,
+        border=2,
+    )
+    qr.add_data(data)
+    qr.make(fit=True)
+
+    img = qr.make_image(fill_color="black", back_color="transparent")
+
+    # Save the QR code in a memory buffer
+    buffer = BytesIO()
+    img.save(buffer)
+    buffer.seek(0)
+
+    # Convert the image to base64
+    image_png = buffer.getvalue()
+    buffer.close()
+    mime = "image/png"
+    base64_encoded = base64.b64encode(image_png).decode()
+
+
     return render(
         request,
         "myprofile/myprofile_membership.html",
         {
             "name": f"{user.first_name} {user.last_name}",
+            "qr_code": base64_encoded,
+            "mime": mime,
             "person_id": person.pk,
             "email": user.email,
             "should_pay": should_pay,
