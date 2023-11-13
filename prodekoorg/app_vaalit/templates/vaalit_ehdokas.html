@@ -17,8 +17,8 @@
             <div>
                 {% if ehdokas.be_unclickable %}
                 <a id="runaway-btn"
-                    style="transition: all 0.5s ease; position: absolute; right: 20px; top: 20px;  z-index: 10; color:  #004184; text-decoration: underline; cursor: pointer;">{%
-                    trans read_application %}</a>
+                    style="transition: all 0.5s ease; position: absolute; right: 20px; top: 20px;  z-index: 10; color:  #004184; text-decoration: underline; cursor: pointer;">
+                    {% trans read_application %}</a>
                 <script>
                     $(document).ready(function () {
                         var count = 0;
@@ -35,7 +35,7 @@
                             var currentPos = $('#runaway-btn').position();
 
 
-                            var newPosX = currentPos.left + (Math.random() > 0.5 ? 1 : -1) * maxDistance;
+                            var newPosX = currentPos.left + (Math.random() > 0.5 ? 1 : -1) * maxDistancerea
                             if (count < 5) {
                                 newPosX = currentPos.left - maxDistance;
                             }
@@ -50,8 +50,8 @@
                     });
                 </script>
                 {% else %}
-                <a href="#hakijaModal_{{ehdokas.pk}}" data-toggle="modal" data-target="#hakijaModal_{{ehdokas.pk}}">{%
-                    trans read_application %}</a>
+                <a href="#hakijaModal_{{ehdokas.pk}}" data-toggle="modal" data-target="#hakijaModal_{{ehdokas.pk}}">
+                    {% trans read_application %}</a>
                 {% endif %}
                 {% include "vaalit_modal_ehdokas_description.html" %}
             </div>
