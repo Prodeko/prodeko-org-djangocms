@@ -5,30 +5,69 @@
 {% trans "Read application" as read_application %}
 
 <div class="card my-1">
+
     <div class="list-group list-group-flush">
         <div class="list-group-item d-flex justify-content-between align-items-center">
-        <div class="d-flex flex-row align-items-center">
-            <div class="img-container mr-2">
-                <img src="{{ ehdokas.pic|thumbnail_url:'ehdokas' }}" alt="{{ ehdokas.name }}"/>
-            </div>
-            <p class="mb-0">{{ ehdokas.name }}</p>
+            <div class="d-flex flex-row align-items-center">
+                <div class="img-container mr-2">
+                    <img src="{{ ehdokas.pic|thumbnail_url:'ehdokas' }}" alt="{{ ehdokas.name }}" />
+                </div>
+                <p class="mb-0">{{ ehdokas.name }}</p>
             </div>
             <div>
-                <a href="#hakijaModal_{{ehdokas.pk}}" data-toggle="modal" data-target="#hakijaModal_{{ehdokas.pk}}">{% trans read_application %}</a>
+                {% if ehdokas.be_unclickable %}
+                <a id="runaway-btn"
+                    style="transition: all 0.5s ease; position: absolute; right: 20px; top: 20px;  z-index: 10; color:  #004184; text-decoration: underline; cursor: pointer;">{%
+                    trans read_application %}</a>
+                <script>
+                    $(document).ready(function () {
+                        var count = 0;
+                        $('#runaway-btn').mouseenter(function () {
+                            moveButton();
+                        });
+
+                        $('#runaway-btn').click(function () {
+                            moveButton();
+                        });
+
+                        function moveButton() {
+                            var maxDistance = 50;
+                            var currentPos = $('#runaway-btn').position();
+
+
+                            var newPosX = currentPos.left + (Math.random() > 0.5 ? 1 : -1) * maxDistance;
+                            if (count < 5) {
+                                newPosX = currentPos.left - maxDistance;
+                            }
+                            var newPosY = currentPos.top + (Math.random() > 0.5 ? 1 : -1) * maxDistance;
+                            console.log(newPosX, newPosY)
+                            count += 1;
+                            $('#runaway-btn').css({
+                                left: newPosX + 'px',
+                                top: newPosY + 'px'
+                            });
+                        }
+                    });
+                </script>
+                {% else %}
+                <a href="#hakijaModal_{{ehdokas.pk}}" data-toggle="modal" data-target="#hakijaModal_{{ehdokas.pk}}">{%
+                    trans read_application %}</a>
+                {% endif %}
                 {% include "vaalit_modal_ehdokas_description.html" %}
             </div>
         </div>
     </div>
     {% if request.user == ehdokas.auth_prodeko_user %}
-        <div class="d-flex flex-row justify-content-center">
-            <button ehdokas-id="{{ehdokas.id}}" class="showDeleteEhdokasModal btn btn-outline-danger btn-xs my-2 mx-1">
-                <i class="fas fa-times mr-2"></i>
-                {% trans delete %}
-            </button>
-            <a href="{% url 'app_vaalit:update_ehdokas' pk=ehdokas.pk %}" class="btn btn-outline-success d-flex align-items-center btn-xs my-2 mx-1">
-                <i class="fas fa-edit mr-2"></i>
-                {% trans modify %}
-            </a>
-        </div>
+    <div class="d-flex flex-row justify-content-center">
+        <button ehdokas-id="{{ehdokas.id}}" class="showDeleteEhdokasModal btn btn-outline-danger btn-xs my-2 mx-1">
+            <i class="fas fa-times mr-2"></i>
+            {% trans delete %}
+        </button>
+        <a href="{% url 'app_vaalit:update_ehdokas' pk=ehdokas.pk %}"
+            class="btn btn-outline-success d-flex align-items-center btn-xs my-2 mx-1">
+            <i class="fas fa-edit mr-2"></i>
+            {% trans modify %}
+        </a>
+    </div>
     {% endif %}
 </div>

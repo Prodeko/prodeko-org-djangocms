@@ -71,6 +71,7 @@ class Ehdokas(models.Model):
         default="images/toimari_photos/placeholder.jpg",
         verbose_name=_("Picture"),
     )
+    be_unclickable = models.BooleanField(default=False, verbose_name=_(":D"))
 
     def natural_key(self):
         """String based representation of this object when accessed through
