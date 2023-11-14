@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-07 14:04+0200\n"
+"POT-Creation-Date: 2023-11-14 22:40+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Timo Riski <timo@prodeko.org>\n"
 "Language: \n"
@@ -356,7 +356,7 @@ msgid "Tutoring (isovastaava@prodeko.org)"
 msgstr "ISO-toiminta (isovastaava@prodeko.org)"
 
 #: prodekoorg/app_contact/models.py:87 prodekoorg/app_kulukorvaus/models.py:126
-#: prodekoorg/app_vaalit/models.py:108 prodekoorg/app_vaalit/models.py:138
+#: prodekoorg/app_vaalit/models.py:109 prodekoorg/app_vaalit/models.py:139
 msgid "Created at"
 msgstr "Luotu"
 
@@ -1049,38 +1049,42 @@ msgstr "Virat"
 msgid "Picture"
 msgstr "Kuva"
 
-#: prodekoorg/app_vaalit/models.py:93
+#: prodekoorg/app_vaalit/models.py:74
+msgid ":D"
+msgstr ":D"
+
+#: prodekoorg/app_vaalit/models.py:94
 msgid "applicant"
 msgstr "hakija"
 
-#: prodekoorg/app_vaalit/models.py:94
+#: prodekoorg/app_vaalit/models.py:95
 #: prodekoorg/app_vaalit/templates/vaalit_content.html:3
 msgid "Applicants"
 msgstr "Hakijat"
 
-#: prodekoorg/app_vaalit/models.py:115
+#: prodekoorg/app_vaalit/models.py:116
 msgid "Question"
 msgstr "Kysymys"
 
-#: prodekoorg/app_vaalit/models.py:122
+#: prodekoorg/app_vaalit/models.py:123
 msgid "question"
 msgstr "kysymys"
 
-#: prodekoorg/app_vaalit/models.py:123
+#: prodekoorg/app_vaalit/models.py:124
 #: prodekoorg/app_vaalit/templates/vaalit_content.html:5
 msgid "Questions"
 msgstr "Kysymykset"
 
-#: prodekoorg/app_vaalit/models.py:145
+#: prodekoorg/app_vaalit/models.py:146
 #: prodekoorg/app_vaalit/templates/vaalit_question.html:3
 msgid "Answer"
 msgstr "Vastaus"
 
-#: prodekoorg/app_vaalit/models.py:152
+#: prodekoorg/app_vaalit/models.py:153
 msgid "answer"
 msgstr "vastaus"
 
-#: prodekoorg/app_vaalit/models.py:153
+#: prodekoorg/app_vaalit/models.py:154
 #: prodekoorg/app_vaalit/templates/vaalit_question.html:4
 msgid "Answers"
 msgstr "Vastaukset"

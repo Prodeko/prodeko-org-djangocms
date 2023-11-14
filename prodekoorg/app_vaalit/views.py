@@ -160,22 +160,6 @@ def is_duplicate_application(request, hidden_virka):
     else:
         return False
 
-
-def get_ehdokkaat_json(context, ehdokas):
-    # Append the new ehdokas to the ehdokas_json list that is processed in javascript
-    ehdokas_new_python = serialize(
-        "python",
-        [ehdokas],
-        use_natural_foreign_keys=True,
-        fields=("auth_prodeko_user", "virka"),
-    )
-    ehdokas_new_json = json.dumps([d["fields"] for d in ehdokas_new_python])
-    ehdokas_new = json.loads(ehdokas_new_json)
-    ehdokkaat_json = json.loads(context["ehdokkaat_json"])
-    ehdokkaat_json.extend(ehdokas_new)  # Extend operates in-place and returns none
-    return json.dumps(ehdokkaat_json)
-
-
 @login_required
 def handle_submit_ehdokas(request, context):
     form_ehdokas = EhdokasForm(request.POST, request.FILES)
@@ -204,9 +188,7 @@ def handle_submit_ehdokas(request, context):
         ehdokas.save()
 
         mark_as_unread(ehdokas.virka.pk)
-
-        context["ehdokkaat_json"] = get_ehdokkaat_json(context, ehdokas)
-        context["form_ehdokas"] = form_ehdokas
+        fill_root_ctx(context, request)
         return render(request, "vaalit.html", context)
     else:
         # If there are errors show the form by setting it's display to 'block'
@@ -303,50 +285,8 @@ def mark_as_unread(pk):
 
 @login_required
 def main_view(request):
-    ehdokkaat = Ehdokas.objects.all()
-    virat = (
-        Virka.objects.all()
-        .prefetch_related(
-            "ehdokkaat", "questions", "questions__answers", "ehdokkaat__answered_by"
-        )
-        .order_by("sort_key")
-        .filter(is_visible=True)
-    )
-    virat_python= [
-        {
-            "name": virka.name,
-            "is_application_period": virka.is_application_period,
-            "application_start": virka.application_start.strftime('%d.%m.'),
-            "is_hallitus": virka.is_hallitus,
-            "is_visible": virka.is_visible
-        }
-        for virka in virat
-    ]
-    virat_json = json.dumps(virat_python)
-
-    # ehdokkaat_json is parsed to JSON in the template 'vaalit_question_form.html'
-    ehdokkaat_python = serialize(
-        "python",
-        ehdokkaat,
-        use_natural_foreign_keys=True,
-        fields=("auth_prodeko_user", "virka"),
-    )
-    virat_description_python = serialize(
-        "python", virat, use_natural_foreign_keys=True, fields=("description")
-    )
-    ehdokkaat_json = json.dumps([d["fields"] for d in ehdokkaat_python])
-    virat_description_json = json.dumps(
-        list(map(lambda x: {**x["fields"], "id": x["pk"]}, virat_description_python))
-    )
-
     context = {}
-    context["virat_description_json"] = virat_description_json
-    context["virat"] = virat
-    context["virat_json"] = virat_json
-    context["ehdokkaat"] = ehdokkaat
-    context["ehdokkaat_json"] = ehdokkaat_json
-    context["count_ehdokkaat_hallitus"] = len([v for v in virat if v.is_hallitus])
-    context["count_ehdokkaat_toimarit"] = len([v for v in virat if not v.is_hallitus])
+    fill_root_ctx(context, request)
 
     if request.method == "POST":
         if "submitVirka" in request.POST:
@@ -362,3 +302,39 @@ def main_view(request):
             initial={"name": f"{request.user.first_name} {request.user.last_name}"}
         )
         return render(request, "vaalit.html", context)
+
+def fill_root_ctx(context, request):
+    virat = (
+        Virka.objects.all()
+        .prefetch_related(
+            "ehdokkaat", "questions", "questions__answers", "ehdokkaat__answered_by"
+        )
+        .order_by("sort_key")
+        .filter(is_visible=True)
+    )
+
+    virat_python= [
+        {
+            "name": virka.name,
+            "is_application_period": virka.is_application_period,
+            "application_start": virka.application_start.strftime('%d.%m.'),
+            "is_hallitus": virka.is_hallitus,
+            "is_visible": virka.is_visible,
+            "user_has_applied": request.user in set(e.auth_prodeko_user for e in virka.ehdokkaat.all())
+        }
+        for virka in virat
+    ]
+
+    virat_description_python = serialize(
+        "python", virat, use_natural_foreign_keys=True, fields=("description")
+    )
+    virat_description_json = json.dumps(
+        list(map(lambda x: {**x["fields"], "id": x["pk"]}, virat_description_python))
+    )
+
+    context["virat_description_json"] = virat_description_json
+    context["virat"] = virat
+    context["virat_json"] = json.dumps(virat_python)
+    context["count_ehdokkaat_hallitus"] = len([v for v in virat if v.is_hallitus])
+    context["count_ehdokkaat_toimarit"] = len([v for v in virat if not v.is_hallitus])
+
