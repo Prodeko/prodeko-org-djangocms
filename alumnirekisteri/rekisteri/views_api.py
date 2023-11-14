@@ -4,6 +4,8 @@ from alumnirekisteri.rekisteri.models import *
 from alumnirekisteri.rekisteri.serializers import *
 from django.conf import settings
 from auth_prodeko.models import User
+from google.oauth2 import service_account
+from apiclient.discovery import build
 
 import json
 import stripe
@@ -16,11 +18,54 @@ from django.core.cache import cache
 from django.contrib.sessions.models import Session
 from django.utils import timezone
 from django.http import JsonResponse
-import logging
+from googleapiclient.errors import HttpError
+from googleapiclient.http import MediaFileUpload, MediaIoBaseUpload
+import os
+
 
 
 stripe.api_key = settings.STRIPE_API_KEY
 endpoint_secret = settings.STRIPE_ENDPOINT_SECRET
+
+
+def initialize_service():
+    """Initializes a Google Drive API instance.
+
+    Returns:
+        Google Directory API service object.
+    """
+
+    SERVICE_ACCOUNT_FILE = os.path.join(
+        settings.BASE_DIR, "prodekoorg/service_account.json"
+    )
+
+    SCOPES = ['https://www.googleapis.com/auth/drive']
+
+    credentials = service_account.Credentials.from_service_account_file(
+        SERVICE_ACCOUNT_FILE, subject="mediakeisari@prodeko.org", scopes=SCOPES
+    )
+
+    return build("sheets", "v4", credentials=credentials)
+
+def modify_sheet(sheet_id, user):
+    email = user.email
+    service = initialize_service()
+    sheet = service.spreadsheets()
+    result = sheet.values().get(spreadsheetId=sheet_id, range="Sheet1!A1:D5").execute()
+    values = result.get("values", [])
+    print(values)
+    if not values:
+        print("No data found.")
+    else:
+        for row in values:
+            if email in row:
+                print("Email already exists in sheet.")
+                return JsonResponse({'active': True, 'message': 'Email already exists in sheet.'})
+        row = [email]
+        body = {'values': [row]}
+        result = sheet.values().append(spreadsheetId=sheet_id, range="Sheet1", valueInputOption="USER_ENTERED", body=body).execute()
+        print(f"{result.get('updates').get('updatedCells')} cells appended.")
+    
 
 
 class Scanner(View):
@@ -41,11 +86,16 @@ class Scanner(View):
                         user = User.objects.get(id=user_id)
                         # Now you can use `user` object to access user data
                         # For example, user.username, user.email, etc.
-                        return JsonResponse({
-                            'active': True,
-                            'username': user.username,
-                            'email': user.email
-                        })
+
+                        # Add user email to sheet
+                        sheet_id = '1yujAklmgLFwynul5ds_SGdzNbGwDo24XI-h2XJw7jbs'
+                        try:
+                            modify_sheet(sheet_id, user)
+                            return JsonResponse({'active': True, 'message': 'Email added to sheet.'})
+                        except HttpError as error:
+                            print(f"An error occurred: {error}")
+                            return JsonResponse({'active': False, 'message': 'An error occurred.'})
+
             except Session.DoesNotExist:
                 pass
         return JsonResponse({'active': False})
