@@ -49,19 +49,28 @@ def initialize_service():
 
 def modify_sheet(sheet_id, user):
     email = user.email
+    person = user.person
     service = initialize_service()
     sheet = service.spreadsheets()
     result = sheet.values().get(spreadsheetId=sheet_id, range="Sheet1!A1:D5").execute()
     values = result.get("values", [])
     print(values)
-    if not values:
+    if values == None:
         print("No data found.")
     else:
+        current_time = datetime.datetime.now().strftime("%H:%M")
         for row in values:
             if email in row:
-                print("Email already exists in sheet.")
-                return JsonResponse({'active': True, 'message': 'Email already exists in sheet.'})
-        row = [email]
+                # Get the current time in HH:MM format
+                # Append the current time to the row
+                row.append(current_time)
+                body = {'values': [row]}
+                row_num = values.index(row)+1
+                result = sheet.values().update(spreadsheetId=sheet_id, range=f"Sheet1!{row_num}:{row_num}", valueInputOption="USER_ENTERED", body=body).execute()
+                print(f"{result.get('updatedCells')} cells updated.")
+                return
+        # If email is not found in the sheet, append a new row with the email and current time
+        row = [email, user.first_name, user.last_name, person.get_member_type_display(), current_time]
         body = {'values': [row]}
         result = sheet.values().append(spreadsheetId=sheet_id, range="Sheet1", valueInputOption="USER_ENTERED", body=body).execute()
         print(f"{result.get('updates').get('updatedCells')} cells appended.")
