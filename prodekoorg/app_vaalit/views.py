@@ -303,7 +303,7 @@ def mark_as_unread(pk):
 
 @login_required
 def main_view(request):
-    ehdokkaat = Ehdokas.objects.all()
+    ehdokkaat = Ehdokas.objects.all().prefetch_related("pic")
     virat = (
         Virka.objects.all()
         .prefetch_related(
