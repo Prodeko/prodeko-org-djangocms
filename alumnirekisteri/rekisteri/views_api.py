@@ -6,6 +6,9 @@ from django.conf import settings
 from auth_prodeko.models import User
 from google.oauth2 import service_account
 from apiclient.discovery import build
+from googleapiclient.errors import HttpError
+from googleapiclient.http import MediaFileUpload, MediaIoBaseUpload
+import os
 
 import json
 import stripe
@@ -18,10 +21,6 @@ from django.core.cache import cache
 from django.contrib.sessions.models import Session
 from django.utils import timezone
 from django.http import JsonResponse
-from googleapiclient.errors import HttpError
-from googleapiclient.http import MediaFileUpload, MediaIoBaseUpload
-import os
-
 
 
 stripe.api_key = settings.STRIPE_API_KEY
@@ -47,16 +46,16 @@ def initialize_service():
 
     return build("sheets", "v4", credentials=credentials)
 
+
 def modify_sheet(sheet_id, user):
     email = user.email
     person = user.person
     service = initialize_service()
     sheet = service.spreadsheets()
-    result = sheet.values().get(spreadsheetId=sheet_id, range="Sheet1!A1:D5").execute()
+    result = sheet.values().get(spreadsheetId=sheet_id, range="Sheet1").execute()
     values = result.get("values", [])
-    print(values)
     if values == None:
-        print("No data found.")
+        return None
     else:
         current_time = datetime.datetime.now().strftime("%H:%M")
         for row in values:
@@ -66,26 +65,29 @@ def modify_sheet(sheet_id, user):
                 row.append(current_time)
                 body = {'values': [row]}
                 row_num = values.index(row)+1
-                result = sheet.values().update(spreadsheetId=sheet_id, range=f"Sheet1!{row_num}:{row_num}", valueInputOption="USER_ENTERED", body=body).execute()
-                print(f"{result.get('updatedCells')} cells updated.")
-                return
+                result = sheet.values().update(spreadsheetId=sheet_id,
+                                               range=f"Sheet1!{row_num}:{row_num}", valueInputOption="USER_ENTERED", body=body).execute()
+                return 'sisään' if len(row) % 2 == 1 else 'ulos'
+
         # If email is not found in the sheet, append a new row with the email and current time
-        row = [email, user.first_name, user.last_name, person.get_member_type_display(), current_time]
+        row = [email, user.first_name, user.last_name,
+               person.get_member_type_display(), current_time]
         body = {'values': [row]}
-        result = sheet.values().append(spreadsheetId=sheet_id, range="Sheet1", valueInputOption="USER_ENTERED", body=body).execute()
-        print(f"{result.get('updates').get('updatedCells')} cells appended.")
-    
+        result = sheet.values().append(spreadsheetId=sheet_id, range="Sheet1",
+                                       valueInputOption="USER_ENTERED", body=body).execute()
+        
+        return 'sisään' if len(row) % 2 == 1 else 'ulos'
 
 
 class Scanner(View):
     def post(self, request, *args, **kwargs):
-        session_key = json.loads(request.body).get('sessionKey')
+        body = json.loads(request.body)
+        session_key = body.get('sessionKey')
+        sheet_id = body.get('sheetId')
         if session_key:
             try:
                 session = Session.objects.get(session_key=session_key)
                 if session.expire_date > timezone.now():
-                    print('Session is active')
-
                     # Decode the session data to retrieve the user id
                     session_data = session.get_decoded()
                     user_id = session_data.get('_auth_user_id')
@@ -97,17 +99,16 @@ class Scanner(View):
                         # For example, user.username, user.email, etc.
 
                         # Add user email to sheet
-                        sheet_id = '1yujAklmgLFwynul5ds_SGdzNbGwDo24XI-h2XJw7jbs'
                         try:
-                            modify_sheet(sheet_id, user)
-                            return JsonResponse({'active': True, 'message': 'Email added to sheet.'})
+                            direction = modify_sheet(sheet_id, user)
+                            return JsonResponse({'active': True, 'email': user.email, 'name': user.first_name + ' ' + user.last_name, 'member_type': user.person.get_member_type_display(), 'message': f'Käyttäjä {user.email} kirjattu {direction}'})
                         except HttpError as error:
                             print(f"An error occurred: {error}")
-                            return JsonResponse({'active': False, 'message': 'An error occurred.'})
+                            return JsonResponse({'active': False, 'message': f'Tapahtui virhe: {error}'})
 
             except Session.DoesNotExist:
                 pass
-        return JsonResponse({'active': False})
+        return JsonResponse({'active': False, 'message': 'Käyttäjä ei ole kirjautunut sisään, tai istunto on vanhentunut. Pyydä käyttäjää päivittämään sivu ja kirjautumaan sisään uudelleen.'})
 
 
 @method_decorator(csrf_exempt, name='dispatch')

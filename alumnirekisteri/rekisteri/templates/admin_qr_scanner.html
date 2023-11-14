@@ -1,70 +1,62 @@
-<!-- FILEPATH: /Users/nlinnanen/ohjelmointi/webbitiimi/prodeko-org-djangocms/alumnirekisteri/rekisteri/templates/admin_qr_scanner.html -->
+{% extends "ar_base.html" %}
+{% load static %}
+{% csrf_token %}
 
-<!DOCTYPE html>
-<html>
+{% block body %}
 
-<head>
-  {% load static %} <!-- If not already loaded -->
-  {% csrf_token %}
+<section id="membership-status" class="bg">
+  <div class="container">
+    <div class="row">
+      <div class="col col-md-8 col-md-offset-2" align="center">
+        <video width="100%" id="qr-video"></video>
+        <div class="panel panel-default">
+          <h1 id="scanned-name"></h1>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-md-8 col-md-offset-2">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="row">
+              <label class="col col-md-3 control-label">Sähköposti</label>
+              <div class="col-md-9" id="scanned-email">
 
-  <meta charset="UTF-8">
-  <title>QR Code Scanner</title>
-</head>
+              </div>
+            </div>
+            <div class="row">
+              <label class="col col-md-3 control-label">Jäsenyystyyppi</label>
+              <div class="col-md-9" id="scanned-type">
 
-<body>
-  <h1>QR Code Scanner</h1>
-  <video id="qr-video"></video>
-  <canvas id="qr-canvas"></canvas>
-  <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
-  <script>
-    let scanner = new Instascan.Scanner({ video: document.getElementById('qr-video'), mirror: false });
-    scanner.addListener('scan', function (content) {
-      console.log(content);
-      sendQRData(content);
-    });
-    Instascan.Camera.getCameras().then(function (cameras) {
-      if (cameras.length > 0) {
-        scanner.start(cameras[0]);
-      } else {
-        console.error('No cameras found.');
-      }
-    }).catch(function (e) {
-      console.error(e);
-    });
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col col-md-8 col-md-offset-2" style="margin: 2rem">
+          <div class="panel panel-default">
+            <div class="panel-body" style="padding-top:0" >
+              <div class="row" style="padding: 2rem">
+                <h2>Spreadsheet id</h2>
+                <div>Id:n saa sheetin url:n keskeltä tai mitä kysymällä mediakeisarilta</div>
+                <input id="spreadsheet-id" style="width: 80%" placeholder="esim: 1yujAklmgLFwynul5ds_SGdzNbGwDo24XI-h2XJw7jbs" />
+                <span>
+                  <button id="submit-spreadsheet-id" class="btn btn-primary">Päivitä</button>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <h1 id="scanner-message" align="center">
+      Aloita lisäämällä spreadsheet id!
+    </h1>
+  </div>
+</section>
+<div style="height:50px;width:100%;"></div> <!-- Makes page long enough to see behind footer -->
 
-    function sendQRData(qrData) {
-
-      const url = '/fi/matrikkeli/api/scanner/';
-      const data = { sessionKey: qrData };
-
-      fetch(url, {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: {
-          'Content-Type': 'application/json',
-          'X-CSRFToken': getCookie('csrftoken')
-        }
-      })
-        .then(response => response.json())
-        .then(data => console.log(data))
-        .catch(error => console.error(error));
-    }
-
-    function getCookie(name) {
-      let cookieValue = null;
-      if (document.cookie && document.cookie !== '') {
-        const cookies = document.cookie.split(';');
-        for (let i = 0; i < cookies.length; i++) {
-          const cookie = cookies[i].trim();
-          if (cookie.substring(0, name.length + 1) === (name + '=')) {
-            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-            break;
-          }
-        }
-      }
-      return cookieValue;
-    }
-  </script>
-</body>
-
-</html>
+<script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+<script src="{% static 'js/qr_scanner.js' %}"></script>
+{% endblock %}
