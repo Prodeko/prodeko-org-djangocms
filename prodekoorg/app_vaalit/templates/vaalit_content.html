@@ -76,8 +76,7 @@
 
 {% addtoblock "js" %}
 <script type="text/javascript">
-    var ehdokkaatJSON = JSON.parse('{{ ehdokkaat_json|safe }}');
-    var descriptions = {{ virat_description_json| safe}}
+    var descriptions = {{ virat_description_json|safe }}
 
     function updateDescription(virka) {
         selectedVirka = localStorage.getItem('selectedTab_id');

@@ -41,7 +41,6 @@
 <script type="text/javascript">
     var csrftoken = $("[name=csrfmiddlewaretoken]").val();
     var user = "{{request.user}}";
-    var ehdokkaatJSON = JSON.parse('{{ ehdokkaat_json|safe }}');
     var firstVirka = "{{virat.0}}";
     // Need to check the first virka when the site renders
     selectedVirka = localStorage.getItem('selectedVirka');
@@ -51,12 +50,8 @@
         var virka = virka;
         // Hide apply form if application period is false
         const virkaItem = JSON.parse('{{ virat_json|safe }}').find(e => e.name == virka);
-        ehdokkaatForVirka = $.grep(ehdokkaatJSON, function (e, i) {
-            return e.virka == virka;
-        });
-
         // If the current user is already an ehdokas for this virka...
-        if (!virkaItem.is_application_period || ehdokkaatForVirka.some(item => item.auth_prodeko_user[0] == user)) {
+        if (!virkaItem.is_application_period || virkaItem.user_has_applied) {
             // ... don't display the "Hae virkaan" button
             $('#btnHaeVirkaan').hide();
             // and hide the apply form if it was visible
