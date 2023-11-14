@@ -13,10 +13,43 @@ from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 from django.views import View
 from django.core.cache import cache
+from django.contrib.sessions.models import Session
+from django.utils import timezone
+from django.http import JsonResponse
+import logging
 
 
 stripe.api_key = settings.STRIPE_API_KEY
 endpoint_secret = settings.STRIPE_ENDPOINT_SECRET
+
+
+class Scanner(View):
+    def post(self, request, *args, **kwargs):
+        session_key = json.loads(request.body).get('sessionKey')
+        if session_key:
+            try:
+                session = Session.objects.get(session_key=session_key)
+                if session.expire_date > timezone.now():
+                    print('Session is active')
+
+                    # Decode the session data to retrieve the user id
+                    session_data = session.get_decoded()
+                    user_id = session_data.get('_auth_user_id')
+
+                    # Fetch the user associated with this id
+                    if user_id:
+                        user = User.objects.get(id=user_id)
+                        # Now you can use `user` object to access user data
+                        # For example, user.username, user.email, etc.
+                        return JsonResponse({
+                            'active': True,
+                            'username': user.username,
+                            'email': user.email
+                        })
+            except Session.DoesNotExist:
+                pass
+        return JsonResponse({'active': False})
+
 
 @method_decorator(csrf_exempt, name='dispatch')
 class StripeWebhook(View):
@@ -25,7 +58,8 @@ class StripeWebhook(View):
         sig_header = request.headers.get('STRIPE_SIGNATURE')
 
         try:
-            event = stripe.Webhook.construct_event(payload, sig_header, endpoint_secret)
+            event = stripe.Webhook.construct_event(
+                payload, sig_header, endpoint_secret)
         except ValueError as e:
             # Invalid payload
             return JsonResponse({'error': 'Invalid payload.'}, status=400)
@@ -40,7 +74,7 @@ class StripeWebhook(View):
             user_id = checkout['client_reference_id']
             plink_id = checkout['payment_link']
 
-            if(plink_id == settings.STRIPE_PAYMENT_LINK_ID):
+            if (plink_id == settings.STRIPE_PAYMENT_LINK_ID):
                 today = datetime.date.today()
                 next_due_date = datetime.date(today.year + 1, 10, 31)
                 person = Person.objects.get(pk=user_id)
@@ -52,7 +86,6 @@ class StripeWebhook(View):
             print('Unhandled event type {}'.format(event['type']))
 
         return JsonResponse({'success': True})
-
 
 
 class UserList(generics.ListAPIView):

@@ -1,0 +1,70 @@
+<!-- FILEPATH: /Users/nlinnanen/ohjelmointi/webbitiimi/prodeko-org-djangocms/alumnirekisteri/rekisteri/templates/admin_qr_scanner.html -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  {% load static %} <!-- If not already loaded -->
+  {% csrf_token %}
+
+  <meta charset="UTF-8">
+  <title>QR Code Scanner</title>
+</head>
+
+<body>
+  <h1>QR Code Scanner</h1>
+  <video id="qr-video"></video>
+  <canvas id="qr-canvas"></canvas>
+  <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+  <script>
+    let scanner = new Instascan.Scanner({ video: document.getElementById('qr-video'), mirror: false });
+    scanner.addListener('scan', function (content) {
+      console.log(content);
+      sendQRData(content);
+    });
+    Instascan.Camera.getCameras().then(function (cameras) {
+      if (cameras.length > 0) {
+        scanner.start(cameras[0]);
+      } else {
+        console.error('No cameras found.');
+      }
+    }).catch(function (e) {
+      console.error(e);
+    });
+
+    function sendQRData(qrData) {
+
+      const url = '/fi/matrikkeli/api/scanner/';
+      const data = { sessionKey: qrData };
+
+      fetch(url, {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRFToken': getCookie('csrftoken')
+        }
+      })
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(error => console.error(error));
+    }
+
+    function getCookie(name) {
+      let cookieValue = null;
+      if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+          const cookie = cookies[i].trim();
+          if (cookie.substring(0, name.length + 1) === (name + '=')) {
+            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+            break;
+          }
+        }
+      }
+      return cookieValue;
+    }
+  </script>
+</body>
+
+</html>

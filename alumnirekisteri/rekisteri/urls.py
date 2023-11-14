@@ -32,6 +32,7 @@ urlpatterns = [
     re_path(r"^admin/log/$", views.admin_log, name="admin_log"),
     re_path(r"^admin/stats/", views.admin_stats, name="admin_stats"),
     re_path(r"^admin/set_notes/", views.admin_set_notes, name="admin_set_notes"),
+    re_path(r"^admin/scanner/$", views.admin_qr_scanner, name="admin_qr_scanner"),
     re_path(r"^admin/", views.admin, name="admin"),
     # Index
     re_path(r"^$", views.index, name="index"),
@@ -258,6 +259,7 @@ urlpatterns = [
     ),
     # API
     re_path(r"^api/webhook/stripe/$", views_api.StripeWebhook.as_view()),
+    re_path(r"^api/scanner/$", views_api.Scanner.as_view()),
     # re_path(r"^api/users/$", views_api.UserList.as_view()),
     # re_path(r"^api/persons/$", views_api.PersonList.as_view()),
     # re_path(r"^api/persons/(?P<pk>[0-9]+)$", views_api.PersonDetail.as_view()),

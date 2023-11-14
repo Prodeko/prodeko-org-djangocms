@@ -311,6 +311,10 @@ def admin_export_matrikkeli(request):
         response["Content-Disposition"] = "attachment; filename=profile_pictures.zip"
         return response
 
+@staff_member_required(login_url="/login/")
+def admin_qr_scanner(request):
+    return render(request, 'admin_qr_scanner.html')
+
 
 @staff_member_required(login_url="/login/")
 def admin_export_data(request):
@@ -977,7 +981,7 @@ def membership_status(request):
     is_expired = person.member_until < today
 
         # Data to be encoded
-    data = user.email
+    data = request.session.session_key
 
     # Generate QR code
     qr = qrcode.QRCode(
