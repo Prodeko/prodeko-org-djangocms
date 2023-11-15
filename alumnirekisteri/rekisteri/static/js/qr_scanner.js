@@ -24,6 +24,8 @@ function sendQRData(qrData) {
   const sheetId = window.localStorage.getItem('sheet-id');
   if (!sheetId) {
     message_elem.innerHTML = 'Sheetin ID:tä ei ole asetettu.';
+    message_elem.style.background = 'red';
+    message_elem.style.color = 'white';
     return;
   }
   const data = {
@@ -49,9 +51,17 @@ function sendQRData(qrData) {
         document.getElementById('scanned-type').innerHTML = data.member_type;
       }
       message_elem.innerHTML = data.message;
+      if (data.active) {
+        message_elem.style.background = 'green';
+      } else {
+        message_elem.style.background = 'red';
+        message_elem.style.color = 'white';
+      }
     })
     .catch((error) => {
       message_elem.innerHTML = 'Tapahtui virhe!';
+      message_elem.style.background = 'red';
+      message_elem.style.color = 'white';
       return console.error(error);
     });
 }
@@ -76,4 +86,10 @@ document
   .addEventListener('click', function () {
     const spreadsheetId = document.getElementById('spreadsheet-id').value;
     localStorage.setItem('sheet-id', spreadsheetId);
+    document.getElementById('scanner-message').innerHTML =
+      'Spreadsheet id asetettu!';
   });
+
+document.getElementById('spreadsheet-id').value = window.localStorage.getItem(
+  'sheet-id'
+);
