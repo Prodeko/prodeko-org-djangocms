@@ -54,7 +54,7 @@ def modify_sheet(sheet_id, user):
     sheet = service.spreadsheets()
     result = sheet.values().get(spreadsheetId=sheet_id, range="Sheet1").execute()
     values = result.get("values", [])
-    if values == None:
+    if values is None:
         return None
     else:
         current_time = datetime.datetime.now().strftime("%H:%M")
