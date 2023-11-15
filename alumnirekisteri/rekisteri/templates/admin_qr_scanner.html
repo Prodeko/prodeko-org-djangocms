@@ -1,0 +1,62 @@
+{% extends "ar_base.html" %}
+{% load static %}
+{% csrf_token %}
+
+{% block body %}
+
+<section id="membership-status" class="bg">
+  <h1 id="scanner-message" align="center">
+    Aloita lisäämällä spreadsheet id!
+  </h1>
+  <div class="container">
+    <div class="row">
+      <div class="col col-md-8 col-md-offset-2" align="center">
+        <video width="100%" id="qr-video"></video>
+        <div class="panel panel-default">
+          <h1 id="scanned-name"></h1>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-md-8 col-md-offset-2">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="row">
+              <label class="col col-md-3 control-label">Sähköposti</label>
+              <div class="col-md-9" id="scanned-email">
+
+              </div>
+            </div>
+            <div class="row">
+              <label class="col col-md-3 control-label">Jäsenyystyyppi</label>
+              <div class="col-md-9" id="scanned-type">
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col col-md-8 col-md-offset-2" >
+          <div class="panel panel-default">
+            <div class="panel-body" >
+              <div class="row" style="padding: 0 2rem">
+                <h2>Spreadsheet id</h2>
+                <div>Id:n saa sheetin url:n keskeltä tai mitä kysymällä mediakeisarilta</div>
+                <input id="spreadsheet-id" style="width: 80%" placeholder="esim: 1yujAklmgLFwynul5ds_SGdzNbGwDo24XI-h2XJw7jbs" />
+                <span>
+                  <button id="submit-spreadsheet-id" class="btn btn-primary">Päivitä</button>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div style="height:50px;width:100%;"></div> <!-- Makes page long enough to see behind footer -->
+
+<script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+<script src="{% static 'js/qr_scanner.js' %}"></script>
+{% endblock %}
