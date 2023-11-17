@@ -48,7 +48,11 @@ STATICFILES_STORAGE = "prodekoorg.custom_azure.AzureStaticStorage"
 # Azure storage of easy_thumbnail thumbnails causes a massive amount of database queries
 # Load times of Vaaliplatta were around 10 seconds -> Lets use the default setting (disk) instead
 # THUMBNAIL_DEFAULT_STORAGE = "prodekoorg.custom_azure.AzureMediaStorage"
-THUMBNAIL_DEBUG = True
+
+# The URL for thumbnails is based on MEDIA_URL (which points at the CDN) by default.
+# Perhaps MEDIA_URL could be overridden, but I'm scared that other things depend on it.
+# For thumbnails stored on the disk, we have to point the URLs separately.
+THUMBNAIL_MEDIA_URL = "/media/"
 
 STATIC_LOCATION = "static"
 MEDIA_LOCATION = "media"
