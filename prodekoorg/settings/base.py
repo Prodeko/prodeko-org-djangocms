@@ -308,6 +308,8 @@ THUMBNAIL_ALIASES = {
 
 THUMBNAIL_BASEDIR = "image_thumbnails"
 THUMBNAIL_HIGH_RESOLUTION = True
+THUMBNAIL_DEFAULT_STORAGE = "easy_thumbnails.storage.ThumbnailFileSystemStorage"
+
 
 # Config for djangocms-text-ckeditor
 CKEDITOR_SETTINGS = {
