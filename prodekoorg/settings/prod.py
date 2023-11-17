@@ -48,6 +48,7 @@ STATICFILES_STORAGE = "prodekoorg.custom_azure.AzureStaticStorage"
 # Azure storage of easy_thumbnail thumbnails causes a massive amount of database queries
 # Load times of Vaaliplatta were around 10 seconds -> Lets use the default setting (disk) instead
 # THUMBNAIL_DEFAULT_STORAGE = "prodekoorg.custom_azure.AzureMediaStorage"
+THUMBNAIL_DEBUG = True
 
 STATIC_LOCATION = "static"
 MEDIA_LOCATION = "media"
