@@ -311,6 +311,7 @@ def admin_export_matrikkeli(request):
         response["Content-Disposition"] = "attachment; filename=profile_pictures.zip"
         return response
 
+
 @staff_member_required(login_url="/login/")
 def admin_qr_scanner(request):
     return render(request, 'admin_qr_scanner.html')
@@ -383,6 +384,10 @@ def admin_export_data(request):
                 row.append(p.member_until)
             if request.POST.get("member_type"):
                 row.append(p.get_member_type_display())
+            if request.POST.get("ayy_member"):
+                row.append(p.ayy_member)
+            if request.POST.get("pora_member"):
+                row.append(p.pora_member)
             if request.POST.get("student_number"):
                 row.append(p.student_number)
             if request.POST.get("dont_publish_in_book"):
@@ -408,7 +413,6 @@ def admin_export_data(request):
             if request.POST.get("tuta_info"):
                 row.append(p.get_starting_year())
                 row.append(p.get_graduation_year())
-
 
             def displayPosition(x):
                 return (
@@ -454,8 +458,10 @@ def admin_export_data(request):
                 row.append("§".join(map(displayPosition, experiences)))
 
             if request.POST.get("founded_companies"):
-                founded_companies = sorted(p.work_experiences.filter(is_founding_member=True), key=sortByEndDate)
-                row.append("§".join((x.organisation for x in founded_companies)))
+                founded_companies = sorted(p.work_experiences.filter(
+                    is_founding_member=True), key=sortByEndDate)
+                row.append(
+                    "§".join((x.organisation for x in founded_companies)))
 
             if request.POST.get("educations"):
                 row.append(
@@ -566,6 +572,10 @@ def admin_export_data(request):
             legend.append("Jäsenyys loppuu")
         if request.POST.get("member_type"):
             legend.append("Jäsenyystyyppi")
+        if request.POST.get("ayy_member"):
+            legend.append("AYY:n jäsen")
+        if request.POST.get("pora_member"):
+            legend.append("PoRa:n jäsen")
         if request.POST.get("student_number"):
             legend.append("Opiskelijanumero")
         if request.POST.get("dont_publish_in_book"):
@@ -610,7 +620,6 @@ def admin_export_data(request):
             legend.append("Kiinnostuksen kohteet")
         if request.POST.get("family_members"):
             legend.append("Perheenjäsenet")
-
 
         response["Content-Disposition"] = 'attachment; filename="somefilename.csv"'
         writer.writerow(legend)
@@ -819,7 +828,6 @@ def admin_set_notes(request):
             dialect = csv.Sniffer().sniff(f.read(), delimiters=";,")
             f.seek(0)
             notes = csv.reader(f, dialect)
-
             for row in notes:
                 print(row)
                 names = row[1].split(" ", 1)
@@ -886,7 +894,6 @@ def admin_set_notes(request):
                             p.city = row[2]
                             p.is_alumni = False
                             p.member_type = 1
-                            p.ayy_member = True
 
                             if row[6]:
                                 p.member_until = row[6]
@@ -910,12 +917,30 @@ def admin_set_notes(request):
                         user.person.member_until = row[3]
                         user.first_name = names[0]
                         user.last_name = row[0]
+
+                        member_type_str = row[7].lower()
+                        MEMBERTYPE_CHOICES = {
+                            "alumni": 0,
+                            "varsinainen": 1,
+                            "ulkojäsen": 2,
+                            "vanha jäsen": 3,
+                            "kannatusjäsen": 4,
+                            "kunniajäsen": 5,
+                        }
+                        p.member_type = MEMBERTYPE_CHOICES.get(member_type_str, 1)
+                        if(member_type_str == "alumni"):
+                            p.is_alumni = True
+
                         if len(names) > 1:
                             p.middle_names = names[1]
                         if row[2]:
                             p.city = row[2]
                         if row[6]:
                             p.member_until = row[6]
+                        if row[8]:
+                            p.ayy_member = row[8].lower() == "true"
+                        if row[9]:
+                            p.pora_member = row[9].lower() == "true"
                         if row[4]:
                             p.class_of_year = row[4]
                             if row[5]:
@@ -971,7 +996,7 @@ def myprofile(request):
 
 
 @login_required(login_url="/login/")
-def membership_status(request):    
+def membership_status(request):
     user = request.user
     person = user.person
 
@@ -980,7 +1005,7 @@ def membership_status(request):
     should_pay = today < person.member_until < six_months_from_now
     is_expired = person.member_until < today
 
-        # Data to be encoded
+    # Data to be encoded
     data = request.session.session_key
 
     # Generate QR code
@@ -1005,7 +1030,6 @@ def membership_status(request):
     buffer.close()
     mime = "image/png"
     base64_encoded = base64.b64encode(image_png).decode()
-
 
     return render(
         request,
