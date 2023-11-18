@@ -91,6 +91,17 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label class="col col-md-3 control-label">{{ admin_form.pora_member.label }}</label>
+                    <div class="col-md-9">
+                      {{ admin_form.pora_member }}
+                      {% if admin_form.pora_member.errors %}
+                      <div class="alert alert-danger">
+                        {{ admin_form.pora_member.errors }}
+                      </div>
+                      {% endif %}
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="col col-md-3 control-label">{{ admin_form.member_type.label }}</label>
                     <div class="col-md-9">
                       {{ admin_form.member_type }}

@@ -55,6 +55,11 @@ class RegisterForm(auth2RegisterForm):
         widget=forms.CheckboxInput(attrs={"class": "form-control"}),
         required=False,
     )
+    pora_member = forms.BooleanField(
+        label="PoRa:n Jäsen",
+        widget=forms.CheckboxInput(attrs={"class": "form-control"}),
+        required=False,
+    )
 
     member_type = forms.ChoiceField(
         widget=forms.Select(),
@@ -83,6 +88,7 @@ class RegisterForm(auth2RegisterForm):
             person.class_of_year = self.cleaned_data["class_of_year"]
             person.xq_year = self.cleaned_data["xq_year"]
             person.ayy_member = self.cleaned_data["ayy_member"]
+            person.pora_member = self.cleaned_data["pora_member"]
             person.member_type = self.cleaned_data["member_type"]
             person.save()
         return user, person
@@ -118,6 +124,7 @@ class AdminPersonForm(forms.ModelForm):
             "is_dead",
             "xq_year",
             "ayy_member",
+            "pora_member",
             "member_type",
         ]
         widgets = {
@@ -148,6 +155,14 @@ class AdminPersonForm(forms.ModelForm):
                     "data-size": "mini",
                 }
             ),
+            "pora_member": forms.CheckboxInput(
+                attrs={
+                    "data-toggle": "toggle",
+                    "data-on": "Kyllä",
+                    "data-off": "Ei",
+                    "data-size": "mini",
+                }
+            ),
             "member_type": forms.Select(attrs={"class": "form-control"}),
         }
         labels = {
@@ -157,6 +172,7 @@ class AdminPersonForm(forms.ModelForm):
             "is_dead": "Kuollut",
             "xq_year": "XQ-vuosikurssi",
             "ayy_member": "AYY:n jäsen",
+            "pora_member": "PoRa:n jäsen",
             "member_type": "Jäsenyystyyppi",
         }
 

@@ -70,6 +70,7 @@ class Person(models.Model):
     member_until = models.DateField(null=True, blank=True)
     member_type = models.IntegerField(null=True, choices=MEMBERTYPE_CHOICES)
     ayy_member = models.BooleanField(blank=False, default=False)
+    pora_member = models.BooleanField(blank=False, default=True)
 
     """private info"""
     student_number = models.CharField(max_length=50, blank=True, null=True)

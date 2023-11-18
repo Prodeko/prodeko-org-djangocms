@@ -383,6 +383,10 @@ def admin_export_data(request):
                 row.append(p.member_until)
             if request.POST.get("member_type"):
                 row.append(p.get_member_type_display())
+            if request.POST.get("ayy_member"):
+                row.append(p.ayy_member)
+            if request.POST.get("pora_member"):
+                row.append(p.pora_member)
             if request.POST.get("student_number"):
                 row.append(p.student_number)
             if request.POST.get("dont_publish_in_book"):
@@ -566,6 +570,10 @@ def admin_export_data(request):
             legend.append("Jäsenyys loppuu")
         if request.POST.get("member_type"):
             legend.append("Jäsenyystyyppi")
+        if request.POST.get("ayy_member"):
+            legend.append("AYY:n jäsen")
+        if request.POST.get("pora_member"):
+            legend.append("PoRa:n jäsen")
         if request.POST.get("student_number"):
             legend.append("Opiskelijanumero")
         if request.POST.get("dont_publish_in_book"):
@@ -887,6 +895,7 @@ def admin_set_notes(request):
                             p.is_alumni = False
                             p.member_type = 1
                             p.ayy_member = True
+                            p.pora_member = True
 
                             if row[6]:
                                 p.member_until = row[6]
