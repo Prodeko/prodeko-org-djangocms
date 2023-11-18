@@ -36,8 +36,6 @@ django-pipeline==2.0.5
 django-redis==4.12.1
 django-oauth-toolkit==1.5.0
 django-cors-middleware==1.5.0
-
-# For Django tests
 beautifulsoup4==4.9.3
 lxml==4.6.2
 

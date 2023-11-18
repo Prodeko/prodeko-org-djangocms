@@ -1,4 +1,4 @@
-{% load i18n thumbnail %}
+{% load i18n thumbnail sanitize %}
 
 {% trans "Are you sure you want to remove your application?" as confirm_delete %}
 {% trans "Close" as close %}
@@ -17,7 +17,7 @@
                 <h5 class="modal-title m-auto" id="hakijaModalLongTitle">{{ ehdokas.name }}</h5>
             </div>
             <div class="modal-body">
-                {% autoescape off %}{{ ehdokas.introduction }}{% endautoescape %}
+                {% autoescape off %}{{ ehdokas.introduction|sanitize }}{% endautoescape %}
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" data-dismiss="modal">{% trans close %}</button>
