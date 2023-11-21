@@ -53,6 +53,9 @@ function sendQRData(qrData) {
       message_elem.innerHTML = data.message;
       if (data.active) {
         message_elem.style.background = 'green';
+        if (/ulos/.test(data.message)) {
+          message_elem.style.color = 'blue';
+        }
       } else {
         message_elem.style.background = 'red';
         message_elem.style.color = 'white';

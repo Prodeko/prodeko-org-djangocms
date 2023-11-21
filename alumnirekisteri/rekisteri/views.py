@@ -1012,7 +1012,7 @@ def membership_status(request):
     qr = qrcode.QRCode(
         version=1,
         error_correction=qrcode.constants.ERROR_CORRECT_L,
-        box_size=15,
+        box_size=10,
         border=2,
     )
     qr.add_data(data)
