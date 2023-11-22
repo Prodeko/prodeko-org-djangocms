@@ -21,7 +21,9 @@ Instascan.Camera.getCameras()
 function sendQRData(qrData) {
   const message_elem = document.getElementById('scanner-message');
   const url = '/fi/matrikkeli/api/scanner/';
-  const sheetId = window.localStorage.getItem('sheet-id');
+  const urlParams = new URLSearchParams(window.location.search);
+  const sheetId = urlParams.get('sheetId');
+  console.log(sheetId);
   if (!sheetId) {
     message_elem.innerHTML = 'Sheetin ID:tä ei ole asetettu.';
     message_elem.style.background = 'red';
@@ -88,11 +90,17 @@ document
   .getElementById('submit-spreadsheet-id')
   .addEventListener('click', function () {
     const spreadsheetId = document.getElementById('spreadsheet-id').value;
-    localStorage.setItem('sheet-id', spreadsheetId);
+    const urlParams = new URLSearchParams(window.location.search);
+    urlParams.set('sheetId', spreadsheetId);
+    window.location.search = urlParams.toString();
     document.getElementById('scanner-message').innerHTML =
       'Spreadsheet id asetettu!';
   });
 
-document.getElementById('spreadsheet-id').value = window.localStorage.getItem(
-  'sheet-id'
-);
+const urlParams = new URLSearchParams(window.location.search);
+const sheetId = urlParams.get('sheetId');
+console.log(sheetId);
+if (sheetId) {
+  document.getElementById('scanner-message').innerHTML = 'Skannaa QR-koodi!';
+}
+document.getElementById('spreadsheet-id').value = sheetId;
