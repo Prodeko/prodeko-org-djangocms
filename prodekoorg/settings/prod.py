@@ -44,13 +44,13 @@ AZURE_CACHE_CONTROL = "public,max-age=31536000,immutable"
 
 DEFAULT_FILE_STORAGE = "prodekoorg.custom_azure.AzureMediaStorage"
 STATICFILES_STORAGE = "prodekoorg.custom_azure.AzureStaticStorage"
-THUMBNAIL_DEFAULT_STORAGE = "prodekoorg.custom_azure.AzureMediaStorage"
+# THUMBNAIL_DEFAULT_STORAGE = "prodekoorg.custom_azure.AzureMediaStorage"
 
 # Query database for existing thumbnail aliases instead of querying remote storage.
-THUMBNAIL_CACHE_DIMENSIONS = True
+# THUMBNAIL_CACHE_DIMENSIONS = True
 
 # If DB cache is not found, query the remote storage first instead of generating it.
-THUMBNAIL_CHECK_CACHE_MISS = True
+# THUMBNAIL_CHECK_CACHE_MISS = True
 
 STATIC_LOCATION = "static"
 MEDIA_LOCATION = "media"
