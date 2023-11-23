@@ -41,22 +41,28 @@ $(document).ready(function() {
       elem = $(
         '.list-group-root a[data-toggle="tab"][href="' + selectedTab_id + '"] .virka-name'
       );
-      elem2 = $(selectedTab_id);
-      elem2.addClass("active show");
+      if (elem.length) {
+        // Previously selected tab exists (has not been hidden)
+        elem2 = $(selectedTab_id);
+        elem2.addClass("active show");
+        
+        $('#electionsContent').removeClass('hidden');
+        $('#landingpageContent').addClass('hidden');
+  
+        $('#q_' + selectedTab_id.slice(2)).addClass("active show");
+  
+        virka = elem.text().trim();
+        updateTexts(virka);
+        checkBtnHaeVirkaanVisibility(virka); // Defined in 'vaalit_question_form.html'
+        
+        markRead(selectedTab_id.slice(2));      // Mark viewed "virka" as read
+  
+        elem.addClass("active show");
+        elem.tab("show");
+      } else {
+        openFrontPage();
+      }
       
-      $('#electionsContent').removeClass('hidden');
-      $('#landingpageContent').addClass('hidden');
-
-      $('#q_' + selectedTab_id.slice(2)).addClass("active show");
-
-      virka = elem.text().trim();
-      updateTexts(virka);
-      checkBtnHaeVirkaanVisibility(virka); // Defined in 'vaalit_question_form.html'
-      
-      markRead(selectedTab_id.slice(2));      // Mark viewed "virka" as read
-
-      elem.addClass("active show");
-      elem.tab("show");
     } else {
       // No tab saved in localStorage
        //$('#electionsContent').addClass('hidden');
