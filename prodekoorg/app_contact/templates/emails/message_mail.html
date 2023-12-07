@@ -1,6 +1,7 @@
 {% load l10n %}
 
 <p>Yhteydenottolomakkeen kautta lähetetty viesti (lähetetty {{ message.created_at|localize }}).</p>
+<p>Aihe: {{ message.contact_emails }}</p>
 <p>Lähettäjä: {% if message.email|length > 0 %}{{ message.email }}{% else %}sähköpostiosoitetta ei annettu{% endif %}.</p>
 <br />
 <p>Viesti:</p>
