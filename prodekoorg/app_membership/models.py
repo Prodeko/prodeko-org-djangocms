@@ -89,6 +89,9 @@ class PendingUser(models.Model):
     has_accepted_policies = models.BooleanField(
         default=False, verbose_name=_("I accept Prodeko's privacy policy")
     )
+    has_paid = models.BooleanField(
+        default=False, verbose_name=_("Has paid the membership fee")
+    )
 
     def accept_membership(self, request, account_id, *args, **kwargs):
         password = get_random_string(length=16)
@@ -140,6 +143,10 @@ class PendingUser(models.Model):
         msg = EmailMultiAlternatives(subject, text_content, from_email, [email_to])
         msg.attach_alternative(html_content, "text/html")
         msg.send()
+    
+    def update_payment(self):
+        self.has_paid = True
+        self.save()
 
     def __str__(self):
         first_name = self.first_name
