@@ -9,6 +9,7 @@ from django.utils.translation import gettext as _
 
 from .constants import MAILING_LIST_PORA, MAILING_LIST_PRODEKO
 from .groups_api import main_groups_api
+from .mailchimp_api import add_to_mailchimp
 from .models import PendingUser
 
 
@@ -82,6 +83,7 @@ def accept_application(request, account_id, *args, **kwargs):
     user = PendingUser.objects.get(pk=account_id)
     user.accept_membership(request, args, kwargs)
     main_groups_api(request, user.email, MAILING_LIST_PRODEKO)
+    add_to_mailchimp(request, user.email)
     if user.language == "FI":
         main_groups_api(request, user.email, MAILING_LIST_PORA)
     return redirect("/fi/admin/app_membership/pendinguser/")
