@@ -9,7 +9,7 @@ from django.utils.translation import gettext_lazy as _
 
 import mailchimp_marketing as MailchimpMarketing
 from mailchimp_marketing.api_client import ApiClientError
-Œ
+
 
 @staff_member_required
 def add_to_mailchimp(request, email):
