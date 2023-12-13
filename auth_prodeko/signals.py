@@ -27,10 +27,10 @@ def create_alumnregistry_profile(sender, instance, created, **kwargs):
             pendinguser = instance.pendinguser
 
             year = datetime.now().year
-            if datetime.now().month > 7:
+            if datetime.now().month > 5:
                 year += 1
             
-            member_until = datetime.strptime(f"{year}-07-31", "%Y-%m-%d")
+            member_until = datetime.strptime(f"{year}-12-31", "%Y-%m-%d")
 
             if pendinguser.membership_type == "TR":
                 member_type = 1
