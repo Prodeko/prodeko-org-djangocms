@@ -1,11 +1,15 @@
 <!-- Display a payment form -->
+{% load i18n prodekoorg_tags %}
+{% trans "Pay and send" as submit %}
+
+
 <form id="payment-form">
   <div id="payment-element">
     <!--Stripe.js injects the Payment Element-->
   </div>
-  <button id="submit">
+  <button type="submit" class="btn btn-primary my-2" disabled>
     <div class="spinner hidden" id="spinner"></div>
-    <span id="button-text">Pay now</span>
+    <span id="button-text">{% trans submit %}</span>
   </button>
   <div id="payment-message" class="hidden"></div>
 </form>
