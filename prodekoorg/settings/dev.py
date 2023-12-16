@@ -62,3 +62,5 @@ FILER_STORAGES = {
         },
     },
 }
+
+ADMINS = [("Webbitiimi", "webbitiimi@prodeko.org")]
