@@ -9,8 +9,7 @@ import datetime
 import json
 
 stripe.api_key = settings.STRIPE_API_KEY
-endpoint_secret = settings.STRIPE_ENDPOINT_SECRET
-
+endpoint_secret = settings.STRIPE_APPLICATION_ENDPOINT_SECRET
 
 @method_decorator(csrf_exempt, name='dispatch')
 def payment_webhook(request, *args, **kwargs):

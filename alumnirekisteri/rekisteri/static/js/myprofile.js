@@ -139,10 +139,10 @@ References:
 - https://www.bootstraptoggle.com/
 - https://stackoverflow.com/questions/32586384/bootstrap-toggle-doesnt-work-after-ajax-load
 */
-$(document).ajaxComplete(function() {
-  $('input[type=checkbox][data-toggle^=toggle]').each(function() {
-    toggle = $(this)
-    toggle.bootstrapToggle('destroy')
-    toggle.bootstrapToggle()
-  })
-})
+$(document).ajaxComplete(function () {
+  $('input[type=checkbox][data-toggle^=toggle]').each(function () {
+    toggle = $(this);
+    toggle.bootstrapToggle('destroy');
+    toggle.bootstrapToggle();
+  });
+});
