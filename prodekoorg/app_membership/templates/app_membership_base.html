@@ -2,6 +2,7 @@
 {% load cms_tags sekizai_tags i18n sass_tags static %}
 
 {% block extra_head %}
+    <script src="https://js.stripe.com/v3/"></script>
     {% if not done and not error %}
         <script src="{% static 'js/app_membership-custom.js' %}"></script>
     {% endif %}
@@ -27,14 +28,13 @@
                 {% csrf_token %}
                 {% include "form_apply.html" %}
                 <div class="row mb-4">
-                    <div class="col-sm-3">
-                        <button type="submit" class="btn btn-primary my-2" disabled>{% trans submit %}</button>
-                    </div>
                     <div class="col-sm-9">
                         <small id="policy-not-accepted" class="form-text text-danger">{% trans policy_not_accepted%}</small>
                     </div>
                 </div>
+                {% include "checkout.html" %}
             </form>
+
         {% endif %}
     </div>
 {% endblock %}

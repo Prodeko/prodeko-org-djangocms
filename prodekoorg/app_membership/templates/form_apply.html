@@ -1,6 +1,5 @@
 {% load i18n prodekoorg_tags %}
 
-{% trans "Receipt" as receipt %}
 {% trans "Privacy policy" as privacy_policy %}
 
 <div id="form-apply-wrapper">
@@ -186,22 +185,6 @@
         <div class="col-sm-3">
             {% if form.is_ayy_member.errors %}
                 <small class="form-text text-danger">{{ form.is_ayy_member.errors.as_text }}</small>
-            {% endif %}
-        </div>
-    </div>
-    <div class="form-group row">
-        <legend class="col-sm-3 col-form-label pt-0" for="{{ form.receipt.id_for_label }}">{{ form.receipt.label }}</legend>
-        <div class="col-sm-6 receipt-btn-wrapper">
-            <button class="btn btn-default mb-3">{% trans receipt %}</button>
-            {% if not form.receipt.errors and request.POST %}
-                {{ form.receipt|add_class:"is-valid" }}
-            {% else %}
-                {{ form.receipt }}
-            {% endif %}
-        </div>
-        <div class="col-sm-3">
-            {% if form.receipt.errors %}
-                <small class="form-text text-danger">{{ form.receipt.errors.as_text }}</small>
             {% endif %}
         </div>
     </div>

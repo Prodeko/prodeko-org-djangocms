@@ -23,15 +23,14 @@ def main_form(request):
     """
 
     if request.method == "POST" and request.is_ajax():
-
-        form_apply = PendingUserForm(request.POST, request.FILES)
+        form_apply = PendingUserForm(request.POST)
         is_valid_form = form_apply.is_valid()
         if is_valid_form:
             pending_user = form_apply.save(commit=False)
 
             if not pending_user.has_accepted_policies:
                 return render(request, "app_membership_base.html", {"form": form_apply})
-
+            pending_user.payment_intent_id = request.META.get("HTTP_X_PAYMENT_INTENT_ID")
             pending_user.save()
             try:
                 send_email(pending_user)
@@ -48,6 +47,9 @@ def main_form(request):
         form_apply = PendingUserForm()
         return render(request, "app_membership_base.html", {"form": form_apply})
 
+
+def done(request):
+    return render(request, "app_membership_base.html", {"done": True})
 
 def send_email(user):
     """Send an information mail to mediakeisari@prodeko.org
@@ -69,5 +71,4 @@ def send_email(user):
     from_email = settings.DEFAULT_FROM_EMAIL
     msg = EmailMultiAlternatives(subject, text_content, from_email, [email_to])
     msg.attach_alternative(html_content, "text/html")
-    msg.attach("receipt.jpg", user.receipt.file.read(), "image/jpg")
     msg.send()
