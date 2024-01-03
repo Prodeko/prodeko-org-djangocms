@@ -2,28 +2,28 @@
 const stripe = Stripe('pk_test_NMlBMUrHeQVCbjgLn3RZBDrO002kfqUCmn');
 
 // The items the customer wants to buy
-const items = [{ id: 'xl-tshirt' }];
 
 let elements;
+let paymentIntentId;
 
 initialize();
 checkStatus();
 
-document
-  .querySelector('#payment-form')
-  .addEventListener('submit', handleSubmit);
-
 // Fetches a payment intent and captures the client secret
 async function initialize() {
-  const response = await fetch('/apply-membership/create-payment-intent', {
+  const response = await fetch('/fi/apply-membership/create-payment-intent/', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       'X-CSRFToken': getCookie('csrftoken'),
     },
-    body: JSON.stringify({ items }),
   });
-  const { clientSecret } = await response.json();
+  const {
+    clientSecret,
+    intentId: fetchedPaymentIntentId,
+  } = await response.json();
+
+  paymentIntentId = fetchedPaymentIntentId;
 
   const appearance = {
     theme: 'stripe',
@@ -40,29 +40,35 @@ async function initialize() {
 
 async function handleSubmit(e) {
   e.preventDefault();
+  var formData = new FormData($('#form_apply').get(0));
+  var emailAddress = formData.get('email');
   setLoading(true);
-  submitForm();
+  try {
+    submitForm(e);
 
-  const { error } = await stripe.confirmPayment({
-    elements,
-    confirmParams: {
-      // Make sure to change this to your payment completion page
-      return_url: 'http://localhost:4242/checkout.html',
-      receipt_email: emailAddress,
-    },
-  });
+    const { error } = await stripe.confirmPayment({
+      elements,
+      confirmParams: {
+        // Make sure to change this to your payment completion page
+        return_url: 'https://prodeko.org/apply-membership/done/',
+        receipt_email: emailAddress,
+      },
+    });
 
-  // This point will only be reached if there is an immediate error when
-  // confirming the payment. Otherwise, your customer will be redirected to
-  // your `return_url`. For some payment methods like iDEAL, your customer will
-  // be redirected to an intermediate site first to authorize the payment, then
-  // redirected to the `return_url`.
-  if (error.type === 'card_error' || error.type === 'validation_error') {
-    showMessage(error.message);
-  } else {
+    // This point will only be reached if there is an immediate error when
+    // confirming the payment. Otherwise, your customer will be redirected to
+    // your `return_url`. For some payment methods like iDEAL, your customer will
+    // be redirected to an intermediate site first to authorize the payment, then
+    // redirected to the `return_url`.
+    if (error.type === 'card_error' || error.type === 'validation_error') {
+      showMessage(error.message);
+    } else {
+      showMessage('An unexpected error occurred.');
+    }
+  } catch (e) {
+    console.error(e);
     showMessage('An unexpected error occurred.');
   }
-
   setLoading(false);
 }
 
@@ -153,6 +159,8 @@ $(document).ready(function () {
   });
 
   registerEventListeners();
+  var formApply = $('#form_apply');
+  formApply.on('submit', handleSubmit);
 });
 
 var hasAcceptedPolicies = false;
@@ -182,7 +190,6 @@ function registerEventListeners() {
 function submitForm(e) {
   e.preventDefault();
   var formData = new FormData($('#form_apply').get(0));
-
   if (!hasAcceptedPolicies) {
     denyPolicy();
   } else {
@@ -193,10 +200,13 @@ function submitForm(e) {
       data: formData,
       contentType: false, // Indicates 'multipart/form-data'
       processData: false,
+      headers: {
+        'x-payment-intent-id': paymentIntentId,
+      },
       success: function (data) {
         // Google Analytics form submission tracking
         dataLayer.push({ event: 'formSubmitted', formName: 'form_apply' });
-        document.write(data);
+        return data;
       },
 
       // Re-renders the same page with error texts.
@@ -207,6 +217,7 @@ function submitForm(e) {
           $('#form-apply-wrapper').replaceWith(xhr.responseText);
           registerEventListeners();
           acceptPolicy();
+          throw new Error('Form submission failed.');
         }
       },
     });

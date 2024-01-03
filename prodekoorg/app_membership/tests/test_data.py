@@ -59,7 +59,6 @@ class TestData(CMSTestCase, CommonTestData):
             membership_type="TR",
             additional_info="muistakaa tehdä testejä!",
             is_ayy_member="Y",
-            receipt=SimpleUploadedFile("test.jpg", b"a"),
             has_accepted_policies=True,
         )
 

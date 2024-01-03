@@ -3,7 +3,7 @@ from cms.apphook_pool import apphook_pool
 from django.urls import path
 from django.utils.translation import gettext_lazy as _
 
-from .views import main_form
+from .views import main_form, done
 from .views_api import create_payment, payment_webhook
 
 
@@ -13,4 +13,4 @@ class ApplyForMembershipApphook(CMSApp):
     name = _("Apply for Prodeko membership application")
 
     def get_urls(self, page=None, language=None, **kwargs):
-        return [path("", main_form, name="apply"), path("create-payment-intent/", create_payment, name="checkout"), path("payment-webhook/", payment_webhook, name="webhook")]
+        return [path("", main_form, name="apply"), path("done/", done, name="done"), path("create-payment-intent/", create_payment, name="checkout"), path("payment-webhook/", payment_webhook, name="webhook")]

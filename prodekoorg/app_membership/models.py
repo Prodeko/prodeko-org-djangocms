@@ -36,7 +36,6 @@ class PendingUser(models.Model):
         membership_type: Membership type.
         additional_info: Any additional information about the membership application.
         is_ayy_member: Boolen indicating whether the person is part of AYY student union or not.
-        receipt: Receipt for the membership payment.
         has_accepted_policies: Designates whether the user has accepted Prodeko's privacy policy.
     """
 
@@ -81,17 +80,14 @@ class PendingUser(models.Model):
         choices=AYY_MEMBER_CHOICES,
         verbose_name=_("Are you an AYY (Aalto University Student Union) member?"),
     )
-    receipt = models.FileField(
-        upload_to="jasenhakemukset/%Y-%m",
-        verbose_name=_("Receipt of the membership payment"),
-        validators=[FileExtensionValidator(["jpg", "png", "jpeg"])],
-    )
     has_accepted_policies = models.BooleanField(
         default=False, verbose_name=_("I accept Prodeko's privacy policy")
     )
     has_paid = models.BooleanField(
         default=False, verbose_name=_("Has paid the membership fee")
     )
+    payment_intent_id = models.CharField(
+        max_length=255, null=True, blank=True, verbose_name=_("Payment intent ID"))
 
     def accept_membership(self, request, account_id, *args, **kwargs):
         password = get_random_string(length=16)

@@ -13,7 +13,7 @@ endpoint_secret = settings.STRIPE_ENDPOINT_SECRET
 
 
 @method_decorator(csrf_exempt, name='dispatch')
-def payment_webhook(self, request, *args, **kwargs):
+def payment_webhook(request, *args, **kwargs):
     payload = request.body
     sig_header = request.headers.get('STRIPE_SIGNATURE')
 
@@ -28,21 +28,17 @@ def payment_webhook(self, request, *args, **kwargs):
         return JsonResponse({'error': 'Invalid signature.'}, status=400)
 
     # Handle the event
-    if event['type'] == 'checkout.session.completed':
-        cache.clear()
-        checkout = event['data']['object']
-        user_id = checkout['client_reference_id']
-        plink_id = checkout['payment_link']
+    if event['type'] != 'payment_intent.succeeded':
+        return JsonResponse({'error': 'Not payment_intent.succeeded.'}, status=400)
+    
+    cache.clear()
+    payment_intent_id = event['data']['object']['id']
 
-        if (plink_id == settings.STRIPE_PAYMENT_LINKs_ID):
-            today = datetime.date.today()
-            next_due_date = datetime.date(today.year + 1, 10, 31)
-            person = PendingUser.objects.get(pk=user_id)
-            person.update_payment()
-        else:
-            print('Payment link id did not match!')
-    else:
-        print('Unhandled event type {}'.format(event['type']))
+    if payment_intent_id is None:
+        return JsonResponse({'error': 'No payment intent id.'}, status=400)
+
+    person = PendingUser.objects.get(payment_intent_id=payment_intent_id)
+    person.update_payment()
 
     return JsonResponse({'success': True})
 
@@ -55,10 +51,11 @@ def create_payment(request):
             # In the latest version of the API, specifying the `automatic_payment_methods` parameter is optional because Stripe enables its functionality by default.
             automatic_payment_methods={
                 'enabled': True,
-            },
+            }
         )
         return JsonResponse({
-            'clientSecret': intent['client_secret']
+            'clientSecret': intent['client_secret'],
+            'intentId': intent['id'],
         })
     except Exception as e:
         return JsonResponse({"error": str(e)})

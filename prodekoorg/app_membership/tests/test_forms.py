@@ -51,4 +51,3 @@ class PendingUserFormFormTest(TestData):
         self.assertTrue(form["membership_type"].errors)
         self.assertTrue(form["is_ayy_member"].errors)
         self.assertTrue(form["email"].errors)
-        self.assertTrue(form["receipt"].errors)
