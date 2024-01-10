@@ -12,7 +12,7 @@ from django.core.files.base import ContentFile
 from django.shortcuts import redirect
 from django.utils.translation import gettext_lazy as _
 from google.oauth2 import service_account
-from PyPDF2 import PdfFileMerger, PdfFileReader
+from PyPDF2 import PdfMerger, PdfReader
 
 from .constants import TEAM_DRIVE_ID
 from .models import Dokumentti
@@ -48,10 +48,10 @@ def merge_liitteet_to_doc(pdfs):
         BytesIO buffer contents (a pdf file).
     """
 
-    merger = PdfFileMerger(strict=False)
+    merger = PdfMerger(strict=False)
     for pdf in pdfs:
         if pdf:
-            merger.append(PdfFileReader(pdf))
+            merger.append(PdfReader(pdf))
             pdf.close()
 
     fh = BytesIO()

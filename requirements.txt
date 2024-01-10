@@ -50,7 +50,7 @@ Markdown==3.3.3
 oauthlib==3.1.0
 psycopg2==2.8.6
 Pillow==8.0.1
-PyPDF2==1.26.0
+PyPDF2==3.0.1
 pytz==2020.4
 reportlab==3.5.56
 requests==2.25.1
