@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-03 21:30+0200\n"
+"POT-Creation-Date: 2024-01-16 12:56+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Timo Riski <timo@prodeko.org>\n"
 "Language: \n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: abisivut/cms_apps.py:12 prodekoorg/settings/base.py:278
+#: abisivut/cms_apps.py:12 prodekoorg/settings/base.py:279
 msgid "High school student page"
 msgstr "Abisivut"
 
@@ -115,7 +115,7 @@ msgstr "Nimi"
 #: auth_prodeko/templates/accounts/user_profile.html:21
 #: prodekoorg/app_contact/models.py:88 prodekoorg/app_kulukorvaus/models.py:74
 #: prodekoorg/app_kulukorvaus/printing.py:98
-#: prodekoorg/app_membership/models.py:64 prodekoorg/app_toimarit/models.py:86
+#: prodekoorg/app_membership/models.py:68 prodekoorg/app_toimarit/models.py:86
 msgid "Email"
 msgstr "Sähköposti"
 
@@ -221,7 +221,7 @@ msgstr "Salasana unohtunut?"
 msgid "The email and password didn't match. Try again"
 msgstr "Sähköposti ja salasana eivät täsmänneet. Yritä uudestaan"
 
-#: lifelonglearning/cms_apps.py:12 prodekoorg/settings/base.py:279
+#: lifelonglearning/cms_apps.py:12 prodekoorg/settings/base.py:280
 msgid "Lifelong learning page"
 msgstr "Lifelong learning sivu"
 
@@ -615,23 +615,29 @@ msgstr ""
 msgid "Add reimbursement"
 msgstr "Lisää kulu"
 
-#: prodekoorg/app_membership/admin.py:56
+#: prodekoorg/app_membership/admin.py:34
+#, fuzzy
+#| msgid "Receipt of the membership payment"
+msgid "Accept selected memberships"
+msgstr "Hyväksy valitut jäsenhakemukset"
+
+#: prodekoorg/app_membership/admin.py:65
 msgid "View"
 msgstr "Katsele"
 
-#: prodekoorg/app_membership/admin.py:58
+#: prodekoorg/app_membership/admin.py:67
 msgid "Accept"
 msgstr "Hyväksy"
 
-#: prodekoorg/app_membership/admin.py:60
+#: prodekoorg/app_membership/admin.py:69
 msgid "Reject"
 msgstr "Hylkää"
 
-#: prodekoorg/app_membership/admin.py:66
+#: prodekoorg/app_membership/admin.py:75
 msgid "Application actions"
 msgstr "Hakemustoimenpiteet"
 
-#: prodekoorg/app_membership/apps.py:7 prodekoorg/app_membership/models.py:159
+#: prodekoorg/app_membership/apps.py:7 prodekoorg/app_membership/models.py:172
 msgid "Membership applications"
 msgstr "Jäsenhakemukset"
 
@@ -667,96 +673,108 @@ msgstr ""
 "Virheelliset tunnukset. Lue dokumentaatio uudestaan ja tarkista että G Suite "
 "sekä GCP API console on määritetty oikein."
 
-#: prodekoorg/app_membership/models.py:47
+#: prodekoorg/app_membership/mailchimp_api.py:44
+#, fuzzy
+#| msgid "Successfully added {} to {} mailing list."
+msgid "Successfully added {} to mailchimp mailing list."
+msgstr "Lisätty {} onnistuneesti {} sähköpostilistalle."
+
+#: prodekoorg/app_membership/models.py:51
 msgid "True member"
 msgstr "Varsinainen jäsen"
 
-#: prodekoorg/app_membership/models.py:48
+#: prodekoorg/app_membership/models.py:52
 msgid "Alumn"
 msgstr "Alumni"
 
-#: prodekoorg/app_membership/models.py:49
+#: prodekoorg/app_membership/models.py:53
 msgid "External member"
 msgstr "Ulkojäsen"
 
-#: prodekoorg/app_membership/models.py:52
+#: prodekoorg/app_membership/models.py:56
 msgid "Yes"
 msgstr "Kyllä"
 
-#: prodekoorg/app_membership/models.py:52
+#: prodekoorg/app_membership/models.py:56
 msgid "No"
 msgstr "Ei"
 
-#: prodekoorg/app_membership/models.py:54 prodekoorg/settings/base.py:82
-#: prodekoorg/settings/base.py:92
+#: prodekoorg/app_membership/models.py:58 prodekoorg/settings/base.py:83
+#: prodekoorg/settings/base.py:93
 msgid "Finnish"
 msgstr "Suomi"
 
-#: prodekoorg/app_membership/models.py:54
+#: prodekoorg/app_membership/models.py:58
 msgid "Other (English)"
 msgstr "Englanti"
 
-#: prodekoorg/app_membership/models.py:60 prodekoorg/app_toimarit/models.py:41
+#: prodekoorg/app_membership/models.py:64 prodekoorg/app_toimarit/models.py:41
 #: prodekoorg/app_toimarit/models.py:78
 msgid "First name"
 msgstr "Etunimi"
 
-#: prodekoorg/app_membership/models.py:61 prodekoorg/app_toimarit/models.py:42
+#: prodekoorg/app_membership/models.py:65 prodekoorg/app_toimarit/models.py:42
 #: prodekoorg/app_toimarit/models.py:79
 msgid "Last name"
 msgstr "Sukunimi"
 
-#: prodekoorg/app_membership/models.py:62
+#: prodekoorg/app_membership/models.py:66
 msgid "Hometown"
 msgstr "Kotikaupunki"
 
-#: prodekoorg/app_membership/models.py:63
+#: prodekoorg/app_membership/models.py:67
 msgid "Field of study"
 msgstr "Opiskeluala"
 
-#: prodekoorg/app_membership/models.py:67
+#: prodekoorg/app_membership/models.py:71
 msgid "Start year of studies"
 msgstr "Aloitusvuosi"
 
-#: prodekoorg/app_membership/models.py:70
+#: prodekoorg/app_membership/models.py:74
 msgid "Preferred language"
 msgstr "Kieli"
 
-#: prodekoorg/app_membership/models.py:73
+#: prodekoorg/app_membership/models.py:77
 msgid "Membership type"
 msgstr "Jäsentyyppi"
 
-#: prodekoorg/app_membership/models.py:76
+#: prodekoorg/app_membership/models.py:80
 msgid "Why do you want to become a member?"
 msgstr "Miksi haluat jäseneksi?"
 
-#: prodekoorg/app_membership/models.py:81
+#: prodekoorg/app_membership/models.py:85
 msgid "Are you an AYY (Aalto University Student Union) member?"
 msgstr "Oletko AYY:n jäsen?"
 
-#: prodekoorg/app_membership/models.py:84
+#: prodekoorg/app_membership/models.py:88
 msgid "I accept Prodeko's privacy policy"
 msgstr "Hyväksyn Prodekon tietosuojalausekkeen"
 
-#: prodekoorg/app_membership/models.py:87
+#: prodekoorg/app_membership/models.py:91
 #, fuzzy
 #| msgid "Receipt of the membership payment"
 msgid "Has paid the membership fee"
 msgstr "Kuitti jäsenmaksusta"
 
-#: prodekoorg/app_membership/models.py:90
+#: prodekoorg/app_membership/models.py:94
 msgid "Payment intent ID"
 msgstr ""
 
 #: prodekoorg/app_membership/models.py:98
+#, fuzzy
+#| msgid "Membership application accepted."
+msgid "Membership application has not been paid."
+msgstr "Jäsenhakemusta ei ole maksettu."
+
+#: prodekoorg/app_membership/models.py:111
 msgid "Membership application accepted."
 msgstr "Jäsenhakemus hyväksytty"
 
-#: prodekoorg/app_membership/models.py:103
+#: prodekoorg/app_membership/models.py:116
 msgid "Membership application rejected."
 msgstr "Jäsenhakemus hylätty"
 
-#: prodekoorg/app_membership/models.py:158
+#: prodekoorg/app_membership/models.py:171
 msgid "membership application"
 msgstr "jäsenhakemus"
 
@@ -1221,27 +1239,27 @@ msgstr "Poista"
 msgid "Edit"
 msgstr "Muokkaa"
 
-#: prodekoorg/settings/base.py:82 prodekoorg/settings/base.py:99
+#: prodekoorg/settings/base.py:83 prodekoorg/settings/base.py:100
 msgid "English"
 msgstr "Englanti"
 
-#: prodekoorg/settings/base.py:274
+#: prodekoorg/settings/base.py:275
 msgid "Frontpage"
 msgstr "Etusivu"
 
-#: prodekoorg/settings/base.py:275
+#: prodekoorg/settings/base.py:276
 msgid "Content page"
 msgstr "Sisältösivu"
 
-#: prodekoorg/settings/base.py:276
+#: prodekoorg/settings/base.py:277
 msgid "Content page with 1:1 split"
 msgstr "Sisältösivu 1:1 jaolla"
 
-#: prodekoorg/settings/base.py:277
+#: prodekoorg/settings/base.py:278
 msgid "Content page with 2:1 split"
 msgstr "Sisältösivu 2:1 jaolla"
 
-#: prodekoorg/settings/base.py:283
+#: prodekoorg/settings/base.py:284
 msgid "Navigation"
 msgstr "Navigaatio"
 
@@ -1651,9 +1669,6 @@ msgstr "Ei tageja"
 #: tiedotteet/backend/views.py:59
 msgid "New bulletin added"
 msgstr "Tiedote lisätty"
-
-#~ msgid "Receipt of the membership payment"
-#~ msgstr "Kuitti jäsenmaksusta"
 
 #, fuzzy
 #~| msgid "Application actions"
