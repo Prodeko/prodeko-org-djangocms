@@ -11,6 +11,10 @@ from django.template.loader import render_to_string
 from django.utils import timezone
 from django.utils.crypto import get_random_string
 from django.utils.translation import gettext_lazy as _
+from prodekoorg.app_membership.constants import MAILING_LIST_PORA, MAILING_LIST_PRODEKO
+from prodekoorg.app_membership.groups_api import main_groups_api
+
+from prodekoorg.app_membership.mailchimp_api import add_to_mailchimp
 
 
 def max_value_current_year(value):
@@ -95,9 +99,15 @@ class PendingUser(models.Model):
             return
         password = get_random_string(length=16)
         self.user.set_password(password)
-        self.send_accept_email(self.user, password)
+        #self.send_accept_email(self.user, password)
         self.user.is_active = True
         self.user.save()
+
+        # main_groups_api(request, self.user.email, MAILING_LIST_PRODEKO)
+        # add_to_mailchimp(request, self.user.email)
+        #if self.user.language == "FI":
+        #   main_groups_api(request, self.user.email, MAILING_LIST_PORA)
+
         messages.success(request, _("Membership application accepted."))
         self.delete()
 

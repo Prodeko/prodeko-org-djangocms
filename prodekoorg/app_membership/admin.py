@@ -8,9 +8,6 @@ from django.urls import path, reverse
 from django.utils.html import format_html
 from django.utils.translation import gettext as _
 
-from .constants import MAILING_LIST_PORA, MAILING_LIST_PRODEKO
-from .groups_api import main_groups_api
-from .mailchimp_api import add_to_mailchimp
 from .models import PendingUser
 
 
@@ -27,6 +24,15 @@ class PendingUserAdmin(admin.ModelAdmin):
         # Override Textarea default height
         models.TextField: {"widget": Textarea(attrs={"rows": 1, "cols": 1})}
     }
+
+    def accept_memberships(self, request, queryset):
+        for user in queryset:
+            user.accept_membership(request, user.pk)
+
+
+    accept_memberships.short_description = _("Accept selected memberships")
+
+    actions = [accept_memberships]
 
     def get_urls(self):
         urls = super().get_urls()
@@ -82,14 +88,7 @@ def view_application(request, account_id, *args, **kwargs):
 def accept_application(request, account_id, *args, **kwargs):
     """Accept a membership application from Django admin."""
     user = PendingUser.objects.get(pk=account_id)
-    if not user.has_paid:
-        messages.error(request, _("Membership application has not been paid."))
-        return redirect("/fi/admin/app_membership/pendinguser/")
     user.accept_membership(request, args, kwargs)
-    main_groups_api(request, user.email, MAILING_LIST_PRODEKO)
-    add_to_mailchimp(request, user.email)
-    if user.language == "FI":
-        main_groups_api(request, user.email, MAILING_LIST_PORA)
     return redirect("/fi/admin/app_membership/pendinguser/")
 
 
