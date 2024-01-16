@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.contrib import messages
 from django.contrib.admin.views.decorators import staff_member_required
 from django.db import models
 from django.forms import Textarea
@@ -81,6 +82,9 @@ def view_application(request, account_id, *args, **kwargs):
 def accept_application(request, account_id, *args, **kwargs):
     """Accept a membership application from Django admin."""
     user = PendingUser.objects.get(pk=account_id)
+    if not user.has_paid:
+        messages.error(request, _("Membership application has not been paid."))
+        return redirect("/fi/admin/app_membership/pendinguser/")
     user.accept_membership(request, args, kwargs)
     main_groups_api(request, user.email, MAILING_LIST_PRODEKO)
     add_to_mailchimp(request, user.email)

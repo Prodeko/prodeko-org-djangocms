@@ -90,6 +90,9 @@ class PendingUser(models.Model):
         max_length=255, null=True, blank=True, verbose_name=_("Payment intent ID"))
 
     def accept_membership(self, request, account_id, *args, **kwargs):
+        if not self.has_paid:
+            messages.error(request, _("Membership application has not been paid."))
+            return
         password = get_random_string(length=16)
         self.user.set_password(password)
         self.send_accept_email(self.user, password)
