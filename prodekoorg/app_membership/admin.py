@@ -1,5 +1,4 @@
 from django.contrib import admin
-from django.contrib import messages
 from django.contrib.admin.views.decorators import staff_member_required
 from django.db import models
 from django.forms import Textarea
