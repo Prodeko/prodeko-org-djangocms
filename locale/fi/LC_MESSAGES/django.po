@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-16 12:56+0200\n"
+"POT-Creation-Date: 2024-03-01 13:34+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Timo Riski <timo@prodeko.org>\n"
 "Language: \n"
@@ -615,25 +615,25 @@ msgstr ""
 msgid "Add reimbursement"
 msgstr "Lisää kulu"
 
-#: prodekoorg/app_membership/admin.py:34
+#: prodekoorg/app_membership/admin.py:33
 #, fuzzy
 #| msgid "Receipt of the membership payment"
 msgid "Accept selected memberships"
 msgstr "Hyväksy valitut jäsenhakemukset"
 
-#: prodekoorg/app_membership/admin.py:65
+#: prodekoorg/app_membership/admin.py:64
 msgid "View"
 msgstr "Katsele"
 
-#: prodekoorg/app_membership/admin.py:67
+#: prodekoorg/app_membership/admin.py:66
 msgid "Accept"
 msgstr "Hyväksy"
 
-#: prodekoorg/app_membership/admin.py:69
+#: prodekoorg/app_membership/admin.py:68
 msgid "Reject"
 msgstr "Hylkää"
 
-#: prodekoorg/app_membership/admin.py:75
+#: prodekoorg/app_membership/admin.py:74
 msgid "Application actions"
 msgstr "Hakemustoimenpiteet"
 
