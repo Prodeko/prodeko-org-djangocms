@@ -1001,8 +1001,8 @@ def membership_status(request):
     person = user.person
 
     today = datetime.today().date()
-    six_months_from_now = today + timedelta(days=182)  # approx. 6 months
-    should_pay = today < person.member_until < six_months_from_now
+    eight_months_from_now = today + timedelta(days=243)  # approx. 8 months
+    should_pay = today < person.member_until < eight_months_from_now
     is_expired = person.member_until < today
 
     # Data to be encoded
