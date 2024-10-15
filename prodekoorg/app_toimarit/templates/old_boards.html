@@ -29,6 +29,11 @@
                                         {% if forloop.counter == midpoint|add:"0" %}
                                             </div>
                                             <div class="col">
+                                            <div class="description">
+                                                <strong>{{ boardmember.name }}</strong>
+                                                <br />
+                                                {{ boardmember.position_fi }}
+                                            </div>
                                         {% else %}
                                             <div class="description">
                                                 <strong>{{ boardmember.name }}</strong>
