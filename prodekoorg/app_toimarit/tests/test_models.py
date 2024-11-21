@@ -176,7 +176,7 @@ class HallituksenJasenModelTest(TestData):
         ).verbose_name
         self.assertEqual(field_label, "Virka (Englanniksi)")
 
-    def test_position_en_max_length(self):
+    def test_position_en_max_length_two(self):
         max_length = self.test_hallituksenjasen1._meta.get_field(
             "position_en"
         ).max_length
