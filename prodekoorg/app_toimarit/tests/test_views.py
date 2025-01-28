@@ -14,7 +14,7 @@ csv_hallitus_test = open(os.path.join(__location__, "csv_hallitus_test.csv"), "r
 
 
 class AppToimaritViewTest(TestData):
-    """Tests for views in the app_kulukorvaus app."""
+    """Tests for views in the app_toimarit app."""
 
     def test_hallitus_postcsv_redirect_if_not_logged_in(self):
         """

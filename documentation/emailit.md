@@ -62,10 +62,6 @@ app_membership
 - Infomaili mediakeisarille
 - Hylkäys/hyväksymismaili hakijalle
 
-app_kulukorvaus
-
-- Yhteenvetomaili kulukorvauksen lähettämisen jälkeen
-
 app_contact
 
 - Yhteydenottolomakkeen viesti valittuun sähköpostiosoitteeseen

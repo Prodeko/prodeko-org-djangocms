@@ -35,7 +35,9 @@ MAILCHIMP_LIST_ID = config["MAILCHIMP"]["MAILCHIMP_LIST_ID"]
 STRIPE_API_KEY = config["STRIPE"]["STRIPE_API_KEY"]
 STRIPE_PAYMENT_LINK_ID = config["STRIPE"]["STRIPE_PAYMENT_LINK_ID"]
 STRIPE_ENDPOINT_SECRET = config["STRIPE"]["STRIPE_ENDPOINT_SECRET"]
-STRIPE_APPLICATION_ENDPOINT_SECRET = config["STRIPE"]["STRIPE_APPLICATION_ENDPOINT_SECRET"]
+STRIPE_APPLICATION_ENDPOINT_SECRET = config["STRIPE"][
+    "STRIPE_APPLICATION_ENDPOINT_SECRET"
+]
 
 # Application definition
 ROOT_URLCONF = "prodekoorg.urls"
@@ -136,7 +138,6 @@ TEMPLATES = [
             os.path.join(BASE_DIR, "tiedotteet/frontend/public"),
             os.path.join(BASE_DIR, "prodekoorg/app_membership/templates/emails"),
             os.path.join(BASE_DIR, "prodekoorg/app_contact/templates/emails"),
-            os.path.join(BASE_DIR, "prodekoorg/app_kulukorvaus/templates/emails"),
         ],
         "OPTIONS": {
             "context_processors": [
@@ -258,7 +259,6 @@ INSTALLED_APPS = (
     "prodekoorg.app_contact",
     "prodekoorg.app_kiltiskamera",
     "prodekoorg.app_infoscreen",
-    "prodekoorg.app_kulukorvaus",
     "prodekoorg.app_membership",
     "prodekoorg.app_oauth",
     "prodekoorg.app_poytakirjat",

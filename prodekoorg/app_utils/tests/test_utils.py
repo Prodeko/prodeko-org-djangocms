@@ -11,10 +11,10 @@ finnish = override_settings(LANGUAGE_CODE="fi", LANGUAGES=(("fi", "Finnish"),))
 
 
 class CommonTestData(TestCase):
-    """Common test data used across various apphook tests (e.g. app_kulukorvaus.tests.test_data)
+    """Common test data used across various apphook tests (e.g. app_contact.tests.test_data)
 
     This is needed because in the base template we are reversing urls for
-    app_contact, app_kulukorvaus and app_membership. This class sets up pages required for
+    app_contact and app_membership. This class sets up pages required for
     those apphooks.
 
     Args:
@@ -48,17 +48,6 @@ class CommonTestData(TestCase):
         )
 
         cls.page2 = create_page(
-            title="kulukorvauslomake",
-            template=TEMPLATE_INHERITANCE_MAGIC,
-            language="fi",
-            created_by=cls.test_user2,
-            published=True,
-            login_required=True,
-            apphook="KulukorvausApphook",
-            apphook_namespace="app_kulukorvaus",
-        )
-
-        cls.page3 = create_page(
             title="jäsenhakemuslomake",
             template=TEMPLATE_INHERITANCE_MAGIC,
             language="fi",

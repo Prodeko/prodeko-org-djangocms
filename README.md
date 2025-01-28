@@ -79,7 +79,7 @@ Windowsilla on suositeltavaa ajaa kaikki tämänkin osion komennot WSL:n sisäll
 - Avaa uusi terminal window
 - Testit saa ajettua komennolla `docker exec prodeko_org pytest prodekoorg/`
 - Testien kattavuus ja rinnakkaisajo `docker exec prodeko_org pytest --cov -n auto prodekoorg/`
-- **Tietyn appin testit saa ajettua näin: `docker exec prodeko_org pytest prodekoorg/app_kulukorvaus`**
+- **Tietyn appin testit saa ajettua näin: `docker exec prodeko_org pytest prodekoorg/app_toimarit`**
 
 ### Koodityyli
 
@@ -176,8 +176,6 @@ $ npm run lint:css-fix  # Korjaa virheet
     │   │   └── ...
     │   │── app_kiltiskamera           # Kiltiskamera
     │   │   └── ...
-    │   │── app_kulukorvaus            # Sähköinen kulukorvauslomake
-    │   │   └── ...
     │   │── app_membership             # Jäseneksi liittyminen -lomake
     │   │   └── ...
     │   │── app_poytakirjat            # Pöytäkirjojen automaattinen haku G Suiten Drivestä ja lisäys DjangoCMS:ään
@@ -206,7 +204,7 @@ $ npm run lint:css-fix  # Korjaa virheet
     │   │   ├── js
     │   │   ├── misc
     │   │   └── scss                   # Bootstrap4 scss, muut scss tiedostot
-    │   │──templates                   # Suurin osa html-tiedostoista. Sovelluksilla (app_kulukorvaus jne.)
+    │   │──templates                   # Suurin osa html-tiedostoista. Sovelluksilla (app_toimarit jne.)
     │   │   │                          # on omat templatensa ja staattiset tiedostonsa (js, scss, kuvat)
     │   │   └── ...
     │   └── ...

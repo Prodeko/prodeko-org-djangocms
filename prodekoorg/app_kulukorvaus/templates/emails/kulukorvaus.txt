@@ -1,5 +1,0 @@
-{% load i18n %}
-
-Hei {{ model_perustiedot.created_by }}, vastaanotimme kulukorvauksesi (ks. liite)!
-
-Mikäli tiedoissa on virheitä, ota välittömästi yhteys Prodekon rahastonhoitajaan (rahastonhoitaja@prodeko.org).

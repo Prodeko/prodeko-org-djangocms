@@ -78,7 +78,7 @@ Sivun näyttökertojen seurannan konfigurointi on helppoa. Tarvitaan ainoastaan 
 
 ## Lomakkeen lähetyksen seuranta
 
-Appien app_kulukorvaus ja app_membership lomakkeet lähtevät AJAX requesteinä palvelimelle, eikä GTM:n normaali 'Lomakkeen lähetys' trigger toimi niiden kanssa.
+Appin app_membership lomakkeet lähtevät AJAX requesteinä palvelimelle, eikä GTM:n normaali 'Lomakkeen lähetys' trigger toimi niiden kanssa.
 
 <img src="images/analytics/gtm-trigger-formsubmission.png" style="display: block;" width="700" alt="Lomakkeen lähetys' trigger ei toimi" />
 
