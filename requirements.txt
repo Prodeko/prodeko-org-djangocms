@@ -4,7 +4,7 @@ uvicorn==0.13.3 # asgi
 gunicorn==20.1.0 # wsgi
 
 # Django requirements
-Django==3.1.4
+django>=3.2.0,<4.0.0
 django-appconf==1.0.4
 django-audit-log==0.7.0 # Replace with django-revision
 django-ckeditor==6.0.0
@@ -17,7 +17,7 @@ django-js-asset==1.2.2
 django-mptt==0.11.0
 django-polymorphic==3.0.0
 django-sekizai==2.0.0
-django-treebeard==4.3.1
+django-treebeard==4.7.1
 djangocms-admin-style==2.0.2
 djangocms-attributes-field==2.0.0
 djangocms-bootstrap4==2.0.0
@@ -48,14 +48,13 @@ easy-thumbnails==2.7.1
 html5lib==1.1
 Markdown==3.3.3
 oauthlib==3.1.0
-psycopg2==2.8.6
-Pillow==8.0.1
+psycopg2-binary==2.9.10
+Pillow==11.1.0
 PyPDF2==3.0.1
 pytz==2020.4
 reportlab==3.5.56
 requests==2.25.1
 six==1.15.0
-unicodecsv==0.14.1
 uritemplate==3.0.1
 stripe==6.4.0
 qrcode==6.1
@@ -68,5 +67,5 @@ google-auth-oauthlib==0.4.2
 
 # SASS
 libsass==0.20.1
-django-compressor==2.4
+django-compressor==3.1
 django-sass-processor==0.8.2

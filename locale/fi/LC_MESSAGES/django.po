@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-01 13:34+0200\n"
+"POT-Creation-Date: 2025-01-28 13:01+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Timo Riski <timo@prodeko.org>\n"
 "Language: \n"
@@ -105,17 +105,14 @@ msgid "Profile"
 msgstr "Profiili"
 
 #: auth_prodeko/templates/accounts/user_profile.html:14
-#: prodekoorg/app_kulukorvaus/models.py:73
-#: prodekoorg/app_kulukorvaus/printing.py:97
 #: prodekoorg/app_toimarit/models.py:20 prodekoorg/app_vaalit/models.py:69
 msgid "Name"
 msgstr "Nimi"
 
 #: auth_prodeko/templates/accounts/user_profile.html:15
 #: auth_prodeko/templates/accounts/user_profile.html:21
-#: prodekoorg/app_contact/models.py:88 prodekoorg/app_kulukorvaus/models.py:74
-#: prodekoorg/app_kulukorvaus/printing.py:98
-#: prodekoorg/app_membership/models.py:68 prodekoorg/app_toimarit/models.py:86
+#: prodekoorg/app_contact/models.py:88 prodekoorg/app_membership/models.py:68
+#: prodekoorg/app_toimarit/models.py:86
 msgid "Email"
 msgstr "Sähköposti"
 
@@ -202,7 +199,6 @@ msgstr "Vaihda salasana tästä linkistä:"
 
 #: auth_prodeko/templates/password_reset_form.html:10
 #: prodekoorg/app_contact/templates/app_contact_base.html:13
-#: prodekoorg/app_kulukorvaus/templates/kulukorvaus_forms.html:4
 #: prodekoorg/app_membership/templates/app_membership_base.html:13
 msgid "Submit"
 msgstr "Lähetä"
@@ -265,8 +261,8 @@ msgstr "kurssi"
 msgid "Courses"
 msgstr "Kurssit"
 
-#: prodekoorg/app_contact/admin.py:11 prodekoorg/app_kulukorvaus/admin.py:11
-#: prodekoorg/app_poytakirjat/admin.py:11 prodekoorg/app_toimarit/admin.py:16
+#: prodekoorg/app_contact/admin.py:11 prodekoorg/app_poytakirjat/admin.py:11
+#: prodekoorg/app_toimarit/admin.py:16
 msgid "year"
 msgstr "Vuosi"
 
@@ -355,8 +351,8 @@ msgstr "ESTIEM (ulkoministeri@prodeko.org)"
 msgid "Tutoring (isovastaava@prodeko.org)"
 msgstr "ISO-toiminta (isovastaava@prodeko.org)"
 
-#: prodekoorg/app_contact/models.py:87 prodekoorg/app_kulukorvaus/models.py:126
-#: prodekoorg/app_vaalit/models.py:114 prodekoorg/app_vaalit/models.py:144
+#: prodekoorg/app_contact/models.py:87 prodekoorg/app_vaalit/models.py:114
+#: prodekoorg/app_vaalit/models.py:144
 msgid "Created at"
 msgstr "Luotu"
 
@@ -452,169 +448,6 @@ msgstr "Kiltiskamera"
 msgid "Guild room camera application"
 msgstr "Sovellus - Kiltiskamera"
 
-#: prodekoorg/app_kulukorvaus/admin.py:26
-#: prodekoorg/app_kulukorvaus/models.py:87
-msgid "Status"
-msgstr "Tila"
-
-#: prodekoorg/app_kulukorvaus/admin.py:30
-#: prodekoorg/app_kulukorvaus/models.py:47
-#: tiedotteet/backend/templates/control/nav.html:43
-#: tiedotteet/backend/views.py:88
-msgid "New"
-msgstr "Uudet"
-
-#: prodekoorg/app_kulukorvaus/admin.py:30
-msgid "In Process"
-msgstr "Käsittelyssä"
-
-#: prodekoorg/app_kulukorvaus/admin.py:30
-#: prodekoorg/app_kulukorvaus/models.py:49
-msgid "Processed"
-msgstr "Valmis"
-
-#: prodekoorg/app_kulukorvaus/apps.py:7
-#: prodekoorg/app_kulukorvaus/models.py:154
-#: prodekoorg/templates/layout-components/footer.html:8
-msgid "Reimbursements"
-msgstr "Kulukorvaukset"
-
-#: prodekoorg/app_kulukorvaus/cms_apps.py:12
-msgid "Reimbursement form application"
-msgstr "Sovellus - Kulukorvauslomake"
-
-#: prodekoorg/app_kulukorvaus/forms.py:73
-msgid ""
-"e.g. \"Food expenses\", \"Coffee to the guildroom\" or \"Mileage allowance\""
-msgstr ""
-"esim. \"Ruokakulut\", \"Kahvia kiltahuoneelle\" tai \"Kilometrikorvaus\""
-
-#: prodekoorg/app_kulukorvaus/forms.py:76
-msgid "e.g. \"Fall sitz\", \"Freshmen meetup\" or \"Guildroom renovations\""
-msgstr ""
-"esim. \"Syyssitsit\", \"Fuksiryhmätapaaminen\" tai \"Kiltahuoneen "
-"uudistaminen\""
-
-#: prodekoorg/app_kulukorvaus/models.py:14
-msgid "File size is too large. It should not exceed 9.5MB"
-msgstr "Tiedoston koko on liian iso. Maksimikoko on 9,5MB."
-
-#: prodekoorg/app_kulukorvaus/models.py:48
-msgid "In process"
-msgstr "Käsittelyssä"
-
-#: prodekoorg/app_kulukorvaus/models.py:75
-#: prodekoorg/app_kulukorvaus/printing.py:99
-msgid "Phone number"
-msgstr "Puhelinnumero"
-
-#: prodekoorg/app_kulukorvaus/models.py:77
-#: prodekoorg/app_kulukorvaus/printing.py:100
-msgid "Account number (IBAN)"
-msgstr "Tilinumero (IBAN)"
-
-#: prodekoorg/app_kulukorvaus/models.py:81
-msgid "Total reimbursement (in €)"
-msgstr "Korvaussumma yhteensä (euroissa)"
-
-#: prodekoorg/app_kulukorvaus/models.py:84
-#: prodekoorg/app_kulukorvaus/models.py:140
-msgid "Additional information"
-msgstr "Lisätietoja, kulujen perusteita"
-
-#: prodekoorg/app_kulukorvaus/models.py:109
-msgid "reimbursement basic information"
-msgstr "kulukorvaus perustiedot"
-
-#: prodekoorg/app_kulukorvaus/models.py:110
-msgid "Reimbursement basic information"
-msgstr "Kulukorvaus perustiedot"
-
-#: prodekoorg/app_kulukorvaus/models.py:132
-msgid "Expense explanation"
-msgstr "Kulun selite"
-
-#: prodekoorg/app_kulukorvaus/models.py:134
-msgid "Event / expense target"
-msgstr "Tapahtuma / kulun kohde"
-
-#: prodekoorg/app_kulukorvaus/models.py:137
-msgid "Sum (in €)"
-msgstr "Summa (euroissa)"
-
-#: prodekoorg/app_kulukorvaus/models.py:144
-#: prodekoorg/app_kulukorvaus/templates/form_kulukorvaus_kulu.html:4
-msgid "Receipt"
-msgstr "Kuitti"
-
-#: prodekoorg/app_kulukorvaus/models.py:153
-msgid "reimbursement"
-msgstr "kulukorvaus"
-
-#: prodekoorg/app_kulukorvaus/printing.py:102
-msgid "Additional info"
-msgstr "Lisätietoja, kulujen perusteita"
-
-#: prodekoorg/app_kulukorvaus/printing.py:137
-msgid ""
-"Your reimbursement claim has been received. The claim will be processed in "
-"the next Prodeko board meeting."
-msgstr ""
-"Kulukorvauksesi on vastaanotettu. Hakemus käsitellään seuraavassa "
-"hallituksen kokouksessa."
-
-#: prodekoorg/app_kulukorvaus/printing.py:140
-msgid ""
-"If you notice any errors in the information below, contact Prodeko's "
-"treasurer immediately at rahastonhoitaja@prodeko.org."
-msgstr ""
-"Jos havaitset virheitä alla olevissa tiedoista, ota välittömästi yhteys "
-"rahastonhoitajaan: rahastonhoitaja@prodeko.org."
-
-#: prodekoorg/app_kulukorvaus/templates/form_empty_and_management.html:9
-msgid "Remove reimbursement"
-msgstr "Poista kulu"
-
-#: prodekoorg/app_kulukorvaus/templates/form_kulukorvaus_kulu.html:3
-msgid "Reimbursement"
-msgstr "Kulukorvaukset"
-
-#: prodekoorg/app_kulukorvaus/templates/form_perustiedot.html:2
-msgid "Basic information"
-msgstr "Perustiedot"
-
-#: prodekoorg/app_kulukorvaus/templates/form_summary.html:2
-msgid "Overall"
-msgstr "Yhteensä"
-
-#: prodekoorg/app_kulukorvaus/templates/kulukorvaus_done.html:3
-msgid "Download as pdf"
-msgstr "Lataa pdf"
-
-#: prodekoorg/app_kulukorvaus/templates/kulukorvaus_done.html:8
-msgid ""
-"✅ Your reimbursement claim has been received. The claim will be processed "
-"in the next Prodeko board meeting. If you notice any errors in the "
-"information below, contact Prodeko's treasurer immediately at "
-"rahastonhoitaja@prodeko.org."
-msgstr ""
-"✅ Kulukorvauksesi on vastaanotettu. Hakemus käsitellään seuraavassa "
-"hallituksen kokouksessa. Jos havaitset virheitä pdf:n tiedoissa, ota "
-"välittömästi yhteys rahastonhoitajaan rahastonhoitaja@prodeko.org."
-
-#: prodekoorg/app_kulukorvaus/templates/kulukorvaus_error.html:6
-#: prodekoorg/app_membership/templates/application_error.html:6
-msgid ""
-"⚠️ Something went wrong. Contact mediakeisari@prodeko.org to get the issue "
-"resolved."
-msgstr ""
-"️⚠️ Jotakin meni pieleen. Ota yhteyttä mediakeisari@prodeko.org ongelman "
-"selvittämiseksi."
-
-#: prodekoorg/app_kulukorvaus/templates/kulukorvaus_forms.html:3
-msgid "Add reimbursement"
-msgstr "Lisää kulu"
-
 #: prodekoorg/app_membership/admin.py:33
 #, fuzzy
 #| msgid "Receipt of the membership payment"
@@ -699,8 +532,8 @@ msgstr "Kyllä"
 msgid "No"
 msgstr "Ei"
 
-#: prodekoorg/app_membership/models.py:58 prodekoorg/settings/base.py:83
-#: prodekoorg/settings/base.py:93
+#: prodekoorg/app_membership/models.py:58 prodekoorg/settings/base.py:85
+#: prodekoorg/settings/base.py:95
 msgid "Finnish"
 msgstr "Suomi"
 
@@ -799,6 +632,14 @@ msgstr ""
 #: prodekoorg/app_membership/templates/application_complete.html:3
 msgid "📬 Membership application received!"
 msgstr "📬 Hakemus vastaanotettu!"
+
+#: prodekoorg/app_membership/templates/application_error.html:6
+msgid ""
+"⚠️ Something went wrong. Contact mediakeisari@prodeko.org to get the issue "
+"resolved."
+msgstr ""
+"️⚠️ Jotakin meni pieleen. Ota yhteyttä mediakeisari@prodeko.org ongelman "
+"selvittämiseksi."
 
 #: prodekoorg/app_membership/templates/checkout.html:3
 msgid "Pay and send"
@@ -1239,7 +1080,7 @@ msgstr "Poista"
 msgid "Edit"
 msgstr "Muokkaa"
 
-#: prodekoorg/settings/base.py:83 prodekoorg/settings/base.py:100
+#: prodekoorg/settings/base.py:85 prodekoorg/settings/base.py:102
 msgid "English"
 msgstr "Englanti"
 
@@ -1320,6 +1161,10 @@ msgstr "Käyntiosoite"
 #: prodekoorg/templates/layout-components/footer.html:6
 msgid "Apply for membership"
 msgstr "Jäsenhakemus"
+
+#: prodekoorg/templates/layout-components/footer.html:8
+msgid "Reimbursements"
+msgstr "Kulukorvaukset"
 
 #: prodekoorg/templates/layout-components/instagram.html:3
 msgid "Social media"
@@ -1648,6 +1493,11 @@ msgstr "Näytä sivusto"
 msgid "Now"
 msgstr "Nykyiset"
 
+#: tiedotteet/backend/templates/control/nav.html:43
+#: tiedotteet/backend/views.py:88
+msgid "New"
+msgstr "Uudet"
+
 #: tiedotteet/backend/templates/control/nav.html:47
 #: tiedotteet/backend/views.py:93
 msgid "Upcoming"
@@ -1669,6 +1519,113 @@ msgstr "Ei tageja"
 #: tiedotteet/backend/views.py:59
 msgid "New bulletin added"
 msgstr "Tiedote lisätty"
+
+#~ msgid "Status"
+#~ msgstr "Tila"
+
+#~ msgid "In Process"
+#~ msgstr "Käsittelyssä"
+
+#~ msgid "Processed"
+#~ msgstr "Valmis"
+
+#~ msgid "Reimbursement form application"
+#~ msgstr "Sovellus - Kulukorvauslomake"
+
+#~ msgid ""
+#~ "e.g. \"Food expenses\", \"Coffee to the guildroom\" or \"Mileage "
+#~ "allowance\""
+#~ msgstr ""
+#~ "esim. \"Ruokakulut\", \"Kahvia kiltahuoneelle\" tai \"Kilometrikorvaus\""
+
+#~ msgid "e.g. \"Fall sitz\", \"Freshmen meetup\" or \"Guildroom renovations\""
+#~ msgstr ""
+#~ "esim. \"Syyssitsit\", \"Fuksiryhmätapaaminen\" tai \"Kiltahuoneen "
+#~ "uudistaminen\""
+
+#~ msgid "File size is too large. It should not exceed 9.5MB"
+#~ msgstr "Tiedoston koko on liian iso. Maksimikoko on 9,5MB."
+
+#~ msgid "In process"
+#~ msgstr "Käsittelyssä"
+
+#~ msgid "Phone number"
+#~ msgstr "Puhelinnumero"
+
+#~ msgid "Account number (IBAN)"
+#~ msgstr "Tilinumero (IBAN)"
+
+#~ msgid "Total reimbursement (in €)"
+#~ msgstr "Korvaussumma yhteensä (euroissa)"
+
+#~ msgid "Additional information"
+#~ msgstr "Lisätietoja, kulujen perusteita"
+
+#~ msgid "reimbursement basic information"
+#~ msgstr "kulukorvaus perustiedot"
+
+#~ msgid "Reimbursement basic information"
+#~ msgstr "Kulukorvaus perustiedot"
+
+#~ msgid "Expense explanation"
+#~ msgstr "Kulun selite"
+
+#~ msgid "Event / expense target"
+#~ msgstr "Tapahtuma / kulun kohde"
+
+#~ msgid "Sum (in €)"
+#~ msgstr "Summa (euroissa)"
+
+#~ msgid "Receipt"
+#~ msgstr "Kuitti"
+
+#~ msgid "reimbursement"
+#~ msgstr "kulukorvaus"
+
+#~ msgid "Additional info"
+#~ msgstr "Lisätietoja, kulujen perusteita"
+
+#~ msgid ""
+#~ "Your reimbursement claim has been received. The claim will be processed "
+#~ "in the next Prodeko board meeting."
+#~ msgstr ""
+#~ "Kulukorvauksesi on vastaanotettu. Hakemus käsitellään seuraavassa "
+#~ "hallituksen kokouksessa."
+
+#~ msgid ""
+#~ "If you notice any errors in the information below, contact Prodeko's "
+#~ "treasurer immediately at rahastonhoitaja@prodeko.org."
+#~ msgstr ""
+#~ "Jos havaitset virheitä alla olevissa tiedoista, ota välittömästi yhteys "
+#~ "rahastonhoitajaan: rahastonhoitaja@prodeko.org."
+
+#~ msgid "Remove reimbursement"
+#~ msgstr "Poista kulu"
+
+#~ msgid "Reimbursement"
+#~ msgstr "Kulukorvaukset"
+
+#~ msgid "Basic information"
+#~ msgstr "Perustiedot"
+
+#~ msgid "Overall"
+#~ msgstr "Yhteensä"
+
+#~ msgid "Download as pdf"
+#~ msgstr "Lataa pdf"
+
+#~ msgid ""
+#~ "✅ Your reimbursement claim has been received. The claim will be "
+#~ "processed in the next Prodeko board meeting. If you notice any errors in "
+#~ "the information below, contact Prodeko's treasurer immediately at "
+#~ "rahastonhoitaja@prodeko.org."
+#~ msgstr ""
+#~ "✅ Kulukorvauksesi on vastaanotettu. Hakemus käsitellään seuraavassa "
+#~ "hallituksen kokouksessa. Jos havaitset virheitä pdf:n tiedoissa, ota "
+#~ "välittömästi yhteys rahastonhoitajaan rahastonhoitaja@prodeko.org."
+
+#~ msgid "Add reimbursement"
+#~ msgstr "Lisää kulu"
 
 #, fuzzy
 #~| msgid "Application actions"
