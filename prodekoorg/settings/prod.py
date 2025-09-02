@@ -42,8 +42,15 @@ CDN_URL = "static.prodeko.org"
 AZURE_CUSTOM_DOMAIN = CDN_URL
 AZURE_CACHE_CONTROL = "public,max-age=31536000,immutable"
 
-DEFAULT_FILE_STORAGE = "prodekoorg.custom_azure.AzureMediaStorage"
-STATICFILES_STORAGE = "prodekoorg.custom_azure.AzureStaticStorage"
+STORAGES = {
+    "default": {
+        "BACKEND": "prodekoorg.custom_azure.AzureMediaStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "prodekoorg.custom_azure.AzureStaticStorage",
+    },
+}
+
 # THUMBNAIL_DEFAULT_STORAGE = "prodekoorg.custom_azure.AzureMediaStorage"
 
 # Query database for existing thumbnail aliases instead of querying remote storage.

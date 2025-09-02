@@ -75,16 +75,14 @@ class Person(models.Model):
     """private info"""
     student_number = models.CharField(max_length=50, blank=True, null=True)
     subscribed_lists = models.ManyToManyField(MailList, blank=True)
-    dont_publish_in_book = models.NullBooleanField(null=True, blank=True, default=False)
-    mentoring = models.NullBooleanField(null=True, blank=True, default=False)
-    upper_management_mentoring = models.NullBooleanField(
-        null=True, blank=True, default=False
-    )
-    ventures = models.NullBooleanField(null=True, blank=True, default=False)
-    partner_contact = models.NullBooleanField(null=True, blank=True, default=False)
-    is_alumni = models.NullBooleanField(null=True, blank=True)
-    is_dead = models.NullBooleanField(null=True, blank=True, default=False)
-    subscribe_alumnimail = models.NullBooleanField(null=True, blank=True, default=False)
+    dont_publish_in_book = models.BooleanField(null=True, blank=True, default=False)
+    mentoring = models.BooleanField(null=True, blank=True, default=False)
+    upper_management_mentoring = models.BooleanField(null=True, blank=True)
+    ventures = models.BooleanField(null=True, blank=True, default=False)
+    partner_contact = models.BooleanField(null=True, blank=True, default=False)
+    is_alumni = models.BooleanField(null=True, blank=True)
+    is_dead = models.BooleanField(null=True, blank=True, default=False)
+    subscribe_alumnimail = models.BooleanField(null=True, blank=True, default=False)
     admin_note = models.CharField(max_length=1000, blank=True, null=True)
 
     """contact info"""

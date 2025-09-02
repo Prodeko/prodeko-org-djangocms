@@ -1,5 +1,5 @@
 from ckeditor.fields import RichTextField
-from django.core.files.storage import get_storage_class
+from django.core.files.storage import storages
 from django.conf import settings
 from django.db import models
 from django.utils import timezone
@@ -8,7 +8,7 @@ from easy_thumbnails.fields import ThumbnailerImageField
 
 # Initialize (possibly remote) storage only once
 # instead of on every created thumbnail object
-_thumbnail_storage = get_storage_class(settings.THUMBNAIL_DEFAULT_STORAGE)()
+_thumbnail_storage = storages["thumbnail"]
 
 class Virka(models.Model):
     """Position in the elections.

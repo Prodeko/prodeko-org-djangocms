@@ -36110,56 +36110,6 @@
     "fields": { "width": "75%" }
   },
   {
-    "model": "djangocms_snippet.snippet",
-    "pk": 1,
-    "fields": {
-      "name": "Instagram feed",
-      "html": "<!-- LightWidget WIDGET --><script src=\"https://cdn.lightwidget.com/widgets/lightwidget.js\"></script><iframe src=\"//lightwidget.com/widgets/4c104500cc5e5dcea8516edd80a22106.html\" scrolling=\"no\" allowtransparency=\"true\" class=\"lightwidget-widget\" style=\"width:100%;border:0;overflow:hidden;\"></iframe>",
-      "template": "",
-      "slug": "instagram-feed"
-    }
-  },
-  {
-    "model": "djangocms_snippet.snippet",
-    "pk": 2,
-    "fields": {
-      "name": "Facebook feed",
-      "html": "<iframe src=\"https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprodeko%2F&tabs=timeline%2Cevents&width=0&height=0&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId\" width=\"0\" height=\"0\" style=\"border:none;overflow:hidden\" scrolling=\"no\" frameborder=\"0\" allowTransparency=\"true\" allow=\"encrypted-media\"></iframe>",
-      "template": "",
-      "slug": "facebook-feed"
-    }
-  },
-  {
-    "model": "djangocms_snippet.snippet",
-    "pk": 3,
-    "fields": {
-      "name": "Facebook feed2",
-      "html": "<div id=\"fb-root\"></div>\r\n<script>(function(d, s, id) {\r\n  var js, fjs = d.getElementsByTagName(s)[0];\r\n  if (d.getElementById(id)) return;\r\n  js = d.createElement(s); js.id = id;\r\n  js.src = 'https://connect.facebook.net/fi_FI/sdk.js#xfbml=1&version=v3.0';\r\n  fjs.parentNode.insertBefore(js, fjs);\r\n}(document, 'script', 'facebook-jssdk'));</script>\r\n\r\n<div class=\"fb-page\" data-href=\"https://www.facebook.com/prodeko/\" data-tabs=\"timeline,events\" data-small-header=\"true\" data-adapt-container-width=\"true\" data-hide-cover=\"false\" data-show-facepile=\"true\"><blockquote cite=\"https://www.facebook.com/prodeko/\" class=\"fb-xfbml-parse-ignore\"><a href=\"https://www.facebook.com/prodeko/\">Prodeko</a></blockquote></div>",
-      "template": "",
-      "slug": "facebook-feed2"
-    }
-  },
-  {
-    "model": "djangocms_snippet.snippetptr",
-    "pk": 100,
-    "fields": { "snippet": 1 }
-  },
-  {
-    "model": "djangocms_snippet.snippetptr",
-    "pk": 134,
-    "fields": { "snippet": 3 }
-  },
-  {
-    "model": "djangocms_snippet.snippetptr",
-    "pk": 10104,
-    "fields": { "snippet": 1 }
-  },
-  {
-    "model": "djangocms_snippet.snippetptr",
-    "pk": 10105,
-    "fields": { "snippet": 3 }
-  },
-  {
     "model": "bootstrap4_grid.bootstrap4gridrow",
     "pk": 1166,
     "fields": {

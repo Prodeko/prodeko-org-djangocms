@@ -113,7 +113,7 @@ def filter_gdrive_folders_dict(folders_dict):
     filtered_dict = {
         k["id"]: k["name"]
         for k in folders_dict["files"]
-        if match("\d{2}_([0-9]|[1-3][0-9]).([1-9]|[1][0-2]).\d{4}$", k["name"])
+        if match(r"\d{2}_([0-9]|[1-3][0-9]).([1-9]|[1][0-2]).\d{4}$", k["name"])
     }
 
     existing_gdrive_ids = Dokumentti.objects.values_list("gdrive_id", flat=True)
