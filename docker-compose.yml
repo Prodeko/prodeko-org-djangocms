@@ -18,9 +18,9 @@ services:
     container_name: prodeko_org
     entrypoint: /app/docker-entrypoint.sh
     command: uv run manage.py runserver 0.0.0.0:8000
-    volumes:
-      - .:/app:consistent
-      - /app/tiedotteet/frontend/public/tiedotteet
+    #volumes:
+    #  - .:/app:consistent
+    #  - /app/tiedotteet/frontend/public/tiedotteet
     ports:
       - '8000:8000'
     depends_on:
@@ -30,3 +30,13 @@ services:
       # CI env variable is used to conditionally skip some tests in CI
       # It is set automatically if we are running inside a Github action
       - CI=${CI}
+    develop:
+      watch:
+        - action: sync
+          path: .
+          target: /app
+          ignore:
+            - .venv/
+        - action: rebuild
+          path: ./uv.lock
+

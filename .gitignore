@@ -67,6 +67,7 @@ docs/_build/
 target/
 
 *.DS_Store
+.venv/
 venv/
 node_modules/
 
