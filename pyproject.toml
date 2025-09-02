@@ -1,3 +1,72 @@
+[project]
+name = "prodeko-org-djangocms"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "azure-common==1.1.26",
+    "azure-storage-blob==2.1.0",
+    "beautifulsoup4==4.9.3",
+    "django==3.1.4",
+    "django-appconf==1.0.4",
+    "django-audit-log==0.7.0",
+    "django-ckeditor==6.0.0",
+    "django-classy-tags==2.0.0",
+    "django-cms==3.8.0",
+    "django-compressor==2.4",
+    "django-cors-middleware==1.5.0",
+    "django-filer==2.0.2",
+    "django-filter==2.4.0",
+    "django-formtools==2.2",
+    "django-js-asset==1.2.2",
+    "django-mptt==0.11.0",
+    "django-oauth-toolkit==1.5.0",
+    "django-pipeline==2.0.5",
+    "django-polymorphic==3.0.0",
+    "django-redis==4.12.1",
+    "django-sass-processor==0.8.2",
+    "django-sekizai==2.0.0",
+    "django-storages==1.10.1",
+    "django-treebeard==4.3.1",
+    "djangocms-admin-style==2.0.2",
+    "djangocms-attributes-field==2.0.0",
+    "djangocms-bootstrap4==2.0.0",
+    "djangocms-column==1.11.0",
+    "djangocms-file==3.0.0",
+    "djangocms-icon==2.0.0",
+    "djangocms-link==3.0.0",
+    "djangocms-picture==3.0.0",
+    "djangocms-snippet==3.0.0",
+    "djangocms-style==3.0.0",
+    "djangocms-text-ckeditor==4.0.0",
+    "djangocms-video==3.0.0",
+    "djangorestframework==3.12.2",
+    "easy-thumbnails==2.7.1",
+    "google-api-python-client==1.12.8",
+    "google-auth-oauthlib==0.4.2",
+    "gunicorn==20.1.0",
+    "html5lib==1.1",
+    "libsass==0.20.1",
+    "lxml==4.6.2",
+    "mailchimp-marketing==3.0.80",
+    "markdown==3.3.3",
+    "oauthlib==3.1.0",
+    "pillow==8.0.1",
+    "psycopg2==2.8.6",
+    "pypdf2==3.0.1",
+    "pytz==2020.4",
+    "qrcode==6.1",
+    "reportlab==3.5.56",
+    "requests==2.25.1",
+    "sentry-sdk==0.19.5",
+    "six==1.15.0",
+    "stripe==6.4.0",
+    "unicodecsv==0.14.1",
+    "uritemplate==3.0.1",
+    "uvicorn==0.13.3",
+]
+
 [tool.black]
 exclude = '''
     \.git
@@ -15,3 +84,16 @@ indent = 2
 meta_viewport = true
 no_autofocus = true
 tabindex_no_positive = true
+
+[dependency-groups]
+dev = [
+    "attrs==20.3.0",
+    "black==19.10b0",
+    "curlylint==0.12.0",
+    "django-debug-toolbar==3.2",
+    "pylint==2.6.0",
+    "pylint-django==2.3.0",
+    "pytest-cov==2.10.1",
+    "pytest-django==4.1.0",
+    "pytest-xdist==2.2.0",
+]

@@ -9,14 +9,14 @@ ADD tiedotteet/frontend /app
 RUN npm run build:prod
 
 # Stage 2 - main container definition
-FROM python:3.9
+FROM ghcr.io/astral-sh/uv:python3.9-trixie
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 WORKDIR /app
 
-COPY requirements*.txt /app/
-RUN pip install --no-cache-dir -r requirements-dev.txt
+COPY pyproject.toml /app/
+RUN uv sync --dev
 
 RUN apt-get update && apt-get install -y postgresql-client gettext dos2unix \
   && rm -rf /var/lib/apt/lists/*

@@ -14,19 +14,20 @@ Prodeko.org projekti käyttää Django versiota 3.1.4
 2. Kopioi prodekoorg/settings/variables.sample.txt ja nimeä se variables.txt nimiseksi.
 3. Täytä variables.txt tiedostoon puuttuvat muuttujat (kehitysympäristössä ei tarvitse)
 
-Kehitysympäristöä varten tarvitset kirjastot `postgresql-devel` ja `python3-dev`, jotka voi asentaa Ubuntulla (Debianilla) ja WSL:lla komennolla
+Kehitysympäristöä varten tarvitset kirjastot `postgresql-devel` ja `uv`, jotka voi asentaa Ubuntulla (Debianilla) ja WSL:lla komennolla
 
 ```shell
-$ sudo apt install libpq-dev python3-dev
+$ sudo apt install libpq-dev
+$ curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
 Asenna lisäksi eslint, prettier, stylelint, pylint, jinjalint ja black ajamalla seuraavat komennot:
 
 ```shell
 $ npm install
-$ python3 -m venv venv
-$ source venv/bin/activate
-$ pip3 install -r requirements-dev.txt
+$ uv venv --python 3.9
+$ uv sync
+$ source .venv/bin/activate
 ```
 
 Windowsilla on suositeltavaa ajaa nämä WSL:n sisällä.
@@ -53,7 +54,7 @@ Esimerkiksi app_kiltiskamera luotiin seuraavasti:
 
 ```shell
 mkdir prodekoorg/app_kiltiskamera
-python3 manage.py startapp app_kiltiskamera prodekoorg/app_kiltiskamera
+uv run  manage.py startapp app_kiltiskamera prodekoorg/app_kiltiskamera
 ```
 
 Myös abisivut, auth_prodeko, seminaari ja tiedotteet ovat omia appejaan, vaikka ne eivät ole prodekoorg kansion sisällä.
@@ -77,9 +78,9 @@ Windowsilla on suositeltavaa ajaa kaikki tämänkin osion komennot WSL:n sisäll
 
 - Käynnistä projekti komennolla `docker-compose up`
 - Avaa uusi terminal window
-- Testit saa ajettua komennolla `docker exec prodeko_org pytest prodekoorg/`
-- Testien kattavuus ja rinnakkaisajo `docker exec prodeko_org pytest --cov -n auto prodekoorg/`
-- **Tietyn appin testit saa ajettua näin: `docker exec prodeko_org pytest prodekoorg/app_toimarit`**
+- Testit saa ajettua komennolla `docker exec prodeko_org uv run pytest prodekoorg/`
+- Testien kattavuus ja rinnakkaisajo `docker exec prodeko_org uv run pytest --cov -n auto prodekoorg/`
+- **Tietyn appin testit saa ajettua näin: `docker exec prodeko_org uv run pytest prodekoorg/app_toimarit`**
 
 ### Koodityyli
 
@@ -190,7 +191,7 @@ $ npm run lint:css-fix  # Korjaa virheet
     │   │   └── ...
     │   │── app_vaalit                 # Vaaliplatform
     │   │   └── ...
-    │   │── collected-static           # Kerätyt staattiset tiedostot dev-asetuksilla. Komento `python3 manage.py collectstatic` kerää tiedostot tänne
+    │   │── collected-static           # Kerätyt staattiset tiedostot dev-asetuksilla. Komento `uv run manage.py collectstatic` kerää tiedostot tänne
     │   │   └── ...
     │   │── media                      # Palvelimelle lähetetyt tiedostot kerääntyvät tänne dev-asetuksilla
     │   │   └── ...
@@ -223,9 +224,9 @@ $ npm run lint:css-fix  # Korjaa virheet
 ### Kääntäminen eri kielille
 
 1. importtaa gettext_lazy: `from django.utils.translation import gettext_lazy as *`. Käytä koodissa näin: \_("First name")
-2. `python3 manage.py makemessages -l fi -i "node_modules/*" -i "venv/*"`. locale/ kansioon .po tiedostoon muodostuu käännettävä sana, esimerkin tapauksessa "First name".
-3. Käännä suomeksi .po tiedostossa ja aja `python3 manage.py compilemessages -l fi -i "node_modules/*" -i "venv/*"`.
-4. (Valinnainen) Javascript tiedostojen sisältämät käännöset saa muodostettua seuraavalla komennolla: `python3 manage.py makemessages -d djangojs -l fi -i tiedotteet -i "node_modules/*" -i "venv/*"`
+2. `uv run manage.py makemessages -l fi -i "node_modules/*" -i "venv/*"`. locale/ kansioon .po tiedostoon muodostuu käännettävä sana, esimerkin tapauksessa "First name".
+3. Käännä suomeksi .po tiedostossa ja aja `uv run manage.py compilemessages -l fi -i "node_modules/*" -i "venv/*"`.
+4. (Valinnainen) Javascript tiedostojen sisältämät käännöset saa muodostettua seuraavalla komennolla: `uv run manage.py makemessages -d djangojs -l fi -i tiedotteet -i "node_modules/*" -i "venv/*"`
 
 .po tiedosto näyttää tältä:
 

@@ -17,7 +17,7 @@ services:
     build: .
     container_name: prodeko_org
     entrypoint: /app/docker-entrypoint.sh
-    command: python3 manage.py runserver 0.0.0.0:8000
+    command: uv run manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/app:consistent
       - /app/tiedotteet/frontend/public/tiedotteet
