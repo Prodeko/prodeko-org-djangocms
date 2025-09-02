@@ -460,15 +460,15 @@ wheels = [
 
 [[package]]
 name = "django-debug-toolbar"
-version = "6.0.0"
+version = "5.2.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "django" },
     { name = "sqlparse" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/c5/d5/5fc90234532088aeec5faa48d5b09951cc7eab6626030ed427d3bd8cd9bc/django_debug_toolbar-6.0.0.tar.gz", hash = "sha256:6eb9fa6f4a5884bf04004700ffb5a44043f1fff38784447fc52c1633448c8c14", size = 305331, upload-time = "2025-07-25T13:11:48.68Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/2a/9f/97ba2648f66fa208fc7f19d6895586d08bc5f0ab930a1f41032e60f31a41/django_debug_toolbar-5.2.0.tar.gz", hash = "sha256:9e7f0145e1a1b7d78fcc3b53798686170a5b472d9cf085d88121ff823e900821", size = 297901, upload-time = "2025-04-29T05:23:57.533Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/05/b5/4724a8c18fcc5b09dca7b7a0e70c34208317bb110075ad12484d6588ae91/django_debug_toolbar-6.0.0-py3-none-any.whl", hash = "sha256:0cf2cac5c307b77d6e143c914e5c6592df53ffe34642d93929e5ef095ae56841", size = 266967, upload-time = "2025-07-25T13:11:47.265Z" },
+    { url = "https://files.pythonhosted.org/packages/fa/c2/ed3cb815002664349e9e50799b8c00ef15941f4cad797247cadbdeebab02/django_debug_toolbar-5.2.0-py3-none-any.whl", hash = "sha256:15627f4c2836a9099d795e271e38e8cf5204ccd79d5dbcd748f8a6c284dcd195", size = 262834, upload-time = "2025-04-29T05:23:55.472Z" },
 ]
 
 [[package]]
@@ -716,15 +716,16 @@ wheels = [
 
 [[package]]
 name = "djangocms-link"
-version = "5.1.0"
+version = "4.0.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "django-cms" },
+    { name = "django-filer" },
     { name = "djangocms-attributes-field" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/eb/52/d0bb64199641852e01527235de8e6b94d0bd9df1eccb39d0bff473cd78a6/djangocms_link-5.1.0.tar.gz", hash = "sha256:99a0bc27fe72afb5047ab2092d333ded41bbbaa094e8406bb61351313411bbc3", size = 504440, upload-time = "2025-07-15T12:32:23.343Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/6f/e6/42a82e28f014e843e839edeef07933be429d41f9201b27f251626403c4f4/djangocms_link-4.0.0.tar.gz", hash = "sha256:a258dc603f117c9d7f32fd914fb9c0a1edfa49bc293c4798cbde6a1295eba4dc", size = 49733, upload-time = "2024-07-23T09:25:00.249Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/e7/38/61bce7c022270309180387129998f6bd31cbbed49adec835c087e0e8fa6c/djangocms_link-5.1.0-py3-none-any.whl", hash = "sha256:cc3bb274e70d9ac7993c2cafc4911e82e7862cae48dd81a083ad94839aae22e8", size = 163546, upload-time = "2025-07-15T12:32:21.878Z" },
+    { url = "https://files.pythonhosted.org/packages/70/5e/156adfb0b0099412a2fed0e90f63900940fbe5d0f1e3eb1323a30984f09b/djangocms_link-4.0.0-py3-none-any.whl", hash = "sha256:00ede619d6f7379e47104843c1df8f8427c8a4038a6ed5fe78616e156a408f62", size = 205247, upload-time = "2024-07-23T09:24:58.444Z" },
 ]
 
 [[package]]
@@ -1016,6 +1017,19 @@ wheels = [
 ]
 
 [[package]]
+name = "libsass"
+version = "0.23.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/79/b4/ab091585eaa77299558e3289ca206846aefc123fb320b5656ab2542c20ad/libsass-0.23.0.tar.gz", hash = "sha256:6f209955ede26684e76912caf329f4ccb57e4a043fd77fe0e7348dd9574f1880", size = 316068, upload-time = "2024-01-06T18:53:05.404Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/e5/13/fc1bea1de880ca935137183727c7d4dd921c4128fc08b8ddc3698ba5a8a3/libsass-0.23.0-cp38-abi3-macosx_11_0_x86_64.whl", hash = "sha256:34cae047cbbfc4ffa832a61cbb110f3c95f5471c6170c842d3fed161e40814dc", size = 1086783, upload-time = "2024-01-06T19:02:38.903Z" },
+    { url = "https://files.pythonhosted.org/packages/55/2f/6af938651ff3aec0a0b00742209df1172bc297fa73531f292801693b7315/libsass-0.23.0-cp38-abi3-macosx_14_0_arm64.whl", hash = "sha256:ea97d1b45cdc2fc3590cb9d7b60f1d8915d3ce17a98c1f2d4dd47ee0d9c68ce6", size = 982759, upload-time = "2024-01-06T19:02:41.331Z" },
+    { url = "https://files.pythonhosted.org/packages/fd/5a/eb5b62641df0459a3291fc206cf5bd669c0feed7814dded8edef4ade8512/libsass-0.23.0-cp38-abi3-manylinux_2_5_x86_64.manylinux1_x86_64.whl", hash = "sha256:4a218406d605f325d234e4678bd57126a66a88841cb95bee2caeafdc6f138306", size = 9444543, upload-time = "2024-01-06T19:02:43.191Z" },
+    { url = "https://files.pythonhosted.org/packages/e5/fc/275783f5120970d859ae37d04b6a60c13bdec2aa4294b9dfa8a37b5c2513/libsass-0.23.0-cp38-abi3-win32.whl", hash = "sha256:31e86d92a5c7a551df844b72d83fc2b5e50abc6fbbb31e296f7bebd6489ed1b4", size = 775481, upload-time = "2024-01-06T19:02:46.05Z" },
+    { url = "https://files.pythonhosted.org/packages/ef/20/caf3c7cf2432d85263119798c45221ddf67bdd7dae8f626d14ff8db04040/libsass-0.23.0-cp38-abi3-win_amd64.whl", hash = "sha256:a2ec85d819f353cbe807432d7275d653710d12b08ec7ef61c124a580a8352f3c", size = 872914, upload-time = "2024-01-06T19:02:47.61Z" },
+]
+
+[[package]]
 name = "lxml"
 version = "6.0.1"
 source = { registry = "https://pypi.org/simple" }
@@ -1283,6 +1297,7 @@ dependencies = [
     { name = "google-auth-oauthlib" },
     { name = "gunicorn" },
     { name = "html5lib" },
+    { name = "libsass" },
     { name = "lxml" },
     { name = "mailchimp-marketing" },
     { name = "markdown" },
@@ -1299,6 +1314,7 @@ dependencies = [
     { name = "six" },
     { name = "stripe" },
     { name = "unicodecsv" },
+    { name = "unidecode" },
     { name = "uritemplate" },
     { name = "uvicorn" },
 ]
@@ -1332,7 +1348,7 @@ requires-dist = [
     { name = "django-cms", specifier = ">=3.11,<4" },
     { name = "django-compressor", specifier = ">=4.5.1" },
     { name = "django-cors-headers", specifier = ">=4.7.0" },
-    { name = "django-debug-toolbar", specifier = ">=6.0.0" },
+    { name = "django-debug-toolbar", specifier = ">=5.2.0,<6" },
     { name = "django-filer", specifier = ">=3.3.2" },
     { name = "django-filter", specifier = ">=25.1" },
     { name = "django-formtools", specifier = ">=2.5.1" },
@@ -1352,7 +1368,7 @@ requires-dist = [
     { name = "djangocms-column", specifier = ">=2.1.0" },
     { name = "djangocms-file", specifier = ">=3.0.1" },
     { name = "djangocms-icon", specifier = ">=2.1.0" },
-    { name = "djangocms-link", specifier = ">=5.1.0" },
+    { name = "djangocms-link", specifier = ">=4,<5" },
     { name = "djangocms-picture", specifier = ">=4.1.1" },
     { name = "djangocms-snippet", specifier = ">=5.0.1" },
     { name = "djangocms-style", specifier = ">=3.1.0" },
@@ -1365,6 +1381,7 @@ requires-dist = [
     { name = "google-auth-oauthlib", specifier = ">=1.2.2" },
     { name = "gunicorn", specifier = ">=23.0.0" },
     { name = "html5lib", specifier = "==1.1" },
+    { name = "libsass", specifier = ">=0.23.0" },
     { name = "lxml", specifier = ">=6.0.1" },
     { name = "mailchimp-marketing", specifier = "==3.0.80" },
     { name = "markdown", specifier = ">=3.8.2" },
@@ -1381,6 +1398,7 @@ requires-dist = [
     { name = "six", specifier = ">=1.17.0" },
     { name = "stripe", specifier = ">=12.5.0" },
     { name = "unicodecsv", specifier = "==0.14.1" },
+    { name = "unidecode", specifier = ">=1.4.0" },
     { name = "uritemplate", specifier = ">=4.2.0" },
     { name = "uvicorn", specifier = ">=0.35.0" },
 ]
@@ -1389,7 +1407,7 @@ requires-dist = [
 dev = [
     { name = "attrs", specifier = ">=25.3.0" },
     { name = "black", specifier = ">=25.1.0" },
-    { name = "django-debug-toolbar", specifier = ">=6.0.0" },
+    { name = "django-debug-toolbar", specifier = ">=5.2.0,<6" },
     { name = "pylint", specifier = ">=3.3.8" },
     { name = "pylint-django", specifier = ">=2.6.1" },
     { name = "pytest-cov", specifier = ">=6.2.1" },
@@ -1850,6 +1868,15 @@ name = "unicodecsv"
 version = "0.14.1"
 source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/6f/a4/691ab63b17505a26096608cc309960b5a6bdf39e4ba1a793d5f9b1a53270/unicodecsv-0.14.1.tar.gz", hash = "sha256:018c08037d48649a0412063ff4eda26eaa81eff1546dbffa51fa5293276ff7fc", size = 10267, upload-time = "2015-09-22T22:00:19.516Z" }
+
+[[package]]
+name = "unidecode"
+version = "1.4.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/94/7d/a8a765761bbc0c836e397a2e48d498305a865b70a8600fd7a942e85dcf63/Unidecode-1.4.0.tar.gz", hash = "sha256:ce35985008338b676573023acc382d62c264f307c8f7963733405add37ea2b23", size = 200149, upload-time = "2025-04-24T08:45:03.798Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/8f/b7/559f59d57d18b44c6d1250d2eeaa676e028b9c527431f5d0736478a73ba1/Unidecode-1.4.0-py3-none-any.whl", hash = "sha256:c3c7606c27503ad8d501270406e345ddb480a7b5f38827eafe4fa82a137f0021", size = 235837, upload-time = "2025-04-24T08:45:01.609Z" },
+]
 
 [[package]]
 name = "uritemplate"

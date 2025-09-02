@@ -25,7 +25,7 @@ Asenna lisäksi eslint, prettier, stylelint, pylint, jinjalint ja black ajamalla
 
 ```shell
 $ npm install
-$ uv venv --python 3.9
+$ uv venv --python 3.12
 $ uv sync
 $ source .venv/bin/activate
 ```

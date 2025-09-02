@@ -9,7 +9,7 @@ ADD tiedotteet/frontend /app
 RUN npm run build:prod
 
 # Stage 2 - main container definition
-FROM ghcr.io/astral-sh/uv:python3.9-trixie
+FROM ghcr.io/astral-sh/uv:python3.12-trixie
 
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1

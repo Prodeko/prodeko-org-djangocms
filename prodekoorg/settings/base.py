@@ -309,8 +309,18 @@ THUMBNAIL_ALIASES = {
 
 THUMBNAIL_BASEDIR = "image_thumbnails"
 THUMBNAIL_HIGH_RESOLUTION = True
-THUMBNAIL_DEFAULT_STORAGE = "easy_thumbnails.storage.ThumbnailFileSystemStorage"
 
+STORAGES = {
+        "thumbnail": {
+            "BACKEND": "easy_thumbnails.storage.ThumbnailFileSystemStorage",
+        },
+        "default": {
+            "BACKEND": "django.core.files.storage.FileSystemStorage",
+        },
+        "staticfiles": {
+            "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+        },
+}
 
 # Config for djangocms-text-ckeditor
 CKEDITOR_SETTINGS = {
@@ -391,7 +401,7 @@ EMAIL_USE_TLS = True
 CKEDITOR_UPLOAD_PATH = "ckeditor_uploads/"
 CKEDITOR_IMAGE_BACKEND = "pillow"
 
-CSRF_TRUSTED_ORIGINS = ".google.com"
+CSRF_TRUSTED_ORIGINS = ["https://*.google.com"]
 
 SESSION_COOKIE_AGE = 60 * 60 * 24 * 30  # 30 days
 SESSION_ENGINE = "django.contrib.sessions.backends.cached_db"
