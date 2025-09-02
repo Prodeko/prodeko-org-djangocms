@@ -2,12 +2,12 @@
 Script to migrate alumnirekisteri data conform 
 to prodeko-org-djangocms model hierarchy.
 
-1. python3 manage.py dumpdata > alumnirekisteri_db.json
+1. uv run manage.py dumpdata > alumnirekisteri_db.json
 2. Backup database with mysqldump and manage.py dumpdata
 3. DROP DATABASE prodekoorg
 4. Run this script to generate .json files that are compatible with the database schema
-5. python3 manage.py loaddata --exclude auth --exclude admin --exclude contenttypes --verbosity 3 ar_persons.json
-6. python3 manage.py loaddata --exclude auth --exclude admin --exclude contenttypes --verbosity 3 ar_other.json
+5. uv run manage.py loaddata --exclude auth --exclude admin --exclude contenttypes --verbosity 3 ar_persons.json
+6. uv run manage.py loaddata --exclude auth --exclude admin --exclude contenttypes --verbosity 3 ar_other.json
 """
 
 import sys

@@ -16,21 +16,21 @@ wait_for_db
 
 # Create and run migrations
 echo "Creating migrations..."
-python3 manage.py makemigrations
-python3 manage.py migrate
+uv run manage.py makemigrations
+uv run manage.py migrate
 
 # Create a superuser for development
 echo "Creating superuser..."
-python manage.py shell -c "from django.contrib.auth import get_user_model; \
+uv run manage.py shell -c "from django.contrib.auth import get_user_model; \
 	User = get_user_model(); User.objects.filter(email='webbitiimi@prodeko.org').exists() or \
 	User.objects.create_superuser('webbitiimi@prodeko.org', 'kananugetti', has_accepted_policies=True)"
 
 # Load sample data for development
-python3 manage.py loaddata --app cms --app menus --verbosity 3 data.json
+uv run manage.py loaddata --app cms --app menus --verbosity 3 data.json
 
 # Translations
-python3 manage.py makemessages -l fi -i "node_modules/*" -i "venv/*"
-python3 manage.py makemessages -d djangojs -l fi -i tiedotteet -i "node_modules/*" -i "venv/*"
-python3 manage.py compilemessages -l fi
+uv run manage.py makemessages -l fi -i "node_modules/*" -i "venv/*"
+uv run manage.py makemessages -d djangojs -l fi -i tiedotteet -i "node_modules/*" -i "venv/*"
+uv run manage.py compilemessages -l fi
 
 exec "$@"
