@@ -401,7 +401,13 @@ EMAIL_USE_TLS = True
 CKEDITOR_UPLOAD_PATH = "ckeditor_uploads/"
 CKEDITOR_IMAGE_BACKEND = "pillow"
 
-CSRF_TRUSTED_ORIGINS = ["https://*.google.com"]
+CSRF_TRUSTED_ORIGINS = [
+    "https://prodeko.org",
+    "https://www.prodeko.org",
+    "https://prodeko.fi",
+    "https://www.prodeko.fi",
+    "https://*.google.com",
+]
 
 SESSION_COOKIE_AGE = 60 * 60 * 24 * 30  # 30 days
 SESSION_ENGINE = "django.contrib.sessions.backends.cached_db"
