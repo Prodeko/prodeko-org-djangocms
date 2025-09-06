@@ -43,6 +43,9 @@ AZURE_CUSTOM_DOMAIN = CDN_URL
 AZURE_CACHE_CONTROL = "public,max-age=31536000,immutable"
 
 STORAGES = {
+    "thumbnail": {
+        "BACKEND": "easy_thumbnails.storage.ThumbnailFileSystemStorage",
+    },
     "default": {
         "BACKEND": "prodekoorg.custom_azure.AzureMediaStorage",
     },
