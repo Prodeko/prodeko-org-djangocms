@@ -91,7 +91,7 @@ def delete_kysymys_view(request, pk):
     kysymys = get_object_or_404(Kysymys, pk=pk)
     if kysymys.created_by != request.user:
         raise PermissionDenied
-    if request.method == "POST" and request.is_ajax():
+    if request.method == "POST" and request.headers.get("x-requested-with") == "XMLHttpRequest":
         id = kysymys.id
         kysymys.delete()
         return JsonResponse({"delete_kysymys_id": id})
@@ -293,7 +293,7 @@ def main_view(request):
             return handle_submit_ehdokas(request, context)
         elif "submitVastaus" in request.POST:
             return handle_submit_answer(request, context)
-        elif "submitKysymys" in request.POST and request.is_ajax():
+        elif "submitKysymys" in request.POST and request.headers.get("x-requested-with") == "XMLHttpRequest":
             return handle_submit_kysymys(request, context)
         else:
             raise Http404

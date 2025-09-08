@@ -22,7 +22,7 @@ def main_form(request):
         A Django TemplateResponse object that renders an html template.
     """
 
-    if request.method == "POST" and request.is_ajax():
+    if request.method == "POST" and request.headers.get("x-requested-with") == "XMLHttpRequest":
 
         form_contact = ContactForm(request.POST, request.FILES)
         is_valid_form = form_contact.is_valid()

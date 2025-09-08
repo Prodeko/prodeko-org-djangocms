@@ -67,7 +67,7 @@ def post(request, post_id):
 
 @login_required
 def like(request, post_id, user_id):
-    if request.method == "POST" and request.is_ajax():
+    if request.method == "POST" and request.headers.get("x-requested-with") == "XMLHttpRequest":
         post = Post.objects.get(pk=post_id)
         if request.POST.get("is_liked") == "true":
             post.likes.remove(request.user)
