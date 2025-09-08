@@ -1,4 +1,6 @@
 from datetime import datetime
+import secrets
+import string
 
 from django.conf import settings
 from django.db.models.signals import post_save
@@ -66,8 +68,13 @@ def create_user_profile(sender, instance, created, **kwargs):
     Uses Django signals (https://docs.djangoproject.com/en/2.1/topics/signals/).
     """
 
+    def make_random_password(length: int) -> str:
+        """Makes random alphanumeric password of given length"""
+        alphabet = string.ascii_letters + string.digits
+        return "".join(secrets.choice(alphabet) for _ in range(length))
+
     if created:
-        password = User.objects.make_random_password(length=14)
+        password = make_random_password(14)
         newuser = User.objects.create_user(
             email=instance.email,
             has_accepted_policies=True,
