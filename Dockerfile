@@ -18,6 +18,9 @@ ENV UV_COMPILE_BYTECODE=1
 ENV UV_TOOL_BIN_DIR=/usr/local/bin
 ENV UV_LINK_MODE=copy
 
+# SSL/TLS with certs shipped with the docker image
+ENV SSL_CERT_DIR=/etc/ssl/certs
+
 WORKDIR /app
 
 RUN apt-get update && apt-get install -y postgresql-client gettext dos2unix \
