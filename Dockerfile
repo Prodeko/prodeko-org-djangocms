@@ -23,7 +23,7 @@ ENV SSL_CERT_DIR=/etc/ssl/certs
 
 WORKDIR /app
 
-RUN apt-get update && apt-get install -y postgresql-client gettext dos2unix \
+RUN apt-get update && apt-get install -y postgresql-client gettext dos2unix ca-certificates \
   && rm -rf /var/lib/apt/lists/*
 
 RUN --mount=type=cache,target=/root/.cache/uv \
