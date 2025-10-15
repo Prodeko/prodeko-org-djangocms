@@ -46,9 +46,12 @@
                 {% trans login %}
             </a>
         {% else %}
-            <a href="{% url 'auth_prodeko:logout' %}" class="auth-btn btn btn-block btn-primary mx-4" role="button">
+		<form class="m-0 p-0 d-inline" action="{% url 'auth_prodeko:logout' %}" method="post">
+			{% csrf_token %}
+			<button class="auth-btn btn btn-primary text-nowrap mx-4" type="submit">
                 {% trans logout %}
-            </a>
+            </button>
+		</form>
         {% endif %}
     </div>
 </div>

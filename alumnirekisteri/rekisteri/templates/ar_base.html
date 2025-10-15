@@ -87,8 +87,14 @@
 							<li><a href="{% url 'alumnirekisteri:membership_status' %}"><span class="fa fa-info"
 										style="margin-right: 2px"></span>Prodekon jäsenyys</a></li>
 							<li role="separator" class="divider"></li>
-							<li><a href="{% url 'alumnirekisteri:logout' %}"><span class="glyphicon glyphicon-log-out"></span>
-									Kirjaudu ulos</a></li>
+							<li>
+								<form class="text-center" action="{% url 'alumnirekisteri:logout' %}" method="post">
+									{% csrf_token %}
+									<button class="btn btn-primary text-nowrap" type="submit">
+										<span class="glyphicon glyphicon-log-out"></span>
+										Kirjaudu ulos
+									</button>
+								</form></li>
 						</ul>
 					</li>
 				</ul>
