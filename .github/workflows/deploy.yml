@@ -36,6 +36,9 @@ jobs:
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
 
+      - name: Pull Ansible CI image        
+        run: docker pull ${{ secrets.REGISTRY_LOGIN_SERVER }}/infrastructure/prodeko-ci:v1
+
       - name: Deploy project
         uses: ./.github/workflows/deploy
 
