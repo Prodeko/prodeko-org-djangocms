@@ -1,7 +1,7 @@
 name: Deploy
 runs:
   using: docker
-  image: docker://prodekoregistry.azurecr.io/infrastructure/prodeko-ci:v1
+  image: docker://prodekoregistry.azurecr.io/infrastructure/prodeko-ci:v2
   args:
     [
       'bash',
