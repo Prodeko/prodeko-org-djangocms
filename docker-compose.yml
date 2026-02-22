@@ -30,13 +30,5 @@ services:
       # CI env variable is used to conditionally skip some tests in CI
       # It is set automatically if we are running inside a Github action
       - CI=${CI}
-    develop:
-      watch:
-        - action: sync
-          path: .
-          target: /app
-          ignore:
-            - .venv/
-        - action: rebuild
-          path: ./uv.lock
+
 
