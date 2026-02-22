@@ -1,4 +1,4 @@
-import csv
+import csv as csv
 import math
 import os
 import random
@@ -12,6 +12,7 @@ import qrcode
 from io import BytesIO
 import base64
 
+import unicodecsv as unicodecsv
 from django.contrib import messages
 from django.conf import settings
 from django.contrib.admin.views.decorators import staff_member_required
@@ -201,7 +202,8 @@ def admin(request):
             )
             email_to = user.email
             from_email = "alumnirekisteri.no.reply@prodeko.org"
-            msg = EmailMultiAlternatives(subject, text_content, from_email, [email_to])
+            msg = EmailMultiAlternatives(
+                subject, text_content, from_email, [email_to])
             msg.attach_alternative(html_content, "text/html")
             msg.send()
     elif request.method == "POST" and "admin_note" in request.POST:
@@ -263,7 +265,8 @@ def admin_export_matrikkeli(request):
         response = HttpResponse(content_type="text/tex")
         response["charset"] = "utf-8"
         response["Content-Disposition"] = 'attachment; filename="vuosikurssit.tex"'
-        response.write(render_to_string("vuosikurssit.tex", {"persons": persons}))
+        response.write(render_to_string(
+            "vuosikurssit.tex", {"persons": persons}))
         return response
 
     persons = (
@@ -286,7 +289,8 @@ def admin_export_matrikkeli(request):
     if not request.GET.get("images", False):
         response = HttpResponse(content_type="text/tex")
         response["charset"] = "utf-8"
-        response["Content-Disposition"] = 'attachment; filename="' + category + '.tex"'
+        response["Content-Disposition"] = 'attachment; filename="' + \
+            category + '.tex"'
         response.write(
             render_to_string(
                 "matrikkeli.tex", {"persons": persons, "category": category}
@@ -310,7 +314,7 @@ def admin_export_matrikkeli(request):
 
 @staff_member_required(login_url="/login/")
 def admin_qr_scanner(request):
-    return render(request, "admin_qr_scanner.html")
+    return render(request, 'admin_qr_scanner.html')
 
 
 @staff_member_required(login_url="/login/")
@@ -319,7 +323,7 @@ def admin_export_data(request):
         response = HttpResponse(content_type="text/csv")
         response["charset"] = "utf-8"
         response.write("\ufeff")
-        writer = csv.writer(response, delimiter="\t")
+        writer = unicodecsv.writer(response, delimiter="\t", encoding="utf-8")
 
         queryset = getAdminSearchQueryset(
             request.POST.get("first_name_search"),
@@ -329,7 +333,8 @@ def admin_export_data(request):
             request.POST.get("member_until_search"),
             request.POST.get("member_type_search"),
         )
-        queryset = queryset.exclude(person__is_hidden=True).exclude(is_active=False)
+        queryset = queryset.exclude(
+            person__is_hidden=True).exclude(is_active=False)
 
         if request.POST.get("alive"):
             queryset = queryset.exclude(person__is_dead=True)
@@ -440,21 +445,23 @@ def admin_export_data(request):
                 )
 
             if request.POST.get("phones"):
-                row.append("§".join(map(lambda x: x.phone_number, p.phones.all())))
+                row.append(
+                    "§".join(map(lambda x: x.phone_number, p.phones.all())))
             if request.POST.get("work_experiences"):
-                experiences = sorted(p.work_experiences.all(), key=sortByEndDate)
-                current_positions = filter(lambda e: not e.end_year, experiences)
+                experiences = sorted(
+                    p.work_experiences.all(), key=sortByEndDate)
+                current_positions = filter(
+                    lambda e: not e.end_year, experiences)
                 current_position = ""
                 current_organisation = ""
                 row.append("§".join(map(displayPosition, current_positions)))
                 row.append("§".join(map(displayPosition, experiences)))
 
             if request.POST.get("founded_companies"):
-                founded_companies = sorted(
-                    p.work_experiences.filter(is_founding_member=True),
-                    key=sortByEndDate,
-                )
-                row.append("§".join((x.organisation for x in founded_companies)))
+                founded_companies = sorted(p.work_experiences.filter(
+                    is_founding_member=True), key=sortByEndDate)
+                row.append(
+                    "§".join((x.organisation for x in founded_companies)))
 
             if request.POST.get("educations"):
                 row.append(
@@ -470,7 +477,8 @@ def admin_export_data(request):
                     "§".join(
                         map(
                             displayPosition,
-                            sorted(p.positions_of_trust.all(), key=sortByEndDate),
+                            sorted(p.positions_of_trust.all(),
+                                   key=sortByEndDate),
                         )
                     )
                 )
@@ -625,7 +633,7 @@ def admin_export_data(request):
 
 @staff_member_required(login_url="/login/")
 def admin_log(request):
-    """Show database changes"""
+    """ Show database changes """
     person_log = Person.audit_log.annotate(
         action_user_name=F("action_user__email")
     ).annotate(target=Value("Person", output_field=models.CharField()))
@@ -708,16 +716,20 @@ def admin_stats(request):
     total_count = len(User.objects.all())
     logged_in = total_count - len(User.objects.all().filter(last_login=None))
 
-    dont_publish_in_book = len(Person.objects.all().filter(dont_publish_in_book=True))
+    dont_publish_in_book = len(
+        Person.objects.all().filter(dont_publish_in_book=True))
     dont_publish_in_book_logged_in = len(
         Person.objects.all()
         .filter(dont_publish_in_book=True)
         .exclude(user__last_login=None)
     )
 
-    show_phones_category = len(Person.objects.all().filter(show_phones_category=True))
-    show_emails_category = len(Person.objects.all().filter(show_emails_category=True))
-    show_skills_category = len(Person.objects.all().filter(show_skills_category=True))
+    show_phones_category = len(
+        Person.objects.all().filter(show_phones_category=True))
+    show_emails_category = len(
+        Person.objects.all().filter(show_emails_category=True))
+    show_skills_category = len(
+        Person.objects.all().filter(show_skills_category=True))
     show_languages_category = len(
         Person.objects.all().filter(show_languages_category=True)
     )
@@ -733,7 +745,8 @@ def admin_stats(request):
     show_volunteers_category = len(
         Person.objects.all().filter(show_volunteers_category=True)
     )
-    show_honors_category = len(Person.objects.all().filter(show_honors_category=True))
+    show_honors_category = len(
+        Person.objects.all().filter(show_honors_category=True))
     show_interests_category = len(
         Person.objects.all().filter(show_interests_category=True)
     )
@@ -752,7 +765,8 @@ def admin_stats(request):
     )
     draw_dont_publish_in_book_logged = (
         str(
-            math.ceil(dont_publish_in_book_logged_in / (dont_publish_in_book + 1) * 100)
+            math.ceil(dont_publish_in_book_logged_in /
+                      (dont_publish_in_book + 1) * 100)
         )
         + "%"
     )
@@ -807,7 +821,8 @@ def admin_set_notes(request):
 
         if datafile:
             try:
-                f = TextIOWrapper(datafile.file, encoding="utf-8 ", errors="replace")
+                f = TextIOWrapper(
+                    datafile.file, encoding="utf-8 ", errors="replace")
             except:
                 f = StringIO(datafile.file.read().decode())
             dialect = csv.Sniffer().sniff(f.read(), delimiters=";,")
@@ -820,7 +835,8 @@ def admin_set_notes(request):
                     print(row)
                     user = User.objects.get(email__iexact=row[3])
                     membership_output += (
-                        "User found: " + row[0] + ", " + row[1] + ", " + row[3] + "<br>"
+                        "User found: " + row[0] + ", " +
+                        row[1] + ", " + row[3] + "<br>"
                     )
                 except:
                     try:
@@ -867,7 +883,8 @@ def admin_set_notes(request):
                             u.first_name = names[0]
                             u.last_name = row[0]
                             u.password = "".join(
-                                random.choice(string.ascii_uppercase + string.digits)
+                                random.choice(
+                                    string.ascii_uppercase + string.digits)
                                 for _ in range(32)
                             )
                             u.save()
@@ -878,15 +895,20 @@ def admin_set_notes(request):
                             p.is_alumni = False
                             p.member_type = 1
 
-                            if row[6]:
+                            if len(row) > 6:
                                 p.member_until = row[6]
-                            if row[4]:
+                            if len(row) > 4:
+                                p.class_of_year = row[4]
+                                if len(row) > 5:
+                                    p.xq_year = row[5]
+                                else:
+                                    p.xq_year = row[4]
                                 p.class_of_year = row[4]
                                 if row[5]:
                                     p.xq_year = row[5]
                                 else:
                                     p.xq_year = row[4]
-                            p.save()
+                            p.save()G
                         continue
 
                     # print(e, row[3] + " not found")
@@ -901,7 +923,9 @@ def admin_set_notes(request):
                         user.first_name = names[0]
                         user.last_name = row[0]
 
-                        member_type_str = row[7].lower()
+                        member_type_str = ""
+                        if len(row) > 7:
+                            member_type_str = row[7].lower()
                         MEMBERTYPE_CHOICES = {
                             "alumni": 0,
                             "varsinainen": 1,
@@ -911,25 +935,25 @@ def admin_set_notes(request):
                             "kunniajäsen": 5,
                         }
                         p.member_type = MEMBERTYPE_CHOICES.get(member_type_str, 1)
-                        if member_type_str == "alumni":
+                        if(member_type_str == "alumni"):
                             p.is_alumni = True
 
                         if len(names) > 1:
                             p.middle_names = names[1]
-                        if row[2]:
+                        if len(row) > 1:
                             p.city = row[2]
-                        if row[6]:
-                            p.member_until = row[6]
-                        if row[8]:
-                            p.ayy_member = row[8].lower() == "true"
-                        if row[9]:
-                            p.pora_member = row[9].lower() == "true"
-                        if row[4]:
+                        if len(row) > 3:
                             p.class_of_year = row[4]
-                            if row[5]:
+                            if len(row) > 4:
                                 p.xq_year = row[5]
                             else:
                                 p.xq_year = row[4]
+                        if len(row) > 5:
+                            p.member_until = row[6]
+                        if len(row) > 7:
+                            p.ayy_member = row[8].lower() == "true"
+                        if len(row) > 8:
+                            p.pora_member = row[9].lower() == "true"
                         user.save()
                         user.person.save()
 
@@ -946,7 +970,7 @@ def admin_set_notes(request):
 
 @login_required(login_url="/login/")
 def index(request):
-    """Index"""
+    """ Index """
     return render(request, "ar_index.html")
 
 
@@ -1031,8 +1055,8 @@ def membership_status(request):
                 ("AYY member", "Yes" if person.ayy_member else "No"),
                 ("Class of year", person.class_of_year),
                 ("XQ year (year you use to register to events)", person.xq_year),
-            ],
-        },
+            ]
+        }
     )
 
 
@@ -1047,7 +1071,8 @@ def edit_person(user, person, adminview, template, form_action_url, request):
     # Submit Both Forms
     if request.method == "POST":
         user_form = UserForm(request.POST, instance=user, prefix="user_form")
-        person_form = PersonForm(request.POST, instance=person, prefix="person_form")
+        person_form = PersonForm(
+            request.POST, instance=person, prefix="person_form")
 
         if request.user.is_staff and adminview:
             admin_form = AdminPersonForm(
@@ -1131,9 +1156,11 @@ def edit_person(user, person, adminview, template, form_action_url, request):
 @login_required(login_url="/login/")
 def settings(request):
     user_form = UserForm(instance=request.user, prefix="user_form")
-    person_form = PersonForm(instance=request.user.person, prefix="person_form")
+    person_form = PersonForm(
+        instance=request.user.person, prefix="person_form")
     if request.method == "POST":
-        user_form = UserForm(request.POST, instance=request.user, prefix="user_form")
+        user_form = UserForm(
+            request.POST, instance=request.user, prefix="user_form")
         person_form = PersonForm(
             request.POST, instance=request.user.person, prefix="person_form"
         )
@@ -1166,7 +1193,7 @@ def settings(request):
 
 @login_required(login_url="/login/")
 def add_phone(request, person_pk):
-    """Add a new phone number object"""
+    """ Add a new phone number object """
     form = PhoneForm()
     if request.method == "POST":
         form = PhoneForm(request.POST)
@@ -1182,7 +1209,7 @@ def add_phone(request, person_pk):
 
 @login_required(login_url="/login/")
 def edit_phone(request, pk):
-    """Edit an existing phone object"""
+    """ Edit an existing phone object """
     obj = get_object_or_404(Phone, pk=pk)
     form = PhoneForm(instance=obj)
     if request.method == "POST":
@@ -1205,7 +1232,7 @@ def edit_phone(request, pk):
 
 @login_required(login_url="/login/")
 def delete_phone(request, pk):
-    """Delete an existing phone object"""
+    """ Delete an existing phone object """
     obj = get_object_or_404(Phone, pk=pk)
     form = PhoneForm(instance=obj)
     if request.method == "POST":
@@ -1225,7 +1252,7 @@ def delete_phone(request, pk):
 
 @login_required(login_url="/login/")
 def add_email(request, person_pk):
-    """Add a new email object"""
+    """ Add a new email object """
     form = EmailForm()
     if request.method == "POST":
         form = EmailForm(request.POST)
@@ -1241,7 +1268,7 @@ def add_email(request, person_pk):
 
 @login_required(login_url="/login/")
 def edit_email(request, pk):
-    """Edit an existing email object"""
+    """ Edit an existing email object """
     obj = get_object_or_404(Email, pk=pk)
     form = EmailForm(instance=obj)
     if request.method == "POST":
@@ -1264,7 +1291,7 @@ def edit_email(request, pk):
 
 @login_required(login_url="/login/")
 def delete_email(request, pk):
-    """Delete an existing email object"""
+    """ Delete an existing email object """
     obj = get_object_or_404(Email, pk=pk)
     form = EmailForm(instance=obj)
     if request.method == "POST":
@@ -1284,7 +1311,7 @@ def delete_email(request, pk):
 
 @login_required(login_url="/login/")
 def add_skill(request, person_pk):
-    """Add a new skill object"""
+    """ Add a new skill object """
     form = SkillForm()
     if request.method == "POST":
         form = SkillForm(request.POST)
@@ -1300,7 +1327,7 @@ def add_skill(request, person_pk):
 
 @login_required(login_url="/login/")
 def edit_skill(request, pk):
-    """Edit an existing skill object"""
+    """ Edit an existing skill object """
     obj = get_object_or_404(Skill, pk=pk)
     form = SkillForm(instance=obj)
     if request.method == "POST":
@@ -1323,7 +1350,7 @@ def edit_skill(request, pk):
 
 @login_required(login_url="/login/")
 def delete_skill(request, pk):
-    """Delete an existing skill object"""
+    """ Delete an existing skill object """
     obj = get_object_or_404(Skill, pk=pk)
     form = SkillForm(instance=obj)
     if request.method == "POST":
@@ -1343,7 +1370,7 @@ def delete_skill(request, pk):
 
 @login_required(login_url="/login/")
 def add_language(request, person_pk):
-    """Add a new language object"""
+    """ Add a new language object """
     form = LanguageForm()
     if request.method == "POST":
         form = LanguageForm(request.POST)
@@ -1359,7 +1386,7 @@ def add_language(request, person_pk):
 
 @login_required(login_url="/login/")
 def edit_language(request, pk):
-    """Edit an existing language object"""
+    """ Edit an existing language object """
     obj = get_object_or_404(Language, pk=pk)
     form = LanguageForm(instance=obj)
     if request.method == "POST":
@@ -1382,7 +1409,7 @@ def edit_language(request, pk):
 
 @login_required(login_url="/login/")
 def delete_language(request, pk):
-    """Delete an existing language object"""
+    """ Delete an existing language object """
     obj = get_object_or_404(Language, pk=pk)
     form = LanguageForm(instance=obj)
     if request.method == "POST":
@@ -1402,7 +1429,7 @@ def delete_language(request, pk):
 
 @login_required(login_url="/login/")
 def add_education(request, person_pk):
-    """Add a new education object"""
+    """ Add a new education object """
     form = EducationForm()
     if request.method == "POST":
         form = EducationForm(request.POST)
@@ -1418,7 +1445,7 @@ def add_education(request, person_pk):
 
 @login_required(login_url="/login/")
 def edit_education(request, pk):
-    """Edit an existing education object"""
+    """ Edit an existing education object """
     obj = get_object_or_404(Education, pk=pk)
     form = EducationForm(instance=obj)
     if request.method == "POST":
@@ -1441,7 +1468,7 @@ def edit_education(request, pk):
 
 @login_required(login_url="/login/")
 def delete_education(request, pk):
-    """Delete an existing education object"""
+    """ Delete an existing education object """
     obj = get_object_or_404(Education, pk=pk)
     form = EducationForm(instance=obj)
     if request.method == "POST":
@@ -1461,7 +1488,7 @@ def delete_education(request, pk):
 
 @login_required(login_url="/login/")
 def add_work_experience(request, person_pk):
-    """Add a new work experience object"""
+    """ Add a new work experience object """
     form = WorkExperienceForm()
     if request.method == "POST":
         form = WorkExperienceForm(request.POST)
@@ -1477,7 +1504,7 @@ def add_work_experience(request, person_pk):
 
 @login_required(login_url="/login/")
 def edit_work_experience(request, pk):
-    """Edit an existing work eperience object"""
+    """ Edit an existing work eperience object """
     obj = get_object_or_404(WorkExperience, pk=pk)
     form = WorkExperienceForm(instance=obj)
     if request.method == "POST":
@@ -1500,7 +1527,7 @@ def edit_work_experience(request, pk):
 
 @login_required(login_url="/login/")
 def delete_work_experience(request, pk):
-    """Delete an existing work experinece object"""
+    """ Delete an existing work experinece object """
     obj = get_object_or_404(WorkExperience, pk=pk)
     form = EducationForm(instance=obj)
     if request.method == "POST":
@@ -1520,7 +1547,7 @@ def delete_work_experience(request, pk):
 
 @login_required(login_url="/login/")
 def add_position_of_trust(request, person_pk):
-    """Add a new position of trust object"""
+    """ Add a new position of trust object """
     form = PositionOfTrustForm()
     if request.method == "POST":
         form = PositionOfTrustForm(request.POST)
@@ -1536,7 +1563,7 @@ def add_position_of_trust(request, person_pk):
 
 @login_required(login_url="/login/")
 def edit_position_of_trust(request, pk):
-    """Edit an existing position of trust object"""
+    """ Edit an existing position of trust object """
     obj = get_object_or_404(PositionOfTrust, pk=pk)
     form = PositionOfTrustForm(instance=obj)
     if request.method == "POST":
@@ -1559,7 +1586,7 @@ def edit_position_of_trust(request, pk):
 
 @login_required(login_url="/login/")
 def delete_position_of_trust(request, pk):
-    """Delete an existing position of trust object"""
+    """ Delete an existing position of trust object """
     obj = get_object_or_404(PositionOfTrust, pk=pk)
     form = PositionOfTrustForm(instance=obj)
     if request.method == "POST":
@@ -1579,7 +1606,7 @@ def delete_position_of_trust(request, pk):
 
 @login_required(login_url="/login/")
 def add_student_activity(request, person_pk):
-    """Add a new student activity object"""
+    """ Add a new student activity object """
     form = StudentActivityForm()
     if request.method == "POST":
         form = StudentActivityForm(request.POST)
@@ -1595,7 +1622,7 @@ def add_student_activity(request, person_pk):
 
 @login_required(login_url="/login/")
 def edit_student_activity(request, pk):
-    """Edit an existing student activity object"""
+    """ Edit an existing student activity object """
     obj = get_object_or_404(StudentOrganizationalActivity, pk=pk)
     form = StudentActivityForm(instance=obj)
     if request.method == "POST":
@@ -1618,7 +1645,7 @@ def edit_student_activity(request, pk):
 
 @login_required(login_url="/login/")
 def delete_student_activity(request, pk):
-    """Delete an existing student activity object"""
+    """ Delete an existing student activity object """
     obj = get_object_or_404(StudentOrganizationalActivity, pk=pk)
     form = StudentActivityForm(instance=obj)
     if request.method == "POST":
@@ -1638,7 +1665,7 @@ def delete_student_activity(request, pk):
 
 @login_required(login_url="/login/")
 def add_volunteer(request, person_pk):
-    """Add a new volunteer object"""
+    """ Add a new volunteer object """
     form = VolunteerForm()
     if request.method == "POST":
         form = VolunteerForm(request.POST)
@@ -1654,7 +1681,7 @@ def add_volunteer(request, person_pk):
 
 @login_required(login_url="/login/")
 def edit_volunteer(request, pk):
-    """Edit an existing volunteer object"""
+    """ Edit an existing volunteer object """
     obj = get_object_or_404(Volunteer, pk=pk)
     form = VolunteerForm(instance=obj)
     if request.method == "POST":
@@ -1677,7 +1704,7 @@ def edit_volunteer(request, pk):
 
 @login_required(login_url="/login/")
 def delete_volunteer(request, pk):
-    """Delete an existing volunteer object"""
+    """ Delete an existing volunteer object """
     obj = get_object_or_404(Volunteer, pk=pk)
     form = VolunteerForm(instance=obj)
     if request.method == "POST":
@@ -1697,7 +1724,7 @@ def delete_volunteer(request, pk):
 
 @login_required(login_url="/login/")
 def add_honor(request, person_pk):
-    """Add a new honor object"""
+    """ Add a new honor object """
     form = HonorForm()
     if request.method == "POST":
         form = HonorForm(request.POST)
@@ -1713,7 +1740,7 @@ def add_honor(request, person_pk):
 
 @login_required(login_url="/login/")
 def edit_honor(request, pk):
-    """Edit an existing honor object"""
+    """ Edit an existing honor object """
     obj = get_object_or_404(Honor, pk=pk)
     form = HonorForm(instance=obj)
     if request.method == "POST":
@@ -1736,7 +1763,7 @@ def edit_honor(request, pk):
 
 @login_required(login_url="/login/")
 def delete_honor(request, pk):
-    """Delete an existing honor object"""
+    """ Delete an existing honor object """
     obj = get_object_or_404(Honor, pk=pk)
     form = HonorForm(instance=obj)
     if request.method == "POST":
@@ -1756,7 +1783,7 @@ def delete_honor(request, pk):
 
 @login_required(login_url="/login/")
 def add_interest(request, person_pk):
-    """Add a new interest object"""
+    """ Add a new interest object """
     form = InterestForm()
     if request.method == "POST":
         form = InterestForm(request.POST)
@@ -1772,7 +1799,7 @@ def add_interest(request, person_pk):
 
 @login_required(login_url="/login/")
 def edit_interest(request, pk):
-    """Edit an existing interest object"""
+    """ Edit an existing interest object """
     obj = get_object_or_404(Interest, pk=pk)
     form = InterestForm(instance=obj)
     if request.method == "POST":
@@ -1795,7 +1822,7 @@ def edit_interest(request, pk):
 
 @login_required(login_url="/login/")
 def delete_interest(request, pk):
-    """Delete an existing interest object"""
+    """ Delete an existing interest object """
     obj = get_object_or_404(Interest, pk=pk)
     form = InterestForm(instance=obj)
     if request.method == "POST":
@@ -1815,7 +1842,7 @@ def delete_interest(request, pk):
 
 @login_required(login_url="/login/")
 def add_family_member(request, person_pk):
-    """Add a new family member object"""
+    """ Add a new family member object """
     form = FamilyMemberForm()
     if request.method == "POST":
         form = FamilyMemberForm(request.POST)
@@ -1831,7 +1858,7 @@ def add_family_member(request, person_pk):
 
 @login_required(login_url="/login/")
 def edit_family_member(request, pk):
-    """Edit an existing family member object"""
+    """ Edit an existing family member object """
     obj = get_object_or_404(FamilyMember, pk=pk)
     form = FamilyMemberForm(instance=obj)
     if request.method == "POST":
@@ -1854,7 +1881,7 @@ def edit_family_member(request, pk):
 
 @login_required(login_url="/login/")
 def delete_family_member(request, pk):
-    """Delete an existing family member object"""
+    """ Delete an existing family member object """
     obj = get_object_or_404(FamilyMember, pk=pk)
     form = FamilyMemberForm(instance=obj)
     if request.method == "POST":
@@ -1874,14 +1901,14 @@ def delete_family_member(request, pk):
 
 @login_required(login_url="/login/")
 def new_password(request):
-    """New password page"""
+    """ New password page """
     password_form = PasswordChangeForm(user=request.user)
     return render(request, "new_password.html", {"password_form": password_form})
 
 
 @login_required(login_url="/login/")
 def change_password(request):
-    """Post change password form"""
+    """ Post change password form """
     if request.method == "POST":
         user = request.user
         form = PasswordChangeForm(user=request.user, data=request.POST)
@@ -1892,14 +1919,15 @@ def change_password(request):
         else:
             for key in form.errors:
                 messages.warning(
-                    request, form.fields[key].label + ": " + form.errors[key][0]
+                    request, form.fields[key].label +
+                    ": " + form.errors[key][0]
                 )
     return redirect("rekisteri.views.new_password")
 
 
 @login_required(login_url="/login/")
 def public_profile(request, slug):
-    """Profile"""
+    """ Profile """
     profile = get_object_or_404(Person, slug=slug)
     # if not request.user.is_staff and (profile.is_alumni != request.user.person.is_alumni):
     #    return HttpResponseNotFound('<h1>Person not found</h1>')
@@ -1909,8 +1937,9 @@ def public_profile(request, slug):
 
 @login_required(login_url="/login/")
 def search(request):
-    """Search persons"""
-    queryset = Person.objects.exclude(is_hidden=True).exclude(user__is_active=False)
+    """ Search persons """
+    queryset = Person.objects.exclude(
+        is_hidden=True).exclude(user__is_active=False)
     first_name = request.GET.get("search_first_name", None)
     last_name = request.GET.get("search_last_name", None)
     class_of_year = request.GET.get("search_start_year", None)
@@ -1958,7 +1987,7 @@ def search(request):
 
 @staff_member_required(login_url="/login/")
 def register(request):
-    """Page for sign up"""
+    """ Page for sign up """
     form = RegisterForm()
     if request.method == "POST":
         form = RegisterForm(request.POST)
@@ -1972,13 +2001,13 @@ def register(request):
 
 @staff_member_required(login_url="/login/")
 def confirmation(request):
-    """Confirmation page after sign up"""
+    """ Confirmation page after sign up """
     return render(request, "confirmation.html", {})
 
 
 @login_required(login_url="/login/")
 def delete_profile(request):
-    """Delete the currently logged in user"""
+    """ Delete the currently logged in user """
     form = LoginForm(request, data=request.POST)
     if request.method == "POST":
         if not (
