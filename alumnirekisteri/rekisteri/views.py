@@ -908,7 +908,7 @@ def admin_set_notes(request):
                                     p.xq_year = row[5]
                                 else:
                                     p.xq_year = row[4]
-                            p.save()G
+                            p.save()
                         continue
 
                     # print(e, row[3] + " not found")
