@@ -1,9 +1,40 @@
-{% extends "base.html" %}
-{% load cms_tags i18n static %}
-
-{% block content %}
-    {% include "layout-components/jumbotron.html" %}
-    <div class="container container-error">
-        <h1>500</h1>
-    </div>
-{% endblock content %}
+{% comment %}
+The 500 page renders when something else has already failed, so it must be
+fully self-contained: no base template, no CMS tags, no URL reversing, no
+middleware or database dependencies.
+{% endcomment %}<!DOCTYPE html>
+<html lang="fi">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>500 | Prodeko</title>
+        <style>
+            body {
+                margin: 0;
+                display: flex;
+                min-height: 100vh;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                font-family: "Raleway", "Helvetica Neue", Arial, sans-serif;
+                color: #002e7d;
+            }
+            h1 {
+                margin: 0;
+                font-size: 7em;
+                font-weight: 900;
+            }
+            a {
+                color: #0053a0;
+            }
+        </style>
+    </head>
+    <body>
+        <main>
+            <h1>500</h1>
+            <p>Jotain meni pieleen. Yritä hetken kuluttua uudelleen.</p>
+            <p>Something went wrong. Please try again in a moment.</p>
+            <p><a href="/">prodeko.org</a></p>
+        </main>
+    </body>
+</html>

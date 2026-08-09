@@ -8,6 +8,11 @@
 {% trans "Reimbursements" as reimbursements %}
 {% trans "Privacy policy" as privacy_policy %}
 
+{# Apphook URLs only resolve while a published CMS page has the apphook #}
+{# attached. The "as var" form fails silently, so a missing page hides #}
+{# the link instead of crashing every page render with NoReverseMatch. #}
+{% url 'app_contact:contact' as contact_url %}
+
 <footer class="footer prodeko-footer container col-md-9 col-xl-8" id="footer">
     <div class="row" style="text-align: center;">
         <div class="col-sm-4">
@@ -21,9 +26,10 @@
                     <p><b>{% trans visiting_address %}:</b><br>TUAS-talo<br>Maarintie 8<br>02150 Espoo</p>
                 </div>
                 <div class="col-xl-7 col-sm-12 col-7 pl-xl-2">
-                    <p><u><a href="{% url 'app_contact:contact' %}">{% trans contact_form %}</a></u></p>
+                    {% if contact_url %}
+                        <p><u><a href="{{ contact_url }}">{% trans contact_form %}</a></u></p>
+                    {% endif %}
                     <p><u><a href="https://membership.prodeko.org/apply">{% trans apply_for_membership %}</a></u></p>
-                    <!-- <p><u><a href="{% url 'app_membership:apply' %}">{% trans apply_for_membership %}</a></u></p> -->
                     <p><u><a href="/privacy-policy">{% trans privacy_policy %}</a></u></p>
                 </div>
             </div>

@@ -397,6 +397,10 @@ DEFAULT_FROM_EMAIL = "no-reply@prodeko.org"
 SERVER_EMAIL = "no-reply@prodeko.org"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+# Error reports are mailed synchronously inside the request cycle
+# (AdminEmailHandler); without a timeout a slow SMTP server can hang
+# every gunicorn worker thread.
+EMAIL_TIMEOUT = 10
 
 CKEDITOR_UPLOAD_PATH = "ckeditor_uploads/"
 CKEDITOR_IMAGE_BACKEND = "pillow"
