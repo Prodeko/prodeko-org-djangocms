@@ -1,7 +1,8 @@
 from .base import *
 
 DEBUG = False
-ALLOWED_HOSTS = ["prodeko.org", ".prodeko.org", "prodeko.fi", ".prodeko.fi", "0.0.0.0"]
+# 127.0.0.1 is the deploy health check: deploy.sh curls gunicorn on loopback.
+ALLOWED_HOSTS = ["prodeko.org", ".prodeko.org", "prodeko.fi", ".prodeko.fi", "0.0.0.0", "127.0.0.1"]
 
 CORS_ALLOWED_ORIGINS = ["https://ilmo.prodeko.org", "https://browser.sentry-cdn.com"]
 
