@@ -6,8 +6,14 @@ on:
       - master
 
 jobs:
+  test:
+    uses: ./.github/workflows/test.yml
+    secrets: inherit
+
   build:
+    needs: test
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v3
 
@@ -20,12 +26,17 @@ jobs:
 
       - name: Build and push image
         run: |
-          docker build . -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/prodeko-org/prodeko-org
-          docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/prodeko-org/prodeko-org
+          IMAGE=${{ secrets.REGISTRY_LOGIN_SERVER }}/prodeko-org/prodeko-org
+          docker build . -t "$IMAGE:latest" -t "$IMAGE:${GITHUB_SHA::7}"
+          docker push "$IMAGE:latest"
+          docker push "$IMAGE:${GITHUB_SHA::7}"
 
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    # The Ansible deploy hangs indefinitely if the container on the VM
+    # doesn't respond to docker stop; fail the job instead.
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v3
 
@@ -36,7 +47,7 @@ jobs:
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
 
-      - name: Pull Ansible CI image        
+      - name: Pull Ansible CI image
         run: docker pull ${{ secrets.REGISTRY_LOGIN_SERVER }}/infrastructure/prodeko-ci:v2
 
       - name: Deploy project
