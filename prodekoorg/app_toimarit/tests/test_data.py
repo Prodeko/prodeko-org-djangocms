@@ -1,6 +1,7 @@
 from django.contrib.auth import get_user_model
-from prodekoorg.app_utils.tests.test_utils import CommonTestData
 from sekizai.context import SekizaiContext
+
+from prodekoorg.app_utils.tests.test_utils import CommonTestData
 
 from ..models import HallituksenJasen, Jaosto, Toimari
 

@@ -1,10 +1,7 @@
-import os
 from unittest.mock import Mock, patch
 
-import pytest
 from django.core import mail
 from django.core.files.uploadedfile import SimpleUploadedFile
-from django.test.utils import override_settings
 
 from .test_data import TestData
 
@@ -42,7 +39,7 @@ class MembershipViewTest(TestData):
 
         self.assertRedirects(
             response,
-            f"/fi/admin/app_membership/pendinguser/",
+            "/fi/admin/app_membership/pendinguser/",
         )
         self.assertEqual(len(mail.outbox), 1)
         subject = "Hakemuksesi Prodekon jäseneksi hyväksyttiin"
@@ -72,7 +69,7 @@ class MembershipViewTest(TestData):
 
         self.assertRedirects(
             response,
-            f"/fi/admin/app_membership/pendinguser/",
+            "/fi/admin/app_membership/pendinguser/",
         )
         self.assertEqual(len(mail.outbox), 1)
         subject = "Hakemuksesi Prodekon jäseneksi hylättiin"

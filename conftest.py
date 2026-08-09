@@ -30,10 +30,7 @@ def compiled_translations():
     """
     for po_path in Path(__file__).parent.joinpath("locale").rglob("*.po"):
         mo_path = po_path.with_suffix(".mo")
-        if (
-            not mo_path.exists()
-            or mo_path.stat().st_mtime < po_path.stat().st_mtime
-        ):
+        if not mo_path.exists() or mo_path.stat().st_mtime < po_path.stat().st_mtime:
             polib.pofile(str(po_path)).save_as_mofile(str(mo_path))
 
 

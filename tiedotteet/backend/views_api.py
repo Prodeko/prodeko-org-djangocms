@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from rest_framework.response import Response
 from rest_framework.views import APIView
+
 from tiedotteet.backend.models import Category, Message, Tag
 
 
@@ -43,7 +44,7 @@ class CategorySerializer(serializers.ModelSerializer):
 class ContentList(APIView):
     def get(self, request, format=None):
         queryset = Category.objects.all().order_by("order")
-        #if not request.user.is_authenticated:
+        # if not request.user.is_authenticated:
         #    queryset = queryset.exclude(login_required=True)
         serializer = CategorySerializer(queryset, many=True)
         return Response(serializer.data)

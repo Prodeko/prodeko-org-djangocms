@@ -2,15 +2,13 @@
 import random
 import string
 
+from auth2.models import *
 from django.contrib.auth.hashers import *
 from django.core.management.base import BaseCommand
-
-from auth2.models import *
 from rekisteri.models import *
 
 
 class Command(BaseCommand):
-
     help = "Tulkkaa se vanha paskakasa"
 
     def add_arguments(self, parser):

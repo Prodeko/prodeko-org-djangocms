@@ -22,7 +22,10 @@ def main_form(request):
         A Django TemplateResponse object that renders an html template.
     """
 
-    if request.method == "POST" and request.headers.get("x-requested-with") == "XMLHttpRequest":
+    if (
+        request.method == "POST"
+        and request.headers.get("x-requested-with") == "XMLHttpRequest"
+    ):
         form_apply = PendingUserForm(request.POST)
         is_valid_form = form_apply.is_valid()
         if is_valid_form:
@@ -30,7 +33,9 @@ def main_form(request):
 
             if not pending_user.has_accepted_policies:
                 return render(request, "app_membership_base.html", {"form": form_apply})
-            pending_user.payment_intent_id = request.META.get("HTTP_X_PAYMENT_INTENT_ID")
+            pending_user.payment_intent_id = request.META.get(
+                "HTTP_X_PAYMENT_INTENT_ID"
+            )
             pending_user.save()
             try:
                 send_email(pending_user)
@@ -50,6 +55,7 @@ def main_form(request):
 
 def done(request):
     return render(request, "app_membership_base.html", {"done": True})
+
 
 def send_email(user):
     """Send an information mail to mediakeisari@prodeko.org

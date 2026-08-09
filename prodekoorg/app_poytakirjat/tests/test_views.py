@@ -1,9 +1,7 @@
 import pytest
 from django.conf import settings
-from django.test.utils import override_settings
 from django.urls import reverse
 
-from ..models import Dokumentti
 from .test_data import TestData
 
 urlconf = "prodekoorg.urls"

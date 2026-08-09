@@ -4,8 +4,7 @@ from django.urls import re_path
 from django.views.generic import TemplateView
 from rest_framework.urlpatterns import format_suffix_patterns
 
-from alumnirekisteri.rekisteri import views
-from alumnirekisteri.rekisteri import views_api
+from alumnirekisteri.rekisteri import views, views_api
 
 # prevent logged in users for accessing /login/ url
 login_forbidden = user_passes_test(lambda u: u.is_anonymous(), "/")

@@ -1,14 +1,12 @@
 import csv
 import sys
 
-from django.core.management.base import BaseCommand
-
 from auth2.models import *
+from django.core.management.base import BaseCommand
 from rekisteri.models import *
 
 
 class Command(BaseCommand):
-
     help = "Import a csv where first column is email, second and third first and last name and fourth is the note to set"
 
     def add_arguments(self, parser):

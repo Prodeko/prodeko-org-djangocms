@@ -1,6 +1,6 @@
 from ckeditor.fields import RichTextField
-from django.core.files.storage import storages
 from django.conf import settings
+from django.core.files.storage import storages
 from django.db import models
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
@@ -9,6 +9,7 @@ from easy_thumbnails.fields import ThumbnailerImageField
 # Initialize (possibly remote) storage only once
 # instead of on every created thumbnail object
 _thumbnail_storage = storages["thumbnail"]
+
 
 class Virka(models.Model):
     """Position in the elections.
@@ -22,7 +23,9 @@ class Virka(models.Model):
 
     is_hallitus = models.BooleanField(default=False, verbose_name=_("Board"))
     is_visible = models.BooleanField(default=False, verbose_name=_("Visible"))
-    application_start = models.DateTimeField(default=timezone.now , verbose_name=_("Application start date"))
+    application_start = models.DateTimeField(
+        default=timezone.now, verbose_name=_("Application start date")
+    )
     name = models.CharField(max_length=50, unique=True, verbose_name=_("Position"))
     description = models.TextField(default="", verbose_name=_("Description"))
     sort_key = models.CharField(
@@ -36,7 +39,6 @@ class Virka(models.Model):
     def is_application_period(self):
         print(self.name, self.application_start)
         return self.application_start <= timezone.now()
-
 
     def __str__(self):
         return f"{self.name}"

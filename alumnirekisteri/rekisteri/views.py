@@ -1,36 +1,31 @@
+import base64
 import csv
 import math
 import os
 import random
 import string
 from datetime import datetime, timedelta
-from io import StringIO, TextIOWrapper
+from io import BytesIO, StringIO, TextIOWrapper
 from itertools import chain
 from shutil import make_archive
 from wsgiref.util import FileWrapper
-import qrcode
-from io import BytesIO
-import base64
 
-from django.contrib import messages
+import qrcode
 from django.conf import settings
+from django.contrib import messages
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.core.mail import EmailMultiAlternatives
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
-from django.core.cache import cache
 from django.db.models import F, Q, Value
 from django.http import (
     HttpResponseForbidden,
-    HttpResponseNotFound,
     JsonResponse,
     StreamingHttpResponse,
 )
-
 from django.shortcuts import (
     HttpResponse,
-    HttpResponseRedirect,
     get_object_or_404,
     redirect,
     render,
@@ -499,10 +494,12 @@ def admin_export_data(request):
                 row.append(
                     "§".join(
                         map(
-                            lambda x: x.title
-                            + ", "
-                            + x.organisation
-                            + (" (" + str(x.year) + ")" if x.year else ""),
+                            lambda x: (
+                                x.title
+                                + ", "
+                                + x.organisation
+                                + (" (" + str(x.year) + ")" if x.year else "")
+                            ),
                             sorted(p.honors.all(), key=sortByYear),
                         )
                     )
@@ -513,12 +510,14 @@ def admin_export_data(request):
                 row.append(
                     "§".join(
                         map(
-                            lambda x: x.first_name
-                            + " "
-                            + x.last_name
-                            + "("
-                            + x.get_member_type_display()
-                            + ")",
+                            lambda x: (
+                                x.first_name
+                                + " "
+                                + x.last_name
+                                + "("
+                                + x.get_member_type_display()
+                                + ")"
+                            ),
                             p.family_members.all(),
                         )
                     )

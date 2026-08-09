@@ -12,9 +12,7 @@ from pathlib import Path
 # base.py reads variables.txt; a fresh checkout only has the sample.
 _settings_dir = Path(__file__).resolve().parent
 if not (_settings_dir / "variables.txt").exists():
-    shutil.copy(
-        _settings_dir / "variables.sample.txt", _settings_dir / "variables.txt"
-    )
+    shutil.copy(_settings_dir / "variables.sample.txt", _settings_dir / "variables.txt")
 
 from .dev import *  # noqa: E402, F401, F403
 

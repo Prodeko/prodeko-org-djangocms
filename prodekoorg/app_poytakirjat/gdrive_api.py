@@ -338,7 +338,7 @@ def run_app_poytakirjat(request):
                 ),
             )
         else:
-            messages.add_message(request, messages.INFO, _(f"No documents downloaded."))
+            messages.add_message(request, messages.INFO, _("No documents downloaded."))
     except Exception as e:
         messages.add_message(
             request, messages.ERROR, _("Error downloading documents: {}").format(e)

@@ -12,7 +12,6 @@ from django.core.serializers import serialize
 from django.http import (
     Http404,
     HttpResponse,
-    HttpResponseForbidden,
     HttpResponseRedirect,
     JsonResponse,
 )
@@ -91,7 +90,10 @@ def delete_kysymys_view(request, pk):
     kysymys = get_object_or_404(Kysymys, pk=pk)
     if kysymys.created_by != request.user:
         raise PermissionDenied
-    if request.method == "POST" and request.headers.get("x-requested-with") == "XMLHttpRequest":
+    if (
+        request.method == "POST"
+        and request.headers.get("x-requested-with") == "XMLHttpRequest"
+    ):
         id = kysymys.id
         kysymys.delete()
         return JsonResponse({"delete_kysymys_id": id})
@@ -160,6 +162,7 @@ def is_duplicate_application(request, hidden_virka):
     else:
         return False
 
+
 @login_required
 def handle_submit_ehdokas(request, context):
     form_ehdokas = EhdokasForm(request.POST, request.FILES)
@@ -167,7 +170,6 @@ def handle_submit_ehdokas(request, context):
     context["form_ehdokas"] = form_ehdokas
 
     if form_ehdokas.is_valid():
-
         # Get hidden input values from POST
         hidden_virka, x, y, w, h = get_hidden_inputs(request.POST)
 
@@ -293,7 +295,10 @@ def main_view(request):
             return handle_submit_ehdokas(request, context)
         elif "submitVastaus" in request.POST:
             return handle_submit_answer(request, context)
-        elif "submitKysymys" in request.POST and request.headers.get("x-requested-with") == "XMLHttpRequest":
+        elif (
+            "submitKysymys" in request.POST
+            and request.headers.get("x-requested-with") == "XMLHttpRequest"
+        ):
             return handle_submit_kysymys(request, context)
         else:
             raise Http404
@@ -302,6 +307,7 @@ def main_view(request):
             initial={"name": f"{request.user.first_name} {request.user.last_name}"}
         )
         return render(request, "vaalit.html", context)
+
 
 def fill_root_ctx(context, request):
     virat = (
@@ -313,14 +319,15 @@ def fill_root_ctx(context, request):
         .filter(is_visible=True)
     )
 
-    virat_python= [
+    virat_python = [
         {
             "name": virka.name,
             "is_application_period": virka.is_application_period,
-            "application_start": virka.application_start.strftime('%d.%m.'),
+            "application_start": virka.application_start.strftime("%d.%m."),
             "is_hallitus": virka.is_hallitus,
             "is_visible": virka.is_visible,
-            "user_has_applied": request.user in set(e.auth_prodeko_user for e in virka.ehdokkaat.all())
+            "user_has_applied": request.user
+            in set(e.auth_prodeko_user for e in virka.ehdokkaat.all()),
         }
         for virka in virat
     ]
@@ -337,4 +344,3 @@ def fill_root_ctx(context, request):
     context["virat_json"] = json.dumps(virat_python)
     context["count_ehdokkaat_hallitus"] = len([v for v in virat if v.is_hallitus])
     context["count_ehdokkaat_toimarit"] = len([v for v in virat if not v.is_hallitus])
-

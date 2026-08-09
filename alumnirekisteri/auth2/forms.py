@@ -3,9 +3,9 @@ from django.contrib.auth import password_validation
 from django.contrib.auth.forms import (
     AuthenticationForm,
     SetPasswordForm,
-    UserCreationForm,
 )
 from django.utils.translation import gettext_lazy as _
+
 from auth_prodeko.models import User
 
 
@@ -101,7 +101,7 @@ class PasswordChangeForm(SetPasswordForm):
             "password_incorrect": _(
                 "Your old password was entered incorrectly. Please enter it again."
             )
-        }
+        },
     )
     old_password = forms.CharField(
         label=_("Old password"),

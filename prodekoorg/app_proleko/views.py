@@ -1,10 +1,11 @@
 import random
-from .models import Lehti, Post, Ad
-from django.contrib.auth.decorators import login_required
 from collections import OrderedDict
-from itertools import groupby
-from django.shortcuts import render
+
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseBadRequest, JsonResponse
+from django.shortcuts import render
+
+from .models import Ad, Lehti, Post
 
 COLORS = [
     "#FF8552",
@@ -67,7 +68,10 @@ def post(request, post_id):
 
 @login_required
 def like(request, post_id, user_id):
-    if request.method == "POST" and request.headers.get("x-requested-with") == "XMLHttpRequest":
+    if (
+        request.method == "POST"
+        and request.headers.get("x-requested-with") == "XMLHttpRequest"
+    ):
         post = Post.objects.get(pk=post_id)
         if request.POST.get("is_liked") == "true":
             post.likes.remove(request.user)

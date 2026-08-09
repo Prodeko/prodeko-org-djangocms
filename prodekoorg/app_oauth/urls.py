@@ -1,12 +1,14 @@
 import oauth2_provider.views as oauth2_views
 from django.conf import settings
+from django.contrib.auth.decorators import user_passes_test
 from django.urls import include, path
 
 from .views import UserDetails
-from django.contrib.auth.decorators import user_passes_test
+
 
 def is_superuser(user):
     return user.email in [email for _, email in settings.ADMINS]
+
 
 oauth2_superuser_required = user_passes_test(is_superuser)
 
@@ -18,7 +20,11 @@ oauth2_endpoint_views = [
 
 # OAuth2 Application Management endpoints
 oauth2_endpoint_views += [
-    path("applications/", oauth2_superuser_required(oauth2_views.ApplicationList.as_view()), name="list"),
+    path(
+        "applications/",
+        oauth2_superuser_required(oauth2_views.ApplicationList.as_view()),
+        name="list",
+    ),
     path(
         "applications/register/",
         oauth2_superuser_required(oauth2_views.ApplicationRegistration.as_view()),

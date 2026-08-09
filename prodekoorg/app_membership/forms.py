@@ -1,6 +1,4 @@
-from auth_prodeko.models import User
 from django.forms import (
-    CheckboxInput,
     ModelForm,
     RadioSelect,
     Textarea,
@@ -8,6 +6,8 @@ from django.forms import (
 )
 from django.utils import timezone
 from django.utils.translation import gettext as _
+
+from auth_prodeko.models import User
 
 from .models import PendingUser
 

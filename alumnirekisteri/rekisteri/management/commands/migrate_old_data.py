@@ -1,14 +1,12 @@
 # import numpy as np
 import json
 
-from django.core.management.base import BaseCommand
-
 from auth2.models import *
+from django.core.management.base import BaseCommand
 from rekisteri.models import *
 
 
 class Command(BaseCommand):
-
     help = "Tulkkaa se vanha paskakasa"
 
     Education.audit_log.all().delete()
@@ -460,7 +458,7 @@ class Command(BaseCommand):
             e.save()
 
         for sivutoimi in sivutoimet:
-            if not sivutoimi["ID_perus"] in person_id_dict.keys():
+            if sivutoimi["ID_perus"] not in person_id_dict.keys():
                 continue
             w = WorkExperience()
             w.person = person_id_dict[sivutoimi["ID_perus"]]
@@ -475,7 +473,7 @@ class Command(BaseCommand):
             w.save()
 
         for tyo in vanhatyo:
-            if not tyo["ID_perus"] in person_id_dict.keys():
+            if tyo["ID_perus"] not in person_id_dict.keys():
                 continue
             w = WorkExperience()
             w.person = person_id_dict[tyo["ID_perus"]]
@@ -501,7 +499,7 @@ class Command(BaseCommand):
             if not entop["ID_perus"]:
                 continue
             else:
-                if not entop["ID_perus"] in person_id_dict.keys():
+                if entop["ID_perus"] not in person_id_dict.keys():
                     continue
                 p = person_id_dict[entop["ID_perus"]]
                 e.person = p
@@ -615,7 +613,7 @@ class Command(BaseCommand):
             if not jatk["ID_perus"]:
                 continue
             else:
-                if not jatk["ID_perus"] in person_id_dict.keys():
+                if jatk["ID_perus"] not in person_id_dict.keys():
                     continue
                 p = person_id_dict[jatk["ID_perus"]]
                 e.person = p
@@ -728,7 +726,7 @@ class Command(BaseCommand):
         # print(without_email_perus, without_email_users)
 
         for kunn in akatkunn:
-            if not kunn["ID_perus"] in person_id_dict.keys():
+            if kunn["ID_perus"] not in person_id_dict.keys():
                 continue
             h = Honor()
             h.person = person_id_dict[kunn["ID_perus"]]
@@ -756,7 +754,7 @@ class Command(BaseCommand):
             h.save()
 
         for kunn in yo_kunn:
-            if not kunn["ID_perus"] in person_id_dict.keys():
+            if kunn["ID_perus"] not in person_id_dict.keys():
                 continue
             h = Honor()
             h.person = person_id_dict[kunn["ID_perus"]]
@@ -767,7 +765,7 @@ class Command(BaseCommand):
             h.save()
 
         for v in vuorilinj:
-            if not v["ID_perus"] in person_id_dict.keys():
+            if v["ID_perus"] not in person_id_dict.keys():
                 continue
             h = Honor()
             h.person = person_id_dict[v["ID_perus"]]
@@ -776,7 +774,7 @@ class Command(BaseCommand):
 
         for jtoim in jarjestotoiminta:
             s = StudentOrganizationalActivity()
-            if not jtoim["ID_perus"] in person_id_dict.keys():
+            if jtoim["ID_perus"] not in person_id_dict.keys():
                 continue
             s.person = person_id_dict[jtoim["ID_perus"]]
             s.organisation = jtoim["Järjestö"]
@@ -795,7 +793,7 @@ class Command(BaseCommand):
 
         for lteht in ltehts:
             p = PositionOfTrust()
-            if not lteht["ID_perus"] in person_id_dict.keys():
+            if lteht["ID_perus"] not in person_id_dict.keys():
                 continue
             p.person = person_id_dict[lteht["ID_perus"]]
             p.organisation = lteht["Organisaatio"]
@@ -811,7 +809,7 @@ class Command(BaseCommand):
 
         for puoliso in puolisot:
             f = FamilyMember()
-            if not puoliso["ID_perus"] in person_id_dict.keys():
+            if puoliso["ID_perus"] not in person_id_dict.keys():
                 continue
             f.person = person_id_dict[puoliso["ID_perus"]]
             if puoliso["Etunimi (P)"]:
@@ -830,7 +828,7 @@ class Command(BaseCommand):
 
         for lapsi in lapset:
             f = FamilyMember()
-            if not lapsi["ID_perus"] in person_id_dict.keys():
+            if lapsi["ID_perus"] not in person_id_dict.keys():
                 continue
             f.person = person_id_dict[lapsi["ID_perus"]]
             if lapsi["Etunimi (L)"]:

@@ -7,4 +7,4 @@ class AuthProdekoConfig(AppConfig):
     verbose_name = _("Prodeko authentication")
 
     def ready(self):
-        import auth_prodeko.signals
+        import auth_prodeko.signals  # noqa: F401

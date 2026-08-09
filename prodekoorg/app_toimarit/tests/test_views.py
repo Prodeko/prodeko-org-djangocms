@@ -1,8 +1,6 @@
 import os
 
-import pytest
 from django.core.files.uploadedfile import SimpleUploadedFile
-from django.test.utils import override_settings
 from django.urls import reverse
 
 from ..models import HallituksenJasen, Jaosto, Toimari

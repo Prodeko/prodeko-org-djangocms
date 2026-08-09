@@ -1,16 +1,12 @@
-import sentry_sdk
-from sentry_sdk.integrations.django import DjangoIntegration
-from sentry_sdk.integrations.redis import RedisIntegration
-
 from .base import *
 
-#sentry_sdk.init(
+# sentry_sdk.init(
 #    dsn=SENTRY_DSN,
 #    environment=SENTRY_ENV,
 #    integrations=[DjangoIntegration(), RedisIntegration()],
 #    send_default_pii=True,
 #    traces_sample_rate=0.3,
-#)
+# )
 
 DEBUG = False
 ALLOWED_HOSTS = ["prodeko.org", ".prodeko.org", "prodeko.fi", ".prodeko.fi", "0.0.0.0"]
@@ -32,7 +28,7 @@ DATABASES = {
         "HOST": DB_HOST,
         "PORT": DB_PORT,
         "CONN_MAX_AGE": None,
-        "DISABLE_SERVER_SIDE_CURSORS": True
+        "DISABLE_SERVER_SIDE_CURSORS": True,
     }
 }
 

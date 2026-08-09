@@ -5,7 +5,6 @@ from django.forms import Textarea
 from django.shortcuts import redirect
 from django.urls import path, reverse
 from django.utils.html import format_html
-
 from django.utils.translation import gettext as _
 
 from .models import PendingUser
@@ -28,7 +27,6 @@ class PendingUserAdmin(admin.ModelAdmin):
     def accept_memberships(self, request, queryset):
         for user in queryset:
             user.accept_membership(request, user.pk)
-
 
     accept_memberships.short_description = _("Accept selected memberships")
 

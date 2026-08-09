@@ -5,8 +5,9 @@ from cms.api import create_page
 from cms.constants import TEMPLATE_INHERITANCE_MAGIC
 from django.contrib.auth import get_user_model
 from django.core.files import File
-from prodekoorg.app_utils.tests.test_utils import CommonTestData
 from sekizai.context import SekizaiContext
+
+from prodekoorg.app_utils.tests.test_utils import CommonTestData
 
 from ..models import Dokumentti
 
