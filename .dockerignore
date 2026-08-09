@@ -9,3 +9,5 @@ prodekoorg/media/*
 .coverage
 *.json
 !data.json
+prodekoorg/settings/variables.txt
+prodekoorg/service_account.json

@@ -63,16 +63,9 @@ Myös abisivut, auth_prodeko, seminaari ja tiedotteet ovat omia appejaan, vaikka
 
 ### Deployaus palvelimelle
 
-## Azure
+Kun masteriin pusketaan tai mergetään, repoon määritetty Github Actions pipeline aktivoituu. Pipeline ajaa ensin testit, buildaa ja puskee kontin Azure Container Registryyn tageilla `sha-<sha>` ja `master`, ja deployaa lopuksi kontin palvelimelle SSH:n yli. Palvelimella `deploy.sh` vetää uuden imagen, lataa staattiset tiedostot Azure Storageen, ajaa migraatiot ja terveystarkastaa uuden version - jos terveystarkastus epäonnistuu, edellinen image palautetaan automaattisesti.
 
-Kun masteriin pusketaan tai mergetään tavaraan repoon määritetty Github Actions pipeline aktivoituu. Pipeline buildaa ja puskee automaattisesti kontin Azure Container Registryyn sekä deployaa kontin palvelimelle [infrastructure repon](https://github.com/Prodeko/infrastructure/tree/master/ansible) playbookin avulla.
-
-Mikäli deployaus halutaan suorittaa manuaalisesti, onnistuu se seuraavilla komennoilla:
-
-1. Kirjaudu Prodekon docker registryyn: `az acr login --name prodekoregistry`
-2. Buildaa image: `docker build . -t prodekoregistry.azurecr.io/prodeko-org/prodeko-org`
-3. Puske image registryyn: `docker push prodekoregistry.azurecr.io/prodeko-org/prodeko-org`
-4. Aja infrastructure reposta: `ansible-playbook playbook.yml --extra-vars '@passwd.yml' --tags prodeko_org`
+Jo buildatun imagen saa deployattua uudelleen (esim. rollback) ajamalla [infrastructure repon](https://github.com/Prodeko/infrastructure) `Redeploy`-workflown manuaalisesti GitHub Actionsista antamalla deployattavan imagen SHA:n parametrina.
 
 ### Testaus
 

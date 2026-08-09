@@ -129,6 +129,9 @@ STATICFILES_FINDERS = [
 # SASS config
 # Uses: https://github.com/jrief/django-sass-processor
 SASS_PRECISION = 8
+# The production image bakes CSS at build time under non-prod settings, so
+# output style must not depend on DEBUG.
+SASS_OUTPUT_STYLE = "compressed"
 
 # Template config
 TEMPLATES = [
