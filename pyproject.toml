@@ -99,6 +99,7 @@ dev = [
     "attrs>=25.3.0",
     "black>=25.1.0",
     "django-debug-toolbar>=5.2.0,<6",
+    "polib>=1.2.0",
     "pylint>=3.3.8",
     "pylint-django>=2.6.1",
     "pytest-cov>=6.2.1",
