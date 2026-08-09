@@ -2,12 +2,23 @@ from pathlib import Path
 
 import polib
 import pytest
+from cms.utils.permissions import set_current_user
 from django.contrib.auth import get_user_model
 
 
 @pytest.fixture(autouse=True)
 def enable_db_access_for_all_tests(db):
     pass
+
+
+@pytest.fixture(autouse=True)
+def reset_cms_current_user():
+    """django-cms's CurrentUserMiddleware stores the request user in a
+    module-level threading.local that nothing clears after the response,
+    so a user from one test leaks into cms's post_save signal handlers
+    in later tests and inserts rows referencing rolled-back PKs."""
+    set_current_user(None)
+    yield
 
 
 @pytest.fixture(autouse=True, scope="session")
