@@ -1,13 +1,5 @@
 from .base import *
 
-# sentry_sdk.init(
-#    dsn=SENTRY_DSN,
-#    environment=SENTRY_ENV,
-#    integrations=[DjangoIntegration(), RedisIntegration()],
-#    send_default_pii=True,
-#    traces_sample_rate=0.3,
-# )
-
 DEBUG = False
 ALLOWED_HOSTS = ["prodeko.org", ".prodeko.org", "prodeko.fi", ".prodeko.fi", "0.0.0.0"]
 

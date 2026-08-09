@@ -3,6 +3,9 @@ name: Test
 on:
   pull_request:
   workflow_call:
+    secrets:
+      CODECOV_TOKEN:
+        required: false
 
 jobs:
   test:

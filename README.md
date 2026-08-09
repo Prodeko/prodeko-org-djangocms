@@ -21,7 +21,7 @@ $ sudo apt install libpq-dev
 $ curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
-Asenna lisäksi eslint, prettier, stylelint, pylint, jinjalint ja black ajamalla seuraavat komennot:
+Asenna lisäksi eslint, prettier, stylelint, pylint, jinjalint ja ruff ajamalla seuraavat komennot:
 
 ```shell
 $ npm install
@@ -83,13 +83,13 @@ Windowsilla on suositeltavaa ajaa kaikki tämänkin osion komennot WSL:n sisäll
 - Testit ajetaan suoraan uv:lla, mitään palveluita ei tarvitse olla käynnissä: `uv run pytest`
 - Testien kattavuus ja rinnakkaisajo: `uv run pytest --cov -n auto`
 - Lint ja formatointi: `uv run ruff check .` ja `uv run ruff format .`
-- **Tietyn appin testit saa ajettua näin: `docker exec prodeko_org uv run pytest prodekoorg/app_toimarit`**
+- **Tietyn appin testit saa ajettua näin: `uv run pytest prodekoorg/app_toimarit`**
 
 ### Koodityyli
 
 Käytössä seuraavat työkalut:
 
-- python: pylint + black
+- python: pylint + ruff
 - html: curlylint
 - javascript: eslint + prettier
 - css: stylelint + prettier
@@ -110,13 +110,11 @@ $ pylint --load-plugins pylint_django prodekoorg/
 
 Konfiguraatiotiedosto [pyproject.toml](./pyproject.toml).
 
-Aja black:
+Aja ruff:
 
 ```shell
-$ black .
-
-All done! ✨ 🍰 ✨
-48 files left unchanged.
+$ ruff format .
+$ ruff check --fix .
 ```
 
 #### HTML

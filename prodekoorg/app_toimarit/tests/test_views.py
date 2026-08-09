@@ -32,7 +32,7 @@ class AppToimaritViewTest(TestData):
         accessed and the user is not an admin.
         """
 
-        self.client.login(email="test1@test.com", password="test1salasana")
+        self.client.force_login(self.test_user1)
 
         response = self.client.get(reverse("admin:hallitus_postcsv"))
         self.assertRedirects(
@@ -45,7 +45,7 @@ class AppToimaritViewTest(TestData):
         Tests that hallitus postcsv view works correctly.
         """
 
-        self.client.login(email="test2@test.com", password="test2salasana")
+        self.client.force_login(self.test_user2)
 
         test_data = {
             "file": SimpleUploadedFile(
@@ -75,7 +75,7 @@ class AppToimaritViewTest(TestData):
         Tests that toimari postcsv view works correctly.
         """
 
-        self.client.login(email="test2@test.com", password="test2salasana")
+        self.client.force_login(self.test_user2)
 
         test_data = {
             "file": SimpleUploadedFile("csv_toimari_test.csv", csv_toimari_test.read())

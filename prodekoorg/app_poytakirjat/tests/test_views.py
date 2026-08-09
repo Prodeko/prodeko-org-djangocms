@@ -25,7 +25,7 @@ class DokumenttiViewTest(TestData):
         """
 
         self.client.cookies.load({settings.LANGUAGE_COOKIE_NAME: "fi"})
-        self.client.login(email="test1@test.com", password="test1salasana")
+        self.client.force_login(self.test_user1)
         test_data = {"folderID": "1RD-AIF6GuB08wDSFKxNxRZgBu2BtPEli"}
         response = self.client.post(
             reverse("admin:download_docs_from_gsuite"), data=test_data
@@ -40,7 +40,7 @@ class DokumenttiViewTest(TestData):
         Test that template renders the correct number of documents.
         """
 
-        self.client.login(email="test1@test.com", password="test1salasana")
+        self.client.force_login(self.test_user1)
 
         response = self.client.get("/fi/kokouspoytakirjat/")
 
@@ -59,7 +59,7 @@ class DokumenttiViewTest(TestData):
         database is destroyed after the test run.
         """
 
-        self.client.login(email="test2@test.com", password="test2salasana")
+        self.client.force_login(self.test_user2)
         test_data = {"folderID": "1RD-AIF6GuB08wDSFKxNxRZgBu2BtPEli"}
         response = self.client.post(
             reverse("admin:download_docs_from_gsuite"), data=test_data
