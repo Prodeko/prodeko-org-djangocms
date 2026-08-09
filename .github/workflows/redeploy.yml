@@ -1,0 +1,36 @@
+name: Redeploy
+
+# Redeploys an already-built image (rollback or replay) without test/build.
+# The image for the given sha must exist in ACR; deploy.sh aborts on pull
+# failure before touching the running stack.
+
+on:
+  workflow_dispatch:
+    inputs:
+      sha:
+        description: Full 40-hex commit sha of an already-built image
+        required: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Set up SSH
+        env:
+          SSH_KEY: ${{ secrets.VM_SSH_KEY }}
+          VM_HOST: ${{ secrets.VM_HOST }}
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s\n' "$SSH_KEY" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -H "$VM_HOST" >> ~/.ssh/known_hosts
+
+      - name: Deploy on VM
+        env:
+          VM_USER: ${{ secrets.VM_USER }}
+          VM_HOST: ${{ secrets.VM_HOST }}
+          IMAGE_TAG: sha-${{ inputs.sha }}
+        run: |
+          ssh -i ~/.ssh/id_ed25519 "$VM_USER@$VM_HOST" \
+            "IMAGE_TAG=$IMAGE_TAG /srv/www/prodeko-org/deploy.sh"
