@@ -30,6 +30,8 @@ $ uv sync
 $ source .venv/bin/activate
 ```
 
+Valinnainen: asenna git-hookit komennolla `uvx pre-commit install`, jolloin ruff ajetaan automaattisesti ennen committia.
+
 Windowsilla on suositeltavaa ajaa nämä WSL:n sisällä.
 
 ### Kehittäminen
