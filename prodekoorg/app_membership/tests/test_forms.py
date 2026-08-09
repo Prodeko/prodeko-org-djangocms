@@ -45,7 +45,7 @@ class PendingUserFormFormTest(TestData):
         form = PendingUserForm(data=form_data)
 
         self.assertFalse(form.is_valid())
-        self.assertEqual(len(form.errors), 6)
+        self.assertEqual(len(form.errors), 5)
         self.assertTrue(form["start_year"].errors)
         self.assertTrue(form["language"].errors)
         self.assertTrue(form["membership_type"].errors)

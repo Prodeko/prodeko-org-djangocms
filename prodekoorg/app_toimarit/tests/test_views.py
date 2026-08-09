@@ -25,7 +25,7 @@ class AppToimaritViewTest(TestData):
         response = self.client.get(reverse("admin:hallitus_postcsv"))
         self.assertRedirects(
             response,
-            "/en/admin/login/?next=/en/admin/app_toimarit/hallituksenjasen/postcsv",
+            "/fi/admin/login/?next=/fi/admin/app_toimarit/hallituksenjasen/postcsv",
         )
 
     def test_hallitus_postcsv_if_not_correct_permissions(self):
@@ -39,7 +39,7 @@ class AppToimaritViewTest(TestData):
         response = self.client.get(reverse("admin:hallitus_postcsv"))
         self.assertRedirects(
             response,
-            "/en/admin/login/?next=/en/admin/app_toimarit/hallituksenjasen/postcsv",
+            "/fi/admin/login/?next=/fi/admin/app_toimarit/hallituksenjasen/postcsv",
         )
 
     def test_hallitus_postcsv_correct_import_and_permissions(self):

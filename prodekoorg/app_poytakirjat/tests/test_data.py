@@ -3,7 +3,6 @@ from unittest.mock import MagicMock
 
 from cms.api import create_page
 from cms.constants import TEMPLATE_INHERITANCE_MAGIC
-from cms.test_utils.testcases import CMSTestCase
 from django.contrib.auth import get_user_model
 from django.core.files import File
 from prodekoorg.app_utils.tests.test_utils import CommonTestData
@@ -14,11 +13,10 @@ from ..models import Dokumentti
 GDRIVE_ID = "1GUkGy5KDJ7HG9DNbbjUELs_KEBUcE-oV"
 
 
-class TestData(CMSTestCase, CommonTestData):
+class TestData(CommonTestData):
     """Common test data for app_poytakirjat tests.
 
     Args:
-        CMSTestCase: http://docs.django-cms.org/en/latest/how_to/testing.html.
         CommonTestData: Defined in prodekoorg.app_utils.test.test_utils
     """
 

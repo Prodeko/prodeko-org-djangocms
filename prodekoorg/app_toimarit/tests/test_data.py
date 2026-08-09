@@ -1,4 +1,3 @@
-from cms.test_utils.testcases import CMSTestCase
 from django.contrib.auth import get_user_model
 from prodekoorg.app_utils.tests.test_utils import CommonTestData
 from sekizai.context import SekizaiContext
@@ -6,11 +5,10 @@ from sekizai.context import SekizaiContext
 from ..models import HallituksenJasen, Jaosto, Toimari
 
 
-class TestData(CMSTestCase, CommonTestData):
+class TestData(CommonTestData):
     """Common test data for app_toimarit tests.
 
     Args:
-        CMSTestCase: http://docs.django-cms.org/en/latest/how_to/testing.html.
         CommonTestData: Defined in prodekoorg.app_utils.test.test_utils
     """
 

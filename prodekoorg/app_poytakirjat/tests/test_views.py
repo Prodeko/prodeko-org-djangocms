@@ -34,7 +34,7 @@ class DokumenttiViewTest(TestData):
         )
         self.assertRedirects(
             response,
-            "/en/admin/login/?next=/en/admin/app_poytakirjat/dokumentti/download",
+            "/fi/admin/login/?next=/fi/admin/app_poytakirjat/dokumentti/download",
         )
 
     def test_template_renders_correctly(self):

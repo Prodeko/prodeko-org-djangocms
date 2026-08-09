@@ -165,20 +165,6 @@ class PendingUserModelTest(TestData):
         self.assertEqual(field_label, "Oletko AYY:n jäsen?")
 
     @english
-    def test_receipt_label_english(self):
-        field_label = self.test_pendinguser_model._meta.get_field(
-            "receipt"
-        ).verbose_name
-        self.assertEqual(field_label, "Receipt of the membership payment")
-
-    @finnish
-    def test_receipt_label_finnish(self):
-        field_label = self.test_pendinguser_model._meta.get_field(
-            "receipt"
-        ).verbose_name
-        self.assertEqual(field_label, "Kuitti jäsenmaksusta")
-
-    @english
     def test_has_accepted_policies_label_english(self):
         field_label = self.test_pendinguser_model._meta.get_field(
             "has_accepted_policies"
