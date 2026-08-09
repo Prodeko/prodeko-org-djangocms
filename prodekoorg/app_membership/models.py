@@ -105,7 +105,7 @@ class PendingUser(models.Model):
 
         main_groups_api(request, self.user.email, MAILING_LIST_PRODEKO)
         add_to_mailchimp(request, self.user.email)
-        if self.user.language == "FI":
+        if self.language == "FI":
            main_groups_api(request, self.user.email, MAILING_LIST_PORA)
 
         messages.success(request, _("Membership application accepted."))
