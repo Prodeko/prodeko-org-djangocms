@@ -39,3 +39,12 @@ RUN --mount=type=cache,target=/root/.cache/uv \
 ENV PATH="/app/.venv/bin:$PATH"
 
 COPY --from=tiedotteet-build /app/public/tiedotteet /app/tiedotteet/frontend/public/tiedotteet
+
+# Bake translations and compiled SCSS into the image. Build has no secrets:
+# manage.py runs under test settings (sqlite + locmem cache, no external
+# services) against the sample config, since dev settings' CACHES needs a
+# live Redis that isn't reachable at build time; the runtime bind mount
+# shadows this placeholder variables.txt with the real one regardless.
+RUN cp prodekoorg/settings/variables.sample.txt prodekoorg/settings/variables.txt \
+  && DJANGO_SETTINGS_MODULE=prodekoorg.settings.test python3 manage.py compilemessages -l fi \
+  && DJANGO_SETTINGS_MODULE=prodekoorg.settings.test python3 manage.py compilescss
