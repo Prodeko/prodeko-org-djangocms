@@ -80,8 +80,9 @@ Windowsilla on suositeltavaa ajaa kaikki tämänkin osion komennot WSL:n sisäll
 
 - Käynnistä projekti komennolla `docker-compose up`
 - Avaa uusi terminal window
-- Testit saa ajettua komennolla `docker exec prodeko_org uv run pytest prodekoorg/`
-- Testien kattavuus ja rinnakkaisajo `docker exec prodeko_org uv run pytest --cov -n auto prodekoorg/`
+- Testit ajetaan suoraan uv:lla, mitään palveluita ei tarvitse olla käynnissä: `uv run pytest`
+- Testien kattavuus ja rinnakkaisajo: `uv run pytest --cov -n auto`
+- Lint ja formatointi: `uv run ruff check .` ja `uv run ruff format .`
 - **Tietyn appin testit saa ajettua näin: `docker exec prodeko_org uv run pytest prodekoorg/app_toimarit`**
 
 ### Koodityyli
