@@ -28,7 +28,7 @@ def add_to_mailchimp(request, email):
         client = MailchimpMarketing.Client()
         client.set_config({"api_key": settings.MAILCHIMP_API_KEY, "server": "us17"})
 
-        response = client.lists.add_list_member(
+        client.lists.add_list_member(
             settings.MAILCHIMP_LIST_ID, {"email_address": email, "status": "subscribed"}
         )
 

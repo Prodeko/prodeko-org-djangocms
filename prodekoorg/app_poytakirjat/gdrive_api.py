@@ -151,8 +151,6 @@ def create_models_from_folders(request, service, folders_dict):
             except ValueError:
                 number = 999
 
-            year = folder_name[-4:]
-
             # Get date from folder name
             date = datetime.strptime(folder_name[3:], "%d.%m.%Y").date()
             document_name = f"Hallituksen kokous {number}"

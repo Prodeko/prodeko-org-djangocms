@@ -260,7 +260,6 @@ def handle_submit_answer(request, context):
         vastaus.save()
 
         mark_as_unread(vastaus.to_question.to_virka.pk)
-        html = render_to_string("vaalit_answer.html", context, request)
 
         return redirect("app_vaalit:vaalit")
     else:

@@ -76,10 +76,7 @@ class Command(BaseCommand):
         user_id_dict = {}
         person_id_dict = {}
         user_email_dict = {}
-        tekn_op_dict = {}
 
-        without_email_users = 0
-        without_email_perus = 0
         for user in users:
             email = user["email"].strip()
 
@@ -383,10 +380,10 @@ class Command(BaseCommand):
             if persu["Kielitaito"]:
                 languages = persu["Kielitaito"].split(",")
                 for language in languages:
-                    l = Language()
-                    l.person = p
-                    l.language = language
-                    l.save()
+                    language_entry = Language()
+                    language_entry.person = p
+                    language_entry.language = language
+                    language_entry.save()
 
             if persu["Harrastukset"]:
                 interests = persu["Harrastukset"].split(",")
@@ -447,12 +444,12 @@ class Command(BaseCommand):
             if tekn["Opinnot alkaneet"] and tekn["Opinnot alkaneet"] != "NULL":
                 try:
                     e.start_year = int(tekn["Opinnot alkaneet"])
-                except:
+                except Exception:
                     print("viallinen vuosi", tekn["Opinnot alkaneet"])
             if tekn["Valmistumisvuosi"] and tekn["Valmistumisvuosi"] != "NULL":
                 try:
                     e.end_year = int(tekn["Valmistumisvuosi"])
-                except:
+                except Exception:
                     pass
 
             e.save()

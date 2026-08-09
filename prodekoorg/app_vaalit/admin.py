@@ -48,7 +48,6 @@ class VirkaAdmin(admin.ModelAdmin):
         if request.method == "POST":
             form = MyActionForm(request.POST)
             if form.is_valid():
-                date = form.cleaned_data["date"]
                 selected.update(application_start=form.cleaned_data["date"])
                 self.message_user(request, "Action completed")
                 return HttpResponseRedirect("/admin/app_vaalit/virka/")

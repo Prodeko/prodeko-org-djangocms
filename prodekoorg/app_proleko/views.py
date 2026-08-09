@@ -49,19 +49,18 @@ def posts(request):
             color2 = random.choice(COLORS)
         post["color2"] = color2
 
-    l = list(posts_dict)
+    posts_list = list(posts_dict)
     for i in range(len(ads)):
         # After three first posts, every 5 posts
         # with index correction i (list changes on every append)
-        l.insert(3 + i * 5 + i, ads[i])
+        posts_list.insert(3 + i * 5 + i, ads[i])
 
-    return render(request, "posts.html", {"posts": l})
+    return render(request, "posts.html", {"posts": posts_list})
 
 
 @login_required
 def post(request, post_id):
     post = Post.objects.get(pk=post_id)
-    user_id = request.user.id
     has_liked = request.user.post_set.filter(id=post_id).exists()
     return render(request, "post.html", {"post": post, "has_liked": has_liked})
 

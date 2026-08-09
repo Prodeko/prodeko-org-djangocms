@@ -60,7 +60,7 @@ for u in users:
             last_name=last_name,
             is_active=True,
         )
-    except:
+    except Exception:
         print(f"Exeption!\n{last_name} - {first_name} \n")
     uid = u["pk"]
     for p in persons:
