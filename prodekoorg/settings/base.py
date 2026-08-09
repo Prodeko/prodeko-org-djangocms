@@ -311,15 +311,15 @@ THUMBNAIL_BASEDIR = "image_thumbnails"
 THUMBNAIL_HIGH_RESOLUTION = True
 
 STORAGES = {
-        "thumbnail": {
-            "BACKEND": "easy_thumbnails.storage.ThumbnailFileSystemStorage",
-        },
-        "default": {
-            "BACKEND": "django.core.files.storage.FileSystemStorage",
-        },
-        "staticfiles": {
-            "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
-        },
+    "thumbnail": {
+        "BACKEND": "easy_thumbnails.storage.ThumbnailFileSystemStorage",
+    },
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+    },
 }
 
 # Config for djangocms-text-ckeditor

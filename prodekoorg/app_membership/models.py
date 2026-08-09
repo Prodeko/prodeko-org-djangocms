@@ -2,7 +2,6 @@ from django.conf import settings
 from django.contrib import messages
 from django.core.mail import EmailMultiAlternatives
 from django.core.validators import (
-    FileExtensionValidator,
     MaxValueValidator,
     MinValueValidator,
 )
@@ -11,9 +10,9 @@ from django.template.loader import render_to_string
 from django.utils import timezone
 from django.utils.crypto import get_random_string
 from django.utils.translation import gettext_lazy as _
+
 from prodekoorg.app_membership.constants import MAILING_LIST_PORA, MAILING_LIST_PRODEKO
 from prodekoorg.app_membership.groups_api import main_groups_api
-
 from prodekoorg.app_membership.mailchimp_api import add_to_mailchimp
 
 
@@ -91,7 +90,8 @@ class PendingUser(models.Model):
         default=False, verbose_name=_("Has paid the membership fee")
     )
     payment_intent_id = models.CharField(
-        max_length=255, null=True, blank=True, verbose_name=_("Payment intent ID"))
+        max_length=255, null=True, blank=True, verbose_name=_("Payment intent ID")
+    )
 
     def accept_membership(self, request, account_id, *args, **kwargs):
         if not self.has_paid:
@@ -105,8 +105,8 @@ class PendingUser(models.Model):
 
         main_groups_api(request, self.user.email, MAILING_LIST_PRODEKO)
         add_to_mailchimp(request, self.user.email)
-        if self.user.language == "FI":
-           main_groups_api(request, self.user.email, MAILING_LIST_PORA)
+        if self.language == "FI":
+            main_groups_api(request, self.user.email, MAILING_LIST_PORA)
 
         messages.success(request, _("Membership application accepted."))
         self.delete()
@@ -152,7 +152,7 @@ class PendingUser(models.Model):
         msg = EmailMultiAlternatives(subject, text_content, from_email, [email_to])
         msg.attach_alternative(html_content, "text/html")
         msg.send()
-    
+
     def update_payment(self):
         self.has_paid = True
         self.save()

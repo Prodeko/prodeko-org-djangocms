@@ -11,7 +11,6 @@ from django.forms import (
     PasswordInput,
     Select,
     SelectMultiple,
-    Textarea,
     TextInput,
 )
 from django.utils.translation import gettext_lazy as _

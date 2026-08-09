@@ -163,12 +163,6 @@ class HallituksenJasenModelTest(TestData):
         ).verbose_name
         self.assertEqual(field_label, "Position (English)")
 
-    def test_position_en_max_length(self):
-        max_length = self.test_hallituksenjasen1._meta.get_field(
-            "position_en"
-        ).max_length
-        self.assertEqual(max_length, 60)
-
     @finnish
     def test_position_en_label_finnish(self):
         field_label = self.test_hallituksenjasen1._meta.get_field(

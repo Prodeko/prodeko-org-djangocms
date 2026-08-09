@@ -1,36 +1,30 @@
+import base64
 import csv
 import math
 import os
 import random
 import string
 from datetime import datetime, timedelta
-from io import StringIO, TextIOWrapper
+from io import BytesIO, StringIO, TextIOWrapper
 from itertools import chain
 from shutil import make_archive
 from wsgiref.util import FileWrapper
-import qrcode
-from io import BytesIO
-import base64
 
+import qrcode
 from django.contrib import messages
-from django.conf import settings
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.core.mail import EmailMultiAlternatives
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
-from django.core.cache import cache
 from django.db.models import F, Q, Value
 from django.http import (
     HttpResponseForbidden,
-    HttpResponseNotFound,
     JsonResponse,
     StreamingHttpResponse,
 )
-
 from django.shortcuts import (
     HttpResponse,
-    HttpResponseRedirect,
     get_object_or_404,
     redirect,
     render,
@@ -444,8 +438,6 @@ def admin_export_data(request):
             if request.POST.get("work_experiences"):
                 experiences = sorted(p.work_experiences.all(), key=sortByEndDate)
                 current_positions = filter(lambda e: not e.end_year, experiences)
-                current_position = ""
-                current_organisation = ""
                 row.append("§".join(map(displayPosition, current_positions)))
                 row.append("§".join(map(displayPosition, experiences)))
 
@@ -499,10 +491,12 @@ def admin_export_data(request):
                 row.append(
                     "§".join(
                         map(
-                            lambda x: x.title
-                            + ", "
-                            + x.organisation
-                            + (" (" + str(x.year) + ")" if x.year else ""),
+                            lambda x: (
+                                x.title
+                                + ", "
+                                + x.organisation
+                                + (" (" + str(x.year) + ")" if x.year else "")
+                            ),
                             sorted(p.honors.all(), key=sortByYear),
                         )
                     )
@@ -513,12 +507,14 @@ def admin_export_data(request):
                 row.append(
                     "§".join(
                         map(
-                            lambda x: x.first_name
-                            + " "
-                            + x.last_name
-                            + "("
-                            + x.get_member_type_display()
-                            + ")",
+                            lambda x: (
+                                x.first_name
+                                + " "
+                                + x.last_name
+                                + "("
+                                + x.get_member_type_display()
+                                + ")"
+                            ),
                             p.family_members.all(),
                         )
                     )
@@ -808,7 +804,7 @@ def admin_set_notes(request):
         if datafile:
             try:
                 f = TextIOWrapper(datafile.file, encoding="utf-8 ", errors="replace")
-            except:
+            except Exception:
                 f = StringIO(datafile.file.read().decode())
             dialect = csv.Sniffer().sniff(f.read(), delimiters=";,")
             f.seek(0)
@@ -822,7 +818,7 @@ def admin_set_notes(request):
                     membership_output += (
                         "User found: " + row[0] + ", " + row[1] + ", " + row[3] + "<br>"
                     )
-                except:
+                except Exception:
                     try:
                         # löyty nimellä, eri email
                         user = User.objects.get(
@@ -840,7 +836,7 @@ def admin_set_notes(request):
                         )
                         # print(user.email, row[2])
                         continue
-                    except:
+                    except Exception:
                         # ei löytynyt emaililla eikä nimellä
                         membership_output += (
                             "Didn't find person: "
@@ -1065,7 +1061,7 @@ def edit_person(user, person, adminview, template, form_action_url, request):
             person.save()
         if all([form.is_valid() for form in forms]):
             for form in forms:
-                obj = form.save()
+                form.save()
             messages.success(request, "Tiedot tallennettu")
             return JsonResponse({"success": True})
         else:
@@ -1207,7 +1203,6 @@ def edit_phone(request, pk):
 def delete_phone(request, pk):
     """Delete an existing phone object"""
     obj = get_object_or_404(Phone, pk=pk)
-    form = PhoneForm(instance=obj)
     if request.method == "POST":
         obj.delete()
         messages.success(request, "Puhelinnumero poistettu")
@@ -1266,7 +1261,6 @@ def edit_email(request, pk):
 def delete_email(request, pk):
     """Delete an existing email object"""
     obj = get_object_or_404(Email, pk=pk)
-    form = EmailForm(instance=obj)
     if request.method == "POST":
         obj.delete()
         messages.success(request, "Sähköpostiosoite poistettu")
@@ -1325,7 +1319,6 @@ def edit_skill(request, pk):
 def delete_skill(request, pk):
     """Delete an existing skill object"""
     obj = get_object_or_404(Skill, pk=pk)
-    form = SkillForm(instance=obj)
     if request.method == "POST":
         obj.delete()
         messages.success(request, "Skilli poistettu")
@@ -1384,7 +1377,6 @@ def edit_language(request, pk):
 def delete_language(request, pk):
     """Delete an existing language object"""
     obj = get_object_or_404(Language, pk=pk)
-    form = LanguageForm(instance=obj)
     if request.method == "POST":
         obj.delete()
         messages.success(request, "Kieli poistettu")
@@ -1443,7 +1435,6 @@ def edit_education(request, pk):
 def delete_education(request, pk):
     """Delete an existing education object"""
     obj = get_object_or_404(Education, pk=pk)
-    form = EducationForm(instance=obj)
     if request.method == "POST":
         obj.delete()
         messages.success(request, "Koulutustieto poistettu")
@@ -1502,7 +1493,6 @@ def edit_work_experience(request, pk):
 def delete_work_experience(request, pk):
     """Delete an existing work experinece object"""
     obj = get_object_or_404(WorkExperience, pk=pk)
-    form = EducationForm(instance=obj)
     if request.method == "POST":
         obj.delete()
         messages.success(request, "Työkokemus poistettu")
@@ -1561,7 +1551,6 @@ def edit_position_of_trust(request, pk):
 def delete_position_of_trust(request, pk):
     """Delete an existing position of trust object"""
     obj = get_object_or_404(PositionOfTrust, pk=pk)
-    form = PositionOfTrustForm(instance=obj)
     if request.method == "POST":
         obj.delete()
         # messages.success(request, 'Luottamustehtävä poistettu')
@@ -1620,7 +1609,6 @@ def edit_student_activity(request, pk):
 def delete_student_activity(request, pk):
     """Delete an existing student activity object"""
     obj = get_object_or_404(StudentOrganizationalActivity, pk=pk)
-    form = StudentActivityForm(instance=obj)
     if request.method == "POST":
         obj.delete()
         # messages.success(request, 'Luottamustehtävä poistettu')
@@ -1679,7 +1667,6 @@ def edit_volunteer(request, pk):
 def delete_volunteer(request, pk):
     """Delete an existing volunteer object"""
     obj = get_object_or_404(Volunteer, pk=pk)
-    form = VolunteerForm(instance=obj)
     if request.method == "POST":
         obj.delete()
         # messages.success(request, 'Luottamustehtävä poistettu')
@@ -1738,7 +1725,6 @@ def edit_honor(request, pk):
 def delete_honor(request, pk):
     """Delete an existing honor object"""
     obj = get_object_or_404(Honor, pk=pk)
-    form = HonorForm(instance=obj)
     if request.method == "POST":
         obj.delete()
         # messages.success(request, 'Luottamustehtävä poistettu')
@@ -1797,7 +1783,6 @@ def edit_interest(request, pk):
 def delete_interest(request, pk):
     """Delete an existing interest object"""
     obj = get_object_or_404(Interest, pk=pk)
-    form = InterestForm(instance=obj)
     if request.method == "POST":
         obj.delete()
         # messages.success(request, 'Luottamustehtävä poistettu')
@@ -1856,7 +1841,6 @@ def edit_family_member(request, pk):
 def delete_family_member(request, pk):
     """Delete an existing family member object"""
     obj = get_object_or_404(FamilyMember, pk=pk)
-    form = FamilyMemberForm(instance=obj)
     if request.method == "POST":
         obj.delete()
         # messages.success(request, 'Luottamustehtävä poistettu')
@@ -1883,7 +1867,6 @@ def new_password(request):
 def change_password(request):
     """Post change password form"""
     if request.method == "POST":
-        user = request.user
         form = PasswordChangeForm(user=request.user, data=request.POST)
         if form.is_valid():
             form.save()

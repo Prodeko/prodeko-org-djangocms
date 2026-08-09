@@ -85,7 +85,7 @@ def hallitus_postcsv(request):
                 if not image:
                     try:
                         image = Image.objects.get(
-                            original_filename__startswith=f"anonymous_prodeko",
+                            original_filename__startswith="anonymous_prodeko",
                         )
                     except Image.DoesNotExist:
                         image = None
@@ -149,7 +149,7 @@ def toimari_postcsv(request):
                 if not image:
                     try:
                         image = Image.objects.get(
-                            original_filename__startswith=f"anonymous_prodeko",
+                            original_filename__startswith="anonymous_prodeko",
                         )
                     except Image.DoesNotExist:
                         image = None

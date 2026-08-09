@@ -1,6 +1,6 @@
-from datetime import datetime
 import secrets
 import string
+from datetime import datetime
 
 from django.conf import settings
 from django.db.models.signals import post_save
@@ -31,7 +31,7 @@ def create_alumnregistry_profile(sender, instance, created, **kwargs):
             year = datetime.now().year
             if datetime.now().month > 5:
                 year += 1
-            
+
             member_until = datetime.strptime(f"{year}-12-31", "%Y-%m-%d")
 
             if pendinguser.membership_type == "TR":

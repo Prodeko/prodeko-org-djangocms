@@ -1,10 +1,11 @@
 import random
-from .models import Lehti, Post, Ad
-from django.contrib.auth.decorators import login_required
 from collections import OrderedDict
-from itertools import groupby
-from django.shortcuts import render
+
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseBadRequest, JsonResponse
+from django.shortcuts import render
+
+from .models import Ad, Lehti, Post
 
 COLORS = [
     "#FF8552",
@@ -48,26 +49,28 @@ def posts(request):
             color2 = random.choice(COLORS)
         post["color2"] = color2
 
-    l = list(posts_dict)
+    posts_list = list(posts_dict)
     for i in range(len(ads)):
         # After three first posts, every 5 posts
         # with index correction i (list changes on every append)
-        l.insert(3 + i * 5 + i, ads[i])
+        posts_list.insert(3 + i * 5 + i, ads[i])
 
-    return render(request, "posts.html", {"posts": l})
+    return render(request, "posts.html", {"posts": posts_list})
 
 
 @login_required
 def post(request, post_id):
     post = Post.objects.get(pk=post_id)
-    user_id = request.user.id
     has_liked = request.user.post_set.filter(id=post_id).exists()
     return render(request, "post.html", {"post": post, "has_liked": has_liked})
 
 
 @login_required
 def like(request, post_id, user_id):
-    if request.method == "POST" and request.headers.get("x-requested-with") == "XMLHttpRequest":
+    if (
+        request.method == "POST"
+        and request.headers.get("x-requested-with") == "XMLHttpRequest"
+    ):
         post = Post.objects.get(pk=post_id)
         if request.POST.get("is_liked") == "true":
             post.likes.remove(request.user)

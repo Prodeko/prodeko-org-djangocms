@@ -12,6 +12,7 @@ from django.template.loader import get_template
 from django.utils import timezone
 from django.utils.html import strip_tags
 from django.utils.translation import gettext as _
+
 from tiedotteet.backend.forms import (
     CategoryForm,
     EditForm,
@@ -416,7 +417,7 @@ def send_email(request):
             try:
                 email.send()
                 return JsonResponse({"success": True})
-            except Exception as e:
+            except Exception:
                 return JsonResponse(
                     {"success": False, "errors": {"mail": "failed to send"}}
                 )

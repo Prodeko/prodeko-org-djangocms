@@ -1,11 +1,10 @@
-from requests import get
-
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.contrib.staticfiles.storage import staticfiles_storage
 from django.http import HttpResponse, StreamingHttpResponse
 from django.shortcuts import render
 from django.views.decorators import gzip
+from requests import get
 
 
 @gzip.gzip_page
@@ -33,7 +32,7 @@ def stream(request):
         response["Cache-Control"] = "no-cache"
         response["Cache-Control"] = "private"
         return response
-    except Exception as e:
+    except Exception:
         img = staticfiles_storage.open("images/kiltiskamera/webcam_offline.jpg")
         response = HttpResponse(img, content_type="image/jpeg")
         return response

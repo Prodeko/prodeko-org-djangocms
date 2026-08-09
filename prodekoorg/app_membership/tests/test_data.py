@@ -1,23 +1,20 @@
 from unittest.mock import MagicMock
 
-import pytest
 from cms.api import create_page
 from cms.constants import TEMPLATE_INHERITANCE_MAGIC
-from cms.test_utils.testcases import CMSTestCase
 from django.contrib.auth import get_user_model
 from django.core.files import File
-from django.core.files.uploadedfile import SimpleUploadedFile
-from prodekoorg.app_utils.tests.test_utils import CommonTestData
 from sekizai.context import SekizaiContext
+
+from prodekoorg.app_utils.tests.test_utils import CommonTestData
 
 from ..models import PendingUser
 
 
-class TestData(CMSTestCase, CommonTestData):
+class TestData(CommonTestData):
     """Common test data for app_membership tests.
 
     Args:
-        CMSTestCase: http://docs.django-cms.org/en/latest/how_to/testing.html.
         CommonTestData: Defined in prodekoorg.app_utils.test.test_utils
     """
 
@@ -48,7 +45,7 @@ class TestData(CMSTestCase, CommonTestData):
         cls.file_mock_jpg.name = "test.jpg"
 
         cls.test_pendinguser_model = PendingUser.objects.create(
-            user=None,
+            user=cls.test_user1,
             first_name="Mediakeisari",
             last_name="Mediakeisari",
             hometown="Espoo",
@@ -60,6 +57,7 @@ class TestData(CMSTestCase, CommonTestData):
             additional_info="muistakaa tehdä testejä!",
             is_ayy_member="Y",
             has_accepted_policies=True,
+            has_paid=True,
         )
 
         super(TestData, cls).setUpTestData()

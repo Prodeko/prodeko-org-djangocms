@@ -1,37 +1,37 @@
 name: Test
 
 on:
-  push:
-    branches:
-      - '*'
-      - '!master'
+  pull_request:
+  workflow_call:
+    secrets:
+      CODECOV_TOKEN:
+        required: false
 
 jobs:
   test:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
-      - name: Setup variables
-        run: cp prodekoorg/settings/variables.sample.txt prodekoorg/settings/variables.txt
-
-      - uses: satackey/action-docker-layer-caching@v0.0.11
-        continue-on-error: true
-
-      - name: Start docker-compose stack
-        run: docker-compose up -d
-
-      - name: Sleep
-        uses: jakejarvis/wait-action@master
+      - uses: astral-sh/setup-uv@v5
         with:
-          time: '45s'
+          enable-cache: true
 
-      - name: Run pytest
-        run: docker exec prodeko_org pytest --cov --cov-report=xml prodekoorg/
+      - name: Install dependencies
+        run: uv sync --locked
+
+      - name: Lint
+        run: |
+          uv run ruff check .
+          uv run ruff format --check .
+
+      - name: Run tests
+        run: uv run pytest --cov --cov-report=xml --cov-fail-under=58
 
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v1
+        uses: codecov/codecov-action@v4
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          file: ./coverage.xml
+          files: ./coverage.xml
           flags: unittests

@@ -1,5 +1,5 @@
-from django.forms import ModelForm
 from django import forms
+from django.forms import ModelForm
 
 from .models import Ehdokas, Kysymys, Vastaus
 
@@ -42,6 +42,5 @@ class VastausForm(ModelForm):
 
 class MyActionForm(forms.Form):
     date = forms.DateField(
-        widget=forms.DateInput(attrs={'type': 'date'}),
-        label='Select a date'
+        widget=forms.DateInput(attrs={"type": "date"}), label="Select a date"
     )

@@ -16,7 +16,7 @@ class SlideSerializer(serializers.ModelSerializer):
 
 
 class SlidesList(APIView):
-    """ List all slides """
+    """List all slides"""
 
     def get(self, request, format=None):
         queryset = Slide.objects.all().order_by("-start_datetime")
@@ -26,6 +26,6 @@ class SlidesList(APIView):
 
 
 def now(request):
-    """ Return current time"""
+    """Return current time"""
     now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     return HttpResponse(json.dumps(now), content_type="application/json")

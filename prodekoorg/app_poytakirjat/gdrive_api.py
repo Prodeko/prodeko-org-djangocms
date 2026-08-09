@@ -151,8 +151,6 @@ def create_models_from_folders(request, service, folders_dict):
             except ValueError:
                 number = 999
 
-            year = folder_name[-4:]
-
             # Get date from folder name
             date = datetime.strptime(folder_name[3:], "%d.%m.%Y").date()
             document_name = f"Hallituksen kokous {number}"
@@ -338,7 +336,7 @@ def run_app_poytakirjat(request):
                 ),
             )
         else:
-            messages.add_message(request, messages.INFO, _(f"No documents downloaded."))
+            messages.add_message(request, messages.INFO, _("No documents downloaded."))
     except Exception as e:
         messages.add_message(
             request, messages.ERROR, _("Error downloading documents: {}").format(e)

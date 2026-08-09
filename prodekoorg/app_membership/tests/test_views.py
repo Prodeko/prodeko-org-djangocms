@@ -1,10 +1,7 @@
-import os
 from unittest.mock import Mock, patch
 
-import pytest
 from django.core import mail
 from django.core.files.uploadedfile import SimpleUploadedFile
-from django.test.utils import override_settings
 
 from .test_data import TestData
 
@@ -20,7 +17,7 @@ class MembershipViewTest(TestData):
 
         mock_initialize_service.members.insert.execute = Mock()
 
-        self.client.login(email="test2@test.com", password="test2salasana")
+        self.client.force_login(self.test_user2)
 
         response = self.client.get(
             f"/fi/admin/app_membership/pendinguser/{self.test_pendinguser_model.id}/accept/",
@@ -42,7 +39,7 @@ class MembershipViewTest(TestData):
 
         self.assertRedirects(
             response,
-            f"/fi/admin/app_membership/pendinguser/",
+            "/fi/admin/app_membership/pendinguser/",
         )
         self.assertEqual(len(mail.outbox), 1)
         subject = "Hakemuksesi Prodekon jäseneksi hyväksyttiin"
@@ -56,7 +53,7 @@ class MembershipViewTest(TestData):
 
         mock_initialize_service.members.insert.execute = Mock()
 
-        self.client.login(email="test2@test.com", password="test2salasana")
+        self.client.force_login(self.test_user2)
 
         applicant = self.test_pendinguser_model
 
@@ -72,7 +69,7 @@ class MembershipViewTest(TestData):
 
         self.assertRedirects(
             response,
-            f"/fi/admin/app_membership/pendinguser/",
+            "/fi/admin/app_membership/pendinguser/",
         )
         self.assertEqual(len(mail.outbox), 1)
         subject = "Hakemuksesi Prodekon jäseneksi hylättiin"
@@ -83,7 +80,7 @@ class MembershipViewTest(TestData):
         Test valid form submission. Includes the empty/management form data.
         """
 
-        self.client.login(email="test1@test.com", password="test1salasana")
+        self.client.force_login(self.test_user1)
 
         test_data = {
             "id": 1,
@@ -121,7 +118,7 @@ class MembershipViewTest(TestData):
         Test invalid form submission. The email is invalid.
         """
 
-        self.client.login(email="test1@test.com", password="test1salasana")
+        self.client.force_login(self.test_user1)
 
         test_data = {
             "id": 1,

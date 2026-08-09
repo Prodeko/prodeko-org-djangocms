@@ -1,5 +1,5 @@
 """
-Script to migrate alumnirekisteri data conform 
+Script to migrate alumnirekisteri data conform
 to prodeko-org-djangocms model hierarchy.
 
 1. uv run manage.py dumpdata > alumnirekisteri_db.json
@@ -10,10 +10,11 @@ to prodeko-org-djangocms model hierarchy.
 6. uv run manage.py loaddata --exclude auth --exclude admin --exclude contenttypes --verbosity 3 ar_other.json
 """
 
-import sys
-import os
-import django
 import json
+import os
+import sys
+
+import django
 from django.contrib.auth import get_user_model
 
 sys.path.append("prodekoorg")
@@ -59,7 +60,7 @@ for u in users:
             last_name=last_name,
             is_active=True,
         )
-    except:
+    except Exception:
         print(f"Exeption!\n{last_name} - {first_name} \n")
     uid = u["pk"]
     for p in persons:

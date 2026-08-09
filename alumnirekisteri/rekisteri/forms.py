@@ -6,7 +6,6 @@ from auth_prodeko.models import User
 
 
 class RegisterForm(auth2RegisterForm):
-
     first_name = forms.CharField(
         label="Etunimi",
         widget=forms.DateInput(
@@ -95,7 +94,7 @@ class RegisterForm(auth2RegisterForm):
 
 
 class UserForm(forms.ModelForm):
-    """ Edit User model fields """
+    """Edit User model fields"""
 
     class Meta:
         model = User
@@ -113,7 +112,7 @@ class UserForm(forms.ModelForm):
 
 
 class AdminPersonForm(forms.ModelForm):
-    """ Edit person model fields that are only accessible to admin """
+    """Edit person model fields that are only accessible to admin"""
 
     class Meta:
         model = Person
@@ -178,7 +177,7 @@ class AdminPersonForm(forms.ModelForm):
 
 
 class PersonForm(forms.ModelForm):
-    """ Edit Person fields """
+    """Edit Person fields"""
 
     class Meta:
         model = Person
@@ -903,13 +902,15 @@ class WorkExperienceForm(forms.ModelForm):
         ]
         widgets = {
             "organisation": forms.TextInput(attrs={"class": "form-control"}),
-            "is_founding_member": forms.CheckboxInput(attrs={
+            "is_founding_member": forms.CheckboxInput(
+                attrs={
                     "class": "",
                     "data-toggle": "toggle",
                     "data-on": "Olen",
                     "data-off": "En",
                     "data-size": "mini",
-                }),
+                }
+            ),
             "position": forms.TextInput(attrs={"class": "form-control"}),
             "start_year": forms.NumberInput(attrs={"class": "form-control"}),
             "start_month": forms.Select(attrs={"class": "form-control"}),

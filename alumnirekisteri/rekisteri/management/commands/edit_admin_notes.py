@@ -1,14 +1,11 @@
 import csv
-import sys
-
-from django.core.management.base import BaseCommand
 
 from auth2.models import *
+from django.core.management.base import BaseCommand
 from rekisteri.models import *
 
 
 class Command(BaseCommand):
-
     help = "Import a csv where first column is email, second and third first and last name and fourth is the note to set"
 
     def add_arguments(self, parser):
@@ -25,8 +22,7 @@ class Command(BaseCommand):
                 # print(row[0], row[1])
                 try:
                     user = User.objects.get(email=row[0])
-                except:
-                    e = sys.exc_info()[0]
+                except Exception:
                     try:
                         # löyty nimellä, eri email
                         user = User.objects.get(first_name=row[1], last_name=row[2])
@@ -40,10 +36,9 @@ class Command(BaseCommand):
                          email.person = user.person
                          email.save()
                          """
-                    except:
+                    except Exception:
                         # ei löytynyt emaililla eikä nimellä
                         i += 1
-                        e2 = sys.exc_info()[0]
                         print("Didn't find person", row[0], row[1], row[2])
                         continue
 

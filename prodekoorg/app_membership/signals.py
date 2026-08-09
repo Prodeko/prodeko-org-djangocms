@@ -41,5 +41,5 @@ def delete_user_from_mailing_list(sender, instance, **kwargs):
             groupKey=MAILING_LIST_PORA, memberKey=instance.email
         ).execute()
 
-    except HttpError as e:
+    except HttpError:
         pass
