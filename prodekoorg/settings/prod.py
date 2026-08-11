@@ -8,7 +8,7 @@ ALLOWED_HOSTS = [
     "prodeko.fi",
     ".prodeko.fi",
     "0.0.0.0",
-    "127.0.0.1"
+    "127.0.0.1",
 ]
 
 CORS_ALLOWED_ORIGINS = ["https://ilmo.prodeko.org", "https://browser.sentry-cdn.com"]
