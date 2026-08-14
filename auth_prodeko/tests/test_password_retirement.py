@@ -77,6 +77,25 @@ def test_already_unusable_passwords_are_not_counted_again():
     assert _retire.retire_passwords(historical_user_model(), break_glass_email="") == 0
 
 
+def test_migration_leaves_an_empty_database_alone(settings):
+    """A fresh database has no password to retire, so nothing to guard."""
+    settings.KEYCLOAK_BREAK_GLASS_EMAIL = ""
+
+    _migration.forwards(historical_apps(), None)
+
+    assert not User.objects.exists()
+
+
+def test_migration_passes_over_a_database_whose_passwords_are_already_gone(settings):
+    settings.KEYCLOAK_BREAK_GLASS_EMAIL = ""
+    user = User.objects.create_user(email="a@prodeko.org", password=None)
+
+    _migration.forwards(historical_apps(), None)
+
+    user.refresh_from_db()
+    assert not user.has_usable_password()
+
+
 def test_migration_refuses_to_run_without_a_break_glass_email(settings):
     settings.KEYCLOAK_BREAK_GLASS_EMAIL = ""
     User.objects.create_user(email="a@prodeko.org", password="hunter2hunter2")

@@ -2,7 +2,7 @@ from django.conf import settings
 from django.contrib.auth.hashers import UNUSABLE_PASSWORD_PREFIX
 from django.db import migrations
 
-from ._retire import retire_passwords
+from ._retire import accounts_to_retire, retire_passwords
 
 
 class NoBreakGlassAccount(RuntimeError):
@@ -42,6 +42,13 @@ def check_break_glass_account(user_model, break_glass_email: str) -> None:
 def forwards(apps, schema_editor):
     break_glass_email = getattr(settings, "KEYCLOAK_BREAK_GLASS_EMAIL", "")
     user_model = apps.get_model("auth_prodeko", "User")
+
+    # A database with no password to retire cannot be locked out of by this
+    # migration, so it needs no break-glass account: a fresh install migrates
+    # before it has any account at all.
+    if not accounts_to_retire(user_model, break_glass_email).exists():
+        return
+
     check_break_glass_account(user_model, break_glass_email)
     retire_passwords(user_model, break_glass_email)
 
@@ -50,10 +57,10 @@ class Migration(migrations.Migration):
     """Authentication moves to Keycloak; local passwords stop being usable.
 
     Deliberately irreversible: the hashes are gone once this has run, and
-    restoring them is not something a reverse migration could do. It therefore
-    refuses to run at all unless the break-glass account exists and can sign
-    in, so an outage of the identity provider cannot lock us out of our own
-    site.
+    restoring them is not something a reverse migration could do. Whenever it
+    has a password to retire it therefore refuses to run at all unless the
+    break-glass account exists and can sign in, so an outage of the identity
+    provider cannot lock us out of our own site.
     """
 
     dependencies = [("auth_prodeko", "0003_keycloak_link")]
