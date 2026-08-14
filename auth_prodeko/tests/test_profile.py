@@ -9,45 +9,29 @@ def _db(db):
     pass
 
 
-def test_profile_form_has_no_password_fields():
-    from auth_prodeko.forms import EditProfileForm
-
-    assert set(EditProfileForm(User()).fields) == {"email"}
-
-
-def test_profile_page_lets_a_user_change_their_email(client):
-    user = User.objects.create_user(email="before@prodeko.org")
-    client.force_login(user)
-    response = client.post("/en/profile/", {"email": "after@prodeko.org"})
-    assert response.status_code == 302
-    user.refresh_from_db()
-    assert user.email == "after@prodeko.org"
-
-
-def test_profile_page_rejects_an_email_another_account_already_has(client):
-    """User.email is unique, so a bare save() would be a 500."""
+def test_profile_page_shows_the_signed_in_members_address(client):
     user = User.objects.create_user(email="mine@prodeko.org")
-    other = User.objects.create_user(email="taken@prodeko.org")
     client.force_login(user)
 
-    response = client.post("/en/profile/", {"email": "taken@prodeko.org"})
+    response = client.get("/en/profile/")
 
     assert response.status_code == 200
-    assert response.context["form"].errors["email"]
-    user.refresh_from_db()
-    other.refresh_from_db()
-    assert user.email == "mine@prodeko.org"
-    assert other.email == "taken@prodeko.org"
+    assert "mine@prodeko.org" in response.content.decode()
 
 
-def test_profile_page_accepts_your_own_unchanged_email(client):
-    """The uniqueness check must not collide with the user's own row."""
+def test_profile_page_requires_login(client):
+    response = client.get("/en/profile/")
+    assert response.status_code == 302
+    assert "/login/" in response["Location"]
+
+
+def test_profile_page_ignores_a_posted_email(client):
+    """Keycloak owns the address; the page offers no way to change it here."""
     user = User.objects.create_user(email="mine@prodeko.org")
     client.force_login(user)
 
-    response = client.post("/en/profile/", {"email": "mine@prodeko.org"})
+    client.post("/en/profile/", {"email": "someone-else@prodeko.org"})
 
-    assert response.status_code == 302
     user.refresh_from_db()
     assert user.email == "mine@prodeko.org"
 

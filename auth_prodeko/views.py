@@ -1,24 +1,12 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 
-from .forms import EditProfileForm
-
 
 @login_required
 def profile(request):
-    """Show and edit the parts of a profile that still live on this site."""
+    """Show the parts of a profile that this site knows about."""
 
-    if request.method == "POST":
-        form = EditProfileForm(request.user, data=request.POST)
-        if form.is_valid():
-            email = form.cleaned_data["email"]
-            if email and email != request.user.email:
-                request.user.email = email
-                request.user.save()
-            return redirect(".")
-    else:
-        form = EditProfileForm(request.user, initial={"email": request.user.email})
-    return render(request, "accounts/user_profile.html", {"form": form})
+    return render(request, "accounts/user_profile.html")
 
 
 @login_required
