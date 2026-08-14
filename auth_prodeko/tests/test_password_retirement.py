@@ -87,5 +87,49 @@ def test_migration_refuses_to_run_without_a_break_glass_email(settings):
     assert User.objects.get(email="a@prodeko.org").has_usable_password()
 
 
+def test_migration_refuses_when_no_account_holds_the_address(settings):
+    settings.KEYCLOAK_BREAK_GLASS_EMAIL = "rescue@prodeko.org"
+    User.objects.create_user(email="a@prodeko.org", password="hunter2hunter2")
+
+    with pytest.raises(_migration.NoBreakGlassAccount):
+        _migration.forwards(historical_apps(), None)
+
+    assert User.objects.get(email="a@prodeko.org").has_usable_password()
+
+
+def test_migration_refuses_when_the_break_glass_password_is_unusable(settings):
+    settings.KEYCLOAK_BREAK_GLASS_EMAIL = "rescue@prodeko.org"
+    User.objects.create_user(email="rescue@prodeko.org", password=None)
+    User.objects.create_user(email="a@prodeko.org", password="hunter2hunter2")
+
+    with pytest.raises(_migration.NoBreakGlassAccount):
+        _migration.forwards(historical_apps(), None)
+
+    assert User.objects.get(email="a@prodeko.org").has_usable_password()
+
+
+def test_migration_runs_when_the_break_glass_account_can_sign_in(settings):
+    settings.KEYCLOAK_BREAK_GLASS_EMAIL = "rescue@prodeko.org"
+    User.objects.create_user(email="rescue@prodeko.org", password="hunter2hunter2")
+
+    _migration.forwards(historical_apps(), None)
+
+    assert User.objects.get(email="rescue@prodeko.org").has_usable_password()
+
+
+def test_the_break_glass_account_is_the_only_one_left_with_a_password(settings):
+    settings.KEYCLOAK_BREAK_GLASS_EMAIL = "rescue@prodeko.org"
+    User.objects.create_user(email="rescue@prodeko.org", password="hunter2hunter2")
+    User.objects.create_user(email="a@prodeko.org", password="hunter2hunter2")
+    User.objects.create_user(email="b@prodeko.org", password="hunter2hunter2")
+
+    _migration.forwards(historical_apps(), None)
+
+    with_passwords = [
+        user.email for user in User.objects.all() if user.has_usable_password()
+    ]
+    assert with_passwords == ["rescue@prodeko.org"]
+
+
 def test_setting_is_wired_up():
     assert hasattr(settings, "KEYCLOAK_BREAK_GLASS_EMAIL")

@@ -50,7 +50,7 @@ Kehitysympäristön käynnistys luo sivustolle uuden Django-käyttäjän:
 - Käyttäjä: **webbitiimi@prodeko.org**
 - Salasana: **kananugetti**
 
-Tämä on myös break glass -tunnus, eli variables.txt:n `[KEYCLOAK] BREAK_GLASS_EMAIL`. Se on ainoa tunnus, jonka salasana toimii paikallisesti; muut kirjautuvat Keycloakin kautta. Migraatio kieltäytyy ajamasta, jos arvo on tyhjä.
+Tämä on myös break glass -tunnus, eli variables.txt:n `[KEYCLOAK] BREAK_GLASS_EMAIL`. Se on ainoa tunnus, jonka salasana toimii paikallisesti; muut kirjautuvat Keycloakin kautta. Migraatio kieltäytyy ajamasta, jos arvo on tyhjä, jos yksikään tunnus ei vastaa sitä tai jos kyseisen tunnuksen salasana on jo käyttökelvoton.
 
 ### Kirjautuminen kehitysympäristössä
 
