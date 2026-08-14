@@ -26,7 +26,6 @@ dependencies = [
     "django-formtools>=2.5.1",
     "django-js-asset>=3.1.2",
     "django-mptt>=0.18.0",
-    "django-oauth-toolkit>=3.0.1",
     "django-pipeline>=4.0.0",
     "django-polymorphic>=4.1.0",
     "django-redis>=6.0.0",

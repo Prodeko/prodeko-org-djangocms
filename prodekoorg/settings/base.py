@@ -184,7 +184,6 @@ TEMPLATES = [
 MIDDLEWARE = (
     "django.middleware.cache.UpdateCacheMiddleware",
     "corsheaders.middleware.CorsMiddleware",
-    "oauth2_provider.middleware.OAuth2TokenMiddleware",
     "cms.middleware.utils.ApphookReloadMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -263,8 +262,6 @@ INSTALLED_APPS = (
     "ckeditor",
     "ckeditor_uploader",
     "rest_framework",
-    # Oauth2
-    "oauth2_provider",
     "corsheaders",
     # ------------------------
     # matrikkeli.prodeko.org
@@ -281,7 +278,6 @@ INSTALLED_APPS = (
     "prodekoorg.app_kiltiskamera",
     "prodekoorg.app_infoscreen",
     "prodekoorg.app_membership",
-    "prodekoorg.app_oauth",
     "prodekoorg.app_poytakirjat",
     "prodekoorg.app_proleko",
     "prodekoorg.app_tiedostot",
@@ -436,14 +432,6 @@ CSRF_TRUSTED_ORIGINS = [
 
 SESSION_COOKIE_AGE = 60 * 60 * 24 * 30  # 30 days
 SESSION_ENGINE = "django.contrib.sessions.backends.cached_db"
-
-OAUTH2_PROVIDER = {
-    "SCOPES": {
-        "read": "Read scope",
-        "write": "Write scope",
-        "groups": "Access to your groups",
-    }
-}
 
 AUTHENTICATION_BACKENDS = (
     "auth_prodeko.oidc.backend.KeycloakOIDCBackend",

@@ -48,11 +48,6 @@ urlpatterns += [path("", include("filer.server.urls"))]
 # and matches the redirect URI registered in Keycloak exactly.
 urlpatterns += [path("oidc/", include("mozilla_django_oidc.urls"))]
 
-# app_oauth
-urlpatterns += [
-    path("oauth2/", include("prodekoorg.app_oauth.urls", namespace="oauth2_provider")),
-]
-
 # Localization and internationalization
 urlpatterns += i18n_patterns(
     path(
