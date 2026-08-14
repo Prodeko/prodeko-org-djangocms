@@ -14,7 +14,6 @@ import qrcode
 from django.contrib import messages
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import AuthenticationForm
 from django.core.mail import EmailMultiAlternatives
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db.models import F, Q, Value
@@ -1916,13 +1915,8 @@ def search(request):
 @login_required(login_url="/login/")
 def delete_profile(request):
     """Delete the currently logged in user"""
-    form = AuthenticationForm(request, data=request.POST)
+    form = DeleteProfileForm(request.user, data=request.POST or None)
     if request.method == "POST":
-        if not (
-            form.data["username"] == request.user.username
-            or form.data["username"] == request.user.email
-        ):
-            form.add_error("username", "Ei kelpaa")
         if form.is_valid():
             user = request.user
             delete_user(user)

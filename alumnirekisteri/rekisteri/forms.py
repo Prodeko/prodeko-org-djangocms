@@ -966,3 +966,26 @@ class FamilyMemberForm(forms.ModelForm):
             "original_last_name": "Alkuperäinen sukunimi",
             "member_type": "Tyyppi",
         }
+
+
+class DeleteProfileForm(forms.Form):
+    """Confirm self-service profile deletion by typing your own address.
+
+    Authentication lives in Keycloak, so there is no local password to
+    re-enter; the member's own email address is the confirmation instead.
+    """
+
+    username = forms.CharField(
+        label="Käyttäjätunnus",
+        widget=forms.TextInput(attrs={"class": "form-control"}),
+    )
+
+    def __init__(self, user, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.user = user
+
+    def clean_username(self):
+        username = self.cleaned_data["username"]
+        if username.strip().lower() != (self.user.email or "").lower():
+            raise forms.ValidationError("Ei kelpaa")
+        return username

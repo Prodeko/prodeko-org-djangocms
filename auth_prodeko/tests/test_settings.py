@@ -1,4 +1,6 @@
 import configparser
+import importlib
+from pathlib import Path
 
 from django.conf import settings
 
@@ -21,6 +23,34 @@ def test_missing_keycloak_section_falls_back_to_empty():
     parser = configparser.ConfigParser(interpolation=None)
     parser.read_string("[DJANGO]\nSECRET = x\n")
     assert parser.get("KEYCLOAK", "ISSUER", fallback="") == ""
+
+
+def test_sample_break_glass_email_is_the_development_superuser():
+    """Migration 0004 refuses to run on an empty KEYCLOAK_BREAK_GLASS_EMAIL.
+
+    docker-entrypoint.sh runs migrate, so a contributor who copies the
+    sample verbatim would hit a hard failure on first start unless the
+    sample names the superuser the entrypoint creates.
+    """
+    repo_root = Path(settings.BASE_DIR)
+    parser = configparser.ConfigParser(interpolation=None)
+    parser.read(repo_root / "prodekoorg" / "settings" / "variables.sample.txt")
+    break_glass = parser.get("KEYCLOAK", "BREAK_GLASS_EMAIL")
+
+    assert break_glass
+    entrypoint = (repo_root / "docker-entrypoint.sh").read_text()
+    assert f"create_superuser('{break_glass}'" in entrypoint
+
+
+def test_production_trusts_the_proxy_forwarded_scheme():
+    """Caddy terminates TLS and proxies plain http to gunicorn.
+
+    Without this, request.build_absolute_uri() yields an http:// URL, and
+    mozilla_django_oidc builds both the redirect_uri and the
+    post_logout_redirect_uri from it, so Keycloak rejects every login.
+    """
+    prod = importlib.import_module("prodekoorg.settings.prod")
+    assert prod.SECURE_PROXY_SSL_HEADER == ("HTTP_X_FORWARDED_PROTO", "https")
 
 
 def test_client_secret_with_percent_sign_is_read_literally():

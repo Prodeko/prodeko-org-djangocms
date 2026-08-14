@@ -42,4 +42,7 @@ STRIPE_APPLICATION_ENDPOINT_SECRET = test
 ISSUER = http://localhost:8180/realms/membership-registry
 CLIENT_ID = prodekoorg
 CLIENT_SECRET =
-BREAK_GLASS_EMAIL =
+# The one account that keeps a usable local password, so an outage of Keycloak
+# cannot lock us out of the site. Migration 0004 refuses to run when it is
+# empty. In development this is the superuser docker-entrypoint.sh creates.
+BREAK_GLASS_EMAIL = webbitiimi@prodeko.org

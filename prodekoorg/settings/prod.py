@@ -11,6 +11,15 @@ ALLOWED_HOSTS = [
     "127.0.0.1",
 ]
 
+# Caddy terminates TLS and reverse-proxies plain http to gunicorn on
+# 127.0.0.1:8000, so request.is_secure() is False and every absolute URL Django
+# builds starts with http://. mozilla_django_oidc derives the OIDC redirect_uri
+# and the post_logout_redirect_uri from request.build_absolute_uri(), and
+# Keycloak matches those against its registered https:// URIs, so without this
+# every login fails with "Invalid parameter: redirect_uri". Only sound here:
+# the header is client-supplied, and Caddy is what overwrites it.
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+
 CORS_ALLOWED_ORIGINS = ["https://ilmo.prodeko.org", "https://browser.sentry-cdn.com"]
 
 # When DEBUG = False, all errors with level ERROR or

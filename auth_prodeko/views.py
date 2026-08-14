@@ -9,7 +9,7 @@ def profile(request):
     """Show and edit the parts of a profile that still live on this site."""
 
     if request.method == "POST":
-        form = EditProfileForm(data=request.POST)
+        form = EditProfileForm(request.user, data=request.POST)
         if form.is_valid():
             email = form.cleaned_data["email"]
             if email and email != request.user.email:
@@ -17,7 +17,7 @@ def profile(request):
                 request.user.save()
             return redirect(".")
     else:
-        form = EditProfileForm(initial={"email": request.user.email})
+        form = EditProfileForm(request.user, initial={"email": request.user.email})
     return render(request, "accounts/user_profile.html", {"form": form})
 
 
