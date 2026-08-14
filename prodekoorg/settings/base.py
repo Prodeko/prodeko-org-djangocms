@@ -157,7 +157,6 @@ TEMPLATES = [
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         "DIRS": [
             os.path.join(BASE_DIR, "tiedotteet/frontend/public"),
-            os.path.join(BASE_DIR, "prodekoorg/app_membership/templates/emails"),
             os.path.join(BASE_DIR, "prodekoorg/app_contact/templates/emails"),
         ],
         "OPTIONS": {
