@@ -44,6 +44,10 @@ urlpatterns = [
 # Django filer
 urlpatterns += [path("", include("filer.server.urls"))]
 
+# OIDC. Outside i18n_patterns so /oidc/callback/ has no language prefix
+# and matches the redirect URI registered in Keycloak exactly.
+urlpatterns += [path("oidc/", include("mozilla_django_oidc.urls"))]
+
 # app_oauth
 urlpatterns += [
     path("oauth2/", include("prodekoorg.app_oauth.urls", namespace="oauth2_provider")),

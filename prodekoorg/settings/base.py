@@ -445,14 +445,30 @@ OAUTH2_PROVIDER = {
 }
 
 AUTHENTICATION_BACKENDS = (
-    "oauth2_provider.backends.OAuth2Backend",
+    "auth_prodeko.oidc.backend.KeycloakOIDCBackend",
+    # Kept for the single break-glass account, so an outage of the
+    # identity provider cannot lock us out of our own site.
     "django.contrib.auth.backends.ModelBackend",
 )
 
+_OIDC = f"{KEYCLOAK_ISSUER}/protocol/openid-connect"
+OIDC_RP_CLIENT_ID = KEYCLOAK_CLIENT_ID
+OIDC_RP_CLIENT_SECRET = KEYCLOAK_CLIENT_SECRET
+OIDC_RP_SIGN_ALGO = "RS256"
+OIDC_RP_SCOPES = "openid email profile"
+OIDC_OP_AUTHORIZATION_ENDPOINT = f"{_OIDC}/auth"
+OIDC_OP_TOKEN_ENDPOINT = f"{_OIDC}/token"
+OIDC_OP_USER_ENDPOINT = f"{_OIDC}/userinfo"
+OIDC_OP_JWKS_ENDPOINT = f"{_OIDC}/certs"
+OIDC_OP_LOGOUT_ENDPOINT = f"{_OIDC}/logout"
+OIDC_USE_PKCE = True
+OIDC_PKCE_CODE_CHALLENGE_METHOD = "S256"
+OIDC_CREATE_USER = True
+OIDC_STORE_ID_TOKEN = True
+LOGOUT_REDIRECT_URL = "/"
+
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
-        "oauth2_provider.contrib.rest_framework.OAuth2Authentication",
-        "rest_framework.authentication.BasicAuthentication",
         "rest_framework.authentication.SessionAuthentication",
     )
 }
