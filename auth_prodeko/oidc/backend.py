@@ -58,7 +58,36 @@ class KeycloakOIDCBackend(OIDCAuthenticationBackend):
             candidates = candidates.exclude(
                 email__iexact=settings.KEYCLOAK_BREAK_GLASS_EMAIL
             )
-        return candidates
+        if candidates.exists():
+            return candidates
+
+        # Nothing survived the filter. The library reads that as "no such
+        # user, create one", and email is unique, so an address that is
+        # taken by a row we refuse to adopt has to be refused out loud
+        # instead. SuspiciousOperation is what the library's authenticate()
+        # catches, which lands the browser on the login-failure page.
+        occupant = self.UserModel.objects.filter(email__iexact=identity.email).first()
+        if occupant is None:
+            return candidates
+
+        break_glass = settings.KEYCLOAK_BREAK_GLASS_EMAIL and (
+            occupant.email.lower() == settings.KEYCLOAK_BREAK_GLASS_EMAIL.lower()
+        )
+        reason = (
+            "it is the break-glass account, which has no Keycloak identity by design"
+            if break_glass
+            else f"it is already linked to Keycloak subject {occupant.keycloak_sub}"
+        )
+        logger.warning(
+            "Refusing Keycloak login for %s (subject %s): %s",
+            identity.email,
+            identity.subject,
+            reason,
+        )
+        raise SuspiciousOperation(
+            f"Keycloak address {identity.email} cannot be adopted because "
+            f"{reason}; an administrator must resolve this by hand"
+        )
 
     def create_user(self, claims):
         # The library's create_user calls create_user(username, email=...),

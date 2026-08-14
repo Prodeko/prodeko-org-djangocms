@@ -47,6 +47,13 @@ def test_absent_email_verified_is_false_not_none():
     assert identity.email_verified is False
 
 
+def test_string_email_verified_is_not_trusted():
+    """The sole guard on adopting a legacy row by address is not truthiness."""
+    assert parse_claims(claims(email_verified="false")).email_verified is False
+    assert parse_claims(claims(email_verified="true")).email_verified is False
+    assert parse_claims(claims(email_verified=1)).email_verified is False
+
+
 def test_absent_realm_access_yields_no_roles():
     payload = claims()
     del payload["realm_access"]
@@ -66,3 +73,36 @@ def test_missing_names_become_empty_strings():
     identity = parse_claims(payload)
     assert identity.first_name == ""
     assert identity.last_name == ""
+
+
+# --- malformed payloads ---------------------------------------------------
+#
+# A misconfigured mapper can emit any JSON type. The parser must refuse
+# such a token, never raise something the caller does not catch.
+
+
+def test_non_string_names_become_empty_strings():
+    identity = parse_claims(claims(given_name=42, family_name=["Meikalainen"]))
+    assert identity.first_name == ""
+    assert identity.last_name == ""
+
+
+def test_non_string_subject_is_rejected():
+    with pytest.raises(InvalidClaims):
+        parse_claims(claims(sub=12345))
+
+
+def test_non_string_email_is_rejected():
+    with pytest.raises(InvalidClaims):
+        parse_claims(claims(email={"value": "maija@prodeko.org"}))
+
+
+def test_non_dict_realm_access_yields_no_roles():
+    assert parse_claims(claims(realm_access="membership")).roles == frozenset()
+
+
+def test_non_string_roles_are_dropped():
+    identity = parse_claims(
+        claims(realm_access={"roles": ["membership", {"name": "admin"}, None]})
+    )
+    assert identity.roles == frozenset({"membership"})

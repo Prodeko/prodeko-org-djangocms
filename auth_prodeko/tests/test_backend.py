@@ -84,13 +84,15 @@ def test_subject_match_wins_over_email(backend):
 
 def test_row_linked_to_another_subject_is_not_adopted(backend):
     User.objects.create_user(email="maija@prodeko.org", keycloak_sub="someone-else")
-    assert not backend.filter_users_by_claims(claims()).exists()
+    with pytest.raises(SuspiciousOperation):
+        backend.filter_users_by_claims(claims())
 
 
 def test_break_glass_account_is_never_adopted(backend, settings):
     settings.KEYCLOAK_BREAK_GLASS_EMAIL = "maija@prodeko.org"
     User.objects.create_user(email="maija@prodeko.org")
-    assert not backend.filter_users_by_claims(claims()).exists()
+    with pytest.raises(SuspiciousOperation):
+        backend.filter_users_by_claims(claims())
 
 
 def test_creates_a_user_when_nothing_matches(backend):
@@ -99,6 +101,43 @@ def test_creates_a_user_when_nothing_matches(backend):
     assert user.first_name == "Maija"
     assert user.keycloak_sub == "sub-1"
     assert not user.has_usable_password()
+
+
+# --- the library's path after an empty filter -----------------------------
+#
+# mozilla_django_oidc reads an empty filter result as "create this user",
+# which the unique constraint on email turns into a 500. These drive
+# get_or_create_user, the real caller, with the userinfo request stubbed
+# out so that nothing contacts Keycloak.
+
+
+def resolve(backend, monkeypatch, payload):
+    monkeypatch.setattr(backend, "get_userinfo", lambda *args: payload)
+    return backend.get_or_create_user("access-token", "id-token", {})
+
+
+def test_login_is_refused_when_the_address_belongs_to_another_subject(
+    backend, monkeypatch
+):
+    User.objects.create_user(email="maija@prodeko.org", keycloak_sub="someone-else")
+    with pytest.raises(SuspiciousOperation):
+        resolve(backend, monkeypatch, claims())
+    assert User.objects.count() == 1
+
+
+def test_login_is_refused_for_the_break_glass_address(backend, settings, monkeypatch):
+    settings.KEYCLOAK_BREAK_GLASS_EMAIL = "maija@prodeko.org"
+    User.objects.create_user(email="maija@prodeko.org")
+    with pytest.raises(SuspiciousOperation):
+        resolve(backend, monkeypatch, claims())
+    assert User.objects.count() == 1
+
+
+def test_an_unknown_address_is_still_created(backend, monkeypatch):
+    """The refusal must not fire when the address is simply new."""
+    user = resolve(backend, monkeypatch, claims())
+    assert user.email == "maija@prodeko.org"
+    assert user.keycloak_sub == "sub-1"
 
 
 # --- privilege synchronisation -------------------------------------------

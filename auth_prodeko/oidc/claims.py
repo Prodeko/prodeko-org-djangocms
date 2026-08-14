@@ -22,7 +22,24 @@ class KeycloakIdentity:
 
 
 def _text(claims: dict, key: str) -> str:
-    return (claims.get(key) or "").strip()
+    # A misconfigured mapper can put any JSON type here. Anything that is
+    # not a string is absent as far as we are concerned, so that a
+    # malformed token is refused rather than raising out of the callback.
+    value = claims.get(key)
+    return value.strip() if isinstance(value, str) else ""
+
+
+def _roles(realm_access) -> frozenset[str]:
+    if not isinstance(realm_access, dict):
+        return frozenset()
+
+    roles = realm_access.get("roles")
+    if isinstance(roles, str):
+        # A User Realm Role mapper left non-multivalued emits a bare string.
+        return frozenset({roles})
+    if isinstance(roles, (list, tuple, set, frozenset)):
+        return frozenset(role for role in roles if isinstance(role, str))
+    return frozenset()
 
 
 def parse_claims(claims: dict) -> KeycloakIdentity:
@@ -34,16 +51,13 @@ def parse_claims(claims: dict) -> KeycloakIdentity:
     if not email:
         raise InvalidClaims("token has no email claim")
 
-    roles = (claims.get("realm_access") or {}).get("roles") or []
-    if isinstance(roles, str):
-        # A User Realm Role mapper left non-multivalued emits a bare string.
-        roles = [roles]
-
     return KeycloakIdentity(
         subject=subject,
         email=email,
-        email_verified=bool(claims.get("email_verified")),
+        # This is the sole guard on adopting a legacy row by address, so
+        # only the boolean true counts; a truthy "false" must not pass.
+        email_verified=claims.get("email_verified") is True,
         first_name=_text(claims, "given_name"),
         last_name=_text(claims, "family_name"),
-        roles=frozenset(roles),
+        roles=_roles(claims.get("realm_access")),
     )
