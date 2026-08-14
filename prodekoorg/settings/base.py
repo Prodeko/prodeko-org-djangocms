@@ -189,6 +189,7 @@ MIDDLEWARE = (
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "mozilla_django_oidc.middleware.SessionRefresh",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.common.BrokenLinkEmailsMiddleware",
     "django.middleware.locale.LocaleMiddleware",
@@ -466,6 +467,16 @@ OIDC_PKCE_CODE_CHALLENGE_METHOD = "S256"
 OIDC_CREATE_USER = True
 OIDC_STORE_ID_TOKEN = True
 LOGOUT_REDIRECT_URL = "/"
+OIDC_OP_LOGOUT_URL_METHOD = "auth_prodeko.oidc.logout.provider_logout"
+
+# Django sessions last 30 days; a Keycloak session does not. Without this
+# recheck, a role revoked in Keycloak would keep working for weeks.
+OIDC_RENEW_ID_TOKEN_EXPIRY_SECONDS = 60 * 15
+OIDC_EXEMPT_URLS = [
+    "oidc_authentication_init",
+    "oidc_authentication_callback",
+    "oidc_logout",
+]
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (

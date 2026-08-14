@@ -1,9 +1,12 @@
+import time
 from pathlib import Path
 
 import polib
 import pytest
 from cms.utils.permissions import set_current_user
+from django.conf import settings
 from django.contrib.auth import get_user_model
+from django.test import Client
 
 
 @pytest.fixture(autouse=True)
@@ -19,6 +22,28 @@ def reset_cms_current_user():
     in later tests and inserts rows referencing rolled-back PKs."""
     set_current_user(None)
     yield
+
+
+@pytest.fixture(autouse=True)
+def sso_session_on_force_login(monkeypatch):
+    """force_login() mints the session a real Keycloak login would.
+
+    force_login() picks the first entry of AUTHENTICATION_BACKENDS, the
+    Keycloak one, so SessionRefresh treats the session as an SSO session
+    and bounces every authenticated GET to the provider unless the id
+    token is recorded as fresh, exactly as the callback view records it.
+    """
+    original = Client.force_login
+
+    def force_login(self, user, backend=None, **kwargs):
+        original(self, user, backend=backend, **kwargs)
+        session = self.session
+        session["oidc_id_token_expiration"] = (
+            time.time() + settings.OIDC_RENEW_ID_TOKEN_EXPIRY_SECONDS
+        )
+        session.save()
+
+    monkeypatch.setattr(Client, "force_login", force_login)
 
 
 @pytest.fixture(autouse=True, scope="session")
