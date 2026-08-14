@@ -13,8 +13,8 @@ from wsgiref.util import FileWrapper
 import qrcode
 from django.contrib import messages
 from django.contrib.admin.views.decorators import staff_member_required
-from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import AuthenticationForm
 from django.core.mail import EmailMultiAlternatives
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db.models import F, Q, Value
@@ -26,13 +26,11 @@ from django.http import (
 from django.shortcuts import (
     HttpResponse,
     get_object_or_404,
-    redirect,
     render,
 )
 from django.template.loader import render_to_string
 from django.urls import reverse
 
-from alumnirekisteri.auth2.forms import LoginForm, PasswordChangeForm
 from alumnirekisteri.rekisteri.forms import *
 from alumnirekisteri.rekisteri.models import *
 from prodekoorg import settings as project_settings
@@ -1857,30 +1855,6 @@ def delete_family_member(request, pk):
 
 
 @login_required(login_url="/login/")
-def new_password(request):
-    """New password page"""
-    password_form = PasswordChangeForm(user=request.user)
-    return render(request, "new_password.html", {"password_form": password_form})
-
-
-@login_required(login_url="/login/")
-def change_password(request):
-    """Post change password form"""
-    if request.method == "POST":
-        form = PasswordChangeForm(user=request.user, data=request.POST)
-        if form.is_valid():
-            form.save()
-            update_session_auth_hash(request, form.user)
-            messages.success(request, "Salasana vaihdettu")
-        else:
-            for key in form.errors:
-                messages.warning(
-                    request, form.fields[key].label + ": " + form.errors[key][0]
-                )
-    return redirect("rekisteri.views.new_password")
-
-
-@login_required(login_url="/login/")
 def public_profile(request, slug):
     """Profile"""
     profile = get_object_or_404(Person, slug=slug)
@@ -1939,30 +1913,10 @@ def search(request):
     )
 
 
-@staff_member_required(login_url="/login/")
-def register(request):
-    """Page for sign up"""
-    form = RegisterForm()
-    if request.method == "POST":
-        form = RegisterForm(request.POST)
-        if form.is_valid():
-            user, person = form.save()
-            user.is_active = True
-            user.save()
-            form = RegisterForm()
-    return render(request, "register.html", {"form": form})
-
-
-@staff_member_required(login_url="/login/")
-def confirmation(request):
-    """Confirmation page after sign up"""
-    return render(request, "confirmation.html", {})
-
-
 @login_required(login_url="/login/")
 def delete_profile(request):
     """Delete the currently logged in user"""
-    form = LoginForm(request, data=request.POST)
+    form = AuthenticationForm(request, data=request.POST)
     if request.method == "POST":
         if not (
             form.data["username"] == request.user.username

@@ -25,33 +25,15 @@
                     {{ form.email.errors }}
                 </div>
             </div>
-            <div class="fieldWrapper">
-                <div class='field-input'>
-                    <label for='{{ form.newpassword.id_for_label }}'>{% trans "New Password" %}</label>
-                    {{ form.newpassword }}
-                </div>
-                <div class="field-error">
-                    {{ form.newpassword.errors }}
-                </div>
-            </div>
-            <div class="fieldWrapper">
-                <div class='field-input'>
-                    <label for='{{ form.newpassword_confirm.id_for_label }}'>{% trans "Confirm New Password" %}</label>
-                    {{ form.newpassword_confirm }}
-                </div>
-                <div class="field-error">
-                    {{ form.newpassword_confirm.errors }}
-                </div>
-            </div>
-            <div class="fieldWrapper">
-                <div class='field-input'>
-                    <label for='{{ form.password.id_for_label }}'>{% trans "Current Password" %}</label>
-                    {{ form.password }}
-                </div>
-                <div class="field-error">
-                    {{ form.password.errors }}
-                </div>
-            </div>
+        <div class="form-group">
+          <p>
+            {% trans "Your password, name and login details are managed in your Prodeko account." %}
+            <a href="https://id.prodeko.org/realms/membership-registry/account/"
+               target="_blank" rel="noopener">
+              {% trans "Open Prodeko account settings" %}
+            </a>
+          </p>
+        </div>
             <div class="other-errors">
                 {{ form.non_field_errors }}
             </div>

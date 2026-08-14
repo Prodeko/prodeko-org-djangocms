@@ -63,7 +63,6 @@
 						<ul class="dropdown-menu">
 							<li><a href="{% url 'alumnirekisteri:admin' %}"></span> Käyttäjähallinta</a></li>
 							<li><a href="{% url 'alumnirekisteri:admin_member_requests' %}"></span> Rekisteröitymispyynnöt</a></li>
-							<li><a href="{% url 'alumnirekisteri:register' %}"></span> Lisää käyttäjä</a></li>
 							<li><a href="{% url 'alumnirekisteri:admin_set_notes' %}"></span> Aseta tietoja .csv:stä </a></li>
 							<li><a href="{% url 'alumnirekisteri:admin_export_data' %}"></span> Vie taulukkoon</a></li>
 							<li><a href="{% url 'alumnirekisteri:admin_stats' %}"></span> Statistiikka </a></li>
@@ -82,8 +81,6 @@
 							<li class="{% if request.user.person.slug in request.path %}active{% endif %}"><a
 									href="{% url 'alumnirekisteri:public_profile' slug=request.user.pk %}"><span
 										class="fa fa-user"></span> Julkinen profiili</a></li>
-							<li><a href="{% url 'alumnirekisteri:new_password' %}" id="#change-password"><span
-										class="glyphicon glyphicon-lock"></span> Vaihda salasana</a></li>
 							<li><a href="{% url 'alumnirekisteri:membership_status' %}"><span class="fa fa-info"
 										style="margin-right: 2px"></span>Prodekon jäsenyys</a></li>
 							<li role="separator" class="divider"></li>
