@@ -477,6 +477,9 @@ OIDC_EXEMPT_URLS = [
     "oidc_authentication_callback",
     "oidc_logout",
 ]
+# A recheck Keycloak answers but the backend refuses has to end the
+# Django session, or the recheck runs again on the next request.
+OIDC_CALLBACK_CLASS = "auth_prodeko.oidc.callback.KeycloakOIDCCallbackView"
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
