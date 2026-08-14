@@ -36,7 +36,10 @@
     </div>
     <div align="center">
 
-      {% if should_pay %}
+      {% if not has_membership_date %}
+      <h2>Your membership status is unknown</h2>
+      <p>We have no membership date on file for you. Contact the guild if you believe you are a member.</p>
+      {% elif should_pay %}
       <h2>You have not paid your membership fee for the next year!</h2>
       <stripe-buy-button buy-button-id="buy_btn_1NqG91BXFu7VMnhUnfNfFKlG"
         publishable-key="pk_live_sqMB9UbyLIXgHJ4exCAQkhlw00V81yfQ6S" customer-email="{{ email }}"

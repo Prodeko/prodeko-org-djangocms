@@ -902,8 +902,13 @@ def membership_status(request):
 
     today = datetime.today().date()
     eight_months_from_now = today + timedelta(days=243)  # approx. 8 months
-    should_pay = today < person.member_until < eight_months_from_now
-    is_expired = person.member_until < today
+    member_until = person.member_until
+    # A profile carries no membership date until a payment or an admin
+    # gives it one, and a member without a date has neither paid for a
+    # coming year nor let a membership lapse: their status is unknown.
+    has_membership_date = member_until is not None
+    should_pay = has_membership_date and today < member_until < eight_months_from_now
+    is_expired = has_membership_date and member_until < today
 
     # Data to be encoded
     data = request.session.session_key
@@ -942,8 +947,9 @@ def membership_status(request):
             "email": user.email,
             "should_pay": should_pay,
             "is_expired": is_expired,
+            "has_membership_date": has_membership_date,
             "membership_data": [
-                ("Member until", person.member_until),
+                ("Member until", member_until if has_membership_date else "Unknown"),
                 ("Member type", person.get_member_type_display()),
                 ("AYY member", "Yes" if person.ayy_member else "No"),
                 ("Class of year", person.class_of_year),
