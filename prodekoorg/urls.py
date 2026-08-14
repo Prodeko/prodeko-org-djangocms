@@ -13,7 +13,8 @@ from django.utils.translation import gettext as _
 from django.views.decorators.cache import cache_page
 from django.views.generic.base import TemplateView
 from django.views.i18n import JavaScriptCatalog
-from mozilla_django_oidc.views import OIDCLogoutView
+
+from auth_prodeko.oidc.logout import AdminLogoutView
 
 
 def get_version():
@@ -71,7 +72,7 @@ urlpatterns += i18n_patterns(
     # matrikkeli.prodeko.org
     path(_("matrikkeli/"), include("alumnirekisteri.rekisteri.urls")),
     # Misc
-    path("admin/logout/", OIDCLogoutView.as_view(), name="admin_logout"),
+    path("admin/logout/", AdminLogoutView.as_view(), name="admin_logout"),
     path("admin/", admin.site.urls),
     path("ckeditor/", include("ckeditor_uploader.urls")),
     path("", include("cms.urls")),
