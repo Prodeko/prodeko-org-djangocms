@@ -26,6 +26,10 @@ class UserAdmin(DjangoUserAdmin):
             },
         ),
         (_("Important dates"), {"fields": ("last_login", "date_joined")}),
+        (
+            _("Keycloak"),
+            {"fields": ("keycloak_sub", "keycloak_linked_at")},
+        ),
     )
 
     add_fieldsets = (
@@ -43,6 +47,7 @@ class UserAdmin(DjangoUserAdmin):
             },
         ),
     )
+    readonly_fields = ("keycloak_sub", "keycloak_linked_at")
     list_display = (
         "email",
         "first_name",
