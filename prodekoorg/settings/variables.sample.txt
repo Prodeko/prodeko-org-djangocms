@@ -37,3 +37,9 @@ STRIPE_PAYMENT_LINK_ID = plink_a1b2c3d4e5
 STRIPE_API_KEY = secret
 STRIPE_ENDPOINT_SECRET = endpointsecret
 STRIPE_APPLICATION_ENDPOINT_SECRET = test
+
+[KEYCLOAK]
+ISSUER = http://localhost:8180/realms/membership-registry
+CLIENT_ID = prodekoorg
+CLIENT_SECRET =
+BREAK_GLASS_EMAIL =

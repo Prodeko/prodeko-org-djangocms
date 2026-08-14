@@ -15,7 +15,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 
 SITE_ID = 1
 
-config = configparser.ConfigParser()
+# interpolation=None: values are opaque secrets, and a literal % in one
+# would otherwise raise InterpolationSyntaxError at import time.
+config = configparser.ConfigParser(interpolation=None)
 config.read(os.path.join(BASE_DIR, "prodekoorg/settings/variables.txt"))
 
 # SECURITY WARNING: keep the secret keys used in production secret!
@@ -38,6 +40,21 @@ STRIPE_ENDPOINT_SECRET = config["STRIPE"]["STRIPE_ENDPOINT_SECRET"]
 STRIPE_APPLICATION_ENDPOINT_SECRET = config["STRIPE"][
     "STRIPE_APPLICATION_ENDPOINT_SECRET"
 ]
+
+# Keycloak SSO. The section is optional so that deploy.sh's collectstatic
+# and migrate steps still start on a host where Ansible has not yet
+# rendered it.
+KEYCLOAK_ISSUER = config.get("KEYCLOAK", "ISSUER", fallback="")
+KEYCLOAK_CLIENT_ID = config.get("KEYCLOAK", "CLIENT_ID", fallback="")
+KEYCLOAK_CLIENT_SECRET = config.get("KEYCLOAK", "CLIENT_SECRET", fallback="")
+KEYCLOAK_BREAK_GLASS_EMAIL = config.get("KEYCLOAK", "BREAK_GLASS_EMAIL", fallback="")
+
+# Realm roles. Membership grants access to the site at all; the other two
+# grant Django's is_staff and is_superuser. All three are overwritten on
+# every login, so Keycloak is the only place they are managed.
+KEYCLOAK_MEMBERSHIP_ROLES = ["membership"]
+KEYCLOAK_STAFF_ROLE = "prodeko-org-admin"
+KEYCLOAK_SUPERUSER_ROLE = "prodeko-org-superuser"
 
 # Application definition
 ROOT_URLCONF = "prodekoorg.urls"

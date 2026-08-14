@@ -57,6 +57,7 @@ dependencies = [
     "lxml>=6.0.1",
     "mailchimp-marketing==3.0.80",
     "markdown>=3.8.2",
+    "mozilla-django-oidc>=5.0.0",
     "oauthlib>=3.3.1",
     "pillow>=11.3.0",
     "protobuf>=6.32.0",
