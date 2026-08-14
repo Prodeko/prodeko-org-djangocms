@@ -8,6 +8,7 @@ import configparser
 import os
 
 from django.contrib.messages import constants as messages
+from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -456,6 +457,11 @@ OIDC_CREATE_USER = True
 OIDC_STORE_ID_TOKEN = True
 LOGOUT_REDIRECT_URL = "/"
 OIDC_OP_LOGOUT_URL_METHOD = "auth_prodeko.oidc.logout.provider_logout"
+# Where a login Keycloak allowed but this site refused ends up. The
+# library redirects to this value without resolving a view name, so it
+# has to be a path; reverse_lazy defers building it until the URLconf
+# is loaded, and picks up the language prefix of i18n_patterns.
+LOGIN_REDIRECT_URL_FAILURE = reverse_lazy("auth_prodeko:login_failed")
 
 # Django sessions last 30 days; a Keycloak session does not. Without this
 # recheck, a role revoked in Keycloak would keep working for weeks.

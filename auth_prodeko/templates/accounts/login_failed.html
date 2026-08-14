@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load cms_tags i18n %}
+
+{% block content %}
+
+    {% include "layout-components/jumbotron.html" %}
+
+    <div class="container">
+        <h1>{% trans "Signing in did not complete" %}</h1>
+        <p>{% trans "You were not signed in to prodeko.org." %}</p>
+        <p>
+            {% blocktrans trimmed %}
+                Using prodeko.org requires a current Prodeko membership. You can join
+                Prodeko or renew your membership in the membership registry.
+            {% endblocktrans %}
+        </p>
+        <p>
+            <a href="https://membership.prodeko.org/" target="_blank" rel="noopener">
+                {% trans "Join or renew at membership.prodeko.org" %}
+            </a>
+        </p>
+        <p>
+            {% blocktrans trimmed %}
+                You are still signed in to your Prodeko account. To try a different
+                account, sign out of it first.
+            {% endblocktrans %}
+        </p>
+        <p>
+            <a href="{{ keycloak_logout_url }}">
+                {% trans "Sign out of your Prodeko account" %}
+            </a>
+        </p>
+    </div>
+
+{% endblock content %}

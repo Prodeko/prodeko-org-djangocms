@@ -118,6 +118,38 @@ msgstr "käyttäjä"
 msgid "Users"
 msgstr "Käyttäjät"
 
+#: auth_prodeko/templates/accounts/login_failed.html:9
+msgid "Signing in did not complete"
+msgstr "Kirjautuminen ei onnistunut"
+
+#: auth_prodeko/templates/accounts/login_failed.html:10
+msgid "You were not signed in to prodeko.org."
+msgstr "Sinua ei kirjattu sisään sivustolle prodeko.org."
+
+#: auth_prodeko/templates/accounts/login_failed.html:12
+msgid ""
+"Using prodeko.org requires a current Prodeko membership. You can join "
+"Prodeko or renew your membership in the membership registry."
+msgstr ""
+"Sivuston prodeko.org käyttö edellyttää voimassa olevaa Prodekon jäsenyyttä. "
+"Voit liittyä Prodekoon tai uusia jäsenyytesi jäsenrekisterissä."
+
+#: auth_prodeko/templates/accounts/login_failed.html:19
+msgid "Join or renew at membership.prodeko.org"
+msgstr "Liity tai uusi jäsenyytesi osoitteessa membership.prodeko.org"
+
+#: auth_prodeko/templates/accounts/login_failed.html:23
+msgid ""
+"You are still signed in to your Prodeko account. To try a different account, "
+"sign out of it first."
+msgstr ""
+"Olet edelleen kirjautuneena Prodeko-tilillesi. Jos haluat kokeilla toista "
+"tiliä, kirjaudu ensin ulos."
+
+#: auth_prodeko/templates/accounts/login_failed.html:30
+msgid "Sign out of your Prodeko account"
+msgstr "Kirjaudu ulos Prodeko-tililtä"
+
 #: auth_prodeko/templates/accounts/user_profile.html:13
 #: prodekoorg/templates/layout-components/navbar-full.html:3
 #: prodekoorg/templates/layout-components/navbar-full.html:7
