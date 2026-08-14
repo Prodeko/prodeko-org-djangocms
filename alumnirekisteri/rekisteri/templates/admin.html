@@ -86,8 +86,6 @@
                     <button type="button" class="btn btn-default dropdown-toggle {% if user == request.user %}disabled{% endif %}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       {% if user.is_admin %}
                         Ylläpitäjä
-                      {% elif user.is_hidden %}
-                        Piilotettu
                       {% elif user.is_active %}
                         Käyttäjä
                       {% else %}
@@ -96,10 +94,10 @@
                       <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
-                      <li><a class="make-admin" href="#" user-id="{{ user.id }}" >Ylläpitäjä</a></li>
-                      <li><a class="make-user" href="#" user-id="{{ user.id }}">Käyttäjä</a></li>
-                      <li><a class="make-inactive" href="#" user-id="{{ user.id }}">Ei aktiivinen</a></li>
-                      <li><a class="make-hidden" href="#" user-id="{{ user.id }}">Piilotettu</a></li>
+                      <li>
+                        <a href="https://id.prodeko.org/admin/master/console/#/membership-registry/users"
+                           target="_blank" rel="noopener">Hallitse Keycloakissa</a>
+                      </li>
                       <li role="separator" class="divider"></li>
                       <li><a class="delete-user-button" href="#" user-id="{{ user.id }}" user-name="{{ user.get_full_name }}">Poista</a></li>
                     </ul>

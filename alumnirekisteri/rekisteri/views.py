@@ -14,7 +14,6 @@ import qrcode
 from django.contrib import messages
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.decorators import login_required
-from django.core.mail import EmailMultiAlternatives
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db.models import F, Q, Value
 from django.http import (
@@ -151,95 +150,20 @@ def admin(request):
         users = paginator.page(paginator.num_pages)
     if request.method == "POST" and "action" in request.POST:
         user = User.objects.get(pk=request.POST.get("user_id"))
-        if user == request.user:  # Admin cannot edit own role
+        if user == request.user:  # Admin cannot delete own account
             return HttpResponseForbidden()
-        if request.POST.get("action") == "make-admin":
-            user.is_active = True
-            user.is_staff = True
-            user.is_hidden = False
-            user.save()
-        elif request.POST.get("action") == "make-user":
-            user.is_active = True
-            user.is_staff = False
-            user.is_hidden = False
-            user.save()
-        elif request.POST.get("action") == "make-inactive":
-            user.is_active = False
-            user.is_staff = False
-            user.is_hidden = False
-            user.save()
-        elif request.POST.get("action") == "make-hidden":
-            user.is_hidden = True
-            user.is_staff = False
-            user.is_active = False
-            user.save()
-        elif request.POST.get("action") == "delete-user":
+        if request.POST.get("action") == "delete-user":
             delete_user(user)
         else:
+            # Roles and activation live in Keycloak. Setting them here
+            # would only last until the member's next login.
             return HttpResponseForbidden()
-        if (
-            request.POST.get("action") != "delete-user"
-            and (user.last_login is None)
-            and user.is_active
-        ):
-            # inform user about activation of credentials
-            subject = "Käyttäjätunnus aktivoitu"
-            text_content = "Käyttäjätunnuksesi {} on aktivoitu ja voit nyt kirjautua alumnirekisteriin.".format(
-                user.email
-            )
-            html_content = '<p>Käyttäjätunnuksesi <strong>{}</strong> on aktivoitu ja voit nyt kirjautua alumnirekisteriin.</p><br><p><a href="https://matrikkeli.prodeko.org">https://matrikkeli.prodeko.org</a></p>'.format(
-                user.email
-            )
-            email_to = user.email
-            from_email = "alumnirekisteri.no.reply@prodeko.org"
-            msg = EmailMultiAlternatives(subject, text_content, from_email, [email_to])
-            msg.attach_alternative(html_content, "text/html")
-            msg.send()
-    elif request.method == "POST" and "admin_note" in request.POST:
+    if request.method == "POST" and "admin_note" in request.POST:
         user = User.objects.get(pk=request.POST.get("user_id"))
         user.person.admin_note = request.POST.get("admin_note")
         user.person.save()
 
     return render(request, "admin.html", {"users": users, "heading": heading})
-
-
-@staff_member_required(login_url="/login/")
-def admin_member_requests(request):
-    heading = "Admin: Pending member requests"
-    user_list = User.objects.filter(is_active=False)
-    if user_list is not None:
-        paginator = Paginator(user_list, 100)  # Show 100 users per page
-        page = request.GET.get("page")
-        try:
-            users = paginator.page(page)
-        except PageNotAnInteger:
-            # If page is not an integer, deliver first page.
-            users = paginator.page(1)
-        except EmptyPage:
-            # If page is out of range, deliver last page of results.
-            users = paginator.page(paginator.num_pages)
-        if request.method == "POST" and "action" in request.POST:
-            user = User.objects.get(pk=request.POST.get("user_id"))
-            if user == request.user:  # Admin cannot edit own role
-                return HttpResponseForbidden()
-            if request.POST.get("action") == "make-admin":
-                user.is_active = True
-                user.is_staff = True
-                user.save()
-            elif request.POST.get("action") == "make-user":
-                user.is_active = True
-                user.is_staff = False
-                user.save()
-            elif request.POST.get("action") == "make-inactive":
-                user.is_active = False
-                user.is_staff = False
-                user.save()
-            elif request.POST.get("action") == "delete-user":
-                delete_user(user)
-            else:
-                return HttpResponseForbidden()
-        return render(request, "admin.html", {"users": users, "heading": heading})
-    return render("")
 
 
 @staff_member_required(login_url="/login/")

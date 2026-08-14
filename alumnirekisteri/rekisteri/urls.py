@@ -14,11 +14,6 @@ urlpatterns = [
         views.admin_edit_person_view,
         name="admin_edit_person_view",
     ),
-    re_path(
-        r"^admin/member-requests/$",
-        views.admin_member_requests,
-        name="admin_member_requests",
-    ),
     re_path(r"^admin/export-data/$", views.admin_export_data, name="admin_export_data"),
     re_path(
         r"^admin/export-matrikkeli/$",
