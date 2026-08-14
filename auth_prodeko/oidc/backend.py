@@ -19,6 +19,22 @@ logger = logging.getLogger(__name__)
 
 
 class KeycloakOIDCBackend(OIDCAuthenticationBackend):
+    def get_userinfo(self, access_token, id_token, payload):
+        """Merge the ID token's claims with the UserInfo response.
+
+        The library resolves the account from this dict alone, and the
+        realm-role mapper the setup guide specifies writes
+        realm_access.roles to the ID token. Reading UserInfo only would
+        make every login hinge on whether an administrator also ticked
+        "Add to userinfo" on that mapper in the Keycloak admin console --
+        a box nobody will think to look at once logins start failing.
+        UserInfo is layered on top, so it wins where both define a claim:
+        it is fetched now, whereas the ID token was minted at sign-in.
+        """
+        claims = dict(payload or {})
+        claims.update(super().get_userinfo(access_token, id_token, payload))
+        return claims
+
     def verify_claims(self, claims):
         try:
             identity = parse_claims(claims)

@@ -1,3 +1,4 @@
+import mozilla_django_oidc.auth
 import pytest
 from django.contrib.auth import get_user_model
 from django.core.exceptions import SuspiciousOperation
@@ -136,6 +137,69 @@ def test_login_is_refused_for_the_break_glass_address(backend, settings, monkeyp
 def test_an_unknown_address_is_still_created(backend, monkeypatch):
     """The refusal must not fire when the address is simply new."""
     user = resolve(backend, monkeypatch, claims())
+    assert user.email == "maija@prodeko.org"
+    assert user.keycloak_sub == "sub-1"
+
+
+# --- claims come from the ID token as well as UserInfo --------------------
+#
+# The library hands verify_claims whatever get_userinfo returns, and the
+# realm-role mapper the setup guide specifies writes realm_access.roles to
+# the ID token, not necessarily to UserInfo. These stub the one HTTP call
+# the library makes, so nothing contacts Keycloak.
+
+
+@pytest.fixture
+def userinfo(monkeypatch):
+    """Stub the UserInfo request and return a setter for its body."""
+
+    body = {}
+
+    class Response:
+        headers = {"content-type": "application/json"}
+
+        def raise_for_status(self):
+            pass
+
+        def json(self):
+            return body
+
+    monkeypatch.setattr(
+        mozilla_django_oidc.auth.requests, "get", lambda *args, **kwargs: Response()
+    )
+
+    def respond_with(**claims):
+        body.clear()
+        body.update(claims)
+
+    return respond_with
+
+
+def test_roles_from_the_id_token_survive_a_userinfo_without_them(backend, userinfo):
+    userinfo(sub="sub-1", email="maija@prodeko.org", email_verified=True)
+    merged = backend.get_userinfo("access-token", "id-token", claims())
+    assert merged["realm_access"] == {"roles": ["membership"]}
+
+
+def test_userinfo_wins_where_both_define_a_claim(backend, userinfo):
+    userinfo(sub="sub-1", email="uusi@prodeko.org")
+    merged = backend.get_userinfo("access-token", "id-token", claims())
+    assert merged["email"] == "uusi@prodeko.org"
+
+
+@pytest.mark.parametrize("payload", [None, {}])
+def test_a_missing_or_empty_payload_does_not_break_the_merge(
+    backend, userinfo, payload
+):
+    userinfo(**claims())
+    merged = backend.get_userinfo("access-token", "id-token", payload)
+    assert merged == claims()
+
+
+def test_a_member_known_only_to_the_id_token_may_sign_in(backend, userinfo):
+    """The real path: verify_claims must see the ID token's roles."""
+    userinfo(sub="sub-1", email="maija@prodeko.org", email_verified=True)
+    user = backend.get_or_create_user("access-token", "id-token", claims())
     assert user.email == "maija@prodeko.org"
     assert user.keycloak_sub == "sub-1"
 
