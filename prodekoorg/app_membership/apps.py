@@ -1,10 +1,11 @@
 from django.apps import AppConfig
-from django.utils.translation import gettext_lazy as _
 
 
-class AppApplyForMembershipConfig(AppConfig):
+class AppMembershipConfig(AppConfig):
+    """Retained only to keep this app's migration history applicable.
+
+    Membership applications are handled by membership.prodeko.org.
+    """
+
     name = "prodekoorg.app_membership"
-    verbose_name = _("Membership applications")
-
-    def ready(self):
-        pass
+    verbose_name = "Membership (retired)"
