@@ -127,9 +127,59 @@ def test_migration_refuses_when_the_break_glass_password_is_unusable(settings):
     assert User.objects.get(email="a@prodeko.org").has_usable_password()
 
 
-def test_migration_runs_when_the_break_glass_account_can_sign_in(settings):
+def test_migration_refuses_when_the_break_glass_account_is_not_staff(settings):
+    """An ordinary member row holding the address cannot reach the admin."""
     settings.KEYCLOAK_BREAK_GLASS_EMAIL = "rescue@prodeko.org"
     User.objects.create_user(email="rescue@prodeko.org", password="hunter2hunter2")
+    User.objects.create_user(email="a@prodeko.org", password="hunter2hunter2")
+
+    with pytest.raises(_migration.NoBreakGlassAccount) as raised:
+        _migration.forwards(historical_apps(), None)
+
+    assert "cannot reach the admin" in str(raised.value)
+    assert "is_staff" in str(raised.value)
+    assert User.objects.get(email="a@prodeko.org").has_usable_password()
+
+
+def test_migration_refuses_when_the_break_glass_account_is_only_a_superuser(settings):
+    """Permissions are not admission: the admin login form checks is_staff."""
+    settings.KEYCLOAK_BREAK_GLASS_EMAIL = "rescue@prodeko.org"
+    User.objects.create_user(
+        email="rescue@prodeko.org",
+        password="hunter2hunter2",
+        is_superuser=True,
+    )
+    User.objects.create_user(email="a@prodeko.org", password="hunter2hunter2")
+
+    with pytest.raises(_migration.NoBreakGlassAccount) as raised:
+        _migration.forwards(historical_apps(), None)
+
+    assert "is_staff" in str(raised.value)
+    assert User.objects.get(email="a@prodeko.org").has_usable_password()
+
+
+def test_migration_refuses_when_the_break_glass_account_is_inactive(settings):
+    settings.KEYCLOAK_BREAK_GLASS_EMAIL = "rescue@prodeko.org"
+    User.objects.create_user(
+        email="rescue@prodeko.org",
+        password="hunter2hunter2",
+        is_staff=True,
+        is_active=False,
+    )
+    User.objects.create_user(email="a@prodeko.org", password="hunter2hunter2")
+
+    with pytest.raises(_migration.NoBreakGlassAccount) as raised:
+        _migration.forwards(historical_apps(), None)
+
+    assert "is_active" in str(raised.value)
+    assert User.objects.get(email="a@prodeko.org").has_usable_password()
+
+
+def test_migration_runs_when_the_break_glass_account_can_reach_the_admin(settings):
+    settings.KEYCLOAK_BREAK_GLASS_EMAIL = "rescue@prodeko.org"
+    User.objects.create_user(
+        email="rescue@prodeko.org", password="hunter2hunter2", is_staff=True
+    )
 
     _migration.forwards(historical_apps(), None)
 
@@ -138,7 +188,7 @@ def test_migration_runs_when_the_break_glass_account_can_sign_in(settings):
 
 def test_the_break_glass_account_is_the_only_one_left_with_a_password(settings):
     settings.KEYCLOAK_BREAK_GLASS_EMAIL = "rescue@prodeko.org"
-    User.objects.create_user(email="rescue@prodeko.org", password="hunter2hunter2")
+    User.objects.create_superuser(email="rescue@prodeko.org", password="hunter2hunter2")
     User.objects.create_user(email="a@prodeko.org", password="hunter2hunter2")
     User.objects.create_user(email="b@prodeko.org", password="hunter2hunter2")
 

@@ -12,6 +12,12 @@ class NoBreakGlassAccount(RuntimeError):
 def check_break_glass_account(user_model, break_glass_email: str) -> None:
     """Refuse the retirement unless one account survives it and can sign in.
 
+    Signing in means reaching the Django admin, the only page left with a
+    password form once the site's own login form is gone. Its login form
+    admits an account only when ``is_active`` and ``is_staff`` are both set,
+    so a shared guild address that happens to exist as an ordinary member row
+    is no rescue, and ``is_superuser`` on its own is not either.
+
     Reads the raw ``password`` column rather than ``has_usable_password()``,
     because the migration engine hands this a historical model built from
     migration state, which has the fields but not the methods.
@@ -27,15 +33,25 @@ def check_break_glass_account(user_model, break_glass_email: str) -> None:
         ):
             problem = f"the account {break_glass_email} has no usable password"
         else:
-            return
+            missing = [
+                flag for flag in ("is_active", "is_staff") if not getattr(account, flag)
+            ]
+            if not missing:
+                return
+            problem = (
+                f"the account {break_glass_email} cannot reach the admin, the "
+                "only page that still takes a password, because it is missing "
+                f"{' and '.join(missing)}"
+            )
 
     raise NoBreakGlassAccount(
         f"{problem}, so this migration would retire every password including "
         "the break-glass account's, leaving no way into the site while "
         "Keycloak is unreachable. Set [KEYCLOAK] BREAK_GLASS_EMAIL in the "
-        "settings variables file, create an account with that exact address, "
-        "and give it a password. All three are prerequisites of the deploy, "
-        "not steps that follow it. Then run migrate again."
+        "settings variables file, create an active staff account with that "
+        "exact address, and give it a password. All of these are "
+        "prerequisites of the deploy, not steps that follow it. Then run "
+        "migrate again."
     )
 
 
@@ -59,8 +75,9 @@ class Migration(migrations.Migration):
     Deliberately irreversible: the hashes are gone once this has run, and
     restoring them is not something a reverse migration could do. Whenever it
     has a password to retire it therefore refuses to run at all unless the
-    break-glass account exists and can sign in, so an outage of the identity
-    provider cannot lock us out of our own site.
+    break-glass account exists, has a usable password and can reach the
+    admin, so an outage of the identity provider cannot lock us out of our
+    own site.
     """
 
     dependencies = [("auth_prodeko", "0003_keycloak_link")]
