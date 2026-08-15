@@ -14,6 +14,15 @@ def test_keycloak_settings_exist():
     assert settings.KEYCLOAK_SUPERUSER_ROLE == "prodeko-org-superuser"
 
 
+def test_calls_to_keycloak_are_bounded_by_a_timeout():
+    """mozilla_django_oidc passes this straight to requests, and its own
+    default is None: no timeout at all. A provider that accepts the
+    connection and then stops answering would hold a worker thread for
+    as long as it stayed up."""
+    assert isinstance(settings.OIDC_TIMEOUT, (int, float))
+    assert 0 < settings.OIDC_TIMEOUT <= 10
+
+
 def test_missing_keycloak_section_falls_back_to_empty():
     """A variables.txt without [KEYCLOAK] must not break django.setup().
 

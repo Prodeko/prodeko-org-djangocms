@@ -454,6 +454,19 @@ OIDC_USE_PKCE = True
 OIDC_PKCE_CODE_CHALLENGE_METHOD = "S256"
 OIDC_CREATE_USER = True
 OIDC_STORE_ID_TOKEN = True
+# Seconds to wait for id.prodeko.org. mozilla_django_oidc hands this to
+# requests in get_token(), get_userinfo() and retrieve_matching_jwk(),
+# and its own default is None, which means wait forever. Production runs
+# gunicorn with 2 workers of 2 threads: 4 concurrent request slots for
+# the whole site. A provider that accepts connections but never answers
+# would park one slot per person clicking the login link, so four of
+# them take prodeko.org down for everyone, including the anonymous
+# visitors who never needed Keycloak. Three calls to Keycloak happen per
+# login, so a slot is held for at most three times this and then freed;
+# a healthy round trip to id.prodeko.org is well under a second, so five
+# seconds is slack for a loaded provider, not a wait anyone benefits
+# from. Thirty seconds would be the same outage, just slower.
+OIDC_TIMEOUT = 5
 LOGOUT_REDIRECT_URL = "/"
 OIDC_OP_LOGOUT_URL_METHOD = "auth_prodeko.oidc.logout.provider_logout"
 # Where a login Keycloak allowed but this site refused ends up. The

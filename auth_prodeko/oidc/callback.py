@@ -1,12 +1,16 @@
 """Telling an expired sign-in apart from a refused one."""
 
+import logging
 import time
 from urllib.parse import urlencode
 
+import requests
 from django.contrib import auth
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from mozilla_django_oidc.views import OIDCAuthenticationCallbackView
+
+logger = logging.getLogger(__name__)
 
 # The errors only a prompt=none handoff can come back with. Every one of
 # them means the same thing: Keycloak could not answer without the member
@@ -54,7 +58,20 @@ class KeycloakOIDCCallbackView(OIDCAuthenticationCallbackView):
         # The base view ends the Django session before login_failure()
         # runs, and the page the member was reading goes with it.
         self.interrupted_page = request.session.get("oidc_login_next")
-        return super().get(request)
+        try:
+            return super().get(request)
+        except requests.exceptions.Timeout:
+            # OIDC_TIMEOUT cuts the call off; nothing between here and
+            # requests catches what it raises, so without this the
+            # member gets a 500 and the admins get mail for every click
+            # for as long as the outage lasts. Warning, not error: the
+            # site is fine, Keycloak is not, and ERROR is what the
+            # production LOGGING config mails on.
+            logger.warning(
+                "Keycloak did not answer within OIDC_TIMEOUT; refusing the login",
+                exc_info=True,
+            )
+            return self.login_failure()
 
     def login_failure(self):
         if self.request.GET.get("error") in SILENT_REFRESH_ERRORS:
