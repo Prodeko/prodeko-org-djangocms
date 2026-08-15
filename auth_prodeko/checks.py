@@ -1,9 +1,10 @@
 """System checks that stop an unconfigurable production deploy early.
 
-Django runs the system checks as part of migrate and collectstatic, both
-of which deploy.sh runs before any traffic reaches the new container, so
-an error here fails the deploy at a point where the rollback still
-restores a working site.
+Django runs the system checks as part of migrate, which deploy.sh runs
+before any traffic reaches the new container, so an error here fails the
+deploy at a point where the rollback still restores a working site.
+collectstatic runs earlier but checks only the staticfiles tag, so
+migrate is the step that catches this.
 """
 
 from django.conf import settings

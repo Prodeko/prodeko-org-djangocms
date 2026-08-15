@@ -60,17 +60,16 @@ class KeycloakOIDCCallbackView(OIDCAuthenticationCallbackView):
         self.interrupted_page = request.session.get("oidc_login_next")
         try:
             return super().get(request)
-        except requests.exceptions.Timeout:
-            # OIDC_TIMEOUT cuts the call off; nothing between here and
-            # requests catches what it raises, so without this the
-            # member gets a 500 and the admins get mail for every click
-            # for as long as the outage lasts. Warning, not error: the
-            # site is fine, Keycloak is not, and ERROR is what the
-            # production LOGGING config mails on.
-            logger.warning(
-                "Keycloak did not answer within OIDC_TIMEOUT; refusing the login",
-                exc_info=True,
-            )
+        except requests.exceptions.RequestException:
+            # Every way a call to Keycloak can fail arrives here: a
+            # timeout cut off by OIDC_TIMEOUT, a refused connection, a
+            # 503 from the token endpoint. Nothing between here and
+            # requests catches any of them, so without this the member
+            # gets a 500 and the admins get mail for every click for as
+            # long as the outage lasts. Warning, not error: the site is
+            # fine, Keycloak is not, and ERROR is what the production
+            # LOGGING config mails on.
+            logger.warning("Keycloak did not answer; refusing the login", exc_info=True)
             return self.login_failure()
 
     def login_failure(self):
