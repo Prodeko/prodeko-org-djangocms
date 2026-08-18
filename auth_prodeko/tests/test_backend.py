@@ -53,6 +53,54 @@ def test_non_member_is_refused(backend):
     assert backend.verify_claims(claims(realm_access={"roles": []})) is False
 
 
+def test_the_alumni_role_is_enough_on_its_own(backend):
+    assert backend.verify_claims(claims(realm_access={"roles": ["alumni"]})) is True
+
+
+def test_an_account_from_before_the_migration_needs_no_role(backend):
+    """Nothing on prodeko.org has ever checked membership status, so a
+    former member can sign in today. The role must not take that away."""
+    User.objects.create_user(email="maija@prodeko.org", predates_keycloak=True)
+
+    assert backend.verify_claims(claims(realm_access={"roles": []})) is True
+
+
+def test_a_grandfathered_account_still_signs_in_once_linked(backend):
+    """Every login after the first resolves by subject, not by address."""
+    User.objects.create_user(
+        email="maija@prodeko.org", keycloak_sub="sub-1", predates_keycloak=True
+    )
+
+    assert backend.verify_claims(claims(realm_access={"roles": []})) is True
+
+
+def test_an_account_created_after_the_migration_still_needs_a_role(backend):
+    """The cutoff is the point: whoever joins now and lapses later is
+    refused, where whoever joined before the migration is not."""
+    User.objects.create_user(email="maija@prodeko.org", keycloak_sub="sub-1")
+
+    assert backend.verify_claims(claims(realm_access={"roles": []})) is False
+
+
+def test_the_break_glass_address_grandfathers_nobody(backend, settings):
+    """It holds the only password left, so registering its address at
+    Keycloak must buy nothing at all."""
+    settings.KEYCLOAK_BREAK_GLASS_EMAIL = "maija@prodeko.org"
+    User.objects.create_user(email="maija@prodeko.org", predates_keycloak=True)
+
+    assert backend.verify_claims(claims(realm_access={"roles": []})) is False
+
+
+def test_an_address_claimed_by_another_subject_grandfathers_nobody(backend):
+    """The row cannot be adopted, so it cannot vouch for the identity
+    either; otherwise registering a member's old address would be enough."""
+    User.objects.create_user(
+        email="maija@prodeko.org", keycloak_sub="someone-else", predates_keycloak=True
+    )
+
+    assert backend.verify_claims(claims(realm_access={"roles": []})) is False
+
+
 def test_malformed_token_is_refused_not_raised(backend):
     assert backend.verify_claims(claims(sub="")) is False
 

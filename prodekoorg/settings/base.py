@@ -50,10 +50,12 @@ KEYCLOAK_CLIENT_ID = config.get("KEYCLOAK", "CLIENT_ID", fallback="")
 KEYCLOAK_CLIENT_SECRET = config.get("KEYCLOAK", "CLIENT_SECRET", fallback="")
 KEYCLOAK_BREAK_GLASS_EMAIL = config.get("KEYCLOAK", "BREAK_GLASS_EMAIL", fallback="")
 
-# Realm roles. Membership grants access to the site at all; the other two
-# grant Django's is_staff and is_superuser. All three are overwritten on
-# every login, so Keycloak is the only place they are managed.
-KEYCLOAK_MEMBERSHIP_ROLES = ["membership"]
+# Realm roles. Either of the first two grants access to the site at all;
+# the other two grant Django's is_staff and is_superuser, and are
+# overwritten on every login, so Keycloak is the only place they are
+# managed. `alumni` is listed ahead of the membership registry issuing it
+# automatically, so that work needs no deploy here.
+KEYCLOAK_MEMBERSHIP_ROLES = ["membership", "alumni"]
 KEYCLOAK_STAFF_ROLE = "prodeko-org-admin"
 KEYCLOAK_SUPERUSER_ROLE = "prodeko-org-superuser"
 

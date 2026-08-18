@@ -9,7 +9,7 @@ def test_keycloak_settings_exist():
     assert isinstance(settings.KEYCLOAK_ISSUER, str)
     assert isinstance(settings.KEYCLOAK_CLIENT_ID, str)
     assert isinstance(settings.KEYCLOAK_CLIENT_SECRET, str)
-    assert settings.KEYCLOAK_MEMBERSHIP_ROLES == ["membership"]
+    assert settings.KEYCLOAK_MEMBERSHIP_ROLES == ["membership", "alumni"]
     assert settings.KEYCLOAK_STAFF_ROLE == "prodeko-org-admin"
     assert settings.KEYCLOAK_SUPERUSER_ROLE == "prodeko-org-superuser"
 

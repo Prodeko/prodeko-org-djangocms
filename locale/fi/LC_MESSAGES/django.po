@@ -110,6 +110,20 @@ msgstr ""
 msgid "Keycloak linked at"
 msgstr "Keycloak-tili liitetty"
 
+#: auth_prodeko/models.py:85
+msgid "Predates Keycloak"
+msgstr "Edeltää Keycloakia"
+
+#: auth_prodeko/models.py:87
+msgid ""
+"Designates whether this account existed before prodeko.org moved to the "
+"Prodeko login. Such an account may sign in without a current membership, "
+"which is how members who have since left keep their access."
+msgstr ""
+"Määrittää, oliko tili olemassa ennen kuin prodeko.org siirtyi Prodeko-"
+"kirjautumiseen. Tällainen tili voi kirjautua sisään ilman voimassa olevaa "
+"jäsenyyttä, mikä säilyttää pääsyn niille, jotka eivät enää ole jäseniä."
+
 #: auth_prodeko/models.py:75
 msgid "user"
 msgstr "käyttäjä"

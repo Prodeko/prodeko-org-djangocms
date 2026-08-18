@@ -80,6 +80,16 @@ class User(AbstractUser):
         editable=False,
         verbose_name=_("Keycloak linked at"),
     )
+    predates_keycloak = models.BooleanField(
+        default=False,
+        verbose_name=_("Predates Keycloak"),
+        help_text=_(
+            "Designates whether this account existed before prodeko.org "
+            "moved to the Prodeko login. Such an account may sign in "
+            "without a current membership, which is how members who have "
+            "since left keep their access."
+        ),
+    )
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = ["first_name", "last_name"]

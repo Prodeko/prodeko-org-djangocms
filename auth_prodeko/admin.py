@@ -28,7 +28,7 @@ class UserAdmin(DjangoUserAdmin):
         (_("Important dates"), {"fields": ("last_login", "date_joined")}),
         (
             _("Keycloak"),
-            {"fields": ("keycloak_sub", "keycloak_linked_at")},
+            {"fields": ("keycloak_sub", "keycloak_linked_at", "predates_keycloak")},
         ),
     )
 

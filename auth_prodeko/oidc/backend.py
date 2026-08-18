@@ -48,25 +48,50 @@ class KeycloakOIDCBackend(OIDCAuthenticationBackend):
             )
             return False
 
-        required = set(settings.KEYCLOAK_MEMBERSHIP_ROLES)
-        if required and not (identity.roles & required):
+        if not self._may_sign_in(identity):
             logger.info(
-                "Refusing Keycloak login for %s: no membership role", identity.email
+                "Refusing Keycloak login for %s: no membership role and no "
+                "account from before the migration",
+                identity.email,
             )
             return False
 
         return True
 
-    def filter_users_by_claims(self, claims):
-        identity = parse_claims(claims)
+    def _may_sign_in(self, identity: KeycloakIdentity) -> bool:
+        """Whether Keycloak's word about this identity opens the site.
 
+        A membership role does. So does an account that predates the
+        migration, because nothing on prodeko.org consults membership
+        status, so every former member holding one can sign in as things
+        stand, and a role gate alone would take that away rather than
+        keep it. The flag is false on every account created since, so a
+        member who joins now and lapses later is refused; the membership
+        registry closes that gap by issuing the alumni role, which is
+        listed in the setting already.
+
+        Deliberately asks for the rows the identity actually resolves to,
+        so an address already claimed by another Keycloak subject and the
+        break-glass address vouch for nobody, and a stranger who
+        self-registers matches nothing and is refused as before.
+        """
+        required = set(settings.KEYCLOAK_MEMBERSHIP_ROLES)
+        if not required or identity.roles & required:
+            return True
+
+        return self._matching_accounts(identity).filter(predates_keycloak=True).exists()
+
+    def _matching_accounts(self, identity: KeycloakIdentity):
+        """The accounts this identity may be resolved to, if any.
+
+        Adopts a legacy row by address, but never one already spoken for
+        by a different Keycloak identity, and never the break-glass
+        account, which has no Keycloak identity by design.
+        """
         by_subject = self.UserModel.objects.filter(keycloak_sub=identity.subject)
         if by_subject.exists():
             return by_subject
 
-        # Adopt a legacy row by address, but never one already spoken for
-        # by a different Keycloak identity, and never the break-glass
-        # account, which has no Keycloak identity by design.
         candidates = self.UserModel.objects.filter(
             email__iexact=identity.email, keycloak_sub__isnull=True
         )
@@ -74,6 +99,12 @@ class KeycloakOIDCBackend(OIDCAuthenticationBackend):
             candidates = candidates.exclude(
                 email__iexact=settings.KEYCLOAK_BREAK_GLASS_EMAIL
             )
+        return candidates
+
+    def filter_users_by_claims(self, claims):
+        identity = parse_claims(claims)
+
+        candidates = self._matching_accounts(identity)
         if candidates.exists():
             return candidates
 
