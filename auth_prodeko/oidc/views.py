@@ -1,8 +1,9 @@
-"""Views that keep the old login URL names pointing somewhere useful.
+"""The view auth_prodeko:login points at.
 
-Seventy decorators, LOGIN_URL, the navbar and the policy modal all name
-auth_prodeko:login. Keeping the name and swapping the view behind it is
-what stops this migration from touching all of them.
+LOGIN_URL names auth_prodeko:login, the navbar links to it, and so does
+every login_required decorator in the project by way of LOGIN_URL. One
+view behind that name is what spares all of them from knowing where
+sign-in actually happens.
 """
 
 from django.urls import reverse

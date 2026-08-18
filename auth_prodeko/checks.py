@@ -16,6 +16,7 @@ REQUIRED_SETTINGS = (
     ("KEYCLOAK_ISSUER", "ISSUER"),
     ("KEYCLOAK_CLIENT_ID", "CLIENT_ID"),
     ("KEYCLOAK_CLIENT_SECRET", "CLIENT_SECRET"),
+    ("KEYCLOAK_BREAK_GLASS_EMAIL", "BREAK_GLASS_EMAIL"),
 )
 
 
@@ -28,6 +29,13 @@ def check_keycloak_configured(app_configs, **kwargs):
     instead of Keycloak, and an empty client id or secret is rejected by
     the provider. None of that is visible to a health check, so without
     this the deploy succeeds and the site quietly has no login.
+
+    An empty BREAK_GLASS_EMAIL is worse than no login, which is why it
+    is required here too rather than left to whoever configures the rest.
+    The address is what the backend keeps out of the sign-in path, so
+    with nothing to compare against, a Keycloak identity registered at
+    the break-glass address takes over the one account still holding a
+    usable password, and an outage then locks everyone out for good.
 
     Development is left alone: DEBUG is True there, and contributors who
     are not working on authentication run with an empty [KEYCLOAK]
@@ -57,10 +65,11 @@ def check_keycloak_configured(app_configs, **kwargs):
                 "--tags prodeko_org) and confirm the section is on the host "
                 "before deploying again; rendering it does not restart the "
                 "container. ISSUER is the realm URL with no trailing slash, "
-                "CLIENT_ID is the Keycloak client, and CLIENT_SECRET comes "
+                "CLIENT_ID is the Keycloak client, CLIENT_SECRET comes "
                 "from that client's Credentials tab by way of the "
-                "prodekoorg-keycloak-client-secret Key Vault secret. Values "
-                "are read literally: no quotes."
+                "prodekoorg-keycloak-client-secret Key Vault secret, and "
+                "BREAK_GLASS_EMAIL is the address of the one account that "
+                "keeps a password. Values are read literally: no quotes."
             ),
             id="auth_prodeko.E001",
         )

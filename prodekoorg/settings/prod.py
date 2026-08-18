@@ -138,5 +138,14 @@ LOGGING = {
             "level": "INFO",
             "propagate": False,
         },
+        # The sign-in path, ours and the library's. Only the loggers named
+        # here have a handler, and every account question a member raises
+        # -- refused, adopted by the wrong row, created twice -- is
+        # answered by these lines and by nothing else in the container.
+        "auth_prodeko": {"handlers": ["console", "mail_admins"], "level": "INFO"},
+        "mozilla_django_oidc": {
+            "handlers": ["console", "mail_admins"],
+            "level": "INFO",
+        },
     },
 }

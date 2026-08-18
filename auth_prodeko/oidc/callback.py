@@ -8,6 +8,8 @@ import requests
 from django.contrib import auth
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.utils.module_loading import import_string
+from mozilla_django_oidc.auth import OIDCAuthenticationBackend
 from mozilla_django_oidc.views import OIDCAuthenticationCallbackView
 
 logger = logging.getLogger(__name__)
@@ -40,9 +42,10 @@ class KeycloakOIDCCallbackView(OIDCAuthenticationCallbackView):
     false accusation.
 
     The other way is a perfectly valid code whose claims the backend
-    then refuses: a revoked role, an address already linked to another
-    Keycloak subject, an attempt to adopt the break-glass account. That
-    is what the failure page is for. The base view only redirects there,
+    then refuses: a revoked role, a deactivated account, an address
+    already linked to another Keycloak subject, an attempt to adopt the
+    break-glass account. That is what the failure page is for, and the
+    member has to see it. The base view only redirects there,
     leaving the session authenticated with an id token still recorded as
     expired, so the very next request is sent round again: a redirect
     loop with no page to log out from. Signing the user out is what
@@ -60,26 +63,58 @@ class KeycloakOIDCCallbackView(OIDCAuthenticationCallbackView):
         self.interrupted_page = request.session.get("oidc_login_next")
         try:
             return super().get(request)
-        except requests.exceptions.RequestException:
-            # Every way a call to Keycloak can fail arrives here: a
-            # timeout cut off by OIDC_TIMEOUT, a refused connection, a
-            # 503 from the token endpoint. Nothing between here and
-            # requests catches any of them, so without this the member
-            # gets a 500 and the admins get mail for every click for as
-            # long as the outage lasts. Warning, not error: the site is
-            # fine, Keycloak is not, and ERROR is what the production
-            # LOGGING config mails on.
+        except (requests.exceptions.ConnectionError, requests.exceptions.Timeout):
+            # Keycloak never answered: a refused connection, a name that
+            # does not resolve, a request cut off by OIDC_TIMEOUT.
+            # Nothing between here and requests catches any of them, so
+            # without this the member gets a 500 and the admins get mail
+            # for every click for as long as the outage lasts. Warning,
+            # not error: the site is fine, Keycloak is not, and ERROR is
+            # what the production LOGGING config mails on.
             logger.warning("Keycloak did not answer; refusing the login", exc_info=True)
+            return self.login_failure()
+        except requests.exceptions.RequestException:
+            # Keycloak answered and the answer was unusable: a 401 from
+            # the token endpoint because the client secret here does not
+            # match the one in the realm, a body that is not JSON. That
+            # is a fault in this deployment, it will not clear on its
+            # own, and every login fails until someone fixes it, so it is
+            # worth the mail ERROR sends.
+            logger.error(
+                "Keycloak rejected this site's own credentials or answered "
+                "unintelligibly; refusing the login",
+                exc_info=True,
+            )
             return self.login_failure()
 
     def login_failure(self):
         if self.request.GET.get("error") in SILENT_REFRESH_ERRORS:
             return self.session_expired()
-        session = self.request.session
-        expired = session.get("oidc_id_token_expiration", 0) <= time.time()
-        if expired and self.request.user.is_authenticated:
+        if self._recheck_would_bounce():
             auth.logout(self.request)
         return super().login_failure()
+
+    def _recheck_would_bounce(self) -> bool:
+        """Whether SessionRefresh would send this session round again.
+
+        Its two conditions in its own terms: the session was
+        authenticated by an OIDC backend, and its id token has aged out.
+        The backend is the load-bearing one. A session with no id token
+        at all reads as one whose token expired long ago, and that is
+        the break-glass account, sitting in the admin through
+        ModelBackend precisely because Keycloak cannot be reached -- so
+        without this test a stray GET of the callback url would end the
+        one session that still works.
+        """
+        session = self.request.session
+        if not self.request.user.is_authenticated:
+            return False
+        backend = session.get(auth.BACKEND_SESSION_KEY)
+        if backend and not issubclass(
+            import_string(backend), OIDCAuthenticationBackend
+        ):
+            return False
+        return session.get("oidc_id_token_expiration", 0) <= time.time()
 
     def session_expired(self):
         """Sends the member into the ordinary interactive login.

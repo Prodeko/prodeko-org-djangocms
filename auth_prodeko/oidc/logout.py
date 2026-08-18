@@ -38,8 +38,7 @@ class AdminLogoutView(OIDCLogoutView):
     so a click on a login link signs them straight back in without a
     password prompt. Ending the Keycloak session too needs a full-page
     navigation, which is what every other way of logging out — the
-    site's logout link, the admin, typing the URL — still is, and those
-    are unchanged.
+    site's logout link, the admin, typing the URL — is.
     """
 
     def post(self, request):

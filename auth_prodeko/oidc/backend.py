@@ -1,9 +1,13 @@
 """Resolving a Keycloak identity to a prodeko.org account.
 
-Keycloak is the only authority for who may sign in and what they may do.
-Every login rewrites is_staff, is_superuser and is_active from the token,
-so a privilege set locally cannot survive and a dormant admin row cannot
-be inherited by whoever happens to claim its address.
+Keycloak is the authority for who holds a membership and what they may
+do: every login rewrites is_staff and is_superuser from the token, so a
+privilege set locally cannot survive and a dormant admin row cannot be
+inherited by whoever happens to claim its address.
+
+Whether an account exists at all stays on this side. Only an active one
+can be resolved to, so deactivating someone in the Django admin keeps
+them off the site whatever Keycloak says about them.
 """
 
 import logging
@@ -48,6 +52,15 @@ class KeycloakOIDCBackend(OIDCAuthenticationBackend):
             )
             return False
 
+        occupant = self._occupant(identity)
+        if occupant is not None and not occupant.is_active:
+            logger.info(
+                "Refusing Keycloak login for %s: the prodeko.org account is "
+                "deactivated",
+                identity.email,
+            )
+            return False
+
         if not self._may_sign_in(identity):
             logger.info(
                 "Refusing Keycloak login for %s: no membership role and no "
@@ -71,9 +84,10 @@ class KeycloakOIDCBackend(OIDCAuthenticationBackend):
         listed in the setting already.
 
         Deliberately asks for the rows the identity actually resolves to,
-        so an address already claimed by another Keycloak subject and the
-        break-glass address vouch for nobody, and a stranger who
-        self-registers matches nothing and is refused as before.
+        so an address already claimed by another Keycloak subject, a
+        deactivated account and the break-glass address vouch for nobody,
+        and a stranger who self-registers matches nothing and is refused
+        as before.
         """
         required = set(settings.KEYCLOAK_MEMBERSHIP_ROLES)
         if not required or identity.roles & required:
@@ -85,21 +99,48 @@ class KeycloakOIDCBackend(OIDCAuthenticationBackend):
         """The accounts this identity may be resolved to, if any.
 
         Adopts a legacy row by address, but never one already spoken for
-        by a different Keycloak identity, and never the break-glass
-        account, which has no Keycloak identity by design.
+        by a different Keycloak identity, never a deactivated one, and
+        never the break-glass account, which has no Keycloak identity by
+        design. Those last two rule out the subject lookup as well as the
+        address lookup, so a link already recorded on such a row does not
+        carry it past them.
         """
-        by_subject = self.UserModel.objects.filter(keycloak_sub=identity.subject)
+        adoptable = self.UserModel.objects.filter(is_active=True)
+        if settings.KEYCLOAK_BREAK_GLASS_EMAIL:
+            adoptable = adoptable.exclude(
+                email__iexact=settings.KEYCLOAK_BREAK_GLASS_EMAIL
+            )
+
+        by_subject = adoptable.filter(keycloak_sub=identity.subject)
         if by_subject.exists():
             return by_subject
 
-        candidates = self.UserModel.objects.filter(
-            email__iexact=identity.email, keycloak_sub__isnull=True
+        return adoptable.filter(email__iexact=identity.email, keycloak_sub__isnull=True)
+
+    def _occupant(self, identity: KeycloakIdentity):
+        """The account standing in this identity's way, if any.
+
+        Looked up the way _matching_accounts resolves -- subject first,
+        then address -- so this is the row that lookup turned down, and
+        the one an administrator has to act on.
+        """
+        return (
+            self.UserModel.objects.filter(keycloak_sub=identity.subject).first()
+            or self.UserModel.objects.filter(email__iexact=identity.email).first()
         )
-        if settings.KEYCLOAK_BREAK_GLASS_EMAIL:
-            candidates = candidates.exclude(
-                email__iexact=settings.KEYCLOAK_BREAK_GLASS_EMAIL
+
+    def _refusal(self, occupant) -> str:
+        """Why that account cannot be resolved to, in an admin's terms."""
+        if settings.KEYCLOAK_BREAK_GLASS_EMAIL and (
+            occupant.email.lower() == settings.KEYCLOAK_BREAK_GLASS_EMAIL.lower()
+        ):
+            return (
+                "it is the break-glass account, which has no Keycloak "
+                "identity by design"
             )
-        return candidates
+        if not occupant.is_active:
+            return "the prodeko.org account it resolves to is deactivated"
+        return f"it is already linked to Keycloak subject {occupant.keycloak_sub}"
 
     def filter_users_by_claims(self, claims):
         identity = parse_claims(claims)
@@ -113,18 +154,11 @@ class KeycloakOIDCBackend(OIDCAuthenticationBackend):
         # taken by a row we refuse to adopt has to be refused out loud
         # instead. SuspiciousOperation is what the library's authenticate()
         # catches, which lands the browser on the login-failure page.
-        occupant = self.UserModel.objects.filter(email__iexact=identity.email).first()
+        occupant = self._occupant(identity)
         if occupant is None:
             return candidates
 
-        break_glass = settings.KEYCLOAK_BREAK_GLASS_EMAIL and (
-            occupant.email.lower() == settings.KEYCLOAK_BREAK_GLASS_EMAIL.lower()
-        )
-        reason = (
-            "it is the break-glass account, which has no Keycloak identity by design"
-            if break_glass
-            else f"it is already linked to Keycloak subject {occupant.keycloak_sub}"
-        )
+        reason = self._refusal(occupant)
         logger.warning(
             "Refusing Keycloak login for %s (subject %s): %s",
             identity.email,
@@ -132,8 +166,9 @@ class KeycloakOIDCBackend(OIDCAuthenticationBackend):
             reason,
         )
         raise SuspiciousOperation(
-            f"Keycloak address {identity.email} cannot be adopted because "
-            f"{reason}; an administrator must resolve this by hand"
+            f"Keycloak identity {identity.email} (subject {identity.subject}) "
+            f"cannot be signed in because {reason}; an administrator must "
+            f"resolve this by hand"
         )
 
     def create_user(self, claims):
@@ -181,9 +216,10 @@ class KeycloakOIDCBackend(OIDCAuthenticationBackend):
 
         user.first_name = identity.first_name
         user.last_name = identity.last_name
-        # Keycloak does not issue tokens for disabled accounts, so arriving
-        # here is itself proof that the account is enabled.
-        user.is_active = True
+        # is_active is left alone. Keycloak enabling an account says
+        # nothing about whether prodeko.org wants it: deactivating someone
+        # here is what takes them out of the matrikkeli, and a login must
+        # not undo it. Such a row is refused before this point anyway.
         user.is_superuser = settings.KEYCLOAK_SUPERUSER_ROLE in identity.roles
         user.is_staff = (
             user.is_superuser or settings.KEYCLOAK_STAFF_ROLE in identity.roles

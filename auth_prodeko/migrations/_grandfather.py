@@ -8,8 +8,12 @@ runs with --nomigrations and never executes migrations.
 def grandfather_existing_accounts(user_model) -> int:
     """Mark every account as predating Keycloak. Returns the count.
 
-    Every row, with no exceptions. An account deactivated years ago still
-    belongs to someone who was a member, and the break-glass account is
-    kept out of the sign-in path where it is resolved rather than here.
+    Every row, with no exceptions: the flag records when an account came
+    into being, which is a fact about the row and not a decision about
+    who may sign in. Whether it opens the site is settled at sign-in,
+    which is also where the accounts that must never be adopted -- the
+    deactivated ones and the break-glass account -- are set aside. A
+    deactivated row carrying the flag is what makes reactivating it
+    enough to let a former member back in.
     """
     return user_model.objects.update(predates_keycloak=True)

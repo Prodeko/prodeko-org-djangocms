@@ -16,7 +16,9 @@ CONFIGURED = {
     "KEYCLOAK_ISSUER": "https://id.prodeko.org/realms/membership-registry",
     "KEYCLOAK_CLIENT_ID": "prodekoorg",
     "KEYCLOAK_CLIENT_SECRET": "s3cret",
+    "KEYCLOAK_BREAK_GLASS_EMAIL": "webbitiimi@prodeko.org",
 }
+KEYS = ("ISSUER", "CLIENT_ID", "CLIENT_SECRET", "BREAK_GLASS_EMAIL")
 
 
 def test_a_configured_production_site_passes(settings):
@@ -33,6 +35,7 @@ def test_a_configured_production_site_passes(settings):
         ("KEYCLOAK_ISSUER", "ISSUER"),
         ("KEYCLOAK_CLIENT_ID", "CLIENT_ID"),
         ("KEYCLOAK_CLIENT_SECRET", "CLIENT_SECRET"),
+        ("KEYCLOAK_BREAK_GLASS_EMAIL", "BREAK_GLASS_EMAIL"),
     ],
 )
 def test_production_refuses_a_missing_key_and_names_it(settings, setting, key):
@@ -47,7 +50,7 @@ def test_production_refuses_a_missing_key_and_names_it(settings, setting, key):
     assert error.id == "auth_prodeko.E001"
     assert key in error.msg
     # The keys that are configured are not reported as missing.
-    for other in {"ISSUER", "CLIENT_ID", "CLIENT_SECRET"} - {key}:
+    for other in set(KEYS) - {key}:
         assert other not in error.msg
     assert "[KEYCLOAK]" in error.hint
     assert "variables.txt" in error.hint
@@ -66,15 +69,31 @@ def test_a_whitespace_only_value_counts_as_missing(settings):
     assert "CLIENT_SECRET" in errors[0].msg
 
 
-def test_all_three_missing_keys_are_named_at_once(settings):
+def test_every_missing_key_is_named_at_once(settings):
+    """An operator filling them in one at a time and redeploying between
+    each is four failed deploys."""
     settings.DEBUG = False
     for name in CONFIGURED:
         setattr(settings, name, "")
 
     (error,) = check_keycloak_configured(app_configs=None)
 
-    for key in ("ISSUER", "CLIENT_ID", "CLIENT_SECRET"):
+    for key in KEYS:
         assert key in error.msg
+
+
+def test_an_empty_break_glass_address_fails_the_deploy(settings):
+    """With nothing to compare against, the backend's exclusion matches
+    no row, and a Keycloak identity registered at the break-glass address
+    takes over the one account that still holds a usable password."""
+    settings.DEBUG = False
+    for name, value in CONFIGURED.items():
+        setattr(settings, name, value)
+    settings.KEYCLOAK_BREAK_GLASS_EMAIL = ""
+
+    (error,) = check_keycloak_configured(app_configs=None)
+
+    assert "BREAK_GLASS_EMAIL" in error.msg
 
 
 def test_development_is_left_alone(settings):

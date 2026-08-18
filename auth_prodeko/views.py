@@ -12,12 +12,13 @@ def profile(request):
 
 
 def login_failed(request):
-    """Explain a sign-in Keycloak allowed but this site refused.
+    """Explain a sign-in that Keycloak allowed and this site did not.
 
-    Three refusals lead here: no membership role, an address already
-    linked to another Keycloak identity, and an attempt to adopt the
-    break-glass account. The visitor is told what they can act on -- the
-    site is for members -- and never which of the three it was.
+    Several things lead here: no membership role, a deactivated account,
+    an address already linked to another Keycloak identity, an attempt to
+    adopt the break-glass account, and Keycloak failing to answer at all.
+    The visitor is told what they can act on -- the site is for members
+    -- and never which of them it was.
 
     The Keycloak session outlives the refusal, so the login link would
     sign the visitor straight back into the same bounce. The sign-out

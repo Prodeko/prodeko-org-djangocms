@@ -144,6 +144,25 @@ def test_break_glass_account_is_never_adopted(backend, settings):
         backend.filter_users_by_claims(claims())
 
 
+def test_break_glass_account_is_not_adopted_once_it_carries_a_subject(
+    backend, settings
+):
+    """The exclusion has to cover the lookup by subject as well.
+
+    Resolving by address is not the only way in: once a row carries a
+    subject, every later login finds it that way instead. It is the one
+    account left with a usable password, so adopting it by any route
+    hands the last way into the site during a Keycloak outage to whoever
+    registered the address.
+    """
+    settings.KEYCLOAK_BREAK_GLASS_EMAIL = "maija@prodeko.org"
+    User.objects.create_user(
+        email="maija@prodeko.org", keycloak_sub="sub-1", is_staff=True
+    )
+    with pytest.raises(SuspiciousOperation):
+        backend.filter_users_by_claims(claims())
+
+
 def test_creates_a_user_when_nothing_matches(backend):
     user = backend.create_user(claims())
     assert user.email == "maija@prodeko.org"
@@ -180,6 +199,26 @@ def test_login_is_refused_for_the_break_glass_address(backend, settings, monkeyp
     with pytest.raises(SuspiciousOperation):
         resolve(backend, monkeypatch, claims())
     assert User.objects.count() == 1
+
+
+def test_a_login_cannot_demote_the_break_glass_account(backend, settings, monkeypatch):
+    """Its staff flag is what lets it reach the admin, the only page that
+    still takes a password. A login that stripped it would leave the
+    account able to sign in and with nowhere to sign in to."""
+    settings.KEYCLOAK_BREAK_GLASS_EMAIL = "maija@prodeko.org"
+    User.objects.create_user(
+        email="maija@prodeko.org",
+        keycloak_sub="sub-1",
+        is_staff=True,
+        is_superuser=True,
+    )
+
+    with pytest.raises(SuspiciousOperation):
+        resolve(backend, monkeypatch, claims())
+
+    account = User.objects.get(email="maija@prodeko.org")
+    assert account.is_staff is True
+    assert account.is_superuser is True
 
 
 def test_an_unknown_address_is_still_created(backend, monkeypatch):
@@ -289,13 +328,84 @@ def test_adopting_a_stale_staff_row_does_not_escalate(backend):
     assert user.is_superuser is False
 
 
-def test_inactive_row_is_reactivated_on_login(backend):
-    """Keycloak would not have issued a token for a disabled account."""
+def test_a_new_account_is_active(backend):
+    user = backend.create_user(claims())
+    assert user.is_active is True
+
+
+# --- deactivated accounts -------------------------------------------------
+#
+# Deactivating an account is how the site takes someone out of the
+# matrikkeli directory and its exports and off their own pages. Keycloak
+# has no idea any of that happened and will keep issuing them tokens, so
+# the refusal has to be made on this side, and it has to hold whichever
+# way the identity would otherwise resolve.
+
+
+def test_a_deactivated_account_is_refused_despite_the_role(backend):
     User.objects.create_user(
         email="maija@prodeko.org", keycloak_sub="sub-1", is_active=False
     )
+    assert backend.verify_claims(claims()) is False
+
+
+def test_a_deactivated_account_is_refused_by_address_too(backend):
+    """It has never signed in through Keycloak, so the address is what
+    would otherwise adopt it."""
+    User.objects.create_user(email="maija@prodeko.org", is_active=False)
+    assert backend.verify_claims(claims()) is False
+
+
+def test_a_deactivated_account_is_not_adopted(backend):
+    User.objects.create_user(email="maija@prodeko.org", is_active=False)
+    with pytest.raises(SuspiciousOperation):
+        backend.filter_users_by_claims(claims())
+
+
+def test_a_deactivated_account_grandfathers_nobody(backend):
+    """Otherwise registering a suspended member's address at Keycloak
+    would pick up the flag that opens the site without a role."""
+    User.objects.create_user(
+        email="maija@prodeko.org", predates_keycloak=True, is_active=False
+    )
+    assert backend.verify_claims(claims(realm_access={"roles": []})) is False
+
+
+def test_a_login_does_not_reactivate_a_deactivated_account(backend):
+    """Nothing should reach update_user for such a row, but a login must
+    not be able to undo an administrator's decision by any route: the
+    person would silently reappear in the matrikkeli."""
+    User.objects.create_user(
+        email="maija@prodeko.org", keycloak_sub="sub-1", is_active=False
+    )
+
     user = backend.update_user(User.objects.get(keycloak_sub="sub-1"), claims())
-    assert user.is_active is True
+
+    assert user.is_active is False
+
+
+def test_a_deactivated_address_is_not_handed_to_a_second_account(backend, monkeypatch):
+    """email is unique, so a second row for the same address is a 500
+    rather than a refusal, and adopting the first is what deactivation
+    rules out. The whole login path has to end in neither."""
+    User.objects.create_user(email="maija@prodeko.org", is_active=False)
+
+    with pytest.raises(SuspiciousOperation):
+        resolve(backend, monkeypatch, claims())
+
+    assert User.objects.count() == 1
+
+
+def test_reactivating_the_account_is_all_an_administrator_has_to_do(backend):
+    """The refusal is theirs to lift, and lifting it should not also
+    require unpicking a Keycloak link by hand."""
+    account = User.objects.create_user(email="maija@prodeko.org", is_active=False)
+    assert backend.verify_claims(claims()) is False
+
+    User.objects.filter(pk=account.pk).update(is_active=True)
+
+    assert backend.verify_claims(claims()) is True
+    assert backend.filter_users_by_claims(claims())[0].pk == account.pk
 
 
 # --- email changes -------------------------------------------------------

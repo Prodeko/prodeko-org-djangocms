@@ -73,6 +73,24 @@ def test_a_stray_callback_leaves_a_live_session_alone(logged_in_client):
 
 
 @pytest.mark.no_sso_session
+def test_a_stray_callback_leaves_the_break_glass_session_alone(client, user):
+    """The one session that works during an outage must survive a link.
+
+    The break-glass account reaches the admin through ModelBackend, and
+    that records no id token expiry at all. Reading a missing one as an
+    expiry long past would hand any GET of the callback url the power to
+    end the session, at the moment there is no way to start another.
+    """
+    client.force_login(user, backend="django.contrib.auth.backends.ModelBackend")
+    assert "oidc_id_token_expiration" not in client.session
+
+    response = client.get("/oidc/callback/")
+
+    assert response.status_code == 302
+    assert "_auth_user_id" in client.session
+
+
+@pytest.mark.no_sso_session
 def test_an_ended_keycloak_session_sends_the_member_to_sign_in_again(client, user):
     """Keycloak's SSO session ends long before Django's thirty days.
 

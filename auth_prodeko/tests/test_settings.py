@@ -9,6 +9,7 @@ def test_keycloak_settings_exist():
     assert isinstance(settings.KEYCLOAK_ISSUER, str)
     assert isinstance(settings.KEYCLOAK_CLIENT_ID, str)
     assert isinstance(settings.KEYCLOAK_CLIENT_SECRET, str)
+    assert isinstance(settings.KEYCLOAK_BREAK_GLASS_EMAIL, str)
     assert settings.KEYCLOAK_MEMBERSHIP_ROLES == ["membership", "alumni"]
     assert settings.KEYCLOAK_STAFF_ROLE == "prodeko-org-admin"
     assert settings.KEYCLOAK_SUPERUSER_ROLE == "prodeko-org-superuser"
@@ -60,6 +61,23 @@ def test_production_trusts_the_proxy_forwarded_scheme():
     """
     prod = importlib.import_module("prodekoorg.settings.prod")
     assert prod.SECURE_PROXY_SSL_HEADER == ("HTTP_X_FORWARDED_PROTO", "https")
+
+
+def test_the_sign_in_path_is_logged_in_production():
+    """Only the loggers named in LOGGING carry a handler.
+
+    Every account question a member raises -- refused, adopted by the
+    wrong row, created twice -- is answered by these lines and nothing
+    else in the container, and a client secret the realm rejects reaches
+    an administrator only if ERROR here becomes mail.
+    """
+    prod = importlib.import_module("prodekoorg.settings.prod")
+    loggers = prod.LOGGING["loggers"]
+
+    for name in ("auth_prodeko", "mozilla_django_oidc"):
+        assert loggers[name]["level"] == "INFO"
+        assert "console" in loggers[name]["handlers"]
+        assert "mail_admins" in loggers[name]["handlers"]
 
 
 def test_client_secret_with_percent_sign_is_read_literally():

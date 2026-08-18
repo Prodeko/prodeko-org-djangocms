@@ -42,9 +42,12 @@ STRIPE_APPLICATION_ENDPOINT_SECRET = config["STRIPE"][
     "STRIPE_APPLICATION_ENDPOINT_SECRET"
 ]
 
-# Keycloak SSO. The section is optional so that deploy.sh's collectstatic
-# and migrate steps still start on a host where Ansible has not yet
-# rendered it.
+# Keycloak SSO. Read with fallbacks rather than required, so that a host
+# where Ansible has not yet rendered the section still imports settings:
+# every manage.py command would otherwise die of a KeyError here, and the
+# deploy's own collectstatic and migrate steps with them. What an empty
+# value means for a production site is auth_prodeko.checks's business,
+# and it names the missing keys.
 KEYCLOAK_ISSUER = config.get("KEYCLOAK", "ISSUER", fallback="")
 KEYCLOAK_CLIENT_ID = config.get("KEYCLOAK", "CLIENT_ID", fallback="")
 KEYCLOAK_CLIENT_SECRET = config.get("KEYCLOAK", "CLIENT_SECRET", fallback="")
