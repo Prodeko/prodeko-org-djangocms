@@ -1,13 +1,10 @@
-from django.contrib.auth import views as auth_views
-from django.contrib.auth.decorators import user_passes_test
 from django.urls import re_path
 from django.views.generic import TemplateView
+from mozilla_django_oidc.views import OIDCLogoutView
 from rest_framework.urlpatterns import format_suffix_patterns
 
 from alumnirekisteri.rekisteri import views, views_api
-
-# prevent logged in users for accessing /login/ url
-login_forbidden = user_passes_test(lambda u: u.is_anonymous(), "/")
+from auth_prodeko.oidc.views import OIDCLoginRedirectView
 
 app_name = "alumnirekisteri"
 urlpatterns = [
@@ -16,11 +13,6 @@ urlpatterns = [
         r"^admin/profiles/(?P<pk>[0-9]+)/edit/$",
         views.admin_edit_person_view,
         name="admin_edit_person_view",
-    ),
-    re_path(
-        r"^admin/member-requests/$",
-        views.admin_member_requests,
-        name="admin_member_requests",
     ),
     re_path(r"^admin/export-data/$", views.admin_export_data, name="admin_export_data"),
     re_path(
@@ -37,7 +29,6 @@ urlpatterns = [
     re_path(r"^$", views.index, name="index"),
     # My profile
     re_path(r"^settings/$", views.settings, name="settings"),
-    re_path(r"^new-password/$", views.new_password, name="new_password"),
     re_path(r"^myprofile/$", views.myprofile, name="myprofile"),
     re_path(r"^myprofile/status/$", views.membership_status, name="membership_status"),
     re_path(
@@ -220,42 +211,10 @@ urlpatterns = [
         r"^profiles/(?P<slug>[\w-]+)/", views.public_profile, name="public_profile"
     ),
     re_path(r"^search/", views.search, name="search"),
-    # Auth
-    re_path(
-        r"^login/$",
-        login_forbidden(auth_views.LoginView.as_view(template_name="login.html")),
-        name="login",
-    ),
-    re_path(r"^register/$", views.register, name="register"),
-    re_path(r"^logout/$", auth_views.LogoutView.as_view(next_page="/"), name="logout"),
-    re_path(r"^confirmation/$", views.confirmation, name="confirmation"),
-    re_path(r"^change-password/$", views.change_password, name="change_password"),
-    re_path(
-        r"^password_reset/$",
-        auth_views.PasswordResetView.as_view(template_name="password_reset.html"),
-        name="password_reset",
-    ),
-    re_path(
-        r"^password_reset/done/",
-        auth_views.PasswordResetDoneView.as_view(
-            template_name="password_reset_done.html"
-        ),
-        name="password_reset_done",
-    ),
-    re_path(
-        r"^reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$",
-        auth_views.PasswordResetConfirmView.as_view(
-            template_name="password_reset_confirm.html"
-        ),
-        name="password_reset_confirm",
-    ),
-    re_path(
-        r"^reset/done/$",
-        auth_views.PasswordResetCompleteView.as_view(
-            template_name="password_reset_complete.html"
-        ),
-        name="password_reset_complete",
-    ),
+    # Auth. Matrikkeli shares prodeko.org's accounts, so it shares the
+    # Prodeko login rather than keeping a second one of its own.
+    re_path(r"^login/$", OIDCLoginRedirectView.as_view(), name="login"),
+    re_path(r"^logout/$", OIDCLogoutView.as_view(), name="logout"),
     # API
     re_path(r"^api/webhook/stripe/$", views_api.StripeWebhook.as_view()),
     re_path(r"^api/scanner/$", views_api.Scanner.as_view()),

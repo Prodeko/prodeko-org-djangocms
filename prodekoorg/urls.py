@@ -14,6 +14,8 @@ from django.views.decorators.cache import cache_page
 from django.views.generic.base import TemplateView
 from django.views.i18n import JavaScriptCatalog
 
+from auth_prodeko.oidc.logout import AdminLogoutView
+
 
 def get_version():
     # Increment this when javascript translations change
@@ -22,6 +24,12 @@ def get_version():
 
 
 handler500 = "prodekoorg.views.handler500"
+
+# The admin keeps its password form: it is how the break-glass account
+# signs in when Keycloak is unreachable. The template adds an SSO button
+# above it. A project template cannot be named admin/login.html, because
+# it could not then extend the app template of the same name.
+admin.site.login_template = "prodekoorg/admin_login.html"
 
 urlpatterns = [
     path("sitemap.xml", sitemap, {"sitemaps": {"cmspages": CMSSitemap}}),
@@ -44,10 +52,9 @@ urlpatterns = [
 # Django filer
 urlpatterns += [path("", include("filer.server.urls"))]
 
-# app_oauth
-urlpatterns += [
-    path("oauth2/", include("prodekoorg.app_oauth.urls", namespace="oauth2_provider")),
-]
+# OIDC. Outside i18n_patterns so /oidc/callback/ has no language prefix
+# and matches the redirect URI registered in Keycloak exactly.
+urlpatterns += [path("oidc/", include("mozilla_django_oidc.urls"))]
 
 # Localization and internationalization
 urlpatterns += i18n_patterns(
@@ -65,6 +72,7 @@ urlpatterns += i18n_patterns(
     # matrikkeli.prodeko.org
     path(_("matrikkeli/"), include("alumnirekisteri.rekisteri.urls")),
     # Misc
+    path("admin/logout/", AdminLogoutView.as_view(), name="admin_logout"),
     path("admin/", admin.site.urls),
     path("ckeditor/", include("ckeditor_uploader.urls")),
     path("", include("cms.urls")),

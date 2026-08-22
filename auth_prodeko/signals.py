@@ -1,87 +1,38 @@
-import secrets
-import string
-from datetime import datetime
-
 from django.conf import settings
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 from alumnirekisteri.rekisteri.models import Person
-from prodekoorg.app_membership.models import PendingUser
 
-from .models import User
+
+def free_slug(base: str) -> str:
+    """A slug nobody holds, derived from ``base``.
+
+    ``Person.slug`` is unique and legacy rows carry numeric slugs of
+    their own, so the primary key a new account gets can be taken
+    already. Numbered suffixes are appended the way ``Person.save()``
+    does, because there is no reasonable way for the person to recover
+    from an IntegrityError raised at their first sign-in.
+    """
+    slug = base
+    counter = 0
+    while Person.objects.filter(slug=slug).exists():
+        counter += 1
+        slug = f"{base}-{counter}"
+    return slug
 
 
 @receiver(post_save, sender=settings.AUTH_USER_MODEL)
-def create_alumnregistry_profile(sender, instance, created, **kwargs):
-    """Creates an alumnirekisteri Person model when a PendingUser is created.
+def create_alumniregistry_profile(sender, instance, created, **kwargs):
+    """Give every new account a matrikkeli profile.
 
-    Uses Django signals (https://docs.djangoproject.com/en/2.1/topics/signals/).
+    Runs when an account is created, which is the first time someone
+    signs in through Keycloak.
     """
 
-    if not instance.is_staff or not instance.is_superuser:
-        if created:
-            instance.person = Person.objects.create(
-                user=instance, member_type="0", slug=instance.pk
-            )
-            instance.save()
-        elif hasattr(instance, "pendinguser"):
-            pendinguser = instance.pendinguser
+    if not created:
+        return
 
-            year = datetime.now().year
-            if datetime.now().month > 5:
-                year += 1
-
-            member_until = datetime.strptime(f"{year}-12-31", "%Y-%m-%d")
-
-            if pendinguser.membership_type == "TR":
-                member_type = 1
-            elif pendinguser.membership_type == "AL":
-                member_type = 3
-            elif pendinguser.membership_type == "EX":
-                member_type = 2
-
-            if pendinguser.is_ayy_member == "Y":
-                ayy_member = True
-            else:
-                ayy_member = False
-
-            Person.objects.filter(slug=instance.pk).update(
-                city=pendinguser.hometown,
-                ayy_member=ayy_member,
-                class_of_year=pendinguser.start_year,
-                xq_year=pendinguser.start_year,
-                member_until=member_until,
-                member_type=member_type,
-                slug=instance.pk,
-                show_name_category=False,
-                show_address_category=False,
-                show_personal_category=False,
-                show_military_category=False,
-            )
-
-
-@receiver(post_save, sender=PendingUser)
-def create_user_profile(sender, instance, created, **kwargs):
-    """Creates User model when a PendingUser is created.
-
-    Uses Django signals (https://docs.djangoproject.com/en/2.1/topics/signals/).
-    """
-
-    def make_random_password(length: int) -> str:
-        """Makes random alphanumeric password of given length"""
-        alphabet = string.ascii_letters + string.digits
-        return "".join(secrets.choice(alphabet) for _ in range(length))
-
-    if created:
-        password = make_random_password(14)
-        newuser = User.objects.create_user(
-            email=instance.email,
-            has_accepted_policies=True,
-            password=password,
-            is_active=False,
-            first_name=instance.first_name,
-            last_name=instance.last_name,
-        )
-        instance.user = newuser
-        instance.save()
+    Person.objects.create(
+        user=instance, member_type=0, slug=free_slug(str(instance.pk))
+    )

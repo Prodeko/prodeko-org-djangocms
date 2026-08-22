@@ -13,50 +13,24 @@
         <h1>{% trans "Profile" %}</h1>
         <strong>{% trans "Name" %}: </strong> {{ user.first_name }} {{ user.last_name }} <br />
         <strong>{% trans "Email" %}: </strong> {{ user.email }} <br /> <br />
-        <h2>{% trans "Edit profile" %}</h2>
-        <form method="POST" action="." class="form-wrapper">
-            {% csrf_token %}
+        <h2>{% trans "Prodeko account" %}</h2>
+        <div class="form-wrapper">
             <div class="fieldWrapper">
                 <div class='field-input'>
-                    <label for='{{ form.email.id_for_label }}'>{% trans "Email" %}</label>
-                    {{ form.email }}
-                </div>
-                <div class="field-error">
-                    {{ form.email.errors }}
+                    <label>{% trans "Email" %}</label>
+                    {{ user.email }}
                 </div>
             </div>
-            <div class="fieldWrapper">
-                <div class='field-input'>
-                    <label for='{{ form.newpassword.id_for_label }}'>{% trans "New Password" %}</label>
-                    {{ form.newpassword }}
-                </div>
-                <div class="field-error">
-                    {{ form.newpassword.errors }}
-                </div>
-            </div>
-            <div class="fieldWrapper">
-                <div class='field-input'>
-                    <label for='{{ form.newpassword_confirm.id_for_label }}'>{% trans "Confirm New Password" %}</label>
-                    {{ form.newpassword_confirm }}
-                </div>
-                <div class="field-error">
-                    {{ form.newpassword_confirm.errors }}
-                </div>
-            </div>
-            <div class="fieldWrapper">
-                <div class='field-input'>
-                    <label for='{{ form.password.id_for_label }}'>{% trans "Current Password" %}</label>
-                    {{ form.password }}
-                </div>
-                <div class="field-error">
-                    {{ form.password.errors }}
-                </div>
-            </div>
-            <div class="other-errors">
-                {{ form.non_field_errors }}
-            </div>
-            <input type="Submit" value="{% trans 'Save changes' %}"/>
-        </form>
+        <div class="form-group">
+          <p>
+            {% trans "Your email address, password, name and login details come from your Prodeko account and are changed there." %}
+            <a href="https://id.prodeko.org/realms/membership-registry/account/"
+               target="_blank" rel="noopener">
+              {% trans "Open Prodeko account settings" %}
+            </a>
+          </p>
+        </div>
+        </div>
         <br />
     </div>
 {% endblock content %}

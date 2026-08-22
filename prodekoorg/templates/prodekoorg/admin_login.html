@@ -1,0 +1,12 @@
+{% extends "admin/login.html" %}
+{% load i18n %}
+
+{% block content %}
+  <div class="form-row" style="margin-bottom: 1.5em;">
+    <a href="{% url 'oidc_authentication_init' %}?next={{ next|urlencode }}"
+       class="button" style="display: block; padding: 10px; text-align: center;">
+      {% trans "Sign in with your Prodeko account" %}
+    </a>
+  </div>
+  {{ block.super }}
+{% endblock %}

@@ -2,7 +2,12 @@
 
 import django.core.validators
 from django.db import migrations, models
-import prodekoorg.app_membership.models
+from django.utils import timezone
+
+
+def max_value_current_year(value):
+    """Kept here because the model that defined it is gone."""
+    return django.core.validators.MaxValueValidator(timezone.now().year)(value)
 
 
 class Migration(migrations.Migration):
@@ -15,6 +20,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='pendinguser',
             name='start_year',
-            field=models.IntegerField(validators=[django.core.validators.MinValueValidator(1966), prodekoorg.app_membership.models.max_value_current_year], verbose_name='Year'),
+            field=models.IntegerField(validators=[django.core.validators.MinValueValidator(1966), max_value_current_year], verbose_name='Year'),
         ),
     ]

@@ -65,6 +65,10 @@ msgstr "Oikeudet"
 msgid "Important dates"
 msgstr "Tärkeitä päivämääriä"
 
+#: auth_prodeko/admin.py:30
+msgid "Keycloak"
+msgstr "Keycloak"
+
 #: auth_prodeko/apps.py:7
 msgid "Prodeko authentication"
 msgstr "Prodeko kirjautuminen"
@@ -89,6 +93,37 @@ msgstr "Hyväksynyt tietosuojalausekkeen"
 msgid "Designates whether the user has accepted Prodeko's privacy policy."
 msgstr "Määrittää, onko käyttäjä hyväksynyt Prodekon tietosuojalausekkeen."
 
+#: auth_prodeko/models.py:70
+msgid "Keycloak subject"
+msgstr "Keycloak-tunniste"
+
+#: auth_prodeko/models.py:71
+msgid ""
+"The subject claim of the Keycloak identity this account is linked to. Empty "
+"for accounts that have never signed in through Keycloak."
+msgstr ""
+"Sen Keycloak-identiteetin subject-tunniste, johon tämä tili on liitetty. "
+"Tyhjä tileillä, jotka eivät ole koskaan kirjautuneet sisään Keycloakin "
+"kautta."
+
+#: auth_prodeko/models.py:81
+msgid "Keycloak linked at"
+msgstr "Keycloak-tili liitetty"
+
+#: auth_prodeko/models.py:85
+msgid "Predates Keycloak"
+msgstr "Edeltää Keycloakia"
+
+#: auth_prodeko/models.py:87
+msgid ""
+"Designates whether this account existed before prodeko.org moved to the "
+"Prodeko login. Such an account may sign in without a current membership, "
+"which is how members who have since left keep their access."
+msgstr ""
+"Määrittää, oliko tili olemassa ennen kuin prodeko.org siirtyi Prodeko-"
+"kirjautumiseen. Tällainen tili voi kirjautua sisään ilman voimassa olevaa "
+"jäsenyyttä, mikä säilyttää pääsyn niille, jotka eivät enää ole jäseniä."
+
 #: auth_prodeko/models.py:75
 msgid "user"
 msgstr "käyttäjä"
@@ -96,6 +131,38 @@ msgstr "käyttäjä"
 #: auth_prodeko/models.py:76
 msgid "Users"
 msgstr "Käyttäjät"
+
+#: auth_prodeko/templates/accounts/login_failed.html:9
+msgid "Signing in did not complete"
+msgstr "Kirjautuminen ei onnistunut"
+
+#: auth_prodeko/templates/accounts/login_failed.html:10
+msgid "You were not signed in to prodeko.org."
+msgstr "Sinua ei kirjattu sisään sivustolle prodeko.org."
+
+#: auth_prodeko/templates/accounts/login_failed.html:12
+msgid ""
+"Using prodeko.org requires a current Prodeko membership. You can join "
+"Prodeko or renew your membership in the membership registry."
+msgstr ""
+"Sivuston prodeko.org käyttö edellyttää voimassa olevaa Prodekon jäsenyyttä. "
+"Voit liittyä Prodekoon tai uusia jäsenyytesi jäsenrekisterissä."
+
+#: auth_prodeko/templates/accounts/login_failed.html:19
+msgid "Join or renew at membership.prodeko.org"
+msgstr "Liity tai uusi jäsenyytesi osoitteessa membership.prodeko.org"
+
+#: auth_prodeko/templates/accounts/login_failed.html:23
+msgid ""
+"You are still signed in to your Prodeko account. To try a different account, "
+"sign out of it first."
+msgstr ""
+"Olet edelleen kirjautuneena Prodeko-tilillesi. Jos haluat kokeilla toista "
+"tiliä, kirjaudu ensin ulos."
+
+#: auth_prodeko/templates/accounts/login_failed.html:30
+msgid "Sign out of your Prodeko account"
+msgstr "Kirjaudu ulos Prodeko-tililtä"
 
 #: auth_prodeko/templates/accounts/user_profile.html:13
 #: prodekoorg/templates/layout-components/navbar-full.html:3
@@ -117,8 +184,25 @@ msgid "Email"
 msgstr "Sähköposti"
 
 #: auth_prodeko/templates/accounts/user_profile.html:16
+#: prodekoorg/templates/admin/inc/branding.html:23
+msgid "Prodeko account"
+msgstr "Prodeko-tili"
+
+#: auth_prodeko/templates/accounts/user_profile.html:16
 msgid "Edit profile"
 msgstr "Muokkaa profiilia"
+
+#: auth_prodeko/templates/accounts/user_profile.html:26
+msgid ""
+"Your email address, password, name and login details come from your Prodeko "
+"account and are changed there."
+msgstr ""
+"Sähköpostiosoitteesi, salasanasi, nimesi ja kirjautumistietosi tulevat "
+"Prodeko-tililtäsi, ja niitä muutetaan siellä."
+
+#: auth_prodeko/templates/accounts/user_profile.html:29
+msgid "Open Prodeko account settings"
+msgstr "Avaa Prodeko-tilin asetukset"
 
 #: auth_prodeko/templates/accounts/user_profile.html:30
 msgid "New Password"
@@ -1260,6 +1344,10 @@ msgid ""
 msgstr ""
 "Mikäli et hyväksy tietosuojalauseketta, sinut kirjataan ulos. Kirjautumalla "
 "sisään näet tämän saman valintaikkunan."
+
+#: prodekoorg/templates/prodekoorg/admin_login.html:8
+msgid "Sign in with your Prodeko account"
+msgstr "Kirjaudu sisään Prodeko-tilillä"
 
 #: prodekoorg/urls.py:66
 msgid "matrikkeli/"

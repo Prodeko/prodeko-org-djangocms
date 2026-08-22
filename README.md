@@ -50,6 +50,22 @@ Kehitysympäristön käynnistys luo sivustolle uuden Django-käyttäjän:
 - Käyttäjä: **webbitiimi@prodeko.org**
 - Salasana: **kananugetti**
 
+Tämä on myös break glass -tunnus, eli variables.txt:n `[KEYCLOAK] BREAK_GLASS_EMAIL`. Se on ainoa tunnus, jonka salasana toimii paikallisesti; muut kirjautuvat Keycloakin kautta. Migraatio kieltäytyy ajamasta, jos arvo on tyhjä, jos yksikään tunnus ei vastaa sitä, jos kyseisen tunnuksen salasana on jo käyttökelvoton tai jos tunnus ei pääse adminiin (`is_active` ja `is_staff` on molempien oltava päällä).
+
+### Kirjautuminen kehitysympäristössä
+
+Kirjautuminen tapahtuu Prodekon Keycloakilla. Paikallista kehitystä varten
+aja membership-registryn oma Keycloak (`docker compose up -d` kyseisessä
+repositoriossa, portti 8180) ja rekisteröi sinne paikallinen klientti
+membership-registryn `docs/keycloak-clients.md` ohjeen mukaan: root ja
+web origin `http://localhost:8000`, redirect URI
+`http://localhost:8000/oidc/callback/`. Täytä arvot `variables.txt`
+tiedoston `[KEYCLOAK]` osioon.
+
+Jos et kehitä kirjautumista, Keycloakia ei tarvita lainkaan:
+kehityskäyttäjä `webbitiimi@prodeko.org` / `kananugetti` toimii
+Django-adminin lomakkeella.
+
 ### Uuden appin luonti
 
 Esimerkiksi app_kiltiskamera luotiin seuraavasti:

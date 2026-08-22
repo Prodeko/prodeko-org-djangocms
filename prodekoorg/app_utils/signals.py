@@ -6,7 +6,6 @@ from easy_thumbnails.signals import saved_file
 from alumnirekisteri.rekisteri.models import Person
 from lifelonglearning.models import Course
 from prodekoorg.app_infoscreen.models import Slide
-from prodekoorg.app_membership.models import PendingUser
 from prodekoorg.app_poytakirjat.models import Dokumentti
 from prodekoorg.app_tiedostot.models import Tiedosto, TiedostoVersio
 from prodekoorg.app_vaalit.models import Ehdokas
@@ -28,11 +27,6 @@ def course_banner_delete(sender, instance, **kwargs):
 @receiver(post_delete, sender=Ehdokas)
 def ehdokas_pic_delete(sender, instance, **kwargs):
     instance.pic.delete(False)
-
-
-@receiver(post_delete, sender=PendingUser)
-def pendinguser_receipt_delete(sender, instance, **kwargs):
-    instance.receipt.delete(False)
 
 
 @receiver(post_delete, sender=Dokumentti)

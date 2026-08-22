@@ -1,56 +1,43 @@
-from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 
-from .forms import EditProfileForm
+from .oidc.logout import provider_logout
 
 
-@login_required(login_url="/login/")
+@login_required
 def profile(request):
-    """Business logic behind the EditProfileForm.
+    """Show the parts of a profile that this site knows about."""
 
-    Args:
-        request: HttpRequest object from Django.
+    return render(request, "accounts/user_profile.html")
 
-    Returns:
-        A Django TemplateResponse object that renders an html template,
-        or refreshes the page on successful form submission.
+
+def login_failed(request):
+    """Explain a sign-in that Keycloak allowed and this site did not.
+
+    Several things lead here: no membership role, a deactivated account,
+    an address already linked to another Keycloak identity, an attempt to
+    adopt the break-glass account, and Keycloak failing to answer at all.
+    The visitor is told what they can act on -- the site is for members
+    -- and never which of them it was.
+
+    The Keycloak session outlives the refusal, so the login link would
+    sign the visitor straight back into the same bounce. The sign-out
+    link is built here rather than pointing at auth_prodeko:logout,
+    which only reaches Keycloak for a visitor who has a Django session;
+    a refused visitor has none.
     """
 
-    # Handle updating user profile
-    if request.method == "POST":
-        form = EditProfileForm(request.user, data=request.POST)
-        if form.is_valid():
-            user = request.user
-            email = form.data["email"]
-            password = form.data["password"]
-            newpassword = form.data["newpassword"]
-            if email != user.email:
-                user.email = email
-            if newpassword:
-                if newpassword != password:
-                    user.set_password(newpassword)
-                    # Prevent user from being logged out of the session
-                    update_session_auth_hash(request, user)
-            user.save()
-            return redirect(".")
-    # Else display user profile page with edit form
-    else:
-        form = EditProfileForm(request.user, initial={"email": request.user.email})
-    return render(request, "accounts/user_profile.html", {"form": form})
+    return render(
+        request,
+        "accounts/login_failed.html",
+        {"keycloak_logout_url": provider_logout(request)},
+    )
 
 
+@login_required
 def accept_policies(request):
-    """Update user with has_accepted_policies = True
+    """Record that the member has accepted the privacy policy."""
 
-    Args:
-        request: HttpRequest object from Django.
-
-    Returns:
-        Refreshes the page.
-    """
-
-    user = request.user
-    user.has_accepted_policies = True
-    user.save()
+    request.user.has_accepted_policies = True
+    request.user.save()
     return redirect("/")

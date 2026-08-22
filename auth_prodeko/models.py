@@ -61,6 +61,35 @@ class User(AbstractUser):
             "Designates whether the user has accepted Prodeko's privacy policy."
         ),
     )
+    keycloak_sub = models.CharField(
+        max_length=255,
+        unique=True,
+        null=True,
+        blank=True,
+        editable=False,
+        verbose_name=_("Keycloak subject"),
+        help_text=_(
+            "The subject claim of the Keycloak identity this account is "
+            "linked to. Empty for accounts that have never signed in "
+            "through Keycloak."
+        ),
+    )
+    keycloak_linked_at = models.DateTimeField(
+        null=True,
+        blank=True,
+        editable=False,
+        verbose_name=_("Keycloak linked at"),
+    )
+    predates_keycloak = models.BooleanField(
+        default=False,
+        verbose_name=_("Predates Keycloak"),
+        help_text=_(
+            "Designates whether this account existed before prodeko.org "
+            "moved to the Prodeko login. Such an account may sign in "
+            "without a current membership, which is how members who have "
+            "since left keep their access."
+        ),
+    )
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = ["first_name", "last_name"]

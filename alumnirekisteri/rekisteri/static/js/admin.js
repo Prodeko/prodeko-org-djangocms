@@ -16,58 +16,6 @@ function getCookie(name) {
 }
 var csrftoken = getCookie('csrftoken');
 
-/* make-admin post */
-$('.make-admin').click(function () {
-  var user_id = $(this).attr('user-id');
-  var post_data = {
-    csrfmiddlewaretoken: csrftoken,
-    action: 'make-admin',
-    user_id: user_id,
-  };
-  $.post('/admin/', post_data, function () {
-    location.reload();
-  });
-});
-
-/* make-user post */
-$('.make-user').click(function () {
-  var user_id = $(this).attr('user-id');
-  var post_data = {
-    csrfmiddlewaretoken: csrftoken,
-    action: 'make-user',
-    user_id: user_id,
-  };
-  $.post('/admin/', post_data, function () {
-    location.reload();
-  });
-});
-
-/* make-inactive post */
-$('.make-inactive').click(function () {
-  var user_id = $(this).attr('user-id');
-  var post_data = {
-    csrfmiddlewaretoken: csrftoken,
-    action: 'make-inactive',
-    user_id: user_id,
-  };
-  $.post('/admin/', post_data, function () {
-    location.reload();
-  });
-});
-
-/* make-hidden post */
-$('.make-hidden').click(function () {
-  var user_id = $(this).attr('user-id');
-  var post_data = {
-    csrfmiddlewaretoken: csrftoken,
-    action: 'make-hidden',
-    user_id: user_id,
-  };
-  $.post('/admin/', post_data, function () {
-    location.reload();
-  });
-});
-
 /* delete-user post */
 function deleteUser(user_id) {
   var post_data = {

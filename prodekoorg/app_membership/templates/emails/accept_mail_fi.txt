@@ -1,8 +1,0 @@
-Moikka, {{ user.first_name }} {{ user.last_name }}!
-
-Hakemuksesi Prodekon jäseneksi on hyväksytty. Voit kirjautua osoitteeseen https://prodeko.org/ käyttäen seuraavia tunnuksia:
-
-Email: {{ user.email }} 
-Password: {{ password }}
-
-Vaihda salasanasi kirjautumisen jälkeen.

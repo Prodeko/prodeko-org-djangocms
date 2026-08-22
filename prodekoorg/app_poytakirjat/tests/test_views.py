@@ -10,14 +10,19 @@ urlconf = "prodekoorg.urls"
 class DokumenttiViewTest(TestData):
     """Tests for views in the app_poytakirjat app."""
 
-    def test_poytakirjat_and_redirect_if_not_logged_in(self):
+    def test_poytakirjat_redirects_to_login_if_not_logged_in(self):
         """
-        Tests redirect to login page if the main poytakirjat page is
-        accessed and the user is not logged in.
+        Tests redirect to the login page if the main poytakirjat page is
+        accessed and the user is not logged in. follow=False: the login
+        URL now bounces on to Keycloak, which the test client cannot follow.
         """
 
-        response = self.client.get("/en/kokouspoytakirjat/", follow=True)
-        self.assertRedirects(response, "/en/login/?next=/en/kokouspoytakirjat/")
+        response = self.client.get("/en/kokouspoytakirjat/")
+        self.assertRedirects(
+            response,
+            "/en/login/?next=/en/kokouspoytakirjat/",
+            fetch_redirect_response=False,
+        )
 
     def test_admin_download_not_authorized(self):
         """

@@ -1,96 +1,7 @@
 from django import forms
 
-from alumnirekisteri.auth2.forms import RegisterForm as auth2RegisterForm
 from alumnirekisteri.rekisteri.models import *
 from auth_prodeko.models import User
-
-
-class RegisterForm(auth2RegisterForm):
-    first_name = forms.CharField(
-        label="Etunimi",
-        widget=forms.DateInput(
-            attrs={"class": "form-control datepicker", "required": "required"}
-        ),
-    )
-    middle_names = forms.CharField(
-        label="Toiset nimet",
-        widget=forms.TextInput(attrs={"class": "form-control"}),
-        required=False,
-    )
-    last_name = forms.CharField(
-        label="Sukunimi",
-        widget=forms.DateInput(
-            attrs={"class": "form-control datepicker", "required": "required"}
-        ),
-    )
-
-    city = forms.CharField(
-        label="Kaupunki",
-        widget=forms.TextInput(attrs={"class": "form-control"}),
-        required=False,
-    )
-    country = forms.CharField(
-        label="Maa",
-        widget=forms.TextInput(attrs={"class": "form-control"}),
-        required=False,
-    )
-    member_until = forms.CharField(
-        label="Jäsenyys päättyy",
-        widget=forms.DateInput(attrs={"class": "form-control"}),
-        required=False,
-    )
-    class_of_year = forms.IntegerField(
-        label="Vuosikurssi",
-        widget=forms.NumberInput(attrs={"class": "form-control"}),
-        required=False,
-    )
-    xq_year = forms.IntegerField(
-        label="XQ Vuosikurssi",
-        widget=forms.NumberInput(attrs={"class": "form-control"}),
-        required=False,
-    )
-    ayy_member = forms.BooleanField(
-        label="AYY Jäsen",
-        widget=forms.CheckboxInput(attrs={"class": "form-control"}),
-        required=False,
-    )
-    pora_member = forms.BooleanField(
-        label="PoRa:n Jäsen",
-        widget=forms.CheckboxInput(attrs={"class": "form-control"}),
-        required=False,
-    )
-
-    member_type = forms.ChoiceField(
-        widget=forms.Select(),
-        choices=Person.MEMBERTYPE_CHOICES,
-        label="Käyttäjätyyppi",
-        required=True,
-    )
-
-    def is_valid(self):
-        valid = super(RegisterForm, self).is_valid()
-        if not valid:
-            return False
-        return True
-
-    def save(self, commit=True):
-        user = super(RegisterForm, self).save(commit=False)
-        user.first_name = self.cleaned_data["first_name"]
-        user.last_name = self.cleaned_data["last_name"]
-        if commit:
-            user.save()
-            person = Person.objects.create(user=user)
-            person.middle_names = self.cleaned_data["middle_names"]
-            person.city = self.cleaned_data["city"]
-            person.country = self.cleaned_data["country"]
-            person.member_until = self.cleaned_data["member_until"]
-            person.class_of_year = self.cleaned_data["class_of_year"]
-            person.xq_year = self.cleaned_data["xq_year"]
-            person.ayy_member = self.cleaned_data["ayy_member"]
-            person.pora_member = self.cleaned_data["pora_member"]
-            person.member_type = self.cleaned_data["member_type"]
-            person.save()
-        return user, person
 
 
 class UserForm(forms.ModelForm):
@@ -1055,3 +966,26 @@ class FamilyMemberForm(forms.ModelForm):
             "original_last_name": "Alkuperäinen sukunimi",
             "member_type": "Tyyppi",
         }
+
+
+class DeleteProfileForm(forms.Form):
+    """Confirm self-service profile deletion by typing your own address.
+
+    Authentication lives in Keycloak, so there is no local password to
+    re-enter; the member's own email address is the confirmation instead.
+    """
+
+    username = forms.CharField(
+        label="Käyttäjätunnus",
+        widget=forms.TextInput(attrs={"class": "form-control"}),
+    )
+
+    def __init__(self, user, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.user = user
+
+    def clean_username(self):
+        username = self.cleaned_data["username"]
+        if username.strip().lower() != (self.user.email or "").lower():
+            raise forms.ValidationError("Ei kelpaa")
+        return username

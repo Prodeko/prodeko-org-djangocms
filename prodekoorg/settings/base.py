@@ -8,6 +8,7 @@ import configparser
 import os
 
 from django.contrib.messages import constants as messages
+from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -15,7 +16,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 
 SITE_ID = 1
 
-config = configparser.ConfigParser()
+# interpolation=None: values are opaque secrets, and a literal % in one
+# would otherwise raise InterpolationSyntaxError at import time.
+config = configparser.ConfigParser(interpolation=None)
 config.read(os.path.join(BASE_DIR, "prodekoorg/settings/variables.txt"))
 
 # SECURITY WARNING: keep the secret keys used in production secret!
@@ -38,6 +41,26 @@ STRIPE_ENDPOINT_SECRET = config["STRIPE"]["STRIPE_ENDPOINT_SECRET"]
 STRIPE_APPLICATION_ENDPOINT_SECRET = config["STRIPE"][
     "STRIPE_APPLICATION_ENDPOINT_SECRET"
 ]
+
+# Keycloak SSO. Read with fallbacks rather than required, so that a host
+# where Ansible has not yet rendered the section still imports settings:
+# every manage.py command would otherwise die of a KeyError here, and the
+# deploy's own collectstatic and migrate steps with them. What an empty
+# value means for a production site is auth_prodeko.checks's business,
+# and it names the missing keys.
+KEYCLOAK_ISSUER = config.get("KEYCLOAK", "ISSUER", fallback="")
+KEYCLOAK_CLIENT_ID = config.get("KEYCLOAK", "CLIENT_ID", fallback="")
+KEYCLOAK_CLIENT_SECRET = config.get("KEYCLOAK", "CLIENT_SECRET", fallback="")
+KEYCLOAK_BREAK_GLASS_EMAIL = config.get("KEYCLOAK", "BREAK_GLASS_EMAIL", fallback="")
+
+# Realm roles. Either of the first two grants access to the site at all;
+# the other two grant Django's is_staff and is_superuser, and are
+# overwritten on every login, so Keycloak is the only place they are
+# managed. `alumni` is listed ahead of the membership registry issuing it
+# automatically, so that work needs no deploy here.
+KEYCLOAK_MEMBERSHIP_ROLES = ["membership", "alumni"]
+KEYCLOAK_STAFF_ROLE = "prodeko-org-admin"
+KEYCLOAK_SUPERUSER_ROLE = "prodeko-org-superuser"
 
 # Application definition
 ROOT_URLCONF = "prodekoorg.urls"
@@ -139,7 +162,6 @@ TEMPLATES = [
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         "DIRS": [
             os.path.join(BASE_DIR, "tiedotteet/frontend/public"),
-            os.path.join(BASE_DIR, "prodekoorg/app_membership/templates/emails"),
             os.path.join(BASE_DIR, "prodekoorg/app_contact/templates/emails"),
         ],
         "OPTIONS": {
@@ -167,11 +189,11 @@ TEMPLATES = [
 MIDDLEWARE = (
     "django.middleware.cache.UpdateCacheMiddleware",
     "corsheaders.middleware.CorsMiddleware",
-    "oauth2_provider.middleware.OAuth2TokenMiddleware",
     "cms.middleware.utils.ApphookReloadMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "mozilla_django_oidc.middleware.SessionRefresh",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.common.BrokenLinkEmailsMiddleware",
     "django.middleware.locale.LocaleMiddleware",
@@ -245,8 +267,6 @@ INSTALLED_APPS = (
     "ckeditor",
     "ckeditor_uploader",
     "rest_framework",
-    # Oauth2
-    "oauth2_provider",
     "corsheaders",
     # ------------------------
     # matrikkeli.prodeko.org
@@ -263,7 +283,6 @@ INSTALLED_APPS = (
     "prodekoorg.app_kiltiskamera",
     "prodekoorg.app_infoscreen",
     "prodekoorg.app_membership",
-    "prodekoorg.app_oauth",
     "prodekoorg.app_poytakirjat",
     "prodekoorg.app_proleko",
     "prodekoorg.app_tiedostot",
@@ -419,23 +438,62 @@ CSRF_TRUSTED_ORIGINS = [
 SESSION_COOKIE_AGE = 60 * 60 * 24 * 30  # 30 days
 SESSION_ENGINE = "django.contrib.sessions.backends.cached_db"
 
-OAUTH2_PROVIDER = {
-    "SCOPES": {
-        "read": "Read scope",
-        "write": "Write scope",
-        "groups": "Access to your groups",
-    }
-}
-
 AUTHENTICATION_BACKENDS = (
-    "oauth2_provider.backends.OAuth2Backend",
+    "auth_prodeko.oidc.backend.KeycloakOIDCBackend",
+    # Kept for the single break-glass account, so an outage of the
+    # identity provider cannot lock us out of our own site.
     "django.contrib.auth.backends.ModelBackend",
 )
 
+_OIDC = f"{KEYCLOAK_ISSUER}/protocol/openid-connect"
+OIDC_RP_CLIENT_ID = KEYCLOAK_CLIENT_ID
+OIDC_RP_CLIENT_SECRET = KEYCLOAK_CLIENT_SECRET
+OIDC_RP_SIGN_ALGO = "RS256"
+OIDC_RP_SCOPES = "openid email profile"
+OIDC_OP_AUTHORIZATION_ENDPOINT = f"{_OIDC}/auth"
+OIDC_OP_TOKEN_ENDPOINT = f"{_OIDC}/token"
+OIDC_OP_USER_ENDPOINT = f"{_OIDC}/userinfo"
+OIDC_OP_JWKS_ENDPOINT = f"{_OIDC}/certs"
+OIDC_OP_LOGOUT_ENDPOINT = f"{_OIDC}/logout"
+OIDC_USE_PKCE = True
+OIDC_PKCE_CODE_CHALLENGE_METHOD = "S256"
+OIDC_CREATE_USER = True
+OIDC_STORE_ID_TOKEN = True
+# Seconds to wait for id.prodeko.org. mozilla_django_oidc hands this to
+# requests in get_token(), get_userinfo() and retrieve_matching_jwk(),
+# and its own default is None, which means wait forever. Production runs
+# gunicorn with 2 workers of 2 threads: 4 concurrent request slots for
+# the whole site. A provider that accepts connections but never answers
+# would park one slot per person clicking the login link, so four of
+# them take prodeko.org down for everyone, including the anonymous
+# visitors who never needed Keycloak. Three calls to Keycloak happen per
+# login, so a slot is held for at most three times this and then freed;
+# a healthy round trip to id.prodeko.org is well under a second, so five
+# seconds is slack for a loaded provider, not a wait anyone benefits
+# from. Thirty seconds would be the same outage, just slower.
+OIDC_TIMEOUT = 5
+LOGOUT_REDIRECT_URL = "/"
+OIDC_OP_LOGOUT_URL_METHOD = "auth_prodeko.oidc.logout.provider_logout"
+# Where a login Keycloak allowed but this site refused ends up. The
+# library redirects to this value without resolving a view name, so it
+# has to be a path; reverse_lazy defers building it until the URLconf
+# is loaded, and picks up the language prefix of i18n_patterns.
+LOGIN_REDIRECT_URL_FAILURE = reverse_lazy("auth_prodeko:login_failed")
+
+# Django sessions last 30 days; a Keycloak session does not. Without this
+# recheck, a role revoked in Keycloak would keep working for weeks.
+OIDC_RENEW_ID_TOKEN_EXPIRY_SECONDS = 60 * 15
+OIDC_EXEMPT_URLS = [
+    "oidc_authentication_init",
+    "oidc_authentication_callback",
+    "oidc_logout",
+]
+# A recheck Keycloak answers but the backend refuses has to end the
+# Django session, or the recheck runs again on the next request.
+OIDC_CALLBACK_CLASS = "auth_prodeko.oidc.callback.KeycloakOIDCCallbackView"
+
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
-        "oauth2_provider.contrib.rest_framework.OAuth2Authentication",
-        "rest_framework.authentication.BasicAuthentication",
         "rest_framework.authentication.SessionAuthentication",
     )
 }
