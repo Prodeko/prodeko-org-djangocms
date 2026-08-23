@@ -8,17 +8,35 @@
     <div class="container">
         <h1>{% trans "Signing in did not complete" %}</h1>
         <p>{% trans "You were not signed in to prodeko.org." %}</p>
-        <p>
-            {% blocktrans trimmed %}
-                Using prodeko.org requires a current Prodeko membership. You can join
-                Prodeko or renew your membership in the membership registry.
-            {% endblocktrans %}
-        </p>
-        <p>
-            <a href="https://membership.prodeko.org/" target="_blank" rel="noopener">
-                {% trans "Join or renew at membership.prodeko.org" %}
-            </a>
-        </p>
+        {% if refusal == "account_conflict" %}
+            <p>
+                {% blocktrans trimmed %}
+                    Your sign-in could not be matched to your prodeko.org account,
+                    and an administrator has to untangle it. Mention the email
+                    address you sign in with when you write to
+                {% endblocktrans %}
+                <a href="mailto:mediakeisari@prodeko.org">mediakeisari@prodeko.org</a>.
+            </p>
+        {% elif refusal == "provider_unavailable" %}
+            <p>
+                {% blocktrans trimmed %}
+                    Signing in failed because of a temporary technical problem.
+                    Please try again in a moment.
+                {% endblocktrans %}
+            </p>
+        {% else %}
+            <p>
+                {% blocktrans trimmed %}
+                    Using prodeko.org requires a current Prodeko membership. You can join
+                    Prodeko or renew your membership in the membership registry.
+                {% endblocktrans %}
+            </p>
+            <p>
+                <a href="https://membership.prodeko.org/" target="_blank" rel="noopener">
+                    {% trans "Join or renew at membership.prodeko.org" %}
+                </a>
+            </p>
+        {% endif %}
         <p>
             {% blocktrans trimmed %}
                 You are still signed in to your Prodeko account. To try a different

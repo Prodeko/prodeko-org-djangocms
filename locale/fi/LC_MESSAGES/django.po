@@ -140,6 +140,24 @@ msgstr "Kirjautuminen ei onnistunut"
 msgid "You were not signed in to prodeko.org."
 msgstr "Sinua ei kirjattu sisään sivustolle prodeko.org."
 
+#: auth_prodeko/templates/accounts/login_failed.html:13
+msgid ""
+"Your sign-in could not be matched to your prodeko.org account, and an "
+"administrator has to untangle it. Mention the email address you sign in "
+"with when you write to"
+msgstr ""
+"Kirjautumistasi ei voitu yhdistää prodeko.org-tiliisi, ja ylläpitäjän on "
+"selvitettävä asia. Mainitse sähköpostiosoite, jolla kirjaudut, kun "
+"kirjoitat osoitteeseen"
+
+#: auth_prodeko/templates/accounts/login_failed.html:22
+msgid ""
+"Signing in failed because of a temporary technical problem. Please try "
+"again in a moment."
+msgstr ""
+"Kirjautuminen epäonnistui tilapäisen teknisen ongelman vuoksi. Yritä "
+"hetken kuluttua uudelleen."
+
 #: auth_prodeko/templates/accounts/login_failed.html:12
 msgid ""
 "Using prodeko.org requires a current Prodeko membership. You can join "

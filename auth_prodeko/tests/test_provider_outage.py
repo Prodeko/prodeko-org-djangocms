@@ -75,6 +75,16 @@ def test_any_failed_call_to_keycloak_refuses_rather_than_erroring(
     assert response["Location"] == reverse("auth_prodeko:login_failed")
 
 
+def test_an_outage_reads_as_a_technical_fault_not_a_refusal(client, keycloak_hangs):
+    """The failure page must not tell a paid-up member mid-outage that
+    they lack a membership."""
+    state = _start_login(client)
+
+    client.get(f"/oidc/callback/?code=irrelevant&state={state}")
+
+    assert client.session.get("keycloak_refusal") == "provider_unavailable"
+
+
 def test_a_timed_out_callback_is_logged(client, keycloak_hangs, caplog):
     with caplog.at_level(logging.WARNING, logger="auth_prodeko.oidc.callback"):
         state = _start_login(client)

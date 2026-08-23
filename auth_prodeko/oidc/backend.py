@@ -17,12 +17,17 @@ from django.core.exceptions import SuspiciousOperation
 from django.utils import timezone
 from mozilla_django_oidc.auth import OIDCAuthenticationBackend
 
+from . import refusal
 from .claims import InvalidClaims, KeycloakIdentity, parse_claims
 
 logger = logging.getLogger(__name__)
 
 
 class KeycloakOIDCBackend(OIDCAuthenticationBackend):
+    def _refuse(self, reason):
+        """Leave the reason where the failure page will find it."""
+        refusal.stash(getattr(self, "request", None), reason)
+
     def get_userinfo(self, access_token, id_token, payload):
         """Merge the ID token's claims with the UserInfo response.
 
@@ -43,13 +48,20 @@ class KeycloakOIDCBackend(OIDCAuthenticationBackend):
         try:
             identity = parse_claims(claims)
         except InvalidClaims as exc:
+            # A token without a sub or email is a broken mapper in the
+            # realm, not anything the visitor did.
             logger.warning("Refusing Keycloak login: %s", exc)
+            self._refuse(refusal.PROVIDER_UNAVAILABLE)
             return False
 
         if not identity.email_verified:
+            # Keycloak verifies addresses at registration, so one still
+            # unverified here is an account state to take to an
+            # administrator, not a membership matter.
             logger.warning(
                 "Refusing Keycloak login for %s: email not verified", identity.email
             )
+            self._refuse(refusal.ACCOUNT_CONFLICT)
             return False
 
         occupant = self._occupant(identity)
@@ -59,6 +71,7 @@ class KeycloakOIDCBackend(OIDCAuthenticationBackend):
                 "deactivated",
                 identity.email,
             )
+            self._refuse(refusal.ACCOUNT_CONFLICT)
             return False
 
         if not self._may_sign_in(identity):
@@ -67,6 +80,7 @@ class KeycloakOIDCBackend(OIDCAuthenticationBackend):
                 "account from before the migration",
                 identity.email,
             )
+            self._refuse(refusal.NO_MEMBERSHIP)
             return False
 
         return True
@@ -165,6 +179,7 @@ class KeycloakOIDCBackend(OIDCAuthenticationBackend):
             identity.subject,
             reason,
         )
+        self._refuse(refusal.ACCOUNT_CONFLICT)
         raise SuspiciousOperation(
             f"Keycloak identity {identity.email} (subject {identity.subject}) "
             f"cannot be signed in because {reason}; an administrator must "
@@ -188,6 +203,7 @@ class KeycloakOIDCBackend(OIDCAuthenticationBackend):
 
     def _apply(self, user, identity: KeycloakIdentity):
         if user.keycloak_sub and user.keycloak_sub != identity.subject:
+            self._refuse(refusal.ACCOUNT_CONFLICT)
             raise SuspiciousOperation(
                 f"Account {user.pk} is linked to a different Keycloak subject"
             )
@@ -208,6 +224,7 @@ class KeycloakOIDCBackend(OIDCAuthenticationBackend):
             if taken:
                 # Merging the two rows is a judgement call about someone's
                 # data, so it belongs to an administrator, not to a login.
+                self._refuse(refusal.ACCOUNT_CONFLICT)
                 raise SuspiciousOperation(
                     f"Keycloak address {identity.email} already belongs to "
                     f"another prodeko.org account; merge them by hand"
