@@ -1,7 +1,9 @@
 import mozilla_django_oidc.auth
 import pytest
 from django.contrib.auth import get_user_model
+from django.contrib.sessions.middleware import SessionMiddleware
 from django.core.exceptions import SuspiciousOperation
+from django.test import RequestFactory
 
 from auth_prodeko.oidc.backend import KeycloakOIDCBackend
 
@@ -422,3 +424,81 @@ def test_email_change_colliding_with_another_row_is_refused(backend):
     User.objects.create_user(email="maija@prodeko.org")
     with pytest.raises(SuspiciousOperation):
         backend.update_user(User.objects.get(keycloak_sub="sub-1"), claims())
+
+
+# --- the reason a refusal leaves for the failure page ---------------------
+#
+# The failure page cannot see why authenticate() returned None, so every
+# refusal leaves its reason in the session, keyed by what the visitor can
+# act on rather than by which check fired.
+
+
+@pytest.fixture
+def refusing_request(backend):
+    """A request like the one authenticate() hands the backend."""
+    request = RequestFactory().get("/oidc/callback/")
+    SessionMiddleware(lambda r: r).process_request(request)
+    backend.request = request
+    return request
+
+
+def test_a_role_refusal_names_the_membership(backend, refusing_request):
+    backend.verify_claims(claims(realm_access={"roles": []}))
+
+    assert refusing_request.session.get("keycloak_refusal") == "no_membership"
+
+
+def test_an_unverified_email_reads_as_a_conflict(backend, refusing_request):
+    """Keycloak verifies addresses at registration, so an unverified one
+    this late is an account in a state an administrator has to look at."""
+    backend.verify_claims(claims(email_verified=False))
+
+    assert refusing_request.session.get("keycloak_refusal") == "account_conflict"
+
+
+def test_a_deactivated_account_reads_as_a_conflict(backend, refusing_request):
+    User.objects.create_user(email="maija@prodeko.org", is_active=False)
+
+    backend.verify_claims(claims())
+
+    assert refusing_request.session.get("keycloak_refusal") == "account_conflict"
+
+
+def test_an_address_linked_elsewhere_reads_as_a_conflict(backend, refusing_request):
+    User.objects.create_user(email="maija@prodeko.org", keycloak_sub="someone-else")
+
+    with pytest.raises(SuspiciousOperation):
+        backend.filter_users_by_claims(claims())
+
+    assert refusing_request.session.get("keycloak_refusal") == "account_conflict"
+
+
+def test_an_email_collision_reads_as_a_conflict(backend, refusing_request):
+    User.objects.create_user(email="old@prodeko.org", keycloak_sub="sub-1")
+    User.objects.create_user(email="maija@prodeko.org")
+
+    with pytest.raises(SuspiciousOperation):
+        backend.update_user(User.objects.get(keycloak_sub="sub-1"), claims())
+
+    assert refusing_request.session.get("keycloak_refusal") == "account_conflict"
+
+
+def test_a_malformed_token_reads_as_a_technical_fault(backend, refusing_request):
+    """A token without a sub or email is a broken mapper in the realm,
+    not anything the visitor did."""
+    backend.verify_claims(claims(sub=""))
+
+    assert refusing_request.session.get("keycloak_refusal") == "provider_unavailable"
+
+
+def test_an_allowed_login_leaves_no_reason_behind(backend, refusing_request):
+    backend.verify_claims(claims())
+
+    assert "keycloak_refusal" not in refusing_request.session
+
+
+def test_a_refusal_without_a_request_still_refuses(backend):
+    """The backend is also called outside authenticate(), with no
+    request attached; the reason then has nowhere to go, and that must
+    not turn the refusal into a crash."""
+    assert backend.verify_claims(claims(realm_access={"roles": []})) is False

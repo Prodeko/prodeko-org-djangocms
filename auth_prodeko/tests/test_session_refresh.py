@@ -149,3 +149,23 @@ def test_refused_claims_still_reach_the_explanation(client, user, monkeypatch):
 
     assert response["Location"] == reverse("auth_prodeko:login_failed")
     assert "_auth_user_id" not in client.session
+
+
+@pytest.mark.no_sso_session
+def test_the_refusal_reason_survives_the_sign_out(client, user, monkeypatch):
+    """The backend leaves its reason in the session, and the sign-out
+    that makes a refused recheck land flushes that session. The reason
+    has to be carried across or the page explains the wrong thing --
+    exactly for the member whose Keycloak address changed mid-session."""
+    client.force_login(user)
+    state = _query_of(client.get("/en/"))["state"][0]
+
+    def refusing_authenticate(request=None, **kwargs):
+        request.session["keycloak_refusal"] = "account_conflict"
+        return None
+
+    monkeypatch.setattr(auth, "authenticate", refusing_authenticate)
+    client.get(f"/oidc/callback/?code=refused&state={state}")
+
+    assert "_auth_user_id" not in client.session
+    assert client.session.get("keycloak_refusal") == "account_conflict"

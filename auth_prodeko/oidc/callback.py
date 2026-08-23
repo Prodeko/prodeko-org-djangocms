@@ -12,6 +12,8 @@ from django.utils.module_loading import import_string
 from mozilla_django_oidc.auth import OIDCAuthenticationBackend
 from mozilla_django_oidc.views import OIDCAuthenticationCallbackView
 
+from . import refusal
+
 logger = logging.getLogger(__name__)
 
 # The errors only a prompt=none handoff can come back with. Every one of
@@ -72,6 +74,7 @@ class KeycloakOIDCCallbackView(OIDCAuthenticationCallbackView):
             # not error: the site is fine, Keycloak is not, and ERROR is
             # what the production LOGGING config mails on.
             logger.warning("Keycloak did not answer; refusing the login", exc_info=True)
+            refusal.stash(request, refusal.PROVIDER_UNAVAILABLE)
             return self.login_failure()
         except requests.exceptions.RequestException:
             # Keycloak answered and the answer was unusable: a 401 from
@@ -85,13 +88,21 @@ class KeycloakOIDCCallbackView(OIDCAuthenticationCallbackView):
                 "unintelligibly; refusing the login",
                 exc_info=True,
             )
+            refusal.stash(request, refusal.PROVIDER_UNAVAILABLE)
             return self.login_failure()
 
     def login_failure(self):
         if self.request.GET.get("error") in SILENT_REFRESH_ERRORS:
             return self.session_expired()
         if self._recheck_would_bounce():
+            # The sign-out flushes the session, and the reason the
+            # backend just left there has to outlive it: this is exactly
+            # the member whose account went wrong mid-session, and the
+            # failure page is about to explain why.
+            reason = self.request.session.get(refusal.SESSION_KEY)
             auth.logout(self.request)
+            if reason is not None:
+                refusal.stash(self.request, reason)
         return super().login_failure()
 
     def _recheck_would_bounce(self) -> bool:

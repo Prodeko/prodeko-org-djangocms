@@ -1,6 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 
+from .oidc import refusal
 from .oidc.logout import provider_logout
 
 
@@ -14,11 +15,13 @@ def profile(request):
 def login_failed(request):
     """Explain a sign-in that Keycloak allowed and this site did not.
 
-    Several things lead here: no membership role, a deactivated account,
-    an address already linked to another Keycloak identity, an attempt to
-    adopt the break-glass account, and Keycloak failing to answer at all.
-    The visitor is told what they can act on -- the site is for members
-    -- and never which of them it was.
+    The refusal leaves its reason in the session, named by the errand it
+    puts the visitor on: renew a membership, write to an administrator
+    about an account conflict, or simply try again once Keycloak
+    answers. The page says which errand and no more -- never which check
+    fired, so a conflict does not spell out whose address is linked
+    where. With no reason recorded it falls back to the membership
+    explanation, the reason the page is mostly here for.
 
     The Keycloak session outlives the refusal, so the login link would
     sign the visitor straight back into the same bounce. The sign-out
@@ -30,7 +33,10 @@ def login_failed(request):
     return render(
         request,
         "accounts/login_failed.html",
-        {"keycloak_logout_url": provider_logout(request)},
+        {
+            "keycloak_logout_url": provider_logout(request),
+            "refusal": refusal.pop(request),
+        },
     )
 
 
